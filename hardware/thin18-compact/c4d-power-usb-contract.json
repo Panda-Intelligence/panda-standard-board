@@ -1,0 +1,137 @@
+{
+  "schema": "thin18-c4d-power-usb-contract-v1",
+  "date": "2026-09-29",
+  "charger": {
+    "vendor": "SGMICRO",
+    "mpn": "SGM41513YTQF24G/TR",
+    "variant": "non-D",
+    "lcsc": "C5153778",
+    "package": "TQFN-4x4-24L",
+    "i2c_address": "0x1A",
+    "usb_dpdm_attached": false,
+    "psel_policy": {
+      "level": "HIGH",
+      "autonomous_input_limit_ma": 500,
+      "reason": "safe default for passive Type-C sink without Rp-current detection"
+    },
+    "pins": {
+      "1": "VAC",
+      "2": "PSEL",
+      "3": "nPG",
+      "4": "STAT",
+      "5": "SCL",
+      "6": "SDA",
+      "7": "nINT",
+      "8": "NC",
+      "9": "nCE",
+      "10": "NC",
+      "11": "TS",
+      "12": "nQON",
+      "13": "BAT",
+      "14": "BAT",
+      "15": "SYS",
+      "16": "SYS",
+      "17": "GND",
+      "18": "GND",
+      "19": "SW",
+      "20": "SW",
+      "21": "BTST",
+      "22": "REGN",
+      "23": "PMID",
+      "24": "VBUS",
+      "EP": "GND"
+    }
+  },
+  "usb": {
+    "mode": "USB2 device + 5V sink only",
+    "pd_pps": false,
+    "rd_ohm": 5100,
+    "repurpose": {
+      "R206": "USB_CC1 -> 5.1k -> GND",
+      "R207": "USB_CC2 -> 5.1k -> GND"
+    },
+    "remove": [
+      "U202",
+      "U203",
+      "U204",
+      "U205",
+      "R205",
+      "R208",
+      "R209"
+    ],
+    "released_gpio": [
+      "U601.P16",
+      "U601.P17"
+    ],
+    "status_source": [
+      "SGM41513.nPG",
+      "SGM41513.nINT",
+      "SGM41513 status registers"
+    ]
+  },
+  "placement": {
+    "clearance_mm": 0.5,
+    "targets": {
+      "SGM41513": {
+        "center_mm": [
+          45.8,
+          7.2
+        ],
+        "reserve_size_mm": [
+          5.2,
+          5.2
+        ],
+        "replaces": [
+          "U201",
+          "L402",
+          "C201",
+          "C203",
+          "C204",
+          "C205",
+          "C206",
+          "C207",
+          "C208",
+          "R201",
+          "R204"
+        ]
+      },
+      "CW2215B": {
+        "center_mm": [
+          41,
+          20
+        ],
+        "reserve_size_mm": [
+          2.4,
+          2.4
+        ],
+        "replaces": [
+          "U301",
+          "C303",
+          "C304"
+        ]
+      },
+      "SGM62125": {
+        "center_mm": [
+          31.7,
+          6.9
+        ],
+        "reserve_size_mm": [
+          3,
+          3.2
+        ],
+        "replaces": [
+          "U401",
+          "L401",
+          "C401",
+          "C402",
+          "C403",
+          "R401",
+          "R402",
+          "R403"
+        ]
+      }
+    }
+  },
+  "manufacturing_release": false,
+  "physical_qualification": false
+}

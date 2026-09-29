@@ -19,7 +19,7 @@
       "battery_iq_batfet_on_ua": 8.5,
       "ship_leak_typ_ua": 2.5,
       "ship_exit": "nQON low ~1s or VBUS/register path",
-      "selection_reason": "Mainland switching NVDC charger preserving low battery IQ, power path, TS/NTC, nQON, I2C and status outputs. Exact non-D variant intentionally uses conservative PSEL/current policy instead of BC1.2.",
+      "selection_reason": "mainland switching NVDC charger with very low battery IQ; non-D variant keeps USB D+/D- exclusively on ESP32-S3",
       "qualification": [
         "charge current/voltage accuracy",
         "termination/recharge",
@@ -28,9 +28,17 @@
         "TS/NTC fault injection",
         "thermal",
         "ship exit",
-        "VBUS insertion/removal"
+        "VBUS insertion/removal",
+        "PSEL/IINDPM input-current policy"
       ],
-      "input_detection": "Non-D SGM41513 has VAC + PSEL + nPG, no D+/D- pins. PSEL high selects 500mA default; host may program IINDPM over I2C."
+      "input_detection": "Non-D SGM41513 has VAC + PSEL + nPG, no D+/D- pins. PSEL high selects 500mA default; host may program IINDPM over I2C.",
+      "variant": "non-D",
+      "usb_dpdm_attached": false,
+      "psel_policy": {
+        "level": "HIGH",
+        "autonomous_input_limit_ma": 500,
+        "reason": "safe fixed default for passive Type-C sink without Rp-current detection"
+      }
     },
     "gauge": {
       "vendor": "Cellwise",
@@ -97,7 +105,7 @@
       "cc1": "5.1k Rd to GND",
       "cc2": "5.1k Rd to GND",
       "data": "ESP32-S3 native USB",
-      "source_current_policy": "PSEL high defaults charger to 500mA on the exact non-D SGM41513; higher input current may only be programmed after a separately qualified source-capability policy.",
+      "source_current_policy": "PSEL high gives 500mA autonomous limit; firmware may raise IINDPM only after a future validated source-capability policy",
       "vbus_status": "SGM41513 status/IRQ instead of TUSB320/TPS3700 path",
       "remove": [
         "U202 TUSB320LIRWBR",
@@ -110,8 +118,10 @@
         "CC voltage/source-current behavior",
         "dead battery",
         "VBUS ramp/discharge",
-        "ESD"
-      ]
+        "ESD",
+        "500mA default-current compliance"
+      ],
+      "charger_dpdm_detection": false
     }
   },
   "replacements": {

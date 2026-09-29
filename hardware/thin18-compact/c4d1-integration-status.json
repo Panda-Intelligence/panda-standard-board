@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-29",
+  "target": "SGM41513YTQF24G/TR",
+  "status": "BLOCKED_FAIL_CLOSED",
+  "reason": "first exact-symbol replacement did not preserve old U201 wire endpoints in generated netlist; expected pin/net map mismatch was detected",
+  "accepted_outputs": [
+    "exact SGM41513 symbol/footprint library",
+    "C4D placement reservation",
+    "non-D pin contract"
+  ],
+  "rejected_output": "c4d1-96x68-sgm41513 electrical candidate",
+  "next_fix": "derive new cached symbol from old BQ25628 endpoint geometry and explicitly stack SGM duplicate power pins before retry",
+  "manufacturing_release": false
+}
