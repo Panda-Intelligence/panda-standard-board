@@ -89,6 +89,54 @@
       "stock": null,
       "moq": null,
       "decision": "EXACT_CONNECTOR_CANDIDATE_PENDING_FLEX_GEOMETRY_AND_LAND_PATTERN"
+    },
+    {
+      "role": "frontlight_inductor_evt",
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA252012S100MT",
+      "lcsc": "C37428",
+      "url": "https://jlcpcb.com/partdetail/SWPA252012S100MT/C37428",
+      "package": "2520 / 1008 metric-style catalog",
+      "tiers": [],
+      "stock": 37877,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_ISAT_0P88A_IRATED_0P62A_DCR_0P69OHM"
+    },
+    {
+      "role": "frontlight_schottky_evt",
+      "manufacturer": "CJ",
+      "mpn": "B5819W SL",
+      "lcsc": "C8598",
+      "url": "https://item.szlcsc.com/9093.html",
+      "package": "SOD-123",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_40V_1A_LEAKAGE_THERMAL_QUAL_OPEN"
+    },
+    {
+      "role": "frontlight_cin_evt",
+      "manufacturer": "Samsung",
+      "mpn": "CL05A225KP5NSNC",
+      "lcsc": "C107369",
+      "url": "https://item.szlcsc.com/108588.html",
+      "package": "0402",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_2P2UF_10V_X5R_DC_BIAS_QUAL_OPEN"
+    },
+    {
+      "role": "frontlight_cout_evt",
+      "manufacturer": "Samsung",
+      "mpn": "CL21A475KBQNNNE",
+      "lcsc": "C98192",
+      "url": "https://item.szlcsc.com/99401.html",
+      "package": "0805",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_4P7UF_50V_X5R_EFFECTIVE_CAP_QUAL_OPEN"
     }
   ]
 }
