@@ -1,0 +1,740 @@
+(kicad_symbol_lib
+	(version 20231120)
+	(generator kicad_symbol_editor)
+	(symbol "TPS63802DLA"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -10.16 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "TPS63802DLA"
+			(at 0 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "panda-standard:TPS63802DLA"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63802.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "TI TPS63802, 2-A synchronous buck-boost converter; DLA0010A VSON-HR-10, no exposed pad"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "TPS63802DLA_0_1"
+			(rectangle
+				(start -10.16 12.7)
+				(end 10.16 -12.7)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "TPS63802DLA_1_1"
+			(pin input line (at -12.7 7.62 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 5.08 0) (length 2.54) (name "MODE" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -12.7 2.54 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 0 0) (length 2.54) (name "FB" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at -12.7 -2.54 0) (length 2.54) (name "PG" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -12.7 -5.08 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin power_out line (at 12.7 7.62 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 2.54 180) (length 2.54) (name "L2" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 0 180) (length 2.54) (name "L1" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "BQ25628ERYKR"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -10.16 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "BQ25628ERYKR"
+			(at -1.27 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "panda-standard:BQ25628ERYKR_RYK0018A"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25628e.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "TI BQ25628ERYKR, NVDC 1-cell buck battery charger; RYK0018A WQFN-HR-18, no exposed pad; pin functions transcribed from SLUSFA4C Rev. C Table 6-1"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "BQ25628ERYKR_0_1"
+			(rectangle
+				(start -10.16 12.7)
+				(end 10.16 -12.7)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "BQ25628ERYKR_1_1"
+			(pin passive line (at -12.7 10.16 0) (length 2.54) (name "BTST" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin power_out line (at -12.7 7.62 0) (length 2.54) (name "REGN" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at -12.7 5.08 0) (length 2.54) (name "PG" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -12.7 2.54 0) (length 2.54) (name "ILIM" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin power_out line (at -12.7 0 0) (length 2.54) (name "TS_BIAS" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 -2.54 0) (length 2.54) (name "TS" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 -5.08 0) (length 2.54) (name "QON" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 -7.62 0) (length 2.54) (name "BAT" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin power_out line (at -12.7 -10.16 0) (length 2.54) (name "SYS" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at 12.7 -7.62 180) (length 2.54) (name "STAT" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at 12.7 -5.08 180) (length 2.54) (name "INT" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at 12.7 -2.54 180) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 12.7 0 180) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 12.7 2.54 180) (length 2.54) (name "CE" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "15" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 5.08 180) (length 2.54) (name "SW" (effects (font (size 1.27 1.27)))) (number "16" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 7.62 180) (length 2.54) (name "PMID" (effects (font (size 1.27 1.27)))) (number "17" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 12.7 10.16 180) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "18" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "BQ27427YZFR"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -10.16 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "BQ27427YZFR"
+			(at -1.27 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_BGA:Texas_DSBGA-9_1.62x1.58mm_Layout3x3_P0.5mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq27427.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "TI BQ27427YZFR 1-cell fuel gauge; YZF0009 DSBGA-9. A-stage asset: pinout from SLUSEB5B Rev. B Table 4-1; official KiCad YZF0009 footprint candidate pending independent review."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "BQ27427YZFR_0_1"
+			(rectangle
+				(start -10.16 6.35)
+				(end 10.16 -6.35)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "BQ27427YZFR_1_1"
+			(pin input line (at -12.7 5.08 0) (length 2.54) (name "BIN" (effects (font (size 1.27 1.27)))) (number "B1" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -12.7 2.54 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "A2" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 0 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "A3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 -2.54 0) (length 2.54) (name "BAT" (effects (font (size 1.27 1.27)))) (number "C3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 -5.08 0) (length 2.54) (name "SRX" (effects (font (size 1.27 1.27)))) (number "C2" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at 12.7 5.08 180) (length 2.54) (name "GPOUT" (effects (font (size 1.27 1.27)))) (number "A1" (effects (font (size 1.27 1.27)))))
+			(pin power_out line (at 12.7 2.54 180) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "B3" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 12.7 -2.54 180) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "C1" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -8.89 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "B2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "TUSB320LIRWBR"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -12.7 11.43 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "TUSB320LIRWBR"
+			(at -5.08 11.43 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tusb320li.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "TI TUSB320LIRWBR USB Type-C configuration-channel logic; RWB0012A X2QFN-12. A-stage asset only: S-9 VBUS-domain, mode, address and fail-safe-isolation decisions remain open."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "TUSB320LIRWBR_0_1"
+			(rectangle
+				(start -12.7 10.16)
+				(end 12.7 -10.16)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "TUSB320LIRWBR_1_1"
+			(pin bidirectional line (at 15.24 2.54 180) (length 2.54) (name "CC1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at 15.24 0 180) (length 2.54) (name "CC2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 15.24 -5.08 180) (length 2.54) (name "PORT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 15.24 7.62 180) (length 2.54) (name "VBUS_DET" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 15.24 -7.62 180) (length 2.54) (name "ADDR" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at -15.24 2.54 0) (length 2.54) (name "INT_N/OUT3" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 7.62 0) (length 2.54) (name "SDA/OUT1" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 5.08 0) (length 2.54) (name "SCL/OUT2" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at -15.24 0 0) (length 2.54) (name "ID" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -12.7 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 -5.08 0) (length 2.54) (name "EN_N" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 12.7 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "LSM6DSO32XTR"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -12.7 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "LSM6DSO32XTR"
+			(at -5.08 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/lsm6dso32x.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "ST LSM6DSO32XTR 6-axis IMU; LGA-14L. A-stage asset only: official generic KiCad LGA candidate requires ST package and independent DFM review; I3C-safe INT1 contract remains pending."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "LSM6DSO32XTR_0_1"
+			(rectangle
+				(start -12.7 12.7)
+				(end 12.7 -12.7)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "LSM6DSO32XTR_1_1"
+			(pin bidirectional line (at -15.24 7.62 0) (length 2.54) (name "SDO/SA0" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 5.08 0) (length 2.54) (name "SDx" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 2.54 0) (length 2.54) (name "SCx" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 0 0) (length 2.54) (name "INT1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 -2.54 0) (length 2.54) (name "INT2" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 -5.08 0) (length 2.54) (name "CS" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 -7.62 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 -10.16 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 15.24 7.62 180) (length 2.54) (name "Vdd_IO" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 15.24 5.08 180) (length 2.54) (name "Vdd" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 15.24 2.54 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 15.24 0 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "LSM6DSO32XTR_I2C_MODE1"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -12.7 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "LSM6DSO32XTR"
+			(at -5.08 13.97 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/lsm6dso32x.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "固定 I2C Mode1 变体：CS 接 Vdd_IO，SA0 为地址输入，SDx/SCx 接 GND；仅 pins 1/2/3 改为 input。依据 ST DS13607 Rev1 Table18；不适用于 SPI 或 sensor-hub Mode2。A-stage 工程候选，独立封装与 DFM 资格未完成。"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "LSM6DSO32XTR_I2C_MODE1_0_1"
+			(rectangle
+				(start -12.7 12.7)
+				(end 12.7 -12.7)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "LSM6DSO32XTR_I2C_MODE1_1_1"
+			(pin input line (at -15.24 7.62 0) (length 2.54) (name "SDO/SA0" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 5.08 0) (length 2.54) (name "SDx" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 2.54 0) (length 2.54) (name "SCx" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 0 0) (length 2.54) (name "INT1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 -2.54 0) (length 2.54) (name "INT2" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 -5.08 0) (length 2.54) (name "CS" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -15.24 -7.62 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at -15.24 -10.16 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 15.24 7.62 180) (length 2.54) (name "Vdd_IO" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 15.24 5.08 180) (length 2.54) (name "Vdd" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 15.24 2.54 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 15.24 0 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "MAX98357AETE+T"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -10.16 11.43 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "MAX98357AETE+T"
+			(at -2.54 11.43 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_DFN_QFN:TQFN-16-1EP_3x3mm_P0.5mm_EP1.23x1.23mm"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX98357A-MAX98357B.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "ADI/MAXIM MAX98357AETE+T mono I2S Class-D amplifier; TQFN-16 plus thermal EP. KiCad synthetic pad 17 is EP_THERMAL, not a datasheet signal pin. A-stage asset only."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "MAX98357AETE+T_0_1"
+			(rectangle
+				(start -10.16 10.16)
+				(end 10.16 -10.16)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "MAX98357AETE+T_1_1"
+			(pin input line (at -12.7 7.62 0) (length 2.54) (name "DIN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 -5.08 0) (length 2.54) (name "GAIN_SLOT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -2.54 -12.7 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 -2.54 0) (length 2.54) (name "SD_MODE" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 12.7 2.54 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 12.7 0 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 12.7 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 2.54 12.7 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin output line (at 12.7 7.62 180) (length 2.54) (name "OUTP" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin output line (at 12.7 5.08 180) (length 2.54) (name "OUTN" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 12.7 -5.08 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+			(pin no_connect line (at 12.7 -7.62 180) (length 2.54) (name "NC" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 2.54 0) (length 2.54) (name "LRCLK" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 2.54 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "15" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -12.7 5.08 0) (length 2.54) (name "BCLK" (effects (font (size 1.27 1.27)))) (number "16" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 -12.7 90) (length 2.54) (name "EP_THERMAL" (effects (font (size 1.27 1.27)))) (number "17" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "TPS22916CYFPT"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -7.62 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "TPS22916CYFPT"
+			(at -1.27 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "panda-standard:TPS22916CYFPT_YFP0004"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22916.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "TI TPS22916CYFPT 1-V to 5.5-V 2-A active-high slow-turn-on load switch with QOD and full-time reverse-current blocking; YFP0004 DSBGA-4; A-stage asset only."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "TPS22916CYFPT_0_1"
+			(rectangle
+				(start -7.62 7.62)
+				(end 7.62 -7.62)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "TPS22916CYFPT_1_1"
+			(pin power_out line (at 10.16 2.54 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "A1" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -10.16 2.54 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "A2" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -10.16 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "B1" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -10.16 -2.54 0) (length 2.54) (name "ON" (effects (font (size 1.27 1.27)))) (number "B2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	(symbol "EP21SD1ABE"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EP21SD1ABE"
+			(at 0 -6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "panda-standard:SW_CK_EP21SD1ABE_A_RightAngle_THT"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ckswitches.com/media/1408/ep.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "C&K EP21SD1ABE 金接点侧按双刀瞬时常开；松开断开，按下1-3和4-6闭合；两信号域独立。A-stage候选，微电流寿命/机械资格未完成。"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch normally-open pushbutton push-button"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "EP21SD1ABE_0_1"
+			(circle
+				(center -2.032 2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center -2.032 -2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 3.81) (xy 0 5.588)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 3.048) (xy 0 3.556)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.032) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.016) (xy 0 1.524)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0.508) (xy 0 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -0.508) (xy 0 -1.016)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 -2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 3.81) (xy -2.54 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 -1.27) (xy -2.54 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 2.54 180)
+				(length 2.54)
+				(name "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 2.54)
+				(name "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -2.54 180)
+				(length 2.54)
+				(name "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "EP21SD1ABE_1_1"
+			(rectangle
+				(start -3.175 5.715)
+				(end 3.175 -4.445)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+
+(symbol "USB_C_Receptacle_16P" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "J" (at 0 15.24 0) (effects (font (size 1.1 1.1))))(property "Value" "USB4500-03-0-A" (at 0 17.78 0) (effects (font (size 1.1 1.1))))(property "Footprint" "panda-standard:USB_C_Receptacle_GCT_USB4500-03-0-A_MidMnt_Horizontal" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://gct.co/files/drawings/usb4500.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "GCT USB4500-03-0-A; USB 2.0 Type-C receptacle, SMT, mid mount, 0.8 mm offset, 16P, 5 A VBUS. Land pattern measured from the vendor Recommended PCB Layout (Thickness=0.80mm) drawing: 12 SMT pads (4x0.60 + 8x0.30, 1.10 tall, 6.20..7.30 mm inboard of the PCB edge), 4 plated shell slots at x=+/-5.62, y=1.60/5.60 mm inboard (1.00x2.20 / 0.60x1.80 and 1.00x1.80 / 0.60x1.40). Board edge is straight; no cutout." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "USB_C_Receptacle_16P_0_1" (rectangle (start -10.16 12.7) (end 10.16 -12.7) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "USB_C_Receptacle_16P_1_1" (pin passive line (at -12.7 10.16 0) (length 2.54) (name "A1" (effects (font (size 1 1)))) (number "A1" (effects (font (size 1 1)))))(pin passive line (at -12.7 7.62 0) (length 2.54) (name "A4" (effects (font (size 1 1)))) (number "A4" (effects (font (size 1 1)))))(pin passive line (at -12.7 5.08 0) (length 2.54) (name "A5" (effects (font (size 1 1)))) (number "A5" (effects (font (size 1 1)))))(pin passive line (at -12.7 2.54 0) (length 2.54) (name "A6" (effects (font (size 1 1)))) (number "A6" (effects (font (size 1 1)))))(pin passive line (at -12.7 0 0) (length 2.54) (name "A7" (effects (font (size 1 1)))) (number "A7" (effects (font (size 1 1)))))(pin passive line (at -12.7 -2.54 0) (length 2.54) (name "A8" (effects (font (size 1 1)))) (number "A8" (effects (font (size 1 1)))))(pin passive line (at -12.7 -5.08 0) (length 2.54) (name "A9" (effects (font (size 1 1)))) (number "A9" (effects (font (size 1 1)))))(pin passive line (at -12.7 -7.62 0) (length 2.54) (name "A12" (effects (font (size 1 1)))) (number "A12" (effects (font (size 1 1)))))(pin passive line (at -12.7 -10.16 0) (length 2.54) (name "B1" (effects (font (size 1 1)))) (number "B1" (effects (font (size 1 1)))))(pin passive line (at 12.7 10.16 180) (length 2.54) (name "B4" (effects (font (size 1 1)))) (number "B4" (effects (font (size 1 1)))))(pin passive line (at 12.7 7.62 180) (length 2.54) (name "B5" (effects (font (size 1 1)))) (number "B5" (effects (font (size 1 1)))))(pin passive line (at 12.7 5.08 180) (length 2.54) (name "B6" (effects (font (size 1 1)))) (number "B6" (effects (font (size 1 1)))))(pin passive line (at 12.7 2.54 180) (length 2.54) (name "B7" (effects (font (size 1 1)))) (number "B7" (effects (font (size 1 1)))))(pin passive line (at 12.7 0 180) (length 2.54) (name "B8" (effects (font (size 1 1)))) (number "B8" (effects (font (size 1 1)))))(pin passive line (at 12.7 -2.54 180) (length 2.54) (name "B9" (effects (font (size 1 1)))) (number "B9" (effects (font (size 1 1)))))(pin passive line (at 12.7 -5.08 180) (length 2.54) (name "B12" (effects (font (size 1 1)))) (number "B12" (effects (font (size 1 1)))))(pin passive line (at 12.7 -7.62 180) (length 2.54) (name "SH" (effects (font (size 1 1)))) (number "SH" (effects (font (size 1 1)))))))
+(symbol "TPS70933DBVR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "U" (at 0 7.62 0) (effects (font (size 1.1 1.1))))(property "Value" "TPS70933DBVR" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps709.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact TPS70933DBVR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "TPS70933DBVR_0_1" (rectangle (start -10.16 5.08) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "TPS70933DBVR_1_1" (pin power_in line (at -12.7 2.54 0) (length 2.54) (name "IN" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin power_in line (at -12.7 0 0) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))(pin input line (at -12.7 -2.54 0) (length 2.54) (name "EN" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))(pin no_connect line (at 12.7 2.54 180) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1)))))(pin power_out line (at 12.7 0 180) (length 2.54) (name "OUT" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1)))))))
+(symbol "SN74AUP2G07DCKR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "U" (at 0 7.62 0) (effects (font (size 1.1 1.1))))(property "Value" "SN74AUP2G07DCKR" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74aup2g07.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact SN74AUP2G07DCKR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "SN74AUP2G07DCKR_0_1" (rectangle (start -10.16 5.08) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "SN74AUP2G07DCKR_1_1" (pin input line (at -12.7 2.54 0) (length 2.54) (name "1A" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin power_in line (at -12.7 0 0) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))(pin input line (at -12.7 -2.54 0) (length 2.54) (name "2A" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))(pin open_collector line (at 12.7 2.54 180) (length 2.54) (name "2Y" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1)))))(pin power_in line (at 12.7 0 180) (length 2.54) (name "VCC" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1)))))(pin open_collector line (at 12.7 -2.54 180) (length 2.54) (name "1Y" (effects (font (size 1 1)))) (number "6" (effects (font (size 1 1)))))))
+(symbol "TPS3700DDCR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "U" (at 0 7.62 0) (effects (font (size 1.1 1.1))))(property "Value" "TPS3700DDCR" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps3700.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact TPS3700DDCR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "TPS3700DDCR_0_1" (rectangle (start -10.16 5.08) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "TPS3700DDCR_1_1" (pin open_collector line (at -12.7 2.54 0) (length 2.54) (name "OUTA" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin power_in line (at -12.7 0 0) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))(pin input line (at -12.7 -2.54 0) (length 2.54) (name "INA+" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))(pin input line (at 12.7 2.54 180) (length 2.54) (name "INB-" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1)))))(pin power_in line (at 12.7 0 180) (length 2.54) (name "VDD" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1)))))(pin open_collector line (at 12.7 -2.54 180) (length 2.54) (name "OUTB" (effects (font (size 1 1)))) (number "6" (effects (font (size 1 1)))))))
+(symbol "SN74AUP1G17DCKR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "U" (at 0 7.62 0) (effects (font (size 1.1 1.1))))(property "Value" "SN74AUP1G17DCKR" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_TO_SOT_SMD:SOT-353_SC-70-5" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74aup1g17.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact SN74AUP1G17DCKR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "SN74AUP1G17DCKR_0_1" (rectangle (start -10.16 5.08) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "SN74AUP1G17DCKR_1_1" (pin no_connect line (at -12.7 2.54 0) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin input line (at -12.7 0 0) (length 2.54) (name "A" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))(pin power_in line (at -12.7 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))(pin output line (at 12.7 2.54 180) (length 2.54) (name "Y" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1)))))(pin power_in line (at 12.7 0 180) (length 2.54) (name "VCC" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1)))))))
+(symbol "TPD4E05U06DQAR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "D" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Value" "TPD4E05U06DQAR" (at 0 12.7 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact TPD4E05U06DQAR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "TPD4E05U06DQAR_0_1" (rectangle (start -10.16 7.62) (end 10.16 -7.62) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "TPD4E05U06DQAR_1_1" (pin passive line (at -12.7 5.08 0) (length 2.54) (name "IO1" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin passive line (at -12.7 2.54 0) (length 2.54) (name "IO2" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))(pin passive line (at -12.7 0 0) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))(pin passive line (at -12.7 -2.54 0) (length 2.54) (name "IO4" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1)))))(pin passive line (at -12.7 -5.08 0) (length 2.54) (name "IO5" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1)))))(pin no_connect line (at 12.7 5.08 180) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "6" (effects (font (size 1 1)))))(pin no_connect line (at 12.7 2.54 180) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "7" (effects (font (size 1 1)))))(pin passive line (at 12.7 0 180) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "8" (effects (font (size 1 1)))))(pin no_connect line (at 12.7 -2.54 180) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "9" (effects (font (size 1 1)))))(pin no_connect line (at 12.7 -5.08 180) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "10" (effects (font (size 1 1)))))))
+(symbol "TPD1E10B06DPYR" (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "D" (at 0 7.62 0) (effects (font (size 1.1 1.1))))(property "Value" "TPD1E10B06DPYR" (at 0 10.16 0) (effects (font (size 1.1 1.1))))(property "Footprint" "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf" (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(property "Description" "Exact TPD1E10B06DPYR pin map; USB engineering candidate, physical qualification pending." (at 0 0 0) (effects (font (size 1.1 1.1)) (hide yes)))(symbol "TPD1E10B06DPYR_0_1" (rectangle (start -10.16 5.08) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))(symbol "TPD1E10B06DPYR_1_1" (pin passive line (at -12.7 0 0) (length 2.54) (name "IO" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))(pin passive line (at 12.7 0 180) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))))
+ (symbol "SGM41513YTQF24G_TR" (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "U" (at 0 15.24 0) (effects (font (size 1.1 1.1)))) (property "Value" "SGM41513YTQF24G/TR" (at 0 12.7 0) (effects (font (size 1.1 1.1)))) (property "Footprint" "PandaDomesticPower:SGM41513_YTQF24_4x4_P0.5_EP2.7" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.sg-micro.com/product/SGM41513" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Description" "SGMICRO non-D 3A 1S switching charger with NVDC; exact VAC/PSEL/nPG variant" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Manufacturer" "SGMICRO" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "MPN" "SGM41513YTQF24G/TR" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "LCSC" "C5153778" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (symbol "SGM41513YTQF24G_TR_0_1" (rectangle (start -10.16 12.7) (end 10.16 -12.7) (stroke (width 0.254) (type default)) (fill (type background)))) (symbol "SGM41513YTQF24G_TR_1_1" (pin passive line (at -12.7 10.16 0) (length 2.54) (name "BTST" (effects (font (size 1 1)))) (number "21" (effects (font (size 1 1))))) (pin power_out line (at -12.7 7.62 0) (length 2.54) (name "REGN" (effects (font (size 1 1)))) (number "22" (effects (font (size 1 1))))) (pin open_collector line (at -12.7 5.08 0) (length 2.54) (name "nPG" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1))))) (pin input line (at -12.7 2.54 0) (length 2.54) (name "PSEL" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1))))) (pin input line (at -12.7 -2.54 0) (length 2.54) (name "TS" (effects (font (size 1 1)))) (number "11" (effects (font (size 1 1))))) (pin input line (at -12.7 -5.08 0) (length 2.54) (name "nQON" (effects (font (size 1 1)))) (number "12" (effects (font (size 1 1))))) (pin power_in line (at -12.7 -7.62 0) (length 2.54) (name "BAT" (effects (font (size 1 1)))) (number "13" (effects (font (size 1 1))))) (pin power_in line (at -12.7 -7.62 0) (length 2.54) (name "BAT" (effects (font (size 1 1)))) (number "14" (effects (font (size 1 1))))) (pin power_out line (at -12.7 -10.16 0) (length 2.54) (name "SYS" (effects (font (size 1 1)))) (number "15" (effects (font (size 1 1))))) (pin power_out line (at -12.7 -10.16 0) (length 2.54) (name "SYS" (effects (font (size 1 1)))) (number "16" (effects (font (size 1 1))))) (pin open_collector line (at 12.7 -7.62 180) (length 2.54) (name "STAT" (effects (font (size 1 1)))) (number "4" (effects (font (size 1 1))))) (pin open_collector line (at 12.7 -5.08 180) (length 2.54) (name "nINT" (effects (font (size 1 1)))) (number "7" (effects (font (size 1 1))))) (pin bidirectional line (at 12.7 -2.54 180) (length 2.54) (name "SDA" (effects (font (size 1 1)))) (number "6" (effects (font (size 1 1))))) (pin input line (at 12.7 0 180) (length 2.54) (name "SCL" (effects (font (size 1 1)))) (number "5" (effects (font (size 1 1))))) (pin input line (at 12.7 2.54 180) (length 2.54) (name "nCE" (effects (font (size 1 1)))) (number "9" (effects (font (size 1 1))))) (pin passive line (at 12.7 5.08 180) (length 2.54) (name "SW" (effects (font (size 1 1)))) (number "19" (effects (font (size 1 1))))) (pin passive line (at 12.7 5.08 180) (length 2.54) (name "SW" (effects (font (size 1 1)))) (number "20" (effects (font (size 1 1))))) (pin passive line (at 12.7 7.62 180) (length 2.54) (name "PMID" (effects (font (size 1 1)))) (number "23" (effects (font (size 1 1))))) (pin power_in line (at 12.7 10.16 180) (length 2.54) (name "VBUS" (effects (font (size 1 1)))) (number "24" (effects (font (size 1 1))))) (pin input line (at 12.7 10.16 180) (length 2.54) (name "VAC" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1))))) (pin power_in line (at 0 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "17" (effects (font (size 1 1))))) (pin power_in line (at 0 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "18" (effects (font (size 1 1))))) (pin power_in line (at 0 -15.24 90) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "25" (effects (font (size 1 1))))) (pin no_connect line (at -2.54 15.24 270) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "8" (effects (font (size 1 1))))) (pin no_connect line (at 2.54 15.24 270) (length 2.54) (name "NC" (effects (font (size 1 1)))) (number "10" (effects (font (size 1 1))))))) (symbol "SGM62125AXG_TR" (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "U" (at 0 15.24 0) (effects (font (size 1.1 1.1)))) (property "Value" "SGM62125AXG/TR" (at 0 12.7 0) (effects (font (size 1.1 1.1)))) (property "Footprint" "PandaDomesticPower:SGM62125_XG_WLCSP15_1.46x2.3_P0.4" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Datasheet" "https://www.sg-micro.com/product/SGM62125" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Description" "SGMICRO 3.5A I2C buck-boost; exact WLCSP-15 P0.4; ADDR high starts at 3.4V" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "Manufacturer" "SGMICRO" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "MPN" "SGM62125AXG/TR" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (property "LCSC" "" (at 0 0 0) (effects (font (size 1 1)) (hide yes))) (symbol "SGM62125AXG_TR_0_1" (rectangle (start -8.89 8.89) (end 8.89 -8.89) (stroke (width 0.254) (type default)) (fill (type background)))) (symbol "SGM62125AXG_TR_1_1" (pin input line (at -11.43 6.35 0) (length 2.54) (name "EN" (effects (font (size 1 1)))) (number "A1" (effects (font (size 1 1))))) (pin power_in line (at -11.43 3.81 0) (length 2.54) (name "VIN" (effects (font (size 1 1)))) (number "A2" (effects (font (size 1 1))))) (pin power_in line (at -11.43 1.27 0) (length 2.54) (name "VIN" (effects (font (size 1 1)))) (number "A3" (effects (font (size 1 1))))) (pin input line (at -11.43 -1.27 0) (length 2.54) (name "ADDR" (effects (font (size 1 1)))) (number "B1" (effects (font (size 1 1))))) (pin passive line (at -11.43 -3.81 0) (length 2.54) (name "SW1" (effects (font (size 1 1)))) (number "B2" (effects (font (size 1 1))))) (pin passive line (at -11.43 -6.35 0) (length 2.54) (name "SW1" (effects (font (size 1 1)))) (number "B3" (effects (font (size 1 1))))) (pin power_in line (at 0 -11.43 90) (length 2.54) (name "AGND" (effects (font (size 1 1)))) (number "C1" (effects (font (size 1 1))))) (pin power_in line (at 2.54 -11.43 90) (length 2.54) (name "PGND" (effects (font (size 1 1)))) (number "C2" (effects (font (size 1 1))))) (pin power_in line (at 5.08 -11.43 90) (length 2.54) (name "PGND" (effects (font (size 1 1)))) (number "C3" (effects (font (size 1 1))))) (pin bidirectional line (at 11.43 -6.35 180) (length 2.54) (name "SCL" (effects (font (size 1 1)))) (number "D1" (effects (font (size 1 1))))) (pin passive line (at 11.43 -3.81 180) (length 2.54) (name "SW2" (effects (font (size 1 1)))) (number "D2" (effects (font (size 1 1))))) (pin passive line (at 11.43 -1.27 180) (length 2.54) (name "SW2" (effects (font (size 1 1)))) (number "D3" (effects (font (size 1 1))))) (pin bidirectional line (at 11.43 1.27 180) (length 2.54) (name "SDA" (effects (font (size 1 1)))) (number "E1" (effects (font (size 1 1))))) (pin power_out line (at 11.43 3.81 180) (length 2.54) (name "VOUT" (effects (font (size 1 1)))) (number "E2" (effects (font (size 1 1))))) (pin power_out line (at 11.43 6.35 180) (length 2.54) (name "VOUT" (effects (font (size 1 1)))) (number "E3" (effects (font (size 1 1))))))))

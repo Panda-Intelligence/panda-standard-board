@@ -1,0 +1,143 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-29T19:07:35",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.5",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/d3a81e0f-b7aa-4a42-8725-c0778e1c21b4",
+            "violations": [
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label '3V3_AON'",
+                            "pos": {
+                                "x": 0.889,
+                                "y": 0.5969
+                            },
+                            "uuid": "f48b96e8-b645-52fb-a55a-fab3c3c97f58"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                },
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label 'USB_CC1'",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.6223
+                            },
+                            "uuid": "458376d0-25a8-5c65-955e-f1e67c8631ed"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                },
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label 'USB_CC2'",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.6477
+                            },
+                            "uuid": "01cd236a-f6e7-5c17-8f6e-66e99ef18f92"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                },
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label 'GND'",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.6985
+                            },
+                            "uuid": "4654c814-0fe0-5c4c-8679-94e32b5075c4"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                },
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label 'VBUS_USB'",
+                            "pos": {
+                                "x": 4.0259,
+                                "y": 0.6223
+                            },
+                            "uuid": "53d410e4-7315-50c1-bb1b-d44387cd0a35"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                },
+                {
+                    "description": "Label not connected",
+                    "items": [
+                        {
+                            "description": "Global Label '3V3_AON'",
+                            "pos": {
+                                "x": 5.2832,
+                                "y": 2.2479
+                            },
+                            "uuid": "426513d5-5b3d-5113-94e9-40acfcd0bdde"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "label_dangling"
+                }
+            ]
+        },
+        {
+            "path": "/USB2 sink / CC / VBUS/",
+            "uuid_path": "/d3a81e0f-b7aa-4a42-8725-c0778e1c21b4/1f6dd77e-92a6-53f5-b0bd-ff8f15dfbd83",
+            "violations": []
+        },
+        {
+            "path": "/EVT display / NTC / RTC/",
+            "uuid_path": "/d3a81e0f-b7aa-4a42-8725-c0778e1c21b4/0ad4746c-eb1b-58aa-aec5-0f9f071f67b5",
+            "violations": []
+        },
+        {
+            "path": "/Integrated SSD1677 display/",
+            "uuid_path": "/d3a81e0f-b7aa-4a42-8725-c0778e1c21b4/5c981e0e-d44f-5569-a533-0a321193d8be",
+            "violations": []
+        }
+    ],
+    "source": "PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch"
+}
