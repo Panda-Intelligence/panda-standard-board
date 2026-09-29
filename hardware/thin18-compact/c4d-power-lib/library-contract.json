@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-29",
+  "assets": {
+    "SGM41513": {
+      "symbol": "SGM41513YTQF24G_TR",
+      "footprint": "SGM41513_YTQF24_4x4_P0.5_EP2.7",
+      "pin_count": 25,
+      "source": "SGMICRO datasheet APRIL 2025",
+      "land": "0.7x0.24mm / P0.5 / EP2.7"
+    },
+    "SGM62125": {
+      "symbol": "SGM62125AXG_TR",
+      "footprint": "SGM62125_XG_WLCSP15_1.46x2.3_P0.4",
+      "pin_count": 15,
+      "source": "SGMICRO datasheet AUGUST 2026 REV.A",
+      "land": "15x dia0.23mm / P0.4"
+    }
+  },
+  "cw2215_generated": false,
+  "reason": "authoritative CW2215B ball map still unavailable",
+  "manufacturing_release": false
+}

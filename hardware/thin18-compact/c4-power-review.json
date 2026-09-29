@@ -30,5 +30,7 @@
   "corrections": [
     "Exact SGM41513YTQF24G/TR non-D variant does not expose D+/D- and must not be credited with family BC1.2 auto-detection.",
     "PSEL-high 500mA is the fail-safe USB input-current baseline."
-  ]
+  ],
+  "charger_variant": "SGM41513 non-D",
+  "usb_policy": "passive Rd; ESP32 owns D+/D-; PSEL high default 500mA; no BC1.2 claim"
 }

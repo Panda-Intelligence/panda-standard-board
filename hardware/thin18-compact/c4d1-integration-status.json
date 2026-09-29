@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-29",
+  "target": "SGM41513YTQF24G/TR",
+  "status": "SGM41513_CAD_APPLIED_NATIVE_CHECKS_CLEAN",
+  "reason": "first exact-symbol replacement did not preserve old U201 wire endpoints in generated netlist; expected pin/net map mismatch was detected",
+  "accepted_outputs": [
+    "exact SGM41513 symbol/footprint library",
+    "C4D placement reservation",
+    "non-D pin contract"
+  ],
+  "rejected_output": "c4d1-96x68-sgm41513 electrical candidate",
+  "next_fix": "derive new cached symbol from old BQ25628 endpoint geometry and explicitly stack SGM duplicate power pins before retry",
+  "manufacturing_release": false,
+  "stage": "C4D-1",
+  "candidate": "c4d1-96x68-sgm41513-additive",
+  "charger_ref": "U901",
+  "charger_mpn": "SGM41513YTQF24G/TR",
+  "charger_lcsc": "C5153778",
+  "native_checks": {
+    "erc": 0,
+    "drc": 0,
+    "parity": 0,
+    "open": 454
+  },
+  "legacy_u201": "removed from C4D candidate; source candidate preserved",
+  "next": "C4D-2 SGM62125 buck-boost integration",
+  "physical_qualification": false
+}
