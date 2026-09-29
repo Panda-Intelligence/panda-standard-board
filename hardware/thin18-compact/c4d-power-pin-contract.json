@@ -1,0 +1,205 @@
+{
+  "schema": "thin18-compact-c4d-power-pin-contract-v1",
+  "date": "2026-09-29",
+  "status": "PIN_LEVEL_INPUTS_FROZEN_FOR_CAD_REDESIGN",
+  "manufacturing_release": false,
+  "source_candidate": "c4c-96x68-domestic-passives",
+  "sgm41513": {
+    "exact_mpn": "SGM41513YTQF24G/TR",
+    "vendor": "SGMICRO",
+    "lcsc": "C5153778",
+    "package": "TQFN-4x4-24L + exposed pad",
+    "exact_variant": "non-D",
+    "bc12": false,
+    "i2c_address": "0x1A",
+    "pins": {
+      "1": "VAC",
+      "2": "PSEL",
+      "3": "nPG",
+      "4": "STAT",
+      "5": "SCL",
+      "6": "SDA",
+      "7": "nINT",
+      "8": "NC",
+      "9": "nCE",
+      "10": "NC",
+      "11": "TS",
+      "12": "nQON",
+      "13": "BAT",
+      "14": "BAT",
+      "15": "SYS",
+      "16": "SYS",
+      "17": "GND",
+      "18": "GND",
+      "19": "SW",
+      "20": "SW",
+      "21": "BTST",
+      "22": "REGN",
+      "23": "PMID",
+      "24": "VBUS",
+      "EP": "GND"
+    },
+    "target_nets": {
+      "VAC": "VBUS_USB",
+      "PSEL": "PSEL_500MA_DEFAULT",
+      "nPG": "BQ_PG",
+      "STAT": "BQ_STAT",
+      "SCL": "I2C_SCL",
+      "SDA": "I2C_SDA",
+      "nINT": "BQ_INT",
+      "nCE": "BQ_CE",
+      "TS": "BQ_TS",
+      "nQON": "BQ_QON",
+      "BAT": "PACK_BAT",
+      "SYS": "VSYS_RAW",
+      "GND": "GND",
+      "SW": "SGM41513_SW",
+      "BTST": "SGM41513_BTST",
+      "REGN": "SGM41513_REGN",
+      "PMID": "SGM41513_PMID",
+      "VBUS": "VBUS_USB"
+    },
+    "reusable_passives": [
+      "C201 47nF bootstrap role is compatible in value class",
+      "C202 1uF VBUS is compatible with datasheet minimum role",
+      "C203 10uF PMID is compatible with datasheet role",
+      "C205 4.7uF REGN / >=10V is compatible with datasheet role",
+      "C206 10uF BAT is compatible with datasheet role",
+      "C207/C208 existing SYS bulk can satisfy >=20uF aggregate study target"
+    ],
+    "remove_or_rework": [
+      "R201 legacy BQ ILIM network: SGM41513 has no ILIM pin; remove/reassign",
+      "R204/C204 legacy ILIM-RC network: remove/reassign",
+      "TS bias network must be recalculated against SGM41513 REGN and exact 103JT curve",
+      "PSEL default must be fail-safe high for 500mA; exact pull source/value still C4D schematic task"
+    ],
+    "evidence": "SGMICRO SGM41513/41513A/41513D datasheet APRIL 2025"
+  },
+  "cw2215b": {
+    "exact_mpn": "CW2215BAAC",
+    "vendor": "Cellwise",
+    "jlc": "C7502681",
+    "package": "WLCSP-9 1.58x1.53mm P0.5",
+    "i2c_address": "0x64",
+    "logical_pins": [
+      "SCL",
+      "SDA",
+      "NC",
+      "INT_N",
+      "CSP",
+      "CSN",
+      "VCELL",
+      "TS",
+      "VSS"
+    ],
+    "ball_map_frozen": false,
+    "blocker": "Public CW2215B-DS V1.0 retrieved in this pass documents the nine logical functions and package/application, but does not expose an authoritative ball-to-function map in machine-readable text. Do not fabricate the WLCSP footprint/symbol mapping until an authoritative ball map/EasyEDA model is captured.",
+    "target_behavior": {
+      "current_sense": "10mOhm typical; high-side or low-side supported",
+      "active_current_ua": 5,
+      "shutdown_current_ua": 0.5,
+      "target_bus": [
+        "I2C_SCL",
+        "I2C_SDA"
+      ],
+      "target_interrupt": "FUEL_GPOUT or dedicated gauge alert mapping to be frozen",
+      "target_battery_voltage": "PACK_BAT/BAT_PACKP domain",
+      "target_temperature": "battery NTC or host-reported temperature"
+    },
+    "evidence": "Cellwise CW2215B-DS V1.0 + JLC C7502681 package listing"
+  },
+  "sgm62125": {
+    "exact_mpn": "SGM62125AXG/TR",
+    "vendor": "SGMICRO",
+    "package": "WLCSP-1.46x2.3-15B",
+    "pins": {
+      "A1": "EN",
+      "A2": "VIN",
+      "A3": "VIN",
+      "B1": "ADDR",
+      "B2": "SW1",
+      "B3": "SW1",
+      "C1": "AGND",
+      "C2": "PGND",
+      "C3": "PGND",
+      "D1": "SCL",
+      "D2": "SW2",
+      "D3": "SW2",
+      "E1": "SDA",
+      "E2": "VOUT",
+      "E3": "VOUT"
+    },
+    "target_nets": {
+      "EN": "VSYS_RAW or controlled AON enable (exact tie to freeze)",
+      "VIN": "VSYS_RAW",
+      "ADDR": "ADDR_HIGH_START_3V4",
+      "SW1": "SGM62125_SW1",
+      "AGND": "GND",
+      "PGND": "GND",
+      "SCL": "I2C_SCL",
+      "SW2": "SGM62125_SW2",
+      "SDA": "I2C_SDA",
+      "VOUT": "3V3_AON_SRC"
+    },
+    "recommended_external": {
+      "inductor": "0.47uH at 2.2MHz; saturation target >= calculated peak +20%",
+      "cin": "10uF recommended; effective total >5uF after DC bias",
+      "cout": "2x22uF 6.3V for <3.6V output; >=16uF effective",
+      "hf_bypass": "100nF close to VOUT/GND"
+    },
+    "startup": {
+      "ADDR_high": {
+        "address": "0x76",
+        "vout_v": 3.4
+      },
+      "ADDR_low": {
+        "address": "0x75",
+        "vout_v": 3
+      },
+      "ADDR_float": {
+        "address": "0x77",
+        "vout_v": 3.6
+      },
+      "c4_policy": "ADDR high; validate all AON loads at 3.4V startup, then firmware programs 3.3V"
+    },
+    "reusable_passives": [
+      "L401 existing 0.47uH footprint/value class can be retained only after Isat/DCR qualification",
+      "C401 existing 22uF input plus additional effective-cap check",
+      "C402/C403 existing 2x22uF output align with recommended topology"
+    ],
+    "evidence": "SGMICRO SGM62125 REV.A AUGUST 2026"
+  },
+  "usb_c": {
+    "product_contract": "USB2 device + 5V sink only; no PD/PPS",
+    "cc1": "5.1k Rd to GND",
+    "cc2": "5.1k Rd to GND",
+    "default_charge_input_ma": 500,
+    "reason": "Exact non-D SGM41513 lacks D+/D- BC1.2 pins. Passive Rd does not by itself authorize 1.5A/3A draw.",
+    "removed_refs": [
+      "U202",
+      "U203",
+      "U204",
+      "U205"
+    ],
+    "legacy_nets_to_remove_or_reassign": [
+      "3V3_USB_CC",
+      "CC_OUT1_LOCAL",
+      "CC_OUT2_LOCAL",
+      "CC_OUT1_AON",
+      "CC_OUT2_AON",
+      "TUSB_VBUS_DET",
+      "VBUS_SENSE",
+      "VBUS_VALID_CC"
+    ],
+    "vbus_status_target": "SGM41513 nPG/nINT/status registers; exact MCU/XL9535 mapping C4D task"
+  },
+  "gates": {
+    "sgm41513_pin_map": true,
+    "sgm62125_pin_map": true,
+    "cw2215_ball_map": false,
+    "usb_default_current_policy": true,
+    "production_symbol_footprints": false,
+    "full_schematic_redesign": false,
+    "physical_qualification": false
+  }
+}

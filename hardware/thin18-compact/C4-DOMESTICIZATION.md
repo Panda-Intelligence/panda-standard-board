@@ -29,7 +29,8 @@ Selected documentary baseline for schematic redesign:
   - 1S synchronous switching charger;
   - NVDC system power path;
   - I2C address 0x1A;
-  - automatic BC1.2 detection;
+  - exact non-D variant uses VAC/PSEL/nPG and does **not** expose D+/D-;
+  - PSEL high provides a conservative 500mA default input-current policy;
   - TS/NTC + JEITA charging behavior;
   - battery-side typical current about 8.5 µA with BATFET enabled;
   - ship leakage about 2.5 µA.

@@ -13,23 +13,24 @@
       "package": "TQFN-4x4-24L",
       "topology": "1S synchronous switching charger + NVDC power path",
       "i2c": "0x1A, 100/400kHz",
-      "bc12": true,
+      "bc12": false,
       "ntc_jeita": true,
       "max_charge_a": 3.0,
       "battery_iq_batfet_on_ua": 8.5,
       "ship_leak_typ_ua": 2.5,
       "ship_exit": "nQON low ~1s or VBUS/register path",
-      "selection_reason": "closest mainland functional architecture to BQ25628E while preserving low battery IQ, power path, BC1.2, NTC and I2C",
+      "selection_reason": "Mainland switching NVDC charger preserving low battery IQ, power path, TS/NTC, nQON, I2C and status outputs. Exact non-D variant intentionally uses conservative PSEL/current policy instead of BC1.2.",
       "qualification": [
         "charge current/voltage accuracy",
         "termination/recharge",
         "DPM",
-        "BC1.2",
+        "PSEL/default current policy",
         "TS/NTC fault injection",
         "thermal",
         "ship exit",
         "VBUS insertion/removal"
-      ]
+      ],
+      "input_detection": "Non-D SGM41513 has VAC + PSEL + nPG, no D+/D- pins. PSEL high selects 500mA default; host may program IINDPM over I2C."
     },
     "gauge": {
       "vendor": "Cellwise",
@@ -96,7 +97,7 @@
       "cc1": "5.1k Rd to GND",
       "cc2": "5.1k Rd to GND",
       "data": "ESP32-S3 native USB",
-      "source_current_policy": "default conservative current unless charger BC1.2/source detection explicitly permits more",
+      "source_current_policy": "PSEL high defaults charger to 500mA on the exact non-D SGM41513; higher input current may only be programmed after a separately qualified source-capability policy.",
       "vbus_status": "SGM41513 status/IRQ instead of TUSB320/TPS3700 path",
       "remove": [
         "U202 TUSB320LIRWBR",
@@ -107,7 +108,6 @@
       "qualification": [
         "Type-C sink compliance",
         "CC voltage/source-current behavior",
-        "BC1.2 interaction",
         "dead battery",
         "VBUS ramp/discharge",
         "ESD"

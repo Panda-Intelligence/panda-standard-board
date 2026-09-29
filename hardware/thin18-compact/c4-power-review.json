@@ -21,10 +21,14 @@
     "NTC faults",
     "deep-sleep current",
     "Wi-Fi transients",
-    "USB-C compliance",
+    "USB-C compliance / 500mA default-current policy",
     "EMI",
     "ship mode",
     "battery gauge accuracy"
   ],
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "corrections": [
+    "Exact SGM41513YTQF24G/TR non-D variant does not expose D+/D- and must not be credited with family BC1.2 auto-detection.",
+    "PSEL-high 500mA is the fail-safe USB input-current baseline."
+  ]
 }

@@ -33,7 +33,7 @@
     ],
     [
       "PHY-06",
-      "USB-C attach / BC1.2 / VBUS ramp / dead battery",
+      "USB-C attach / CC Rd / 500mA default-current / VBUS ramp / dead battery",
       "NOT_RUN"
     ],
     [
