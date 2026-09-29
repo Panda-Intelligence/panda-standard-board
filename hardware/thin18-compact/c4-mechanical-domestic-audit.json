@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-29",
+  "result": "NO_SELECT_NOW_MECHANICAL_DOMESTIC_SUBSTITUTES",
+  "policy": "retain incumbent until exact mainland drawing/mating/footprint evidence exists",
+  "items": [
+    {
+      "current": "USB4500-03-0-A",
+      "status": "BLOCKED",
+      "reason": "no mainland candidate proves 0.8mm mid-mount board offset, shell anchors, USB2 contacts, height and identical footprint"
+    },
+    {
+      "current": "Molex 104031-0811",
+      "status": "BLOCKED",
+      "candidate": "SHOU HAN TF PUSH / C393941",
+      "reason": "candidate 2.0mm push-push vs incumbent ~1.42mm and footprint/card geometry unproven"
+    },
+    {
+      "current": "DF58-2P-1.2V(21)",
+      "status": "BLOCKED",
+      "reason": "no exact mainland mating system / keying / retention / height / current / footprint evidence"
+    },
+    {
+      "current": "SM02B-SRSS-TB(LF)(SN)",
+      "status": "BLOCKED",
+      "reason": "no exact mainland JST-SH compatible mating/side-entry/footprint proof"
+    },
+    {
+      "current": "SM03B-SRSS-TB(LF)(SN)",
+      "status": "BLOCKED",
+      "reason": "no exact mainland JST-SH compatible mating/side-entry/footprint proof"
+    },
+    {
+      "current": "FH12-24S-0.5SH(55)",
+      "status": "BLOCKED",
+      "reason": "no 24p bottom-contact mainland part with exact height/FPC/land-pattern proof"
+    },
+    {
+      "current": "FH34SRJ-6S-0.5SH(50)",
+      "status": "BLOCKED",
+      "reason": "no 6p dual-contact mainland part with exact FPC/actuator/land-pattern proof"
+    },
+    {
+      "current": "SKSCLCE010",
+      "status": "BLOCKED",
+      "reason": "no exact mainland side-actuated switch with same 3.5x3.55x1.25mm envelope, force, travel and terminals"
+    },
+    {
+      "current": "103JT-025-600AY",
+      "status": "BLOCKED",
+      "reason": "no mainland exact 10k 1% B3435 1% thin-film 600mm sensor assembly found"
+    }
+  ],
+  "production_release": false
+}

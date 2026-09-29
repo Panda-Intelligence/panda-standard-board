@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-29",
+  "tests": [
+    {
+      "name": "selected schematic MPN mutation rejected",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "missing ref status rejected",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "physical PASS without raw measurements rejected",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "unsafe load-switch selection rejected",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "release gate blocked",
+      "exit": 2,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

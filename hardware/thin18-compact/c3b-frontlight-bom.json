@@ -1,0 +1,93 @@
+{
+  "schema": "thin18-c3b-frontlight-bom-v1",
+  "date": "2026-09-29",
+  "status": "EVT_CANDIDATE_NOT_PRODUCTION_RELEASE",
+  "driver": {
+    "ref": "U9xx",
+    "mpn": "LM36922HYFFR",
+    "lcsc": "C213572",
+    "package": "DSBGA-12",
+    "address": "0x36 ASEL=GND"
+  },
+  "inductor": {
+    "ref": "L9xx",
+    "mpn": "SWPA252012S100MT",
+    "lcsc": "C37428",
+    "value": "10uH",
+    "isat_a": 0.88,
+    "irated_a": 0.62,
+    "dcr_ohm": 0.69
+  },
+  "schottky": {
+    "ref": "D9xx",
+    "mpn": "B5819W SL",
+    "lcsc": "C8598",
+    "vr_v": 40,
+    "if_a": 1,
+    "package": "SOD-123"
+  },
+  "cin": {
+    "ref": "C9xx",
+    "mpn": "CL05A225KP5NSNC",
+    "lcsc": "C107369",
+    "value": "2.2uF",
+    "vr_v": 10,
+    "dielectric": "X5R",
+    "package": "0402"
+  },
+  "cout": {
+    "ref": "C9xy",
+    "mpn": "CL21A475KBQNNNE",
+    "lcsc": "C98192",
+    "value": "4.7uF",
+    "vr_v": 50,
+    "dielectric": "X5R",
+    "package": "0805"
+  },
+  "control": {
+    "vin": "VSYS_FL_IN",
+    "scl": "I2C_SCL",
+    "sda": "I2C_SDA",
+    "hwen": "FL_HWEN from U601.P15",
+    "asel": "GND",
+    "pwm": "static-defined; I2C brightness baseline",
+    "switching_frequency": "1MHz fixed for EVT baseline"
+  },
+  "panel_limits": {
+    "warm": {
+      "max_v": 15,
+      "max_ma": 15
+    },
+    "cool": {
+      "max_v": 15,
+      "max_ma": 15
+    }
+  },
+  "open_qualification": [
+    "LM36922H EVT stock depth / second source",
+    "inductor temperature/EMI",
+    "Schottky reverse leakage at temperature",
+    "COUT effective capacitance at 15V",
+    "CIN effective capacitance",
+    "full brightness current clamp <=15mA/string",
+    "shutdown leakage",
+    "acoustic noise",
+    "EMI",
+    "thermal rise"
+  ],
+  "design_point": {
+    "vin_min_v": 3.0,
+    "vout_nominal_v": 15.0,
+    "two_strings_total_current_a": 0.03,
+    "assumed_efficiency": 0.8,
+    "switching_frequency_hz": 1000000.0,
+    "inductor_h": 1e-05,
+    "estimated_duty": 0.8,
+    "estimated_input_avg_a": 0.1875,
+    "estimated_inductor_ripple_pp_a": 0.24,
+    "estimated_inductor_peak_a": 0.3075,
+    "isat_margin_ratio": 2.86,
+    "irated_margin_ratio": 2.02,
+    "scope": "first-order worst-operating-point sizing only; not transient/thermal/EMI qualification"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "thin18-compact-c4-domestic-matrix-v1",
+  "date": "2026-09-29",
+  "manufacturing_release": false,
+  "decisions": [
+    {
+      "role": "MCU",
+      "current": "ESP32-S3-WROOM-1U-N16R8",
+      "target": "ESP32-S3-WROOM-1U-N16R8",
+      "vendor": "Espressif",
+      "status": "SELECTED_RETAIN_DOMESTIC"
+    },
+    {
+      "role": "display",
+      "current": "GDEQ0426T82-FT01C",
+      "target": "same",
+      "vendor": "Good Display",
+      "status": "SELECTED_RETAIN_DOMESTIC"
+    },
+    {
+      "role": "touch",
+      "current": "FT6336U",
+      "target": "same",
+      "vendor": "FocalTech",
+      "status": "SELECTED_RETAIN_DOMESTIC"
+    },
+    {
+      "role": "GPIO expander",
+      "current": "TCA9535PWR",
+      "target": "XL9535",
+      "vendor": "XINLUDA",
+      "lcsc": "C561273",
+      "status": "SELECTED_ENGINEERING_CAD",
+      "change": "same TSSOP24 pinout; firmware regression required"
+    },
+    {
+      "role": "charger+gauge+PMU",
+      "current": "BQ25628E + BQ27427 + associated power architecture",
+      "target": "SGM41513 + CW2215B",
+      "vendor": "SGMICRO + Cellwise",
+      "lcsc": [
+        "C5153778",
+        "C7502681"
+      ],
+      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
+      "change": "switching NVDC charger + low-power current-sensing gauge; replaces BQ25628E/BQ27427"
+    },
+    {
+      "role": "3V3 buckboost",
+      "current": "TPS63802",
+      "target": "SGM62125AXG/TR",
+      "vendor": "SGMICRO",
+      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
+      "lcsc": null,
+      "change": "2.25uA Iq I2C buck-boost; startup at 3.4V with ADDR high, then firmware programs 3.3V"
+    },
+    {
+      "role": "USB-C policy",
+      "current": "TUSB320 + support",
+      "target": "passive CC1/CC2 5.1k Rd + PMIC VBUS status",
+      "vendor": "passive/domestic",
+      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+    },
+    {
+      "role": "IMU",
+      "current": "LSM6DSO32XTR",
+      "target": "QMI8658A",
+      "vendor": "QST",
+      "lcsc": "C3021082",
+      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY",
+      "gate": "±32g/MLC/FSM dependency audit"
+    },
+    {
+      "role": "RTC",
+      "current": "RV-3028-C7",
+      "target": "BM8563EMA + 32.768k crystal",
+      "vendor": "GATEMODE",
+      "lcsc": "C269878",
+      "status": "CANDIDATE",
+      "gate": "accuracy/current/crystal/firmware"
+    },
+    {
+      "role": "audio base SKU",
+      "current": "MAX98357AETE+T",
+      "target": "NS4168",
+      "vendor": "Nsiway",
+      "lcsc": "C910588",
+      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+    },
+    {
+      "role": "audio voice SKU",
+      "current": "none",
+      "target": "ES8311 + NS4150B",
+      "vendor": "Everest + Nsiway",
+      "lcsc": [
+        "C962342",
+        "C189961"
+      ],
+      "status": "OPTIONAL_VARIANT"
+    },
+    {
+      "role": "load switch",
+      "current": "TPS22916 x4",
+      "target": "TPS22916 retained until mainland full-time-RCB part is proven",
+      "vendor": "TI retained temporarily",
+      "lcsc": null,
+      "status": "BLOCKED_NO_EQUIVALENT_FULL_TIME_RCB",
+      "gate": "SGM2578S/SD only guarantees reverse protection when disabled; does not meet current always-on full-time-RCB contract"
+    },
+    {
+      "role": "frontlight driver",
+      "current": "LM36922H reference",
+      "target": "domestic dual-string driver TBD",
+      "vendor": "TBD",
+      "status": "BLOCKED_NO_PROVEN_EQUIVALENT"
+    },
+    {
+      "role": "EPD Schmitt buffers",
+      "current": "SN74AUP2G17 x3",
+      "target": "AIP74LVC2G17 / domestic LVC2G17",
+      "vendor": "Wuxi I-core / lingxingic",
+      "status": "CANDIDATE",
+      "gate": "Ioff/hysteresis/threshold/pin/package"
+    },
+    {
+      "role": "USB ESD",
+      "current": "TPD4E05U06/TPD1E10B06",
+      "target": "USBLC6-class mainland device",
+      "vendor": "MSKSEMI",
+      "lcsc": "C3647099",
+      "status": "CANDIDATE",
+      "gate": "capacitance/clamp/pinout"
+    },
+    {
+      "role": "EPD MOSFET",
+      "current": "NX3008NBK",
+      "target": "mainland MOSFET TBD; AO3400A only if VDS proof passes",
+      "vendor": "UMW/other",
+      "status": "CANDIDATE"
+    },
+    {
+      "role": "FPC/USB/SD/battery connectors",
+      "current": "Hirose/GCT/Molex/JST",
+      "target": "exact mainland mechanical equivalents",
+      "vendor": "TBD",
+      "status": "BLOCKED_MECHANICAL_QUALIFICATION"
+    }
+  ]
+}

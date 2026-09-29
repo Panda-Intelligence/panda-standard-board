@@ -1,0 +1,142 @@
+{
+  "date": "2026-09-29",
+  "currency": "CNY",
+  "binding_quote": false,
+  "stock_is_not_reservation": true,
+  "records": [
+    {
+      "role": "frontlight_driver_evt_reference",
+      "manufacturer": "TI",
+      "mpn": "LM36922HYFFR",
+      "lcsc": "C213572",
+      "url": "https://item.szlcsc.com/214500.html",
+      "package": "DSBGA-12",
+      "tiers": [
+        [
+          "1+",
+          11.1
+        ],
+        [
+          "10+",
+          10.84
+        ],
+        [
+          "30+",
+          10.66
+        ]
+      ],
+      "stock": 10,
+      "moq": 1,
+      "decision": "EVT_REFERENCE_SUPPLY_NOT_FROZEN"
+    },
+    {
+      "role": "frontlight_driver_fallback_reference",
+      "manufacturer": "TI",
+      "mpn": "LM3630A",
+      "lcsc": null,
+      "url": "https://www.ti.com/product/LM3630A",
+      "package": "DSBGA-12",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "FUNCTIONAL_REFERENCE_MAINLAND_MAPPING_OPEN"
+    },
+    {
+      "role": "single_string_comparator_only",
+      "manufacturer": "TI",
+      "mpn": "TPS61165DBVR",
+      "lcsc": "C58756",
+      "url": "https://item.szlcsc.com/59801.html",
+      "package": "SOT-23-6",
+      "tiers": [
+        [
+          "1+",
+          5.26
+        ],
+        [
+          "10+",
+          4.26
+        ],
+        [
+          "30+",
+          3.76
+        ],
+        [
+          "100+",
+          3.26
+        ],
+        [
+          "500+",
+          2.64
+        ],
+        [
+          "1000+",
+          2.49
+        ]
+      ],
+      "stock": 23102,
+      "moq": 1,
+      "decision": "REJECTED_AS_PRIMARY_DUE_SINGLE_CHANNEL_CONTROL_COMPLEXITY"
+    },
+    {
+      "role": "touch_frontlight_fpc_connector_candidate",
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "lcsc": "C224194",
+      "url": "https://jlcpcb.com/partdetail/hrs_hirose-FH34SRJ_6S_0_5SH_50/C224194",
+      "package": "6P 0.5mm FPC ZIF, top/bottom contact, H=1.0mm",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EXACT_CONNECTOR_CANDIDATE_PENDING_FLEX_GEOMETRY_AND_LAND_PATTERN"
+    },
+    {
+      "role": "frontlight_inductor_evt",
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA252012S100MT",
+      "lcsc": "C37428",
+      "url": "https://jlcpcb.com/partdetail/SWPA252012S100MT/C37428",
+      "package": "2520 / 1008 metric-style catalog",
+      "tiers": [],
+      "stock": 37877,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_ISAT_0P88A_IRATED_0P62A_DCR_0P69OHM"
+    },
+    {
+      "role": "frontlight_schottky_evt",
+      "manufacturer": "CJ",
+      "mpn": "B5819W SL",
+      "lcsc": "C8598",
+      "url": "https://item.szlcsc.com/9093.html",
+      "package": "SOD-123",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_40V_1A_LEAKAGE_THERMAL_QUAL_OPEN"
+    },
+    {
+      "role": "frontlight_cin_evt",
+      "manufacturer": "Samsung",
+      "mpn": "CL05A225KP5NSNC",
+      "lcsc": "C107369",
+      "url": "https://item.szlcsc.com/108588.html",
+      "package": "0402",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_2P2UF_10V_X5R_DC_BIAS_QUAL_OPEN"
+    },
+    {
+      "role": "frontlight_cout_evt",
+      "manufacturer": "Samsung",
+      "mpn": "CL21A475KBQNNNE",
+      "lcsc": "C98192",
+      "url": "https://item.szlcsc.com/99401.html",
+      "package": "0805",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EVT_CANDIDATE_4P7UF_50V_X5R_EFFECTIVE_CAP_QUAL_OPEN"
+    }
+  ]
+}

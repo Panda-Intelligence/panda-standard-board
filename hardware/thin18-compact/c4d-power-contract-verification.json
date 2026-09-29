@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-29",
+  "result": "PASS_C4D_PIN_LEVEL_INPUT_CHECKS",
+  "sgm41513_exact_pin_map": true,
+  "sgm62125_exact_pin_map": true,
+  "cw2215_logical_contract": true,
+  "cw2215_ball_map_frozen": false,
+  "usb_default_current_ma": 500,
+  "migration_rows": 26,
+  "ready_for_cad": [
+    "C4D-1 SGM41513 charger/NVDC",
+    "C4D-2 SGM62125 buck-boost"
+  ],
+  "blocked": [
+    "C4D-3 CW2215B symbol/footprint until authoritative ball map"
+  ],
+  "manufacturing_release": false
+}
