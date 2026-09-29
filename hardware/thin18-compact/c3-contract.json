@@ -1,0 +1,115 @@
+{
+  "schema": "thin18-compact-c3-contract-v1",
+  "date": "2026-09-29",
+  "source": "c2-96x68-ft01c-eco",
+  "board_target_mm": [
+    96,
+    68
+  ],
+  "manufacturing_release": false,
+  "physical_qualification": false,
+  "touch": {
+    "controller": "FT6336U",
+    "address_baseline": "0x38",
+    "power": "3V3_TOUCH",
+    "power_switch": "U403 TPS22916",
+    "enable_owner": "U601.P01",
+    "j803_logical": [
+      "GND",
+      "3V3_TOUCH",
+      "TOUCH_RST",
+      "TOUCH_INT",
+      "I2C_SCL",
+      "I2C_SDA"
+    ],
+    "exact_connector_frozen": false,
+    "interrupt_policy": "EVT polling; not deep-sleep wake",
+    "reset_policy": "power-cycle + reset-conditioning; exact network C3B"
+  },
+  "frontlight": {
+    "panel_strings": {
+      "warm": {
+        "max_v": 15,
+        "max_ma": 15
+      },
+      "cool": {
+        "max_v": 15,
+        "max_ma": 15
+      }
+    },
+    "j804_logical": [
+      "LED_W-",
+      "LED_W+",
+      "NC",
+      "NC",
+      "LED_C-",
+      "LED_C+"
+    ],
+    "exact_connector_frozen": false,
+    "architecture": "dual-string I2C WLED boost driver",
+    "evt_reference": {
+      "manufacturer": "TI",
+      "mpn": "LM36922HYFFR",
+      "lcsc": "C213572",
+      "package": "DSBGA-12",
+      "i2c_address": "0x36 (ASEL=GND)",
+      "vin_v": [
+        2.5,
+        5.5
+      ],
+      "max_string_v": 38,
+      "max_string_ma": 25,
+      "stock_snapshot": 10,
+      "production_frozen": false
+    },
+    "fallback_reference": "LM3630A",
+    "power_input": "VSYS_FL_IN",
+    "hardware_enable": "U601.P15 -> FL_HWEN",
+    "production_driver_frozen": false
+  },
+  "resource_constraints": {
+    "esp32_variant": "ESP32-S3-WROOM-1U-N16R8",
+    "forbidden_gpio_for_external_use": [
+      35,
+      36,
+      37
+    ],
+    "reason": "Octal PSRAM / in-package memory connectivity",
+    "u601_p15_previous": "EXP_P15_SPARE",
+    "u601_p15_c3": "FL_HWEN"
+  },
+  "reservations": {
+    "j803_xyxy_mm": [
+      1,
+      36.5,
+      11,
+      41.5
+    ],
+    "j804_xyxy_mm": [
+      1,
+      43,
+      11,
+      48
+    ],
+    "frontlight_driver_xyxy_mm": [
+      1,
+      50,
+      19,
+      60
+    ],
+    "clearance_mm": 0.5,
+    "top_side_bbox_hits": {
+      "j803": 0,
+      "j804": 0,
+      "frontlight_driver": 0
+    }
+  },
+  "gates": {
+    "official_fpc_geometry": false,
+    "j803_mpn": false,
+    "j804_mpn": false,
+    "frontlight_production_mpn": false,
+    "touch_reset_timing": false,
+    "physical_evt": false
+  }
+}

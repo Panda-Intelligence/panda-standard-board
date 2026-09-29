@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-29",
+  "currency": "CNY",
+  "binding_quote": false,
+  "stock_is_not_reservation": true,
+  "records": [
+    {
+      "role": "frontlight_driver_evt_reference",
+      "manufacturer": "TI",
+      "mpn": "LM36922HYFFR",
+      "lcsc": "C213572",
+      "url": "https://item.szlcsc.com/214500.html",
+      "package": "DSBGA-12",
+      "tiers": [
+        [
+          "1+",
+          11.1
+        ],
+        [
+          "10+",
+          10.84
+        ],
+        [
+          "30+",
+          10.66
+        ]
+      ],
+      "stock": 10,
+      "moq": 1,
+      "decision": "EVT_REFERENCE_SUPPLY_NOT_FROZEN"
+    },
+    {
+      "role": "frontlight_driver_fallback_reference",
+      "manufacturer": "TI",
+      "mpn": "LM3630A",
+      "lcsc": null,
+      "url": "https://www.ti.com/product/LM3630A",
+      "package": "DSBGA-12",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "FUNCTIONAL_REFERENCE_MAINLAND_MAPPING_OPEN"
+    },
+    {
+      "role": "single_string_comparator_only",
+      "manufacturer": "TI",
+      "mpn": "TPS61165DBVR",
+      "lcsc": "C58756",
+      "url": "https://item.szlcsc.com/59801.html",
+      "package": "SOT-23-6",
+      "tiers": [
+        [
+          "1+",
+          5.26
+        ],
+        [
+          "10+",
+          4.26
+        ],
+        [
+          "30+",
+          3.76
+        ],
+        [
+          "100+",
+          3.26
+        ],
+        [
+          "500+",
+          2.64
+        ],
+        [
+          "1000+",
+          2.49
+        ]
+      ],
+      "stock": 23102,
+      "moq": 1,
+      "decision": "REJECTED_AS_PRIMARY_DUE_SINGLE_CHANNEL_CONTROL_COMPLEXITY"
+    }
+  ]
+}
