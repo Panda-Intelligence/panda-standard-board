@@ -1,0 +1,82 @@
+{
+  "schema": "thin18-c4-qualification-gates-v1",
+  "date": "2026-09-29",
+  "sample_inventory": [],
+  "instruments": [],
+  "approved_limits": [],
+  "raw_measurements": [],
+  "gates": [
+    [
+      "PHY-01",
+      "assembled BOM identity",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-02",
+      "3.4V startup then 3.3V AON transition",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-03",
+      "deep-sleep and ship current",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-04",
+      "SGM41513 charging / termination / recharge / DPM",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-05",
+      "NTC cold/hot fault injection",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-06",
+      "USB-C attach / BC1.2 / VBUS ramp / dead battery",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-07",
+      "CW2215B SOC/current/temperature accuracy",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-08",
+      "QMI8658 motion/orientation/calibration",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-09",
+      "XL9535 reset/INT/output behavior",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-10",
+      "audio power/pop/EMI/thermal",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-11",
+      "display/frontlight/touch",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-12",
+      "mechanical FPC/connectors/card/switches",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-13",
+      "RF/Wi-Fi transient + buck-boost stability",
+      "NOT_RUN"
+    ],
+    [
+      "PHY-14",
+      "thermal/EMI/system soak",
+      "NOT_RUN"
+    ]
+  ],
+  "physical_tests_completed": 0,
+  "manufacturing_release": false
+}

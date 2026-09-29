@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-29",
+  "count": 14,
+  "items": [
+    {
+      "ref": "J201",
+      "current": "USB4500-03-0-A",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J301",
+      "current": "DF58-2P-1.2V(21)",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J302",
+      "current": "SM03B-SRSS-TB NTC",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J501",
+      "current": "104031-0811 / microSD",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J502",
+      "current": "SM02B-SRSS-TB",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J503",
+      "current": "TC2030-IDC-NL / DEBUG",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "J802",
+      "current": "FH12-24S-0.5SH(55)",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "SW201",
+      "current": "SKSCLCE010",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "SW202",
+      "current": "SKSCLCE010",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "TH301",
+      "current": "103JT-025-600AY 10k B3435 external NTC",
+      "status": "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED",
+      "reason": "Exact mating/geometry/actuation or sensor curve must be proven before substitution"
+    },
+    {
+      "ref": "U402",
+      "current": "TPS22916CYFPT",
+      "status": "BLOCKED_FOREIGN_RETAINED",
+      "reason": "No mainland part proven to match enabled-state full-time reverse-current blocking; SGM2578S/SD rejected"
+    },
+    {
+      "ref": "U403",
+      "current": "TPS22916CYFPT",
+      "status": "BLOCKED_FOREIGN_RETAINED",
+      "reason": "No mainland part proven to match enabled-state full-time reverse-current blocking; SGM2578S/SD rejected"
+    },
+    {
+      "ref": "U404",
+      "current": "TPS22916CYFPT",
+      "status": "BLOCKED_FOREIGN_RETAINED",
+      "reason": "No mainland part proven to match enabled-state full-time reverse-current blocking; SGM2578S/SD rejected"
+    },
+    {
+      "ref": "U405",
+      "current": "TPS22916CYFPT",
+      "status": "BLOCKED_FOREIGN_RETAINED",
+      "reason": "No mainland part proven to match enabled-state full-time reverse-current blocking; SGM2578S/SD rejected"
+    }
+  ],
+  "policy": "retain foreign part when safety/mechanical/electrical contract lacks proven mainland equivalent",
+  "manufacturing_release": false
+}

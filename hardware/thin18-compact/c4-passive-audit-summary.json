@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-29",
+  "unique_groups": 97,
+  "passive_refs": 137,
+  "status_counts": {
+    "BLOCKED_NO_EXACT_MAINLAND_EVIDENCE": 82,
+    "SELECTED_C4C": 15
+  },
+  "selected_refs": 20,
+  "all_groups_checked": true,
+  "manufacturing_release": false
+}

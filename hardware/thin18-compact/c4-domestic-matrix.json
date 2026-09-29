@@ -36,17 +36,23 @@
     {
       "role": "charger+gauge+PMU",
       "current": "BQ25628E + BQ27427 + associated power architecture",
-      "target": "AXP2101",
-      "vendor": "X-Powers",
-      "lcsc": "C3036461",
-      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+      "target": "SGM41513 + CW2215B",
+      "vendor": "SGMICRO + Cellwise",
+      "lcsc": [
+        "C5153778",
+        "C7502681"
+      ],
+      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
+      "change": "switching NVDC charger + low-power current-sensing gauge; replaces BQ25628E/BQ27427"
     },
     {
       "role": "3V3 buckboost",
       "current": "TPS63802",
-      "target": "SGM62118XG/TR",
+      "target": "SGM62125AXG/TR",
       "vendor": "SGMICRO",
-      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
+      "lcsc": null,
+      "change": "2.25uA Iq I2C buck-boost; startup at 3.4V with ADDR high, then firmware programs 3.3V"
     },
     {
       "role": "USB-C policy",
@@ -95,11 +101,11 @@
     {
       "role": "load switch",
       "current": "TPS22916 x4",
-      "target": "SGM2578 where contract allows",
-      "vendor": "SGMICRO",
-      "lcsc": "C403706",
-      "status": "CANDIDATE",
-      "gate": "reverse-block behavior/current/package"
+      "target": "TPS22916 retained until mainland full-time-RCB part is proven",
+      "vendor": "TI retained temporarily",
+      "lcsc": null,
+      "status": "BLOCKED_NO_EQUIVALENT_FULL_TIME_RCB",
+      "gate": "SGM2578S/SD only guarantees reverse protection when disabled; does not meet current always-on full-time-RCB contract"
     },
     {
       "role": "frontlight driver",

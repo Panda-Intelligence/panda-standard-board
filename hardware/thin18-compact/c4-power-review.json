@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-29",
+  "result": "DOCUMENTARY_POWER_ARCHITECTURE_CHECK_COMPLETE",
+  "selected": [
+    "SGM41513YTQF24G/TR",
+    "CW2215BAAC",
+    "SGM62125AXG/TR",
+    "passive USB-C Rd baseline"
+  ],
+  "retained_foreign_due_contract": [
+    "TPS22916CYFPT x4"
+  ],
+  "software_required": [
+    "SGM41513 driver/status mapping",
+    "CW2215B fuel-gauge driver/profile",
+    "SGM62125 startup/I2C voltage programming",
+    "remove TUSB320 state logic"
+  ],
+  "physical_required": [
+    "charger thermal/safety",
+    "NTC faults",
+    "deep-sleep current",
+    "Wi-Fi transients",
+    "USB-C compliance",
+    "EMI",
+    "ship mode",
+    "battery gauge accuracy"
+  ],
+  "manufacturing_release": false
+}

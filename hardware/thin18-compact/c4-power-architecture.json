@@ -1,205 +1,159 @@
 {
-  "schema": "thin18-compact-c4-power-architecture-v1",
+  "schema": "thin18-compact-c4-power-architecture-v2",
   "date": "2026-09-29",
-  "status": "ENGINEERING_ARCHITECTURE_SELECTED_FOR_C4_SCHEMATIC_REDESIGN",
+  "status": "ENGINEERING_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
   "manufacturing_release": false,
-  "source": "c4a-96x68-domestic-xl9535",
-  "goals": [
-    "mainland active silicon where technically supportable",
-    "stable 3V3_AON across 1S Li-ion operating range",
-    "retain ship-mode / battery safety / NTC / USB charging behavior",
-    "reduce IC count and firmware complexity where possible"
-  ],
-  "architecture": {
+  "physical_qualification": false,
+  "source": "c4c-96x68-domestic-passives",
+  "base": {
+    "charger": {
+      "vendor": "SGMICRO",
+      "mpn": "SGM41513YTQF24G/TR",
+      "lcsc": "C5153778",
+      "package": "TQFN-4x4-24L",
+      "topology": "1S synchronous switching charger + NVDC power path",
+      "i2c": "0x1A, 100/400kHz",
+      "bc12": true,
+      "ntc_jeita": true,
+      "max_charge_a": 3.0,
+      "battery_iq_batfet_on_ua": 8.5,
+      "ship_leak_typ_ua": 2.5,
+      "ship_exit": "nQON low ~1s or VBUS/register path",
+      "selection_reason": "closest mainland functional architecture to BQ25628E while preserving low battery IQ, power path, BC1.2, NTC and I2C",
+      "qualification": [
+        "charge current/voltage accuracy",
+        "termination/recharge",
+        "DPM",
+        "BC1.2",
+        "TS/NTC fault injection",
+        "thermal",
+        "ship exit",
+        "VBUS insertion/removal"
+      ]
+    },
+    "gauge": {
+      "vendor": "Cellwise",
+      "mpn": "CW2215BAAC",
+      "jlc": "C7502681",
+      "package": "WLCSP-9 1.58x1.53",
+      "active_ua": 5.0,
+      "shutdown_ua": 0.5,
+      "current_sensing": true,
+      "bidirectional_current_range_a": 5.2,
+      "i2c": true,
+      "ntc": true,
+      "selection_reason": "lower active current than CW2217 while retaining current sensing and portable-device fuel-gauge architecture",
+      "fallback": {
+        "mpn": "CW2217BAAC",
+        "lcsc": "C5252690",
+        "active_ua": 12.0,
+        "shutdown_ua": 0.5,
+        "reason": "better current-sense documentation / current LCSC listing, but higher IQ"
+      },
+      "qualification": [
+        "sense resistor value/topology",
+        "battery profile/FastCali data",
+        "SOC accuracy",
+        "current accuracy",
+        "temperature",
+        "interrupt",
+        "shutdown/resume behavior"
+      ]
+    },
+    "aon_buckboost": {
+      "vendor": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "package": "WLCSP-1.46x2.3-15B",
+      "vin_v": [
+        2.2,
+        5.5
+      ],
+      "output_programmable_v": [
+        1.8,
+        5.5
+      ],
+      "iq_typ_ua": 2.25,
+      "max_current_note": "3.5A at VIN>=2.7V,VOUT=3.5V; sufficient headroom for 3.3/3.4V AON study",
+      "i2c_addresses": {
+        "ADDR_high": "0x76",
+        "ADDR_low": "0x75",
+        "ADDR_float": "0x77"
+      },
+      "startup": "ADDR high gives 3.4V startup; firmware lowers to 3.3V after boot",
+      "selection_reason": "dramatically lower IQ than SGM62118 while preserving buck/boost and higher transient headroom",
+      "qualification": [
+        "3.4V startup compatibility of every AON load",
+        "3.3V I2C transition",
+        "Wi-Fi current transients",
+        "PFM ripple",
+        "startup/brownout",
+        "shutdown/load disconnect",
+        "EMI/thermal"
+      ]
+    },
     "usb_c": {
-      "mode": "USB2 device + 5V sink/charge only",
+      "mode": "USB2 device, 5V sink only, no PD/PPS",
       "cc1": "5.1k Rd to GND",
       "cc2": "5.1k Rd to GND",
-      "data": "ESP32-S3 native USB D+/D-",
-      "esd": "mainland low-cap ESD candidate, exact MPN open",
+      "data": "ESP32-S3 native USB",
+      "source_current_policy": "default conservative current unless charger BC1.2/source detection explicitly permits more",
+      "vbus_status": "SGM41513 status/IRQ instead of TUSB320/TPS3700 path",
       "remove": [
         "U202 TUSB320LIRWBR",
         "U203 TPS70933DBVR",
         "U204 SN74AUP2G07DCKR",
         "U205 TPS3700DDCR"
       ],
-      "charge_policy": "conservative default input-current until attach/source capability policy is validated",
-      "pd_pps": false
-    },
-    "pmic": {
-      "part": "AXP2101",
-      "vendor": "X-Powers Tech",
-      "lcsc": "C3036461",
-      "package": "QFN-40-EP 5x5",
-      "functions": [
-        "1S charger/NVDC",
-        "E-Gauge",
-        "PWRON",
-        "IRQ",
-        "NTC/ADC",
-        "battery/system power path",
-        "programmable rails"
-      ],
-      "removes": [
-        "U201 BQ25628ERYKR",
-        "U301 BQ27427YZFR"
-      ],
-      "firmware": "new PMIC driver + battery profile/e-gauge parameters + IRQ/ship-mode validation",
-      "gates": [
-        "charge-current accuracy",
-        "termination/recharge",
-        "NTC thresholds/fault injection",
-        "ship current",
-        "battery supplement mode",
-        "USB insertion/removal",
-        "thermal"
-      ]
-    },
-    "aon_3v3": {
-      "part": "SGM62118XG/TR",
-      "vendor": "SGMICRO",
-      "package": "WLCSP-2.21x1.40-15B",
-      "vin_v": [
-        2.2,
-        5.5
-      ],
-      "vout_v": 3.3,
-      "iout_a": 2,
-      "features": [
-        "true buck/boost",
-        "PG",
-        "true shutdown",
-        "18uA typ Iq"
-      ],
-      "removes": [
-        "U401 TPS63802DLA"
-      ],
-      "gates": [
-        "exact LCSC mapping",
-        "feedback values",
-        "inductor selection",
-        "light-load ripple",
-        "ESP32 Wi-Fi current transient",
-        "EMI/thermal"
-      ]
-    },
-    "switched_domains": [
-      {
-        "rail": "3V3_SD",
-        "current": "U402 TPS22916",
-        "target": "SGM2578",
-        "vendor": "SGMICRO",
-        "lcsc": "C403706",
-        "status": "CANDIDATE"
-      },
-      {
-        "rail": "3V3_TOUCH",
-        "current": "U403 TPS22916",
-        "target": "SGM2578",
-        "vendor": "SGMICRO",
-        "lcsc": "C403706",
-        "status": "CANDIDATE"
-      },
-      {
-        "rail": "3V3_EPD_LOGIC",
-        "current": "U404 TPS22916",
-        "target": "SGM2578",
-        "vendor": "SGMICRO",
-        "lcsc": "C403706",
-        "status": "CANDIDATE"
-      },
-      {
-        "rail": "VSYS_AUDIO",
-        "current": "U405 TPS22916",
-        "target": "SGM2578",
-        "vendor": "SGMICRO",
-        "lcsc": "C403706",
-        "status": "CANDIDATE"
-      }
-    ],
-    "audio": {
-      "part": "NS4168",
-      "vendor": "Shenzhen Nsiway",
-      "lcsc": "C910588",
-      "interface": "I2S direct mono Class-D",
-      "supply_v": [
-        3,
-        5.5
-      ],
-      "removes": [
-        "U502 MAX98357AETE+T"
-      ],
-      "gates": [
-        "I2S format/channel configuration",
-        "idle current while enabled",
-        "4/8ohm output power",
-        "pop/click",
-        "EMI",
-        "thermal"
-      ]
-    },
-    "imu": {
-      "part": "QMI8658A",
-      "vendor": "QST",
-      "lcsc": "C3021082",
-      "removes": [
-        "U503 LSM6DSO32XTR"
-      ],
-      "gates": [
-        "±16g acceptable",
-        "firmware driver",
-        "WHO_AM_I/FIFO/interrupt",
-        "orientation",
-        "noise/calibration"
-      ]
-    },
-    "gpio": {
-      "part": "XL9535",
-      "vendor": "XINLUDA",
-      "lcsc": "C561273",
-      "status": "ALREADY_APPLIED_IN_C4A",
-      "removes": [
-        "U601 TCA9535PWR"
+      "qualification": [
+        "Type-C sink compliance",
+        "CC voltage/source-current behavior",
+        "BC1.2 interaction",
+        "dead battery",
+        "VBUS ramp/discharge",
+        "ESD"
       ]
     }
   },
-  "ic_count_scope": {
-    "incumbent_refs": [
-      "U201",
-      "U301",
-      "U401",
-      "U402",
-      "U403",
-      "U404",
-      "U405",
-      "U202",
-      "U203",
-      "U204",
-      "U205",
-      "U502",
-      "U503",
-      "U601"
-    ],
-    "incumbent_count": 14,
-    "proposed_refs": [
-      "AXP2101",
-      "SGM62118",
-      "SGM2578_SD",
-      "SGM2578_TOUCH",
-      "SGM2578_EPD",
-      "SGM2578_AUDIO",
-      "NS4168",
-      "QMI8658A",
-      "XL9535"
-    ],
-    "proposed_count": 9,
-    "note": "scope excludes unchanged MCU/display logic and candidate ESD/logic; target is 5 fewer ICs in these subsystems"
+  "replacements": {
+    "U201": "SGM41513YTQF24G/TR",
+    "U301": "CW2215BAAC",
+    "U401": "SGM62125AXG/TR",
+    "U202-U205": "removed by passive Type-C + charger status architecture"
   },
-  "blocked": [
-    "C4 schematic must be redrawn; this is not a pin-compatible ECO",
-    "AXP2101 exact switch-charge configuration and battery profile must be frozen before fabrication",
-    "passive USB-C sink must pass Type-C compliance and input-current policy review",
-    "SGM2578 full reverse-current behavior must be accepted per each domain",
-    "no physical qualification has been run"
+  "load_switch_policy": {
+    "current": "TPS22916CYFPT x4",
+    "domestic_candidate_rejected": "SGM2578S/SD",
+    "reason": "official SGM2578S/SD reverse-current protection is specified when disabled; incumbent contract requires full-time reverse current blocking while enabled",
+    "decision": "retain TPS22916 until a mainland part proves enabled-state full-time RCB or redesign each domain backfeed contract",
+    "domesticization_status": "BLOCKED"
+  },
+  "deep_sleep_typical_ua": {
+    "old_core_trio": 21.5,
+    "new_core_trio": 15.75,
+    "delta": -5.75,
+    "components": {
+      "SGM41513_batfet_on": 8.5,
+      "CW2215B_active": 5.0,
+      "SGM62125": 2.25
+    },
+    "note": "component-only comparison; whole-device leakage and switched-domain leakage remain bench qualification"
+  },
+  "rejected_or_secondary": [
+    {
+      "part": "AXP2101 C3036461",
+      "reason": "orderable generic device uses 100mA-1A linear charging; compact 1A charging creates unacceptable thermal risk without derating; retain as research alternative only"
+    },
+    {
+      "part": "ETA6003",
+      "reason": "switching charger but available evidence does not beat SGM41513 low battery IQ / I2C / BC1.2 / JEITA fit"
+    },
+    {
+      "part": "SGM62118",
+      "reason": "valid 18uA buck-boost, superseded by SGM62125 2.25uA for C4 low-power baseline"
+    },
+    {
+      "part": "SGM2578S/SD",
+      "reason": "disabled-only reverse-current protection does not meet TPS22916 full-time-RCB contract"
+    }
   ]
 }

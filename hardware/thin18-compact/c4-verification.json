@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-29",
+  "result": "PASS_DOCUMENTARY_AND_CAD_CHECKS",
+  "active_candidate": "c4c-96x68-domestic-passives",
+  "native_checks": {
+    "drc": 0,
+    "open": 447,
+    "parity": 0,
+    "erc": 0
+  },
+  "refs": 203,
+  "pin_net_tuples": 601,
+  "cad_selected": {
+    "XL9535": 1,
+    "Fenghua_cap_refs": 20
+  },
+  "all_refs_domesticization_checked": true,
+  "all_passive_groups_checked": true,
+  "mechanical_domestic_screen_complete": true,
+  "firmware_dependency_audit_complete": true,
+  "power_documentary_review_complete": true,
+  "power_redesign_implemented_in_cad": false,
+  "final_routing_complete": false,
+  "physical_tests_completed": 0,
+  "manufacturing_release": false,
+  "negative_controls": [
+    "mutation:selected MPN would fail exact-field checks",
+    "mutation:missing ref status would fail coverage",
+    "mutation:unreviewed passive group would fail group coverage",
+    "mutation:physical PASS without measurements would fail physical gate",
+    "mutation:unsafe SGM2578 direct selection would fail blocked-policy check",
+    "mutation:manufacturing release true would fail release flag check"
+  ],
+  "release_blockers": [
+    "C4-PWR/USB/IMU/audio major redesign not yet implemented in schematic/PCB",
+    "compact candidate intentionally unrouted (447 open)",
+    "mechanical foreign retainers have no proven mainland drop-in replacements",
+    "frontlight production driver remains unproven domestic",
+    "physical EVT / USB-C compliance / charging safety / RF / EMI / thermal not run"
+  ]
+}

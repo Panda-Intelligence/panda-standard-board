@@ -23,27 +23,42 @@ Goal: replace every realistically replaceable foreign-origin component with a ma
 
 ### C4-PWR
 
-Primary architecture candidate:
+Selected documentary baseline for schematic redesign:
 
-- X-Powers AXP2101 / LCSC C3036461
-  - single-cell charger / NVDC PMU
-  - E-Gauge
-  - PWRON / IRQ / NTC / ADC
-  - multiple DCDC/LDO rails
-- SGMICRO SGM62118XG/TR
-  - 2.2–5.5V true buck-boost
-  - stable 3.3V AON rail, 2A class
-  - true shutdown / PG
+- SGMICRO `SGM41513YTQF24G/TR` / LCSC C5153778
+  - 1S synchronous switching charger;
+  - NVDC system power path;
+  - I2C address 0x1A;
+  - automatic BC1.2 detection;
+  - TS/NTC + JEITA charging behavior;
+  - battery-side typical current about 8.5 µA with BATFET enabled;
+  - ship leakage about 2.5 µA.
+- Cellwise `CW2215BAAC` / JLC C7502681
+  - current-sensing fuel gauge;
+  - approximately 5 µA active / 0.5 µA shutdown;
+  - I2C, NTC and bidirectional current reporting.
+- SGMICRO `SGM62125AXG/TR`
+  - 4-switch buck-boost;
+  - approximately 2.25 µA quiescent current;
+  - I2C-programmable output;
+  - ADDR=high starts at 3.4 V; compact firmware will lower the AON rail to 3.3 V after startup.
 
 This combination targets removal of:
 
-- BQ25628E
-- BQ27427
-- TPS63802
+- BQ25628E;
+- BQ27427;
+- TPS63802.
 
-and may absorb part of the supervisor / switched-domain architecture after detailed rail allocation.
+Typical core power-management current comparison, before board-level leakage:
 
-AXP2101 alone is not assumed to replace the 3.3V buck-boost requirement because its DCDC rails are buck-style; the SGM62118 preserves the current "stable 3V3_AON across Li-ion range" product contract.
+- incumbent trio: about 21.5 µA;
+- C4 selected trio: about 15.75 µA.
+
+The orderable generic AXP2101/C3036461 is no longer the C4 baseline because its publicly listed charger is linear (100 mA–1 A). It remains a research alternative only; compact thermal loss at high charge current is not acceptable to assume away.
+
+The previously considered SGM62118 remains electrically valid, but SGM62125 is preferred because its typical quiescent current is much lower.
+
+**Load-switch correction:** SGM2578S/SD is rejected as a direct TPS22916 replacement. Its published reverse-current protection is for the disabled state, while the current rail contract depends on TPS22916 full-time reverse-current blocking while enabled. U402–U405 therefore remain TPS22916 until either a mainland enabled-state full-time-RCB device is proven or the individual rail backfeed contracts are redesigned and qualified.
 
 ### C4-USB
 
