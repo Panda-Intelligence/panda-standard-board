@@ -1,0 +1,204 @@
+﻿ref,current_value,current_mpn,footprint,domestic_status,target_part,target_vendor,note
+C201,47n / CBOOT,,panda-standard:C201_CBOOT_0603_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C202,1u / VBUS,,panda-standard:C202_CVBUS_0603_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C203,10u / PMID,,panda-standard:C203_CPMID_1206_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C204,330n / ILIM-RC,,panda-standard:C204_ILIM_RC_0603_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C205,4.7u / REGN,,panda-standard:C205_CREGN_0805_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C206,10u / BAT,,panda-standard:C206_CBAT_0805_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C207,22u / CSYS1,,panda-standard:C207_CSYS_0805_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C208,22u / CSYS2,,panda-standard:C208_CSYS_0805_ENVELOPE,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C209,1u,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C210,2.2u,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C211,100n,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C212,100n,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C213,100n,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C214,100n,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C215,1n,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C301,CPH3225A 11mF 3.3V RTC backup candidate,,Capacitor_SMD:C_1210_3225Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C302,100n / RTC VDD,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C303,1u / BQ BAT,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C304,2.2u / BQ VDD,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C401,22u / VIN,,panda-standard:C_0603_POWER_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C402,22u / VOUT,,panda-standard:C_0603_POWER_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C403,22u / VOUT,,panda-standard:C_0603_POWER_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C501,22u / ESP32,,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C502,100n / ESP32,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C503,100n / VDD_IO,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C504,100n / VDD,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C505,100n / AUDIO_VDD,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C506,10u / AUDIO_VDD,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C507,1u / U405 VIN,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C508,1u / U402 VIN,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C509,1u / U403 VIN,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C510,1u / CHIP_PU,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C511,1u / U404 VIN,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C512,100n / SD VDD,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C513,10u / SD VDD,,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C514,DNP / USB tuning,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C515,DNP / USB tuning,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C601,100n / U601 VCC,,Capacitor_SMD:C_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C801,1u 25V X5R,GRM188R61E105KA12D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C802,1u 25V X5R,GRM188R61E105KA12D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C803,1u 25V X5R,GRM188R61E105KA12D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C804,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C805,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C806,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C807,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C808,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C809,4.7u 25V X5R,GRM21BR61E475KA12L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C810,1u 25V X7R,GRM21BR71E105KA99L,Capacitor_SMD:C_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C811,100n 25V X7R,GRM188R71E104KA01D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C812,100n 25V X7R,GRM188R71E104KA01D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+C813,100n 25V X7R,GRM188R71E104KA01D,Capacitor_SMD:C_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+D201,TPD4E05U06DQAR,,Package_SON:USON-10_2.5x1.0mm_P0.5mm,DOMESTIC_CANDIDATE_ECO,MSKSEMI low-cap USB/logic ESD exact variant TBD,MSKSEMI,
+D202,TPD1E10B06DPYR,,Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm,DOMESTIC_CANDIDATE_ECO,MSKSEMI low-cap USB/logic ESD exact variant TBD,MSKSEMI,
+D801,MBR0530T1G,MBR0530T1G,Diode_SMD:D_SOD-123,DOMESTIC_EXACT_MPN_OPEN,Yangjie/CJ >=30V Schottky,Yangjie/CJ,
+D802,MBR0530T1G,MBR0530T1G,Diode_SMD:D_SOD-123,DOMESTIC_EXACT_MPN_OPEN,Yangjie/CJ >=30V Schottky,Yangjie/CJ,
+D803,MBR0530T1G,MBR0530T1G,Diode_SMD:D_SOD-123,DOMESTIC_EXACT_MPN_OPEN,Yangjie/CJ >=30V Schottky,Yangjie/CJ,
+H801,M1.2 clearance / NPTH 1.6,,panda-thin16:MountingHole_M1.2_1.6mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+H802,M1.2 clearance / NPTH 1.6,,panda-thin16:MountingHole_M1.2_1.6mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+H803,M1.2 clearance / NPTH 1.6,,panda-thin16:MountingHole_M1.2_1.6mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+H804,M1.2 clearance / NPTH 1.6,,panda-thin16:MountingHole_M1.2_1.6mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+J201,USB4500-03-0-A,,panda-layout:USB4500_08mm_MidMount_LayoutReview,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J301,DF58-2P-1.2V(21),,panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J302,SM03B-SRSS-TB NTC,,Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J501,104031-0811 / microSD,,Connector_Card:microSD_HC_Molex_104031-0811,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J502,SM02B-SRSS-TB,,Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J503,TC2030-IDC-NL / DEBUG,,Connector:Tag-Connect_TC2030-IDC-NL_2x03_P1.27mm_Vertical,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+J802,FH12-24S-0.5SH(55),FH12-24S-0.5SH(55),Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+L401,0.47uH / M0-PENDING,,panda-standard:L401_XFL4015_ENVELOPE,DOMESTIC_EXACT_MPN_OPEN,Sunlord exact magnetic,Sunlord,
+L402,2.2u / BQ buck,,panda-standard:L402_2U2_ENVELOPE,DOMESTIC_EXACT_MPN_OPEN,Sunlord exact magnetic,Sunlord,
+L801,47u 0.25A,LSXNE3030KKT470MN,panda-r6-display:L_Taiyo_NRH3010_3030,DOMESTIC_EXACT_MPN_OPEN,Sunlord exact magnetic,Sunlord,
+Q801,"NX3008NBK,215","NX3008NBK,215",Package_TO_SOT_SMD:SOT-23,DOMESTIC_EXACT_MPN_OPEN,Mainland N-MOS >= required VDS/Rds/Qg,UMW/other,
+R201,5.6k / ILIM,,panda-standard:R201_ILIM_0603_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R204,1.2k / ILIM-RC,,panda-standard:R204_ILIM_RC_0603_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R205,887k,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R206,4.7k,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R207,4.7k,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R208,47k,0402WGF4702TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R209,1k,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R210,105k,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R211,10k,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R212,10k,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R213,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R214,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R301,1M / SCL PD DNP,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R302,1M / SDA PD DNP,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R303,10k / RTC EVI PU,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R304,10k / VBACKUP no-backup / DNP with C301,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R305,100k / IRQ PU DNP,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R306,0R / MB1 BAT,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R307,10k / BIN PD,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R401,560k,,panda-standard:R_0603_FEEDBACK_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R402,100k,,panda-standard:R_0603_FEEDBACK_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R403,100k / PG,,panda-standard:R_0603_FEEDBACK_SEED,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R501,100k / IMU_INT1,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R502,100k / EXP_INT_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R503,10k / SD_MODE,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R504,0R / GAIN 12dB,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R505,100k / GAIN 15dB DNP,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R506,0R / GAIN 6dB DNP,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R507,100k / AUDIO_EN_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R508,0R / MB6 AUDIO,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R509,0R / MB2 3V3_AON,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R510,10k / CHIP_PU,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R511,10k / GPIO0,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R512,10k / GPIO3,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R513,10k / GPIO46,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R514,0R / MB3 SD,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R515,0R / MB4 TOUCH,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R516,0R / MB5 EPD,,Resistor_SMD:R_0805_2012Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R517,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R518,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R519,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R520,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R521,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R522,0R / SD series,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R523,10k / SD pull-up,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R524,10k / SD pull-up,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R525,10k / SD pull-up,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R526,10k / SD pull-up,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R527,10k / SD pull-up,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R528,10k,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R529,22,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R530,22,,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R600,10k 1% / PG_PU,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R601,100k / P15_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R602,10k,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R603,10k,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R604,100k / SD_EN_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R605,100k / TOUCH_EN_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R606,100k / EPD_EN_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R607,100k / BQ_CE_PD,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R608,100k / FUEL_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R609,100k / BQ_INT_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R610,100k / BQ_STAT_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R611,100k / KEY_FN_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R612,100k / SD_CD_PU,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R613,2.2k / I2C_SCL_PU A,0402WGF2201TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R614,2.2k / I2C_SDA_PU A,0402WGF2201TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R615,5.23k,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R616,30.1k,,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R801,22,RC0402FR-0722RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R802,22,RC0402FR-0722RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R803,22,RC0402FR-0722RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R804,22,RC0402FR-0722RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R805,22,RC0402FR-0722RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R806,100,RC0402FR-07100RL,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R807,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R808,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R809,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R810,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R811,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R812,100k,0402WGF1003TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R813,2.2 1%,RC0603FR-072R2L,Resistor_SMD:R_0603_1608Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+R814,10k,0402WGF1002TCE,Resistor_SMD:R_0402_1005Metric,PASSIVE_EXACT_DOMESTIC_MPN_OPEN,Fenghua/Sunlord/mainland resistor vendor by exact spec,,
+SW201,SKSCLCE010,,panda-standard:SW_Alps_SKSCLCE010,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+SW202,SKSCLCE010,,panda-standard:SW_Alps_SKSCLCE010,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+TH301,103JT-025-600AY 10k B3435 external NTC,,,MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED,,,Exact mating/geometry/actuation or sensor curve must be proven before substitution
+TP1,VBUS_USB,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP11,I2C_SCL,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP12,I2C_SDA,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP13,EXP_INT,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP14,EXP_INT / SHARED_IRQ,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP16,PG_3V3_MAIN,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP18,CHIP_PU,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP2,VSYS_RAW,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP3,3V3_AON,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP4,BAT+,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP5,3V3_SD,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP6,3V3_TOUCH,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP7,3V3_EPD_LOGIC,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP8,VSYS_AUDIO,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP801,Reserved EPD_D6,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP802,Reserved EPD_D7,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP803,Reserved EPD_CKH,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP804,Reserved EPD_STV,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP805,Reserved EPD_CKV,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TP806,Reserved EPD_STH,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG1,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG2,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG3,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG4,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG5,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+TPG6,GND,,TestPoint:TestPoint_Pad_D1.5mm,NO_PURCHASE_OR_GENERIC_MECHANICAL,,,No active silicon domesticization required
+U201,BQ25628ERYKR,,panda-standard:BQ25628ERYKR_RYK0018A,REMOVE_IN_C4_POWER_REDESIGN,AXP2101,X-Powers,
+U202,TUSB320LIRWBR,,Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm,REMOVE_IN_C4_USB_REDESIGN,Passive Type-C Rd + PMIC VBUS status,Domestic/passive,
+U203,TPS70933DBVR,,Package_TO_SOT_SMD:SOT-23-5,REMOVE_IN_C4_USB_REDESIGN,Passive Type-C Rd + PMIC VBUS status,Domestic/passive,
+U204,SN74AUP2G07DCKR,,Package_TO_SOT_SMD:SOT-363_SC-70-6,REMOVE_IN_C4_USB_REDESIGN,Passive Type-C Rd + PMIC VBUS status,Domestic/passive,
+U205,TPS3700DDCR,,Package_TO_SOT_SMD:TSOT-23-6,REMOVE_IN_C4_USB_REDESIGN,Passive Type-C Rd + PMIC VBUS status,Domestic/passive,
+U206,74LVC1G17XC5G/TR,74LVC1G17XC5G/TR,PandaDomestic:SGM74LVC1G17_SC70_5_RevA,SELECTED_DOMESTIC,74LVC1G17XC5G/TR,SGMICRO,
+U301,BQ27427YZFR,,Package_BGA:Texas_DSBGA-9_1.62x1.58mm_Layout3x3_P0.5mm,REMOVE_IN_C4_POWER_REDESIGN,AXP2101,X-Powers,
+U302,RV-3028-C7,,Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm,DOMESTIC_CANDIDATE_ECO,BM8563EMA + 32.768k crystal,GATEMODE,
+U401,TPS63802DLA,,panda-standard:TPS63802DLA,REMOVE_IN_C4_POWER_REDESIGN,SGM62118XG/TR,SGMICRO,
+U402,TPS22916CYFPT,,panda-standard:TPS22916CYFPT_YFP0004,DOMESTIC_CANDIDATE_ECO,SGM2578YG/TR,SGMICRO,
+U403,TPS22916CYFPT,,panda-standard:TPS22916CYFPT_YFP0004,DOMESTIC_CANDIDATE_ECO,SGM2578YG/TR,SGMICRO,
+U404,TPS22916CYFPT,,panda-standard:TPS22916CYFPT_YFP0004,DOMESTIC_CANDIDATE_ECO,SGM2578YG/TR,SGMICRO,
+U405,TPS22916CYFPT,,panda-standard:TPS22916CYFPT_YFP0004,DOMESTIC_CANDIDATE_ECO,SGM2578YG/TR,SGMICRO,
+U501,ESP32-S3-WROOM-1U-N16R8,ESP32-S3-WROOM-1U-N16R8,PandaDomestic:ESP32-S3-WROOM-1U,SELECTED_DOMESTIC,ESP32-S3-WROOM-1U-N16R8,Espressif,
+U502,MAX98357AETE+T,,MAX98357A_T1633_4:MAX98357AETE_T_TQFN16,DOMESTIC_CANDIDATE_ECO,NS4168,Nsiway,
+U503,LSM6DSO32XTR,,Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y,DOMESTIC_CANDIDATE_ECO,QMI8658A,QST,
+U601,XL9535,XL9535,panda-standard:TCA9535PWR_PW0024A,SELECTED_DOMESTIC_CAD_APPLIED,XL9535,XINLUDA,
+U801,SN74AUP2G17DCKR,SN74AUP2G17DCKR,Package_TO_SOT_SMD:SOT-363_SC-70-6,DOMESTIC_CANDIDATE_SYMBOL_REWORK,AIP74LVC2G17GC363.TR,Wuxi I-core,
+U802,SN74AUP2G17DCKR,SN74AUP2G17DCKR,Package_TO_SOT_SMD:SOT-363_SC-70-6,DOMESTIC_CANDIDATE_SYMBOL_REWORK,AIP74LVC2G17GC363.TR,Wuxi I-core,
+U803,SN74AUP2G17DCKR,SN74AUP2G17DCKR,Package_TO_SOT_SMD:SOT-363_SC-70-6,DOMESTIC_CANDIDATE_SYMBOL_REWORK,AIP74LVC2G17GC363.TR,Wuxi I-core,

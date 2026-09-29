@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-29",
+  "refs": 203,
+  "status_counts": {
+    "PASSIVE_EXACT_DOMESTIC_MPN_OPEN": 134,
+    "MECHANICAL_OR_SENSOR_DOMESTIC_BLOCKED": 10,
+    "DOMESTIC_EXACT_MPN_OPEN": 7,
+    "NO_PURCHASE_OR_GENERIC_MECHANICAL": 30,
+    "REMOVE_IN_C4_POWER_REDESIGN": 3,
+    "DOMESTIC_CANDIDATE_ECO": 9,
+    "SELECTED_DOMESTIC": 2,
+    "SELECTED_DOMESTIC_CAD_APPLIED": 1,
+    "REMOVE_IN_C4_USB_REDESIGN": 4,
+    "DOMESTIC_CANDIDATE_SYMBOL_REWORK": 3
+  },
+  "manufacturing_release": false,
+  "physical_qualification": false
+}
