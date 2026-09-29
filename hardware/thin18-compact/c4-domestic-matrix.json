@@ -85,7 +85,8 @@
       "target": "NS4168",
       "vendor": "Nsiway",
       "lcsc": "C910588",
-      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+      "status": "C4D6_IMPLEMENTED_IN_CAD",
+      "change": "MAX98357A + SD/GAIN network retired; NS4168 / C910588 added on existing VSYS_AUDIO and speaker nets"
     },
     {
       "role": "audio voice SKU",
