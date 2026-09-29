@@ -25,8 +25,8 @@ Logical J803 contract:
 2. 3V3_TOUCH
 3. TOUCH_RST
 4. TOUCH_INT
-5. I2C_SCL
-6. I2C_SDA
+5. I2C_SDA
+6. I2C_SCL
 
 The exact physical pin order above remains provisional until the Good Display FT01C mechanical drawing is checked. The electrical functions are frozen; connector MPN, contact side and board orientation are not.
 

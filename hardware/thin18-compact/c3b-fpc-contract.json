@@ -1,0 +1,50 @@
+{
+  "schema": "thin18-compact-c3b-fpc-contract-v1",
+  "date": "2026-09-29",
+  "authority": "Good Display GDEQ0426T82-FT01C drawing 20260831",
+  "touch_panel_pinout": {
+    "1": "GND",
+    "2": "VDD3.3V",
+    "3": "RST",
+    "4": "INT",
+    "5": "SDA",
+    "6": "SCL"
+  },
+  "touch_board_mapping": {
+    "1": "GND",
+    "2": "3V3_TOUCH",
+    "3": "TOUCH_RST",
+    "4": "TOUCH_INT",
+    "5": "I2C_SDA",
+    "6": "I2C_SCL"
+  },
+  "frontlight_panel_pinout": {
+    "1": "LED_W-",
+    "2": "LED_W+",
+    "3": "NC",
+    "4": "NC",
+    "5": "LED_C-",
+    "6": "LED_C+"
+  },
+  "connector_candidate": {
+    "manufacturer": "Hirose",
+    "mpn": "FH34SRJ-6S-0.5SH(50)",
+    "jlc_lcsc": "C224194",
+    "positions": 6,
+    "pitch_mm": 0.5,
+    "height_mm": 1.0,
+    "contact": "top_and_bottom",
+    "fpc_thickness_mm": 0.3,
+    "production_approved": false,
+    "blocking_checks": [
+      "direct manufacturer land-pattern transcription",
+      "panel-flex orientation overlay",
+      "assembly insertion/rework clearance"
+    ]
+  },
+  "sources": [
+    "https://v4.cecdn.yun300.cn/100001_1909185147/GDEQ0426T82-FT01C-20260831.pdf",
+    "https://www.hirose.com/en/product/p/CL0580-1236-1-50",
+    "https://jlcpcb.com/partdetail/hrs_hirose-FH34SRJ_6S_0_5SH_50/C224194"
+  ]
+}

@@ -77,6 +77,18 @@
       "stock": 23102,
       "moq": 1,
       "decision": "REJECTED_AS_PRIMARY_DUE_SINGLE_CHANNEL_CONTROL_COMPLEXITY"
+    },
+    {
+      "role": "touch_frontlight_fpc_connector_candidate",
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "lcsc": "C224194",
+      "url": "https://jlcpcb.com/partdetail/hrs_hirose-FH34SRJ_6S_0_5SH_50/C224194",
+      "package": "6P 0.5mm FPC ZIF, top/bottom contact, H=1.0mm",
+      "tiers": [],
+      "stock": null,
+      "moq": null,
+      "decision": "EXACT_CONNECTOR_CANDIDATE_PENDING_FLEX_GEOMETRY_AND_LAND_PATTERN"
     }
   ]
 }

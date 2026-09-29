@@ -19,12 +19,21 @@
       "3V3_TOUCH",
       "TOUCH_RST",
       "TOUCH_INT",
-      "I2C_SCL",
-      "I2C_SDA"
+      "I2C_SDA",
+      "I2C_SCL"
     ],
     "exact_connector_frozen": false,
     "interrupt_policy": "EVT polling; not deep-sleep wake",
-    "reset_policy": "power-cycle + reset-conditioning; exact network C3B"
+    "reset_policy": "power-cycle + reset-conditioning; exact network C3B",
+    "connector_candidate": {
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "pins": 6,
+      "pitch_mm": 0.5,
+      "contact": "top_and_bottom",
+      "fpc_thickness_mm": 0.3,
+      "status": "C3B_EXACT_CANDIDATE_PENDING_DIRECT_DRAWING_GEOMETRY_CHECK"
+    }
   },
   "frontlight": {
     "panel_strings": {
@@ -65,7 +74,16 @@
     "fallback_reference": "LM3630A",
     "power_input": "VSYS_FL_IN",
     "hardware_enable": "U601.P15 -> FL_HWEN",
-    "production_driver_frozen": false
+    "production_driver_frozen": false,
+    "connector_candidate": {
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "pins": 6,
+      "pitch_mm": 0.5,
+      "contact": "top_and_bottom",
+      "fpc_thickness_mm": 0.3,
+      "status": "C3B_EXACT_CANDIDATE_PENDING_DIRECT_DRAWING_GEOMETRY_CHECK"
+    }
   },
   "resource_constraints": {
     "esp32_variant": "ESP32-S3-WROOM-1U-N16R8",
@@ -111,5 +129,10 @@
     "frontlight_production_mpn": false,
     "touch_reset_timing": false,
     "physical_evt": false
+  },
+  "sources": {
+    "good_display_latest_spec": "https://v4.cecdn.yun300.cn/100001_1909185147/GDEQ0426T82-FT01C..pdf",
+    "good_display_drawing": "https://v4.cecdn.yun300.cn/100001_1909185147/GDEQ0426T82-FT01C-20260831.pdf",
+    "drawing_html_conversion": "https://manuals.plus/m/c103941840f275e7a98fec174657b984a33288b51d0273ae14dd0f2e1d36c276"
   }
 }
