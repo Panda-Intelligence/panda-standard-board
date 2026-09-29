@@ -37,6 +37,12 @@ hardware/thin18/routing142/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/
 
 Project-local symbol and footprint libraries are included where the design depends on them.
 
+## Product visualization
+
+Explore the [interactive Thin18 routing142 assembly model](hardware/thin18/routing142/visualization/Panda-thin18-routing142-exploded.html) or watch the [exploded-view video on YouTube](https://youtu.be/T_Nb8tvqas8).
+
+The model is an engineering visualization for design communication. Mechanical fit and manufacturing readiness require separate validation.
+
 ## Verification boundary
 
 A clean KiCad DRC/ERC result means the design database is internally consistent. It does **not** establish production qualification, regulatory compliance, component derating, RF performance, thermal margin, assembly yield or mechanical fit of real production parts.
