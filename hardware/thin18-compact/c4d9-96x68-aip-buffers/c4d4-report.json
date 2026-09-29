@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-29",
+  "kind": "C4D-4 QMI8658A IMU correction/substitution",
+  "source": "c4d3-96x68-passive-usbc",
+  "ref": "U503",
+  "before": "LSM6DSO32XTR",
+  "after": "QMI8658A",
+  "vendor": "QST",
+  "lcsc": "C3021082",
+  "finding": "Existing U503 pin functions and nets already matched QMI8658A, so this corrects the component identity without topology changes.",
+  "pinmap": {
+    "1": "3V3_AON",
+    "12": "3V3_AON",
+    "5": "3V3_AON",
+    "8": "3V3_AON",
+    "2": "GND",
+    "3": "GND",
+    "6": "GND",
+    "7": "GND",
+    "13": "I2C_SCL",
+    "14": "I2C_SDA",
+    "4": "IMU_INT1",
+    "9": "unconnected-(U503-INT2-Pad9)",
+    "10": "unconnected-(U503-NC-Pad10)",
+    "11": "unconnected-(U503-NC-Pad11)"
+  },
+  "native_checks": {
+    "drc": 0,
+    "open": 403,
+    "parity": 0,
+    "erc": 0
+  },
+  "refs": 179,
+  "pin_net_tuples": 541,
+  "topology_identical": true,
+  "firmware_required": [
+    "QMI8658 initialization/sample driver",
+    "orientation map",
+    "interrupt/FIFO if used",
+    "calibration"
+  ],
+  "product_gate": "±16g ceiling accepted; no repository dependency on ±32g/MLC/FSM found",
+  "physical_qualification": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "50f7d6b3f1b4a727ba8bdc14a1a3bb858499b72daf5dd85ec43c6baad5aa7415"
+}
