@@ -1,0 +1,12 @@
+{
+  "drc": {
+    "violations": 0,
+    "unconnected_items": 449,
+    "schematic_parity": 0
+  },
+  "erc": 0,
+  "refs": 203,
+  "pin_net_tuples": 601,
+  "netlist_identical": true,
+  "expected_unrouted": true
+}
