@@ -1,0 +1,14 @@
+{
+  "grid_mm": 0.5,
+  "inflation_mm": 0.5,
+  "largest_empty_rect_mm": [
+    70.0,
+    10.5
+  ],
+  "origin_mm": [
+    0.0,
+    32.0
+  ],
+  "area_mm2": 735.0,
+  "candidate_battery_60x68_fits_coplanar": false
+}

@@ -1,0 +1,203 @@
+{
+  "date": "2026-09-29",
+  "status": "C2_INPUT_FROZEN_FOR_COMPACT_FEASIBILITY",
+  "production_release": false,
+  "panel": {
+    "manufacturer": "Dalian Good Display",
+    "model": "GDEQ0426T82-FT01C",
+    "base_panel": "GDEY0426T82",
+    "resolution": [
+      800,
+      480
+    ],
+    "controller": "SSD1677",
+    "outline_mm": [
+      105.33,
+      62.37,
+      1.98
+    ],
+    "active_mm": [
+      92.8,
+      55.68
+    ],
+    "main_fpc": {
+      "pins": 24,
+      "pitch_mm": 0.5,
+      "interface": "SPI"
+    },
+    "touch": {
+      "ic": "FT6336U",
+      "voltage_v": [
+        2.8,
+        3.6
+      ],
+      "operating_current_ma": 4.32,
+      "standby_current_ua": 55,
+      "fpc_pins": 6,
+      "proposed_board_nets": [
+        "GND",
+        "3V3_TOUCH",
+        "TOUCH_RST",
+        "TOUCH_INT",
+        "I2C_SDA",
+        "I2C_SCL"
+      ]
+    },
+    "frontlight": {
+      "fpc_pins": 6,
+      "pitch_mm": 0.5,
+      "led_strings": [
+        "warm",
+        "cool"
+      ],
+      "max_string_voltage_v": 15,
+      "max_string_current_ma": 15,
+      "source_pin_names": [
+        "LED_W-",
+        "LED_W+",
+        "NC",
+        "NC",
+        "LED_C-",
+        "LED_C+"
+      ],
+      "driver_status": "REQUIRES_COMPACT_MAINBOARD_DRIVER_SELECTION"
+    }
+  },
+  "j802_target": [
+    [
+      1,
+      "NC"
+    ],
+    [
+      2,
+      "GDR"
+    ],
+    [
+      3,
+      "RESE"
+    ],
+    [
+      4,
+      "NC"
+    ],
+    [
+      5,
+      "VSH2"
+    ],
+    [
+      6,
+      "NC"
+    ],
+    [
+      7,
+      "NC"
+    ],
+    [
+      8,
+      "BS1_LOW_FOR_4WIRE_SPI"
+    ],
+    [
+      9,
+      "BUSY"
+    ],
+    [
+      10,
+      "RES#"
+    ],
+    [
+      11,
+      "D/C#"
+    ],
+    [
+      12,
+      "CS#"
+    ],
+    [
+      13,
+      "SCL"
+    ],
+    [
+      14,
+      "SDA"
+    ],
+    [
+      15,
+      "VDDIO"
+    ],
+    [
+      16,
+      "VCI"
+    ],
+    [
+      17,
+      "VSS"
+    ],
+    [
+      18,
+      "VDD"
+    ],
+    [
+      19,
+      "VPP_NC"
+    ],
+    [
+      20,
+      "VSH1"
+    ],
+    [
+      21,
+      "VGH"
+    ],
+    [
+      22,
+      "VSL"
+    ],
+    [
+      23,
+      "VGL"
+    ],
+    [
+      24,
+      "VCOM"
+    ]
+  ],
+  "known_eco": [
+    {
+      "pin": 6,
+      "current": "GND",
+      "target": "NC",
+      "action": "disconnect from GND in schematic and PCB"
+    },
+    {
+      "pin": 7,
+      "current": "GND",
+      "target": "NC",
+      "action": "disconnect from GND in schematic and PCB"
+    }
+  ],
+  "retained_behavior": [
+    {
+      "pin": 8,
+      "current": "GND",
+      "target": "BS1",
+      "reason": "BS1 low selects 4-wire SPI"
+    },
+    {
+      "pins": [
+        15,
+        16
+      ],
+      "current": "3V3_EPD_LOGIC",
+      "target": [
+        "VDDIO",
+        "VCI"
+      ],
+      "reason": "3.3V is inside documented operating range"
+    }
+  ],
+  "sources": [
+    "https://www.good-display.com/product/938.html",
+    "https://www.good-display.com/product/457.html",
+    "https://www.good-display.cn/product/685.html"
+  ]
+}

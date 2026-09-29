@@ -1,0 +1,183 @@
+{
+  "source_netlist": "c1-96x68-battery-ring/verification/netlist.xml",
+  "panel": "GDEQ0426T82-FT01C / base GDEY0426T82",
+  "pins_checked": 24,
+  "compatible_without_change": 22,
+  "eco_required": 2,
+  "eco_pins": [
+    6,
+    7
+  ],
+  "rows": [
+    {
+      "pin": 1,
+      "target": "NC",
+      "current_net": "unconnected-(J802-Pin_1-Pad1)",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 2,
+      "target": "GDR",
+      "current_net": "EPD16_GDR",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 3,
+      "target": "RESE",
+      "current_net": "EPD16_RESE",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 4,
+      "target": "NC",
+      "current_net": "unconnected-(J802-Pin_4-Pad4)",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 5,
+      "target": "VSH2",
+      "current_net": "EPD16_VSH2",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 6,
+      "target": "NC",
+      "current_net": "GND",
+      "compatible": false,
+      "action": "DISCONNECT_GND_AND_MARK_NC"
+    },
+    {
+      "pin": 7,
+      "target": "NC",
+      "current_net": "GND",
+      "compatible": false,
+      "action": "DISCONNECT_GND_AND_MARK_NC"
+    },
+    {
+      "pin": 8,
+      "target": "BS1 low / 4-wire SPI",
+      "current_net": "GND",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 9,
+      "target": "BUSY",
+      "current_net": "EPD16_BUSY",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 10,
+      "target": "RES#",
+      "current_net": "EPD16_RESET",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 11,
+      "target": "D/C#",
+      "current_net": "EPD16_DC",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 12,
+      "target": "CS#",
+      "current_net": "EPD16_CS",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 13,
+      "target": "SCL",
+      "current_net": "EPD16_SCLK",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 14,
+      "target": "SDA",
+      "current_net": "EPD16_MOSI",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 15,
+      "target": "VDDIO",
+      "current_net": "3V3_EPD_LOGIC",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 16,
+      "target": "VCI",
+      "current_net": "3V3_EPD_LOGIC",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 17,
+      "target": "VSS",
+      "current_net": "GND",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 18,
+      "target": "VDD",
+      "current_net": "EPD16_VDD1V5",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 19,
+      "target": "VPP NC in application",
+      "current_net": "unconnected-(J802-Pin_19-Pad19)",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 20,
+      "target": "VSH1",
+      "current_net": "EPD16_VSH1",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 21,
+      "target": "VGH",
+      "current_net": "EPD16_VGH",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 22,
+      "target": "VSL",
+      "current_net": "EPD16_VSL",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 23,
+      "target": "VGL",
+      "current_net": "EPD16_VGL",
+      "compatible": true,
+      "action": "NONE"
+    },
+    {
+      "pin": 24,
+      "target": "VCOM",
+      "current_net": "EPD16_VCOM",
+      "compatible": true,
+      "action": "NONE"
+    }
+  ],
+  "result": "PASS_WITH_2_PIN_NC_ECO",
+  "production_release": false
+}

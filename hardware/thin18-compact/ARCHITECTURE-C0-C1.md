@@ -40,6 +40,8 @@ Results:
 
 This proves that **electronics placement area is not the blocker for a <100 × 100 mm PCB**.
 
+A 0.5-mm-grid empty-rectangle audit with every non-mounting footprint bounding box inflated by 0.5 mm found a largest continuous empty rectangle of only **70 × 10.5 mm**. Therefore C0 cannot preserve the previous ~60 × 68 mm battery as a coplanar central region; using C0 directly would force a more aggressive Z-stack. This is the reason to proceed to the wider C1 placement instead of routing C0.
+
 C0 is not for fabrication and must not inherit routing142 routing qualification.
 
 ## Why C0 is not automatically the product layout
@@ -59,7 +61,9 @@ Use the coupon boundary to gain horizontal room rather than minimizing PCB area 
 - product length target: governed by panel + enclosure tolerance, approximately 108–112 mm rather than 104 mm
 - preserve the full electrical feature set
 
-C1 should create a central low-Z / component-free battery region on the rear side where possible, while moving high components, connectors and power magnetics toward perimeter zones. This deliberately trades some PCB area for lower stack height and easier routing.
+C1 now has a validated placement skeleton with a **64 × 60 mm rear battery envelope** (x=21..85, y=4..64), about 94.1% of the previous ~60 × 68 mm battery plan area. Thirty movable bottom-side footprints are packed into perimeter bands; J503 remains at its routing142 coordinate. Fresh C1 checks show DRC rule violations 0, schematic parity 0, ERC 0, 203 refs / 601 pin-net tuples identical to routing142, and zero new same-layer footprint bounding-box overlaps. The 449 unconnected items are intentional because all routing was removed before the placement study.
+
+C1 therefore creates a practical rear battery region while moving bottom-side components toward perimeter zones. This deliberately trades some PCB area for lower stack height and easier routing.
 
 ### C1 placement zones
 
