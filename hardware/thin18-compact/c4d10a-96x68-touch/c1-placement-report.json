@@ -1,0 +1,74 @@
+{
+  "kind": "C1 placement feasibility, intentionally unrouted",
+  "source": "thin18/routing142",
+  "target_mm": [
+    96.0,
+    68.0
+  ],
+  "battery_rear_envelope_mm": [
+    64.0,
+    60.0
+  ],
+  "battery_rect_xyxy_mm": [
+    21.0,
+    4.0,
+    85.0,
+    64.0
+  ],
+  "bottom_footprints_packed": 30,
+  "bottom_bands": [
+    [
+      0.8,
+      2.0,
+      20.2,
+      66.0
+    ],
+    [
+      85.8,
+      2.0,
+      95.2,
+      66.0
+    ]
+  ],
+  "upper_cluster_transform": {
+    "dx_mm": 26,
+    "dy_mm": -60,
+    "condition": "source y>=100"
+  },
+  "anchors": {
+    "J501": [
+      88.8,
+      18.75
+    ],
+    "R809": [
+      33.2,
+      54.2
+    ],
+    "J503": [
+      17.0,
+      7.0
+    ]
+  },
+  "mounting_holes": {
+    "H801": [
+      15.0,
+      2.0
+    ],
+    "H802": [
+      81.0,
+      2.0
+    ],
+    "H803": [
+      93.0,
+      34.0
+    ],
+    "H804": [
+      3.0,
+      34.0
+    ]
+  },
+  "routing_authority": false,
+  "manufacturing_release": false,
+  "physical_qualification": false,
+  "pcb_sha256": "725f309997378a5ebee2502218561ec0a2f8fbb0498bcbf417697a586bae0c16"
+}
