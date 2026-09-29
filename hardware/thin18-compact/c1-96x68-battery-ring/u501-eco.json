@@ -1,0 +1,28 @@
+{
+  "source_sha256": "10fb8d39fb574b2f22a7b6eb99f646fd38e059ed3bc4495e9c81219e7b2b9279",
+  "new_mpn": "ESP32-S3-WROOM-1U-N16R8",
+  "pose": [
+    59.6,
+    118.62,
+    180
+  ],
+  "window_bottom_native_mm": 108.0,
+  "changed_window_object_ids": [
+    "57230893-304e-5db3-9f7f-a892c0bb7fce",
+    "0ea68489-5016-5178-b9a7-b61570851a0f",
+    "a5af09da-33ba-59cf-b256-efc791c295da",
+    "ee280828-a0cc-5471-993d-35e5e2d779e0",
+    "b961aa50-3d5b-5d30-886f-17f9971d2da2"
+  ],
+  "battery_maximum_allocation_unchanged": true,
+  "nominal_battery_bottom_gap_mm": 0.25,
+  "changed_footprints": [
+    "U501"
+  ],
+  "pins_and_pad_uuids_preserved": 62,
+  "antenna": "internal, not yet placed by this step",
+  "pre_refill_sha256": "7c8285135f94f616550a47024057a1a58a4bad3bd1222ec68fd0f705e2bde26e",
+  "manufacturing_release": false,
+  "native_checks": "See verification/summary.json: 0 violations / 299 unconnected entries / 0 parity; ERC 0",
+  "verified_pcb_sha256": "059665923908ea98b7892e92bba03b78eed95d203816bb96ffd226395f130308"
+}

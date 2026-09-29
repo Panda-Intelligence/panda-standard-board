@@ -55,9 +55,24 @@
     "battery_dimensions_and_swelling": false,
     "enclosure_z_stack": false,
     "connector_openings": false,
-    "placement_zero_new_overlap": false,
+    "placement_zero_new_overlap": true,
     "routing": false,
     "physical_evt": false
   },
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "battery_candidate": {
+    "envelope_mm": [
+      64,
+      60
+    ],
+    "rect_xyxy_mm": [
+      21,
+      4,
+      85,
+      64
+    ],
+    "legacy_plan_area_retained_percent": 94.1,
+    "exact_cell_frozen": false,
+    "thickness_swelling_ntc_harness_qualified": false
+  }
 }
