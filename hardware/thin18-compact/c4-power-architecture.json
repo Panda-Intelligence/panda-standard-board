@@ -1,0 +1,205 @@
+{
+  "schema": "thin18-compact-c4-power-architecture-v1",
+  "date": "2026-09-29",
+  "status": "ENGINEERING_ARCHITECTURE_SELECTED_FOR_C4_SCHEMATIC_REDESIGN",
+  "manufacturing_release": false,
+  "source": "c4a-96x68-domestic-xl9535",
+  "goals": [
+    "mainland active silicon where technically supportable",
+    "stable 3V3_AON across 1S Li-ion operating range",
+    "retain ship-mode / battery safety / NTC / USB charging behavior",
+    "reduce IC count and firmware complexity where possible"
+  ],
+  "architecture": {
+    "usb_c": {
+      "mode": "USB2 device + 5V sink/charge only",
+      "cc1": "5.1k Rd to GND",
+      "cc2": "5.1k Rd to GND",
+      "data": "ESP32-S3 native USB D+/D-",
+      "esd": "mainland low-cap ESD candidate, exact MPN open",
+      "remove": [
+        "U202 TUSB320LIRWBR",
+        "U203 TPS70933DBVR",
+        "U204 SN74AUP2G07DCKR",
+        "U205 TPS3700DDCR"
+      ],
+      "charge_policy": "conservative default input-current until attach/source capability policy is validated",
+      "pd_pps": false
+    },
+    "pmic": {
+      "part": "AXP2101",
+      "vendor": "X-Powers Tech",
+      "lcsc": "C3036461",
+      "package": "QFN-40-EP 5x5",
+      "functions": [
+        "1S charger/NVDC",
+        "E-Gauge",
+        "PWRON",
+        "IRQ",
+        "NTC/ADC",
+        "battery/system power path",
+        "programmable rails"
+      ],
+      "removes": [
+        "U201 BQ25628ERYKR",
+        "U301 BQ27427YZFR"
+      ],
+      "firmware": "new PMIC driver + battery profile/e-gauge parameters + IRQ/ship-mode validation",
+      "gates": [
+        "charge-current accuracy",
+        "termination/recharge",
+        "NTC thresholds/fault injection",
+        "ship current",
+        "battery supplement mode",
+        "USB insertion/removal",
+        "thermal"
+      ]
+    },
+    "aon_3v3": {
+      "part": "SGM62118XG/TR",
+      "vendor": "SGMICRO",
+      "package": "WLCSP-2.21x1.40-15B",
+      "vin_v": [
+        2.2,
+        5.5
+      ],
+      "vout_v": 3.3,
+      "iout_a": 2,
+      "features": [
+        "true buck/boost",
+        "PG",
+        "true shutdown",
+        "18uA typ Iq"
+      ],
+      "removes": [
+        "U401 TPS63802DLA"
+      ],
+      "gates": [
+        "exact LCSC mapping",
+        "feedback values",
+        "inductor selection",
+        "light-load ripple",
+        "ESP32 Wi-Fi current transient",
+        "EMI/thermal"
+      ]
+    },
+    "switched_domains": [
+      {
+        "rail": "3V3_SD",
+        "current": "U402 TPS22916",
+        "target": "SGM2578",
+        "vendor": "SGMICRO",
+        "lcsc": "C403706",
+        "status": "CANDIDATE"
+      },
+      {
+        "rail": "3V3_TOUCH",
+        "current": "U403 TPS22916",
+        "target": "SGM2578",
+        "vendor": "SGMICRO",
+        "lcsc": "C403706",
+        "status": "CANDIDATE"
+      },
+      {
+        "rail": "3V3_EPD_LOGIC",
+        "current": "U404 TPS22916",
+        "target": "SGM2578",
+        "vendor": "SGMICRO",
+        "lcsc": "C403706",
+        "status": "CANDIDATE"
+      },
+      {
+        "rail": "VSYS_AUDIO",
+        "current": "U405 TPS22916",
+        "target": "SGM2578",
+        "vendor": "SGMICRO",
+        "lcsc": "C403706",
+        "status": "CANDIDATE"
+      }
+    ],
+    "audio": {
+      "part": "NS4168",
+      "vendor": "Shenzhen Nsiway",
+      "lcsc": "C910588",
+      "interface": "I2S direct mono Class-D",
+      "supply_v": [
+        3,
+        5.5
+      ],
+      "removes": [
+        "U502 MAX98357AETE+T"
+      ],
+      "gates": [
+        "I2S format/channel configuration",
+        "idle current while enabled",
+        "4/8ohm output power",
+        "pop/click",
+        "EMI",
+        "thermal"
+      ]
+    },
+    "imu": {
+      "part": "QMI8658A",
+      "vendor": "QST",
+      "lcsc": "C3021082",
+      "removes": [
+        "U503 LSM6DSO32XTR"
+      ],
+      "gates": [
+        "±16g acceptable",
+        "firmware driver",
+        "WHO_AM_I/FIFO/interrupt",
+        "orientation",
+        "noise/calibration"
+      ]
+    },
+    "gpio": {
+      "part": "XL9535",
+      "vendor": "XINLUDA",
+      "lcsc": "C561273",
+      "status": "ALREADY_APPLIED_IN_C4A",
+      "removes": [
+        "U601 TCA9535PWR"
+      ]
+    }
+  },
+  "ic_count_scope": {
+    "incumbent_refs": [
+      "U201",
+      "U301",
+      "U401",
+      "U402",
+      "U403",
+      "U404",
+      "U405",
+      "U202",
+      "U203",
+      "U204",
+      "U205",
+      "U502",
+      "U503",
+      "U601"
+    ],
+    "incumbent_count": 14,
+    "proposed_refs": [
+      "AXP2101",
+      "SGM62118",
+      "SGM2578_SD",
+      "SGM2578_TOUCH",
+      "SGM2578_EPD",
+      "SGM2578_AUDIO",
+      "NS4168",
+      "QMI8658A",
+      "XL9535"
+    ],
+    "proposed_count": 9,
+    "note": "scope excludes unchanged MCU/display logic and candidate ESD/logic; target is 5 fewer ICs in these subsystems"
+  },
+  "blocked": [
+    "C4 schematic must be redrawn; this is not a pin-compatible ECO",
+    "AXP2101 exact switch-charge configuration and battery profile must be frozen before fabrication",
+    "passive USB-C sink must pass Type-C compliance and input-current policy review",
+    "SGM2578 full reverse-current behavior must be accepted per each domain",
+    "no physical qualification has been run"
+  ]
+}
