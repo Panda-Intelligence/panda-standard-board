@@ -36,14 +36,14 @@
     {
       "role": "charger+gauge+PMU",
       "current": "BQ25628E + BQ27427 + associated power architecture",
-      "target": "SGM41513 + CW2215B",
+      "target": "SGM41513 + CW2217BAAD",
       "vendor": "SGMICRO + Cellwise",
       "lcsc": [
         "C5153778",
-        "C7502681"
+        "JLC C5203993"
       ],
-      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
-      "change": "switching NVDC charger + low-power current-sensing gauge; replaces BQ25628E/BQ27427"
+      "status": "C4D5_IMPLEMENTED_IN_CAD",
+      "change": "SGM41513 switching NVDC charger + CW2217BAAD current-sensing gauge; old BQ25628E/BQ27427 retired from assembled compact candidate"
     },
     {
       "role": "3V3 buckboost",
