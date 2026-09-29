@@ -1,0 +1,12 @@
+{
+  "stage": "collision02",
+  "sha256": "10fb8d39fb574b2f22a7b6eb99f646fd38e059ed3bc4495e9c81219e7b2b9279",
+  "recorded_counts": [
+    13,
+    299,
+    0
+  ],
+  "status": "DIAGNOSTIC_ONLY_U501_BLOCKED",
+  "manufacturing_release": false,
+  "routing_baseline_approved": false
+}

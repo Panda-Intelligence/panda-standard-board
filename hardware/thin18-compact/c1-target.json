@@ -1,0 +1,63 @@
+{
+  "schema": "thin18-compact-c1-target-v1",
+  "date": "2026-09-29",
+  "source": "thin18/routing142",
+  "board_target_mm": [
+    96,
+    68
+  ],
+  "coupon_hard_max_mm": [
+    100,
+    100
+  ],
+  "stackup": {
+    "layers": 4,
+    "thickness_mm": 0.8,
+    "finish": "ENIG",
+    "solder_mask": "green"
+  },
+  "display": {
+    "family_candidate": "Good Display GDEY0426T82 family",
+    "resolution": [
+      800,
+      480
+    ],
+    "controller": "SSD1677",
+    "nominal_outline_mm": [
+      105.33,
+      62.37,
+      0.926
+    ],
+    "connector": "24-pin FPC / 0.5 mm",
+    "exact_suffix_frozen": false,
+    "frontlight_frozen": false,
+    "touch_frozen": false,
+    "fpc_pinout_qualified": false
+  },
+  "product_length_target_mm": [
+    108,
+    112
+  ],
+  "placement_zones": {
+    "usb_c": "external bottom edge",
+    "microsd": "external side edge",
+    "switches": "external side edge",
+    "display_fpc": "panel-facing perimeter",
+    "esp32": "perimeter with antenna coax access",
+    "power": "USB/battery side",
+    "epd_hv": "near display FPC",
+    "audio": "perimeter",
+    "battery": "central rear low-Z/component-free region candidate"
+  },
+  "gates": {
+    "panel_mechanical_drawing": false,
+    "panel_fpc_pin_equivalence": false,
+    "battery_dimensions_and_swelling": false,
+    "enclosure_z_stack": false,
+    "connector_openings": false,
+    "placement_zero_new_overlap": false,
+    "routing": false,
+    "physical_evt": false
+  },
+  "manufacturing_release": false
+}
