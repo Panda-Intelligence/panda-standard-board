@@ -1,29 +1,31 @@
 {
   "date": "2026-09-30",
-  "source": "c4d13-96x68-routed-working",
-  "ses_sha256": "063801729157ec3a20334a31a6f84c6a23aaa7eb2c6e499762b6e0eedeeb3395",
+  "source": "c4d12-96x68-routing",
+  "ses_sha256": "15af657c3ab3af840a1680b7f3eb0443a11236548d006fa65441765e535218c6",
   "minimum_width_mm": 0.15,
   "normalized_track_segments": 0,
   "normalized_by_net": {},
   "native_checks": {
     "drc": 0,
-    "open": 4,
+    "open": 5,
     "parity": 0,
     "erc": 0
   },
   "violation_types": {},
-  "tracks_and_vias": 2491,
-  "vias": 282,
+  "tracks_and_vias": 2467,
+  "vias": 278,
   "footprint_poses_identical": true,
   "routing_complete": false,
   "manufacturing_release": false,
-  "pcb_sha256": "1c780c0028ae08bd1ee0c9cc7ba5fb34248cd0db8e2d858f2ba501b8d35c0de6",
-  "kind": "C4D-14 protected-routing checkpoint",
+  "pcb_sha256": "e99c5fd5d06cbc5bc2ad1391744995be964d977bd0db2aeee45523d73b0d3d05",
+  "kind": "C4D-14 routed working checkpoint",
   "remaining_open_nets": [
     "BQ_CE",
-    "BQ_INT",
+    "BQ_INT (2 connectivity islands)",
     "USB_DP",
     "SGM41513_REGN"
   ],
-  "routing_method": "FreeRouting v2.4.1 with existing C4D-13 wiring protected; native KiCad validation is authoritative"
+  "manual_closures": [
+    "3V3_AON/U503 via x=1.35 mm, 0.40/0.20 mm, In2 reconnect"
+  ]
 }

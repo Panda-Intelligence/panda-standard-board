@@ -1,7 +1,3 @@
-# c4d14-protected-import
+# Thin18 Compact C4D-14 — routed working checkpoint
 
-Imported from `c4d13-96x68-routed-working` using SES SHA-256 `063801729157ec3a20334a31a6f84c6a23aaa7eb2c6e499762b6e0eedeeb3395`.
-
-Native result: ERC=0, DRC=0, parity=0, open=4.
-
-This is not manufacturing release unless a later controlled checkpoint explicitly says so.
+Native KiCad: ERC=0, DRC=0, parity=0, open=5. 3V3_AON/U503 is closed. Remaining: BQ_CE, BQ_INT x2, USB_DP/B6, SGM41513_REGN/U901. Not manufacturing release.
