@@ -1,0 +1,170 @@
+{
+  "date": "2026-09-30",
+  "kind": "C4D-11 final compact placement checkpoint",
+  "source": "c4d10b-96x68-frontlight",
+  "target_board_mm": [
+    96.0,
+    68.0
+  ],
+  "coupon_hard_max_mm": [
+    100.0,
+    100.0
+  ],
+  "battery_rear_envelope_mm": [
+    64.0,
+    60.0
+  ],
+  "battery_rect_xyxy_mm": [
+    21.0,
+    4.0,
+    85.0,
+    64.0
+  ],
+  "footprints": 189,
+  "locked_footprints": 189,
+  "newly_locked_refs": [
+    "U501",
+    "U905",
+    "L905",
+    "D905",
+    "C920",
+    "R920",
+    "C921",
+    "C922",
+    "C923",
+    "R922"
+  ],
+  "tracks": 0,
+  "zones": 0,
+  "native_checks": {
+    "erc": 0,
+    "drc": 0,
+    "parity": 0,
+    "open": 436
+  },
+  "refs": 197,
+  "pin_net_tuples": 622,
+  "key_positions": {
+    "J201": {
+      "x_mm": 39.0,
+      "y_mm": 68.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J301": {
+      "x_mm": 49.75,
+      "y_mm": 23.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J501": {
+      "x_mm": 88.8,
+      "y_mm": 18.75,
+      "rotation_deg": -90.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J502": {
+      "x_mm": 9.0,
+      "y_mm": 13.5,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J802": {
+      "x_mm": 61.0,
+      "y_mm": 52.5,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J803": {
+      "x_mm": 6.35,
+      "y_mm": 39.37,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "J804": {
+      "x_mm": 6.35,
+      "y_mm": 45.5,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "U501": {
+      "x_mm": 85.6,
+      "y_mm": 58.62,
+      "rotation_deg": 180.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "U905": {
+      "x_mm": 4.0,
+      "y_mm": 52.5,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "SW201": {
+      "x_mm": 2.3,
+      "y_mm": 6.75,
+      "rotation_deg": -90.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "SW202": {
+      "x_mm": 2.3,
+      "y_mm": 13.25,
+      "rotation_deg": -90.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "H801": {
+      "x_mm": 15.0,
+      "y_mm": 2.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "H802": {
+      "x_mm": 81.0,
+      "y_mm": 2.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "H803": {
+      "x_mm": 93.0,
+      "y_mm": 34.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    },
+    "H804": {
+      "x_mm": 3.0,
+      "y_mm": 34.0,
+      "rotation_deg": 0.0,
+      "side": "Top Layer",
+      "locked": true
+    }
+  },
+  "placement_csv": "verification/placement.csv",
+  "placement_gates": {
+    "board_under_100x100": true,
+    "all_footprints_locked": true,
+    "native_drc_zero": true,
+    "schematic_parity_zero": true,
+    "erc_zero": true,
+    "battery_envelope_inherited_from_c1": true,
+    "physical_fpc_fit": false,
+    "battery_thickness_swelling_harness": false,
+    "enclosure_z_stack": false
+  },
+  "routing_authority": false,
+  "manufacturing_release": false,
+  "physical_qualification_complete": false,
+  "pcb_sha256": "3d20ae41037b36c94211152b620c122bfe7a2ee0feb78d949f1ee2ab5f015980"
+}
