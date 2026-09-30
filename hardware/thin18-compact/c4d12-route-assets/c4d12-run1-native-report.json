@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-30",
+  "source": "c4d12-96x68-routing",
+  "ses_sha256": "98a8811fc75f402245ab314af1dae8385a63af8fa4c89a3218c349b0609f0fa5",
+  "minimum_width_mm": 0.15,
+  "normalized_track_segments": 0,
+  "normalized_by_net": {},
+  "native_checks": {
+    "drc": 2,
+    "open": 6,
+    "parity": 0,
+    "erc": 0
+  },
+  "violation_types": {
+    "copper_edge_clearance": 2
+  },
+  "tracks_and_vias": 2467,
+  "vias": 278,
+  "footprint_poses_identical": true,
+  "routing_complete": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "a0cd166f8185171e5e69112666e562c3e00f0c0636592068544130d861c65570"
+}
