@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-30",
+  "source": "c4d15-96x68-routed-working",
+  "ses_sha256": "063801729157ec3a20334a31a6f84c6a23aaa7eb2c6e499762b6e0eedeeb3395",
+  "minimum_width_mm": 0.15,
+  "normalized_track_segments": 0,
+  "normalized_by_net": {},
+  "native_checks": {
+    "drc": 0,
+    "open": 3,
+    "parity": 0,
+    "erc": 0
+  },
+  "violation_types": {},
+  "tracks_and_vias": 2491,
+  "vias": 282,
+  "footprint_poses_identical": true,
+  "routing_complete": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "364e767d96469c68c67d4cf6bef9c28a3e2545e714482921efdb63a7fb3eab9c",
+  "kind": "C4D-16 REGN closure checkpoint",
+  "remaining_open_nets": [
+    "BQ_CE",
+    "BQ_INT",
+    "USB_DP"
+  ],
+  "routing_method": "FreeRouting v2.4.1 with existing C4D-13 wiring protected; native KiCad validation is authoritative",
+  "recovered_from_commit": "cd7c452",
+  "source_checkpoint": "original C4D-14 protected-routing checkpoint",
+  "manual_closures": [
+    "SGM41513_REGN/U901 pad22 via 0.40/0.20 mm to B.Cu; PMID In2 local notch at y=6.15 mm"
+  ]
+}

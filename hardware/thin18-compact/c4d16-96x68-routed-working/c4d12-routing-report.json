@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-30",
+  "kind": "C4D-12 routing-rule checkpoint",
+  "source": "c4d11-96x68-final-placement",
+  "board_mm": [
+    96,
+    68
+  ],
+  "routing_rules_mm": {
+    "track_width": 0.2,
+    "clearance": 0.15,
+    "via_diameter": 0.45,
+    "via_drill": 0.25,
+    "copper_edge_clearance": 0.15
+  },
+  "fabrication_basis": "JLC 4-layer standard capability is tighter than these values; selected values remain conservative for yield/cost.",
+  "native_checks_before_routing": {
+    "drc": 0,
+    "open": 436,
+    "parity": 0,
+    "erc": 0
+  },
+  "routing_complete": false,
+  "manufacturing_release": false
+}
