@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json,xml.etree.ElementTree as ET
+import argparse,json,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parent
-CAND=ROOT/'c4d12-96x68-routing'
-NET=CAND/'verification/netlist.xml'
+ap=argparse.ArgumentParser()
+ap.add_argument("--candidate",type=Path,default=ROOT/"c4d12-96x68-routing")
+ap.add_argument("--output",type=Path,default=None)
+args=ap.parse_args()
+CAND=args.candidate.resolve()
+NET=CAND/"verification/netlist.xml"
 r=ET.parse(NET).getroot()
 comps={c.get('ref'):c for c in r.findall('components/comp')}
 nets={n.get('name',''):[(x.get('ref'),x.get('pin')) for x in n.findall('node')] for n in r.findall('nets/net')}
@@ -33,5 +37,7 @@ add('FPC_EXACT_CONNECTORS',fields('J803').get('LCSC')=='C224194' and fields('J80
 report={'date':'2026-09-30','candidate':CAND.name,'result':'PASS_DOCUMENTARY_WITH_OPEN_PHYSICAL_GATES',
         'checks':checks,'physical_tests_completed':0,'manufacturing_release':False,
         'physical_gates':{'Q04':'USB-C/USB2','Q05':'charging/NTC/ship/deep-sleep','Q06':'frontlight current','Q07':'OVP/open-string','Q08':'COUT DC-bias','Q09':'Schottky hot leakage','Q10':'inductor thermal/EMI/acoustic','Q11':'FPC fit','Q12':'RF/thermal/full EVT'}}
-(ROOT/'c4d12-static-preflight.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+output=(args.output.resolve() if args.output else ROOT/(CAND.name+"-static-preflight.json"))
+output.parent.mkdir(parents=True,exist_ok=True)
+output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n")
 print(json.dumps(report,ensure_ascii=False,indent=2))
