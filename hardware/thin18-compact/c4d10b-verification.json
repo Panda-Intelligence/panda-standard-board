@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-30",
+  "result": "PASS_C4D10B_DOCUMENTARY_AND_NATIVE_CHECKS",
+  "candidate": "c4d10b-96x68-frontlight",
+  "native_checks": {
+    "drc": 0,
+    "parity": 0,
+    "open": 436,
+    "erc": 0
+  },
+  "refs": 197,
+  "pin_net_tuples": 622,
+  "driver": {
+    "manufacturer": "SGMICRO",
+    "mpn": "SGM37601YTRL20G/TR",
+    "package": "TQFN-3.5x3.5-20L",
+    "catalog_status": "RFQ_REQUIRED",
+    "i2c_address": "0x36",
+    "strings_used": [
+      "LED1 warm",
+      "LED2 cool"
+    ]
+  },
+  "firmware_safe_startup": true,
+  "panel_current_limit_ma": 14.5,
+  "ovp_v": 18,
+  "first_order_sizing": {
+    "vin_v": 3.0,
+    "vout_v": 15.0,
+    "total_led_current_a": 0.029,
+    "efficiency_assumption": 0.8,
+    "inductor_h": 1e-05,
+    "estimated_input_average_a": 0.1812,
+    "estimated_ripple_pp_a": 0.24,
+    "estimated_peak_a": 0.3013,
+    "selected_inductor_isat_a": 0.88,
+    "selected_inductor_rated_a": 0.62,
+    "isat_margin_ratio": 2.92,
+    "rated_margin_ratio": 2.06
+  },
+  "physical_tests_completed": 0,
+  "physical_qualification_complete": false,
+  "manufacturing_release": false,
+  "release_blockers": [
+    "front-light FPC contact-side/orientation and insertion",
+    "14.5mA current accuracy on warm/cool strings",
+    "18V OVP and open-string behavior",
+    "COUT effective capacitance at operating bias",
+    "Schottky reverse leakage and temperature",
+    "inductor saturation/temperature and acoustic/EMI behavior",
+    "shutdown leakage, fade behavior and enclosure thermal rise",
+    "final compact routing remains open (436 unconnected items)",
+    "production RFQ/stock confirmation for SGM37601 remains open"
+  ]
+}

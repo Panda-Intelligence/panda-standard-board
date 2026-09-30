@@ -42,25 +42,18 @@
     },
     "gauge": {
       "vendor": "Cellwise",
-      "mpn": "CW2215BAAC",
-      "jlc": "C7502681",
-      "package": "WLCSP-9 1.58x1.53",
-      "active_ua": 5.0,
+      "mpn": "CW2217BAAD",
+      "jlc": "C5203993",
+      "package": "DFN-12 2.5x4.0",
+      "active_ua": 12.0,
       "shutdown_ua": 0.5,
       "current_sensing": true,
       "bidirectional_current_range_a": 5.2,
-      "i2c": true,
+      "i2c_address": "0x64",
       "ntc": true,
-      "selection_reason": "lower active current than CW2217 while retaining current sensing and portable-device fuel-gauge architecture",
-      "fallback": {
-        "mpn": "CW2217BAAC",
-        "lcsc": "C5252690",
-        "active_ua": 12.0,
-        "shutdown_ua": 0.5,
-        "reason": "better current-sense documentation / current LCSC listing, but higher IQ"
-      },
+      "selection_reason": "authoritative DFN-12 pinout + public EasyEDA footprint + current JLC stock; preferred over CW2215B WLCSP for EVT reproducibility",
+      "shunt": "FOJAN FRM121WFR010TM / C7467248, 10mOhm 1W +/-1% +/-50ppm 1206",
       "qualification": [
-        "sense resistor value/topology",
         "battery profile/FastCali data",
         "SOC accuracy",
         "current accuracy",
@@ -139,14 +132,14 @@
   },
   "deep_sleep_typical_ua": {
     "old_core_trio": 21.5,
-    "new_core_trio": 15.75,
-    "delta": -5.75,
+    "implemented_c4d5_core_trio": 22.75,
+    "delta": 1.25,
     "components": {
       "SGM41513_batfet_on": 8.5,
-      "CW2215B_active": 5.0,
+      "CW2217BAAD_active": 12.0,
       "SGM62125": 2.25
     },
-    "note": "component-only comparison; whole-device leakage and switched-domain leakage remain bench qualification"
+    "note": "component-only typical comparison; C4D-5 accepts +1.25uA for explicit DFN package/model/stock reproducibility. Whole-device bench current remains qualification."
   },
   "rejected_or_secondary": [
     {
@@ -164,6 +157,10 @@
     {
       "part": "SGM2578S/SD",
       "reason": "disabled-only reverse-current protection does not meet TPS22916 full-time-RCB contract"
+    },
+    {
+      "part": "CW2215BAAC",
+      "reason": "lower 5uA active current is attractive, but authoritative public WLCSP ball map/model was not reproducibly obtainable in this cycle; retain as future optimization"
     }
   ]
 }

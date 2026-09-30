@@ -1,3 +1,5 @@
+> **Superseded front-light driver note:** the LM36922H content below is retained as C3 historical reference. C4D-10B now implements SGMICRO SGM37601YTRL20G/TR with the exact J804/support network.
+
 # Thin18 Compact — C3B connector freeze
 
 Date: 2026-09-29

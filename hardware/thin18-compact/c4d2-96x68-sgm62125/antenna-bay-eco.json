@@ -1,0 +1,38 @@
+{
+  "source_sha256": "6a19eb2ffab404876a1fceee7c19a69a28f4195006b2369d3915ea2d37333437",
+  "moves": {
+    "U205": [
+      4.75,
+      123.0,
+      -90.0
+    ],
+    "C213": [
+      1.25,
+      123.0,
+      -90.0
+    ],
+    "R210": [
+      2.25,
+      126.25,
+      90.0
+    ],
+    "R211": [
+      6.5,
+      119.25,
+      90.0
+    ]
+  },
+  "antenna_copper_keepout_native_xyxy_mm": [
+    33,
+    123.65,
+    49.2,
+    128
+  ],
+  "group_reason": "Move comparator with its threshold divider and decoupler, not only its IC",
+  "keepout_is_provisional_rf_design_allowance": true,
+  "manufacturing_release": false,
+  "pre_refill_sha256": "19ea24fe76077ceb750b5a32034410d73401d0721b8218e3730fe6c6cd3fef81",
+  "no_routing_added": true,
+  "native_checks": "See verification/summary.json: 0 violations / 299 unconnected entries / 0 parity; ERC 0",
+  "verified_pcb_sha256": "059665923908ea98b7892e92bba03b78eed95d203816bb96ffd226395f130308"
+}

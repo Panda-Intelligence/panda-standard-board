@@ -1,0 +1,80 @@
+{
+  "kind": "C4C mainland Fenghua same-footprint passive procurement selection",
+  "source": "c4a-96x68-domestic-xl9535",
+  "groups": {
+    "100n_0402": {
+      "refs": [
+        "C302",
+        "C502",
+        "C503",
+        "C504",
+        "C505",
+        "C512",
+        "C601",
+        "C211",
+        "C212",
+        "C213",
+        "C214"
+      ],
+      "value_prefix": "100n",
+      "footprint_contains": "R_0402_1005Metric",
+      "mpn": "0402B104K250NT",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "lcsc": "C56392",
+      "spec": "100nF ±10% 25V X7R 0402"
+    },
+    "1u_0603": {
+      "refs": [
+        "C507",
+        "C508",
+        "C509",
+        "C510",
+        "C511",
+        "C209",
+        "C801",
+        "C802",
+        "C803"
+      ],
+      "value_prefix": "1u",
+      "footprint_contains": "C_0603_1608Metric",
+      "mpn": "0603B105K250NT",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "lcsc": "C59302",
+      "spec": "1uF ±10% 25V X7R 0603"
+    }
+  },
+  "changed_refs": [
+    "C302",
+    "C502",
+    "C503",
+    "C504",
+    "C505",
+    "C512",
+    "C601",
+    "C211",
+    "C212",
+    "C213",
+    "C214",
+    "C507",
+    "C508",
+    "C509",
+    "C510",
+    "C511",
+    "C209",
+    "C801",
+    "C802",
+    "C803"
+  ],
+  "changed_count": 20,
+  "refs": 203,
+  "pin_net_tuples": 601,
+  "refs_identical": true,
+  "pin_nets_identical": true,
+  "drc_violations": 0,
+  "unconnected_items": 447,
+  "schematic_parity": 0,
+  "erc": 0,
+  "physical_qualification": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "7e4ef46f8dcefd74658156fca3032ff0c4f71c4f63e9faaea84185b122f035bd"
+}

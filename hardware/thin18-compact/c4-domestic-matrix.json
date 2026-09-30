@@ -36,14 +36,14 @@
     {
       "role": "charger+gauge+PMU",
       "current": "BQ25628E + BQ27427 + associated power architecture",
-      "target": "SGM41513 + CW2215B",
+      "target": "SGM41513 + CW2217BAAD",
       "vendor": "SGMICRO + Cellwise",
       "lcsc": [
         "C5153778",
-        "C7502681"
+        "JLC C5203993"
       ],
-      "status": "C4_POWER_BASE_SELECTED_FOR_SCHEMATIC_REDESIGN",
-      "change": "switching NVDC charger + low-power current-sensing gauge; replaces BQ25628E/BQ27427"
+      "status": "C4D5_IMPLEMENTED_IN_CAD",
+      "change": "SGM41513 switching NVDC charger + CW2217BAAD current-sensing gauge; old BQ25628E/BQ27427 retired from assembled compact candidate"
     },
     {
       "role": "3V3 buckboost",
@@ -73,11 +73,11 @@
     {
       "role": "RTC",
       "current": "RV-3028-C7",
-      "target": "BM8563EMA + 32.768k crystal",
-      "vendor": "GATEMODE",
-      "lcsc": "C269878",
-      "status": "CANDIDATE",
-      "gate": "accuracy/current/crystal/firmware"
+      "target": "RV-3028-C7 retained; BM8563EMA redesign candidate",
+      "vendor": "Micro Crystal retained / GATEMODE candidate",
+      "lcsc": "C269878 candidate",
+      "status": "BLOCKED_BACKUP_RETENTION_CONTRACT",
+      "gate": "BM8563 has no dedicated VBACKUP; current RTC_VBACKUP + C301 retention cannot be preserved by drop-in substitution"
     },
     {
       "role": "audio base SKU",
@@ -85,7 +85,8 @@
       "target": "NS4168",
       "vendor": "Nsiway",
       "lcsc": "C910588",
-      "status": "C4_REDESIGN_SELECTED_FOR_FEASIBILITY"
+      "status": "C4D6_IMPLEMENTED_IN_CAD",
+      "change": "MAX98357A + SD/GAIN network retired; NS4168 / C910588 added on existing VSYS_AUDIO and speaker nets"
     },
     {
       "role": "audio voice SKU",
@@ -109,10 +110,11 @@
     },
     {
       "role": "frontlight driver",
-      "current": "LM36922H reference",
-      "target": "domestic dual-string driver TBD",
-      "vendor": "TBD",
-      "status": "BLOCKED_NO_PROVEN_EQUIVALENT"
+      "current": "LM36922H historical reference",
+      "target": "SGM37601YTRL20G/TR",
+      "vendor": "SGMICRO",
+      "status": "C4D10B_ENGINEERING_CAD_INTEGRATED",
+      "change": "mainland 40V six-channel I2C WLED driver integrated; LED1/2 warm/cool, 14.5mA nominal, 18V OVP, exact J804/support network; RFQ and physical qualification open"
     },
     {
       "role": "EPD Schmitt buffers",

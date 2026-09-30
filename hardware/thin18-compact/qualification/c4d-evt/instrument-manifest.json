@@ -1,0 +1,18 @@
+{
+  "schema": "thin18-compact-instrument-manifest-v1",
+  "date": "2026-09-30",
+  "instruments": [],
+  "required_fields_for_real_instrument": [
+    "instrument_id",
+    "role",
+    "manufacturer",
+    "model",
+    "serial_number",
+    "measurement_range",
+    "calibration_status",
+    "calibration_date",
+    "calibration_due_date",
+    "connection_or_file_interface"
+  ],
+  "observation": "No bench, USB-C compliance, RF or calibrated measurement instruments were detected on the authorized Mac. A phone, hubs and Ethernet were present and are excluded."
+}

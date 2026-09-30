@@ -1,7 +1,7 @@
 {
   "schema": "thin18-c3b-frontlight-bom-v1",
   "date": "2026-09-29",
-  "status": "EVT_CANDIDATE_NOT_PRODUCTION_RELEASE",
+  "status": "SUPERSEDED_BY_C4D10B_ENGINEERING_CANDIDATE",
   "driver": {
     "ref": "U9xx",
     "mpn": "LM36922HYFFR",
@@ -89,5 +89,6 @@
     "isat_margin_ratio": 2.86,
     "irated_margin_ratio": 2.02,
     "scope": "first-order worst-operating-point sizing only; not transient/thermal/EMI qualification"
-  }
+  },
+  "superseded_by": "c4d10b-96x68-frontlight / SGM37601YTRL20G/TR"
 }

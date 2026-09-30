@@ -1,0 +1,22 @@
+{
+  "i2c_address": "0x36 (A0=GND)",
+  "safe_gpio_reset_state": {
+    "FL_HWEN": "low",
+    "FL_PWM": "low"
+  },
+  "startup_sequence": [
+    "drive FL_HWEN=0 and FL_PWM=0",
+    "drive FL_HWEN=1 while FL_PWM remains 0",
+    "wait for I2C ACK",
+    "write REG0x00=0x01 (DC dimming)",
+    "write REG0x01=0x56 (14.5mA nominal, below panel 15mA maximum)",
+    "write REG0x02=0xA1 (internal compensation, 18V OVP, 2.7V UVLO)",
+    "write REG0x03=0x2B (PFM enabled, 1MHz switching)",
+    "drive FL_PWM=1"
+  ],
+  "shutdown_sequence": [
+    "drive FL_PWM=0",
+    "drive FL_HWEN=0"
+  ],
+  "default_register_hazard": "REG0x01 resets to 20mA and REG0x02 resets to 36V; PWM must stay low until reprogrammed"
+}

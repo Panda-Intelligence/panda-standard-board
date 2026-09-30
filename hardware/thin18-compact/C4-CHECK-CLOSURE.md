@@ -83,7 +83,7 @@ This document closes the **documentary and current-CAD checking phase**, not pro
 Still required:
 
 - implement the C4 power/USB/IMU/audio redesign in schematic and PCB;
-- add/finalize J803/J804 and domestic front-light driver when a proven part exists;
+- C4D-10A/J803 touch and C4D-10B/J804 + SGM37601 front-light CAD are now integrated; physical FPC/current/thermal/EMI qualification remains required;
 - reroute the 96 × 68 mm board to open = 0;
 - generate final production BOM/CPL/Gerbers;
 - build real EVT units;
@@ -92,3 +92,7 @@ Still required:
 Physical tests completed: **0**.
 
 Manufacturing release: **false**.
+
+## Post-closure implementation progress
+
+After the original documentary closure, C4D-10A integrated the exact touch FPC and C4D-10B integrated the mainland SGM37601 dual-string front-light circuit. C4D-10B passes ERC/DRC/parity at 0/0/0 and includes a fail-closed firmware startup contract. The board is still intentionally unrouted and physical tests remain zero.

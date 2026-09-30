@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-29",
+  "kind": "C4D-3 passive USB-C sink cleanup",
+  "source": "c4d2-96x68-sgm62125",
+  "retired_refs": [
+    "C210",
+    "C211",
+    "C212",
+    "C213",
+    "C214",
+    "C215",
+    "R205",
+    "R208",
+    "R209",
+    "R210",
+    "R211",
+    "R212",
+    "R213",
+    "R214",
+    "R602",
+    "R603",
+    "U202",
+    "U203",
+    "U204",
+    "U205",
+    "U206"
+  ],
+  "retired_count": 21,
+  "rd": {
+    "R206": "USB_CC1 -> 5.1k -> GND",
+    "R207": "USB_CC2 -> 5.1k -> GND"
+  },
+  "retained": [
+    "J201 USB4500-03-0-A",
+    "D201 USB data/CC ESD",
+    "D202 VBUS ESD",
+    "R529/R530 USB data series",
+    "C514/C515 DNP tuning"
+  ],
+  "released_gpio": [
+    "U601.P16",
+    "U601.P17",
+    "U501.IO2"
+  ],
+  "status_source": "SGM41513 nPG/nINT + I2C status",
+  "native_checks": {
+    "erc": 0,
+    "drc": 0,
+    "parity": 0,
+    "open": 403
+  },
+  "physical_qualification": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "b5863dff3d8420a2bbec9522d81cd6e6b28a710d44f9a843673e84ab16a37aea"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "thin18-compact-approved-limits-v1",
+  "date": "2026-09-30",
+  "limits": [],
+  "required_fields": [
+    "limit_id",
+    "test_id",
+    "revision",
+    "approved_by",
+    "approved_at_utc",
+    "source_requirements",
+    "metric_limits"
+  ],
+  "note": "No limits are approved yet. Test-plan prose is not an approved numerical limit set."
+}

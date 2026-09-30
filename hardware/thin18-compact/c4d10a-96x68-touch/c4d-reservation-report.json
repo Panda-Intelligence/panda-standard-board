@@ -1,0 +1,47 @@
+{
+  "kind": "C4D power/USB placement reservation; no electrical change",
+  "source": "c4c-96x68-domestic-passives",
+  "target_mm": [
+    96.0,
+    68.0
+  ],
+  "reserved_rectangles_mm": {
+    "SGM41513": [
+      43.199999999999996,
+      4.6,
+      48.4,
+      9.8
+    ],
+    "CW2215B": [
+      39.8,
+      18.8,
+      42.2,
+      21.2
+    ],
+    "SGM62125": [
+      30.2,
+      5.300000000000001,
+      33.2,
+      8.5
+    ]
+  },
+  "clearance_mm": 0.5,
+  "top_side_overlap_hits": {
+    "SGM41513": [],
+    "CW2215B": [],
+    "SGM62125": []
+  },
+  "charger_variant": "SGM41513 non-D / PSEL high baseline 500mA",
+  "usb_delta": "remove U202-U205; R206/R207 become 5.1k Rd in electrical C4D ECO",
+  "native_checks": {
+    "drc": 0,
+    "open": 447,
+    "parity": 0,
+    "erc": 0
+  },
+  "routing_authority": false,
+  "electrical_redesign_applied": false,
+  "manufacturing_release": false,
+  "physical_qualification": false,
+  "pcb_sha256": "83a84a556903eefd76aeb861cac9677950021aff03e136cf1c259781b12e01e6"
+}
