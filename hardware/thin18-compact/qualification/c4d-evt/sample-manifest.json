@@ -1,0 +1,21 @@
+{
+  "schema": "thin18-compact-sample-manifest-v1",
+  "date": "2026-09-30",
+  "samples": [],
+  "required_fields_for_real_sample": [
+    "sample_id",
+    "pcb_checkpoint",
+    "pcb_sha256",
+    "assembly_bom_path",
+    "assembly_bom_sha256",
+    "firmware_path_or_build_id",
+    "firmware_sha256",
+    "display_mpn_and_lot",
+    "battery_mpn_and_lot",
+    "component_lots",
+    "assembly_date",
+    "assembly_vendor",
+    "photos"
+  ],
+  "note": "Empty by design. Add a real C4D routed assembly only after its identity and hashes are captured."
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "thin18-compact-c4d-evt-qualification-v1",
+  "date": "2026-09-30",
+  "candidate_requirement": "Use the final routed C4D candidate, exact assembly BOM and firmware build; results from routing142, development kits or another component revision do not transfer.",
+  "physical_tests_completed": 0,
+  "manufacturing_release": false,
+  "release_approval": null,
+  "tests": [
+    {
+      "id": "Q04",
+      "user_item": 4,
+      "name": "USB-C sink and USB2 compliance",
+      "status": "NOT_RUN",
+      "required_sample_states": ["unpowered", "battery_only", "VBUS_only", "battery_plus_VBUS", "firmware_reset", "deep_sleep"],
+      "required_instrument_roles": ["usb_c_analyzer", "oscilloscope", "current_limited_supply", "electronic_load"],
+      "required_metrics": ["cc1_rd_ohm", "cc2_rd_ohm", "vbus_inrush_peak_a", "vbus_steady_input_a", "usb_dp_eye_or_protocol_result", "usb_dm_eye_or_protocol_result", "attach_detach_cycles", "dead_battery_boot_result", "esd_functional_result"],
+      "pass_rule": "Both CC paths and every tested state comply with the approved USB-C/USB2 test-limit revision; no current assumption above the detected source capability; no latch-up, unsafe reverse current or data failure.",
+      "blocked_until": ["final routed sample", "approved applicable USB-C/USB2 limit revision", "analyzer and oscilloscope evidence"]
+    },
+    {
+      "id": "Q05",
+      "user_item": 5,
+      "name": "Charging, NTC, ship mode and deep-sleep current",
+      "status": "NOT_RUN",
+      "required_sample_states": ["battery_only", "VBUS_only", "battery_plus_VBUS", "charge_cold_fault", "charge_hot_fault", "ntc_open", "ntc_short", "ship_mode", "deep_sleep"],
+      "required_instrument_roles": ["battery_simulator", "current_limited_supply", "electronic_load", "precision_current_meter", "oscilloscope", "temperature_chamber_or_ntc_fixture"],
+      "required_metrics": ["charge_current_a", "charge_voltage_v", "termination_current_a", "recharge_threshold_v", "input_dpm_result", "ntc_cold_inhibit_result", "ntc_hot_inhibit_result", "ntc_open_result", "ntc_short_result", "ship_current_ua", "deep_sleep_current_ua", "battery_reverse_current_ua", "charger_temperature_rise_c"],
+      "pass_rule": "All values are within the exact selected cell, SGM41513, CW2217 and approved system limits; NTC faults inhibit charging safely; ship/deep-sleep currents meet the approved product budget; no protection is bypassed.",
+      "blocked_until": ["final cell specification and PCM", "approved charge/temperature/current limits", "identified battery simulator/current meter"]
+    },
+    {
+      "id": "Q06",
+      "user_item": 6,
+      "name": "Front-light warm/cool current accuracy",
+      "status": "NOT_RUN",
+      "required_sample_states": ["warm_only", "cool_only", "both_strings", "minimum_brightness", "maximum_command", "battery_min", "battery_max"],
+      "required_instrument_roles": ["precision_current_meter", "oscilloscope", "current_limited_supply", "lux_or_luminance_meter"],
+      "required_metrics": ["warm_string_current_ma", "cool_string_current_ma", "maximum_string_current_ma", "string_current_mismatch_percent", "brightness_uniformity_result", "startup_overshoot_ma", "shutdown_tail_ms"],
+      "pass_rule": "No warm/cool string exceeds 15.0 mA including startup and command extremes; programmed nominal is 14.5 mA; mismatch and optical uniformity satisfy the approved display/product limit.",
+      "blocked_until": ["assembled FT01C display", "approved brightness/uniformity lower limits", "current and optical instruments"]
+    },
+    {
+      "id": "Q07",
+      "user_item": 7,
+      "name": "Front-light OVP and open-string behavior",
+      "status": "NOT_RUN",
+      "required_sample_states": ["normal_two_string", "warm_open", "cool_open", "both_open", "intermittent_fpc"],
+      "required_instrument_roles": ["oscilloscope", "high_impedance_voltage_probe", "current_limited_supply"],
+      "required_metrics": ["normal_vout_v", "warm_open_peak_v", "cool_open_peak_v", "both_open_peak_v", "ovp_response_time_us", "fault_register_result", "recovery_result", "component_voltage_margin_result"],
+      "pass_rule": "Configured 18 V OVP operates within the approved SGM37601 tolerance, no component or panel terminal exceeds its rated/approved stress, faults are reported and recovery is controlled without repeated unsafe restart.",
+      "blocked_until": ["assembled front-light circuit", "approved driver/component voltage tolerance limits", "rated high-impedance probe"]
+    },
+    {
+      "id": "Q08",
+      "user_item": 8,
+      "name": "Front-light COUT effective capacitance at DC bias",
+      "status": "NOT_RUN",
+      "required_sample_states": ["room_temperature", "cold_limit", "hot_limit", "fresh_lot", "aged_or_soak_sample"],
+      "required_instrument_roles": ["lcr_meter_with_dc_bias_or_impedance_analyzer", "temperature_chamber_or_fixture"],
+      "required_metrics": ["capacitance_0v_uf", "capacitance_15v_uf", "capacitance_18v_uf", "esr_18v_ohm", "temperature_min_capacitance_uf", "supplier_dc_bias_curve_reference"],
+      "pass_rule": "Measured/supplier-supported effective capacitance and ESR at the actual boost bias and temperature remain above the SGM37601 application minimum with the approved margin; nominal 4.7 uF alone is not sufficient evidence.",
+      "blocked_until": ["C923 production lot", "approved minimum effective capacitance/ESR", "DC-bias-capable LCR/impedance instrument"]
+    },
+    {
+      "id": "Q09",
+      "user_item": 9,
+      "name": "D905 Schottky high-temperature reverse leakage",
+      "status": "NOT_RUN",
+      "required_sample_states": ["room_temperature", "hot_limit", "18v_reverse", "maximum_approved_reverse_voltage"],
+      "required_instrument_roles": ["source_measure_unit", "temperature_chamber_or_fixture"],
+      "required_metrics": ["reverse_leakage_room_ua", "reverse_leakage_hot_ua", "junction_or_case_temperature_c", "output_droop_due_leakage_result", "thermal_runaway_result"],
+      "pass_rule": "Leakage at the actual reverse voltage and approved hot condition stays within the converter/output budget and component guarantee; no thermal runaway or unsafe output behavior.",
+      "blocked_until": ["D905 production lot", "approved leakage/temperature budget", "calibrated SMU and thermal fixture"]
+    },
+    {
+      "id": "Q10",
+      "user_item": 10,
+      "name": "L905 temperature, EMI and audible-noise qualification",
+      "status": "NOT_RUN",
+      "required_sample_states": ["warm_only_max", "cool_only_max", "both_max", "PWM_dimmed", "battery_min", "battery_max", "enclosure_closed"],
+      "required_instrument_roles": ["oscilloscope", "current_probe", "thermal_camera_or_thermocouples", "spectrum_analyzer_or_emi_receiver", "near_field_probes", "microphone_or_acoustic_analyzer"],
+      "required_metrics": ["inductor_peak_current_a", "inductor_ripple_pp_a", "inductor_temperature_rise_c", "driver_temperature_rise_c", "conducted_emi_result", "radiated_emi_result", "audible_noise_dba_or_result", "saturation_result"],
+      "pass_rule": "Measured peak current remains below the qualified saturation/rated-current margin, temperatures remain below component/enclosure limits, and EMI/acoustic results meet the approved product/regulatory pre-compliance limits.",
+      "blocked_until": ["closed-enclosure sample", "approved temperature/EMI/acoustic limits", "thermal, EMI and acoustic instruments"]
+    },
+    {
+      "id": "Q11",
+      "user_item": 11,
+      "name": "Touch and front-light FPC mechanical/electrical fit",
+      "status": "NOT_RUN",
+      "required_sample_states": ["first_insertion", "repeated_insertions", "flex_bent_to_enclosure_path", "display_assembled", "drop_or_shock_precheck"],
+      "required_instrument_roles": ["microscope_or_camera", "continuity_meter", "force_gauge_optional", "dimensional_measurement_tools"],
+      "required_metrics": ["pin1_orientation_result", "contact_side_result", "continuity_all_pins_result", "shorts_result", "insertion_cycles", "latch_retention_result", "fpc_bend_radius_mm", "connector_clearance_result", "touch_function_result", "frontlight_function_result"],
+      "pass_rule": "FPC orientation/contact side matches the FT01C drawing, all pins are continuous without shorts, latch/clearance/bend requirements survive the approved insertion cycle count, and touch/front-light functions remain stable.",
+      "blocked_until": ["actual FT01C flexes and enclosure", "approved insertion/bend/retention limits", "sample photos and continuity logs"]
+    },
+    {
+      "id": "Q12",
+      "user_item": 12,
+      "name": "RF, thermal and complete EVT soak",
+      "status": "NOT_RUN",
+      "required_sample_states": ["WiFi_tx", "WiFi_rx", "BLE", "EPD_full_refresh", "frontlight_max", "audio_max", "charging", "worst_concurrent_load", "cold_start", "hot_soak", "long_run"],
+      "required_instrument_roles": ["rf_test_set_or_spectrum_analyzer", "vna_or_antenna_fixture", "thermal_camera_or_thermocouples", "temperature_chamber", "current_limited_supply", "data_logger"],
+      "required_metrics": ["wifi_tx_power_result", "wifi_rx_sensitivity_or_throughput_result", "ble_result", "antenna_match_result", "maximum_component_temperature_c", "maximum_surface_temperature_c", "brownout_reset_count", "functional_error_count", "soak_duration_h", "post_soak_regression_result"],
+      "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption.",
+      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities"]
+    }
+  ]
+}

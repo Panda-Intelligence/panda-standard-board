@@ -1,0 +1,19 @@
+{
+  "schema": "thin18-compact-release-candidate-v1",
+  "date": "2026-09-30",
+  "checkpoint": null,
+  "pcb_path": null,
+  "pcb_sha256": null,
+  "drc_report_path": null,
+  "drc_report_sha256": null,
+  "erc_report_path": null,
+  "erc_report_sha256": null,
+  "production_bom_path": null,
+  "production_bom_sha256": null,
+  "cpl_path": null,
+  "cpl_sha256": null,
+  "gerber_zip_path": null,
+  "gerber_zip_sha256": null,
+  "manufacturing_release": false,
+  "note": "Populated only after routing open=0, DRC/parity/ERC=0, complete manufacturing outputs, and all physical qualification gates pass."
+}

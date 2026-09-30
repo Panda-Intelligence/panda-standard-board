@@ -1,0 +1,39 @@
+{
+  "status": "replay_verified_wip",
+  "native_runs": [
+    {
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "pcb_sha256": "ccc19c5402f633638ed72e7c94a92375684037a1f9c04f63072dc58f86c16071",
+      "report": "replay-drc-0.json"
+    },
+    {
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "pcb_sha256": "ccc19c5402f633638ed72e7c94a92375684037a1f9c04f63072dc58f86c16071",
+      "report": "replay-drc-1.json"
+    },
+    {
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "pcb_sha256": "ccc19c5402f633638ed72e7c94a92375684037a1f9c04f63072dc58f86c16071",
+      "report": "replay-drc-2.json"
+    }
+  ],
+  "erc_violations": 0,
+  "source_pcb_sha256": "23fc73b2f9b5a3e471ed9e0a06c7dd92cadde1497372e10d30738aef57447952",
+  "result_pcb_sha256": "ccc19c5402f633638ed72e7c94a92375684037a1f9c04f63072dc58f86c16071",
+  "schematic_sha256": "f4e996d2c7ac2789db357a18343adb668bbb9f76143d6df06c6c3a7ef37d7565",
+  "netlist_sha256": "7b609476377e42c5afda9273bc15147b6cf1a1258cfead04f9a52e2d70bb6ba4",
+  "manufacturing_release": false,
+  "whole_board_routing_complete": true
+}
