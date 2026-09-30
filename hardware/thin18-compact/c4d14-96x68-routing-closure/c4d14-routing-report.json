@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-30",
+  "kind": "C4D-14 incremental routing closure checkpoint",
+  "source": "c4d13-96x68-routed-working",
+  "board_mm": [
+    96,
+    68
+  ],
+  "native_checks": {
+    "drc": 0,
+    "open": 5,
+    "parity": 0
+  },
+  "placement_changed": false,
+  "closed_net": "3V3_AON",
+  "closure": {
+    "net": "3V3_AON",
+    "top_escape_mm": [
+      [
+        1.75,
+        22.1625
+      ],
+      [
+        1.4,
+        22.1625
+      ]
+    ],
+    "via_mm": [
+      1.4,
+      22.1625
+    ],
+    "via_diameter_mm": 0.45,
+    "via_drill_mm": 0.25,
+    "inner_layer": "In2.Cu",
+    "inner_target_mm": [
+      2.5651,
+      23.1033
+    ],
+    "track_width_mm": 0.15
+  },
+  "remaining_opens": [
+    "Pad 9 [BQ_CE] of U901 on Top Layer <-> Track [BQ_CE] on Ground Layer 1, length 13.6411 mm",
+    "Pad 1 [BQ_INT] of R609 on Top Layer <-> Pad 10 [BQ_INT] of U601 on Top Layer",
+    "Pad 7 [BQ_INT] of U901 on Top Layer <-> Pad 1 [BQ_INT] of R609 on Top Layer",
+    "Track [USB_DP] on Top Layer, length 0.8017 mm <-> Pad B6 [USB_DP] of J201 on Top Layer",
+    "Via [SGM41513_REGN] on Top Layer - Bottom Layer <-> Pad 22 [SGM41513_REGN] of U901 on Top Layer"
+  ],
+  "routing_complete": false,
+  "manufacturing_release": false,
+  "pcb_sha256": "ccf45aeb6992e522c94e7b3c1c83908e095c2f6f40bf04ef02b49e369b8fdcbd"
+}
