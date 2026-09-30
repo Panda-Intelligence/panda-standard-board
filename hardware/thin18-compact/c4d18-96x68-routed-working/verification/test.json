@@ -1,0 +1,130 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-30T23:28:47",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.5",
+    "schematic_parity": [],
+    "source": "PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [GND] on Top Layer, length 1.9766 mm",
+                    "pos": {
+                        "x": 43.2481,
+                        "y": 58.5517
+                    },
+                    "uuid": "1818ef39-43a5-4a1c-aafe-2dcab5896c6f"
+                },
+                {
+                    "description": "Track [GND] on Top Layer, length 1.1597 mm",
+                    "pos": {
+                        "x": 43.8,
+                        "y": 60.4283
+                    },
+                    "uuid": "295eda33-3cee-4e6c-a60c-f1434ca94f71"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 9 [BQ_CE] of U901 on Top Layer",
+                    "pos": {
+                        "x": 49.1,
+                        "y": 7.05
+                    },
+                    "uuid": "79d26c63-bf91-4f08-8925-7da90353fe77"
+                },
+                {
+                    "description": "Track [BQ_CE] on Ground Layer 1, length 13.6411 mm",
+                    "pos": {
+                        "x": 41.495,
+                        "y": 3.6956
+                    },
+                    "uuid": "c7bae378-2cbb-45ce-9a3d-ae2a7a9d57a9"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [GND] on Power Layer 2, length 3.4970 mm",
+                    "pos": {
+                        "x": 41.0045,
+                        "y": 61.1298
+                    },
+                    "uuid": "cb7b0163-e502-4dd6-8b97-491016269cbd"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [GND] on Power Layer 2, length 0.1676 mm",
+                    "pos": {
+                        "x": 33.38,
+                        "y": 61.2483
+                    },
+                    "uuid": "d851d812-28b3-46c8-9066-f3ed071aaaf6"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Footprint 'CW2217BAAD_DFN12_L4.0_W2.5_P0.4_EP' does not match copy in library 'panda-standard'",
+            "items": [
+                {
+                    "description": "Footprint U903",
+                    "pos": {
+                        "x": 42.6,
+                        "y": 32.65
+                    },
+                    "uuid": "8caf912d-febe-5aa7-a5bd-c343ccb1eba9"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        }
+    ]
+}

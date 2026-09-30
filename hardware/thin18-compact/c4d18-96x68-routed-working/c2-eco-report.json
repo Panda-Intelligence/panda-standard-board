@@ -1,0 +1,36 @@
+{
+  "kind": "C2 FT01C J802 NC ECO, unrouted placement candidate",
+  "source": "c1-96x68-battery-ring",
+  "target_panel": "GDEQ0426T82-FT01C",
+  "pcb_target_mm": [
+    96.0,
+    68.0
+  ],
+  "drc_violations": 0,
+  "unconnected_items": 447,
+  "schematic_parity": 0,
+  "erc": 0,
+  "expected_unrouted": true,
+  "netlist_delta": [
+    {
+      "ref": "J802",
+      "pin": "6",
+      "before": "GND",
+      "after": "unconnected-(J802-Pin_6-Pad6)"
+    },
+    {
+      "ref": "J802",
+      "pin": "7",
+      "before": "GND",
+      "after": "unconnected-(J802-Pin_7-Pad7)"
+    }
+  ],
+  "allowed_delta_only": true,
+  "j802_eco_pins": [
+    6,
+    7
+  ],
+  "manufacturing_release": false,
+  "physical_qualification": false,
+  "pcb_sha256": "6896132554bf5971bb0d13c9b9b62a71ecb55f15cc4ee15aadc301f3e9141bfc"
+}
