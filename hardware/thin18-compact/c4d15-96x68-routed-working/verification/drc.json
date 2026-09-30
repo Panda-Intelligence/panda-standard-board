@@ -1,0 +1,130 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-30T16:53:36",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.5",
+    "schematic_parity": [],
+    "source": "PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 9 [BQ_CE] of U901 on Top Layer",
+                    "pos": {
+                        "x": 49.1,
+                        "y": 7.05
+                    },
+                    "uuid": "a61d3194-db32-493a-8142-70ad8fd10c69"
+                },
+                {
+                    "description": "Track [BQ_CE] on Ground Layer 1, length 2.6406 mm",
+                    "pos": {
+                        "x": 41.495,
+                        "y": 1.055
+                    },
+                    "uuid": "8b5c57f9-5569-406e-85cb-f5da74ce0667"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [BQ_INT] on Top Layer, length 1.2381 mm",
+                    "pos": {
+                        "x": 31.8699,
+                        "y": 12.1377
+                    },
+                    "uuid": "01600699-acb9-4c56-a257-a0c7f9964cda"
+                },
+                {
+                    "description": "Pad 10 [BQ_INT] of U601 on Top Layer",
+                    "pos": {
+                        "x": 28.5175,
+                        "y": 15.92
+                    },
+                    "uuid": "c75b0e44-3cdb-45ba-acba-47095ecf44e2"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [USB_DP] on Top Layer, length 0.8017 mm",
+                    "pos": {
+                        "x": 38.75,
+                        "y": 61.23
+                    },
+                    "uuid": "8474ec7b-e25d-427b-838a-6de5d7f465fd"
+                },
+                {
+                    "description": "Pad B6 [USB_DP] of J201 on Top Layer",
+                    "pos": {
+                        "x": 39.75,
+                        "y": 61.23
+                    },
+                    "uuid": "de216ad0-a6bb-5f80-842e-b62c8812c815"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [SGM41513_REGN] on Top Layer, length 1.1230 mm",
+                    "pos": {
+                        "x": 43.1149,
+                        "y": 9.1559
+                    },
+                    "uuid": "54e2b5ee-e471-445b-a239-e4dd22843c14"
+                },
+                {
+                    "description": "Pad 22 [SGM41513_REGN] of U901 on Top Layer",
+                    "pos": {
+                        "x": 45.3,
+                        "y": 7.05
+                    },
+                    "uuid": "b3828eb9-c114-4649-82af-a3e97b944d55"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": []
+}
