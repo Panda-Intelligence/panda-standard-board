@@ -426,6 +426,15 @@ subprocess.run(
     [KICAD, "pcb", "drc", "--format", "json", "--severity-all", "--schematic-parity", "--output", str(DST / "verification/drc.json"), str(PCB)],
     check=True,
 )
+netlist_path = DST / "verification/netlist.xml"
+netlist_text = netlist_path.read_text()
+netlist_text = re.sub(
+    r"<source>.*?</source>",
+    "<source>eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch</source>",
+    netlist_text,
+    count=1,
+)
+netlist_path.write_text(netlist_text)
 
 erc = json.loads((DST / "verification/erc.json").read_text())
 drc = json.loads((DST / "verification/drc.json").read_text())

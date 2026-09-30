@@ -74,3 +74,7 @@ Required regression:
 - brownout / partial-power behavior.
 
 The C4A CAD candidate is topology-identical, so this is a firmware/device-behavior regression rather than a board-software architecture change.
+
+## SGM37601 front light
+
+C4D-10B requires a fail-closed startup sequence because SGM37601 reset defaults are 20 mA and 36 V OVP, above the FT01C 15 mA/string contract. Firmware must keep FL_HWEN/FL_PWM low, program 14.5 mA (`0x56`), 18 V OVP/internal compensation (`0xA1`) and 1 MHz/PFM (`0x2B`), then assert PWM. Shutdown must deassert PWM before HWEN. Address 0x36 has no documented conflict in the current compact I2C map.

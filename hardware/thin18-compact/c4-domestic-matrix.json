@@ -110,11 +110,11 @@
     },
     {
       "role": "frontlight driver",
-      "current": "LM36922H reference",
+      "current": "LM36922H historical reference",
       "target": "SGM37601YTRL20G/TR",
       "vendor": "SGMICRO",
-      "status": "C4D7_ENGINEERING_SELECTED_CAD_GATE_OPEN",
-      "change": "domestic 40V 6-channel I2C WLED driver selected; LED1/2 for warm/cool; J804 land-pattern import and full support network still required"
+      "status": "C4D10B_ENGINEERING_CAD_INTEGRATED",
+      "change": "mainland 40V six-channel I2C WLED driver integrated; LED1/2 warm/cool, 14.5mA nominal, 18V OVP, exact J804/support network; RFQ and physical qualification open"
     },
     {
       "role": "EPD Schmitt buffers",

@@ -125,17 +125,32 @@ The voice architecture is not required for the base reader.
 
 ### C4-FRONTLIGHT
 
-Foreign LM36922H is reference-only and must not become production BOM.
+C4D-10B replaces the foreign LM36922H reference with a mainland engineering candidate:
 
-Current state:
-- no mainland dual-string I2C replacement has yet been proven to meet the complete C3 contract;
-- SGM37601 is a research lead only;
-- keep the footprint/area reservation, but production MPN remains open.
+- SGMICRO `SGM37601YTRL20G/TR`;
+- TQFN-3.5×3.5-20L, official land pattern transcribed into the project library;
+- I2C address `0x36` with A0 low;
+- LED1/LED2 drive the FT01C warm/cool strings;
+- U601 P15/P16 provide hardware enable and PWM;
+- J804 uses the exact FH34SRJ-6S-0.5SH(50) / C224194 land pattern.
 
-Domestic passives already targeted:
-- Sunlord 10uH front-light inductor
-- CJ Schottky
-- mainland MLCCs once DC-bias curves are bound
+The reset defaults are unsafe for this panel if light is enabled immediately: SGM37601 resets to 20 mA and 36 V OVP, while the panel limit is 15 mA/string. C4D-10B therefore keeps `FL_HWEN` and `FL_PWM` low until firmware writes:
+
+- `REG0x01 = 0x56` — 14.5 mA nominal;
+- `REG0x02 = 0xA1` — internal compensation, 18 V OVP, 2.7 V UVLO;
+- `REG0x03 = 0x2B` — PFM enabled, 1 MHz switching.
+
+Selected support parts:
+
+- Sunlord `SWPA252012S100MT` / C37428, 10 µH;
+- CJ `B5819W SL` / C8598, 40 V / 1 A Schottky;
+- Fenghua input/VIN/VDC/output capacitors and boot pull-downs.
+
+The first-order low-input/high-output estimate gives about 0.301 A peak inductor current, with approximately 2.92× saturation and 2.06× rated-current margin.
+
+Fresh C4D-10B native checks: ERC 0, DRC 0, schematic parity 0; 436 unconnected items remain because final compact routing has not started.
+
+Production RFQ/stock confirmation, current accuracy, open-string behavior, DC-bias capacitance, thermal, EMI, acoustic noise, shutdown leakage and FPC mechanical qualification remain open. This is not manufacturing release.
 
 ### C4-LOGIC / EPD
 

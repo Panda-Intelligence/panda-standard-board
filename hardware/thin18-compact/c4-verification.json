@@ -1,7 +1,8 @@
 {
   "date": "2026-09-29",
   "result": "PASS_DOCUMENTARY_AND_CAD_CHECKS",
-  "active_candidate": "c4c-96x68-domestic-passives",
+  "active_candidate": "c4c-96x68-domestic-passives (documentary baseline)",
+  "latest_integrated_candidate": "c4d10b-96x68-frontlight",
   "native_checks": {
     "drc": 0,
     "open": 447,
@@ -19,7 +20,8 @@
   "mechanical_domestic_screen_complete": true,
   "firmware_dependency_audit_complete": true,
   "power_documentary_review_complete": true,
-  "power_redesign_implemented_in_cad": false,
+  "power_redesign_implemented_in_cad": true,
+  "frontlight_engineering_cad_integrated": true,
   "final_routing_complete": false,
   "physical_tests_completed": 0,
   "manufacturing_release": false,
@@ -32,10 +34,9 @@
     "mutation:manufacturing release true would fail release flag check"
   ],
   "release_blockers": [
-    "C4-PWR/USB/IMU/audio major redesign not yet implemented in schematic/PCB",
-    "compact candidate intentionally unrouted (447 open)",
+    "latest compact candidate remains intentionally unrouted (C4D10B open=436)",
     "mechanical foreign retainers have no proven mainland drop-in replacements",
-    "frontlight production driver remains unproven domestic",
+    "SGM37601 frontlight CAD is integrated; production RFQ and physical qualification remain open",
     "physical EVT / USB-C compliance / charging safety / RF / EMI / thermal not run"
   ]
 }
