@@ -23,7 +23,7 @@ rules['min_track_width']=0.15
 rules['min_via_diameter']=0.40
 rules['min_through_hole_diameter']=0.20
 rules['min_via_annular_width']=0.10
-rules['min_copper_edge_clearance']=0.20
+rules['min_copper_edge_clearance']=0.15
 pro.write_text(json.dumps(d,indent=2)+'\n')
 dru=DST/REL/(STEM+'.kicad_dru')
 if dru.exists():
@@ -39,7 +39,7 @@ drc=json.load(open(DST/'verification/drc.json'));erc=json.load(open(DST/'verific
 counts={'drc':len(drc.get('violations',[])),'open':len(drc.get('unconnected_items',[])),'parity':len(drc.get('schematic_parity',[])),'erc':sum(len(s.get('violations',[])) for s in erc.get('sheets',[]))}
 if counts != {'drc':0,'open':436,'parity':0,'erc':0}: raise SystemExit(counts)
 report={'date':'2026-09-30','kind':'C4D-12 routing-rule checkpoint','source':'c4d11-96x68-final-placement','board_mm':[96,68],
-        'routing_rules_mm':{'track_width':0.20,'clearance':0.15,'via_diameter':0.45,'via_drill':0.25},
+        'routing_rules_mm':{'track_width':0.20,'clearance':0.15,'via_diameter':0.45,'via_drill':0.25,'copper_edge_clearance':0.15},
         'fabrication_basis':'JLC 4-layer standard capability is tighter than these values; selected values remain conservative for yield/cost.',
         'native_checks_before_routing':counts,'routing_complete':False,'manufacturing_release':False}
 (DST/'c4d12-routing-report.json').write_text(json.dumps(report,indent=2)+'\n')

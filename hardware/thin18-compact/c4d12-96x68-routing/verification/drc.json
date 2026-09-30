@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-09-30T13:03:16",
+    "date": "2026-09-30T13:24:15",
     "ignored_checks": [
         {
             "description": "Footprint has no courtyard defined",
@@ -970,7 +970,7 @@
                         "x": 13.75,
                         "y": 33.0
                     },
-                    "uuid": "bed71674-bdf6-4b1d-af8b-d4d7c3a6b161"
+                    "uuid": "3155b72a-08c1-4872-8af9-32d1be5702e1"
                 }
             ],
             "severity": "error",
@@ -1016,7 +1016,7 @@
                         "x": 13.115,
                         "y": 30.0917
                     },
-                    "uuid": "cb344018-d15a-47cb-898f-89158e297132"
+                    "uuid": "54bc664e-ac27-4ffa-8fb6-1dd9e1dcf08e"
                 }
             ],
             "severity": "error",
@@ -1169,7 +1169,7 @@
                         "x": 13.75,
                         "y": 33.0
                     },
-                    "uuid": "bed71674-bdf6-4b1d-af8b-d4d7c3a6b161"
+                    "uuid": "3155b72a-08c1-4872-8af9-32d1be5702e1"
                 },
                 {
                     "description": "Pad 7 [GND] of U904 on Top Layer",
@@ -1177,7 +1177,7 @@
                         "x": 13.115,
                         "y": 30.0917
                     },
-                    "uuid": "cb344018-d15a-47cb-898f-89158e297132"
+                    "uuid": "54bc664e-ac27-4ffa-8fb6-1dd9e1dcf08e"
                 }
             ],
             "severity": "error",
@@ -1652,7 +1652,7 @@
                         "x": 31.325,
                         "y": 6.975
                     },
-                    "uuid": "cc88f2c8-541f-489e-be5e-081b793963fa"
+                    "uuid": "20efcda8-778f-4084-bc15-581d2c2ae732"
                 },
                 {
                     "description": "Pad C2 [GND] of U902 on Top Layer",
@@ -1660,7 +1660,7 @@
                         "x": 31.725,
                         "y": 6.975
                     },
-                    "uuid": "d03b7652-bf8f-4488-873f-3e8a8a1c2259"
+                    "uuid": "66d9d14c-e241-4701-8e29-77cd99c74edd"
                 }
             ],
             "severity": "error",
@@ -1675,7 +1675,7 @@
                         "x": 31.325,
                         "y": 6.975
                     },
-                    "uuid": "cc88f2c8-541f-489e-be5e-081b793963fa"
+                    "uuid": "20efcda8-778f-4084-bc15-581d2c2ae732"
                 },
                 {
                     "description": "Pad 2 [GND] of C401 on Top Layer",
@@ -1721,7 +1721,7 @@
                         "x": 32.125,
                         "y": 6.975
                     },
-                    "uuid": "20f3f2ce-8c24-4e8e-b4ad-b64f34719c78"
+                    "uuid": "d3829072-0d60-494f-8ebb-21d3c35bbe82"
                 },
                 {
                     "description": "Pad C2 [GND] of U902 on Top Layer",
@@ -1729,7 +1729,7 @@
                         "x": 31.725,
                         "y": 6.975
                     },
-                    "uuid": "d03b7652-bf8f-4488-873f-3e8a8a1c2259"
+                    "uuid": "66d9d14c-e241-4701-8e29-77cd99c74edd"
                 }
             ],
             "severity": "error",
@@ -1982,7 +1982,7 @@
                         "x": 32.125,
                         "y": 6.975
                     },
-                    "uuid": "20f3f2ce-8c24-4e8e-b4ad-b64f34719c78"
+                    "uuid": "d3829072-0d60-494f-8ebb-21d3c35bbe82"
                 }
             ],
             "severity": "error",
@@ -1992,12 +1992,12 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Pad A1 [GND] of J201 on Top Layer",
+                    "description": "Pad B12 [GND] of J201 on Top Layer",
                     "pos": {
                         "x": 35.8,
                         "y": 61.23
                     },
-                    "uuid": "689f93fc-3e66-5cda-a343-77db5a6625d7"
+                    "uuid": "d7e434f9-ecea-569c-9115-c306599721a5"
                 },
                 {
                     "description": "PTH pad SH [GND] of J201",
@@ -2373,7 +2373,7 @@
                         "x": 42.6,
                         "y": 32.65
                     },
-                    "uuid": "04b1e63f-f47b-451e-b420-9fc315ba1275"
+                    "uuid": "054923d6-e869-4b81-9201-b90082202d61"
                 }
             ],
             "severity": "error",
@@ -2434,7 +2434,7 @@
                         "x": 42.6,
                         "y": 32.65
                     },
-                    "uuid": "04b1e63f-f47b-451e-b420-9fc315ba1275"
+                    "uuid": "054923d6-e869-4b81-9201-b90082202d61"
                 },
                 {
                     "description": "Pad 6 [GND] of U903 on Top Layer",
@@ -2442,7 +2442,7 @@
                         "x": 43.6,
                         "y": 34.625
                     },
-                    "uuid": "3ce21111-9f18-4f80-93ab-152076fda060"
+                    "uuid": "ecaa39f3-a133-46f1-ad89-b4156671fe5e"
                 }
             ],
             "severity": "error",
@@ -2465,7 +2465,7 @@
                         "x": 45.95,
                         "y": 4.9
                     },
-                    "uuid": "78586a2f-be44-4a5c-a33b-f121f5d8926a"
+                    "uuid": "aee1aa46-f1aa-4657-b83d-e62a5caad731"
                 }
             ],
             "severity": "error",
@@ -2710,7 +2710,7 @@
                         "x": 46.45,
                         "y": 4.9
                     },
-                    "uuid": "86990514-68d1-4f52-8bdb-fb74f1bec87b"
+                    "uuid": "38aefe86-0ae9-4935-93e8-5b8a13030a67"
                 },
                 {
                     "description": "Pad 18 [GND] of U901 on Top Layer",
@@ -2718,7 +2718,7 @@
                         "x": 45.95,
                         "y": 4.9
                     },
-                    "uuid": "78586a2f-be44-4a5c-a33b-f121f5d8926a"
+                    "uuid": "aee1aa46-f1aa-4657-b83d-e62a5caad731"
                 }
             ],
             "severity": "error",
@@ -2733,7 +2733,7 @@
                         "x": 46.45,
                         "y": 4.9
                     },
-                    "uuid": "86990514-68d1-4f52-8bdb-fb74f1bec87b"
+                    "uuid": "38aefe86-0ae9-4935-93e8-5b8a13030a67"
                 },
                 {
                     "description": "Pad 25 [GND] of U901 on Top Layer",
@@ -2741,7 +2741,7 @@
                         "x": 47.2,
                         "y": 6.8
                     },
-                    "uuid": "2501975c-6a12-49d5-864d-76c4645f8f94"
+                    "uuid": "954a4224-f1bd-4f3d-8075-fe6eb61f7adb"
                 }
             ],
             "severity": "error",
@@ -2756,7 +2756,7 @@
                         "x": 46.45,
                         "y": 4.9
                     },
-                    "uuid": "86990514-68d1-4f52-8bdb-fb74f1bec87b"
+                    "uuid": "38aefe86-0ae9-4935-93e8-5b8a13030a67"
                 },
                 {
                     "description": "Pad 2 [GND] of C203 on Top Layer",
@@ -2825,7 +2825,7 @@
                         "x": 47.2,
                         "y": 6.8
                     },
-                    "uuid": "2501975c-6a12-49d5-864d-76c4645f8f94"
+                    "uuid": "954a4224-f1bd-4f3d-8075-fe6eb61f7adb"
                 },
                 {
                     "description": "Pad 2 [GND] of C204 on Top Layer",
@@ -2917,7 +2917,7 @@
                         "x": 48.775,
                         "y": 32.5
                     },
-                    "uuid": "7f0191c4-543e-44c9-9764-51505a2b195b"
+                    "uuid": "41316312-bf04-4c67-ad46-544c5e111b57"
                 },
                 {
                     "description": "Pad 2 [GND] of C501 on Top Layer",
@@ -2940,7 +2940,7 @@
                         "x": 48.775,
                         "y": 32.5
                     },
-                    "uuid": "7f0191c4-543e-44c9-9764-51505a2b195b"
+                    "uuid": "41316312-bf04-4c67-ad46-544c5e111b57"
                 },
                 {
                     "description": "Pad 6 [GND] of U903 on Top Layer",
@@ -2948,7 +2948,7 @@
                         "x": 43.6,
                         "y": 34.625
                     },
-                    "uuid": "3ce21111-9f18-4f80-93ab-152076fda060"
+                    "uuid": "ecaa39f3-a133-46f1-ad89-b4156671fe5e"
                 }
             ],
             "severity": "error",
@@ -4504,7 +4504,7 @@
                         "x": 46.45,
                         "y": 8.7
                     },
-                    "uuid": "432bc4bb-f1a3-4a62-aed4-c9a0401cf4ae"
+                    "uuid": "a9a7bbad-6705-4ea4-a417-dc10507c8e53"
                 },
                 {
                     "description": "Pad 2 [3V3_AON] of R509 on Top Layer",
@@ -4535,7 +4535,7 @@
                         "x": 46.45,
                         "y": 8.7
                     },
-                    "uuid": "432bc4bb-f1a3-4a62-aed4-c9a0401cf4ae"
+                    "uuid": "a9a7bbad-6705-4ea4-a417-dc10507c8e53"
                 }
             ],
             "severity": "error",
@@ -4803,7 +4803,7 @@
                         "x": 45.3,
                         "y": 5.55
                     },
-                    "uuid": "02e9ba54-ef52-4497-ba9c-7ef9fcbecb34"
+                    "uuid": "7ac734cf-636f-49f0-b37f-b640832dfa7c"
                 },
                 {
                     "description": "Pad 2 [SGM41513_SW] of C201 on Top Layer",
@@ -4826,7 +4826,7 @@
                         "x": 45.3,
                         "y": 6.05
                     },
-                    "uuid": "d23eebb8-4ca8-4a89-8083-8fdce53651c1"
+                    "uuid": "4cdb631e-1651-4df2-bbb6-c21b90c67863"
                 },
                 {
                     "description": "Pad 19 [SGM41513_SW] of U901 on Top Layer",
@@ -4834,7 +4834,7 @@
                         "x": 45.3,
                         "y": 5.55
                     },
-                    "uuid": "02e9ba54-ef52-4497-ba9c-7ef9fcbecb34"
+                    "uuid": "7ac734cf-636f-49f0-b37f-b640832dfa7c"
                 }
             ],
             "severity": "error",
@@ -4880,7 +4880,7 @@
                         "x": 31.325,
                         "y": 6.175
                     },
-                    "uuid": "6ac86590-52d0-48b4-b343-217866605195"
+                    "uuid": "eda8ad6b-4476-4db5-b169-3f7876f893a1"
                 }
             ],
             "severity": "error",
@@ -4895,7 +4895,7 @@
                         "x": 31.325,
                         "y": 6.175
                     },
-                    "uuid": "6ac86590-52d0-48b4-b343-217866605195"
+                    "uuid": "eda8ad6b-4476-4db5-b169-3f7876f893a1"
                 },
                 {
                     "description": "Pad B1 [VSYS_RAW] of U902 on Top Layer",
@@ -4903,7 +4903,7 @@
                         "x": 31.325,
                         "y": 6.575
                     },
-                    "uuid": "2384863f-8e96-4d10-9005-31b5099368b4"
+                    "uuid": "71d4e0e9-15fc-4bd9-9721-45bdbec86bc7"
                 }
             ],
             "severity": "error",
@@ -4918,7 +4918,7 @@
                         "x": 31.725,
                         "y": 6.175
                     },
-                    "uuid": "e9bab45a-3d74-478c-bb47-aa5dceb9f19a"
+                    "uuid": "3a4c7f0b-5d70-4bf4-8bf4-380a101aea6e"
                 },
                 {
                     "description": "Pad A1 [VSYS_RAW] of U902 on Top Layer",
@@ -4926,7 +4926,7 @@
                         "x": 31.325,
                         "y": 6.175
                     },
-                    "uuid": "6ac86590-52d0-48b4-b343-217866605195"
+                    "uuid": "eda8ad6b-4476-4db5-b169-3f7876f893a1"
                 }
             ],
             "severity": "error",
@@ -4941,7 +4941,7 @@
                         "x": 32.125,
                         "y": 6.175
                     },
-                    "uuid": "ae043154-5244-4823-afdb-99a58f1f3d78"
+                    "uuid": "096d01d8-9ab5-4e69-9117-ba318aee25f5"
                 },
                 {
                     "description": "Pad A2 [VSYS_RAW] of U902 on Top Layer",
@@ -4949,7 +4949,7 @@
                         "x": 31.725,
                         "y": 6.175
                     },
-                    "uuid": "e9bab45a-3d74-478c-bb47-aa5dceb9f19a"
+                    "uuid": "3a4c7f0b-5d70-4bf4-8bf4-380a101aea6e"
                 }
             ],
             "severity": "error",
@@ -4964,7 +4964,7 @@
                         "x": 32.125,
                         "y": 6.175
                     },
-                    "uuid": "ae043154-5244-4823-afdb-99a58f1f3d78"
+                    "uuid": "096d01d8-9ab5-4e69-9117-ba318aee25f5"
                 },
                 {
                     "description": "Pad 2 [VSYS_RAW] of L402 on Top Layer",
@@ -5087,7 +5087,7 @@
                         "x": 46.95,
                         "y": 4.9
                     },
-                    "uuid": "b32d920d-6ed9-456d-a71c-8dd63b8cc051"
+                    "uuid": "c4ae532e-4b3c-4995-a81d-f529f09010fe"
                 }
             ],
             "severity": "error",
@@ -5102,7 +5102,7 @@
                         "x": 47.45,
                         "y": 4.9
                     },
-                    "uuid": "2aed0732-f7ea-4a9f-9d33-586ee463d0e3"
+                    "uuid": "e846bf3a-b476-4800-96be-ea0037ab6894"
                 },
                 {
                     "description": "Pad 16 [VSYS_RAW] of U901 on Top Layer",
@@ -5110,7 +5110,7 @@
                         "x": 46.95,
                         "y": 4.9
                     },
-                    "uuid": "b32d920d-6ed9-456d-a71c-8dd63b8cc051"
+                    "uuid": "c4ae532e-4b3c-4995-a81d-f529f09010fe"
                 }
             ],
             "severity": "error",
@@ -5125,7 +5125,7 @@
                         "x": 31.725,
                         "y": 7.775
                     },
-                    "uuid": "0307e06d-5185-46c0-92b0-3058a5ea6d66"
+                    "uuid": "ad02a039-93de-40fa-895a-8eef83fd7a9c"
                 },
                 {
                     "description": "Pad E3 [3V3_AON_SRC] of U902 on Top Layer",
@@ -5133,7 +5133,7 @@
                         "x": 32.125,
                         "y": 7.775
                     },
-                    "uuid": "3c2ec9cc-b106-414b-9646-a8128ee5f7d1"
+                    "uuid": "ec7eb426-bda2-462f-bc77-a45d0af662c5"
                 }
             ],
             "severity": "error",
@@ -5148,7 +5148,7 @@
                         "x": 32.125,
                         "y": 7.775
                     },
-                    "uuid": "3c2ec9cc-b106-414b-9646-a8128ee5f7d1"
+                    "uuid": "ec7eb426-bda2-462f-bc77-a45d0af662c5"
                 },
                 {
                     "description": "Pad 1 [3V3_AON_SRC] of C403 on Top Layer",
@@ -5547,7 +5547,7 @@
                         "x": 31.325,
                         "y": 7.375
                     },
-                    "uuid": "526ed4b5-93c1-4e66-9604-fdef22f2c479"
+                    "uuid": "194a9c8a-c247-4cdb-9c26-6e5561588cb7"
                 }
             ],
             "severity": "error",
@@ -5593,7 +5593,7 @@
                         "x": 42.0,
                         "y": 30.675
                     },
-                    "uuid": "d8ebad1d-0e62-48cc-a856-906659617342"
+                    "uuid": "8ca362f9-8529-4bff-97e9-ea284513cf0f"
                 }
             ],
             "severity": "error",
@@ -5608,7 +5608,7 @@
                         "x": 42.0,
                         "y": 30.675
                     },
-                    "uuid": "d8ebad1d-0e62-48cc-a856-906659617342"
+                    "uuid": "8ca362f9-8529-4bff-97e9-ea284513cf0f"
                 },
                 {
                     "description": "Pad 1 [I2C_SCL] of R301 on Top Layer",
@@ -5631,7 +5631,7 @@
                         "x": 47.95,
                         "y": 8.7
                     },
-                    "uuid": "743ffdf0-4319-4b4a-8b31-73c12a5142ec"
+                    "uuid": "831b8b1d-57c7-444d-9366-75393205559c"
                 },
                 {
                     "description": "Pad D1 [I2C_SCL] of U902 on Top Layer",
@@ -5639,7 +5639,7 @@
                         "x": 31.325,
                         "y": 7.375
                     },
-                    "uuid": "526ed4b5-93c1-4e66-9604-fdef22f2c479"
+                    "uuid": "194a9c8a-c247-4cdb-9c26-6e5561588cb7"
                 }
             ],
             "severity": "error",
@@ -5823,7 +5823,7 @@
                         "x": 31.325,
                         "y": 7.775
                     },
-                    "uuid": "b582bc64-8346-4d31-9cfb-9e12bd03c1c6"
+                    "uuid": "08a2c068-bf24-41cf-9fc8-3b481e73a809"
                 }
             ],
             "severity": "error",
@@ -5869,7 +5869,7 @@
                         "x": 42.4,
                         "y": 30.675
                     },
-                    "uuid": "b26530f7-9585-4c22-bc7f-e8d0a4266c21"
+                    "uuid": "a570dbe8-1fa7-4fb2-87f6-a424339c6f6d"
                 }
             ],
             "severity": "error",
@@ -5884,7 +5884,7 @@
                         "x": 48.45,
                         "y": 8.7
                     },
-                    "uuid": "bbcd1d4a-67da-4650-96ae-1f63b9fbd5be"
+                    "uuid": "df2588a1-6110-4909-be27-a988dc9532ca"
                 },
                 {
                     "description": "Pad E1 [I2C_SDA] of U902 on Top Layer",
@@ -5892,7 +5892,7 @@
                         "x": 31.325,
                         "y": 7.775
                     },
-                    "uuid": "b582bc64-8346-4d31-9cfb-9e12bd03c1c6"
+                    "uuid": "08a2c068-bf24-41cf-9fc8-3b481e73a809"
                 }
             ],
             "severity": "error",
@@ -5915,7 +5915,7 @@
                         "x": 42.4,
                         "y": 30.675
                     },
-                    "uuid": "b26530f7-9585-4c22-bc7f-e8d0a4266c21"
+                    "uuid": "a570dbe8-1fa7-4fb2-87f6-a424339c6f6d"
                 }
             ],
             "severity": "error",
@@ -6137,7 +6137,7 @@
                         "x": 14.385,
                         "y": 30.0917
                     },
-                    "uuid": "1b86309f-aaf7-4838-b547-ee0fb872e0aa"
+                    "uuid": "8e1709aa-ff82-452f-bf93-f198e481fce3"
                 },
                 {
                     "description": "Pad 1 [VSYS_AUDIO] of U904 on Top Layer",
@@ -6145,7 +6145,7 @@
                         "x": 11.845,
                         "y": 35.9083
                     },
-                    "uuid": "088bd915-ffbf-4eb4-8b41-a6a9af2ff424"
+                    "uuid": "827b4756-faf3-4575-bbd6-8dc9bd4731be"
                 }
             ],
             "severity": "error",
@@ -6160,7 +6160,7 @@
                         "x": 14.385,
                         "y": 30.0917
                     },
-                    "uuid": "1b86309f-aaf7-4838-b547-ee0fb872e0aa"
+                    "uuid": "8e1709aa-ff82-452f-bf93-f198e481fce3"
                 },
                 {
                     "description": "Pad 1 [VSYS_AUDIO] of TP8 on Bottom Layer",
@@ -6183,7 +6183,7 @@
                         "x": 14.385,
                         "y": 30.0917
                     },
-                    "uuid": "1b86309f-aaf7-4838-b547-ee0fb872e0aa"
+                    "uuid": "8e1709aa-ff82-452f-bf93-f198e481fce3"
                 },
                 {
                     "description": "Pad 2 [VSYS_AUDIO] of R508 on Top Layer",
@@ -6689,7 +6689,7 @@
                         "x": 49.1,
                         "y": 7.05
                     },
-                    "uuid": "9843b0da-0a2f-42e5-8d78-d0f22ce8669a"
+                    "uuid": "f2dd7770-6f1f-473d-9599-a87d83026d79"
                 },
                 {
                     "description": "Pad 1 [BQ_CE] of R607 on Top Layer",
@@ -6927,7 +6927,7 @@
                         "x": 41.6,
                         "y": 34.625
                     },
-                    "uuid": "86e9cb9e-c788-4a39-b265-d964f0f71dd8"
+                    "uuid": "aa106f28-1e96-4bda-aafd-c5535aac724b"
                 }
             ],
             "severity": "error",
@@ -6965,7 +6965,7 @@
                         "x": 49.1,
                         "y": 8.05
                     },
-                    "uuid": "8e85cf43-efa2-4edd-be9f-6c87a6451a68"
+                    "uuid": "35d8d7d9-e732-40f9-88d0-b6ef335d104b"
                 },
                 {
                     "description": "Pad 1 [BQ_INT] of R609 on Top Layer",
@@ -7019,7 +7019,7 @@
                         "x": 47.45,
                         "y": 8.7
                     },
-                    "uuid": "fb946cb8-947a-4725-97cb-92ee8b5d4a26"
+                    "uuid": "5c4c65af-62eb-4152-8d14-e341e1b25471"
                 }
             ],
             "severity": "error",
@@ -7057,7 +7057,7 @@
                         "x": 46.95,
                         "y": 8.7
                     },
-                    "uuid": "0dbddf76-a008-4205-a5f7-fa30ba7dd0b4"
+                    "uuid": "0c156b31-a2a5-45a7-94c7-c9a798ce2612"
                 },
                 {
                     "description": "Pad 13 [BQ_PG] of U601 on Top Layer",
@@ -7356,7 +7356,7 @@
                         "x": 45.3,
                         "y": 7.55
                     },
-                    "uuid": "adaab820-df62-4901-8866-0baafb105a34"
+                    "uuid": "cf6a85d4-de84-4876-8e72-c572081c9841"
                 },
                 {
                     "description": "Pad 1 [SGM41513_PMID] of C203 on Top Layer",
@@ -7425,7 +7425,7 @@
                         "x": 36.175,
                         "y": 31.0
                     },
-                    "uuid": "3a746f56-da01-4b4d-84bd-3f885d4b5973"
+                    "uuid": "2c222c2b-9796-424b-b627-f107a843f397"
                 },
                 {
                     "description": "Pad 7 [BAT_PACKP] of U903 on Top Layer",
@@ -7433,7 +7433,7 @@
                         "x": 43.6,
                         "y": 30.675
                     },
-                    "uuid": "3f19cc8e-dc1c-4e81-899c-19f2bded5476"
+                    "uuid": "59c485b5-da36-48dc-a55b-a54989e91916"
                 }
             ],
             "severity": "error",
@@ -7456,7 +7456,7 @@
                         "x": 37.4625,
                         "y": 9.25
                     },
-                    "uuid": "0f0710e6-2b77-4fad-a995-c70ac7c88d2d"
+                    "uuid": "7ec2cce6-7867-46f5-9e5e-04383850acd7"
                 }
             ],
             "severity": "error",
@@ -7479,7 +7479,7 @@
                         "x": 43.6,
                         "y": 30.675
                     },
-                    "uuid": "3f19cc8e-dc1c-4e81-899c-19f2bded5476"
+                    "uuid": "59c485b5-da36-48dc-a55b-a54989e91916"
                 }
             ],
             "severity": "error",
@@ -7494,7 +7494,7 @@
                         "x": 48.45,
                         "y": 4.9
                     },
-                    "uuid": "327a50b7-9510-49a0-b11b-348dd9f4c97f"
+                    "uuid": "c70b57ed-aaef-49b0-b375-d34c8626a85e"
                 },
                 {
                     "description": "Pad 14 [BAT_PACKP] of U901 on Top Layer",
@@ -7502,7 +7502,7 @@
                         "x": 47.95,
                         "y": 4.9
                     },
-                    "uuid": "cb484425-7ccc-415d-a674-92c130d348e7"
+                    "uuid": "9ef6b0fa-45cc-4739-9cae-fe8c88fd1d31"
                 }
             ],
             "severity": "error",
@@ -7525,7 +7525,7 @@
                         "x": 48.45,
                         "y": 4.9
                     },
-                    "uuid": "327a50b7-9510-49a0-b11b-348dd9f4c97f"
+                    "uuid": "c70b57ed-aaef-49b0-b375-d34c8626a85e"
                 }
             ],
             "severity": "error",
@@ -7696,12 +7696,12 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Pad A4 [VBUS_USB] of J201 on Top Layer",
+                    "description": "Pad B9 [VBUS_USB] of J201 on Top Layer",
                     "pos": {
                         "x": 36.6,
                         "y": 61.23
                     },
-                    "uuid": "302bdbe6-c348-548a-95ed-9403d2361130"
+                    "uuid": "b06b434a-e351-5f56-80c6-c46384bf305e"
                 },
                 {
                     "description": "Pad A9 [VBUS_USB] of J201 on Top Layer",
@@ -7747,7 +7747,7 @@
                         "x": 45.95,
                         "y": 8.7
                     },
-                    "uuid": "7b88c326-03cc-4196-8967-e4ac1cda6a93"
+                    "uuid": "89e6f697-012f-4674-bc1e-01bfcb43aa87"
                 },
                 {
                     "description": "Pad 24 [VBUS_USB] of U901 on Top Layer",
@@ -7755,7 +7755,7 @@
                         "x": 45.3,
                         "y": 8.05
                     },
-                    "uuid": "b636fd09-6bfd-4de1-baae-18584f379d94"
+                    "uuid": "4b3df97d-ff3f-4920-8b6c-87dc8238bacb"
                 }
             ],
             "severity": "error",
@@ -7770,7 +7770,7 @@
                         "x": 45.95,
                         "y": 8.7
                     },
-                    "uuid": "7b88c326-03cc-4196-8967-e4ac1cda6a93"
+                    "uuid": "89e6f697-012f-4674-bc1e-01bfcb43aa87"
                 },
                 {
                     "description": "Pad 1 [VBUS_USB] of D202 on Top Layer",
@@ -7908,7 +7908,7 @@
                         "x": 36.175,
                         "y": 34.0
                     },
-                    "uuid": "20e8387c-d96e-47a1-a34c-c66f68726b6f"
+                    "uuid": "53cba4e7-0bd8-4770-acc6-98927c2ded05"
                 },
                 {
                     "description": "Pad 8 [BAT_CONN_P] of U903 on Top Layer",
@@ -7916,7 +7916,7 @@
                         "x": 43.2,
                         "y": 30.675
                     },
-                    "uuid": "f57b6bfb-c3d1-4933-b607-6072fbd8d589"
+                    "uuid": "e68d8fff-4d98-443c-8652-c86a916f0a4d"
                 }
             ],
             "severity": "error",
@@ -7939,7 +7939,7 @@
                         "x": 34.5375,
                         "y": 9.25
                     },
-                    "uuid": "9e0ac97f-71db-4ca2-ad3f-3ddf89e76706"
+                    "uuid": "87a23d82-60fe-4c33-8b28-b3ecc46068dc"
                 }
             ],
             "severity": "error",
@@ -7954,7 +7954,7 @@
                         "x": 43.2,
                         "y": 30.675
                     },
-                    "uuid": "f57b6bfb-c3d1-4933-b607-6072fbd8d589"
+                    "uuid": "e68d8fff-4d98-443c-8652-c86a916f0a4d"
                 },
                 {
                     "description": "Pad 1 [BAT_CONN_P] of J301 on Top Layer",
@@ -7985,7 +7985,7 @@
                         "x": 34.5375,
                         "y": 9.25
                     },
-                    "uuid": "9e0ac97f-71db-4ca2-ad3f-3ddf89e76706"
+                    "uuid": "87a23d82-60fe-4c33-8b28-b3ecc46068dc"
                 }
             ],
             "severity": "error",
@@ -8031,7 +8031,7 @@
                         "x": 37.825,
                         "y": 31.0
                     },
-                    "uuid": "cb4e4dd7-cf9b-4ed2-b031-ef604b382242"
+                    "uuid": "a9f9d3ab-2748-45c8-a831-1610358dfde3"
                 }
             ],
             "severity": "error",
@@ -8046,7 +8046,7 @@
                         "x": 37.825,
                         "y": 31.0
                     },
-                    "uuid": "cb4e4dd7-cf9b-4ed2-b031-ef604b382242"
+                    "uuid": "a9f9d3ab-2748-45c8-a831-1610358dfde3"
                 },
                 {
                     "description": "Pad 3 [FUEL_VDD] of U903 on Top Layer",
@@ -8054,7 +8054,7 @@
                         "x": 42.4,
                         "y": 34.625
                     },
-                    "uuid": "0bfa95fa-0fea-4493-ac0c-da938bd928e3"
+                    "uuid": "697af820-04da-4fa0-8b2b-67572a34e3b9"
                 }
             ],
             "severity": "error",
@@ -8238,7 +8238,7 @@
                         "x": 31.725,
                         "y": 6.575
                     },
-                    "uuid": "346c7eea-09d6-478d-8e41-03bec7d783b6"
+                    "uuid": "bae67809-9ab7-4b3b-a2e4-91f16879a8a5"
                 }
             ],
             "severity": "error",
@@ -8253,7 +8253,7 @@
                         "x": 31.725,
                         "y": 6.575
                     },
-                    "uuid": "346c7eea-09d6-478d-8e41-03bec7d783b6"
+                    "uuid": "bae67809-9ab7-4b3b-a2e4-91f16879a8a5"
                 },
                 {
                     "description": "Pad B3 [SGM62125_SW1] of U902 on Top Layer",
@@ -8261,7 +8261,7 @@
                         "x": 32.125,
                         "y": 6.575
                     },
-                    "uuid": "24fe44a5-246a-4b91-bc07-a4907d278519"
+                    "uuid": "097c4c23-78b4-46d0-8adf-42a70ad5b8f5"
                 }
             ],
             "severity": "error",
@@ -8276,7 +8276,7 @@
                         "x": 31.725,
                         "y": 7.375
                     },
-                    "uuid": "b6fa4fd1-814c-4f70-aa2e-602d9a0068ae"
+                    "uuid": "c788b679-696a-42b6-9538-8f1d22439fc9"
                 },
                 {
                     "description": "Pad D3 [SGM62125_SW2] of U902 on Top Layer",
@@ -8284,7 +8284,7 @@
                         "x": 32.125,
                         "y": 7.375
                     },
-                    "uuid": "70964be6-3b55-417b-b3ae-071047542665"
+                    "uuid": "1f6f438e-563c-4ff1-9c4b-c399ac744ae4"
                 }
             ],
             "severity": "error",
@@ -8299,7 +8299,7 @@
                         "x": 32.125,
                         "y": 7.375
                     },
-                    "uuid": "70964be6-3b55-417b-b3ae-071047542665"
+                    "uuid": "1f6f438e-563c-4ff1-9c4b-c399ac744ae4"
                 },
                 {
                     "description": "Pad 2 [SGM62125_SW2] of L401 on Top Layer",
@@ -8575,7 +8575,7 @@
                         "x": 49.1,
                         "y": 5.55
                     },
-                    "uuid": "a9321277-45f3-40bc-8c47-736733de0722"
+                    "uuid": "5911293a-21d1-41f0-86c0-bf0ee46364a9"
                 },
                 {
                     "description": "Pad 1 [BQ_QON] of SW202 on Top Layer",
@@ -8675,7 +8675,7 @@
                         "x": 45.3,
                         "y": 6.55
                     },
-                    "uuid": "43086155-653d-4e0f-8aa8-b1eb72b112a8"
+                    "uuid": "c5a45500-508f-4505-9911-231de27c6138"
                 }
             ],
             "severity": "error",
@@ -8767,7 +8767,7 @@
                         "x": 45.3,
                         "y": 7.05
                     },
-                    "uuid": "d211874f-c49a-41fa-bf5b-2c73837a0a51"
+                    "uuid": "746c29a4-5c9b-4bc7-8f69-96e588097cc9"
                 }
             ],
             "severity": "error",
@@ -8997,7 +8997,7 @@
                         "x": 11.845,
                         "y": 30.0917
                     },
-                    "uuid": "8e7293f1-4bf9-46d9-ba02-a8d176992c53"
+                    "uuid": "92796eff-2c2f-4d93-b370-3de353d8f8b0"
                 }
             ],
             "severity": "error",
@@ -9020,7 +9020,7 @@
                         "x": 15.655,
                         "y": 30.0917
                     },
-                    "uuid": "62daf035-3dea-4cc5-83c3-e5888b120f66"
+                    "uuid": "ffe562d4-18a5-40f4-ac63-cd83f0d704f5"
                 }
             ],
             "severity": "error",
@@ -9181,7 +9181,7 @@
                         "x": 42.8,
                         "y": 30.675
                     },
-                    "uuid": "40bbe828-75cf-4a27-863a-8ec9e3f97a96"
+                    "uuid": "44235e5b-847c-4698-916a-d6abf5dd8798"
                 }
             ],
             "severity": "error",
@@ -9196,7 +9196,7 @@
                         "x": 42.8,
                         "y": 30.675
                     },
-                    "uuid": "40bbe828-75cf-4a27-863a-8ec9e3f97a96"
+                    "uuid": "44235e5b-847c-4698-916a-d6abf5dd8798"
                 },
                 {
                     "description": "Pad 1 [BQ_TS] of J302 on Top Layer",
@@ -9227,7 +9227,7 @@
                         "x": 49.1,
                         "y": 6.05
                     },
-                    "uuid": "8ba87278-8f14-4903-a75a-5018deb1b4f8"
+                    "uuid": "0fea8805-492e-4342-bf12-77ec8717d9e1"
                 }
             ],
             "severity": "error",
@@ -9403,7 +9403,7 @@
                         "x": 14.385,
                         "y": 35.9083
                     },
-                    "uuid": "26248485-b7fe-4461-99d9-caeea53b2cf1"
+                    "uuid": "04abcd70-5954-4ca0-a353-f71dfc624313"
                 },
                 {
                     "description": "Pad 19 [I2S_BCLK] of U501 on Top Layer",
@@ -9426,7 +9426,7 @@
                         "x": 13.115,
                         "y": 35.9083
                     },
-                    "uuid": "15916ca0-3750-42d8-ad14-01f42514c17a"
+                    "uuid": "b517df3c-8436-431e-b324-2b6011bb6b5e"
                 },
                 {
                     "description": "Pad 20 [I2S_LRCLK] of U501 on Top Layer",
@@ -9449,7 +9449,7 @@
                         "x": 15.655,
                         "y": 35.9083
                     },
-                    "uuid": "59cdd12b-af3d-49ab-8503-36c17170baf7"
+                    "uuid": "7dc54aad-a70a-4377-9c66-bd046e3c73b2"
                 },
                 {
                     "description": "Pad 21 [I2S_DIN] of U501 on Top Layer",
@@ -9679,7 +9679,7 @@
                         "x": 37.825,
                         "y": 34.0
                     },
-                    "uuid": "b130dbe1-4bdf-489f-b0e2-6b5b89f9cfe1"
+                    "uuid": "e05e643d-63d5-45b8-820c-df77837c62fa"
                 },
                 {
                     "description": "Pad 4 [FUEL_VCELL] of U903 on Top Layer",
@@ -9687,7 +9687,7 @@
                         "x": 42.8,
                         "y": 34.625
                     },
-                    "uuid": "ba9f2c4c-6439-46d1-a04e-bd868ad8e325"
+                    "uuid": "30c5d8ce-1b55-40f8-82f1-2cbb741d4ce0"
                 }
             ],
             "severity": "error",
@@ -9702,7 +9702,7 @@
                         "x": 42.8,
                         "y": 34.625
                     },
-                    "uuid": "ba9f2c4c-6439-46d1-a04e-bd868ad8e325"
+                    "uuid": "30c5d8ce-1b55-40f8-82f1-2cbb741d4ce0"
                 },
                 {
                     "description": "Pad 1 [FUEL_VCELL] of C903 on Top Layer",
@@ -9710,7 +9710,7 @@
                         "x": 47.225,
                         "y": 32.5
                     },
-                    "uuid": "614de6af-9f37-4875-b37c-96bc6d6d4bdf"
+                    "uuid": "a2913017-1404-4117-89ff-f3e1e5e27554"
                 }
             ],
             "severity": "error",
