@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-30",
+  "kind": "C4D-17 BQ_INT closure checkpoint",
+  "source": "c4d16-96x68-routed-working",
+  "native_checks": {
+    "drc": 0,
+    "open": 2,
+    "parity": 0,
+    "erc": 0
+  },
+  "remaining_open_nets": [
+    "BQ_CE",
+    "USB_DP"
+  ],
+  "routing_complete": false,
+  "manufacturing_release": false,
+  "manual_closures": [
+    "BQ_INT/U601 pad10 F.Cu escape -> via (30.0,15.55) -> In1 existing BQ_INT via",
+    "3V3_SD local In2 segment moved through vias (25.5,15.5327)/(30.8,15.3) with Bottom bridge y=14.20"
+  ],
+  "pcb_sha256": "cb047c90f4066d3148aae32c211b866c8a99d4f228c123204b4c9f6ace869907"
+}
