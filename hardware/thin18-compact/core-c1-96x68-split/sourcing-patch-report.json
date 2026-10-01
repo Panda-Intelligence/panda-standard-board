@@ -1,0 +1,29 @@
+{
+  "schema": "panda-split-c1-sourcing-patch-v1",
+  "board": "Core-C1",
+  "identity_verified_refs": [
+    "D201",
+    "D202",
+    "J201",
+    "J301",
+    "J501",
+    "J601",
+    "R306",
+    "R903",
+    "R904",
+    "U501",
+    "U903"
+  ],
+  "manufacturer_mpn_unchanged": true,
+  "non_property_cad_digest_unchanged": true,
+  "non_property_digests": {
+    "eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch": "6d20c031e3859fc0e69902112f3211506385cc69d7b46d2083abb4245e4ebadf",
+    "eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch": "3c23a5a0be4d9f6be694340db99130d24abde329870d294171dd598031ba96b6",
+    "eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch": "b05887740e5e2e5f10ac4391f93dcd674d14154a862f89d0f048829810bcb3df",
+    "eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch": "1610312ac05efacb585f0cf8906f882b493e80e358e741d198de78ff4919a126",
+    "eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb": "14a1455716621e9a69bc57509a8d6308e5fcd2f186bf633a25a0ad967f34969d"
+  },
+  "evidence_sha256": "167fe78964a819838d69af0c1c6e747ba58284e566989011d2e300075ded935a",
+  "stock_reserved": false,
+  "manufacturing_release": false
+}

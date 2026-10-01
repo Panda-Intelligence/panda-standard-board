@@ -1,20 +1,30 @@
 # Thin18 Compact EVT
 
-## Current authoritative state — C4D-20 (2026-10-01)
+## Current authoritative state — Split-C1 (2026-10-01)
 
-The current PCB authority is c4d20-96x68-production-bom, derived from the
-C4D-19 routing closure without changing tracks, vias, footprint poses or pad
-geometry/nets. Native KiCad checks are DRC=0 / open=0 / parity=0 / ERC=0.
+The current PCB authorities are core-c1-96x68-split and
+display-c1-45x36-production-bom. The Core is 96 x 68 mm / four copper layers;
+Display is 45 x 36 mm / two layers. Both boards are 0.8 mm thick and pass
+native KiCad DRC/open/parity/ERC = 0/0/0/0.
 
-Production outputs are under production/c4d20-96x68/: generic BOM/CPL,
-Gerber + drill ZIP, and JLCPCB-formatted BOM/CPL. All populated BOM groups now
-have Manufacturer + exact MPN. JLC/LCSC coverage is partial by design: rows
-without an LCSC ID remain explicit MPN-only mapping/consigned-part items.
+Production packages are under production/core-c1-96x68 and
+production/display-c1-45x36, with production/split-c1-release.json as the combined
+hash-checked record. Every populated BOM ref has Manufacturer and exact MPN.
+Catalog mappings cover 111 Core refs and 36 Display refs; six Core SMT refs,
+one Display SMT ref and the manual TH301 still need supply confirmation.
+Present catalog IDs do not reserve stock or confirm an assembly order.
 
-This is an EVT fabrication candidate, not manufacturing release. Q04-Q12
-physical tests still require a real assembled sample, calibrated instruments,
-raw evidence, independent review and release approval. Older C0/C2/C4 notes
-below are retained as design-history records and do not override C4D-20.
+See SPLIT-C1-CAD-PRODUCTION-CLOSURE.md for electrical closure and
+SPLIT-C1-MECHANICAL-SOURCING.md for current mechanical constraints and sourcing.
+The native XY screen isolates J201 shell pads for a Z-clearance check. The
+battery planning rectangle overlaps the Display by 1530 mm²; the full battery
+must sit outside the occupied interboard gap. Actual battery dimensions,
+maximum component heights, FPC geometry and enclosure tolerances remain open.
+
+This is an EVT fabrication-data candidate. manufacturing_release=false.
+Physical electrical/thermal EVT and actual mechanical fit require assembled
+hardware. C4D-20 integrated outputs, routing141 scenes and the C0/C2 notes below
+are historical; they do not override Split-C1.
 
 
 Thin18 Compact is an architecture fork of the validated `thin18/routing142` baseline.

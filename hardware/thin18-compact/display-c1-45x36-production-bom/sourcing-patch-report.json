@@ -1,0 +1,38 @@
+{
+  "schema": "panda-split-c1-sourcing-patch-v1",
+  "board": "Display-C1",
+  "identity_verified_refs": [
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "D1",
+    "D2",
+    "D3",
+    "J1",
+    "J2",
+    "Q1",
+    "R1",
+    "R13",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "manufacturer_mpn_unchanged": true,
+  "non_property_cad_digest_unchanged": true,
+  "non_property_digests": {
+    "PANDA-EPD0426-SPI-EVT.kicad_sch": "4156482e28de7bc6f4c04f64a1fc1ea98b4b64ab20b475c56f2f447cd5eb6ddb",
+    "PANDA-EPD0426-SPI-EVT.kicad_pcb": "12632c5a0e0c51506de9d040d03e96daa118da1e2644370a12ba9e99cffa710d"
+  },
+  "evidence_sha256": "167fe78964a819838d69af0c1c6e747ba58284e566989011d2e300075ded935a",
+  "stock_reserved": false,
+  "manufacturing_release": false
+}

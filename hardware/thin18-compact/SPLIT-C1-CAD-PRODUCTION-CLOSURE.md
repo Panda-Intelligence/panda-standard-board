@@ -27,8 +27,9 @@ Both packages contain generic BOM/CPL, Gerbers, separate PTH/NPTH drills,
 CRC-checked Gerber ZIP, JLC BOM/CPL, assembly-sourcing CSV, native check reports,
 production manifest, board release-candidate record and SHA256SUMS.
 Blank LCSC IDs remain explicit MPN/consigned-part sourcing tasks:
-Core has 17 SMT refs requiring mapping/consignment and 1 manual assembly item;
-Display has 24 refs requiring mapping/consignment. These are not claimed as
+Core has 6 SMT refs requiring mapping/consignment and 1 manual assembly item;
+Display has 1 ref requiring mapping/consignment. The follow-up added 34 reviewed
+exact-part mappings with source URLs; see SPLIT-C1-MECHANICAL-SOURCING.md. These are not claimed as
 automatic JLC library matches.
 
 ## Electrical and mechanical interface
@@ -77,8 +78,11 @@ manufacturing_release=false.
 
 The actual enclosure/component Z-stack and physical connector mating are not
 verified. The existing rear-battery envelope overlaps the display XY projection;
-final battery layer, swelling allowance and service clearance require mechanical
-resolution. The 1.5-mm gap must be checked against component maximum heights.
+the full battery rectangle intersects the mating connector region and must
+sit outside the interboard gap. A parameterized rear-layer proposal and native
+XY audit are now recorded in SPLIT-C1-MECHANICAL-SOURCING.md. Battery dimensions,
+swelling, supports and service clearance remain unverified. J201 midmount body,
+shell stakes and solder require a Z-clearance check at the Display edge.
 Panel/FPC insertion, retention and actual fit remain physical gates.
 
 USB-C compliance, USB2 SI, charging/NTC, ship mode, deep sleep, front-light current

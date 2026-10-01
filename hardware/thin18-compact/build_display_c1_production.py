@@ -127,6 +127,8 @@ while True:
 pcb.write_text(''.join(out))
 if set(parts)-seen: raise SystemExit(f'pcb refs missing: {sorted(set(parts)-seen)}')
 
+from _split_c1_sourcing import apply_sourcing
+apply_sourcing(DST, 'Display-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
 subprocess.run([K,'pcb','drc','--format','json','--severity-all','--schematic-parity','--output',str(verify/'drc.json'),str(pcb)],check=True)
 subprocess.run([K,'sch','erc','--format','json','--severity-all','--output',str(verify/'erc.json'),str(sch)],check=True)

@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/Users/isaac/workspace/AI/panda-standard-board/hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_sch</source>
-    <date>2026-10-01T19:17:44</date>
+    <date>2026-10-01T19:35:31</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -118,6 +118,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -125,6 +126,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -146,6 +148,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -153,6 +156,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -174,6 +178,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -181,6 +186,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -202,6 +208,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -209,6 +216,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -230,6 +238,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -237,6 +246,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -258,6 +268,7 @@
       <value>4.7u 25V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77077</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR61E475KA12L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -265,6 +276,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77077"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR61E475KA12L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -286,6 +298,7 @@
       <value>1u 25V X7R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C77080</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM21BR71E105KA99L</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -293,6 +306,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77080"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM21BR71E105KA99L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -314,6 +328,7 @@
       <value>100n 25V X7R</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
       <fields>
+        <field name="LCSC">C77050</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM188R71E104KA01D</field>
         <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
@@ -321,6 +336,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77050"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM188R71E104KA01D"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -342,6 +358,7 @@
       <value>100n 25V X7R</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
       <fields>
+        <field name="LCSC">C77050</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM188R71E104KA01D</field>
         <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
@@ -349,6 +366,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77050"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM188R71E104KA01D"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -370,6 +388,7 @@
       <value>100n 25V X7R</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
       <fields>
+        <field name="LCSC">C77050</field>
         <field name="Manufacturer">Murata</field>
         <field name="MPN">GRM188R71E104KA01D</field>
         <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
@@ -377,6 +396,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LCSC" value="C77050"/>
       <property name="Manufacturer" value="Murata"/>
       <property name="MPN" value="GRM188R71E104KA01D"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -399,6 +419,7 @@
       <footprint>Diode_SMD:D_SOD-123</footprint>
       <datasheet>https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf</datasheet>
       <fields>
+        <field name="LCSC">C82046</field>
         <field name="Manufacturer">onsemi</field>
         <field name="MPN">MBR0530T1G</field>
         <field name="Footprint">Diode_SMD:D_SOD-123</field>
@@ -406,6 +427,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="LCSC" value="C82046"/>
       <property name="Manufacturer" value="onsemi"/>
       <property name="MPN" value="MBR0530T1G"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -428,6 +450,7 @@
       <footprint>Diode_SMD:D_SOD-123</footprint>
       <datasheet>https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf</datasheet>
       <fields>
+        <field name="LCSC">C82046</field>
         <field name="Manufacturer">onsemi</field>
         <field name="MPN">MBR0530T1G</field>
         <field name="Footprint">Diode_SMD:D_SOD-123</field>
@@ -435,6 +458,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="LCSC" value="C82046"/>
       <property name="Manufacturer" value="onsemi"/>
       <property name="MPN" value="MBR0530T1G"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -457,6 +481,7 @@
       <footprint>Diode_SMD:D_SOD-123</footprint>
       <datasheet>https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf</datasheet>
       <fields>
+        <field name="LCSC">C82046</field>
         <field name="Manufacturer">onsemi</field>
         <field name="MPN">MBR0530T1G</field>
         <field name="Footprint">Diode_SMD:D_SOD-123</field>
@@ -464,6 +489,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="LCSC" value="C82046"/>
       <property name="Manufacturer" value="onsemi"/>
       <property name="MPN" value="MBR0530T1G"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -486,6 +512,7 @@
       <footprint>Connector_Hirose_DF40:Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm</footprint>
       <datasheet>https://www.hirose.com/en/product/p/CL0684-4003-3-51</datasheet>
       <fields>
+        <field name="LCSC">C424647</field>
         <field name="Manufacturer">Hirose</field>
         <field name="MPN">DF40C-60DP-0.4V(51)</field>
         <field name="Footprint">Connector_Hirose_DF40:Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm</field>
@@ -493,6 +520,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_02x30_Odd_Even" description="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="LCSC" value="C424647"/>
       <property name="Manufacturer" value="Hirose"/>
       <property name="MPN" value="DF40C-60DP-0.4V(51)"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -573,6 +601,7 @@
       <footprint>Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal</footprint>
       <datasheet>https://www.hirose.com/en/product/series/FH12</datasheet>
       <fields>
+        <field name="LCSC">C202112</field>
         <field name="Manufacturer">Hirose</field>
         <field name="MPN">FH12-24S-0.5SH(55)</field>
         <field name="Footprint">Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal</field>
@@ -580,6 +609,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x24" description="Generic connector, single row, 01x24, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="LCSC" value="C202112"/>
       <property name="Manufacturer" value="Hirose"/>
       <property name="MPN" value="FH12-24S-0.5SH(55)"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -653,6 +683,7 @@
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf</datasheet>
       <fields>
+        <field name="LCSC">C179399</field>
         <field name="Manufacturer">Nexperia</field>
         <field name="MPN">NX3008NBK,215</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
@@ -660,6 +691,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Transistor_FET" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="LCSC" value="C179399"/>
       <property name="Manufacturer" value="Nexperia"/>
       <property name="MPN" value="NX3008NBK,215"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -681,6 +713,7 @@
       <value>22</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C114765</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-0722RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -688,6 +721,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C114765"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-0722RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -709,6 +743,7 @@
       <value>22</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C114765</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-0722RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -716,6 +751,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C114765"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-0722RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -737,6 +773,7 @@
       <value>22</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C114765</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-0722RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -744,6 +781,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C114765"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-0722RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -765,6 +803,7 @@
       <value>22</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C114765</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-0722RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -772,6 +811,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C114765"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-0722RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -793,6 +833,7 @@
       <value>22</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C114765</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-0722RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -800,6 +841,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C114765"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-0722RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -821,6 +863,7 @@
       <value>100</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
+        <field name="LCSC">C106232</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0402FR-07100RL</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
@@ -828,6 +871,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C106232"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0402FR-07100RL"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>
@@ -1029,6 +1073,7 @@
       <value>2.2 1%</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <fields>
+        <field name="LCSC">C112307</field>
         <field name="Manufacturer">YAGEO</field>
         <field name="MPN">RC0603FR-072R2L</field>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
@@ -1036,6 +1081,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C112307"/>
       <property name="Manufacturer" value="YAGEO"/>
       <property name="MPN" value="RC0603FR-072R2L"/>
       <property name="Sheetname" value="PANDA-EPD0426-SPI-EVT"/>

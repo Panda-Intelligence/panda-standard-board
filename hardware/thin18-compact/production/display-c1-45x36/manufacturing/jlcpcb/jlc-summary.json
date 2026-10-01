@@ -4,9 +4,11 @@
   "cpl_rows": 37,
   "cpl_top": 36,
   "cpl_bottom": 1,
-  "lcsc_mapped_designators": 13,
-  "mpn_only_designators": 24,
+  "lcsc_mapped_designators": 36,
+  "mpn_only_designators": 1,
   "manual_or_offboard_designators": 0,
+  "identity_verified_designators": 23,
+  "stock_reserved": false,
   "cpl_refs_missing_from_bom": [],
-  "note": "JLC format follows official BOM/CPL headers. Blank LCSC IDs are not claimed as automatic JLC library matches."
+  "note": "JLC format follows official BOM/CPL headers. Blank IDs require mapping/consignment. Present IDs do not reserve stock or confirm an assembly order; new reviewed mappings include identity evidence."
 }

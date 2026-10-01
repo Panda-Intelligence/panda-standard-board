@@ -1,0 +1,54 @@
+{
+  "schema": "panda-split-c1-mechanical-inputs-v1",
+  "status": "engineering_constraints_not_released",
+  "panel": {
+    "mpn": "GDEQ0426T82-FT01C",
+    "nominal_dimensions_mm": [
+      105.33,
+      62.37,
+      1.98
+    ],
+    "source": "C2-DISPLAY-FREEZE.md",
+    "xy_pose_verified": false,
+    "max_tolerance_mm": null
+  },
+  "battery": {
+    "rect_xyxy_mm": [
+      21,
+      4,
+      85,
+      64
+    ],
+    "source": "core-c1-96x68-split/c1-placement-report.json",
+    "status": "historical_planning_envelope_not_released_cavity",
+    "mpn": null,
+    "maximum_assembly_thickness_mm": null,
+    "swelling_allowance_mm": null,
+    "harness_envelope_verified": false
+  },
+  "proposal": {
+    "front": "Panel outside Core F.Cu components",
+    "rear": "Battery outside Display F.Cu components and interboard gap",
+    "frozen": false
+  },
+  "budget_parameters_mm": {
+    "target_outer_thickness": null,
+    "core_front_max_component_height": null,
+    "display_front_max_component_height": null,
+    "panel_clearance_and_adhesive": null,
+    "battery_clearance_and_insulation": null,
+    "front_wall": null,
+    "rear_wall": null,
+    "manufacturing_tolerance_reserve": null
+  },
+  "usb_midmount": {
+    "ref": "J201",
+    "mpn": "USB4500-03-0-A",
+    "source_url": "https://gct.co/connector/usb4500",
+    "published_offset_height_mm": 0.8,
+    "published_shell_stake_length_mm": 0.7,
+    "below_core_b_maximum_including_solder_mm": null,
+    "note": "Product-page lengths are not a complete mounting-plane/solder-fillet Z tolerance; drawing and mounted sample are required."
+  },
+  "manufacturing_release": false
+}

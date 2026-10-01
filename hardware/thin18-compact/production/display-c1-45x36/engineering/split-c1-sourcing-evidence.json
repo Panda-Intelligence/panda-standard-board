@@ -1,0 +1,408 @@
+{
+  "schema": "panda-split-c1-sourcing-evidence-v1",
+  "checked_date": "2026-10-01",
+  "scope": "Exact manufacturer and MPN identity only; library IDs do not reserve stock or approve assembly.",
+  "manufacturing_release": false,
+  "entries": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D201"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD4E05U06DQAR",
+      "library_id": "C138714",
+      "catalog_manufacturer": "TI",
+      "catalog_mpn": "TPD4E05U06DQAR",
+      "source_url": "https://www.lcsc.com/product-detail/C138714.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD1E10B06DPYR",
+      "library_id": "C48260",
+      "catalog_manufacturer": "TI",
+      "catalog_mpn": "TPD1E10B06DPYR",
+      "source_url": "https://www.lcsc.com/product-detail/C48260.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J201"
+      ],
+      "manufacturer": "GCT",
+      "mpn": "USB4500-03-0-A",
+      "library_id": "C5354966",
+      "catalog_manufacturer": "Global Connector Technology",
+      "catalog_mpn": "USB4500-03-0-A",
+      "source_url": "https://www.lcsc.com/product-detail/C5354966.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J301"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "DF58-2P-1.2V(21)",
+      "library_id": "C597951",
+      "catalog_manufacturer": "HRS",
+      "catalog_mpn": "DF58-2P-1.2V(21)",
+      "source_url": "https://www.lcsc.com/product-detail/C597951.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J501"
+      ],
+      "manufacturer": "Molex",
+      "mpn": "104031-0811",
+      "library_id": "C585350",
+      "catalog_manufacturer": "MOLEX",
+      "catalog_mpn": "1040310811",
+      "source_url": "https://www.lcsc.com/product-detail/C585350.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Molex ordering-number formatting: 104031-0811 = 1040310811."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J601"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "DF40C-60DS-0.4V(58)",
+      "library_id": "C2880473",
+      "catalog_manufacturer": "HRS(Hirose)",
+      "catalog_mpn": "DF40C-60DS-0.4V(58)",
+      "source_url": "https://jlcpcb.com/partdetail/HIROSE-DF40C_60DS_0_4V_58/C2880473",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R306"
+      ],
+      "manufacturer": "FOJAN",
+      "mpn": "FRM121WFR010TM",
+      "library_id": "C7467248",
+      "catalog_manufacturer": "FOJAN",
+      "catalog_mpn": "FRM121WFR010TM",
+      "source_url": "https://www.lcsc.com/product-detail/C7467248.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R903",
+        "R904"
+      ],
+      "manufacturer": "FOJAN",
+      "mpn": "FRC0603F1000TS",
+      "library_id": "C2906981",
+      "catalog_manufacturer": "FOJAN",
+      "catalog_mpn": "FRC0603F1000TS",
+      "source_url": "https://www.lcsc.com/product-detail/C2906981.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U501"
+      ],
+      "manufacturer": "Espressif",
+      "mpn": "ESP32-S3-WROOM-1U-N16R8",
+      "library_id": "C3013946",
+      "catalog_manufacturer": "ESPRESSIF",
+      "catalog_mpn": "ESP32-S3-WROOM-1U-N16R8",
+      "source_url": "https://www.lcsc.com/product-detail/C3013946.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U903"
+      ],
+      "manufacturer": "Cellwise",
+      "mpn": "CW2217BAAD",
+      "library_id": "C5203993",
+      "catalog_manufacturer": "Cellwise",
+      "catalog_mpn": "CW2217BAAD",
+      "source_url": "https://jlcpcb.com/partdetail/Cellwise-CW2217BAAD/C5203993",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "manufacturer": "Murata",
+      "mpn": "GRM21BR61E475KA12L",
+      "library_id": "C77077",
+      "catalog_manufacturer": "muRata",
+      "catalog_mpn": "GRM21BR61E475KA12L",
+      "source_url": "https://www.lcsc.com/product-detail/C77077.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C10"
+      ],
+      "manufacturer": "Murata",
+      "mpn": "GRM21BR71E105KA99L",
+      "library_id": "C77080",
+      "catalog_manufacturer": "muRata",
+      "catalog_mpn": "GRM21BR71E105KA99L",
+      "source_url": "https://www.lcsc.com/product-detail/C77080.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "manufacturer": "Murata",
+      "mpn": "GRM188R71E104KA01D",
+      "library_id": "C77050",
+      "catalog_manufacturer": "muRata",
+      "catalog_mpn": "GRM188R71E104KA01D",
+      "source_url": "https://www.lcsc.com/product-detail/C77050.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "manufacturer": "onsemi",
+      "mpn": "MBR0530T1G",
+      "library_id": "C82046",
+      "catalog_manufacturer": "onsemi",
+      "catalog_mpn": "MBR0530T1G",
+      "source_url": "https://www.lcsc.com/product-detail/C82046.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J1"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "DF40C-60DP-0.4V(51)",
+      "library_id": "C424647",
+      "catalog_manufacturer": "HRS",
+      "catalog_mpn": "DF40C-60DP-0.4V(51)",
+      "source_url": "https://www.lcsc.com/product-detail/C424647.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "FH12-24S-0.5SH(55)",
+      "library_id": "C202112",
+      "catalog_manufacturer": "HRS",
+      "catalog_mpn": "FH12-24S-0.5SH(55)",
+      "source_url": "https://www.lcsc.com/product-detail/C202112.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "Q1"
+      ],
+      "manufacturer": "Nexperia",
+      "mpn": "NX3008NBK,215",
+      "library_id": "C179399",
+      "catalog_manufacturer": "Nexperia",
+      "catalog_mpn": "NX3008NBK,215",
+      "source_url": "https://www.lcsc.com/product-detail/C179399.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0722RL",
+      "library_id": "C114765",
+      "catalog_manufacturer": "YAGEO",
+      "catalog_mpn": "RC0402FR-0722RL",
+      "source_url": "https://www.lcsc.com/product-detail/C114765.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R6"
+      ],
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100RL",
+      "library_id": "C106232",
+      "catalog_manufacturer": "YAGEO",
+      "catalog_mpn": "RC0402FR-07100RL",
+      "source_url": "https://www.lcsc.com/product-detail/C106232.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R13"
+      ],
+      "manufacturer": "YAGEO",
+      "mpn": "RC0603FR-072R2L",
+      "library_id": "C112307",
+      "catalog_manufacturer": "YAGEO",
+      "catalog_mpn": "RC0603FR-072R2L",
+      "source_url": "https://www.lcsc.com/product-detail/C112307.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+    }
+  ],
+  "unresolved_smt": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C301"
+      ],
+      "mpn": "CPH3225A",
+      "source_url": "https://www.sii.co.jp/en/me/datasheets/chip-capacitor/cph3225a/",
+      "next_action": "Confirm exact packing and consignment or library ID."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C506",
+        "C513"
+      ],
+      "mpn": "0603B106K100NT",
+      "next_action": "Confirm exact Fenghua X7R 10uF/10V orderable part and library ID; do not substitute dielectric."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "mpn": "XGL4015-222MEC",
+      "source_url": "https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/",
+      "next_action": "Confirm supplier/packing and JLC consignment."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U902"
+      ],
+      "mpn": "SGM62125AXG/TR",
+      "source_url": "https://www.sg-micro.com/product/SGM62125",
+      "next_action": "Manufacturer-listed exact WLCSP variant; confirm supply or consignment."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U905"
+      ],
+      "mpn": "SGM37601YTRL20G/TR",
+      "source_url": "https://www.sg-micro.com/product/SGM37601",
+      "next_action": "Manufacturer-listed exact TQFN20 variant; confirm supply or consignment."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "mpn": "LSXNE3030KKT470MN",
+      "source_url": "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M",
+      "next_action": "Confirm exact current part, stock and library ID/consignment."
+    }
+  ],
+  "manual": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "TH301"
+      ],
+      "mpn": "103JT-025-600AY",
+      "next_action": "Supply off-board thermistor, assembly attachment and battery harness separately."
+    }
+  ]
+}

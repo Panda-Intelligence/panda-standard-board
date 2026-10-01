@@ -294,6 +294,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C114765"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d7ab3678-c126-596e-b6e8-5a496697f15b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "1ed28861-d813-5cbe-bc1e-dbaf6b9d0d97") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
@@ -583,6 +594,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c5bdfec0-b895-51a5-98b7-a2f951853656")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "27d537df-8fe3-5d5e-b939-3e87c3462ae7") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
@@ -741,6 +763,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "512579c2-bfcb-44cd-a60e-f7b54eef6da9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+(property "LCSC" "C82046"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd5f0627-5434-5776-8f26-1d8d084e44a5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1201,6 +1236,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a1c75fa2-5aaf-5f5b-8183-dfc6396a0d1c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "2c11800c-d221-5429-9509-fa1781543662") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
@@ -1363,6 +1409,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77050"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6bd91afb-e49e-50a7-853b-2931d5eab5ba")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9836515e-2237-5601-81ce-99e9c5e4af6e") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
@@ -1520,6 +1577,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2719fff2-662f-41b6-8fe4-00d161399c41")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C112307"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2a30c672-cc85-58e8-8dcd-a480550ac830")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2215,6 +2283,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C114765"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0663c5ff-1a45-53b5-ae48-1bfe945a7a36")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "3c2911de-dca2-5f9d-b717-e7069e360c40") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
@@ -2534,6 +2613,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "33bdeae6-8832-4bb6-b689-6d8733216c58")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C179399"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "94c38db9-adf2-57e3-a5f4-9e3851779db1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2927,6 +3017,19 @@
 					(thickness 0.15)
 				)
 			)
+		)
+(property "LCSC" "C82046"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dff8ef5c-860c-59a3-b10c-59bffc997582")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)(property "Manufacturer" "onsemi" (at 0 0 180) (layer "F.Fab") (hide yes) (uuid "7b9e49da-af8e-5fc6-9fe0-c7b85912dd86") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 180)
@@ -3214,6 +3317,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "763e83ae-cb56-4532-901a-b23b0aee5a77")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e8fd05e2-208a-5f58-af58-22e0eed7e7bb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4599,6 +4713,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77050"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4509ba50-eca1-51ca-a3b7-738429212788")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "bdbdd9f2-edc5-581a-8c0b-27514500b7a8") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
@@ -4756,6 +4881,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "00985bb5-004d-435f-9f24-90306fa83ebf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C77080"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3520be7-7e0e-56af-addc-3b49659fc38a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5085,6 +5221,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "61f6d92d-3109-5ad0-8f62-1400cad877db")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 270) (layer "F.Fab") (hide yes) (uuid "a25a0ea0-29ee-546e-b73d-7794af87b56d") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 270)
@@ -5242,6 +5389,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1001d7c5-7944-4598-8381-04a5eb83261d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C106232"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "55bc2e35-16c7-531c-80dc-5dc184228d49")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5405,6 +5563,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a1533cc7-c864-4b86-9b4a-e6d4174df18a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+(property "LCSC" "C82046"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53ce6400-21ab-58e1-ae97-ddd9fec64b3f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5703,6 +5874,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77050"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f0816a38-3643-545e-bbbf-99fe26009b75")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "acc03f82-0538-59c5-b5a3-00ec1df6094a") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
@@ -5865,6 +6047,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33b16b20-4b6f-57bf-8880-5645938adcbd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "5954ae94-51e2-5d83-88a7-fba96e7cacd0") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
@@ -6022,6 +6215,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6e03247a-898e-441c-b078-4fd97cacd71a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C114765"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ac31dbca-51a0-54c1-bfc0-63345c41b1d3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6351,6 +6555,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C114765"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d3020e93-8878-59bb-aed3-51dd628e7f65")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "4580786f-a79d-59c7-a51c-6145f9d4c50b") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
@@ -6508,6 +6723,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "58d23ead-2482-4499-a81a-eebff37e0aa9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C114765"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b29cf1f-adaf-5d07-833c-ee53aee3ffff")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6675,6 +6901,17 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+(property "LCSC" "C77077"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "696d911d-864b-54f3-b10f-4ebe3cf71699")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "98d50f0f-49be-5664-b17f-a3e55f46d240") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
@@ -6832,6 +7069,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bb2ec9fe-ae13-47be-8cf6-3a5baefccd34")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" "C202112"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7e5047de-5f59-5aef-9c48-b5e2992c39fd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7577,6 +7825,18 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b7b88de5-5e0c-4463-b68c-15e9d425049b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+(property "LCSC" "C424647"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ff67e15c-e6ef-5c42-8190-a39fcc6f0983")
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -26,15 +26,15 @@
   "files": {
     "pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
-      "sha256": "a427456dc7c8a471bdeb2e9def21a5ab165c53d3f98b7207c742590da56b6fb1"
+      "sha256": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
     },
     "schematic": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_sch",
-      "sha256": "72332b0e8564de1161b16135cd6fd864ffe42e32885de20b51aa0b0e3b8d2b44"
+      "sha256": "ec7303130d9ad21fb1841f7721539b7d20c979c02e9f9b5b8d465467b369c841"
     },
     "bom": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
-      "sha256": "e7d6510287e3f95d8359f78a5f307d06cc8a2bf09a4405170bbb0bb8bec40171"
+      "sha256": "120111fdc0381e010c7917834a775d477b129c19e3a498ce039210ac361cef0f"
     },
     "cpl": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
@@ -42,19 +42,19 @@
     },
     "gerber_zip": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/gerber-drill.zip",
-      "sha256": "7ca861790f101d171a8e2d950a5df3210f1d3551f9f5cbb3be3d7db45287259f"
+      "sha256": "7ad25a2d9b69e3a0508995298d660ff162725e7ada5724c0c699399c99e14562"
     },
     "drc": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/verification/drc.json",
-      "sha256": "a6c4a34186300ca1d6fc3e35bbc4ef55f3e319fb57d1d3825e891b87d008da61"
+      "sha256": "e0190966a1bed4d4a53c87dbb4c4586e477f5c5affa311c1159b92e11cb3efa6"
     },
     "erc": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/verification/erc.json",
-      "sha256": "1e4b63c82c0ad98857ef60e4fa454a5c16d55a13dbe6512bc2da29ba6ef0beac"
+      "sha256": "e41e3c9b570061a3d6f48e94f5343d2a4169a481c408e9d6afcf9ee3512aca92"
     },
     "netlist": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/verification/netlist.xml",
-      "sha256": "bf9c80562da893610d96a1a11dcc83b4b44bb97f4478c3f7c67ca609a9c4b1ea"
+      "sha256": "2f79562939ca7cc3729a34a8945807f1eba9d6f1b0d9be56adc345243eeb9380"
     },
     "cad_config_kicad_pro": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pro",
@@ -66,7 +66,7 @@
     },
     "jlc_bom": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/BOM_JLCPCB.csv",
-      "sha256": "9ac52dfcc16ee3d1acb8837205fc09661270f29badb3cf2d34caaa425c7613e2"
+      "sha256": "94e40f0d263e231df2a29cf10e9baf7ce8c121755ca4d619dbca071048c1d026"
     },
     "jlc_cpl": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/CPL_JLCPCB.csv",
@@ -74,17 +74,35 @@
     },
     "assembly_sourcing": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/assembly-sourcing.csv",
-      "sha256": "d4ed9164b27d5bc5cae331abf1d33ac2da587042109a5b3ac445f6aca6512edc"
+      "sha256": "d0776d4b2330b86d163c83dc4c9234d91e9faad7b7d54b41eff2e50f16166e60"
     },
     "jlc_summary": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/jlc-summary.json",
-      "sha256": "27baef5bb1ecc2e4be47303a55f08f447d7f8552173129de88146490e05d7fce"
+      "sha256": "1eb0fd460fef724f2205f0ddc3da87af1929fef2009a001cb6a47c91153d6ba1"
+    },
+    "mechanical_audit": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/engineering/split-c1-mechanical-audit.json",
+      "sha256": "7e1a43fd47f4e841a396fd0700d48c41d03d91c41a177be78f406e5cf4727b79"
+    },
+    "mechanical_inputs": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/engineering/split-c1-mechanical-inputs.json",
+      "sha256": "be2570008ad64cebda86266429e5dbad8b63440bb130f195debf2d7af2a83eca"
+    },
+    "sourcing_evidence": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/engineering/split-c1-sourcing-evidence.json",
+      "sha256": "167fe78964a819838d69af0c1c6e747ba58284e566989011d2e300075ded935a"
+    },
+    "cad_validation": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/engineering/split-c1-validation.json",
+      "sha256": "e86c52eb5b3dea5d267dc6798a144bd488d514edb2f9402347012b61ca53719f"
     }
   },
   "note": "CAD/manufacturing-data candidate. Physical EVT and enclosure qualification remain open.",
   "assembly_sourcing_status": {
-    "lcsc_mapped_designators": 13,
-    "mpn_only_designators": 24,
+    "lcsc_mapped_designators": 36,
+    "mpn_only_designators": 1,
+    "identity_verified_designators": 23,
+    "stock_reserved": false,
     "automatic_jlc_library_mapping_complete": false
   }
 }

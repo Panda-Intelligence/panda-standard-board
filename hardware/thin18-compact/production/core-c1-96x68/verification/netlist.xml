@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/Users/isaac/workspace/AI/panda-standard-board/hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch</source>
-    <date>2026-10-01T19:17:47</date>
+    <date>2026-10-01T19:38:52</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -1056,6 +1056,7 @@
       <datasheet>https://www.hirose.com/en/product/p/CL0666-1001-0-21</datasheet>
       <description>Low-profile DF58 engineering interface. Pin1 BAT_CONN_P before R306/U301 BAT; pin2 GND. MP anchors no-net. Separate external NTC stays on J302. 3A AWG28 series rating, battery, peak current and assembly qualification pending.</description>
       <fields>
+        <field name="LCSC">C597951</field>
         <field name="Manufacturer">Hirose</field>
         <field name="MPN">DF58-2P-1.2V(21)</field>
         <field name="Footprint">panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical</field>
@@ -1063,6 +1064,7 @@
         <field name="Description">Low-profile DF58 engineering interface. Pin1 BAT_CONN_P before R306/U301 BAT; pin2 GND. MP anchors no-net. Separate external NTC stays on J302. 3A AWG28 series rating, battery, peak current and assembly qualification pending.</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="LCSC" value="C597951"/>
       <property name="Manufacturer" value="Hirose"/>
       <property name="MPN" value="DF58-2P-1.2V(21)"/>
       <property name="Sheetname" value="PANDA-STD-CORE-EVT-quilter-j501-merged"/>
@@ -1086,6 +1088,7 @@
       <datasheet>https://www.molex.com/en-us/products/part-detail/1040310811</datasheet>
       <description>Molex 104031-0811 front-entry push-pull microSD socket with detect switch; A-stage candidate; ESD, sales-drawing B-stage, M0 and WP9 remain blocked.</description>
       <fields>
+        <field name="LCSC">C585350</field>
         <field name="Manufacturer">Molex</field>
         <field name="MPN">104031-0811</field>
         <field name="Footprint">Connector_Card:microSD_HC_Molex_104031-0811</field>
@@ -1093,6 +1096,7 @@
         <field name="Description">Molex 104031-0811 front-entry push-pull microSD socket with detect switch; A-stage candidate; ESD, sales-drawing B-stage, M0 and WP9 remain blocked.</field>
       </fields>
       <libsource lib="Connector" part="Micro_SD_Card_Det2" description="Micro SD Card Socket with two card detection pins"/>
+      <property name="LCSC" value="C585350"/>
       <property name="Manufacturer" value="Molex"/>
       <property name="MPN" value="104031-0811"/>
       <property name="Sheetname" value="PANDA-STD-CORE-EVT-quilter-j501-merged"/>
@@ -1504,6 +1508,7 @@
       <datasheet>https://jlcpcb.com/partdetail/FOJAN-FRM121WFR010TM/C7467248</datasheet>
       <description>FOJAN 10mΩ 1W ±1% ±50ppm 1206 current sense shunt for CW2217</description>
       <fields>
+        <field name="LCSC">C7467248</field>
         <field name="Manufacturer">FOJAN</field>
         <field name="MPN">FRM121WFR010TM</field>
         <field name="JLCPCB">C7467248</field>
@@ -1516,6 +1521,7 @@
         <field name="Description">FOJAN 10mΩ 1W ±1% ±50ppm 1206 current sense shunt for CW2217</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C7467248"/>
       <property name="Manufacturer" value="FOJAN"/>
       <property name="MPN" value="FRM121WFR010TM"/>
       <property name="JLCPCB" value="C7467248"/>
@@ -3219,6 +3225,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>C4D-5 CW2217 support component</description>
       <fields>
+        <field name="LCSC">C2906981</field>
         <field name="Manufacturer">FOJAN</field>
         <field name="MPN">FRC0603F1000TS</field>
         <field name="JLCPCB">C2906981</field>
@@ -3230,6 +3237,7 @@
         <field name="Description">C4D-5 CW2217 support component</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C2906981"/>
       <property name="Manufacturer" value="FOJAN"/>
       <property name="MPN" value="FRC0603F1000TS"/>
       <property name="JLCPCB" value="C2906981"/>
@@ -3256,6 +3264,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>C4D-5 CW2217 support component</description>
       <fields>
+        <field name="LCSC">C2906981</field>
         <field name="Manufacturer">FOJAN</field>
         <field name="MPN">FRC0603F1000TS</field>
         <field name="JLCPCB">C2906981</field>
@@ -3267,6 +3276,7 @@
         <field name="Description">C4D-5 CW2217 support component</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC" value="C2906981"/>
       <property name="Manufacturer" value="FOJAN"/>
       <property name="MPN" value="FRC0603F1000TS"/>
       <property name="JLCPCB" value="C2906981"/>
@@ -4161,6 +4171,7 @@
       <datasheet>https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf</datasheet>
       <description>16MB Flash / 8MB PSRAM, external RF port; antenna remains INSIDE case</description>
       <fields>
+        <field name="LCSC">C3013946</field>
         <field name="Manufacturer">Espressif</field>
         <field name="MPN">ESP32-S3-WROOM-1U-N16R8</field>
         <field name="ECO_ID">THIN18-U501-1U-01</field>
@@ -4169,6 +4180,7 @@
         <field name="Description">16MB Flash / 8MB PSRAM, external RF port; antenna remains INSIDE case</field>
       </fields>
       <libsource lib="PandaDomestic" part="ESP32_S3_WROOM_1U_N16R8" description="16MB Flash / 8MB PSRAM, external RF port; antenna remains INSIDE case"/>
+      <property name="LCSC" value="C3013946"/>
       <property name="Manufacturer" value="Espressif"/>
       <property name="MPN" value="ESP32-S3-WROOM-1U-N16R8"/>
       <property name="ECO_ID" value="THIN18-U501-1U-01"/>
@@ -4473,6 +4485,7 @@
       <datasheet>http://www.cellwise-semi.com/Public/assests/menu/20260416/69e07bdb6c434.pdf</datasheet>
       <description>Cellwise CW2217BAAD mainland current-sensing fuel gauge; DFN12; C4D-5 EVT</description>
       <fields>
+        <field name="LCSC">C5203993</field>
         <field name="Manufacturer">Cellwise</field>
         <field name="MPN">CW2217BAAD</field>
         <field name="JLCPCB">C5203993</field>
@@ -4481,6 +4494,7 @@
         <field name="Description">Cellwise CW2217BAAD mainland current-sensing fuel gauge; DFN12; C4D-5 EVT</field>
       </fields>
       <libsource lib="panda-standard" part="CW2217BAAD" description="Cellwise CW2217BAAD mainland current-sensing fuel gauge; DFN12; JLC C5203993"/>
+      <property name="LCSC" value="C5203993"/>
       <property name="Manufacturer" value="Cellwise"/>
       <property name="MPN" value="CW2217BAAD"/>
       <property name="JLCPCB" value="C5203993"/>
@@ -4637,6 +4651,7 @@
       <footprint>Package_SON:USON-10_2.5x1.0mm_P0.5mm</footprint>
       <datasheet>https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf</datasheet>
       <fields>
+        <field name="LCSC">C138714</field>
         <field name="Manufacturer">Texas Instruments</field>
         <field name="MPN">TPD4E05U06DQAR</field>
         <field name="Footprint">Package_SON:USON-10_2.5x1.0mm_P0.5mm</field>
@@ -4644,6 +4659,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="panda-standard" part="TPD4E05U06DQAR" description="Exact TPD4E05U06DQAR pin map; USB engineering candidate, physical qualification pending."/>
+      <property name="LCSC" value="C138714"/>
       <property name="Manufacturer" value="Texas Instruments"/>
       <property name="MPN" value="TPD4E05U06DQAR"/>
       <property name="Sheetname" value="USB2 sink / CC / VBUS"/>
@@ -4672,6 +4688,7 @@
       <footprint>Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm</footprint>
       <datasheet>https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf</datasheet>
       <fields>
+        <field name="LCSC">C48260</field>
         <field name="Manufacturer">Texas Instruments</field>
         <field name="MPN">TPD1E10B06DPYR</field>
         <field name="Footprint">Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm</field>
@@ -4679,6 +4696,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="panda-standard" part="TPD1E10B06DPYR" description="Exact TPD1E10B06DPYR pin map; USB engineering candidate, physical qualification pending."/>
+      <property name="LCSC" value="C48260"/>
       <property name="Manufacturer" value="Texas Instruments"/>
       <property name="MPN" value="TPD1E10B06DPYR"/>
       <property name="Sheetname" value="USB2 sink / CC / VBUS"/>
@@ -4700,6 +4718,7 @@
       <datasheet>https://gct.co/files/drawings/usb4500.pdf</datasheet>
       <description>GCT USB4500-03-0-A; USB 2.0 Type-C receptacle, SMT, mid mount, 0.8 mm offset, 16P, 5 A VBUS. Land pattern measured from the vendor Recommended PCB Layout (Thickness=0.80mm) drawing: 12 SMT pads (4x0.60 + 8x0.30, 1.10 tall, 6.20..7.30 mm inboard of the PCB edge), 4 plated shell slots at x=+/-5.62, y=1.60/5.60 mm inboard (1.00x2.20 / 0.60x1.80 and 1.00x1.80 / 0.60x1.40). Board edge is straight; no cutout.</description>
       <fields>
+        <field name="LCSC">C5354966</field>
         <field name="Manufacturer">GCT</field>
         <field name="MPN">USB4500-03-0-A</field>
         <field name="Footprint">panda-layout:USB4500_08mm_MidMount_LayoutReview</field>
@@ -4707,6 +4726,7 @@
         <field name="Description">GCT USB4500-03-0-A; USB 2.0 Type-C receptacle, SMT, mid mount, 0.8 mm offset, 16P, 5 A VBUS. Land pattern measured from the vendor Recommended PCB Layout (Thickness=0.80mm) drawing: 12 SMT pads (4x0.60 + 8x0.30, 1.10 tall, 6.20..7.30 mm inboard of the PCB edge), 4 plated shell slots at x=+/-5.62, y=1.60/5.60 mm inboard (1.00x2.20 / 0.60x1.80 and 1.00x1.80 / 0.60x1.40). Board edge is straight; no cutout.</field>
       </fields>
       <libsource lib="panda-standard" part="USB_C_Receptacle_16P" description="GCT USB4500-03-0-A; USB 2.0 Type-C receptacle, SMT, mid mount, 0.8 mm offset, 16P, 5 A VBUS. Land pattern measured from the vendor Recommended PCB Layout (Thickness=0.80mm) drawing: 12 SMT pads (4x0.60 + 8x0.30, 1.10 tall, 6.20..7.30 mm inboard of the PCB edge), 4 plated shell slots at x=+/-5.62, y=1.60/5.60 mm inboard (1.00x2.20 / 0.60x1.80 and 1.00x1.80 / 0.60x1.40). Board edge is straight; no cutout."/>
+      <property name="LCSC" value="C5354966"/>
       <property name="Manufacturer" value="GCT"/>
       <property name="MPN" value="USB4500-03-0-A"/>
       <property name="Sheetname" value="USB2 sink / CC / VBUS"/>
@@ -5855,6 +5875,7 @@
       <footprint>Connector_Hirose_DF40:Hirose_DF40C-60DS-0.4V_2x30_P0.4mm</footprint>
       <datasheet>https://www.hirose.com/en/product/series/DF40</datasheet>
       <fields>
+        <field name="LCSC">C2880473</field>
         <field name="Manufacturer">Hirose</field>
         <field name="MPN">DF40C-60DS-0.4V(58)</field>
         <field name="Footprint">Connector_Hirose_DF40:Hirose_DF40C-60DS-0.4V_2x30_P0.4mm</field>
@@ -5862,6 +5883,7 @@
         <field name="Description"/>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_02x30_Odd_Even" description="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="LCSC" value="C2880473"/>
       <property name="Manufacturer" value="Hirose"/>
       <property name="MPN" value="DF40C-60DS-0.4V(58)"/>
       <property name="Sheetname" value="Integrated SSD1677 display"/>

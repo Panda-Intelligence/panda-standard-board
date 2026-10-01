@@ -15,15 +15,17 @@
   "manufacturing_release": false,
   "production_manifest": {
     "path": "hardware/thin18-compact/production/display-c1-45x36/production-manifest.json",
-    "sha256": "e91cab8feeed2b2bc7c578509ba722c0b48a395bdc45a57f120b93f361423669"
+    "sha256": "2b8b3e48b847851bd1276afe8d0f1072ac9580ed129bc72bd2b8c4890550f07c"
   },
   "interface_contract": {
     "path": "hardware/thin18-compact/split-c1-interface.json",
-    "sha256": "f39f5bf6810aec3fa563a8027c9e0de0271c313e4583da4eb2899d299f7dfc94"
+    "sha256": "6e227a11dd09c6b6b4f22fc634e9c60e3f3d3210f14214fa5bdb9e6c9028436b"
   },
   "assembly_sourcing": {
-    "lcsc_mapped_designators": 13,
-    "mpn_only_designators": 24,
+    "lcsc_mapped_designators": 36,
+    "mpn_only_designators": 1,
+    "identity_verified_designators": 23,
+    "stock_reserved": false,
     "automatic_jlc_library_mapping_complete": false
   },
   "physical_gates": "Physical electrical EVT, enclosure/battery Z-stack, panel fit and actual mating remain unverified."

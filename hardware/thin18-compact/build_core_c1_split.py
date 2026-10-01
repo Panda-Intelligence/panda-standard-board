@@ -116,6 +116,8 @@ section=re.sub(r'\(uuid "[^"]+"\)',lambda m:f'(uuid "{new_uuid()}")',section)
 section=section.replace('(property "Reference" "J1"','(property "Reference" "J601"',1)
 section=section.replace('(reference "J1")','(reference "J601")',1)
 section=section.replace('DF40C-60DP-0.4V(51)','DF40C-60DS-0.4V(58)')
+# Socket is a different purchasable part; do not inherit the plug library ID.
+section=replace_prop(section,'LCSC','')
 section=section.replace('Connector_Hirose_DF40:Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm',
                         'Connector_Hirose_DF40:Hirose_DF40C-60DS-0.4V_2x30_P0.4mm')
 section=section.replace('https://www.hirose.com/en/product/p/CL0684-4003-3-51',
@@ -295,6 +297,8 @@ closure=ROOT/'core-c1-routing-closure.json'
 if closure.exists():
     from _core_c1_pcb_patch import apply_closure
     apply_closure(pcb,closure)
+from _split_c1_sourcing import apply_sourcing
+apply_sourcing(DST, 'Core-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
 subprocess.run([K,'sch','erc','--format','json','--severity-all','--output',str(verify/'erc.json'),str(core/(STEM+'.kicad_sch'))],check=True)
 subprocess.run([K,'sch','export','netlist','--format','kicadxml','--output',str(verify/'netlist.xml'),str(core/(STEM+'.kicad_sch'))],check=True)
