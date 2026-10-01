@@ -12,8 +12,11 @@ production/core-c1-96x68 and production/display-c1-45x36 packages, with
 production/split-c1-release.json as their combined hash-checked record.
 Generated packages are ignored; the committed authorities are native CAD,
 required libraries, replay scripts, purchasing evidence and audit summaries. Every populated BOM ref has Manufacturer and exact MPN.
-Catalog mappings cover 111 Core refs and 36 Display refs; six Core SMT refs,
-one Display SMT ref and the manual TH301 still need supply confirmation.
+Catalog mappings cover 112 Core refs and 36 Display refs; five Core SMT refs
+and one Display SMT ref remain without a confirmed JLC ID. C301 now maps to
+C6048128. All seven original supply-followup refs still need order/packing and
+assembly confirmation; Display L1 has an exact DigiKey supply route with a
+dated public stock observation. The manual TH301 needs a separate NTC harness.
 Present catalog IDs do not reserve stock or confirm an assembly order.
 
 See SPLIT-C1-CAD-PRODUCTION-CLOSURE.md for electrical closure and
@@ -24,8 +27,9 @@ must sit outside the occupied interboard gap. Actual battery dimensions,
 maximum component heights, FPC geometry and enclosure tolerances remain open.
 
 This is an EVT fabrication-data candidate. manufacturing_release=false.
-Physical electrical/thermal EVT and actual mechanical fit require assembled
-hardware. C4D-12..20 snapshots are archived in Git history. Routing141 scenes and the
+The user confirmed this is PCB design only: neither physical board exists yet.
+Physical electrical/thermal EVT and actual mechanical fit are planned for after
+assembly; Q04-Q14 includes Display-only power/refresh and matched two-board tests. C4D-12..20 snapshots are archived in Git history. Routing141 scenes and the
 C0/C2 notes below are historical; they do not override Split-C1.
 
 

@@ -99,7 +99,7 @@
   "cad_complete": true,
   "manufacturing_release": false,
   "pcb_sha256": {
-    "Core-C1": "b8d7bed9380e11f222d7c1ddbd1e6ed4aea78d59486623dc4641652b69f15528",
+    "Core-C1": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198",
     "Display-C1": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
   },
   "mapping": [

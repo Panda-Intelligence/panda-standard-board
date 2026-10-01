@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "b8d7bed9380e11f222d7c1ddbd1e6ed4aea78d59486623dc4641652b69f15528",
+    "Core-C1": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198",
     "Display-C1": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
   },
-  "inputs_sha256": "be2570008ad64cebda86266429e5dbad8b63440bb130f195debf2d7af2a83eca",
-  "interface_sha256": "6e227a11dd09c6b6b4f22fc634e9c60e3f3d3210f14214fa5bdb9e6c9028436b",
+  "inputs_sha256": "3e8c8a2e4d007ab8342b59e5204df6555eb605dc3363ab22a55a048be8170d5a",
+  "interface_sha256": "75ca8c131861107f7f145451c323fd149925064d1a54c0298192ec43997f1987",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -845,7 +845,340 @@
     "display_f": -2.3
   },
   "fixed_nominal_z_contribution_mm": 5.08,
-  "budget_formula": "T_outer = T_core + gap + T_display + T_panel + H_core_F + H_display_F + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
+  "budget_formula": "T_outer = T_core + T_panel + H_core_F + max(gap + T_display + H_display_F, H_core_B_outside_Display) + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
+  "rear_component_extent_below_core_b_mm": null,
+  "enclosure_xy_study": {
+    "panel_rect_mm": [
+      -4.665,
+      2.815,
+      100.665,
+      65.185
+    ],
+    "panel_pose_verified": false,
+    "union_of_boards_panel_and_native_footprints_mm": [
+      -4.665,
+      0,
+      100.665,
+      68.775
+    ],
+    "example_outer_xy_mm": [
+      110.33,
+      73.775
+    ],
+    "example_rounded_outer_xy_mm": [
+      111,
+      74
+    ],
+    "edge_clearance_each_side_mm": 1.0,
+    "wall_each_side_mm": 1.5,
+    "excluded_envelopes": [
+      "FT01C FPC bends/latches/insertion tools",
+      "USB plug strain relief",
+      "microSD insertion/removal travel",
+      "antenna cable and antenna volume",
+      "speaker and acoustic volume",
+      "battery harness/PCM/NTC strain relief",
+      "fasteners, bosses and retention ribs"
+    ],
+    "released_dimensions": false
+  },
+  "native_connector_switch_envelopes": [
+    {
+      "board": "Core-C1",
+      "ref": "J201",
+      "native_center_mm": [
+        39.0,
+        68.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        32.605,
+        59.85,
+        45.395,
+        68.775
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J301",
+      "native_center_mm": [
+        49.75,
+        23.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        47.025,
+        20.175,
+        52.475,
+        25.725
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J302",
+      "native_center_mm": [
+        49.25,
+        16.5
+      ],
+      "native_orientation_deg": 90.0,
+      "world_bbox_mm": [
+        45.945,
+        13.075,
+        52.555,
+        19.925
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J501",
+      "native_center_mm": [
+        88.8,
+        18.75
+      ],
+      "native_orientation_deg": -90.0,
+      "world_bbox_mm": [
+        82.225,
+        11.885,
+        98.55,
+        25.615
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J502",
+      "native_center_mm": [
+        9.0,
+        13.5
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        6.075,
+        10.195,
+        11.925,
+        16.805
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J503",
+      "native_center_mm": [
+        17.0,
+        7.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        13.475,
+        4.975,
+        20.525,
+        9.025
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J601",
+      "native_center_mm": [
+        61.0,
+        62.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        53.175,
+        59.275,
+        68.825,
+        64.415
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J803",
+      "native_center_mm": [
+        6.35,
+        39.37
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        3.773,
+        37.015,
+        8.927,
+        41.121
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J804",
+      "native_center_mm": [
+        6.35,
+        45.5
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        3.773,
+        43.145,
+        8.927,
+        47.251
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW201",
+      "native_center_mm": [
+        2.3,
+        6.75
+      ],
+      "native_orientation_deg": -90.0,
+      "world_bbox_mm": [
+        0.05,
+        3.975,
+        4.35,
+        9.525
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW202",
+      "native_center_mm": [
+        2.3,
+        13.25
+      ],
+      "native_orientation_deg": -90.0,
+      "world_bbox_mm": [
+        0.05,
+        10.475,
+        4.35,
+        16.025
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Display-C1",
+      "ref": "J1",
+      "native_center_mm": [
+        23.0,
+        4.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        53.715,
+        59.54,
+        68.285,
+        64.215
+      ],
+      "enclosure_opening_verified": false
+    },
+    {
+      "board": "Display-C1",
+      "ref": "J2",
+      "native_center_mm": [
+        23.0,
+        29.0
+      ],
+      "native_orientation_deg": 0.0,
+      "world_bbox_mm": [
+        51.925,
+        32.075,
+        70.075,
+        40.025
+      ],
+      "enclosure_opening_verified": false
+    }
+  ],
+  "mounting_holes": [
+    {
+      "board": "Core-C1",
+      "ref": "H801",
+      "world_center_mm": [
+        15.0,
+        2.0
+      ],
+      "drill_mm": [
+        1.6,
+        1.6
+      ],
+      "boss_and_fastener_envelope_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "H802",
+      "world_center_mm": [
+        81.0,
+        2.0
+      ],
+      "drill_mm": [
+        1.6,
+        1.6
+      ],
+      "boss_and_fastener_envelope_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "H803",
+      "world_center_mm": [
+        93.0,
+        34.0
+      ],
+      "drill_mm": [
+        1.6,
+        1.6
+      ],
+      "boss_and_fastener_envelope_verified": false
+    },
+    {
+      "board": "Core-C1",
+      "ref": "H804",
+      "world_center_mm": [
+        3.0,
+        34.0
+      ],
+      "drill_mm": [
+        1.6,
+        1.6
+      ],
+      "boss_and_fastener_envelope_verified": false
+    }
+  ],
+  "display_retention": "No dedicated Display mounting-hole footprint; design insulating edge supports/retention, not DF40 as sole load-bearing attachment.",
+  "battery_candidate_xy_screens": [
+    {
+      "manufacturer": "EEMB",
+      "mpn": "LP503450",
+      "candidate_xy_mm": [
+        52,
+        34.5
+      ],
+      "total_xy_slack_mm": [
+        12,
+        25.5
+      ],
+      "passes_example_1mm_each_side_body_only": true,
+      "pcm_harness_swelling_verified": false,
+      "battery_selected": false
+    },
+    {
+      "manufacturer": "FP Battery",
+      "mpn": "LP505060",
+      "candidate_xy_mm": [
+        63,
+        50
+      ],
+      "total_xy_slack_mm": [
+        1,
+        10
+      ],
+      "passes_example_1mm_each_side_body_only": false,
+      "pcm_harness_swelling_verified": false,
+      "battery_selected": false
+    }
+  ],
   "maximum_battery_plus_swelling_budget_mm": null,
   "battery_fits_parameter_budget": null,
   "unresolved_budget_parameters": [
@@ -856,7 +1189,8 @@
     "battery_clearance_and_insulation",
     "front_wall",
     "rear_wall",
-    "manufacturing_tolerance_reserve"
+    "manufacturing_tolerance_reserve",
+    "core_back_outside_display_max_component_height"
   ],
   "nominal_budget_is_not_tolerance_signoff": true,
   "enclosure_z_stack_verified": false,

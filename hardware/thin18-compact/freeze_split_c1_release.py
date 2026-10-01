@@ -116,7 +116,7 @@ qualification.write_text(json.dumps({
     "generated_candidate_path": str(generated_candidate.relative_to(REPO)),
     "pcb_identities": identities,
     "manufacturing_release": False,
-    "note": "Generate packages before release verification; physical Q04-Q12 and independent approval remain mandatory."
+    "note": "Generate packages before release verification; physical Q04-Q14 and independent approval remain mandatory."
 },indent=2)+"\n")
 print(json.dumps({"release":str(p.relative_to(REPO)),
     "boards":{name:{"native_checks":b["native_checks"],"dimensions_mm":b["dimensions_mm"]}

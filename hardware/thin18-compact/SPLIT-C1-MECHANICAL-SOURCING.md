@@ -1,6 +1,7 @@
 # Split-C1 mechanical and sourcing follow-up
 
-Date: 2026-10-01. CAD baseline: d80c6aa.
+Date: 2026-10-01. Architecture: two PCBs, Core-C1 and Display-C1.
+Project stage: PCB design only; the user confirmed no physical boards exist.
 Status: engineering constraints and exact-part catalog mapping; manufacturing_release=false.
 
 ## Current result
@@ -8,13 +9,13 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
 Only procurement properties changed in PCB/schematics. Copper, footprint poses,
 pad geometry and electrical nets are checked against the baseline.
-Reviewed exact-part IDs now cover 11 additional Core refs and 23 Display refs.
+Reviewed exact-part IDs now cover 12 additional Core refs and 23 Display refs.
 Library IDs identify parts; stock, packing, purchased quantity and assembly
 availability still require order-time confirmation.
 
 | Board | Present library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 111 | 6 | 1 |
+| Core-C1 | 112 | 5 | 1 |
 | Display-C1 | 36 | 1 | 0 |
 
 The sourcing CSV includes evidence URLs for this review. Previously present IDs
@@ -24,6 +25,7 @@ remain labeled PREEXISTING_ID rather than being newly certified by this review.
 
 | Board | Refs | Retained MPN | Library ID | Source |
 |---|---|---|---|---|
+| Core-C1 | C301 | CPH3225A | C6048128 | [JLC catalog](https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128) |
 | Core-C1 | D201 | TPD4E05U06DQAR | C138714 | [Catalog](https://www.lcsc.com/product-detail/C138714.html) |
 | Core-C1 | D202 | TPD1E10B06DPYR | C48260 | [Catalog](https://www.lcsc.com/product-detail/C48260.html) |
 | Core-C1 | J201 | USB4500-03-0-A | C5354966 | [Catalog](https://www.lcsc.com/product-detail/C5354966.html) |
@@ -52,21 +54,50 @@ different DF40 socket, then applies the socket's independently reviewed ID.
 Builders replay these mappings from split-c1-sourcing-evidence.json and reject
 unexpected manufacturer/MPN/ID conflicts.
 
-Unresolved SMT supply:
+## Supply readiness for the original seven SMT refs
 
-- Core-C1 C301: CPH3225A. Confirm exact packing and consignment or library ID.
-- Core-C1 C506, C513: 0603B106K100NT. Confirm exact Fenghua X7R 10uF/10V orderable part and library ID; do not substitute dielectric.
-- Core-C1 L402: XGL4015-222MEC. Confirm supplier/packing and JLC consignment.
-- Core-C1 U902: SGM62125AXG/TR. Manufacturer-listed exact WLCSP variant; confirm supply or consignment.
-- Core-C1 U905: SGM37601YTRL20G/TR. Manufacturer-listed exact TQFN20 variant; confirm supply or consignment.
-- Display-C1 L1: LSXNE3030KKT470MN. The [manufacturer page](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M) lists Mass Production (Preferred) and maximum body height 1.0 mm; confirm stock, packing and library ID/consignment. UTY-DN25-02D lists this part as a suggested alternative for older NR/LSXBD models, rather than an EOL part.
+One Core-C1 plus one Display-C1 needs the quantities below. Board fabrication,
+assembly orders, BOMs and CPLs are separate for the two boards. For N pairs,
+required usable placements are N times the table quantities; add only the
+assembler's quoted attrition and feeder/leader/trailer requirement. N is unset.
 
-TH301 remains manual/off-board. Its attachment and battery NTC harness are
-physical assembly work. For the seven unmapped SMT refs, the retained exact
-MPN is the procurement identity; use supplier-confirmed consignment if no exact
-JLC library entry is confirmed. Purchase quantity, reel/cut-tape packing, lot
-traceability and assembly-vendor acceptance remain pending. A search miss does
-not prove a part is unavailable. No purchase or supplier message was sent.
+| Board / refs | Qty per pair | Exact retained MPN | Supply path and verified status | Still needed |
+|---|---:|---|---|---|
+| Core C301 | 1 | Seiko CPH3225A | JLC C6048128; exact SMT identity confirmed | Available quantity, packing and PCBA allocation |
+| Core C506, C513 | 2 | Fenghua 0603B106K100NT | Manufacturer-specific orderable identity remains unverified; same text occurs for Hitano | Fenghua original drawing and quote, or a separately reviewed ECO |
+| Core L402 | 1 | Coilcraft XGL4015-222MEC | Manufacturer direct purchase route; C=7-inch reel, 1000/reel | Quantity/quote and machine-ready partial tape or full reel; assembler acceptance |
+| Core U902 | 1 | SGM62125AXG/TR | Manufacturer Active; exact WLCSP A/15-ball variant; authorized distributor route | Firm quote, lead time, packing/lot and WLCSP assembly acceptance |
+| Core U905 | 1 | SGM37601YTRL20G/TR | Manufacturer Active; exact TQFN20 variant, MSL2 | Firm quote, lead time, packing/lot, floor-life handling and assembly acceptance |
+| Display L1 | 1 | Taiyo Yuden LSXNE3030KKT470MN | [DigiKey exact listing](https://www.digikey.de/en/products/detail/taiyo-yuden/LSXNE3030KKT470MN/16660699); public Germany page showed 1256 on 2026-10-01; CT/Digi-Reel or TR 2000/reel | Recheck destination stock; confirm feeder-compatible tape and consignment, or obtain exact JLC ID |
+
+C301 has no reliable rendered stock count. Coilcraft's stock configuration is
+loaded dynamically; no stock count is asserted. SGM manufacturer prices/status
+are not formal supplier quotes. A search miss does not prove unavailability.
+The LCSC related-parts snippet for L1 has not yielded a verifiable exact code;
+no inferred code or Sumida/other alternative was copied into the BOM.
+
+L1 is manufacturer-listed Mass Production (Preferred), 47uH +/-20%, maximum
+1.0mm seated height, DCR max2.46ohm and saturation current250mA. UTY-DN25-02D
+lists it as a suggested alternative for older parts, not as the discontinued
+part. See [manufacturer](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M).
+
+Primary paths: [Coilcraft](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/),
+[SGM62125](https://www.sg-micro.com/product/SGM62125),
+[SGM37601](https://www.sg-micro.com/product/SGM37601),
+[SGMICRO authorized distributors](https://www.sg-micro.com/authorized-distributors).
+The 24-pin SGM37601 and non-A SGM62125 variants are not interchangeable.
+No purchase, supplier message, quote or stock reservation has occurred.
+Procurement followup and dated observations are committed in
+split-c1-sourcing-evidence.json and exported into each assembly-sourcing.csv.
+TH301 remains an additional manual/off-board SEMITEC NTC and attachment/harness.
+
+For JLC consignment, an exact accepted C-code is required before shipping. If
+missing, submit the exact manufacturer/MPN/package for engineering acceptance
+and code assignment first. Then confirm usable tape/attrition quantity and
+receipt in My Parts; select the owned stock separately for each board's assembly.
+A distributor listing is not assembler acceptance. See the [official guide](https://jlcpcb.com/help/article/important-note-before-you-consign-the-part-to-jlcpcb)
+and [using owned stock](https://jlcpcb.com/help/article/how-to-use-my-own-parts-for-pcb-assembly-order).
+No consignment submission or stock purchase is part of this design-stage update.
 
 ## Native mechanical XY screening
 
@@ -95,7 +126,7 @@ J201 has two plated shell-pad envelopes intersecting the Display projection:
 GCT publishes 0.8-mm offset and 0.7-mm shell-stake length for USB4500
 ([official product page](https://gct.co/connector/usb4500)). Those values alone
 do not establish below-Core-B protrusion including solder, mounting tolerance and
-PCB warp. The official drawing download was unavailable in this session; retain
+PCB warp. The official drawing download returned HTTP403 in this session; retain
 the J201 body/stake/solder Z-clearance gate.
 
 ## Battery layering and Z budget
@@ -117,17 +148,59 @@ This excludes both outward component-height envelopes, battery, swelling,
 adhesive/insulation, walls, clearances and tolerances. The panel's 1.98 mm is the
 C2 nominal integration input; supplier maximum tolerance and XY pose remain open.
 
-For this conservative layered proposal:
+For a conservative rear envelope covering both PCBs:
 
-T_outer = 5.08 + H_core_F + H_display_F
+T_outer = 0.8 + 1.98 + H_core_F
++ max(1.5 + 0.8 + H_display_F, H_core_B_outside_Display)
 + panel_clearance_and_adhesive + battery_clearance_and_insulation
 + front_wall + rear_wall + manufacturing_tolerance_reserve
 + T_battery_max + swelling_allowance.
 
-All unknowns remain null in split-c1-mechanical-inputs.json. The audit calculates
-a battery-plus-swelling thickness budget only after every term is supplied;
-it does not invent a battery model or assume an outer-case thickness. Even a
-passing numeric budget leaves physical verification false.
+Core back-side components outside the Display projection must also fit inside
+the case. All unverified heights, final pack thickness and outer thickness stay
+null; the audit never turns a candidate cell dimension into a selected pack.
+
+## Battery candidates and enclosure dimensions at the design stage
+
+| Candidate | Published body / pack dimensions | Capacity | XY screening in the historical 64x60 region | Pending |
+|---|---|---:|---|---|
+| EEMB LP503450 | Bare-cell max52x34.5x5.3mm including tab-length envelope | 950mAh typical,900 minimum | Total slack12x25.5mm; body passes an illustrative1mm-per-side screen | Full protected pack, connector/NTC harness and swelling; runtime and peak-load budget |
+| FP Battery LP505060 | Protected-pack length62+/-1mm; width50 and thickness5mm have no stated maximum tolerance;100mm leads | 1800mAh | Using63x50 leaves only1x10mm total; fails illustrative1mm-per-side X screen | Width/thickness maximums, lead folding, connector and swelling; runtime and load budget |
+
+Sources: [EEMB product and linked drawing](https://www.eemb.com/product-138),
+[FP manufacturer's drawing](https://www.fpbattery.com/wp-content/uploads/2024/04/fpbattery-505060-3.7V-1800mAh-Lithium-Polymer-Battery-Specification.pdf).
+The two makers' model numbers are distinct procurement identities. EEMB is a
+bare cell, not a ready protected battery pack. Neither candidate is selected.
+The published charge/discharge limits are recorded for later charger/load
+matching; EEMB additionally limits charging at0..20C to0.3C. Nominal capacity
+alone does not establish runtime. No cell is added to the PCB BOM.
+
+With the panel centered at Core(48,34) as an explicitly unverified study pose,
+the two PCB outlines, nominal panel and current populated footprint envelopes
+have a union105.33x68.775mm. The extra0.775mm includes J201's native envelope;
+J501's envelope extends to x98.55mm. Illustrative1mm edge clearance plus1.5mm
+wall on each side gives110.33x73.775mm, rounded111x74mm **XY only**.
+This is a calculated study envelope, not a finished enclosure size. Panel/FPC
+pose, USB plug and microSD travel, antenna, speaker, harness, bosses and
+retention geometry may enlarge it. Outer thickness is deliberately not assumed.
+
+The audit exports current port/switch envelope coordinates and Core mounting
+holes: H801(15,2),H802(81,2),H803(93,34),H804(3,34), all1.6mm NPTH for the
+existing M1.2-clearance footprints. The Display has no dedicated mounting-hole
+footprint. Provide insulating supports/retention; the DF40 pair must not be the
+sole structural support. These dimensions do not approve a boss or cutout.
+
+## Future two-board EVT
+
+qualification/c4d-evt now plans Q04-Q14. Q13 isolates Display rails, L1/Q1/D1-D3
+stress, SPI/BUSY timing and actual panel refresh. Q14 covers both serials, all60
+contacts,1.5mm gap, J201 clearance, independent Display support, full pack/FPC
+fit and startup/reset/sleep/shutdown of the mated pair. All eleven physical
+items are NOT_RUN because neither board has been assembled. CAD or the old
+Murphy/development board cannot produce a physical PASS for these designs.
+The qualification verifier requires both PCB/BOM identities, both board serials,
+required operating states and instrument/evidence records before measurement
+results can count. See the qualification README for staged bring-up.
 
 ## Re-run and package checks
 
@@ -149,7 +222,9 @@ mechanical inputs and audit into each package's engineering/ directory. These
 files are covered by the package SHA256SUMS and combined release record.
 A stale mechanical audit blocks package freezing.
 
-Actual battery dimensions/swelling, FT01C FPC geometry, USB midmount clearance,
-enclosure support geometry and calibrated electrical/thermal EVT remain open.
+Design inputs still needed: a selected complete battery pack and product
+runtime/thickness target, maximum FT01C flex drawing and component heights,
+USB midmount maximum Z and enclosure supports. Physical verification is a
+future step after sample assembly.
 manufacturing_release stays false. Historical integrated C4D-20 and routing141
 mechanical scenes do not override the split candidates. packaging/ is untouched.

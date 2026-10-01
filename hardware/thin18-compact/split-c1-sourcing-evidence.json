@@ -1,7 +1,7 @@
 {
   "schema": "panda-split-c1-sourcing-evidence-v1",
   "checked_date": "2026-10-01",
-  "scope": "Exact manufacturer and MPN identity only; library IDs do not reserve stock or approve assembly.",
+  "scope": "Exact manufacturer/MPN catalog identity plus dated public supply observations; no quote, stock reservation, purchase or assembly acceptance.",
   "manufacturing_release": false,
   "entries": [
     {
@@ -337,18 +337,25 @@
       "stock_reserved": false,
       "assembly_order_confirmed": false,
       "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
-    }
-  ],
-  "unresolved_smt": [
+    },
     {
       "board": "Core-C1",
       "refs": [
         "C301"
       ],
+      "manufacturer": "Seiko Instruments",
       "mpn": "CPH3225A",
-      "source_url": "https://www.sii.co.jp/en/me/datasheets/chip-capacitor/cph3225a/",
-      "next_action": "Confirm exact packing and consignment or library ID."
-    },
+      "library_id": "C6048128",
+      "catalog_manufacturer": "Seiko",
+      "catalog_mpn": "CPH3225A",
+      "source_url": "https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact Seiko CPH3225A; JLC lists SMT assembly, SMD 3.2x2.5mm, maximum seated height 0.9mm. Visible stock quantity/packing not returned."
+    }
+  ],
+  "unresolved_smt": [
     {
       "board": "Core-C1",
       "refs": [
@@ -356,7 +363,7 @@
         "C513"
       ],
       "mpn": "0603B106K100NT",
-      "next_action": "Confirm exact Fenghua X7R 10uF/10V orderable part and library ID; do not substitute dielectric."
+      "next_action": "Manufacturer-specific identity remains unverified: same MPN appears for Hitano. Obtain Fenghua orderable datasheet/quotation; do not copy another maker ID or substitute X5R."
     },
     {
       "board": "Core-C1",
@@ -392,7 +399,7 @@
       ],
       "mpn": "LSXNE3030KKT470MN",
       "source_url": "https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M",
-      "next_action": "Confirm exact current part, stock and library ID/consignment."
+      "next_action": "Exact Taiyo part available in DigiKey catalog with observed stock; use vendor-approved consignment if JLC exact code remains unconfirmed. Recheck stock and feeder-compatible tape at order time."
     }
   ],
   "manual": [
@@ -404,5 +411,165 @@
       "mpn": "103JT-025-600AY",
       "next_action": "Supply off-board thermistor, assembly attachment and battery harness separately."
     }
-  ]
+  ],
+  "procurement_followup": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C301"
+      ],
+      "manufacturer": "Seiko Instruments",
+      "mpn": "CPH3225A",
+      "units_per_core_display_pair": 1,
+      "supply_route": "JLC exact library C6048128",
+      "source_url": "https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128",
+      "supply_status": "CATALOG_ID_CONFIRMED_STOCK_AND_PACKING_PENDING",
+      "packing": "Supplier packing and actual PCBA availability pending",
+      "stock_observation": {
+        "quantity": null,
+        "observed_date": "2026-10-01",
+        "note": "No reliable live quantity rendered."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": ""
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C506",
+        "C513"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B106K100NT",
+      "units_per_core_display_pair": 2,
+      "supply_route": "Fenghua exact-part quotation or separately qualified ECO",
+      "source_url": null,
+      "supply_status": "MANUFACTURER_SPECIFIC_ORDERABLE_IDENTITY_UNVERIFIED",
+      "packing": "No confirmed exact Fenghua packing",
+      "stock_observation": {
+        "quantity": null,
+        "observed_date": "2026-10-01",
+        "note": "No reliable live quantity rendered."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": "Retain exact X7R/10uF/10V/0603 intent. Hitano same-string entries and other makers are not approved substitutes."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "manufacturer": "Coilcraft",
+      "mpn": "XGL4015-222MEC",
+      "units_per_core_display_pair": 1,
+      "supply_route": "Coilcraft direct; assembler-approved consignment",
+      "source_url": "https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/",
+      "supply_status": "EXACT_DIRECT_CATALOG_QUOTE_STOCK_PENDING",
+      "packing": "C = 7-inch EIA-481 reel, 1000/reel; partial tape is not machine ready unless leader/trailer supplied",
+      "stock_observation": {
+        "quantity": null,
+        "observed_date": "2026-10-01",
+        "note": "No reliable live quantity rendered."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": "Direct page confirms C packing and a purchase route but stock count/configuration is dynamic and not confirmed."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U902"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "units_per_core_display_pair": 1,
+      "supply_route": "SGMICRO authorized distributor; assembler-approved consignment",
+      "source_url": "https://www.sg-micro.com/product/SGM62125",
+      "supply_status": "ACTIVE_EXACT_VARIANT_DISTRIBUTOR_QUOTE_PENDING",
+      "packing": "TR suffix; reel quantity and leader/trailer pending",
+      "stock_observation": {
+        "quantity": null,
+        "observed_date": "2026-10-01",
+        "note": "No reliable live quantity rendered."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": "WLCSP-1.46x2.3-15B, MSL1; A variant only. Authorized route: https://www.sg-micro.com/authorized-distributors"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U905"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM37601YTRL20G/TR",
+      "units_per_core_display_pair": 1,
+      "supply_route": "SGMICRO authorized distributor; assembler-approved consignment",
+      "source_url": "https://www.sg-micro.com/product/SGM37601",
+      "supply_status": "ACTIVE_EXACT_VARIANT_DISTRIBUTOR_QUOTE_PENDING",
+      "packing": "TR suffix; reel quantity and leader/trailer pending",
+      "stock_observation": {
+        "quantity": null,
+        "observed_date": "2026-10-01",
+        "note": "No reliable live quantity rendered."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": "TQFN-3.5x3.5-20L, MSL2; 24L variant is not interchangeable. Authorized route: https://www.sg-micro.com/authorized-distributors"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "manufacturer": "Taiyo Yuden",
+      "mpn": "LSXNE3030KKT470MN",
+      "units_per_core_display_pair": 1,
+      "supply_route": "DigiKey exact part; assembler-approved consignment",
+      "source_url": "https://www.digikey.de/en/products/detail/taiyo-yuden/LSXNE3030KKT470MN/16660699",
+      "supply_status": "EXACT_DISTRIBUTOR_STOCK_OBSERVED_NOT_RESERVED",
+      "packing": "587-LSXNE3030KKT470MNCT-ND cut tape; TR 2000/reel; Digi-Reel with leader/trailer subject to assembler acceptance",
+      "stock_observation": {
+        "quantity": 1256,
+        "displayed_quantity": "1.256 (German locale)",
+        "observed_date": "2026-10-01",
+        "region": "Germany catalog",
+        "note": "Public page observation, not allocation; destination stock, freight and import charges need order-time confirmation."
+      },
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "note": "3x3mm, seated height max1.0mm; 47uH ±20%, DCR max2.46ohm, saturation current250mA. JLC code not reliably confirmed; no inferred ID applied."
+    }
+  ],
+  "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",
+  "jlc_consignment_requirements": {
+    "checked_date": "2026-10-01",
+    "official_guidance": [
+      "https://jlcpcb.com/help/article/important-note-before-you-consign-the-part-to-jlcpcb",
+      "https://jlcpcb.com/help/article/how-to-consign-parts-to-jlcpcb-from-mainland-china",
+      "https://jlcpcb.com/help/article/consignment-part-terms-conditions",
+      "https://jlcpcb.com/help/article/how-to-use-my-own-parts-for-pcb-assembly-order"
+    ],
+    "steps": [
+      "Get exact manufacturer/MPN/package accepted and a JLC C-code assigned before shipping if absent",
+      "Create Parts Manager consignment record and confirm packing, usable quantity plus attrition, floor-life/lot and receipt address",
+      "After receipt, verify sufficient exact stock in My Parts and explicitly select it for each board assembly BOM/CPL"
+    ],
+    "status": "PREPARATION_ONLY_NO_SUBMISSION",
+    "note": "A distributor catalog entry alone does not make a part immediately consignable. Do not ship stock with blank/unapproved JLC code. Quote and destination/import costs require order-time confirmation."
+  }
 }

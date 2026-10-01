@@ -33,11 +33,14 @@ all_bom_refs=set()
 evidence_path=Path(__file__).resolve().parent/'split-c1-sourcing-evidence.json'
 manifest_path=root/'production-manifest.json'
 reviewed={}
+procurement={}
 if evidence_path.exists() and manifest_path.exists():
     board_id=json.loads(manifest_path.read_text()).get('board_id')
     registry=json.loads(evidence_path.read_text())
     reviewed={ref:item for item in registry['entries'] if item['board']==board_id
               for ref in item['refs']}
+    procurement={ref:item for item in registry.get('procurement_followup',[]) if item['board']==board_id
+                 for ref in item['refs']}
 
 for r in bom_rows:
     refs=expand_refs(r['Refs'])
@@ -59,6 +62,9 @@ for r in bom_rows:
         else:
             status='MPN_ONLY_REQUIRES_JLC_MAPPING_OR_CONSIGNED_PART'
         item=reviewed.get(ref)
+        supply=procurement.get(ref,{})
+        if supply and (supply['manufacturer']!=r.get('Manufacturer') or supply['mpn']!=r.get('MPN')):
+            raise SystemExit(f'Procurement route identity mismatch: {ref}')
         if item and (item['manufacturer']!=r.get('Manufacturer') or
                      item['mpn']!=r.get('MPN') or item['library_id']!=lcsc):
             raise SystemExit(f'Reviewed sourcing identity mismatch: {ref}')
@@ -73,6 +79,14 @@ for r in bom_rows:
             'Assembly status':status,
             'Identity evidence':evidence_status,
             'Evidence URL':item['source_url'] if item else '',
+            'Procurement route':supply.get('supply_route',''),
+            'Supply status':supply.get('supply_status',''),
+            'Supply URL':supply.get('source_url') or '',
+            'Packing':supply.get('packing',''),
+            'Public stock observation':supply.get('stock_observation',{}).get('quantity'),
+            'Stock observation date':supply.get('stock_observation',{}).get('observed_date',''),
+            'Purchase confirmed':'FALSE',
+            'Assembler accepted':'FALSE',
         })
 
 with (out/'BOM_JLCPCB.csv').open('w',newline='',encoding='utf-8-sig') as f:
@@ -93,7 +107,8 @@ with (out/'CPL_JLCPCB.csv').open('w',newline='',encoding='utf-8-sig') as f:
     w.writeheader();w.writerows(jlc_cpl)
 
 with (out/'assembly-sourcing.csv').open('w',newline='',encoding='utf-8-sig') as f:
-    fields=['Designator','Manufacturer','MPN','LCSC Part #','In CPL','Assembly status','Identity evidence','Evidence URL']
+    fields=['Designator','Manufacturer','MPN','LCSC Part #','In CPL','Assembly status','Identity evidence','Evidence URL',
+            'Procurement route','Supply status','Supply URL','Packing','Public stock observation','Stock observation date','Purchase confirmed','Assembler accepted']
     w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');w.writeheader();w.writerows(sourcing)
 
 cpl_refs=set(cpl_by_ref)

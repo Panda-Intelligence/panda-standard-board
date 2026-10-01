@@ -14,7 +14,7 @@ from typing import Any
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
-EXPECTED_TEST_IDS = {f"Q{i:02d}" for i in range(4, 13)}
+EXPECTED_TEST_IDS = {f"Q{i:02d}" for i in range(4, 15)}
 ALLOWED_STATUS = {"NOT_RUN", "BLOCKED", "MEASURED_PASS", "MEASURED_FAIL"}
 MEASUREMENT_REQUIRED_FIELDS = {
     "test_id", "sample_id", "state", "metric", "observed_value", "unit",
@@ -118,10 +118,16 @@ def validate_split_sample_binding(sample: dict[str, Any], candidate: dict[str, A
         return
     expected = candidate["pcb_identities"]
     require(sample.get("pcb_identities") == expected, "sample must bind both current Split-C1 PCB identities")
+    serials = sample.get("board_serial_numbers", {})
+    require(set(serials) == set(expected) and all(isinstance(v,str) and v.strip() for v in serials.values()),
+            "sample must identify both Core and Display board serials")
     require(sample["pcb_sha256"] == expected["Core-C1"]["sha256"], "sample Core PCB hash differs")
     split = split_artifacts(candidate)
     expected_boms = {board: artifacts["files"]["bom"] for board,artifacts in split["boards"].items()}
     require(sample.get("assembly_boms") == expected_boms, "sample assembly BOMs differ from both current boards")
+    core_bom = expected_boms["Core-C1"]
+    require(sample.get("assembly_bom_path") == core_bom["path"] and
+            sample.get("assembly_bom_sha256") == core_bom["sha256"], "sample legacy Core BOM differs")
     for info in expected_boms.values():
         validate_hashed_file(info["path"], info["sha256"])
 
@@ -164,6 +170,11 @@ def validate_release_candidate(candidate: dict[str, Any]) -> None:
     require(erc_count == 0, "release ERC violations are not zero")
 
 
+def validate_sample_states(test: dict[str, Any], rows: list[dict[str, str]]) -> None:
+    require(set(test["required_sample_states"]).issubset({row["state"] for row in rows}),
+            f"{test['id']} missing required sample states")
+
+
 def main(release: bool) -> int:
     plan = load_json("qualification-plan.json")
     sample_manifest = load_json("sample-manifest.json")
@@ -172,7 +183,7 @@ def main(release: bool) -> int:
     release_candidate = load_json("release-candidate.json")
 
     tests = {test["id"]: test for test in plan["tests"]}
-    require(set(tests) == EXPECTED_TEST_IDS and len(plan["tests"]) == 9, "qualification test coverage changed")
+    require(set(tests) == EXPECTED_TEST_IDS and len(plan["tests"]) == len(EXPECTED_TEST_IDS), "qualification test coverage changed")
     require(all(test.get("status") in ALLOWED_STATUS for test in tests.values()), "invalid test status")
     require(all(test.get("required_metrics") for test in tests.values()), "test required metrics missing")
 
@@ -242,6 +253,7 @@ def main(release: bool) -> int:
             reviewers.add(row["reviewer"])
 
         validate_split_sample_binding(samples[sample_id], release_candidate)
+        validate_sample_states(test, test_rows)
         require(set(test["required_instrument_roles"]).issubset(roles_seen), f"{test_id} missing instrument roles")
         require(reviewers.isdisjoint(operators), f"{test_id} reviewer must be independent from operator")
         require(len(test_limit_ids) == 1, f"{test_id} must use one approved limit revision")
@@ -257,9 +269,9 @@ def main(release: bool) -> int:
     release_allowed = False
     release_blockers = []
     if not all(tests[test_id]["status"] == "MEASURED_PASS" for test_id in EXPECTED_TEST_IDS):
-        release_blockers.append("not all Q04-Q12 tests are MEASURED_PASS")
-    if measured_tests != 9:
-        release_blockers.append("physical_tests_completed is not 9")
+        release_blockers.append("not all Q04-Q14 tests are MEASURED_PASS")
+    if measured_tests != len(EXPECTED_TEST_IDS):
+        release_blockers.append(f"physical_tests_completed is not {len(EXPECTED_TEST_IDS)}")
     if not plan.get("release_approval"):
         release_blockers.append("independent release approval missing")
     if not release_candidate.get("manufacturing_release"):
@@ -274,7 +286,8 @@ def main(release: bool) -> int:
         release_allowed = True
 
     summary = {
-        "date": "2026-09-30",
+        "date": plan["date"],
+        "project_stage": plan.get("project_stage"),
         "result": "PASS_TRUTHFUL_CURRENT_STATE",
         "tests": result_rows,
         "physical_tests_completed": measured_tests,

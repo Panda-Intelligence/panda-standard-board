@@ -99,15 +99,61 @@ def audit(inputs_path):
         if value is not None and (not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0):
             raise ValueError("Invalid budget parameter: " + name)
     available = None
+    rear_component_extent = None
     if not missing:
-        available = round(params["target_outer_thickness"] - fixed
-                          - sum(value for name, value in params.items() if name != "target_outer_thickness"), 6)
+        rear_component_extent = max(gap + display_t + params["display_front_max_component_height"],
+                                    params["core_back_outside_display_max_component_height"])
+        heights = {"core_front_max_component_height", "display_front_max_component_height",
+                   "core_back_outside_display_max_component_height"}
+        available = round(params["target_outer_thickness"] - core_t - panel_t
+                          - params["core_front_max_component_height"] - rear_component_extent
+                          - sum(value for name, value in params.items()
+                                if name != "target_outer_thickness" and name not in heights), 6)
     battery_t = inputs["battery"]["maximum_assembly_thickness_mm"]
     swelling = inputs["battery"]["swelling_allowance_mm"]
     for name, value in [("maximum_assembly_thickness_mm", battery_t), ("swelling_allowance_mm", swelling)]:
         if value is not None and (not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0):
             raise ValueError("Invalid battery parameter: " + name)
     fits_budget = None if available is None or battery_t is None or swelling is None else battery_t + swelling <= available
+    xy = inputs["enclosure_xy_study"]
+    for name in ("edge_clearance_each_side_mm", "wall_each_side_mm"):
+        if not isinstance(xy[name], (float, int)) or not math.isfinite(xy[name]) or xy[name] < 0:
+            raise ValueError("Invalid XY study parameter: " + name)
+    center = xy["panel_center_core_xy_mm"]
+    panel_w, panel_h = inputs["panel"]["nominal_dimensions_mm"][:2]
+    panel_rect = [round(v,6) for v in [center[0]-panel_w/2, center[1]-panel_h/2, center[0]+panel_w/2, center[1]+panel_h/2]]
+    envelopes = [[0,0,96,68], display_rect, panel_rect]
+    ports, mounting = [], []
+    for name, board in boards.items():
+        for fp in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
+            if fp.IsDNP(): continue
+            native_rect = bbox(fp)
+            world = display_world(native_rect) if name == "Display-C1" else native_rect
+            if not fp.IsExcludedFromBOM(): envelopes.append(world)
+            if fp.GetReference().startswith(("J", "SW")):
+                ports.append({"board":name,"ref":fp.GetReference(),"native_center_mm":[mm(fp.GetPosition().x),mm(fp.GetPosition().y)],
+                              "native_orientation_deg":fp.GetOrientationDegrees(),"world_bbox_mm":world,
+                              "enclosure_opening_verified":False})
+            for pad in fp.Pads():
+                if pad.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH and fp.GetReference().startswith("H"):
+                    pos = [mm(pad.GetPosition().x), mm(pad.GetPosition().y)]
+                    if name == "Display-C1": pos = [pos[0]+38,66-pos[1]]
+                    mounting.append({"board":name,"ref":fp.GetReference(),"world_center_mm":pos,
+                                     "drill_mm":[mm(pad.GetDrillSize().x),mm(pad.GetDrillSize().y)],
+                                     "boss_and_fastener_envelope_verified":False})
+    union = [min(e[0] for e in envelopes), min(e[1] for e in envelopes),
+             max(e[2] for e in envelopes), max(e[3] for e in envelopes)]
+    extra = 2*(xy["edge_clearance_each_side_mm"]+xy["wall_each_side_mm"])
+    example_outer = [round(union[2]-union[0]+extra,6),round(union[3]-union[1]+extra,6)]
+    battery_xy = [battery_rect[2]-battery_rect[0], battery_rect[3]-battery_rect[1]]
+    battery_screens = []
+    for cell in inputs["battery_candidates"]:
+        dims = cell["proposed_core_xy_dimensions_mm"]
+        slack = [round(battery_xy[i]-dims[i],6) for i in (0,1)]
+        battery_screens.append({"manufacturer":cell["manufacturer"],"mpn":cell["mpn"],
+                               "candidate_xy_mm":dims,"total_xy_slack_mm":slack,
+                               "passes_example_1mm_each_side_body_only":all(v>=2 for v in slack),
+                               "pcm_harness_swelling_verified":False,"battery_selected":False})
     report = {
         "schema": "panda-split-c1-mechanical-audit-v1",
         "pcb_sha256": {name: sha(path) for name, path in PCB.items()},
@@ -124,7 +170,18 @@ def audit(inputs_path):
         "board_planes_core_b_z_mm": {"core_b": 0, "core_f": core_t,
                                      "display_b": -gap, "display_f": round(-gap-display_t, 6)},
         "fixed_nominal_z_contribution_mm": fixed,
-        "budget_formula": "T_outer = T_core + gap + T_display + T_panel + H_core_F + H_display_F + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
+        "budget_formula": "T_outer = T_core + T_panel + H_core_F + max(gap + T_display + H_display_F, H_core_B_outside_Display) + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
+        "rear_component_extent_below_core_b_mm": rear_component_extent,
+        "enclosure_xy_study": {"panel_rect_mm":panel_rect,"panel_pose_verified":False,
+                               "union_of_boards_panel_and_native_footprints_mm":union,
+                               "example_outer_xy_mm":example_outer,
+                               "example_rounded_outer_xy_mm":[math.ceil(v) for v in example_outer],
+                               "edge_clearance_each_side_mm":xy["edge_clearance_each_side_mm"],
+                               "wall_each_side_mm":xy["wall_each_side_mm"],
+                               "excluded_envelopes":xy["excluded_envelopes"],"released_dimensions":False},
+        "native_connector_switch_envelopes":ports,"mounting_holes":mounting,
+        "display_retention": "No dedicated Display mounting-hole footprint; design insulating edge supports/retention, not DF40 as sole load-bearing attachment.",
+        "battery_candidate_xy_screens":battery_screens,
         "maximum_battery_plus_swelling_budget_mm": available,
         "battery_fits_parameter_budget": fits_budget, "unresolved_budget_parameters": missing,
         "nominal_budget_is_not_tolerance_signoff": True,

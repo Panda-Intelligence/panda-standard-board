@@ -1,5 +1,6 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
+  "project_stage": "PCB_DESIGN_NO_PHYSICAL_SAMPLES",
   "result": "PASS_TRUTHFUL_CURRENT_STATE",
   "tests": [
     {
@@ -46,6 +47,16 @@
       "test_id": "Q12",
       "status": "NOT_RUN",
       "rows": 0
+    },
+    {
+      "test_id": "Q13",
+      "status": "NOT_RUN",
+      "rows": 0
+    },
+    {
+      "test_id": "Q14",
+      "status": "NOT_RUN",
+      "rows": 0
     }
   ],
   "physical_tests_completed": 0,
@@ -55,8 +66,8 @@
   "approved_limit_count": 0,
   "release_allowed": false,
   "release_blockers": [
-    "not all Q04-Q12 tests are MEASURED_PASS",
-    "physical_tests_completed is not 9",
+    "not all Q04-Q14 tests are MEASURED_PASS",
+    "physical_tests_completed is not 11",
     "independent release approval missing",
     "release-candidate manufacturing_release is false"
   ],

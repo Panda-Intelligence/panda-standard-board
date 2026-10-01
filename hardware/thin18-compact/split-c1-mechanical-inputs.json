@@ -19,12 +19,13 @@
       85,
       64
     ],
-    "source": "core-c1-96x68-split/c1-placement-report.json",
+    "source": "git:d89257ab867ca5622429ddf0a417d438434e3e64:hardware/thin18-compact/core-c1-96x68-split/c1-placement-report.json",
     "status": "historical_planning_envelope_not_released_cavity",
     "mpn": null,
     "maximum_assembly_thickness_mm": null,
     "swelling_allowance_mm": null,
-    "harness_envelope_verified": false
+    "harness_envelope_verified": false,
+    "source_sha256": "e83aa40df8b374aad3412a1ada16a187ea92a8290b5157bec4485c2c897c7c02"
   },
   "proposal": {
     "front": "Panel outside Core F.Cu components",
@@ -39,7 +40,8 @@
     "battery_clearance_and_insulation": null,
     "front_wall": null,
     "rear_wall": null,
-    "manufacturing_tolerance_reserve": null
+    "manufacturing_tolerance_reserve": null,
+    "core_back_outside_display_max_component_height": null
   },
   "usb_midmount": {
     "ref": "J201",
@@ -50,5 +52,93 @@
     "below_core_b_maximum_including_solder_mm": null,
     "note": "Product-page lengths are not a complete mounting-plane/solder-fillet Z tolerance; drawing and mounted sample are required."
   },
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "design_stage": "PCB design only; user confirmed on 2026-10-01 that no physical Core-C1 or Display-C1 sample exists.",
+  "enclosure_xy_study": {
+    "panel_center_core_xy_mm": [
+      48,
+      34
+    ],
+    "panel_pose_status": "centered study assumption, not verified FPC pose",
+    "edge_clearance_each_side_mm": 1.0,
+    "wall_each_side_mm": 1.5,
+    "status": "example XY envelope only, not enclosure CAD or released dimension",
+    "excluded_envelopes": [
+      "FT01C FPC bends/latches/insertion tools",
+      "USB plug strain relief",
+      "microSD insertion/removal travel",
+      "antenna cable and antenna volume",
+      "speaker and acoustic volume",
+      "battery harness/PCM/NTC strain relief",
+      "fasteners, bosses and retention ribs"
+    ]
+  },
+  "battery_candidates": [
+    {
+      "manufacturer": "EEMB",
+      "mpn": "LP503450",
+      "capacity_nominal_mah": 950,
+      "capacity_minimum_mah": 900,
+      "body_maximum_l_w_t_mm": [
+        52,
+        34.5,
+        5.3
+      ],
+      "proposed_core_xy_dimensions_mm": [
+        52,
+        34.5
+      ],
+      "type": "bare cell with solder tabs; PCM and harness not included",
+      "nominal_voltage_v": 3.7,
+      "charge_limit_v": 4.2,
+      "maximum_charge_current_a": 0.95,
+      "maximum_discharge_current_a": 1.9,
+      "charge_temperature_c": [
+        0,
+        45
+      ],
+      "cold_charge_note": "0..20C: <=0.3C (285mA) per specification",
+      "source_url": "https://www.eemb.com/product-138",
+      "drawing_url": "https://eemb.oss-accelerate.aliyuncs.com/uploads/20230311/9b4528f45ac3cb1d13483e978793975b.pdf",
+      "drawing_sha256": "dd90d704763ec2ecc9b82303aad8cd13fb1cd378b6c91f380c50781f5e71aaf4",
+      "drawing_revision": "ZJQM-RD-SPC-H0750 2021-07-01 pp3-4",
+      "selected": false,
+      "qualification": "body XY screening only; pack max dimensions, protection and peak/average load/runtime budget required"
+    },
+    {
+      "manufacturer": "FP Battery",
+      "mpn": "LP505060",
+      "capacity_nominal_mah": 1800,
+      "body_nominal_l_w_t_mm": [
+        62,
+        50,
+        5
+      ],
+      "published_pack_length_range_mm": [
+        61,
+        63
+      ],
+      "proposed_core_xy_dimensions_mm": [
+        63,
+        50
+      ],
+      "type": "1S protected pack; 100mm leads shown",
+      "nominal_voltage_v": 3.7,
+      "charge_limit_v": 4.2,
+      "recommended_charge_current_a": 0.36,
+      "maximum_charge_current_a": 0.9,
+      "maximum_continuous_discharge_current_a": 1.8,
+      "pulse_discharge_current_a": 5.4,
+      "pulse_duration_ms": 10,
+      "charge_temperature_c": [
+        0,
+        45
+      ],
+      "source_url": "https://www.fpbattery.com/wp-content/uploads/2024/04/fpbattery-505060-3.7V-1800mAh-Lithium-Polymer-Battery-Specification.pdf",
+      "drawing_url": "https://www.fpbattery.com/wp-content/uploads/2024/04/fpbattery-505060-3.7V-1800mAh-Lithium-Polymer-Battery-Specification.pdf",
+      "drawing_sha256": "5e93078f77c9e532d7bd894d8da1dde11d60848876f57a5b63c3554b65c29061",
+      "selected": false,
+      "qualification": "63mm pack length leaves only1mm total X margin in64mm planning region; width/thickness tolerance, swelling and folded harness not specified; no fit signoff"
+    }
+  ]
 }

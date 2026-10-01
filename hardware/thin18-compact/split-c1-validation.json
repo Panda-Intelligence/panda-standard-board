@@ -3,7 +3,7 @@
   "replay_baseline_commit": "60de7135de31d4e49fd8351565e4e34d60a4af96",
   "files": {
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb": {
-      "sha256": "b8d7bed9380e11f222d7c1ddbd1e6ed4aea78d59486623dc4641652b69f15528",
+      "sha256": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198",
       "non_property_cad_digest": "14a1455716621e9a69bc57509a8d6308e5fcd2f186bf633a25a0ad967f34969d",
       "rebuild_geometry_and_properties_equal": true,
       "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."
@@ -21,7 +21,7 @@
       "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."
     },
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch": {
-      "sha256": "77462f0e9818669f7730a06bce3a46ae2ab602ddaccce33c1ac21ccde4f1dab8",
+      "sha256": "1de7f7fb58e11b39a91e71041581eb953ef73d2a0293c04e486c0b874b34b063",
       "non_property_cad_digest": "b05887740e5e2e5f10ac4391f93dcd674d14154a862f89d0f048829810bcb3df",
       "rebuild_geometry_and_properties_equal": true,
       "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."
@@ -86,7 +86,7 @@
       "sha256": "5fec669c2ff422c7e7fd5e3874b277225fa3984453c8245e3516da5c40330e42"
     },
     "hardware/thin18-compact/audit_split_c1_mechanical.py": {
-      "sha256": "4a5faaec467e720c8fd3d575874416e50ebd9858d485175032a6707a72e10350"
+      "sha256": "3cd078cbe871d8fbdf717251cd8555d272c1c5e7afe886250888a0eec1e3f385"
     },
     "hardware/thin18-compact/build_core_c1_split.py": {
       "sha256": "9ec3d0d25d46fd8b70d057a0f7dd2369c3e6d45b260f5932962c600d64e0bc83"
@@ -251,28 +251,28 @@
       "sha256": "0cdebaafef2acbe75538dfaf912fcd1accc6d1e4f5798663dc6cf42df34228e6"
     },
     "hardware/thin18-compact/export_jlc.py": {
-      "sha256": "c47d992d67c36092d2202a9c2804771aec0b695175d37c34cef2f1012e6fc8eb"
+      "sha256": "353331769e4597c6edadd3d09c7bdbcb9b3b92e750d3a1e58fb9be27d40f87af"
     },
     "hardware/thin18-compact/export_production.py": {
       "sha256": "92498a72dfd54343650f70944a20e83aa732334944085279a08c313c41b189b2"
     },
     "hardware/thin18-compact/freeze_split_c1_release.py": {
-      "sha256": "eb79623b1fa11e7acf33188c846316d238f78efb42d5d4c68247f2bf217a145a"
+      "sha256": "e25aa9278fca33ce32fd4136880cbc94df28e593c0d31af2c90be6edfb14bf47"
     },
     "hardware/thin18-compact/qualification/c4d-evt/qualification-plan.json": {
-      "sha256": "b84c5c8a7053d09a6de79750a555d8acdf46009af493b38be3c013f105821fa6"
+      "sha256": "fe4914eb52038b90d9baaaf960ea0cb8b3a313ab0533f2e1b5c31712c679f5cc"
     },
     "hardware/thin18-compact/qualification/c4d-evt/verify_qualification.py": {
-      "sha256": "8c05dc474bc24dd95705194046435727413264583e26008f33533e950fbb396f"
+      "sha256": "5751d098e9889553e34ab314c0711b271faa4c7727f1c5a4871ec8ac7ff13368"
     },
     "hardware/thin18-compact/release_split_c1.py": {
       "sha256": "1cf98a990ddd4f3e3a7db76a81a82843415cfa10db37e6a511488c2f14460757"
     },
     "hardware/thin18-compact/split-c1-mechanical-inputs.json": {
-      "sha256": "be2570008ad64cebda86266429e5dbad8b63440bb130f195debf2d7af2a83eca"
+      "sha256": "3e8c8a2e4d007ab8342b59e5204df6555eb605dc3363ab22a55a048be8170d5a"
     },
     "hardware/thin18-compact/split-c1-sourcing-evidence.json": {
-      "sha256": "167fe78964a819838d69af0c1c6e747ba58284e566989011d2e300075ded935a"
+      "sha256": "e0a2ac02c488b843e3fcc673430ded978fbae5b14bb6aca81db9cc7310cb66f9"
     },
     "hardware/thin18-compact/tools/prune_core_c1_stubs.py": {
       "sha256": "e9aa1ffe254d97b3dd414b4fe82958f06b2c2b44bf68c2d9a046f6556fe6786c"
@@ -285,7 +285,7 @@
     }
   },
   "manufacturing_release": false,
-  "identity_verified_new_refs": 34,
+  "identity_verified_new_refs": 35,
   "conflicting_part_id_rejection_checked": true,
   "native_all_60_pin_check_passed": true
 }
