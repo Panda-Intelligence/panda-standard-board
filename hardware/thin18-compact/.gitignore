@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+/production/*
+!/production/README.md
+/c4d1[2-9]-*/
+/c4d20-*/

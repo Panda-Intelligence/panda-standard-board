@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,json,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parent
 ap=argparse.ArgumentParser()
-ap.add_argument("--candidate",type=Path,default=ROOT/"c4d12-96x68-routing")
+ap.add_argument("--candidate",type=Path,default=ROOT/"core-c1-96x68-split")
 ap.add_argument("--output",type=Path,default=None)
 args=ap.parse_args()
 CAND=args.candidate.resolve()

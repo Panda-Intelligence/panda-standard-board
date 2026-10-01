@@ -1,9 +1,0 @@
-*.kicad_prl
-*.lck
-*.step
-*.stp
-*.stl
-*.png
-*.zip
-
-component-index.json

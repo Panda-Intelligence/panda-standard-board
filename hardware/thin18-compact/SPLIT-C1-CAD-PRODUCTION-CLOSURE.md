@@ -2,7 +2,7 @@
 
 Date: 2026-10-01
 Baseline: 60de713, branch hw/thin18-compact-evt.
-Final architecture: Core-C1 + Display-C1. C4D-20 integrated outputs remain historical.
+Final architecture: Core-C1 + Display-C1. C4D-12..20 intermediate snapshots remain in Git history.
 
 | Board | Nominal dimensions | Copper layers | DRC | Open | Parity | ERC | BOM refs | SMT CPL refs |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -13,13 +13,13 @@ Fresh native KiCad 10.0.5 checks include all severities and schematic parity.
 No routing-rule reductions, new DRC exclusions, or signal no-connect substitutions were used.
 All populated BOM entries have Manufacturer and exact MPN. BOM/CPL refs reconcile.
 
-## Active artifacts
+## Native authorities and generated artifacts
 
 - Core candidate: core-c1-96x68-split/
 - Display candidate: display-c1-45x36-production-bom/
-- Core package: production/core-c1-96x68/
-- Display package: production/display-c1-45x36/
-- Combined frozen record: production/split-c1-release.json
+- Generated Core package: production/core-c1-96x68/
+- Generated Display package: production/display-c1-45x36/
+- Generated combined record: production/split-c1-release.json
 - Interface contract: split-c1-interface.json
 - Reviewed copper replay: core-c1-routing-closure.json
 
@@ -58,6 +58,33 @@ Authoritative connector sources:
 
 ## Rebuild and export
 
+Run this from the repository root using Python 3.10+ and KiCad 10.0.5:
+
+```sh
+python3 hardware/thin18-compact/release_split_c1.py
+```
+
+The command rebuilds both candidates into temporary directories, compares native
+CAD and procurement properties, runs the 60-pin interface and mechanical audit,
+exports both boards, checks BOM/CPL, validates ZIPs and freezes SHA256SUMS.
+It also binds physical qualification to both current PCB identities.
+Only native source/config/library files, scripts, purchasing evidence and concise
+audit summaries are committed. Gerbers, ZIPs, XML netlists and duplicated package
+reports remain generated outputs; they are covered by the local package hashes.
+
+KiCad is discovered on PATH with the macOS application fallback. Set KICAD_CLI
+and KICAD_PYTHON for other installations; KICAD_PYTHON must import wx and pcbnew.
+The immutable replay source is Git commit
+60de7135de31d4e49fd8351565e4e34d60a4af96. Use a full-history clone. If the source
+commit is absent after a shallow or squash-only checkout, retrieve the original
+PR history first:
+
+```sh
+git fetch origin refs/pull/7/head
+```
+
+The helper selects native CAD/library inputs from that commit and excludes old
+verification reports, route-search outputs and intermediate snapshots.
 Existing candidates are preserved by default. Builders refuse to overwrite them.
 Use a fresh --output directory to reproduce either candidate.
 Core builds replay the reviewed copper closure and require native 0/0/0/0.
@@ -67,7 +94,8 @@ the replayed Core copper digest matches the frozen routing.
 export_production.py supports separate PCB/schematic paths and detects the
 actual copper-layer count. It blocks exports on CAD failures, incomplete
 Manufacturer/MPN, dimension mismatch, missing drill files, or ZIP corruption.
-Run export_jlc.py after each board export, then freeze_split_c1_release.py
+For individual steps, run validate_split_c1.py, then audit_split_c1_mechanical.py,
+export_production.py and export_jlc.py for each board, then freeze_split_c1_release.py
 to verify all hashes and write both board records and the combined record.
 The geometry-search tools are optional engineering tools; the frozen closure
 rebuild requires only the standard Python library and installed KiCad.
@@ -92,3 +120,15 @@ CAD-clean manufacturing data does not mark these physical tests as passed.
 
 Foreign parts blocked by electrical or mating contracts remain retained as
 specified in the handoff. Further localization belongs in a qualified sourcing ECO.
+
+## PR artifact policy
+
+The PR previously contained 1,199 files and 825,769 added lines, including ten
+C4D-12..20 candidate trees (two C4D-14 trees), copied historical reports and
+three generated production packages. These trees and generated copies have
+been removed from the current tree without rewriting Git history. The current
+Core and Display native CAD and their required libraries remain reviewable.
+No KiCad native design, custom rule or required source library is discarded.
+The historical C4D-20 manifest with machine-specific absolute paths is archived;
+the current exporter rejects candidates outside the checkout before writing
+outputs and records repository-relative artifact paths.

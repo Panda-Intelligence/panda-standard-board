@@ -1,7 +1,7 @@
 {
   "schema": "thin18-compact-c4d-evt-qualification-v1",
   "date": "2026-09-30",
-  "candidate_requirement": "Use the final routed C4D candidate, exact assembly BOM and firmware build; results from routing142, development kits or another component revision do not transfer.",
+  "candidate_requirement": "Use both current Split-C1 Core-C1 and Display-C1 identities, exact assembly BOMs and firmware build; results from historical integrated C4D, routing142, development kits or another component revision do not transfer.",
   "physical_tests_completed": 0,
   "manufacturing_release": false,
   "release_approval": null,

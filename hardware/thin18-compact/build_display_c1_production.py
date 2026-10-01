@@ -3,7 +3,7 @@ from pathlib import Path
 import shutil,re,uuid,json,subprocess,argparse,itertools,hashlib
 
 ROOT=Path(__file__).resolve().parent
-SRC=ROOT/'c4d20-96x68-production-bom/display/PANDA-EPD0426-SPI-EVT'
+from _split_c1_common import copy_baseline, kicad_cli
 DST=ROOT/'display-c1-45x36-production-bom'
 ap=argparse.ArgumentParser()
 ap.add_argument('--output',type=Path,default=DST)
@@ -13,7 +13,7 @@ UUID_COUNTER=itertools.count()
 def new_uuid():
     return uuid.uuid5(uuid.NAMESPACE_URL,'panda/build_display_c1_production.py/'+str(next(UUID_COUNTER)))
 
-K='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+K=kicad_cli()
 STEM='PANDA-EPD0426-SPI-EVT'
 
 parts={}
@@ -97,7 +97,7 @@ def sync_fields(block,ref,pcb=False):
     return block
 
 if DST.exists(): raise SystemExit('Candidate exists; preserve it and choose --output for a fresh rebuild: '+str(DST))
-shutil.copytree(SRC,DST,ignore=shutil.ignore_patterns('*.kicad_prl','*.lck'))
+copy_baseline(DST, 'display/PANDA-EPD0426-SPI-EVT')
 
 # Patch schematic instance symbols.
 sch=DST/(STEM+'.kicad_sch')
@@ -150,4 +150,4 @@ if counts!={'drc':0,'open':0,'parity':0,'erc':0}: raise SystemExit(counts)
 print(json.dumps({'patched_refs':len(parts),'native_checks':counts},indent=2))
 
 (DST/'README.md').write_text('# Display-C1 display board\n\n45 x 36 mm, two copper layers.\nNative checks: '+json.dumps(counts)+'\nU1-U3: AIP74LVC2G17GC363.TR. J1: B.Cu, (23,4) mm, rotation 0 degrees.\nmanufacturing_release=false; physical EVT and actual fit remain open.\n')
-(DST/'.gitignore').write_text('*.kicad_prl\n*.lck\n__pycache__/\n')
+(DST/'.gitignore').write_text('*.kicad_prl\n*.lck\n__pycache__/\nverification/\n*-report.json\nproduction-bom-resolution.json\n')

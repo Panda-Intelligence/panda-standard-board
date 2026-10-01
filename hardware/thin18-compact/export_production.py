@@ -6,9 +6,12 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent.parent
 REL = Path("eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16")
 STEM = "PANDA-STD-CORE-EVT-quilter-j501-merged"
-K = "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli"
+from _split_c1_common import kicad_cli
+K = kicad_cli()
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
-def rel(p): return str(p.relative_to(REPO)) if p.is_relative_to(REPO) else str(p)
+def rel(p):
+    try: return str(p.resolve().relative_to(REPO))
+    except ValueError: raise ValueError("Production manifests require a candidate inside this checkout")
 def run(*args):
     r = subprocess.run([K,*map(str,args)], capture_output=True, text=True)
     if r.returncode: raise RuntimeError(r.stderr + r.stdout)
@@ -28,6 +31,8 @@ a = ap.parse_args()
 cand,out = a.candidate.resolve(),a.output.resolve()
 pcb,sch = cand/a.pcb_relative,cand/a.schematic_relative
 if not pcb.is_file() or not sch.is_file(): raise SystemExit("missing PCB/schematic")
+# Reject non-portable input paths before touching any existing output.
+rel(pcb); rel(sch)
 if not out.is_relative_to(ROOT/"production"): raise SystemExit("output must be a production subdirectory")
 if out == ROOT/"production": raise SystemExit("refusing production root")
 if out.exists(): shutil.rmtree(out)

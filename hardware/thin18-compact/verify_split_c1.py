@@ -5,6 +5,7 @@ import hashlib, json, math, re, sys, subprocess, xml.etree.ElementTree as ET
 import wx
 APP=wx.App(False)
 import pcbnew
+from _split_c1_common import git_bytes, kicad_cli
 ROOT=Path(__file__).resolve().parent
 REL=Path("eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16")
 STEM="PANDA-STD-CORE-EVT-quilter-j501-merged"
@@ -38,8 +39,9 @@ for b,f in zip(boards,connectors):
     assert abs(f.GetOrientationDegrees())<1e-6, "mating transform requires 0-degree connectors"
 assert xy(connectors[0].GetPosition())==[61.0,62.0]
 assert xy(connectors[1].GetPosition())==[23.0,4.0]
-K="/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli"
+K=kicad_cli()
 for folder,pcb in zip([core,display],pcb_paths):
+    (folder/"verification").mkdir(exist_ok=True)
     sch=pcb.with_suffix(".kicad_sch")
     for command in [
         [K,"pcb","drc","--format","json","--severity-all","--schematic-parity","--output",str(folder/"verification/drc.json"),str(pcb)],
@@ -73,11 +75,11 @@ for n in range(1,61):
     mapping.append({"pin":n,"role":role,"core_net":cn,"display_net":dn,
         "core_pad_mm":c,"display_pad_mm":d,"display_pad_world_mm":world})
 # Native rules are inherited intact; no new suppressions or minimum reductions.
-source=ROOT/"c4d20-96x68-production-bom"/REL
 rules={}
 for ext in [".kicad_pro",".kicad_dru"]:
-    p=core/REL/(STEM+ext);q=source/(STEM+ext)
-    assert sha(p)==sha(q),"routing rules changed"
+    p=core/REL/(STEM+ext)
+    expected=hashlib.sha256(git_bytes(str(REL/(STEM+ext)))).hexdigest()
+    assert sha(p)==expected,"routing rules changed"
     rules[ext]=sha(p)
 counts={}
 for name,folder in [("Core-C1",core),("Display-C1",display)]:
@@ -87,6 +89,7 @@ for name,folder in [("Core-C1",core),("Display-C1",display)]:
         "parity":len(d["schematic_parity"]),
         "erc":sum(len(s["violations"]) for s in e["sheets"])}
 cad_complete=all(not any(c.values()) for c in counts.values())
+if not cad_complete: raise RuntimeError("Native CAD gates failed: "+str(counts))
 report={"schema":"panda-split-c1-interface-v1","logical_pin_mapping_verified":True,
     "same_number_mating":True,"all_60_pins_verified":True,
     "signals":6,"ground_pins":len(grounds),"power_pins":2,"reserved_pins":29,

@@ -104,7 +104,48 @@ def split_ids(value: str) -> list[str]:
     return [item.strip() for item in re.split(r"[;,]", value) if item.strip()]
 
 
+def split_artifacts(candidate: dict[str, Any]) -> dict[str, Any]:
+    generated_path = repo_file(candidate["generated_candidate_path"])
+    generated = json.loads(generated_path.read_text())
+    require(generated.get("schema") == "panda-generated-split-c1-qualification-v1", "wrong generated qualification schema")
+    require(generated["pcb_identities"] == candidate["pcb_identities"], "qualification PCB identity differs")
+    release_path = validate_hashed_file(generated["split_release_path"], generated["split_release_sha256"])
+    return json.loads(release_path.read_text())
+
+
+def validate_split_sample_binding(sample: dict[str, Any], candidate: dict[str, Any]) -> None:
+    if candidate.get("schema") != "thin18-compact-split-release-candidate-v2":
+        return
+    expected = candidate["pcb_identities"]
+    require(sample.get("pcb_identities") == expected, "sample must bind both current Split-C1 PCB identities")
+    require(sample["pcb_sha256"] == expected["Core-C1"]["sha256"], "sample Core PCB hash differs")
+    split = split_artifacts(candidate)
+    expected_boms = {board: artifacts["files"]["bom"] for board,artifacts in split["boards"].items()}
+    require(sample.get("assembly_boms") == expected_boms, "sample assembly BOMs differ from both current boards")
+    for info in expected_boms.values():
+        validate_hashed_file(info["path"], info["sha256"])
+
+
 def validate_release_candidate(candidate: dict[str, Any]) -> None:
+    if candidate.get("schema") == "thin18-compact-split-release-candidate-v2":
+        split = split_artifacts(candidate)
+        require(set(split["boards"]) == {"Core-C1", "Display-C1"}, "split release must bind both boards")
+        require(split["cad_manufacturing_data_complete"], "split fabrication data incomplete")
+        require(set(candidate["pcb_identities"]) == {"Core-C1", "Display-C1"}, "qualification must bind both PCB identities")
+        for board, artifacts in split["boards"].items():
+            require(artifacts["pcb"] == candidate["pcb_identities"][board], "qualification PCB identity differs")
+            native = artifacts["native_checks"]
+            require(set(native) == {"drc", "open", "parity", "erc"} and not any(native.values()), "split native gates failed")
+            for info in artifacts["files"].values():
+                validate_hashed_file(info["path"], info["sha256"])
+            drc = json.loads(repo_file(artifacts["files"]["drc"]["path"]).read_text())
+            erc = json.loads(repo_file(artifacts["files"]["erc"]["path"]).read_text())
+            require(not any(drc.get(key, []) for key in ["violations", "unconnected_items", "schematic_parity"]), "split DRC/open/parity failed")
+            require(not any(sheet.get("violations", []) for sheet in erc.get("sheets", [])), "split ERC failed")
+        for label in ["interface_contract", "mechanical_audit", "mechanical_inputs", "sourcing_evidence", "cad_validation"]:
+            info = split[label]
+            validate_hashed_file(info["path"], info["sha256"])
+        return
     missing = sorted(field for field in RELEASE_FILE_FIELDS if not candidate.get(field))
     require(not missing, f"release candidate fields missing: {missing}")
     pcb = validate_hashed_file(candidate["pcb_path"], candidate["pcb_sha256"])
@@ -200,6 +241,7 @@ def main(release: bool) -> int:
             operators.add(row["operator"])
             reviewers.add(row["reviewer"])
 
+        validate_split_sample_binding(samples[sample_id], release_candidate)
         require(set(test["required_instrument_roles"]).issubset(roles_seen), f"{test_id} missing instrument roles")
         require(reviewers.isdisjoint(operators), f"{test_id} reviewer must be independent from operator")
         require(len(test_limit_ids) == 1, f"{test_id} must use one approved limit revision")

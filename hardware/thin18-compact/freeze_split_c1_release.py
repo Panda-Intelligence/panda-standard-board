@@ -26,6 +26,12 @@ validation_path=ROOT/'split-c1-validation.json'
 validation=json.loads(validation_path.read_text())
 if validation.get('schema')!='panda-split-c1-validation-v2' or validation['manufacturing_release'] is not False:
     raise SystemExit('CAD validation record is missing or has the wrong release status')
+if not validation.get('native_all_60_pin_check_passed') or not validation.get('conflicting_part_id_rejection_checked'):
+    raise SystemExit('CAD validation did not verify interface or procurement-ID guards')
+for board in ('Core-C1', 'Display-C1'):
+    native = validation['files'][board]['native_checks']
+    if set(native) != {'current', 'fresh_rebuild'} or any(any(counts.values()) for counts in native.values()):
+        raise SystemExit('Both current and rebuilt CAD must pass all native gates')
 for label,info in validation['files'].items():
     if 'sha256' in info and sha(REPO/label)!=info['sha256']:
         raise SystemExit('CAD validation source hash is stale: '+label)
@@ -94,6 +100,24 @@ release={"schema":"panda-split-c1-release-v1","architecture":"Core-C1 + Display-
     "physical_gates":contract["open_physical_gates"]}
 p=ROOT/"production/split-c1-release.json"
 p.write_text(json.dumps(release,indent=2)+"\n")
+identities = {name: board["pcb"] for name,board in boards.items()}
+generated_candidate = ROOT/"production/split-c1-qualification.json"
+generated_candidate.write_text(json.dumps({
+    "schema": "panda-generated-split-c1-qualification-v1",
+    "split_release_path": str(p.relative_to(REPO)),
+    "split_release_sha256": sha(p),
+    "pcb_identities": identities,
+    "manufacturing_release": False
+},indent=2)+"\n")
+qualification = ROOT/'qualification/c4d-evt/release-candidate.json'
+qualification.write_text(json.dumps({
+    "schema": "thin18-compact-split-release-candidate-v2",
+    "checkpoint": "Split-C1 Core-C1 + Display-C1",
+    "generated_candidate_path": str(generated_candidate.relative_to(REPO)),
+    "pcb_identities": identities,
+    "manufacturing_release": False,
+    "note": "Generate packages before release verification; physical Q04-Q12 and independent approval remain mandatory."
+},indent=2)+"\n")
 print(json.dumps({"release":str(p.relative_to(REPO)),
     "boards":{name:{"native_checks":b["native_checks"],"dimensions_mm":b["dimensions_mm"]}
         for name,b in boards.items()},"manufacturing_release":False},indent=2))

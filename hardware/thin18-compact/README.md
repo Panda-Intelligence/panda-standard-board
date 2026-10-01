@@ -7,9 +7,11 @@ display-c1-45x36-production-bom. The Core is 96 x 68 mm / four copper layers;
 Display is 45 x 36 mm / two layers. Both boards are 0.8 mm thick and pass
 native KiCad DRC/open/parity/ERC = 0/0/0/0.
 
-Production packages are under production/core-c1-96x68 and
-production/display-c1-45x36, with production/split-c1-release.json as the combined
-hash-checked record. Every populated BOM ref has Manufacturer and exact MPN.
+Run `python3 hardware/thin18-compact/release_split_c1.py` to generate local
+production/core-c1-96x68 and production/display-c1-45x36 packages, with
+production/split-c1-release.json as their combined hash-checked record.
+Generated packages are ignored; the committed authorities are native CAD,
+required libraries, replay scripts, purchasing evidence and audit summaries. Every populated BOM ref has Manufacturer and exact MPN.
 Catalog mappings cover 111 Core refs and 36 Display refs; six Core SMT refs,
 one Display SMT ref and the manual TH301 still need supply confirmation.
 Present catalog IDs do not reserve stock or confirm an assembly order.
@@ -23,8 +25,8 @@ maximum component heights, FPC geometry and enclosure tolerances remain open.
 
 This is an EVT fabrication-data candidate. manufacturing_release=false.
 Physical electrical/thermal EVT and actual mechanical fit require assembled
-hardware. C4D-20 integrated outputs, routing141 scenes and the C0/C2 notes below
-are historical; they do not override Split-C1.
+hardware. C4D-12..20 snapshots are archived in Git history. Routing141 scenes and the
+C0/C2 notes below are historical; they do not override Split-C1.
 
 
 Thin18 Compact is an architecture fork of the validated `thin18/routing142` baseline.

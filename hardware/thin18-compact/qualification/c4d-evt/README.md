@@ -32,3 +32,19 @@ python3 hardware/thin18-compact/qualification/c4d-evt/verify_qualification.py --
 ```
 
 The first command validates the current truthful state. The second must return exit code 2 until every required physical gate is complete and independently signed.
+
+## Current Split-C1 assembly identity
+
+The current release-candidate record binds both Core-C1 and Display-C1. Generate
+the local packages with `python3 hardware/thin18-compact/release_split_c1.py`
+before checking fabrication artifact hashes. For a measured Split-C1 sample,
+include `pcb_identities` matching both entries in release-candidate.json and
+`assembly_boms` matching each board's production manifest BOM path and SHA-256.
+A current Core with an old Display, or a different assembly BOM, is rejected.
+All existing sample, instrument, approved-limit, independent-review and Q04-Q12
+requirements still apply. No physical measurement has been recorded.
+
+The committed candidate pins only both native PCB identities and the relative
+generated-candidate path. The generated production/split-c1-qualification.json
+pins the run-specific package digest, so exporting from a different checkout
+does not modify tracked qualification inputs. Both layers are checked at release.

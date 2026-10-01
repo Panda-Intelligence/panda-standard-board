@@ -3,7 +3,8 @@ from pathlib import Path
 import shutil,re,uuid,json,subprocess,argparse,itertools
 
 ROOT=Path(__file__).resolve().parent
-SRC=ROOT/'c4d20-96x68-production-bom'
+from _split_c1_common import copy_baseline, BASELINE_COMMIT, kicad_cli, kicad_python
+SRC=Path('c4d20-96x68-production-bom')
 DST=ROOT/'core-c1-96x68-split'
 ap=argparse.ArgumentParser()
 ap.add_argument('--output',type=Path,default=DST)
@@ -15,8 +16,8 @@ def new_uuid():
 
 REL=Path('eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16')
 STEM='PANDA-STD-CORE-EVT-quilter-j501-merged'
-K='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-KPY='/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3'
+K=kicad_cli()
+KPY=kicad_python()
 ADAPTER_REFS=set()
 for a,b,prefix in [(801,813,'C'),(801,803,'D'),(801,803,'U'),(801,814,'R')]:
     ADAPTER_REFS.update(f'{prefix}{i}' for i in range(a,b+1))
@@ -75,7 +76,8 @@ def replace_prop(block,name,value):
     return block[:a]+value+block[b:]
 
 if DST.exists(): raise SystemExit('Candidate exists; preserve it and choose --output for a fresh rebuild: '+str(DST))
-shutil.copytree(SRC,DST,ignore=shutil.ignore_patterns('verification','display','*.kicad_prl','*.lck'))
+copy_baseline(DST)
+(DST/'.gitignore').write_text('*.kicad_prl\n*.lck\n__pycache__/\nverification/\n*-report.json\nproduction-bom-resolution.json\n')
 
 core= DST/REL
 sheet=core/'display-integrated.kicad_sch'
@@ -309,7 +311,7 @@ counts={'drc':len(d.get('violations',[])),'open':len(d.get('unconnected_items',[
 if closure.exists() and any(counts.values()):
     raise SystemExit('Frozen closure replay failed native gates: '+str(counts))
 (DST/'split-transform-report.json').write_text(json.dumps({
- 'date':'2026-10-01','source':SRC.name,'candidate':DST.name,
+ 'date':'2026-10-01','source':SRC.name,'source_commit':BASELINE_COMMIT,'candidate':DST.name,
  'offboard_adapter_refs':sorted(OFFBOARD_REFS),
  'j601':{'mpn':'DF40C-60DS-0.4V(58)','position_mm':[61,62],'layer':'B.Cu','rotation_deg':0,
          'pins':{'1':'EPD_D0/SCLK','3':'EPD_D1/MOSI','5':'EPD_D2/CS','7':'EPD_D3/DC','9':'EPD_D4/RESET','11':'EPD_D5/BUSY','35-36':'3V3_EPD_LOGIC','even2-34+55-60':'GND'}},

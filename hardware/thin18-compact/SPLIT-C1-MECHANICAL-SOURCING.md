@@ -59,10 +59,14 @@ Unresolved SMT supply:
 - Core-C1 L402: XGL4015-222MEC. Confirm supplier/packing and JLC consignment.
 - Core-C1 U902: SGM62125AXG/TR. Manufacturer-listed exact WLCSP variant; confirm supply or consignment.
 - Core-C1 U905: SGM37601YTRL20G/TR. Manufacturer-listed exact TQFN20 variant; confirm supply or consignment.
-- Display-C1 L1: LSXNE3030KKT470MN. Confirm exact current part, stock and library ID/consignment.
+- Display-C1 L1: LSXNE3030KKT470MN. The [manufacturer page](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M) lists Mass Production (Preferred) and maximum body height 1.0 mm; confirm stock, packing and library ID/consignment. UTY-DN25-02D lists this part as a suggested alternative for older NR/LSXBD models, rather than an EOL part.
 
 TH301 remains manual/off-board. Its attachment and battery NTC harness are
-physical assembly work. No purchase or supplier message was sent.
+physical assembly work. For the seven unmapped SMT refs, the retained exact
+MPN is the procurement identity; use supplier-confirmed consignment if no exact
+JLC library entry is confirmed. Purchase quantity, reel/cut-tape packing, lot
+traceability and assembly-vendor acceptance remain pending. A search miss does
+not prove a part is unavailable. No purchase or supplier message was sent.
 
 ## Native mechanical XY screening
 
@@ -127,10 +131,15 @@ passing numeric budget leaves physical verification false.
 
 ## Re-run and package checks
 
-1. Run verify_split_c1.py with the KiCad Python interpreter.
+1. Run validate_split_c1.py with regular Python; it rebuilds both boards and runs verify_split_c1.py with KiCad Python.
 2. Run audit_split_c1_mechanical.py with the same interpreter.
 3. Export each board with export_production.py; run export_jlc.py.
 4. Run freeze_split_c1_release.py.
+
+The single entry point `python3 hardware/thin18-compact/release_split_c1.py`
+runs all four stages. See SPLIT-C1-CAD-PRODUCTION-CLOSURE.md for runtime
+configuration and retrieval of the immutable Git replay baseline.
+Exported packages are generated and ignored; they are not duplicated in Git.
 
 Fresh rebuilds use build_core_c1_split.py and build_display_c1_production.py with
 a new --output directory. Existing candidates are preserved.
