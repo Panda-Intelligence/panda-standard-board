@@ -1,5 +1,38 @@
 # Thin18 Compact EVT
 
+## Current authoritative state — Split-C1 (2026-10-01)
+
+The current PCB authorities are core-c1-96x68-split and
+display-c1-45x36-production-bom. The Core is 96 x 68 mm / four copper layers;
+Display is 45 x 36 mm / two layers. Both boards are 0.8 mm thick and pass
+native KiCad DRC/open/parity/ERC = 0/0/0/0.
+
+Run `python3 hardware/thin18-compact/release_split_c1.py` to generate local
+production/core-c1-96x68 and production/display-c1-45x36 packages, with
+production/split-c1-release.json as their combined hash-checked record.
+Generated packages are ignored; the committed authorities are native CAD,
+required libraries, replay scripts, purchasing evidence and audit summaries. Every populated BOM ref has Manufacturer and exact MPN.
+Catalog mappings cover 112 Core refs and 36 Display refs; five Core SMT refs
+and one Display SMT ref remain without a confirmed JLC ID. C301 now maps to
+C6048128. All seven original supply-followup refs still need order/packing and
+assembly confirmation; Display L1 has an exact DigiKey supply route with a
+dated public stock observation. The manual TH301 needs a separate NTC harness.
+Present catalog IDs do not reserve stock or confirm an assembly order.
+
+See SPLIT-C1-CAD-PRODUCTION-CLOSURE.md for electrical closure and
+SPLIT-C1-MECHANICAL-SOURCING.md for current mechanical constraints and sourcing.
+The native XY screen isolates J201 shell pads for a Z-clearance check. The
+battery planning rectangle overlaps the Display by 1530 mm²; the full battery
+must sit outside the occupied interboard gap. Actual battery dimensions,
+maximum component heights, FPC geometry and enclosure tolerances remain open.
+
+This is an EVT fabrication-data candidate. manufacturing_release=false.
+The user confirmed this is PCB design only: neither physical board exists yet.
+Physical electrical/thermal EVT and actual mechanical fit are planned for after
+assembly; Q04-Q14 includes Display-only power/refresh and matched two-board tests. C4D-12..20 snapshots are archived in Git history. Routing141 scenes and the
+C0/C2 notes below are historical; they do not override Split-C1.
+
+
 Thin18 Compact is an architecture fork of the validated `thin18/routing142` baseline.
 
 ## Goal

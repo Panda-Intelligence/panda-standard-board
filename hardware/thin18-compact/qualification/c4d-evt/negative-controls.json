@@ -1,6 +1,15 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "tests": [
+    {
+      "name": "Display physical test omitted rejected",
+      "exit_code": 2,
+      "expected_fragment": "qualification test coverage changed",
+      "rejected_as_expected": true,
+      "stderr_tail": [
+        "FAIL: qualification test coverage changed"
+      ]
+    },
     {
       "name": "paper-only MEASURED_PASS rejected",
       "exit_code": 2,
@@ -34,8 +43,37 @@
       "expected_fragment": "release blocked",
       "rejected_as_expected": true,
       "stderr_tail": [
-        "FAIL: release blocked: ['not all Q04-Q12 tests are MEASURED_PASS', 'physical_tests_completed is not 9', 'independent release approval missing']"
+        "FAIL: release blocked: ['not all Q04-Q14 tests are MEASURED_PASS', 'physical_tests_completed is not 11', 'independent release approval missing']"
       ]
+    },
+    {
+      "name": "wrong Display PCB rejected",
+      "expected_fragment": "both current Split-C1 PCB identities",
+      "rejected_as_expected": true,
+      "validator_error": "sample must bind both current Split-C1 PCB identities"
+    },
+    {
+      "name": "missing Display serial rejected",
+      "expected_fragment": "both Core and Display board serials",
+      "rejected_as_expected": true,
+      "validator_error": "sample must identify both Core and Display board serials"
+    },
+    {
+      "name": "wrong Display assembly BOM rejected",
+      "expected_fragment": "BOMs differ from both current boards",
+      "rejected_as_expected": true,
+      "validator_error": "sample assembly BOMs differ from both current boards"
+    },
+    {
+      "name": "wrong legacy Core assembly BOM rejected",
+      "expected_fragment": "legacy Core BOM differs",
+      "rejected_as_expected": true,
+      "validator_error": "sample legacy Core BOM differs"
+    },
+    {
+      "name": "omitted paired-board operating state rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14 missing required sample states"
     }
   ],
   "all_rejected_as_expected": true,

@@ -1,19 +1,17 @@
 {
-  "schema": "thin18-compact-release-candidate-v1",
-  "date": "2026-09-30",
-  "checkpoint": null,
-  "pcb_path": null,
-  "pcb_sha256": null,
-  "drc_report_path": null,
-  "drc_report_sha256": null,
-  "erc_report_path": null,
-  "erc_report_sha256": null,
-  "production_bom_path": null,
-  "production_bom_sha256": null,
-  "cpl_path": null,
-  "cpl_sha256": null,
-  "gerber_zip_path": null,
-  "gerber_zip_sha256": null,
+  "schema": "thin18-compact-split-release-candidate-v2",
+  "checkpoint": "Split-C1 Core-C1 + Display-C1",
+  "generated_candidate_path": "hardware/thin18-compact/production/split-c1-qualification.json",
+  "pcb_identities": {
+    "Core-C1": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "sha256": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198"
+    },
+    "Display-C1": {
+      "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
+      "sha256": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
+    }
+  },
   "manufacturing_release": false,
-  "note": "Populated only after routing open=0, DRC/parity/ERC=0, complete manufacturing outputs, and all physical qualification gates pass."
+  "note": "Generate packages before release verification; physical Q04-Q14 and independent approval remain mandatory."
 }

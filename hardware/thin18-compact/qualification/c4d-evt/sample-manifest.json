@@ -1,6 +1,6 @@
 {
   "schema": "thin18-compact-sample-manifest-v1",
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "samples": [],
   "required_fields_for_real_sample": [
     "sample_id",
@@ -17,5 +17,11 @@
     "assembly_vendor",
     "photos"
   ],
-  "note": "Empty by design. Add a real C4D routed assembly only after its identity and hashes are captured."
+  "note": "Empty: no physical samples exist. Future sample_id identifies one traceable Core-C1 plus Display-C1 pair; include both serials, both native PCB hashes and both assembly BOMs. Historical integrated boards and the old Murphy development board do not qualify.",
+  "project_stage": "PCB_DESIGN_NO_PHYSICAL_SAMPLES",
+  "required_fields_for_split_pair": [
+    "pcb_identities",
+    "assembly_boms",
+    "board_serial_numbers"
+  ]
 }

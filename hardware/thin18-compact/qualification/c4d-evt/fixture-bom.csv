@@ -1,24 +1,25 @@
 role,minimum_capability,purpose,status
-usb_c_analyzer,USB-C sink/source attach and CC measurement; USB2 protocol or compliance visibility,Q04 USB-C attach/current/data,REQUIRED_NOT_AVAILABLE
-oscilloscope,>=4 channels; bandwidth appropriate for USB/power transient work; differential/high-voltage probes as applicable,Q04/Q05/Q06/Q07/Q10,REQUIRED_NOT_AVAILABLE
-current_limited_supply,programmable 0-6V with current limit and logging,Q04/Q05/Q06/Q07/Q10/Q12,REQUIRED_NOT_AVAILABLE
-electronic_load,programmable load covering USB/charger/system currents,Q04/Q05,REQUIRED_NOT_AVAILABLE
-battery_simulator,1S Li-ion voltage/current source-sink simulation with logging,Q05,REQUIRED_NOT_AVAILABLE
-precision_current_meter,sub-uA through ampere ranges with known burden voltage,Q05/Q06,REQUIRED_NOT_AVAILABLE
-temperature_chamber_or_ntc_fixture,cold/hot and NTC resistance simulation with safe isolated fixture,Q05/Q08/Q09/Q12,REQUIRED_NOT_AVAILABLE
-lux_or_luminance_meter,repeatable front-light optical measurement,Q06,REQUIRED_NOT_AVAILABLE
-high_impedance_voltage_probe,>=40V rating and low loading,Q07,REQUIRED_NOT_AVAILABLE
-lcr_meter_with_dc_bias_or_impedance_analyzer,capacitance/ESR under 0-20V DC bias and temperature,Q08,REQUIRED_NOT_AVAILABLE
-source_measure_unit,low-current reverse-leakage measurement at temperature,Q09,REQUIRED_NOT_AVAILABLE
-current_probe,front-light switching/inductor current waveform,Q10,REQUIRED_NOT_AVAILABLE
-thermal_camera_or_thermocouples,calibrated component/surface temperature logging,Q10/Q12,REQUIRED_NOT_AVAILABLE
-spectrum_analyzer_or_emi_receiver,conducted/radiated pre-compliance coverage,Q10/Q12,REQUIRED_NOT_AVAILABLE
-near_field_probes,localized converter/RF emissions,Q10,REQUIRED_NOT_AVAILABLE
-microphone_or_acoustic_analyzer,repeatable audible-noise capture,Q10,REQUIRED_NOT_AVAILABLE
-microscope_or_camera,connector/FPC contact and assembly evidence,Q11,REQUIRED_NOT_AVAILABLE
-continuity_meter,all-pin continuity and shorts,Q11,REQUIRED_NOT_AVAILABLE
-dimensional_measurement_tools,calipers/microscope scale/bend-radius gauges,Q11,REQUIRED_NOT_AVAILABLE
-rf_test_set_or_spectrum_analyzer,Wi-Fi/BLE TX/RX and emissions,Q12,REQUIRED_NOT_AVAILABLE
-vna_or_antenna_fixture,2.4GHz antenna match/fixture measurement,Q12,REQUIRED_NOT_AVAILABLE
-temperature_chamber,cold/hot functional and soak test,Q12,REQUIRED_NOT_AVAILABLE
-data_logger,time-correlated power/temperature/error logging,Q12,REQUIRED_NOT_AVAILABLE
+usb_c_analyzer,USB-C sink/source attach and CC measurement; USB2 protocol or compliance visibility,Q04 USB-C attach/current/data,PLANNED_NEEDS_REGISTRATION
+oscilloscope,>=4 channels; bandwidth appropriate for USB/power transient work; differential/high-voltage probes as applicable,Q04/Q05/Q06/Q07/Q10,PLANNED_NEEDS_REGISTRATION
+current_limited_supply,programmable 0-6V with current limit and logging,Q04/Q05/Q06/Q07/Q10/Q12,PLANNED_NEEDS_REGISTRATION
+electronic_load,programmable load covering USB/charger/system currents,Q04/Q05,PLANNED_NEEDS_REGISTRATION
+battery_simulator,1S Li-ion voltage/current source-sink simulation with logging,Q05,PLANNED_NEEDS_REGISTRATION
+precision_current_meter,sub-uA through ampere ranges with known burden voltage,Q05/Q06,PLANNED_NEEDS_REGISTRATION
+temperature_chamber_or_ntc_fixture,cold/hot and NTC resistance simulation with safe isolated fixture,Q05/Q08/Q09/Q12,PLANNED_NEEDS_REGISTRATION
+lux_or_luminance_meter,repeatable front-light optical measurement,Q06,PLANNED_NEEDS_REGISTRATION
+high_impedance_voltage_probe,>=40V rating and low loading,Q07,PLANNED_NEEDS_REGISTRATION
+lcr_meter_with_dc_bias_or_impedance_analyzer,capacitance/ESR under 0-20V DC bias and temperature,Q08,PLANNED_NEEDS_REGISTRATION
+source_measure_unit,low-current reverse-leakage measurement at temperature,Q09,PLANNED_NEEDS_REGISTRATION
+current_probe,front-light switching/inductor current waveform,Q10,PLANNED_NEEDS_REGISTRATION
+thermal_camera_or_thermocouples,calibrated component/surface temperature logging,Q10/Q12,PLANNED_NEEDS_REGISTRATION
+spectrum_analyzer_or_emi_receiver,conducted/radiated pre-compliance coverage,Q10/Q12,PLANNED_NEEDS_REGISTRATION
+near_field_probes,localized converter/RF emissions,Q10,PLANNED_NEEDS_REGISTRATION
+microphone_or_acoustic_analyzer,repeatable audible-noise capture,Q10,PLANNED_NEEDS_REGISTRATION
+microscope_or_camera,connector/FPC contact and assembly evidence,Q11/Q13/Q14,PLANNED_NEEDS_REGISTRATION
+continuity_meter,all-pin continuity and shorts,Q11/Q13/Q14,PLANNED_NEEDS_REGISTRATION
+dimensional_measurement_tools,calipers/microscope scale/bend-radius gauges,Q11/Q13/Q14,PLANNED_NEEDS_REGISTRATION
+rf_test_set_or_spectrum_analyzer,Wi-Fi/BLE TX/RX and emissions,Q12,PLANNED_NEEDS_REGISTRATION
+vna_or_antenna_fixture,2.4GHz antenna match/fixture measurement,Q12,PLANNED_NEEDS_REGISTRATION
+temperature_chamber,cold/hot functional and soak test,Q12,PLANNED_NEEDS_REGISTRATION
+data_logger,time-correlated power/temperature/error logging,Q12,PLANNED_NEEDS_REGISTRATION
+logic_analyzer,3.3V SPI plus RESET and BUSY capture with timing resolution appropriate for configured clock,Q13/Q14,PLANNED_NEEDS_REGISTRATION

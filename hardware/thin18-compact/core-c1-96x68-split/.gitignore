@@ -1,0 +1,12 @@
+*.kicad_prl
+*.lck
+__pycache__/
+verification/
+*-report.json
+production-bom-resolution.json
+replay-*
+provenance/
+c*-*.json
+*-eco.json
+pose-replay-summary.json
+routing-equivalence.json

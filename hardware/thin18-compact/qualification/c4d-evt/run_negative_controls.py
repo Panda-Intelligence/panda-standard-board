@@ -170,7 +170,66 @@ def unapproved_release_flag() -> None:
     path.write_text(json.dumps(data, indent=2) + "\n")
 
 
+def remove_display_test() -> None:
+    path = HERE / "qualification-plan.json"
+    plan = json.loads(path.read_text())
+    plan["tests"] = [item for item in plan["tests"] if item["id"] != "Q13"]
+    path.write_text(json.dumps(plan, indent=2) + "\n")
+
+
+def expect_binding_failure(name, sample, fragment) -> None:
+    from verify_qualification import validate_split_sample_binding
+    candidate = json.loads((HERE / "release-candidate.json").read_text())
+    try:
+        validate_split_sample_binding(sample, candidate)
+    except ValueError as exc:
+        message = str(exc)
+        if fragment not in message:
+            raise SystemExit(f"unexpected binding guard for {name}: {message}")
+        results.append({"name":name, "expected_fragment":fragment,
+                        "rejected_as_expected":True,"validator_error":message})
+    else:
+        raise SystemExit(f"negative binding control was accepted: {name}")
+
+
+def run_pair_binding_controls() -> None:
+    from copy import deepcopy
+    from verify_qualification import split_artifacts, validate_release_candidate
+    candidate = json.loads((HERE / "release-candidate.json").read_text())
+    validate_release_candidate(candidate)
+    release = split_artifacts(candidate)
+    sample = {"pcb_identities":candidate["pcb_identities"],
+              "pcb_sha256":candidate["pcb_identities"]["Core-C1"]["sha256"],
+              "board_serial_numbers":{"Core-C1":"CONTROL-CORE","Display-C1":"CONTROL-DISPLAY"},
+              "assembly_boms":{name:info["files"]["bom"] for name,info in release["boards"].items()}}
+    sample["assembly_bom_path"] = sample["assembly_boms"]["Core-C1"]["path"]
+    sample["assembly_bom_sha256"] = sample["assembly_boms"]["Core-C1"]["sha256"]
+    from verify_qualification import validate_split_sample_binding, validate_sample_states
+    validate_split_sample_binding(sample, candidate)
+    wrong = deepcopy(sample); wrong["pcb_identities"]["Display-C1"]["sha256"] = "1"*64
+    expect_binding_failure("wrong Display PCB rejected", wrong, "both current Split-C1 PCB identities")
+    missing = deepcopy(sample); missing["board_serial_numbers"].pop("Display-C1")
+    expect_binding_failure("missing Display serial rejected", missing, "both Core and Display board serials")
+    wrong = deepcopy(sample); wrong["assembly_boms"]["Display-C1"]["sha256"] = "2"*64
+    expect_binding_failure("wrong Display assembly BOM rejected", wrong, "BOMs differ from both current boards")
+    wrong = deepcopy(sample); wrong["assembly_bom_sha256"] = "3"*64
+    expect_binding_failure("wrong legacy Core assembly BOM rejected", wrong, "legacy Core BOM differs")
+    test = next(item for item in json.loads((HERE/"qualification-plan.json").read_text())["tests"] if item["id"]=="Q14")
+    valid_rows = [{"state":state} for state in test["required_sample_states"]]
+    validate_sample_states(test, valid_rows)
+    try:
+        validate_sample_states(test, valid_rows[:-1])
+    except ValueError as exc:
+        if "missing required sample states" not in str(exc): raise
+        results.append({"name":"omitted paired-board operating state rejected", "rejected_as_expected":True,
+                        "validator_error":str(exc)})
+    else:
+        raise SystemExit("paired-board state coverage negative control was accepted")
+
+
+
 try:
+    expect_failure("Display physical test omitted rejected", remove_display_test, "qualification test coverage changed")
     expect_failure("paper-only MEASURED_PASS rejected", paper_only_pass, "measured status without rows")
     expect_failure("measurement without sample identity rejected", measurement_without_identity, "unknown sample")
     expect_failure("expired calibration rejected", expired_calibration, "calibration expired")
@@ -180,6 +239,8 @@ try:
         "release blocked",
         release=True,
     )
+    restore()
+    run_pair_binding_controls()
 finally:
     restore()
 
@@ -189,7 +250,7 @@ if final.returncode != 0:
     raise SystemExit(f"restored current state failed: {final.stdout}\n{final.stderr}")
 
 report = {
-    "date": "2026-09-30",
+    "date": "2026-10-01",
     "tests": results,
     "all_rejected_as_expected": all(item["rejected_as_expected"] for item in results),
     "inputs_restored": True,

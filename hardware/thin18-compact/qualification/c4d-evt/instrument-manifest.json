@@ -1,6 +1,6 @@
 {
   "schema": "thin18-compact-instrument-manifest-v1",
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "instruments": [],
   "required_fields_for_real_instrument": [
     "instrument_id",
@@ -14,5 +14,5 @@
     "calibration_due_date",
     "connection_or_file_interface"
   ],
-  "observation": "No bench, USB-C compliance, RF or calibrated measurement instruments were detected on the authorized Mac. A phone, hubs and Ethernet were present and are excluded."
+  "observation": "No instruments are registered for future Split-C1 EVT. Current Mac USB serial device was identified by the user as the old Murphy/development board; it is excluded from the new two-PCB sample manifest. The PCB design does not yet have physical samples."
 }

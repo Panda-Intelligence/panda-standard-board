@@ -1,7 +1,7 @@
 {
-  "schema": "thin18-compact-c4d-evt-qualification-v1",
-  "date": "2026-09-30",
-  "candidate_requirement": "Use the final routed C4D candidate, exact assembly BOM and firmware build; results from routing142, development kits or another component revision do not transfer.",
+  "schema": "thin18-compact-split-c1-evt-qualification-v2",
+  "date": "2026-10-01",
+  "candidate_requirement": "Use both current Split-C1 Core-C1 and Display-C1 identities, exact assembly BOMs and firmware build; results from historical integrated C4D, routing142, development kits or another component revision do not transfer.",
   "physical_tests_completed": 0,
   "manufacturing_release": false,
   "release_approval": null,
@@ -15,7 +15,9 @@
       "required_instrument_roles": ["usb_c_analyzer", "oscilloscope", "current_limited_supply", "electronic_load"],
       "required_metrics": ["cc1_rd_ohm", "cc2_rd_ohm", "vbus_inrush_peak_a", "vbus_steady_input_a", "usb_dp_eye_or_protocol_result", "usb_dm_eye_or_protocol_result", "attach_detach_cycles", "dead_battery_boot_result", "esd_functional_result"],
       "pass_rule": "Both CC paths and every tested state comply with the approved USB-C/USB2 test-limit revision; no current assumption above the detected source capability; no latch-up, unsafe reverse current or data failure.",
-      "blocked_until": ["final routed sample", "approved applicable USB-C/USB2 limit revision", "analyzer and oscilloscope evidence"]
+      "blocked_until": ["final routed sample", "approved applicable USB-C/USB2 limit revision", "analyzer and oscilloscope evidence"],
+      "board_scope": ["Core-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q05",
@@ -26,7 +28,9 @@
       "required_instrument_roles": ["battery_simulator", "current_limited_supply", "electronic_load", "precision_current_meter", "oscilloscope", "temperature_chamber_or_ntc_fixture"],
       "required_metrics": ["charge_current_a", "charge_voltage_v", "termination_current_a", "recharge_threshold_v", "input_dpm_result", "ntc_cold_inhibit_result", "ntc_hot_inhibit_result", "ntc_open_result", "ntc_short_result", "ship_current_ua", "deep_sleep_current_ua", "battery_reverse_current_ua", "charger_temperature_rise_c"],
       "pass_rule": "All values are within the exact selected cell, SGM41513, CW2217 and approved system limits; NTC faults inhibit charging safely; ship/deep-sleep currents meet the approved product budget; no protection is bypassed.",
-      "blocked_until": ["final cell specification and PCM", "approved charge/temperature/current limits", "identified battery simulator/current meter"]
+      "blocked_until": ["final cell specification and PCM", "approved charge/temperature/current limits", "identified battery simulator/current meter"],
+      "board_scope": ["Core-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q06",
@@ -37,7 +41,10 @@
       "required_instrument_roles": ["precision_current_meter", "oscilloscope", "current_limited_supply", "lux_or_luminance_meter"],
       "required_metrics": ["warm_string_current_ma", "cool_string_current_ma", "maximum_string_current_ma", "string_current_mismatch_percent", "brightness_uniformity_result", "startup_overshoot_ma", "shutdown_tail_ms"],
       "pass_rule": "No warm/cool string exceeds 15.0 mA including startup and command extremes; programmed nominal is 14.5 mA; mismatch and optical uniformity satisfy the approved display/product limit.",
-      "blocked_until": ["assembled FT01C display", "approved brightness/uniformity lower limits", "current and optical instruments"]
+      "blocked_until": ["assembled FT01C display", "approved brightness/uniformity lower limits", "current and optical instruments"],
+      "board_scope": ["Core-C1"],
+      "accessory_scope": ["GDEQ0426T82-FT01C frontlight/touch"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q07",
@@ -48,7 +55,10 @@
       "required_instrument_roles": ["oscilloscope", "high_impedance_voltage_probe", "current_limited_supply"],
       "required_metrics": ["normal_vout_v", "warm_open_peak_v", "cool_open_peak_v", "both_open_peak_v", "ovp_response_time_us", "fault_register_result", "recovery_result", "component_voltage_margin_result"],
       "pass_rule": "Configured 18 V OVP operates within the approved SGM37601 tolerance, no component or panel terminal exceeds its rated/approved stress, faults are reported and recovery is controlled without repeated unsafe restart.",
-      "blocked_until": ["assembled front-light circuit", "approved driver/component voltage tolerance limits", "rated high-impedance probe"]
+      "blocked_until": ["assembled front-light circuit", "approved driver/component voltage tolerance limits", "rated high-impedance probe"],
+      "board_scope": ["Core-C1"],
+      "accessory_scope": ["GDEQ0426T82-FT01C frontlight/touch"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q08",
@@ -59,7 +69,9 @@
       "required_instrument_roles": ["lcr_meter_with_dc_bias_or_impedance_analyzer", "temperature_chamber_or_fixture"],
       "required_metrics": ["capacitance_0v_uf", "capacitance_15v_uf", "capacitance_18v_uf", "esr_18v_ohm", "temperature_min_capacitance_uf", "supplier_dc_bias_curve_reference"],
       "pass_rule": "Measured/supplier-supported effective capacitance and ESR at the actual boost bias and temperature remain above the SGM37601 application minimum with the approved margin; nominal 4.7 uF alone is not sufficient evidence.",
-      "blocked_until": ["C923 production lot", "approved minimum effective capacitance/ESR", "DC-bias-capable LCR/impedance instrument"]
+      "blocked_until": ["C923 production lot", "approved minimum effective capacitance/ESR", "DC-bias-capable LCR/impedance instrument"],
+      "board_scope": ["Core-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q09",
@@ -70,7 +82,9 @@
       "required_instrument_roles": ["source_measure_unit", "temperature_chamber_or_fixture"],
       "required_metrics": ["reverse_leakage_room_ua", "reverse_leakage_hot_ua", "junction_or_case_temperature_c", "output_droop_due_leakage_result", "thermal_runaway_result"],
       "pass_rule": "Leakage at the actual reverse voltage and approved hot condition stays within the converter/output budget and component guarantee; no thermal runaway or unsafe output behavior.",
-      "blocked_until": ["D905 production lot", "approved leakage/temperature budget", "calibrated SMU and thermal fixture"]
+      "blocked_until": ["D905 production lot", "approved leakage/temperature budget", "calibrated SMU and thermal fixture"],
+      "board_scope": ["Core-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q10",
@@ -81,7 +95,9 @@
       "required_instrument_roles": ["oscilloscope", "current_probe", "thermal_camera_or_thermocouples", "spectrum_analyzer_or_emi_receiver", "near_field_probes", "microphone_or_acoustic_analyzer"],
       "required_metrics": ["inductor_peak_current_a", "inductor_ripple_pp_a", "inductor_temperature_rise_c", "driver_temperature_rise_c", "conducted_emi_result", "radiated_emi_result", "audible_noise_dba_or_result", "saturation_result"],
       "pass_rule": "Measured peak current remains below the qualified saturation/rated-current margin, temperatures remain below component/enclosure limits, and EMI/acoustic results meet the approved product/regulatory pre-compliance limits.",
-      "blocked_until": ["closed-enclosure sample", "approved temperature/EMI/acoustic limits", "thermal, EMI and acoustic instruments"]
+      "blocked_until": ["closed-enclosure sample", "approved temperature/EMI/acoustic limits", "thermal, EMI and acoustic instruments"],
+      "board_scope": ["Core-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q11",
@@ -92,7 +108,10 @@
       "required_instrument_roles": ["microscope_or_camera", "continuity_meter", "force_gauge_optional", "dimensional_measurement_tools"],
       "required_metrics": ["pin1_orientation_result", "contact_side_result", "continuity_all_pins_result", "shorts_result", "insertion_cycles", "latch_retention_result", "fpc_bend_radius_mm", "connector_clearance_result", "touch_function_result", "frontlight_function_result"],
       "pass_rule": "FPC orientation/contact side matches the FT01C drawing, all pins are continuous without shorts, latch/clearance/bend requirements survive the approved insertion cycle count, and touch/front-light functions remain stable.",
-      "blocked_until": ["actual FT01C flexes and enclosure", "approved insertion/bend/retention limits", "sample photos and continuity logs"]
+      "blocked_until": ["actual FT01C flexes and enclosure", "approved insertion/bend/retention limits", "sample photos and continuity logs"],
+      "board_scope": ["Core-C1"],
+      "accessory_scope": ["GDEQ0426T82-FT01C frontlight/touch"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
     },
     {
       "id": "Q12",
@@ -103,7 +122,37 @@
       "required_instrument_roles": ["rf_test_set_or_spectrum_analyzer", "vna_or_antenna_fixture", "thermal_camera_or_thermocouples", "temperature_chamber", "current_limited_supply", "data_logger"],
       "required_metrics": ["wifi_tx_power_result", "wifi_rx_sensitivity_or_throughput_result", "ble_result", "antenna_match_result", "maximum_component_temperature_c", "maximum_surface_temperature_c", "brownout_reset_count", "functional_error_count", "soak_duration_h", "post_soak_regression_result"],
       "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption.",
-      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities"]
+      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities"],
+      "board_scope": ["Core-C1", "Display-C1"],
+      "stage": "PLANNED_AFTER_ASSEMBLY"
+    },
+    {
+      "id": "Q13",
+      "name": "Display-C1 EPD power, SPI and full-refresh qualification",
+      "status": "NOT_RUN",
+      "stage": "PLANNED_AFTER_ASSEMBLY",
+      "board_scope": ["Display-C1"],
+      "accessory_scope": ["exact FT01C panel", "approved host or current Core-C1 fixture"],
+      "required_sample_states": ["unpowered", "display_3v3_startup", "panel_connected_idle", "full_white_refresh", "full_black_refresh", "pattern_refresh", "sleep_and_power_off", "battery_min_refresh"],
+      "required_instrument_roles": ["continuity_meter", "current_limited_supply", "oscilloscope", "high_impedance_voltage_probe", "logic_analyzer", "current_probe", "thermal_camera_or_thermocouples"],
+      "required_metrics": ["input_short_inspection_result", "epd_3v3_voltage_v", "vdd1v5_voltage_v", "vsh1_voltage_v", "vsh2_voltage_v", "vgh_voltage_v", "vsl_voltage_v", "vgl_voltage_v", "vcom_voltage_v", "rail_start_stop_waveforms_result", "l1_peak_current_a", "l1_temperature_rise_c", "q1_d1_d2_d3_stress_result", "spi_mode_clock_setup_hold_result", "busy_reset_timing_result", "refresh_duration_ms", "refresh_image_and_ghosting_result", "shutdown_discharge_backfeed_result"],
+      "pass_rule": "Exact panel-approved voltage/waveform/sequence limits and SSD1677 SPI/BUSY timing are met; L1 peak current stays within approved derated 250mA saturation margin and thermal rating; Q1/D1-D3 and capacitors remain within rated stress. Correct white/black/pattern refresh with traceable waveform and image evidence. No powered insertion, uncontrolled high-voltage restart or host backfeed.",
+      "blocked_until": ["assembled current Display-C1", "exact FT01C drawing and waveform/initialization profile", "approved rail/SPI/current/thermal limits", "registered host firmware and measurement instruments"]
+    },
+    {
+      "id": "Q14",
+      "name": "Core-C1 plus Display-C1 mating, enclosure and power-sequence qualification",
+      "status": "NOT_RUN",
+      "stage": "PLANNED_AFTER_ASSEMBLY",
+      "board_scope": ["Core-C1", "Display-C1"],
+      "required_sample_states": ["separate_unpowered", "mated_unpowered", "core_only_powered_without_display", "mated_cold_start", "mated_reset", "mated_deep_sleep_wake", "repeated_unpowered_mating", "enclosure_closed"],
+      "required_instrument_roles": ["microscope_or_camera", "continuity_meter", "dimensional_measurement_tools", "current_limited_supply", "oscilloscope", "logic_analyzer", "precision_current_meter"],
+      "required_metrics": ["core_display_serial_pair_result", "connector_polarity_and_60pin_matrix_result", "ground_and_35_36_power_continuity_result", "reserved_nc_shorts_result", "mated_gap_mm", "j201_stake_solder_display_clearance_mm", "display_support_retention_result", "panel_fpc_contact_bend_clearance_result", "battery_pack_harness_swelling_clearance_result", "cold_start_refresh_result", "power_off_backfeed_current_ua", "sleep_wake_refresh_result", "reset_recovery_result", "unpowered_mating_cycles", "enclosure_dimensions_and_ports_result"],
+      "pass_rule": "Current Core J601 socket mates to current Display J1 plug at the documented transform and approved 1.5mm nominal gap tolerance. All60 contacts follow the interface contract, including grounds,35/36 power and reserved NCs. USB shell/stake/solder clearance, independent Display support, full battery pack/NTC harness/swelling and FT01C flex fit meet released maximum dimensions. Startup/sleep/reset/shutdown remain controlled with no signal backfeed and safe port access.",
+      "blocked_until": ["both assembled current boards registered as one serial pair", "maximum-dimension mechanical drawing for enclosure/battery/FT01C flex", "approved fit/mating/power-sequence limits", "registered instruments"]
     }
-  ]
+  ],
+  "project_stage": "PCB_DESIGN_NO_PHYSICAL_SAMPLES",
+  "physical_test_status_reason": "User confirmed no real Core-C1 or Display-C1 boards exist yet; this is a future EVT plan, not a failed physical test campaign.",
+  "sample_pair_requirement": "Register Core and Display serials, both PCB hashes, both assembly BOMs and firmware; independently test each PCB before unpowered mating, then test the pair. Never mate/unmate under power."
 }
