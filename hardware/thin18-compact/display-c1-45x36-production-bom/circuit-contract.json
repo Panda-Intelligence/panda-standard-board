@@ -1,0 +1,1113 @@
+{
+  "revision": "R6-EPD0426-SPI-EVT",
+  "panel": "EPD0426A02",
+  "controller": "SSD1677",
+  "source_pdf_sha256": "1c970248c3c3c8d5aaf27e2d989544822f3b5a0bb4e552be9adfc600e66da43a",
+  "source_pages": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "interface": "4-wire SPI, BS grounded",
+  "supply": "3V3_EPD_LOGIC only; not VSYS_RAW",
+  "host_gpio": {
+    "sclk": 38,
+    "mosi": 39,
+    "cs": 40,
+    "dc": 41,
+    "reset": 42,
+    "busy": 47
+  },
+  "busy_active_level": 1,
+  "initial_spi_hz": 4000000,
+  "panel_pins": {
+    "1": null,
+    "2": "GDR",
+    "3": "RESE",
+    "4": null,
+    "5": "VSH2",
+    "6": "GND",
+    "7": "GND",
+    "8": "GND",
+    "9": "BUSY",
+    "10": "RESET",
+    "11": "DC",
+    "12": "CS",
+    "13": "SCLK",
+    "14": "MOSI",
+    "15": "EPD_3V3",
+    "16": "EPD_3V3",
+    "17": "GND",
+    "18": "VDD1V5",
+    "19": null,
+    "20": "VSH1",
+    "21": "VGH",
+    "22": "VSL",
+    "23": "VGL",
+    "24": "VCOM"
+  },
+  "notes": [
+    "Pin6/7 follow explicit Note6-6 rather than stale TSCL/TSDA labels in reference diagram.",
+    "BUSY_N is the printed name but HIGH means busy per Note6-4.",
+    "Pin18 is an internal 1.5V decoupling node, not an external 3.3V input.",
+    "Pin19 VPP is for OTP programming and remains unconnected in normal use.",
+    "Pin1/4 are separate NCs; not tied together or to ground.",
+    "GPIO profile is an engineering implementation choice, not the panel manufacturer's requirement."
+  ],
+  "factory_release": false,
+  "host_pins": {
+    "1": "HOST_SCLK",
+    "2": "GND",
+    "3": "HOST_MOSI",
+    "4": "GND",
+    "5": "HOST_CS",
+    "6": "GND",
+    "7": "HOST_DC",
+    "8": "GND",
+    "9": "HOST_RESET",
+    "10": "GND",
+    "11": "HOST_BUSY",
+    "12": "GND",
+    "13": null,
+    "14": "GND",
+    "15": null,
+    "16": "GND",
+    "17": null,
+    "18": "GND",
+    "19": null,
+    "20": "GND",
+    "21": null,
+    "22": "GND",
+    "23": null,
+    "24": "GND",
+    "25": null,
+    "26": "GND",
+    "27": null,
+    "28": "GND",
+    "29": null,
+    "30": "GND",
+    "31": null,
+    "32": "GND",
+    "33": null,
+    "34": "GND",
+    "35": "EPD_3V3",
+    "36": "EPD_3V3",
+    "37": null,
+    "38": null,
+    "39": null,
+    "40": null,
+    "41": null,
+    "42": null,
+    "43": null,
+    "44": null,
+    "45": null,
+    "46": null,
+    "47": null,
+    "48": null,
+    "49": null,
+    "50": null,
+    "51": null,
+    "52": null,
+    "53": null,
+    "54": null,
+    "55": "GND",
+    "56": "GND",
+    "57": "GND",
+    "58": "GND",
+    "59": "GND",
+    "60": "GND"
+  },
+  "components": [
+    {
+      "ref": "J1",
+      "lib": "Connector_Generic:Conn_02x30_Odd_Even",
+      "value": "DF40C-60DP-0.4V(51)",
+      "fp": "Connector_Hirose_DF40:Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm",
+      "nets": {
+        "1": "HOST_SCLK",
+        "2": "GND",
+        "3": "HOST_MOSI",
+        "4": "GND",
+        "5": "HOST_CS",
+        "6": "GND",
+        "7": "HOST_DC",
+        "8": "GND",
+        "9": "HOST_RESET",
+        "10": "GND",
+        "11": "HOST_BUSY",
+        "12": "GND",
+        "13": null,
+        "14": "GND",
+        "15": null,
+        "16": "GND",
+        "17": null,
+        "18": "GND",
+        "19": null,
+        "20": "GND",
+        "21": null,
+        "22": "GND",
+        "23": null,
+        "24": "GND",
+        "25": null,
+        "26": "GND",
+        "27": null,
+        "28": "GND",
+        "29": null,
+        "30": "GND",
+        "31": null,
+        "32": "GND",
+        "33": null,
+        "34": "GND",
+        "35": "EPD_3V3",
+        "36": "EPD_3V3",
+        "37": null,
+        "38": null,
+        "39": null,
+        "40": null,
+        "41": null,
+        "42": null,
+        "43": null,
+        "44": null,
+        "45": null,
+        "46": null,
+        "47": null,
+        "48": null,
+        "49": null,
+        "50": null,
+        "51": null,
+        "52": null,
+        "53": null,
+        "54": null,
+        "55": "GND",
+        "56": "GND",
+        "57": "GND",
+        "58": "GND",
+        "59": "GND",
+        "60": "GND"
+      },
+      "sch": [
+        55,
+        95
+      ],
+      "pcb": [
+        23,
+        4,
+        0
+      ],
+      "mpn": "DF40C-60DP-0.4V(51)",
+      "datasheet": "https://www.hirose.com/en/product/p/CL0684-4003-3-51",
+      "height_max_mm": null,
+      "side": "B.Cu"
+    },
+    {
+      "ref": "J2",
+      "lib": "Connector_Generic:Conn_01x24",
+      "value": "FH12-24S-0.5SH(55)",
+      "fp": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
+      "nets": {
+        "1": null,
+        "2": "GDR",
+        "3": "RESE",
+        "4": null,
+        "5": "VSH2",
+        "6": "GND",
+        "7": "GND",
+        "8": "GND",
+        "9": "BUSY",
+        "10": "RESET",
+        "11": "DC",
+        "12": "CS",
+        "13": "SCLK",
+        "14": "MOSI",
+        "15": "EPD_3V3",
+        "16": "EPD_3V3",
+        "17": "GND",
+        "18": "VDD1V5",
+        "19": null,
+        "20": "VSH1",
+        "21": "VGH",
+        "22": "VSL",
+        "23": "VGL",
+        "24": "VCOM"
+      },
+      "sch": [
+        540,
+        90
+      ],
+      "pcb": [
+        23,
+        29,
+        0
+      ],
+      "mpn": "FH12-24S-0.5SH(55)",
+      "datasheet": "https://www.hirose.com/en/product/series/FH12",
+      "height_max_mm": null,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "U1",
+      "lib": "panda-r6-display:SN74AUP2G17DCKR",
+      "value": "SN74AUP2G17DCKR",
+      "fp": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "nets": {
+        "1": "HOST_SCLK",
+        "2": "GND",
+        "3": "HOST_MOSI",
+        "4": "BUF_MOSI",
+        "5": "EPD_3V3",
+        "6": "BUF_SCLK"
+      },
+      "sch": [
+        170,
+        60
+      ],
+      "pcb": [
+        18,
+        12,
+        90
+      ],
+      "mpn": "SN74AUP2G17DCKR",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf",
+      "height_max_mm": 1.1,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "U2",
+      "lib": "panda-r6-display:SN74AUP2G17DCKR",
+      "value": "SN74AUP2G17DCKR",
+      "fp": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "nets": {
+        "1": "HOST_CS",
+        "2": "GND",
+        "3": "HOST_DC",
+        "4": "BUF_DC",
+        "5": "EPD_3V3",
+        "6": "BUF_CS"
+      },
+      "sch": [
+        170,
+        95
+      ],
+      "pcb": [
+        25,
+        12,
+        90
+      ],
+      "mpn": "SN74AUP2G17DCKR",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf",
+      "height_max_mm": 1.1,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "U3",
+      "lib": "panda-r6-display:SN74AUP2G17DCKR",
+      "value": "SN74AUP2G17DCKR",
+      "fp": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "nets": {
+        "1": "HOST_RESET",
+        "2": "GND",
+        "3": "GND",
+        "4": null,
+        "5": "EPD_3V3",
+        "6": "BUF_RESET"
+      },
+      "sch": [
+        170,
+        130
+      ],
+      "pcb": [
+        32,
+        12,
+        90
+      ],
+      "mpn": "SN74AUP2G17DCKR",
+      "datasheet": "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf",
+      "height_max_mm": 1.1,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R1",
+      "lib": "Device:R",
+      "value": "22",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUF_SCLK",
+        "2": "SCLK"
+      },
+      "sch": [
+        225,
+        65
+      ],
+      "pcb": [
+        19,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-0722RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R2",
+      "lib": "Device:R",
+      "value": "22",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUF_MOSI",
+        "2": "MOSI"
+      },
+      "sch": [
+        225,
+        85
+      ],
+      "pcb": [
+        21,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-0722RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R3",
+      "lib": "Device:R",
+      "value": "22",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUF_CS",
+        "2": "CS"
+      },
+      "sch": [
+        225,
+        105
+      ],
+      "pcb": [
+        23,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-0722RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R4",
+      "lib": "Device:R",
+      "value": "22",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUF_DC",
+        "2": "DC"
+      },
+      "sch": [
+        225,
+        125
+      ],
+      "pcb": [
+        25,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-0722RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R5",
+      "lib": "Device:R",
+      "value": "22",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUF_RESET",
+        "2": "RESET"
+      },
+      "sch": [
+        225,
+        145
+      ],
+      "pcb": [
+        27,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-0722RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R6",
+      "lib": "Device:R",
+      "value": "100",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "BUSY",
+        "2": "HOST_BUSY"
+      },
+      "sch": [
+        225,
+        180
+      ],
+      "pcb": [
+        29,
+        18,
+        90
+      ],
+      "mpn": "RC0402FR-07100RL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R7",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_SCLK",
+        "2": "GND"
+      },
+      "sch": [
+        280,
+        45
+      ],
+      "pcb": [
+        16,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R8",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_MOSI",
+        "2": "GND"
+      },
+      "sch": [
+        280,
+        69
+      ],
+      "pcb": [
+        20,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R9",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_CS",
+        "2": "EPD_3V3"
+      },
+      "sch": [
+        280,
+        93
+      ],
+      "pcb": [
+        24,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R10",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_DC",
+        "2": "GND"
+      },
+      "sch": [
+        280,
+        117
+      ],
+      "pcb": [
+        28,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R11",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_RESET",
+        "2": "GND"
+      },
+      "sch": [
+        280,
+        141
+      ],
+      "pcb": [
+        32,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R12",
+      "lib": "Device:R",
+      "value": "100k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "HOST_BUSY",
+        "2": "GND"
+      },
+      "sch": [
+        280,
+        165
+      ],
+      "pcb": [
+        36,
+        8,
+        0
+      ],
+      "mpn": "RC0402FR-07100KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C11",
+      "lib": "Device:C",
+      "value": "100n 25V X7R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "GND"
+      },
+      "sch": [
+        330,
+        55
+      ],
+      "pcb": [
+        16,
+        12,
+        90
+      ],
+      "mpn": "GRM188R71E104KA01D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C12",
+      "lib": "Device:C",
+      "value": "100n 25V X7R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "GND"
+      },
+      "sch": [
+        330,
+        85
+      ],
+      "pcb": [
+        23,
+        12,
+        90
+      ],
+      "mpn": "GRM188R71E104KA01D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C13",
+      "lib": "Device:C",
+      "value": "100n 25V X7R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "GND"
+      },
+      "sch": [
+        330,
+        115
+      ],
+      "pcb": [
+        30,
+        12,
+        90
+      ],
+      "mpn": "GRM188R71E104KA01D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C1",
+      "lib": "Device:C",
+      "value": "1u 25V X5R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "GND"
+      },
+      "sch": [
+        440,
+        75
+      ],
+      "pcb": [
+        5,
+        5,
+        0
+      ],
+      "mpn": "GRM188R61E105KA12D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C2",
+      "lib": "Device:C",
+      "value": "1u 25V X5R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "GND"
+      },
+      "sch": [
+        440,
+        105
+      ],
+      "pcb": [
+        32,
+        24,
+        90
+      ],
+      "mpn": "GRM188R61E105KA12D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C3",
+      "lib": "Device:C",
+      "value": "1u 25V X5R",
+      "fp": "Capacitor_SMD:C_0603_1608Metric",
+      "nets": {
+        "1": "VDD1V5",
+        "2": "GND"
+      },
+      "sch": [
+        440,
+        135
+      ],
+      "pcb": [
+        35,
+        24,
+        90
+      ],
+      "mpn": "GRM188R61E105KA12D",
+      "datasheet": "",
+      "height_max_mm": 0.9,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C4",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "BOOST_SW",
+        "2": "BOOST_CP"
+      },
+      "sch": [
+        390,
+        195
+      ],
+      "pcb": [
+        5,
+        13,
+        90
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C5",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VGL",
+        "2": "GND"
+      },
+      "sch": [
+        390,
+        223
+      ],
+      "pcb": [
+        5,
+        20,
+        0
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C6",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VGH",
+        "2": "GND"
+      },
+      "sch": [
+        390,
+        251
+      ],
+      "pcb": [
+        13,
+        17,
+        0
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C7",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VSH2",
+        "2": "GND"
+      },
+      "sch": [
+        390,
+        279
+      ],
+      "pcb": [
+        9,
+        24,
+        90
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C8",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VSH1",
+        "2": "GND"
+      },
+      "sch": [
+        390,
+        307
+      ],
+      "pcb": [
+        38,
+        24,
+        90
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C9",
+      "lib": "Device:C",
+      "value": "4.7u 25V X5R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VSL",
+        "2": "GND"
+      },
+      "sch": [
+        390,
+        335
+      ],
+      "pcb": [
+        41,
+        24,
+        90
+      ],
+      "mpn": "GRM21BR61E475KA12L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "C10",
+      "lib": "Device:C",
+      "value": "1u 25V X7R",
+      "fp": "Capacitor_SMD:C_0805_2012Metric",
+      "nets": {
+        "1": "VCOM",
+        "2": "GND"
+      },
+      "sch": [
+        440,
+        340
+      ],
+      "pcb": [
+        41,
+        29,
+        90
+      ],
+      "mpn": "GRM21BR71E105KA99L",
+      "datasheet": "",
+      "height_max_mm": 1.45,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "L1",
+      "lib": "Device:L",
+      "value": "47u 0.25A",
+      "fp": "panda-r6-display:L_Taiyo_NRH3010_3030",
+      "nets": {
+        "1": "EPD_3V3",
+        "2": "BOOST_SW"
+      },
+      "sch": [
+        55,
+        220
+      ],
+      "pcb": [
+        7,
+        8,
+        0
+      ],
+      "mpn": "LSXNE3030KKT470MN",
+      "datasheet": "https://www.yuden.co.jp/",
+      "height_max_mm": 1.0,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "Q1",
+      "lib": "Transistor_FET:Q_NMOS_GSD",
+      "value": "NX3008NBK,215",
+      "fp": "Package_TO_SOT_SMD:SOT-23",
+      "nets": {
+        "1": "GDR",
+        "2": "RESE",
+        "3": "BOOST_SW"
+      },
+      "sch": [
+        115,
+        240
+      ],
+      "pcb": [
+        10,
+        12,
+        0
+      ],
+      "mpn": "NX3008NBK,215",
+      "datasheet": "https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf",
+      "height_max_mm": 1.1,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "D1",
+      "lib": "Device:D_Schottky",
+      "value": "MBR0530T1G",
+      "fp": "Diode_SMD:D_SOD-123",
+      "nets": {
+        "1": "BOOST_CP",
+        "2": "VGL"
+      },
+      "sch": [
+        55,
+        300
+      ],
+      "pcb": [
+        5,
+        17,
+        0
+      ],
+      "mpn": "MBR0530T1G",
+      "datasheet": "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf",
+      "height_max_mm": 1.35,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "D2",
+      "lib": "Device:D_Schottky",
+      "value": "MBR0530T1G",
+      "fp": "Diode_SMD:D_SOD-123",
+      "nets": {
+        "1": "GND",
+        "2": "BOOST_CP"
+      },
+      "sch": [
+        105,
+        300
+      ],
+      "pcb": [
+        9,
+        17,
+        180
+      ],
+      "mpn": "MBR0530T1G",
+      "datasheet": "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf",
+      "height_max_mm": 1.35,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "D3",
+      "lib": "Device:D_Schottky",
+      "value": "MBR0530T1G",
+      "fp": "Diode_SMD:D_SOD-123",
+      "nets": {
+        "1": "VGH",
+        "2": "BOOST_SW"
+      },
+      "sch": [
+        155,
+        300
+      ],
+      "pcb": [
+        13,
+        12,
+        90
+      ],
+      "mpn": "MBR0530T1G",
+      "datasheet": "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf",
+      "height_max_mm": 1.35,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R13",
+      "lib": "Device:R",
+      "value": "2.2 1%",
+      "fp": "Resistor_SMD:R_0603_1608Metric",
+      "nets": {
+        "1": "RESE",
+        "2": "GND"
+      },
+      "sch": [
+        175,
+        240
+      ],
+      "pcb": [
+        9,
+        21,
+        90
+      ],
+      "mpn": "RC0603FR-072R2L",
+      "datasheet": "",
+      "height_max_mm": 0.55,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "R14",
+      "lib": "Device:R",
+      "value": "10k",
+      "fp": "Resistor_SMD:R_0402_1005Metric",
+      "nets": {
+        "1": "GDR",
+        "2": "GND"
+      },
+      "sch": [
+        225,
+        240
+      ],
+      "pcb": [
+        13,
+        21,
+        90
+      ],
+      "mpn": "RC0402FR-0710KL",
+      "datasheet": "",
+      "height_max_mm": 0.4,
+      "side": "F.Cu"
+    },
+    {
+      "ref": "#FLG01",
+      "lib": "power:PWR_FLAG",
+      "value": "PWR_FLAG",
+      "fp": "",
+      "nets": {
+        "1": "EPD_3V3"
+      },
+      "sch": [
+        40,
+        160
+      ],
+      "pcb": [
+        0,
+        0,
+        0
+      ],
+      "mpn": "PWR_FLAG",
+      "datasheet": "",
+      "height_max_mm": null,
+      "side": "none"
+    },
+    {
+      "ref": "#FLG02",
+      "lib": "power:PWR_FLAG",
+      "value": "PWR_FLAG",
+      "fp": "",
+      "nets": {
+        "1": "GND"
+      },
+      "sch": [
+        65,
+        160
+      ],
+      "pcb": [
+        0,
+        0,
+        0
+      ],
+      "mpn": "PWR_FLAG",
+      "datasheet": "",
+      "height_max_mm": null,
+      "side": "none"
+    }
+  ]
+}

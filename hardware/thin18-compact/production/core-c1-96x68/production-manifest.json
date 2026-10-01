@@ -1,0 +1,104 @@
+{
+  "schema": "panda-production-candidate-v2",
+  "board_id": "Core-C1",
+  "candidate": "core-c1-96x68-split",
+  "board_dimensions_mm": [
+    96.0,
+    68.0
+  ],
+  "copper_layers": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "B.Cu"
+  ],
+  "native_checks": {
+    "drc": 0,
+    "open": 0,
+    "parity": 0,
+    "erc": 0
+  },
+  "bom_complete": {
+    "Manufacturer": true,
+    "MPN": true
+  },
+  "zip_crc_verified": true,
+  "production_exported": true,
+  "manufacturing_release": false,
+  "files": {
+    "pcb": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "sha256": "02f08f2892fa106f812a3e94d3e1b8269e6f38138189a32e26256b4c6339ea85"
+    },
+    "schematic": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
+      "sha256": "fb64b6eb8c312a33a8d9b4505ae225c709ed40d4ef78b22db159d0b7f8cd43e3"
+    },
+    "bom": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
+      "sha256": "75b866eb88f73e48380fae16520843d2b08fc5886a77f80fc22ac37f2e9ca678"
+    },
+    "cpl": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
+      "sha256": "8118e534ed56f820b59aba4ed7f706bec8abb0f0cea5ece3070e1b7fd2afba17"
+    },
+    "gerber_zip": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/gerber-drill.zip",
+      "sha256": "042c73939f2222505bcd2cd0eb6c4a7e2a43f9d31e5dc5114affb9e283ce59df"
+    },
+    "drc": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/verification/drc.json",
+      "sha256": "847e14f51e061fd7ee6d334883846e6710a5ba9c389b7eaa3fb71186abb8a6eb"
+    },
+    "erc": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/verification/erc.json",
+      "sha256": "4c10239d4d6935e0b4b59fd1b5359313e4ed6858438ec17705fc49e63483ca57"
+    },
+    "netlist": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/verification/netlist.xml",
+      "sha256": "dafc432b375f16c195d0e9d46394aa2496ac1d0f9e5a25874de124fa140e6d0f"
+    },
+    "schematic_child_display-integrated": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch",
+      "sha256": "66465be80e029ecd6a247ff19d9bd612d07255045794f1450384022ba2366a2c"
+    },
+    "schematic_child_evt-interfaces": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch",
+      "sha256": "77462f0e9818669f7730a06bce3a46ae2ab602ddaccce33c1ac21ccde4f1dab8"
+    },
+    "schematic_child_usb-interface": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch",
+      "sha256": "688cfa222aa70efadbb21488eb49637f364e366fb793b394217bca66dc334322"
+    },
+    "cad_config_kicad_pro": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pro",
+      "sha256": "f6750faa21f2b383d3f8d0babd975edff6153174cb31a41b2ad058c65efd914a"
+    },
+    "cad_config_kicad_dru": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_dru",
+      "sha256": "c1a20113a5a4b320fbf2f43af0c2a14a20249626c19385ac1901987d5e4967b7"
+    },
+    "jlc_bom": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/BOM_JLCPCB.csv",
+      "sha256": "6ceebedfe378e906ac1790c07835585b783dc2de8ee6c6489c0592a03f5410d4"
+    },
+    "jlc_cpl": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/CPL_JLCPCB.csv",
+      "sha256": "661c9431c16f06fff7dc06c6a07625c280e2538a30a59b8c1aa3ab3b64318c80"
+    },
+    "assembly_sourcing": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/assembly-sourcing.csv",
+      "sha256": "3cc225f09341e4607e1a63aa5d7f96bff69c696b202fbc821639842a9e7aeb12"
+    },
+    "jlc_summary": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/jlc-summary.json",
+      "sha256": "26a89673fb245175eec3eac870cc200ecbee0848852cd93519c9170059a6e02e"
+    }
+  },
+  "note": "CAD/manufacturing-data candidate. Physical EVT and enclosure qualification remain open.",
+  "assembly_sourcing_status": {
+    "lcsc_mapped_designators": 100,
+    "mpn_only_designators": 17,
+    "automatic_jlc_library_mapping_complete": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "panda-split-c1-validation-v1",
+  "date": "2026-10-01",
+  "native_checks": {
+    "Core-C1": {
+      "drc": 0,
+      "open": 0,
+      "parity": 0,
+      "erc": 0
+    },
+    "Display-C1": {
+      "drc": 0,
+      "open": 0,
+      "parity": 0,
+      "erc": 0
+    }
+  },
+  "fresh_core_rebuild_native_clean": true,
+  "fresh_display_rebuild_native_clean": true,
+  "frozen_core_copper_replay_matches": true,
+  "all_60_interface_pins_verified": true,
+  "production_hashes_verified": true,
+  "sha256_manifests_verified": true,
+  "gerber_zip_crc_verified": true,
+  "manufacturer_mpn_complete": true,
+  "legacy_integrated_package_unchanged": true,
+  "packaging_excluded_from_changes": true,
+  "manufacturing_release": false,
+  "split_release_sha256": "847a7e6f312e67d3e21465938aeefd95c5f1116f67891a9ee6cd14758a417019"
+}

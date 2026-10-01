@@ -1,0 +1,213 @@
+{
+  "schema": "panda-split-c1-release-v1",
+  "architecture": "Core-C1 + Display-C1",
+  "cad_manufacturing_data_complete": true,
+  "manufacturing_release": false,
+  "interface_contract": {
+    "path": "hardware/thin18-compact/split-c1-interface.json",
+    "sha256": "f39f5bf6810aec3fa563a8027c9e0de0271c313e4583da4eb2899d299f7dfc94"
+  },
+  "boards": {
+    "Core-C1": {
+      "pcb": {
+        "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+        "sha256": "02f08f2892fa106f812a3e94d3e1b8269e6f38138189a32e26256b4c6339ea85"
+      },
+      "dimensions_mm": [
+        96.0,
+        68.0
+      ],
+      "copper_layers": [
+        "F.Cu",
+        "In1.Cu",
+        "In2.Cu",
+        "B.Cu"
+      ],
+      "native_checks": {
+        "drc": 0,
+        "open": 0,
+        "parity": 0,
+        "erc": 0
+      },
+      "files": {
+        "pcb": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+          "sha256": "02f08f2892fa106f812a3e94d3e1b8269e6f38138189a32e26256b4c6339ea85"
+        },
+        "schematic": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
+          "sha256": "fb64b6eb8c312a33a8d9b4505ae225c709ed40d4ef78b22db159d0b7f8cd43e3"
+        },
+        "bom": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
+          "sha256": "75b866eb88f73e48380fae16520843d2b08fc5886a77f80fc22ac37f2e9ca678"
+        },
+        "cpl": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
+          "sha256": "8118e534ed56f820b59aba4ed7f706bec8abb0f0cea5ece3070e1b7fd2afba17"
+        },
+        "gerber_zip": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/gerber-drill.zip",
+          "sha256": "042c73939f2222505bcd2cd0eb6c4a7e2a43f9d31e5dc5114affb9e283ce59df"
+        },
+        "drc": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/verification/drc.json",
+          "sha256": "847e14f51e061fd7ee6d334883846e6710a5ba9c389b7eaa3fb71186abb8a6eb"
+        },
+        "erc": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/verification/erc.json",
+          "sha256": "4c10239d4d6935e0b4b59fd1b5359313e4ed6858438ec17705fc49e63483ca57"
+        },
+        "netlist": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/verification/netlist.xml",
+          "sha256": "dafc432b375f16c195d0e9d46394aa2496ac1d0f9e5a25874de124fa140e6d0f"
+        },
+        "schematic_child_display-integrated": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch",
+          "sha256": "66465be80e029ecd6a247ff19d9bd612d07255045794f1450384022ba2366a2c"
+        },
+        "schematic_child_evt-interfaces": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch",
+          "sha256": "77462f0e9818669f7730a06bce3a46ae2ab602ddaccce33c1ac21ccde4f1dab8"
+        },
+        "schematic_child_usb-interface": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch",
+          "sha256": "688cfa222aa70efadbb21488eb49637f364e366fb793b394217bca66dc334322"
+        },
+        "cad_config_kicad_pro": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pro",
+          "sha256": "f6750faa21f2b383d3f8d0babd975edff6153174cb31a41b2ad058c65efd914a"
+        },
+        "cad_config_kicad_dru": {
+          "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_dru",
+          "sha256": "c1a20113a5a4b320fbf2f43af0c2a14a20249626c19385ac1901987d5e4967b7"
+        },
+        "jlc_bom": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/BOM_JLCPCB.csv",
+          "sha256": "6ceebedfe378e906ac1790c07835585b783dc2de8ee6c6489c0592a03f5410d4"
+        },
+        "jlc_cpl": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/CPL_JLCPCB.csv",
+          "sha256": "661c9431c16f06fff7dc06c6a07625c280e2538a30a59b8c1aa3ab3b64318c80"
+        },
+        "assembly_sourcing": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/assembly-sourcing.csv",
+          "sha256": "3cc225f09341e4607e1a63aa5d7f96bff69c696b202fbc821639842a9e7aeb12"
+        },
+        "jlc_summary": {
+          "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/jlcpcb/jlc-summary.json",
+          "sha256": "26a89673fb245175eec3eac870cc200ecbee0848852cd93519c9170059a6e02e"
+        }
+      },
+      "production_manifest": {
+        "path": "hardware/thin18-compact/production/core-c1-96x68/production-manifest.json",
+        "sha256": "14f687cdd200605c2ed11b1f788e2deb28993a696a30621e798eed21ef214a2d"
+      },
+      "release_candidate": {
+        "path": "hardware/thin18-compact/production/core-c1-96x68/release-candidate.json",
+        "sha256": "7cbb196a53c3f0e52d661dbb6a5d068c419c16f1c61bc75e42f46e331af54413"
+      },
+      "sha256_manifest": {
+        "path": "hardware/thin18-compact/production/core-c1-96x68/SHA256SUMS",
+        "sha256": "58a4c380af6e7be66ea0424bdcddc4f11814a0d1018acb71ad6b396a7033ee15"
+      }
+    },
+    "Display-C1": {
+      "pcb": {
+        "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
+        "sha256": "a427456dc7c8a471bdeb2e9def21a5ab165c53d3f98b7207c742590da56b6fb1"
+      },
+      "dimensions_mm": [
+        45.0,
+        36.0
+      ],
+      "copper_layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "native_checks": {
+        "drc": 0,
+        "open": 0,
+        "parity": 0,
+        "erc": 0
+      },
+      "files": {
+        "pcb": {
+          "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
+          "sha256": "a427456dc7c8a471bdeb2e9def21a5ab165c53d3f98b7207c742590da56b6fb1"
+        },
+        "schematic": {
+          "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_sch",
+          "sha256": "72332b0e8564de1161b16135cd6fd864ffe42e32885de20b51aa0b0e3b8d2b44"
+        },
+        "bom": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
+          "sha256": "e7d6510287e3f95d8359f78a5f307d06cc8a2bf09a4405170bbb0bb8bec40171"
+        },
+        "cpl": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
+          "sha256": "4eeb1a0f0ece50892eed25acb0f5579b09c49acd4d1a18b7c7c4894740e151b6"
+        },
+        "gerber_zip": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/gerber-drill.zip",
+          "sha256": "7ca861790f101d171a8e2d950a5df3210f1d3551f9f5cbb3be3d7db45287259f"
+        },
+        "drc": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/verification/drc.json",
+          "sha256": "a6c4a34186300ca1d6fc3e35bbc4ef55f3e319fb57d1d3825e891b87d008da61"
+        },
+        "erc": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/verification/erc.json",
+          "sha256": "1e4b63c82c0ad98857ef60e4fa454a5c16d55a13dbe6512bc2da29ba6ef0beac"
+        },
+        "netlist": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/verification/netlist.xml",
+          "sha256": "bf9c80562da893610d96a1a11dcc83b4b44bb97f4478c3f7c67ca609a9c4b1ea"
+        },
+        "cad_config_kicad_pro": {
+          "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pro",
+          "sha256": "2115ce9e8a3e5513d6bbca2340c354fea7c6244afc05f23f820920c0db29c445"
+        },
+        "cad_config_kicad_dru": {
+          "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_dru",
+          "sha256": "769c04cc9316705a7b22316c1671abc4b0afd7038c261588c018a454b668c385"
+        },
+        "jlc_bom": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/BOM_JLCPCB.csv",
+          "sha256": "9ac52dfcc16ee3d1acb8837205fc09661270f29badb3cf2d34caaa425c7613e2"
+        },
+        "jlc_cpl": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/CPL_JLCPCB.csv",
+          "sha256": "288981371c22b0a2f58d47f71d6c0aebdfa71896523697e7cf155ae37d4feba4"
+        },
+        "assembly_sourcing": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/assembly-sourcing.csv",
+          "sha256": "d4ed9164b27d5bc5cae331abf1d33ac2da587042109a5b3ac445f6aca6512edc"
+        },
+        "jlc_summary": {
+          "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/jlcpcb/jlc-summary.json",
+          "sha256": "27baef5bb1ecc2e4be47303a55f08f447d7f8552173129de88146490e05d7fce"
+        }
+      },
+      "production_manifest": {
+        "path": "hardware/thin18-compact/production/display-c1-45x36/production-manifest.json",
+        "sha256": "e91cab8feeed2b2bc7c578509ba722c0b48a395bdc45a57f120b93f361423669"
+      },
+      "release_candidate": {
+        "path": "hardware/thin18-compact/production/display-c1-45x36/release-candidate.json",
+        "sha256": "b5f39a8081d5fa93c1691140796cec88b73a9b5f1b11bf82f7231f5dadd7af1d"
+      },
+      "sha256_manifest": {
+        "path": "hardware/thin18-compact/production/display-c1-45x36/SHA256SUMS",
+        "sha256": "d18e1a9b9bc3cd1619d245f73db41fe8dae56b9aef82d7b69c9f3153b0cbadb7"
+      }
+    }
+  },
+  "historical_reference": "c4d20-96x68 integrated production package; not the final architecture",
+  "physical_gates": [
+    "enclosure and component Z-clearance within 1.5-mm gap",
+    "rear battery envelope overlaps display XY projection; final battery layer/swelling clearance",
+    "panel FPC insertion/access and actual alignment",
+    "all existing calibrated physical EVT gates"
+  ]
+}

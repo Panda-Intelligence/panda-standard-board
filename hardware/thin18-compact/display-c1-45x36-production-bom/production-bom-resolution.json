@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-01",
+  "candidate": "display-c1-45x36-production-bom",
+  "native_checks": {
+    "drc": 0,
+    "open": 0,
+    "parity": 0,
+    "erc": 0
+  },
+  "domestic_changes": {
+    "U1-U3": "SN74AUP2G17DCKR -> AIP74LVC2G17GC363.TR / Wuxi I-core / C3294722"
+  },
+  "retained_blocked": {
+    "J1": "Hirose DF40 retained: mating geometry contract",
+    "J2": "Hirose FH12 retained: FPC geometry contract",
+    "Q1": "Nexperia NX3008 retained: mainland MOSFET VDS/Rds/Qg not qualified",
+    "L1": "Taiyo Yuden LSXNE3030 retained: domestic exact magnetic not qualified"
+  },
+  "manufacturing_release": false
+}

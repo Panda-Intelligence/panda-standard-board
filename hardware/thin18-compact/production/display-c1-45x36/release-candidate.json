@@ -1,0 +1,30 @@
+{
+  "schema": "panda-board-c1-release-candidate-v1",
+  "board_id": "Display-C1",
+  "native_checks": {
+    "drc": 0,
+    "open": 0,
+    "parity": 0,
+    "erc": 0
+  },
+  "dimensions_mm": [
+    45.0,
+    36.0
+  ],
+  "production_data_complete": true,
+  "manufacturing_release": false,
+  "production_manifest": {
+    "path": "hardware/thin18-compact/production/display-c1-45x36/production-manifest.json",
+    "sha256": "e91cab8feeed2b2bc7c578509ba722c0b48a395bdc45a57f120b93f361423669"
+  },
+  "interface_contract": {
+    "path": "hardware/thin18-compact/split-c1-interface.json",
+    "sha256": "f39f5bf6810aec3fa563a8027c9e0de0271c313e4583da4eb2899d299f7dfc94"
+  },
+  "assembly_sourcing": {
+    "lcsc_mapped_designators": 13,
+    "mpn_only_designators": 24,
+    "automatic_jlc_library_mapping_complete": false
+  },
+  "physical_gates": "Physical electrical EVT, enclosure/battery Z-stack, panel fit and actual mating remain unverified."
+}

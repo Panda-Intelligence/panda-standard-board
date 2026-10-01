@@ -1,0 +1,29 @@
+Drill report for PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb
+Created on 2026-10-01T19:17:48
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  Top Layer                 front
+    L2 :  Ground Layer 1            in1
+    L3 :  Power Layer 2             in2
+    L4 :  Bottom Layer              back
+
+
+Drill file 'PANDA-STD-CORE-EVT-quilter-j501-merged-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.200mm  0.0079"  (7 holes))
+    T2  0.200mm  0.0079"  (12 holes))
+    T3  0.250mm  0.0098"  (240 holes))
+    T4  0.600mm  0.0236"  (4 holes)  (with 4 slots)
+
+    Total plated holes count 263
+
+
+Drill file 'PANDA-STD-CORE-EVT-quilter-j501-merged-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  0.991mm  0.0390"  (3 holes))
+    T2  1.600mm  0.0630"  (4 holes))
+
+    Total unplated holes count 7

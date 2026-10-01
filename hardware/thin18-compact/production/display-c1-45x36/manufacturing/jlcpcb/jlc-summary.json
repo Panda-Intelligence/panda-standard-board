@@ -1,0 +1,12 @@
+{
+  "bom_group_rows": 15,
+  "bom_designators": 37,
+  "cpl_rows": 37,
+  "cpl_top": 36,
+  "cpl_bottom": 1,
+  "lcsc_mapped_designators": 13,
+  "mpn_only_designators": 24,
+  "manual_or_offboard_designators": 0,
+  "cpl_refs_missing_from_bom": [],
+  "note": "JLC format follows official BOM/CPL headers. Blank LCSC IDs are not claimed as automatic JLC library matches."
+}
