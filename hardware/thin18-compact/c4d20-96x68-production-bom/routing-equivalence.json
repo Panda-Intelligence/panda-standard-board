@@ -1,0 +1,20 @@
+{
+  "source": "c4d19-96x68-routing-closed",
+  "target": "c4d20-96x68-production-bom",
+  "tracks_and_vias_identical": true,
+  "footprint_poses_identical": true,
+  "pad_geometry_and_nets_identical": true,
+  "track_via_count": [
+    2518,
+    2518
+  ],
+  "footprint_count": [
+    189,
+    189
+  ],
+  "pad_count": [
+    642,
+    642
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-30",
+  "kind": "C4D-19 96x68 routing closure",
+  "source": "c4d18-96x68-routed-working",
+  "board_mm": [
+    96,
+    68
+  ],
+  "native_checks": {
+    "drc": 0,
+    "open": 0,
+    "parity": 0,
+    "erc": 0
+  },
+  "routing_complete": true,
+  "manufacturing_release": false,
+  "closures": [
+    "BQ_INT U901 pad7 -> 0.40/0.20 mm via-in-pad -> Bottom existing BQ_INT via",
+    "UART0_TX In2 local notch around BQ_INT via",
+    "BQ_CE U901 pad9 -> via (51.2,6.45) -> Bottom -> existing BQ_CE via (41.495,1.055)",
+    "USB_DP/J201.B6 and connector GND closure inherited from C4D-18"
+  ],
+  "pcb_sha256": "ff8cc7ef331d80a263afd4487cf74cfc0cab2e71494094d83cfaeb659b43dc67"
+}

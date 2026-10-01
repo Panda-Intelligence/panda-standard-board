@@ -1,5 +1,22 @@
 # Thin18 Compact EVT
 
+## Current authoritative state — C4D-20 (2026-10-01)
+
+The current PCB authority is c4d20-96x68-production-bom, derived from the
+C4D-19 routing closure without changing tracks, vias, footprint poses or pad
+geometry/nets. Native KiCad checks are DRC=0 / open=0 / parity=0 / ERC=0.
+
+Production outputs are under production/c4d20-96x68/: generic BOM/CPL,
+Gerber + drill ZIP, and JLCPCB-formatted BOM/CPL. All populated BOM groups now
+have Manufacturer + exact MPN. JLC/LCSC coverage is partial by design: rows
+without an LCSC ID remain explicit MPN-only mapping/consigned-part items.
+
+This is an EVT fabrication candidate, not manufacturing release. Q04-Q12
+physical tests still require a real assembled sample, calibrated instruments,
+raw evidence, independent review and release approval. Older C0/C2/C4 notes
+below are retained as design-history records and do not override C4D-20.
+
+
 Thin18 Compact is an architecture fork of the validated `thin18/routing142` baseline.
 
 ## Goal

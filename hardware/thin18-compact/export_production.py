@@ -46,7 +46,7 @@ missing=[]
 for row in rows:
     refs=row.get("Refs","")
     # Mechanical/test-only items may not need LCSC, but all electrical populated components require MPN.
-    if refs.startswith(("R","C","L","D","Q","U","J","SW")) and not row.get("MPN","").strip():
+    if refs.startswith(("R","C","L","D","Q","U","J","SW","TH")) and not row.get("MPN","").strip():
         missing.append({"refs":refs,"field":"MPN"})
 if missing:
     (out/"BLOCKED.json").write_text(json.dumps({"candidate":cand.name,"native_checks":counts,"production_exported":False,"reason":"production BOM unresolved","missing":missing},indent=2)+"\n")
