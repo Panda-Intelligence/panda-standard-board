@@ -127,6 +127,8 @@ while True:
 pcb.write_text(''.join(out))
 if set(parts)-seen: raise SystemExit(f'pcb refs missing: {sorted(set(parts)-seen)}')
 
+from _split_c1_prototype_eco import apply_prototype_eco
+apply_prototype_eco(DST, 'Display-C1')
 from _split_c1_sourcing import apply_sourcing
 apply_sourcing(DST, 'Display-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)

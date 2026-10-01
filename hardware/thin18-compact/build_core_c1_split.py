@@ -299,6 +299,8 @@ closure=ROOT/'core-c1-routing-closure.json'
 if closure.exists():
     from _core_c1_pcb_patch import apply_closure
     apply_closure(pcb,closure)
+from _split_c1_prototype_eco import apply_prototype_eco
+apply_prototype_eco(DST, 'Core-C1')
 from _split_c1_sourcing import apply_sourcing
 apply_sourcing(DST, 'Core-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)

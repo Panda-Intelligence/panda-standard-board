@@ -7,15 +7,20 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 ## Current result
 
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
-Only procurement properties changed in PCB/schematics. Copper, footprint poses,
-pad geometry and electrical nets are checked against the baseline.
-Reviewed exact-part IDs now cover 12 additional Core refs and 23 Display refs.
+The original catalog-mapping pass changed purchasing properties only. A later
+controlled prototype ECO corrects L402 lands, replaces the generic C301 land
+with a polarized derived pattern, raises Display refdes text, and assigns
+C506/C513 to exact HRE C22399626. Poses, nets and the 60-pin interface remain
+verified; current CAD equals a deterministic fresh rebuild including the ECO.
+Reviewed exact-part IDs now cover 14 additional Core refs and 23 Display refs.
+See [JLC-PROTOTYPE-HANDOFF.md](JLC-PROTOTYPE-HANDOFF.md): Core USB cutout copper
+clearance is 0.02 mm and requires CAM acceptance; Display standard DFM passes.
 Library IDs identify parts; stock, packing, purchased quantity and assembly
 availability still require order-time confirmation.
 
 | Board | Present library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 112 | 5 | 1 |
+| Core-C1 | 114 | 3 | 1 |
 | Display-C1 | 36 | 1 | 0 |
 
 The sourcing CSV includes evidence URLs for this review. Previously present IDs
@@ -25,6 +30,7 @@ remain labeled PREEXISTING_ID rather than being newly certified by this review.
 
 | Board | Refs | Retained MPN | Library ID | Source |
 |---|---|---|---|---|
+| Core-C1 | C506, C513 | CGA0603X7R106K100JT (controlled HRE ECO) | C22399626 | [JLC catalog](https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626) |
 | Core-C1 | C301 | CPH3225A | C6048128 | [JLC catalog](https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128) |
 | Core-C1 | D201 | TPD4E05U06DQAR | C138714 | [Catalog](https://www.lcsc.com/product-detail/C138714.html) |
 | Core-C1 | D202 | TPD1E10B06DPYR | C48260 | [Catalog](https://www.lcsc.com/product-detail/C48260.html) |
@@ -47,7 +53,7 @@ remain labeled PREEXISTING_ID rather than being newly certified by this review.
 | Display-C1 | R6 | RC0402FR-07100RL | C106232 | [Catalog](https://www.lcsc.com/product-detail/C106232.html) |
 | Display-C1 | R13 | RC0603FR-072R2L | C112307 | [Catalog](https://www.lcsc.com/product-detail/C112307.html) |
 
-No manufacturer, electrical rating, package or mating-family substitution was made.
+The original mapping pass made no manufacturer, electrical-rating, package or mating-family substitution. The later C506/C513 controlled commodity ECO replaces the unverified Fenghua identity while preserving 10uF/10V/X7R/+/-10%/0603; effective DC-bias capacitance remains a qualification item.
 Molex 104031-0811 and catalog 1040310811 are the same formatted ordering number.
 The Core builder now clears the Display plug's library ID when constructing the
 different DF40 socket, then applies the socket's independently reviewed ID.
@@ -64,7 +70,7 @@ assembler's quoted attrition and feeder/leader/trailer requirement. N is unset.
 | Board / refs | Qty per pair | Exact retained MPN | Supply path and verified status | Still needed |
 |---|---:|---|---|---|
 | Core C301 | 1 | Seiko CPH3225A | JLC C6048128; exact SMT identity confirmed | Available quantity, packing and PCBA allocation |
-| Core C506, C513 | 2 | Fenghua 0603B106K100NT | Manufacturer-specific orderable identity remains unverified; same text occurs for Hitano | Fenghua original drawing and quote, or a separately reviewed ECO |
+| Core C506, C513 | 2 | HRE CGA0603X7R106K100JT | Controlled exact-spec prototype ECO, JLC C22399626 | Actual stock, allocation and later effective-capacitance qualification |
 | Core L402 | 1 | Coilcraft XGL4015-222MEC | Manufacturer direct purchase route; C=7-inch reel, 1000/reel | Quantity/quote and machine-ready partial tape or full reel; assembler acceptance |
 | Core U902 | 1 | SGM62125AXG/TR | Manufacturer Active; exact WLCSP A/15-ball variant; authorized distributor route | Firm quote, lead time, packing/lot and WLCSP assembly acceptance |
 | Core U905 | 1 | SGM37601YTRL20G/TR | Manufacturer Active; exact TQFN20 variant, MSL2 | Firm quote, lead time, packing/lot, floor-life handling and assembly acceptance |

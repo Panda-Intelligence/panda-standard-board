@@ -353,18 +353,26 @@
       "stock_reserved": false,
       "assembly_order_confirmed": false,
       "identity_note": "Exact Seiko CPH3225A; JLC lists SMT assembly, SMD 3.2x2.5mm, maximum seated height 0.9mm. Visible stock quantity/packing not returned."
-    }
-  ],
-  "unresolved_smt": [
+    },
     {
       "board": "Core-C1",
       "refs": [
         "C506",
         "C513"
       ],
-      "mpn": "0603B106K100NT",
-      "next_action": "Manufacturer-specific identity remains unverified: same MPN appears for Hitano. Obtain Fenghua orderable datasheet/quotation; do not copy another maker ID or substitute X5R."
-    },
+      "manufacturer": "HRE",
+      "mpn": "CGA0603X7R106K100JT",
+      "library_id": "C22399626",
+      "catalog_manufacturer": "HRE",
+      "catalog_mpn": "CGA0603X7R106K100JT",
+      "source_url": "https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Controlled prototype ECO replacing unverified Fenghua identity. JLC catalog confirms 10uF, 10V, X7R, +/-10%, 0603. DC-bias qualification remains open."
+    }
+  ],
+  "unresolved_smt": [
     {
       "board": "Core-C1",
       "refs": [
@@ -442,13 +450,13 @@
         "C506",
         "C513"
       ],
-      "manufacturer": "FH (Fenghua Advanced)",
-      "mpn": "0603B106K100NT",
+      "manufacturer": "HRE",
+      "mpn": "CGA0603X7R106K100JT",
       "units_per_core_display_pair": 2,
-      "supply_route": "Fenghua exact-part quotation or separately qualified ECO",
-      "source_url": null,
-      "supply_status": "MANUFACTURER_SPECIFIC_ORDERABLE_IDENTITY_UNVERIFIED",
-      "packing": "No confirmed exact Fenghua packing",
+      "supply_route": "JLC exact library C22399626",
+      "source_url": "https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626",
+      "supply_status": "CATALOG_ID_CONFIRMED_STOCK_AND_PACKING_PENDING",
+      "packing": "4000/reel per JLC catalog; actual order stock pending",
       "stock_observation": {
         "quantity": null,
         "observed_date": "2026-10-01",
@@ -458,7 +466,7 @@
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Retain exact X7R/10uF/10V/0603 intent. Hitano same-string entries and other makers are not approved substitutes."
+      "note": "Controlled prototype ECO preserves 10uF/10V/X7R/+/-10%/0603. No guaranteed effective capacitance inferred from nominal value."
     },
     {
       "board": "Core-C1",
@@ -552,7 +560,7 @@
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "3x3mm, seated height max1.0mm; 47uH ±20%, DCR max2.46ohm, saturation current250mA. JLC code not reliably confirmed; no inferred ID applied."
+      "note": "3x3mm, seated height max1.0mm; 47uH \u00b120%, DCR max2.46ohm, saturation current250mA. JLC code not reliably confirmed; no inferred ID applied."
     }
   ],
   "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",

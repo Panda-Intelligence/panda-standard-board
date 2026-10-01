@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198",
-    "Display-C1": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
+    "Core-C1": "916f51dd6f8221eafc3c41408443262cf6144f774754cb065f80475e7d791241",
+    "Display-C1": "10b096bd8aa1be1c0d3e123b1db482ebd7797b4b5f2f1d1e6af1f8c93ce74739"
   },
   "inputs_sha256": "a87e09677367e825819119b5c98358f171df4d7b0707b5fa8996277e198e411a",
-  "interface_sha256": "75ca8c131861107f7f145451c323fd149925064d1a54c0298192ec43997f1987",
+  "interface_sha256": "975b614eeffcfac87dc00b3eb38bb332f73e1b44cdc7d1b1ce13c38e8a71f806",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
