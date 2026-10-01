@@ -1,0 +1,1319 @@
+{
+  "schema": "panda-split-c1-domestic-policy-v1",
+  "checked_date": "2026-10-02",
+  "scope": "All populated Core-C1 and Display-C1 system-BOM refs, including offboard TH301. DNP/removed historical circuitry excluded. Battery, panel, antenna, cables and enclosure not yet represented by these PCB BOMs remain separate mechanical/sourcing work.",
+  "definition": "Mainland legal manufacturer identity under the existing C4 requirement. This is not a declaration that all wafers/raw materials are fabricated in mainland China, nor electrical/physical qualification.",
+  "no_foreign_exception": true,
+  "manufacturer_profiles": [
+    {
+      "aliases": [
+        "FH (Fenghua Advanced)",
+        "FH (Guangdong Fenghua Advanced Tech)"
+      ],
+      "company": "广东风华高新科技股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.fhcomp.com/"
+      ]
+    },
+    {
+      "aliases": [
+        "SGMICRO"
+      ],
+      "company": "圣邦微电子（北京）股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.sg-micro.com/cnsales-office"
+      ]
+    },
+    {
+      "aliases": [
+        "FOJAN"
+      ],
+      "company": "安徽省富捷电子科技有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.fojan.cn/"
+      ]
+    },
+    {
+      "aliases": [
+        "HCTL"
+      ],
+      "company": "深圳市华灿天禄电子有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.hctldz.com/about-us/"
+      ]
+    },
+    {
+      "aliases": [
+        "XINLUDA"
+      ],
+      "company": "芯路达信息技术（厦门）有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.xinluda.com/en/About-Us/"
+      ]
+    },
+    {
+      "aliases": [
+        "CCTC"
+      ],
+      "company": "潮州三环（集团）股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.cctc.cc/about.html"
+      ]
+    },
+    {
+      "aliases": [
+        "QST (Shanghai QST)"
+      ],
+      "company": "上海矽睿科技股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.qstcorp.com/intro/"
+      ]
+    },
+    {
+      "aliases": [
+        "Cellwise"
+      ],
+      "company": "广东赛微微电子股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://static.sse.com.cn/stock/disclosure/announcement/c/202203/000962_20220316_N2XP.pdf"
+      ]
+    },
+    {
+      "aliases": [
+        "CJ",
+        "JSCJ"
+      ],
+      "company": "江苏长晶科技股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.jscj-elec.com/"
+      ]
+    },
+    {
+      "aliases": [
+        "Shenzhen Nsiway Tech"
+      ],
+      "company": "深圳市纳芯威科技有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.nsiway.com.cn/list_40/138.html"
+      ]
+    },
+    {
+      "aliases": [
+        "Espressif"
+      ],
+      "company": "乐鑫信息科技（上海）股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.espressif.com/en/company/about-espressif"
+      ]
+    },
+    {
+      "aliases": [
+        "Sunlord"
+      ],
+      "company": "深圳顺络电子股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.sunlordinc.com/"
+      ]
+    },
+    {
+      "aliases": [
+        "HRE"
+      ],
+      "company": "江苏芯声微电子科技有限公司 / Jiangsu Holy Ram Electronics Technology Limited",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.kes.org/eng/search/company_view.asp?admission=2026&user_no=6801",
+        "https://www.hretech.cn/"
+      ]
+    },
+    {
+      "aliases": [
+        "Wuxi I-core Elec"
+      ],
+      "company": "无锡中微爱芯电子有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.i-coreic.com/about-us"
+      ]
+    },
+    {
+      "aliases": [
+        "Nanjing Shiheng Elec"
+      ],
+      "company": "南京时恒电子科技有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.shiheng.com.cn/products/mf55xl.html"
+      ]
+    }
+  ],
+  "foreign_manufacturers": [
+    "Hirose",
+    "Coilcraft",
+    "Texas Instruments",
+    "ALPSALPINE",
+    "JST",
+    "Molex",
+    "Micro Crystal",
+    "Seiko Instruments",
+    "GCT",
+    "Taiyo Yuden",
+    "Nexperia"
+  ],
+  "reviewed_identities": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C201"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B473K500NT",
+      "footprint": "panda-standard:C201_CBOOT_0603_SEED",
+      "library_id": "C285123",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C202"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B105K250NT",
+      "footprint": "panda-standard:C202_CVBUS_0603_ENVELOPE",
+      "library_id": "C59302",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C203"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "1206B106K250NT",
+      "footprint": "panda-standard:C203_CPMID_1206_ENVELOPE",
+      "library_id": "C90538",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C204"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B334K500NT",
+      "footprint": "panda-standard:C204_ILIM_RC_0603_SEED",
+      "library_id": "C188679",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C205"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B475K160NT",
+      "footprint": "panda-standard:C205_CREGN_0805_ENVELOPE",
+      "library_id": "C880382",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C206"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B106K100NT",
+      "footprint": "panda-standard:C206_CBAT_0805_ENVELOPE",
+      "library_id": "C90544",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C207"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805X226M250NT",
+      "footprint": "panda-standard:C207_CSYS_0805_ENVELOPE",
+      "library_id": "C129303",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C208"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805X226M250NT",
+      "footprint": "panda-standard:C208_CSYS_0805_ENVELOPE",
+      "library_id": "C129303",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C209",
+        "C507",
+        "C508",
+        "C509",
+        "C510",
+        "C511",
+        "C516",
+        "C903"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B105K250NT",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "library_id": "C59302",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C301"
+      ],
+      "manufacturer": "Seiko Instruments",
+      "mpn": "CPH3225A",
+      "footprint": "panda-standard:CPH3225A_Polarized_Derived",
+      "library_id": "C6048128",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C302",
+        "C502",
+        "C503",
+        "C504",
+        "C505",
+        "C512",
+        "C601"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402B104K250NT",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "library_id": "C56392",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C303",
+        "C921",
+        "C922"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402B105K100NT",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "library_id": "C1526",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C304"
+      ],
+      "manufacturer": "CCTC",
+      "mpn": "TCC0402X5R225M100AT",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "library_id": "C18164608",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C401",
+        "C402",
+        "C403"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603X226M100NT",
+      "footprint": "panda-standard:C_0603_POWER_SEED",
+      "library_id": "C60077",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C501"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805X226M250NT",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "library_id": "C129303",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C506",
+        "C513"
+      ],
+      "manufacturer": "HRE",
+      "mpn": "CGA0603X7R106K100JT",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "library_id": "C22399626",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C920"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B475K160NT",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "library_id": "C880382",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C923"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "1206B475K500NT",
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "library_id": "C29823",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D201"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD4E05U06DQAR",
+      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+      "library_id": "C138714",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD1E10B06DPYR",
+      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
+      "library_id": "C48260",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D905"
+      ],
+      "manufacturer": "CJ",
+      "mpn": "B5819W SL",
+      "footprint": "Diode_SMD:D_SOD-123",
+      "library_id": "C8598",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J201"
+      ],
+      "manufacturer": "GCT",
+      "mpn": "USB4500-03-0-A",
+      "footprint": "panda-layout:USB4500_08mm_MidMount_LayoutReview",
+      "library_id": "C5354966",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J301"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "DF58-2P-1.2V(21)",
+      "footprint": "panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical",
+      "library_id": "C597951",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J302"
+      ],
+      "manufacturer": "JST",
+      "mpn": "SM03B-SRSS-TB(LF)(SN)",
+      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
+      "library_id": "C160403",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J501"
+      ],
+      "manufacturer": "Molex",
+      "mpn": "104031-0811",
+      "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
+      "library_id": "C585350",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J502"
+      ],
+      "manufacturer": "JST",
+      "mpn": "SM02B-SRSS-TB(LF)(SN)",
+      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
+      "library_id": "C160402",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J601"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-PBB40C-60DS-0.4V-1.5-02",
+      "footprint": "panda-standard:HCTL_PBB40C_60DS_04V_15",
+      "library_id": "C19089250",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J803",
+        "J804"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
+      "library_id": "C224194",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L401"
+      ],
+      "manufacturer": "Coilcraft",
+      "mpn": "XFL4015-471MEC",
+      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
+      "library_id": "C18221164",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "manufacturer": "Coilcraft",
+      "mpn": "XGL4015-222MEC",
+      "footprint": "panda-standard:XGL4015_Coilcraft",
+      "library_id": "",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L905"
+      ],
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA252012S100MT",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA252012S",
+      "library_id": "C37428",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R201"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K5601FT",
+      "footprint": "panda-standard:R201_ILIM_0603_SEED",
+      "library_id": "C99891",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R204"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K1201FT",
+      "footprint": "panda-standard:R204_ILIM_RC_0603_SEED",
+      "library_id": "C118396",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R206",
+        "R207"
+      ],
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "RC-02K512JT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C453708",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R303",
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R523",
+        "R524",
+        "R525",
+        "R526",
+        "R527",
+        "R528",
+        "R600"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1002FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140215",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R306"
+      ],
+      "manufacturer": "FOJAN",
+      "mpn": "FRM121WFR010TM",
+      "footprint": "Resistor_SMD:R_1206_3216Metric",
+      "library_id": "C7467248",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R501",
+        "R502",
+        "R507",
+        "R601",
+        "R604",
+        "R605",
+        "R606",
+        "R607",
+        "R608",
+        "R609",
+        "R610",
+        "R611",
+        "R612",
+        "R922"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1003FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140219",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R508",
+        "R509",
+        "R514",
+        "R515",
+        "R516"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-05000FT",
+      "footprint": "Resistor_SMD:R_0805_2012Metric",
+      "library_id": "C132364",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R517",
+        "R518",
+        "R519",
+        "R520",
+        "R521",
+        "R522"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03000FT",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C136582",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R529",
+        "R530"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K22R0FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C324769",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R613",
+        "R614"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K2201FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140192",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R615"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K5231FT",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C140082",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R616"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K3012FT",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C321843",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R903",
+        "R904"
+      ],
+      "manufacturer": "FOJAN",
+      "mpn": "FRC0603F1000TS",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C2906981",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R910",
+        "R911"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "THC02H1002BT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C2991528",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R920"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K10R0FT",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C136596",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "SW201",
+        "SW202"
+      ],
+      "manufacturer": "ALPSALPINE",
+      "mpn": "SKSCLCE010",
+      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
+      "library_id": "C139799",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "TH301"
+      ],
+      "manufacturer": "Nanjing Shiheng Elec",
+      "mpn": "MF52D-103F3435-100",
+      "footprint": "",
+      "library_id": "C394023",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U302"
+      ],
+      "manufacturer": "Micro Crystal",
+      "mpn": "RV-3028-C7-32.768KHZ-1PPM-TA-QA",
+      "footprint": "Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm",
+      "library_id": "C3304278",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM2578SDYG/TR",
+      "footprint": "panda-standard:SGM2578SD_WLCSP_09x09_P05",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U501"
+      ],
+      "manufacturer": "Espressif",
+      "mpn": "ESP32-S3-WROOM-1U-N16R8",
+      "footprint": "PandaDomestic:ESP32-S3-WROOM-1U",
+      "library_id": "C3013946",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U503"
+      ],
+      "manufacturer": "QST (Shanghai QST)",
+      "mpn": "QMI8658A",
+      "footprint": "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
+      "library_id": "C3021082",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U601"
+      ],
+      "manufacturer": "XINLUDA",
+      "mpn": "XL9535",
+      "footprint": "panda-standard:TCA9535PWR_PW0024A",
+      "library_id": "C561273",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U901"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM41513YTQF24G/TR",
+      "footprint": "panda-standard:SGM41513_YTQF24_4x4_P0.5_EP2.7",
+      "library_id": "C5153778",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U902"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "footprint": "panda-standard:SGM62125_XG_WLCSP15_1.46x2.3_P0.4",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U903"
+      ],
+      "manufacturer": "Cellwise",
+      "mpn": "CW2217BAAD",
+      "footprint": "panda-standard:CW2217BAAD_DFN12_L4.0_W2.5_P0.4_EP",
+      "library_id": "C5203993",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U904"
+      ],
+      "manufacturer": "Shenzhen Nsiway Tech",
+      "mpn": "NS4168",
+      "footprint": "panda-standard:NS4168_ESOP8_EP_L4.9_W3.9_P1.27",
+      "library_id": "C910588",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U905"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM37601YTRL20G/TR",
+      "footprint": "PandaDomestic:SGM37601_TQFN20_3P5x3P5_EP2P05",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B105K250NT",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "library_id": "C59302",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B475K250NT",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "library_id": "C37818",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C10"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B105K250NT",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "library_id": "C89190",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0603B104K250NT",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "library_id": "C694249",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "manufacturer": "JSCJ",
+      "mpn": "MBR0530",
+      "footprint": "panda-r6-display:MBR0530_JSCJ_SOD123",
+      "library_id": "C77336",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J1"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-PBB40C-60DP-0.4V-02",
+      "footprint": "panda-r6-display:HCTL_PBB40C_60DP_04V",
+      "library_id": "C19089235",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "FH12-24S-0.5SH(55)",
+      "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
+      "library_id": "C202112",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "manufacturer": "Taiyo Yuden",
+      "mpn": "LSXNE3030KKT470MN",
+      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
+      "library_id": "",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "Q1"
+      ],
+      "manufacturer": "Nexperia",
+      "mpn": "NX3008NBK,215",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "library_id": "C179399",
+      "origin": "FOREIGN_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K22R0FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C324769",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R6"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1000FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140217",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R7",
+        "R8",
+        "R9",
+        "R10",
+        "R11",
+        "R12"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1003FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140219",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R13"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03L2R20FT",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "library_id": "C322118",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R14"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1002FT",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "library_id": "C140215",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "U1",
+        "U2",
+        "U3"
+      ],
+      "manufacturer": "Wuxi I-core Elec",
+      "mpn": "AIP74LVC2G17GC363.TR",
+      "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "library_id": "C3294722",
+      "origin": "MAINLAND_MANUFACTURER"
+    }
+  ],
+  "remaining_redesigns": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "C301"
+      ],
+      "function": "RTC backup EDLC",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker.",
+      "source_urls": [
+        "https://www.sii.co.jp/en/me/datasheets/chip-type/cph3225a/"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D201"
+      ],
+      "function": "USB D+/D-/CC ESD",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "SET SD0504F25U1",
+        "CREATEK CESD2510UC5VU-M C266652"
+      ],
+      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection.",
+      "source_urls": [
+        "https://www.setfuse.com/SdwlUploads/Ed/file/20240904/ESD%20SD0504F25U1(DFN2510)_SETsafe%20&%20SETfuse.pdf",
+        "https://datasheet.lcsc.com/lcsc/CREATEK-CESD2510UC5VU-M_C266652.pdf"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "function": "VBUS ESD",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID.",
+      "source_urls": [
+        "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J201"
+      ],
+      "function": "Mid-mount USB-C",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker.",
+      "source_urls": [
+        "https://gct.co/connector/usb4500"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J301"
+      ],
+      "function": "Battery power connector",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map.",
+      "source_urls": [
+        "https://www.hirose.com/product/series/DF58"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J302"
+      ],
+      "function": "External NTC connector",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "HCTL HC-1.0-3PWT C2845362"
+      ],
+      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance.",
+      "source_urls": [
+        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J501"
+      ],
+      "function": "MicroSD socket with detect",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD.",
+      "source_urls": [
+        "https://www.molex.com/en-us/products/part-detail/1040310811"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J502"
+      ],
+      "function": "Speaker connector",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "HCTL HC-1.0-2PWT C2845361"
+      ],
+      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match.",
+      "source_urls": [
+        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J803",
+        "J804"
+      ],
+      "function": "Touch/frontlight six-pin FPC",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ.",
+      "source_urls": [
+        "https://www.hirose.com/product/series/FH34"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L401"
+      ],
+      "function": "AON buck-boost 0.47uH",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "Sunlord MWSA0412S-R47MT"
+      ],
+      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID.",
+      "source_urls": [
+        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
+        "https://www.coilcraft.com/en-us/products/power/high-voltage-inductors/xfl/xfl4015/xfl4015-471/"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "function": "Charger inductor 2.2uH",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "Sunlord MWSA0412S-2R2MT C6807730"
+      ],
+      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern.",
+      "source_urls": [
+        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
+        "https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "SW201",
+        "SW202"
+      ],
+      "function": "Side-actuated buttons",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [],
+      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval.",
+      "source_urls": [
+        "https://tech.alpsalpine.com/e/products/detail/SKSCLCE010/"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U302"
+      ],
+      "function": "Integrated-crystal RTC",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "WHWAVE SD3078",
+        "WHWAVE SD3900",
+        "Historical GATEMODE BM8563EMA + crystal"
+      ],
+      "next_action": "Treat as subsystem redesign: SD3078 VDD2.7..5.5V/VBAT2.3..3.6V and typical0.8uA backup differ from RV3028 low-voltage/45nA. New footprint/pin map/driver and backup C301/current/accuracy budget are required; no equivalent selected yet.",
+      "source_urls": [
+        "https://www.whwave.com.cn/SD3078"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "function": "24-pin panel FPC",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "XKB X05B20L24T C388688",
+        "XKB X05A10L24G C2880917"
+      ],
+      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating.",
+      "source_urls": [
+        "https://www.lcsc.com/product-detail/C388688.html"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "function": "EPD boost 47uH",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "Sunlord SWPA3010S470MT C96826",
+        "Sunlord SWPA3012S470MT"
+      ],
+      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor.",
+      "source_urls": [
+        "https://www.alfatec.de/fileadmin/productfiles/datasheets/sunlord_swpa3010s_series.pdf"
+      ],
+      "foreign_retention_allowed": false
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "Q1"
+      ],
+      "function": "EPD boost N-MOSFET",
+      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
+      "candidates": [
+        "JSCJ CJ3400; CJ2302 rejected for20V VDS"
+      ],
+      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved.",
+      "source_urls": [
+        "https://www.jscj-elec.com/related/23180.html",
+        "https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf"
+      ],
+      "foreign_retention_allowed": false
+    }
+  ],
+  "classification_note": "Exact manufacturer/MPN/footprint/library-ID identities are pinned. New or changed identities fail closed until policy review; LCSC location and a renamed Manufacturer field do not prove origin."
+}

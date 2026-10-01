@@ -1,6 +1,6 @@
 # Split-C1 mechanical and sourcing follow-up
 
-Date: 2026-10-01. Architecture: two PCBs, Core-C1 and Display-C1.
+Date: 2026-10-02. Architecture: two PCBs, Core-C1 and Display-C1.
 Project stage: PCB design only; the user confirmed no physical boards exist.
 Status: engineering constraints and exact-part catalog mapping; manufacturing_release=false.
 
@@ -12,57 +12,35 @@ controlled prototype ECO corrects L402 lands, replaces the generic C301 land
 with a polarized derived pattern, raises Display refdes text, and assigns
 C506/C513 to exact HRE C22399626. Poses, nets and the 60-pin interface remain
 verified; current CAD equals a deterministic fresh rebuild including the ECO.
-Reviewed exact-part IDs now cover 14 additional Core refs and 23 Display refs.
-See [JLC-PROTOTYPE-HANDOFF.md](JLC-PROTOTYPE-HANDOFF.md): Core USB cutout copper
-clearance is 0.02 mm and requires CAM acceptance; Display standard DFM passes.
-Library IDs identify parts; stock, packing, purchased quantity and assembly
-availability still require order-time confirmation.
+The current all-domestic audit covers 156 populated system-BOM refs: 138 mainland
+manufacturer refs and 18 foreign refs still requiring replacement. See
+[SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for 77 controlled
+substitutions, added U403 output C516 and corrected Icore datasheets. New HCTL
+J601/J1 retain the reviewed 1.5mm nominal mating transform; no mixed-family
+mating or physical fit is approved.
 
-| Board | Present library IDs | SMT refs still MPN-only | Manual/off-board |
+| Board | Present SMT library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 114 | 3 | 1 |
-| Display-C1 | 36 | 1 | 0 |
+| Core-C1 | 111 / 118 | 7 | 1: Shiheng TH301, C394023 |
+| Display-C1 | 36 / 37 | 1 | 0 |
 
-The sourcing CSV includes evidence URLs for this review. Previously present IDs
-remain labeled PREEXISTING_ID rather than being newly certified by this review.
+The reviewed sourcing register now covers 89 refs, including manual TH301.
+Exact current identities/evidence are in split-c1-sourcing-evidence.json and
+split-c1-domestic-policy.json. Previously present IDs remain PREEXISTING_ID.
+The old Hirose/Murata/Yageo/UNI-ROYAL/onsemi IDs are not current replacement IDs.
+Core R615 is precisely FH RS-03K5231FT / C140082.
 
-## New exact-part mappings
-
-| Board | Refs | Retained MPN | Library ID | Source |
-|---|---|---|---|---|
-| Core-C1 | C506, C513 | CGA0603X7R106K100JT (controlled HRE ECO) | C22399626 | [JLC catalog](https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626) |
-| Core-C1 | C301 | CPH3225A | C6048128 | [JLC catalog](https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128) |
-| Core-C1 | D201 | TPD4E05U06DQAR | C138714 | [Catalog](https://www.lcsc.com/product-detail/C138714.html) |
-| Core-C1 | D202 | TPD1E10B06DPYR | C48260 | [Catalog](https://www.lcsc.com/product-detail/C48260.html) |
-| Core-C1 | J201 | USB4500-03-0-A | C5354966 | [Catalog](https://www.lcsc.com/product-detail/C5354966.html) |
-| Core-C1 | J301 | DF58-2P-1.2V(21) | C597951 | [Catalog](https://www.lcsc.com/product-detail/C597951.html) |
-| Core-C1 | J501 | 104031-0811 | C585350 | [Catalog](https://www.lcsc.com/product-detail/C585350.html) |
-| Core-C1 | J601 | DF40C-60DS-0.4V(58) | C2880473 | [Catalog](https://jlcpcb.com/partdetail/HIROSE-DF40C_60DS_0_4V_58/C2880473) |
-| Core-C1 | R306 | FRM121WFR010TM | C7467248 | [Catalog](https://www.lcsc.com/product-detail/C7467248.html) |
-| Core-C1 | R903, R904 | FRC0603F1000TS | C2906981 | [Catalog](https://www.lcsc.com/product-detail/C2906981.html) |
-| Core-C1 | U501 | ESP32-S3-WROOM-1U-N16R8 | C3013946 | [Catalog](https://www.lcsc.com/product-detail/C3013946.html) |
-| Core-C1 | U903 | CW2217BAAD | C5203993 | [Catalog](https://jlcpcb.com/partdetail/Cellwise-CW2217BAAD/C5203993) |
-| Display-C1 | C4, C5, C6, C7, C8, C9 | GRM21BR61E475KA12L | C77077 | [Catalog](https://www.lcsc.com/product-detail/C77077.html) |
-| Display-C1 | C10 | GRM21BR71E105KA99L | C77080 | [Catalog](https://www.lcsc.com/product-detail/C77080.html) |
-| Display-C1 | C11, C12, C13 | GRM188R71E104KA01D | C77050 | [Catalog](https://www.lcsc.com/product-detail/C77050.html) |
-| Display-C1 | D1, D2, D3 | MBR0530T1G | C82046 | [Catalog](https://www.lcsc.com/product-detail/C82046.html) |
-| Display-C1 | J1 | DF40C-60DP-0.4V(51) | C424647 | [Catalog](https://www.lcsc.com/product-detail/C424647.html) |
-| Display-C1 | J2 | FH12-24S-0.5SH(55) | C202112 | [Catalog](https://www.lcsc.com/product-detail/C202112.html) |
-| Display-C1 | Q1 | NX3008NBK,215 | C179399 | [Catalog](https://www.lcsc.com/product-detail/C179399.html) |
-| Display-C1 | R1, R2, R3, R4, R5 | RC0402FR-0722RL | C114765 | [Catalog](https://www.lcsc.com/product-detail/C114765.html) |
-| Display-C1 | R6 | RC0402FR-07100RL | C106232 | [Catalog](https://www.lcsc.com/product-detail/C106232.html) |
-| Display-C1 | R13 | RC0603FR-072R2L | C112307 | [Catalog](https://www.lcsc.com/product-detail/C112307.html) |
-
-The original mapping pass made no manufacturer, electrical-rating, package or mating-family substitution. The later C506/C513 controlled commodity ECO replaces the unverified Fenghua identity while preserving 10uF/10V/X7R/+/-10%/0603; effective DC-bias capacitance remains a qualification item.
-Molex 104031-0811 and catalog 1040310811 are the same formatted ordering number.
-The Core builder now clears the Display plug's library ID when constructing the
-different DF40 socket, then applies the socket's independently reviewed ID.
-Builders replay these mappings from split-c1-sourcing-evidence.json and reject
-unexpected manufacturer/MPN/ID conflicts.
+Builders pin the original connector wiring seed, apply checked predecessor ECOs,
+then reviewed sourcing. They reject MPN/ID conflicts; policy audit rejects an
+unreviewed identity or manufacturer-only relabel. Core USB cutout remains a
+0.02mm copper-edge CAM blocker; Display standard DFM passes. No stock is reserved.
 
 ## Supply readiness for the original seven SMT refs
 
-One Core-C1 plus one Display-C1 needs the quantities below. Board fabrication,
+The following original seven-ref supply research is historical for the still-foreign
+C301/L402/L1: it is not permission to procure these parts under the new all-domestic
+requirement. Four new U402-U405 SGM2578SDYG/TR also require exact supply/packing
+and assembler acceptance. One Core-C1 plus one Display-C1 needs the quantities below. Board fabrication,
 assembly orders, BOMs and CPLs are separate for the two boards. For N pairs,
 required usable placements are N times the table quantities; add only the
 assembler's quoted attrition and feeder/leader/trailer requirement. N is unset.
@@ -95,7 +73,7 @@ The 24-pin SGM37601 and non-A SGM62125 variants are not interchangeable.
 No purchase, supplier message, quote or stock reservation has occurred.
 Procurement followup and dated observations are committed in
 split-c1-sourcing-evidence.json and exported into each assembly-sourcing.csv.
-TH301 remains an additional manual/off-board SEMITEC NTC and attachment/harness.
+TH301 is now manual/offboard Shiheng MF52D-103F3435-100 / C394023, with a 100mm AWG30 harness and a 4mm-max tip; its termination, thermal attachment and threshold qualification remain open.
 
 For JLC consignment, an exact accepted C-code is required before shipping. If
 missing, submit the exact manufacturer/MPN/package for engineering acceptance
@@ -193,7 +171,7 @@ retention geometry may enlarge it. The X4 Pro5.95mm reference is now recorded; n
 The audit exports current port/switch envelope coordinates and Core mounting
 holes: H801(15,2),H802(81,2),H803(93,34),H804(3,34), all1.6mm NPTH for the
 existing M1.2-clearance footprints. The Display has no dedicated mounting-hole
-footprint. Provide insulating supports/retention; the DF40 pair must not be the
+footprint. Provide insulating supports/retention; the HCTL pair must not be the
 sole structural support. These dimensions do not approve a boss or cutout.
 
 ## XTEINK X4 Pro reference and design consequences
@@ -208,7 +186,7 @@ must not be copied into the Pro requirement.
 
 The mechanical input records5.95mm as a comparison goal and1100mAh as a capacity
 baseline. Neither is a selected pack, a frozen case drawing or measured runtime.
-The current two-board DF40 construction consumes5.08mm before the battery,
+The current two-board HCTL construction consumes5.08mm before the battery,
 component heights, walls or allowances, leaving only **0.87mm for all remaining
 terms**. This is an optimistic nominal remainder, not usable battery thickness.
 
@@ -235,7 +213,7 @@ The existing illustrative XY study110.33x73.775mm also exceeds the reference's
 
 Two reviewable architecture paths retain **two PCBs**:
 
-- Preserve the present DF40 overlap construction: use the dimension formula to
+- Preserve the present HCTL overlap construction: use the dimension formula to
   set an achievable case thickness after selecting the complete pack and
   obtaining maximum component/USB/FPC dimensions. The studied5mm-class cells
   cannot support a5.95mm case in this construction.
@@ -243,7 +221,7 @@ Two reviewable architecture paths retain **two PCBs**:
   Investigate non-overlapping PCB/battery regions, smaller board footprints and
   a lower-profile interconnect with independent Display retention. Freeze a
   complete section using supplier maximums, swelling, walls and FPC bend space
-  first. Merely changing the cell capacity or DF40 gap is insufficient; no
+  first. Merely changing the cell capacity or HCTL gap is insufficient; no
   unverified thin battery or FPC connector is selected by this update.
 
 For runtime sensitivity only, assume1100mAh and an illustrative80% usable charge

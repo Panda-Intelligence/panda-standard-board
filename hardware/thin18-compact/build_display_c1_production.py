@@ -129,6 +129,8 @@ if set(parts)-seen: raise SystemExit(f'pcb refs missing: {sorted(set(parts)-seen
 
 from _split_c1_prototype_eco import apply_prototype_eco
 apply_prototype_eco(DST, 'Display-C1')
+from _split_c1_domestic_eco import apply_domestic_eco
+apply_domestic_eco(DST, 'Display-C1')
 from _split_c1_sourcing import apply_sourcing
 apply_sourcing(DST, 'Display-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
@@ -140,9 +142,8 @@ counts={'drc':len(d.get('violations',[])),'open':len(d.get('unconnected_items',[
 if counts!={'drc':0,'open':0,'parity':0,'erc':0}: raise SystemExit(counts)
 (DST/'production-bom-resolution.json').write_text(json.dumps({
  'date':'2026-10-01','candidate':DST.name,'native_checks':counts,
- 'domestic_changes':{'U1-U3':'SN74AUP2G17DCKR -> AIP74LVC2G17GC363.TR / Wuxi I-core / C3294722'},
+ 'domestic_changes':{'U1-U3':'SN74AUP2G17DCKR -> AIP74LVC2G17GC363.TR / Wuxi I-core / C3294722', 'later_eco':'See split-c1-domestic-eco.json for exact native substitutions'},
  'retained_blocked':{
-  'J1':'Hirose DF40 retained: mating geometry contract',
   'J2':'Hirose FH12 retained: FPC geometry contract',
   'Q1':'Nexperia NX3008 retained: mainland MOSFET VDS/Rds/Qg not qualified',
   'L1':'Taiyo Yuden LSXNE3030 retained: domestic exact magnetic not qualified'

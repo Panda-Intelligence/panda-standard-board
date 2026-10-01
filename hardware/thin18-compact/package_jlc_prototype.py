@@ -37,6 +37,8 @@ def main():
     for label,info in validation["files"].items():
         if "sha256" in info and sha(REPO/label)!=info["sha256"]:
             raise ValueError("Stale CAD validation "+label)
+    from audit_split_c1_domestic import verify_fresh
+    domestic=json.loads((ROOT/'split-c1-domestic-audit.json').read_text());verify_fresh(domestic)
     core=ROOT/BOARDS[0][1]/BOARDS[0][3]
     text=core.read_text()
     cap=verify_land(text,"C301",(1.3,1.3),1.1)
@@ -49,9 +51,12 @@ def main():
     shutil.copy2(ROOT/"JLC-PROTOTYPE-HANDOFF.md",out/"START-HERE.md")
     registry=json.loads((ROOT/"split-c1-sourcing-evidence.json").read_text())
     expected={b:{ref for row in registry["unresolved_smt"] if row["board"]==b for ref in row["refs"]} for b,_,_,_ in BOARDS}
-    report={"schema":"panda-split-c1-prototype-orderpack-v1","date":"2026-10-01",
+    report={"schema":"panda-split-c1-prototype-orderpack-v1","date":"2026-10-02",
             "purpose":"Bench EVT prototype; no physical board exists yet","manufacturing_release":False,
-            "physical_evt_passed":False,"boards":{}}
+            "physical_evt_passed":False,"assembly_request_ready":False,
+            "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
+            "domestic_foreign_ref_count":domestic["foreign_ref_count"],
+            "domestic_status":domestic["status"],"boards":{}}
     with tempfile.TemporaryDirectory(prefix="panda-jlc-prototype-") as tmp:
         for board,candidate,production,relative in BOARDS:
             folder=ROOT/candidate;pcb=folder/relative
@@ -115,9 +120,14 @@ def main():
             state.update(pcb_sha256=sha(pcb),native_checks=current["current"],
                          dimensions_mm=manifest["board_dimensions_mm"],copper_layers=manifest["copper_layers"],
                          smt_positions=len(cpl),unmapped_smt_refs=sorted(missing),
-                         assembly_order_released=False,assembly_request_ready=True,
+                         assembly_order_released=False,assembly_request_ready=False,
+                         all_domestic_bom_complete=domestic["all_domestic_bom_complete"],
+                         foreign_refs=domestic["boards"][board]["foreign_refs"],
                          assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 derived land and terminal-positive mounting review"])
             report["boards"][board]=state
+    for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
+                 "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md"]:
+        shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")
     (out/"prototype-status.json").write_text(json.dumps(report,indent=2)+"\n")
@@ -130,5 +140,7 @@ def main():
         if z.testzip(): raise ValueError("Orderpack CRC error")
     print(json.dumps({"archive":str(archive.relative_to(REPO)),"sha256":sha(archive),
           "standard_fabrication_ready":{b:s["standard_fabrication_ready"] for b,s in report["boards"].items()},
-          "ready_for_cam_review":True,"assembly_order_released":False},indent=2))
+          "ready_for_cam_review":True,"assembly_request_ready":False,
+          "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
+          "remaining_foreign_refs":domestic["foreign_ref_count"],"assembly_order_released":False},indent=2))
 if __name__=="__main__":main()

@@ -13,6 +13,10 @@ core=ROOT/"core-c1-96x68-split"
 display=ROOT/"display-c1-45x36-production-bom"
 pcb_paths=[core/REL/(STEM+".kicad_pcb"),display/"PANDA-EPD0426-SPI-EVT.kicad_pcb"]
 boards=[pcbnew.LoadBoard(str(p)) for p in pcb_paths]
+from _split_c1_sourcing import blocks, property_value
+for path,ref,mpn in zip(pcb_paths,["J601","J1"],["HC-PBB40C-60DS-0.4V-1.5-02","HC-PBB40C-60DP-0.4V-02"]):
+    fp=next(b for _,_,b in blocks(path.read_text(),r"\(footprint\s") if property_value(b,"Reference")==ref)
+    assert property_value(fp,"Manufacturer")=="HCTL" and property_value(fp,"MPN")==mpn, "mixed or unexpected mating pair"
 connectors=[boards[0].FindFootprintByReference("J601"),
     boards[1].FindFootprintByReference("J1")]
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -93,9 +97,9 @@ if not cad_complete: raise RuntimeError("Native CAD gates failed: "+str(counts))
 report={"schema":"panda-split-c1-interface-v1","logical_pin_mapping_verified":True,
     "same_number_mating":True,"all_60_pins_verified":True,
     "signals":6,"ground_pins":len(grounds),"power_pins":2,"reserved_pins":29,
-    "core_connector":{"ref":"J601","mpn":"DF40C-60DS-0.4V(58)",
+    "core_connector":{"ref":"J601","mpn":"HC-PBB40C-60DS-0.4V-1.5-02",
         "type":"receptacle","layer":"B.Cu","rotation_deg":0,"center_mm":[61,62]},
-    "display_connector":{"ref":"J1","mpn":"DF40C-60DP-0.4V(51)",
+    "display_connector":{"ref":"J1","mpn":"HC-PBB40C-60DP-0.4V-02",
         "type":"plug","layer":"B.Cu","rotation_deg":0,"center_mm":[23,4]},
     "assembly":{"coordinates":"Core B.Cu mounting plane z=0; mounting faces oppose",
         "display_to_core_matrix":[[1,0,0,38],[0,-1,0,66],[0,0,-1,-1.5],[0,0,0,1]],
@@ -113,9 +117,8 @@ report={"schema":"panda-split-c1-interface-v1","logical_pin_mapping_verified":Tr
     "pcb_sha256":{"Core-C1":sha(pcb_paths[0]),"Display-C1":sha(pcb_paths[1])},
     "mapping":mapping,
     "sources":[
-        "https://www.hirose.com/en/product/p/CL0684-4004-6-58",
-        "https://www.hirose.com/en/product/p/CL0684-4003-3-51",
-        "https://www.hirose.com/en/product/series/DF40"],
+        "https://atta.szlcsc.com/upload/public/pdf/source/20240919/9AC60CBEB0CC244F18C3CAA79B732E7D.pdf",
+        "https://atta.szlcsc.com/upload/public/pdf/source/20250421/1D7BA14108151E8660428C4797015DB7.pdf"],
     "open_physical_gates":["enclosure and component Z-clearance within 1.5-mm gap",
         "rear battery envelope overlaps display XY projection; final battery layer/swelling clearance",
         "panel FPC insertion/access and actual alignment","all existing calibrated physical EVT gates"]}

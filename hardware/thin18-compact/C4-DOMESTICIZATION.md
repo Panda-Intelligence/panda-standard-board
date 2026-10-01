@@ -1,6 +1,8 @@
 # Thin18 Compact — C4 comprehensive domesticization
 
-Date: 2026-09-29
+Date: 2026-09-29 (historical C4 study)
+
+Current authority: [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md). The new requirement permits no retained foreign-component exception; 18 refs remain blocked. This C4 study does not override current Split-C1 CAD or its audited BOM.
 
 Goal: replace every realistically replaceable foreign-origin component with a mainland-China manufacturer part, while reducing chip count where a domestic architecture is safer/cheaper than one-for-one substitution.
 
@@ -59,7 +61,13 @@ The orderable generic AXP2101/C3036461 is no longer the C4 baseline because its 
 
 The previously considered SGM62118 remains electrically valid, but SGM62125 is preferred because its typical quiescent current is much lower.
 
-**Load-switch correction:** SGM2578S/SD is rejected as a direct TPS22916 replacement. Its published reverse-current protection is for the disabled state, while the current rail contract depends on TPS22916 full-time reverse-current blocking while enabled. U402–U405 therefore remain TPS22916 until either a mainland enabled-state full-time-RCB device is proven or the individual rail backfeed contracts are redesigned and qualified.
+**Historical load-switch assessment superseded:** the disabled-state-only rejection
+below the old C4 contract is no longer the current candidate. Split-C1 now uses
+SGM2578SDYG/TR with the January 2026 Rev.A.2 datasheet p9 specifying RCB for ON
+high/low, a 0.5mm-pitch footprint and local U403 output C516. The datasheet's
+front-page wording still conflicts with p9; exact-version manufacturer confirmation,
+reverse-current EVT, leakage/timing and supply acceptance remain mandatory.
+This engineering change does not establish full-time RCB physical qualification.
 
 ### C4-USB
 

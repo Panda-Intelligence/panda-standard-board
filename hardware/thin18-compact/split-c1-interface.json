@@ -9,7 +9,7 @@
   "reserved_pins": 29,
   "core_connector": {
     "ref": "J601",
-    "mpn": "DF40C-60DS-0.4V(58)",
+    "mpn": "HC-PBB40C-60DS-0.4V-1.5-02",
     "type": "receptacle",
     "layer": "B.Cu",
     "rotation_deg": 0,
@@ -20,7 +20,7 @@
   },
   "display_connector": {
     "ref": "J1",
-    "mpn": "DF40C-60DP-0.4V(51)",
+    "mpn": "HC-PBB40C-60DP-0.4V-02",
     "type": "plug",
     "layer": "B.Cu",
     "rotation_deg": 0,
@@ -99,8 +99,8 @@
   "cad_complete": true,
   "manufacturing_release": false,
   "pcb_sha256": {
-    "Core-C1": "916f51dd6f8221eafc3c41408443262cf6144f774754cb065f80475e7d791241",
-    "Display-C1": "10b096bd8aa1be1c0d3e123b1db482ebd7797b4b5f2f1d1e6af1f8c93ce74739"
+    "Core-C1": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8",
+    "Display-C1": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
   },
   "mapping": [
     {
@@ -1185,9 +1185,8 @@
     }
   ],
   "sources": [
-    "https://www.hirose.com/en/product/p/CL0684-4004-6-58",
-    "https://www.hirose.com/en/product/p/CL0684-4003-3-51",
-    "https://www.hirose.com/en/product/series/DF40"
+    "https://atta.szlcsc.com/upload/public/pdf/source/20240919/9AC60CBEB0CC244F18C3CAA79B732E7D.pdf",
+    "https://atta.szlcsc.com/upload/public/pdf/source/20250421/1D7BA14108151E8660428C4797015DB7.pdf"
   ],
   "open_physical_gates": [
     "enclosure and component Z-clearance within 1.5-mm gap",

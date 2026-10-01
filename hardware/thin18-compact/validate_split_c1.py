@@ -55,9 +55,10 @@ def main():
                     "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."}
             record["files"][board] = {"native_checks": {"current": counts(current), "fresh_rebuild": counts(rebuilt)}}
     source_paths = [ROOT / name for name in [
-        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_core_c1_pcb_patch.py",
+        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
-        "verify_split_c1.py", "audit_split_c1_mechanical.py", "export_production.py",
+        "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
+        "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "export_production.py",
         "export_jlc.py", "freeze_split_c1_release.py", "release_split_c1.py",
         "split-c1-sourcing-evidence.json", "core-c1-routing-closure.json",
         "package_jlc_prototype.py", "JLC-PROTOTYPE-HANDOFF.md",
@@ -86,7 +87,7 @@ def main():
                         raise ValueError(f"Wrong purchasing identity: {board}/{ref}/{key}")
                 verified += 1
     # A plug library ID must never be accepted for a socket.
-    test = '(footprint "test" (property "Reference" "J601") (property "Manufacturer" "Hirose") (property "MPN" "DF40C-60DS-0.4V(58)") (property "LCSC" "C424647"))'
+    test = '(footprint "test" (property "Reference" "J601") (property "Manufacturer" "HCTL") (property "MPN" "HC-PBB40C-60DS-0.4V-1.5-02") (property "LCSC" "C19089235"))'
     socket = next(row for row in evidence["entries"] if row["board"] == "Core-C1" and "J601" in row["refs"])
     try:
         patch_block(test, "J601", socket, True)

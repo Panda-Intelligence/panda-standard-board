@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "916f51dd6f8221eafc3c41408443262cf6144f774754cb065f80475e7d791241",
-    "Display-C1": "10b096bd8aa1be1c0d3e123b1db482ebd7797b4b5f2f1d1e6af1f8c93ce74739"
+    "Core-C1": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8",
+    "Display-C1": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
   },
   "inputs_sha256": "a87e09677367e825819119b5c98358f171df4d7b0707b5fa8996277e198e411a",
-  "interface_sha256": "975b614eeffcfac87dc00b3eb38bb332f73e1b44cdc7d1b1ce13c38e8a71f806",
+  "interface_sha256": "e9d224dd76653aed7f9b53a66f155b6d82e045a5f944587ef6895cd1812690ea",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -36,6 +36,27 @@
         "model_path_is_not_a_verified_body": true
       },
       {
+        "ref": "C516",
+        "value": "1u / U403 VOUT",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "world_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": true,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
         "ref": "J503",
         "value": "TC2030-IDC-NL / DEBUG",
         "dnp": false,
@@ -58,7 +79,7 @@
       },
       {
         "ref": "J601",
-        "value": "DF40C-60DS-0.4V(58)",
+        "value": "HC-PBB40C-60DS-0.4V-1.5-02",
         "dnp": false,
         "in_bom": true,
         "native_bbox_mm": [
@@ -375,7 +396,7 @@
     "Display-C1": [
       {
         "ref": "J1",
-        "value": "DF40C-60DP-0.4V(51)",
+        "value": "HC-PBB40C-60DP-0.4V-02",
         "dnp": false,
         "in_bom": true,
         "native_bbox_mm": [

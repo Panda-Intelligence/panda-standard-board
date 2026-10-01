@@ -125,6 +125,8 @@ summary={
     'cpl_top':sum(r['Side'].lower()=='top' for r in cpl_rows),
     'cpl_bottom':sum(r['Side'].lower()=='bottom' for r in cpl_rows),
     'lcsc_mapped_designators':sum(bool(r['LCSC Part #']) for r in sourcing),
+    'lcsc_mapped_smt_designators':sum(bool(r['LCSC Part #']) and r['In CPL']=='TRUE' for r in sourcing),
+    'lcsc_mapped_manual_designators':sum(bool(r['LCSC Part #']) and r['In CPL']=='FALSE' for r in sourcing),
     'mpn_only_designators':sum(r['Assembly status']=='MPN_ONLY_REQUIRES_JLC_MAPPING_OR_CONSIGNED_PART' for r in sourcing),
     'manual_or_offboard_designators':sum(r['Assembly status']=='MANUAL_OR_OFFBOARD' for r in sourcing),
     'identity_verified_designators':sum(r['Identity evidence']=='EXACT_MANUFACTURER_MPN_VERIFIED' for r in sourcing),
