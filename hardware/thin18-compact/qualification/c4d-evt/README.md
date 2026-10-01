@@ -89,3 +89,21 @@ Controls reject missing Display test coverage, paper-only PASS, untraceable
 samples, expired calibration, premature release, wrong Display PCB/BOM, wrong legacy Core BOM,
 missing Display serial and omitted paired-board operating states. Synthetic binding fixtures are never registered as
 physical samples and the destructive input changes are restored in `finally`.
+
+## X4 Pro runtime comparison in Q12
+
+The user's reference is XTEINK X4 Pro: official1100mAh and5.95mm device body.
+Its official FAQ gives no reproducible hours/days figure. Do not use standard
+X4 claims, equal capacity or equal brightness percentages as runtime evidence.
+See `qualification-plan.json` -> `runtime_benchmark_protocol` for the proposed
+25+/-2C,30s/page,full-refresh-per10pages comparison and required raw records.
+
+Q12 includes frontlight-off, cool/warm/mixed-light and sync/sleep reading states
+for the paired boards. Register a real identified X4 Pro, match measured white
+page luminance and workload, record firmware/battery health, and integrate
+current and voltage at the battery terminals down to normal protected shutdown.
+Approve luminance, wireless schedule and numeric runtime/current limits first.
+No benchmark measurement or runtime PASS exists at the PCB design stage.
+The mechanical audit's880mAh allowance and sensitivity hours are illustrative
+calculations only; the current DF40/candidate-cell stack does not support the
+5.95mm comparison goal. Both PCB designs and all existing physical gates remain.

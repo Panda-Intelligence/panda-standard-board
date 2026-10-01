@@ -157,8 +157,8 @@ T_outer = 0.8 + 1.98 + H_core_F
 + T_battery_max + swelling_allowance.
 
 Core back-side components outside the Display projection must also fit inside
-the case. All unverified heights, final pack thickness and outer thickness stay
-null; the audit never turns a candidate cell dimension into a selected pack.
+the case. All unverified heights and final pack thickness stay null. The user-requested
+X4 Pro comparison goal is recorded as5.95mm; the audit never turns a candidate cell dimension into a selected pack.
 
 ## Battery candidates and enclosure dimensions at the design stage
 
@@ -182,13 +182,79 @@ J501's envelope extends to x98.55mm. Illustrative1mm edge clearance plus1.5mm
 wall on each side gives110.33x73.775mm, rounded111x74mm **XY only**.
 This is a calculated study envelope, not a finished enclosure size. Panel/FPC
 pose, USB plug and microSD travel, antenna, speaker, harness, bosses and
-retention geometry may enlarge it. Outer thickness is deliberately not assumed.
+retention geometry may enlarge it. The X4 Pro5.95mm reference is now recorded; no enclosure thickness is signed off.
 
 The audit exports current port/switch envelope coordinates and Core mounting
 holes: H801(15,2),H802(81,2),H803(93,34),H804(3,34), all1.6mm NPTH for the
 existing M1.2-clearance footprints. The Display has no dedicated mounting-hole
 footprint. Provide insulating supports/retention; the DF40 pair must not be the
 sole structural support. These dimensions do not approve a boss or cutout.
+
+## XTEINK X4 Pro reference and design consequences
+
+The user requested this reference on2026-10-01. The [official product](https://www.xteink.com/products/xteink-x4-pro-pocket-ereader)
+and [official FAQ](https://www.xteink.com/blogs/product/x4-pro-faq-specs-support)
+publish **111x69x5.95mm**, **1100mAh**, touch/buttons and adjustable warm/cool
+frontlight. The5.95mm is the complete device body thickness, not wall thickness
+or the optional protective cover. The FAQ expressly gives no hours/days promise
+or reproducible battery-life test conditions. Standard X4 or X3 runtime claims
+must not be copied into the Pro requirement.
+
+The mechanical input records5.95mm as a comparison goal and1100mAh as a capacity
+baseline. Neither is a selected pack, a frozen case drawing or measured runtime.
+The current two-board DF40 construction consumes5.08mm before the battery,
+component heights, walls or allowances, leaving only **0.87mm for all remaining
+terms**. This is an optimistic nominal remainder, not usable battery thickness.
+
+| Existing candidate | Fixed stack plus published battery thickness | Basis | Result against5.95mm |
+|---|---:|---|---|
+| EEMB LP503450 | 10.38mm | 5.3mm bare-cell maximum; PCM/harness excluded | Exceeds goal before components/walls;950mAh typical also below1100mAh baseline |
+| FP LP505060 | 10.08mm | 5mm pack nominal; thickness maximum unknown | Exceeds goal before components/walls;1800mAh is not proof of equivalent runtime |
+
+These subtotals are dimension screens, not minimum measured case thicknesses.
+
+Two exact-part height sources also sharpen the screen: Core U501 is the
+**WROOM-1U** module,3.2mm per[Espressif v1.8 Table1-2](https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf),
+not the3.1mm WROOM-1. Display J2 is2.0mm per[Hirose's exact part](https://www.hirose.com/product/p/CL0586-0521-0-55).
+Both native footprint envelopes intersect the centered panel/Core/Display
+projection. Adding each height separately to5.08mm yields conservative local
+section screens of **8.28mm at U501** and **7.08mm at J2**, before the battery,
+case or mounting allowances. They are not summed together as though their XY
+locations were identical. Footprint envelopes are not exact solid bodies, and
+nominal catalog heights are not mounted maximums; no physical fit is approved.
+Changing only battery thickness therefore does not resolve the current screen.
+
+The existing illustrative XY study110.33x73.775mm also exceeds the reference's
+69mm width by4.775mm; a native footprint bounding box is not a verified body.
+
+Two reviewable architecture paths retain **two PCBs**:
+
+- Preserve the present DF40 overlap construction: use the dimension formula to
+  set an achievable case thickness after selecting the complete pack and
+  obtaining maximum component/USB/FPC dimensions. The studied5mm-class cells
+  cannot support a5.95mm case in this construction.
+- Pursue a5.95mm body: perform a mechanical/interconnect ECO before rerouting.
+  Investigate non-overlapping PCB/battery regions, smaller board footprints and
+  a lower-profile interconnect with independent Display retention. Freeze a
+  complete section using supplier maximums, swelling, walls and FPC bend space
+  first. Merely changing the cell capacity or DF40 gap is insufficient; no
+  unverified thin battery or FPC connector is selected by this update.
+
+For runtime sensitivity only, assume1100mAh and an illustrative80% usable charge
+allowance (880mAh). Average **battery-terminal** draw10/20/40/80mA gives88/44/22/11h
+respectively. These are calculations, not X4 Pro specifications or Panda
+measurements. Converter losses are already included in measured battery draw;
+3.3V rail current cannot be inserted into this formula as battery current.
+The80% allowance itself needs validation for the selected pack and cutoff.
+
+Q12 now includes frontlight-off, cool, warm, mixed and sync/sleep workloads,
+whole-battery charge/energy logging, optical measurements and a matched X4 Pro
+comparison. Proposed common settings are25+/-2C,30s/page and one full refresh
+per10pages; they are planned test conditions, not the reference's official
+conditions. Match actual luminance, document and wireless schedule, record both
+firmwares and battery health, and discharge only to normal protected shutdown.
+Numeric runtime limits remain unapproved until a reliable reference comparison
+and product budget are available. No sample or measurement is registered.
 
 ## Future two-board EVT
 
@@ -222,8 +288,9 @@ mechanical inputs and audit into each package's engineering/ directory. These
 files are covered by the package SHA256SUMS and combined release record.
 A stale mechanical audit blocks package freezing.
 
-Design inputs still needed: a selected complete battery pack and product
-runtime/thickness target, maximum FT01C flex drawing and component heights,
+The X4 Pro capacity/thickness reference is now recorded. Inputs still needed:
+a selected complete battery pack, an achievable two-board mechanical section
+and approved numeric runtime limits, maximum FT01C flex drawing and component heights,
 USB midmount maximum Z and enclosure supports. Physical verification is a
 future step after sample assembly.
 manufacturing_release stays false. Historical integrated C4D-20 and routing141

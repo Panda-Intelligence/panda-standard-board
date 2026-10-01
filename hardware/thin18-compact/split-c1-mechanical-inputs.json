@@ -33,7 +33,7 @@
     "frozen": false
   },
   "budget_parameters_mm": {
-    "target_outer_thickness": null,
+    "target_outer_thickness": 5.95,
     "core_front_max_component_height": null,
     "display_front_max_component_height": null,
     "panel_clearance_and_adhesive": null,
@@ -139,6 +139,61 @@
       "drawing_sha256": "5e93078f77c9e532d7bd894d8da1dde11d60848876f57a5b63c3554b65c29061",
       "selected": false,
       "qualification": "63mm pack length leaves only1mm total X margin in64mm planning region; width/thickness tolerance, swelling and folded harness not specified; no fit signoff"
+    }
+  ],
+  "reference_benchmark": {
+    "model": "XTEINK X4 Pro",
+    "checked_on": "2026-10-01",
+    "official_product_url": "https://www.xteink.com/products/xteink-x4-pro-pocket-ereader",
+    "official_faq_url": "https://www.xteink.com/blogs/product/x4-pro-faq-specs-support",
+    "published_body_dimensions_mm": [
+      111,
+      69,
+      5.95
+    ],
+    "published_battery_capacity_mah": 1100,
+    "published_runtime_hours": null,
+    "published_runtime_days": null,
+    "runtime_evidence_status": "Official FAQ publishes no hours/days promise or reproducible battery-life test conditions.",
+    "application": "User-requested design reference. 5.95mm is a comparison goal, not verified case thickness; 1100mAh is a capacity baseline, not a selected pack.",
+    "architecture_constraint": "Retain two PCB designs; no physical Core-C1 or Display-C1 samples exist."
+  },
+  "runtime_planning": {
+    "capacity_basis_mah": 1100,
+    "capacity_basis": "X4 Pro published capacity; no Panda pack selected",
+    "usable_capacity_fraction": 0.8,
+    "usable_capacity_fraction_status": "Illustrative design allowance for cutoff, aging and temperature; not measured or manufacturer-guaranteed.",
+    "total_battery_current_sensitivity_ma": [
+      10,
+      20,
+      40,
+      80
+    ],
+    "equation": "runtime_h = capacity_basis_mah * usable_capacity_fraction / measured_total_battery_current_ma",
+    "current_measurement_basis": "At battery terminals, includes conversion losses and all active/sleep loads; not a 3.3V rail current.",
+    "runtime_target_hours": null,
+    "target_policy": "Compare reading runtime with an actual X4 Pro under matched approved conditions; no unsupported days-per-charge requirement."
+  },
+  "published_component_height_screens": [
+    {
+      "board": "Core-C1",
+      "ref": "U501",
+      "mpn": "ESP32-S3-WROOM-1U-N16R8",
+      "height_nominal_mm": 3.2,
+      "source_url": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "source_locator": "v1.8 Table1-2; exact WROOM-1U family, not WROOM-1",
+      "checked_on": "2026-10-01",
+      "height_basis": "published module height; solder/mount maximum tolerance not signed off"
+    },
+    {
+      "board": "Display-C1",
+      "ref": "J2",
+      "mpn": "FH12-24S-0.5SH(55)",
+      "height_nominal_mm": 2.0,
+      "source_url": "https://www.hirose.com/product/p/CL0586-0521-0-55",
+      "source_locator": "exact part detailed specifications: connector height2mm",
+      "checked_on": "2026-10-01",
+      "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off"
     }
   ]
 }
