@@ -157,6 +157,28 @@
       "source_urls": [
         "https://www.shiheng.com.cn/products/mf55xl.html"
       ]
+    },
+    {
+      "aliases": [
+        "XKB Connection"
+      ],
+      "company": "广东星坤科技股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.helloxkb.com/home/search/tzzgl.html",
+        "https://www.helloxkb.cn/"
+      ],
+      "note": "Mainland manufacturer profile; manufacturer drawings use XKB Industrial Precision Co., Limited title. Exact legal supply/lot identity must be verified before purchase."
+    },
+    {
+      "aliases": [
+        "MUP"
+      ],
+      "company": "深圳市德海威实业有限公司 / Shenzhen MUP Industrial Co., Ltd.",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.mupconnector.com/about/summary/"
+      ]
     }
   ],
   "foreign_manufacturers": [
@@ -405,11 +427,11 @@
       "refs": [
         "D202"
       ],
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD1E10B06DPYR",
-      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
-      "library_id": "C48260",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -427,11 +449,11 @@
       "refs": [
         "J201"
       ],
-      "manufacturer": "GCT",
-      "mpn": "USB4500-03-0-A",
-      "footprint": "panda-layout:USB4500_08mm_MidMount_LayoutReview",
-      "library_id": "C5354966",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "MUP",
+      "mpn": "U20405-01",
+      "footprint": "panda-standard:MUP_U20405_01_R4",
+      "library_id": "C20624794",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -447,34 +469,12 @@
     {
       "board": "Core-C1",
       "refs": [
-        "J302"
-      ],
-      "manufacturer": "JST",
-      "mpn": "SM03B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
-      "library_id": "C160403",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "J501"
       ],
       "manufacturer": "Molex",
       "mpn": "104031-0811",
       "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
       "library_id": "C585350",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J502"
-      ],
-      "manufacturer": "JST",
-      "mpn": "SM02B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
-      "library_id": "C160402",
       "origin": "FOREIGN_MANUFACTURER"
     },
     {
@@ -494,33 +494,33 @@
         "J803",
         "J804"
       ],
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "XKB Connection",
+      "mpn": "X05A10H06G",
+      "footprint": "panda-standard:XKB_X05A10H06G_A2",
+      "library_id": "C528032",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
       "refs": [
         "L401"
       ],
-      "manufacturer": "Coilcraft",
-      "mpn": "XFL4015-471MEC",
-      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
-      "library_id": "C18221164",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0402S-R47MT",
+      "footprint": "panda-standard:Sunlord_MWSA0402_R47",
+      "library_id": "C6331050",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
       "refs": [
         "L402"
       ],
-      "manufacturer": "Coilcraft",
-      "mpn": "XGL4015-222MEC",
-      "footprint": "panda-standard:XGL4015_Coilcraft",
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0402S-1R0MTB01",
+      "footprint": "panda-standard:Sunlord_MWSA0402_1R0B01",
       "library_id": "",
-      "origin": "FOREIGN_MANUFACTURER"
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -742,11 +742,11 @@
         "SW201",
         "SW202"
       ],
-      "manufacturer": "ALPSALPINE",
-      "mpn": "SKSCLCE010",
-      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
-      "library_id": "C139799",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "XKB Connection",
+      "mpn": "TS-1186E-B-B",
+      "footprint": "panda-standard:XKB_TS1186E_BB_A1",
+      "library_id": "C2885153",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -965,11 +965,11 @@
       "refs": [
         "L1"
       ],
-      "manufacturer": "Taiyo Yuden",
-      "mpn": "LSXNE3030KKT470MN",
-      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA3012S470MT",
+      "footprint": "panda-r6-display:Sunlord_SWPA3012_47u",
       "library_id": "",
-      "origin": "FOREIGN_MANUFACTURER"
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Display-C1",
@@ -1058,6 +1058,28 @@
       "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
       "library_id": "C3294722",
       "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J302"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-1.0-3PWT",
+      "footprint": "panda-standard:HCTL_HC10_3PWT",
+      "library_id": "C2845362",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J502"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-1.0-2PWT",
+      "footprint": "panda-standard:HCTL_HC10_2PWT",
+      "library_id": "C2845361",
+      "origin": "MAINLAND_MANUFACTURER"
     }
   ],
   "remaining_redesigns": [
@@ -1068,12 +1090,29 @@
       ],
       "function": "RTC backup EDLC",
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker.",
-      "source_urls": [
-        "https://www.sii.co.jp/en/me/datasheets/chip-type/cph3225a/"
+      "candidates": [
+        "FH5R5H104T-D009: 100mF/5uA leakage entry does not establish24h; not selected",
+        "No-charge mainland CR1220 plus reviewed isolation and holder: preferred architecture study, no assembly selected"
       ],
-      "foreign_retention_allowed": false
+      "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking.",
+      "source_urls": [
+        "https://www.sii.co.jp/en/me/datasheets/chip-type/cph3225a/",
+        "https://www.fhcomp.com/zh-cn/product_page/?code=011013&page=7",
+        "https://www.fhcomp.com/uploads/20251105/174307_%E7%BA%BD%E6%89%A3%E8%B6%85%E7%BA%A7%E7%94%B5%E5%AE%B9%E5%99%A8-Coin-type%20Supercapacitor%20Products%20Specification.zip",
+        "https://valbis.com/wp-content/uploads/2019/01/cr1220_eve.pdf"
+      ],
+      "foreign_retention_allowed": false,
+      "backup_requirement": {
+        "minimum_retention_hours": 24,
+        "confirmed_by": "User: 保持24小时就行了",
+        "confirmed_on": "2026-10-02",
+        "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
+        "event_input_required": false,
+        "physical_verification": "NOT_RUN",
+        "selected_backup_assembly": null,
+        "acceptance": "Duration >=24h with no RTC time loss at approved room/cold/hot and source-age conditions; no supply through debugger or signal pins."
+      },
+      "primary_specification_sha256": "1ae93ece3405ec51600a67af6bff1750c598fae383d50a7b6dff9886a9d16047"
     },
     {
       "board": "Core-C1",
@@ -1084,42 +1123,20 @@
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
       "candidates": [
         "SET SD0504F25U1",
-        "CREATEK CESD2510UC5VU-M C266652"
+        "CREATEK CESD2510UC5VU-M C266652",
+        "LRC8804DT1G C2912064, current July2026 RevD: 5.5V VRWM but +/-8kV air/contact; not applied",
+        "LRC8804FDT1G C2856698 and LRC8804AT1G: manufacturer VRWM5V, not5.5V; not applied"
       ],
-      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection.",
+      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. Current LRC8804DT1G manufacturer RevD resolves VRWM to5.5V, but air/contact ESD rating is8kV, below original TI12kV contact/15kV air. Older15kV catalog/RevC values must not be used for current supply. Requires reviewed system ESD target and exact revised GND lands before ECO.",
       "source_urls": [
         "https://www.setfuse.com/SdwlUploads/Ed/file/20240904/ESD%20SD0504F25U1(DFN2510)_SETsafe%20&%20SETfuse.pdf",
-        "https://datasheet.lcsc.com/lcsc/CREATEK-CESD2510UC5VU-M_C266652.pdf"
+        "https://datasheet.lcsc.com/lcsc/CREATEK-CESD2510UC5VU-M_C266652.pdf",
+        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804DT1G.pdf",
+        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804FDT1G.pdf",
+        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804AT1G.pdf"
       ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "D202"
-      ],
-      "function": "VBUS ESD",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID.",
-      "source_urls": [
-        "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J201"
-      ],
-      "function": "Mid-mount USB-C",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker.",
-      "source_urls": [
-        "https://gct.co/connector/usb4500"
-      ],
-      "foreign_retention_allowed": false
+      "foreign_retention_allowed": false,
+      "latest_candidate_primary_sha256": "4fbc865f73778bfce8798db282e99c5ecef54427e85af93e8a2c38d782ac50f7"
     },
     {
       "board": "Core-C1",
@@ -1128,26 +1145,15 @@
       ],
       "function": "Battery power connector",
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map.",
-      "source_urls": [
-        "https://www.hirose.com/product/series/DF58"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J302"
-      ],
-      "function": "External NTC connector",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
       "candidates": [
-        "HCTL HC-1.0-3PWT C2845362"
+        "HCTL HC-ZHF2PLT-05: manufacturer family rating2.5A, not catalog3A; not selected",
+        "KONNRA KR1201: primary1.5A/28AWG, not3A; not selected"
       ],
-      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance.",
+      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. HCTL current ZHF primary specifies2.5A despite distributor3A listing; no silent current-rating downgrade. KONNRA KR1201 primary1.5A is also insufficient for an unchanged3A contract.",
       "source_urls": [
-        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
+        "https://www.hirose.com/product/series/DF58",
+        "https://www.hctldz.com/static/upload/2026/07/13/202607137250.pdf",
+        "https://www.konnra.com.cn/wp-content/uploads/2023/12/PS-KR1201-01.pdf"
       ],
       "foreign_retention_allowed": false
     },
@@ -1168,100 +1174,20 @@
     {
       "board": "Core-C1",
       "refs": [
-        "J502"
-      ],
-      "function": "Speaker connector",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "HCTL HC-1.0-2PWT C2845361"
-      ],
-      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match.",
-      "source_urls": [
-        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J803",
-        "J804"
-      ],
-      "function": "Touch/frontlight six-pin FPC",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ.",
-      "source_urls": [
-        "https://www.hirose.com/product/series/FH34"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "L401"
-      ],
-      "function": "AON buck-boost 0.47uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord MWSA0412S-R47MT"
-      ],
-      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID.",
-      "source_urls": [
-        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
-        "https://www.coilcraft.com/en-us/products/power/high-voltage-inductors/xfl/xfl4015/xfl4015-471/"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "L402"
-      ],
-      "function": "Charger inductor 2.2uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord MWSA0412S-2R2MT C6807730"
-      ],
-      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern.",
-      "source_urls": [
-        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
-        "https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "SW201",
-        "SW202"
-      ],
-      "function": "Side-actuated buttons",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval.",
-      "source_urls": [
-        "https://tech.alpsalpine.com/e/products/detail/SKSCLCE010/"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "U302"
       ],
       "function": "Integrated-crystal RTC",
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
       "candidates": [
-        "WHWAVE SD3078",
-        "WHWAVE SD3900",
-        "Historical GATEMODE BM8563EMA + crystal"
+        "WHWAVE SD3900, temperature grade and supply code not yet selected"
       ],
-      "next_action": "Treat as subsystem redesign: SD3078 VDD2.7..5.5V/VBAT2.3..3.6V and typical0.8uA backup differ from RV3028 low-voltage/45nA. New footprint/pin map/driver and backup C301/current/accuracy budget are required; no equivalent selected yet.",
+      "next_action": "SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. User retention target is24h. Native RTC_EVI connects only unused U302.8 and R303.2; external event capture is not required. R303 may be removed in a reviewed SD3900 ECO; preserve shared open-drain EXP_INT/GPIO4. Q14 includes24h isolated-main-supply retention at room/cold/hot; all remain NOT_RUN. SD3078B Rev2.0 also leaves maximum backup current absent and is not a solution to that missing guarantee.",
       "source_urls": [
-        "https://www.whwave.com.cn/SD3078"
+        "https://www.whwave.com.cn/SD3078",
+        "https://www.whwave.com.cn/filedownload/3021773"
       ],
-      "foreign_retention_allowed": false
+      "foreign_retention_allowed": false,
+      "primary_sha256": "ee59dba774d8854f2a4e7e6a41478d3ec6347a0551ade33635bdbb8c4df4cc8a"
     },
     {
       "board": "Display-C1",
@@ -1274,26 +1200,10 @@
         "XKB X05B20L24T C388688",
         "XKB X05A10L24G C2880917"
       ],
-      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating.",
+      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph.",
       "source_urls": [
-        "https://www.lcsc.com/product-detail/C388688.html"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
-        "L1"
-      ],
-      "function": "EPD boost 47uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord SWPA3010S470MT C96826",
-        "Sunlord SWPA3012S470MT"
-      ],
-      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor.",
-      "source_urls": [
-        "https://www.alfatec.de/fileadmin/productfiles/datasheets/sunlord_swpa3010s_series.pdf"
+        "https://www.lcsc.com/product-detail/C388688.html",
+        "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf"
       ],
       "foreign_retention_allowed": false
     },
@@ -1305,12 +1215,15 @@
       "function": "EPD boost N-MOSFET",
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
       "candidates": [
-        "JSCJ CJ3400; CJ2302 rejected for20V VDS"
+        "JSCJ CJ3400; CJ2302 rejected for20V VDS",
+        "Semiware SNM3018W RevA2.0:30V, Qg1.7nC typical at10V, no matching4.5V maximum; no C code confirmed"
       ],
-      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved.",
+      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. SNM3018W primary is a candidate, but its1.7nC typical at10V is not directly comparable with original0.68nC maximum at4.5V. Controller gate-drive/switching budget, SOT323 lands/pins and supply remain unresolved.",
       "source_urls": [
         "https://www.jscj-elec.com/related/23180.html",
-        "https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf"
+        "https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf",
+        "https://semiware.com/small-signal-mosfets/snm3018w/",
+        "https://semiware.com/uploads/datasheet/SNM3018W.pdf"
       ],
       "foreign_retention_allowed": false
     }

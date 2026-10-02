@@ -5,35 +5,35 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "d7a58d784c033f3e90fdaec3f1fdfc83828fe4d764c35968ca4abbcdea68509e"
+      "sha256": "42c58d38dc6aeaa7a86e5261a0e094f5b15933623c4845090cb2d425886e30c7"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "7ea5f66abdf2a0095983e353fc668eea7983f45b1ce97d7a976f42fcfce3f330"
+      "sha256": "34411ba75b85decf4836ef753350ae33bb3a08f0f600ba86a4a26163190ef3db"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8"
+      "sha256": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "35864dfde7e731a5d7805577723b77029dedc56ed2816961b95966fc21c6f8f8"
+      "sha256": "55d9cc5351bf6198431e47a3e0a773983ed672036803a4021cdfe2a12511f1fd"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "8ffe8b2a84ae1a570963369e02afda52f0137da704c39117ba7855cc955c6116"
+      "sha256": "d6b85b7bba4d5c6eb9a0b0b80e7d0db57572865b8a6f5e5852de95beac478a6b"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
-      "sha256": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
+      "sha256": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
     },
     "Display-C1/bom": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
-      "sha256": "780875f8e979880bfd4aea1560cce40409984da81f38e1219e4f8cfe154ae995"
+      "sha256": "836becbb8ea16c6b46db9b6518bdff97033f018b799398c8b11dbd236813b51f"
     },
     "Display-C1/cpl": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
-      "sha256": "0274098b777d95c74aca676772e5a2f464d7bcce8cff221a340b31253fe78324"
+      "sha256": "b0f535a8722205bfe765a5b759affa24506cc682988c5d99f5ff3b9dbf106863"
     }
   },
   "boards": {
@@ -43,27 +43,18 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 104,
+      "domestic_refs": 114,
       "foreign_refs": [
         "C301",
         "D201",
-        "D202",
-        "J201",
         "J301",
-        "J302",
         "J501",
-        "J502",
-        "J803",
-        "J804",
-        "L401",
-        "L402",
-        "SW201",
-        "SW202",
         "U302"
       ],
       "unreviewed_refs": [],
-      "mapped_smt_refs": 111,
+      "mapped_smt_refs": 110,
       "unmapped_smt_refs": [
+        "D202",
         "L402",
         "U402",
         "U403",
@@ -77,10 +68,9 @@
       "populated_refs": 37,
       "smt_refs": 37,
       "manual_or_offboard_refs": [],
-      "domestic_refs": 34,
+      "domestic_refs": 35,
       "foreign_refs": [
         "J2",
-        "L1",
         "Q1"
       ],
       "unreviewed_refs": [],
@@ -91,8 +81,8 @@
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 138,
-  "foreign_ref_count": 18,
+  "domestic_refs": 149,
+  "foreign_ref_count": 7,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -103,7 +93,7 @@
       "footprint": "panda-standard:CPH3225A_Polarized_Derived",
       "library_id": "C6048128",
       "assembly": "SMT",
-      "next_action": "Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker."
+      "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking."
     },
     {
       "board": "Core-C1",
@@ -113,27 +103,7 @@
       "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
       "library_id": "C138714",
       "assembly": "SMT",
-      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "D202",
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD1E10B06DPYR",
-      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
-      "library_id": "C48260",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J201",
-      "manufacturer": "GCT",
-      "mpn": "USB4500-03-0-A",
-      "footprint": "panda-layout:USB4500_08mm_MidMount_LayoutReview",
-      "library_id": "C5354966",
-      "assembly": "SMT",
-      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker."
+      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. Current LRC8804DT1G manufacturer RevD resolves VRWM to5.5V, but air/contact ESD rating is8kV, below original TI12kV contact/15kV air. Older15kV catalog/RevC values must not be used for current supply. Requires reviewed system ESD target and exact revised GND lands before ECO."
     },
     {
       "board": "Core-C1",
@@ -143,17 +113,7 @@
       "footprint": "panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical",
       "library_id": "C597951",
       "assembly": "SMT",
-      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J302",
-      "manufacturer": "JST",
-      "mpn": "SM03B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
-      "library_id": "C160403",
-      "assembly": "SMT",
-      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance."
+      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. HCTL current ZHF primary specifies2.5A despite distributor3A listing; no silent current-rating downgrade. KONNRA KR1201 primary1.5A is also insufficient for an unchanged3A contract."
     },
     {
       "board": "Core-C1",
@@ -167,83 +127,13 @@
     },
     {
       "board": "Core-C1",
-      "ref": "J502",
-      "manufacturer": "JST",
-      "mpn": "SM02B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
-      "library_id": "C160402",
-      "assembly": "SMT",
-      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J803",
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "assembly": "SMT",
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J804",
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "assembly": "SMT",
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "L401",
-      "manufacturer": "Coilcraft",
-      "mpn": "XFL4015-471MEC",
-      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
-      "library_id": "C18221164",
-      "assembly": "SMT",
-      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "L402",
-      "manufacturer": "Coilcraft",
-      "mpn": "XGL4015-222MEC",
-      "footprint": "panda-standard:XGL4015_Coilcraft",
-      "library_id": "",
-      "assembly": "SMT",
-      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "SW201",
-      "manufacturer": "ALPSALPINE",
-      "mpn": "SKSCLCE010",
-      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
-      "library_id": "C139799",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "SW202",
-      "manufacturer": "ALPSALPINE",
-      "mpn": "SKSCLCE010",
-      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
-      "library_id": "C139799",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
-    },
-    {
-      "board": "Core-C1",
       "ref": "U302",
       "manufacturer": "Micro Crystal",
       "mpn": "RV-3028-C7-32.768KHZ-1PPM-TA-QA",
       "footprint": "Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm",
       "library_id": "C3304278",
       "assembly": "SMT",
-      "next_action": "Treat as subsystem redesign: SD3078 VDD2.7..5.5V/VBAT2.3..3.6V and typical0.8uA backup differ from RV3028 low-voltage/45nA. New footprint/pin map/driver and backup C301/current/accuracy budget are required; no equivalent selected yet."
+      "next_action": "SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. User retention target is24h. Native RTC_EVI connects only unused U302.8 and R303.2; external event capture is not required. R303 may be removed in a reviewed SD3900 ECO; preserve shared open-drain EXP_INT/GPIO4. Q14 includes24h isolated-main-supply retention at room/cold/hot; all remain NOT_RUN. SD3078B Rev2.0 also leaves maximum backup current absent and is not a solution to that missing guarantee."
     },
     {
       "board": "Display-C1",
@@ -253,17 +143,7 @@
       "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
       "library_id": "C202112",
       "assembly": "SMT",
-      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating."
-    },
-    {
-      "board": "Display-C1",
-      "ref": "L1",
-      "manufacturer": "Taiyo Yuden",
-      "mpn": "LSXNE3030KKT470MN",
-      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
-      "library_id": "",
-      "assembly": "SMT",
-      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor."
+      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph."
     },
     {
       "board": "Display-C1",
@@ -273,11 +153,11 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "library_id": "C179399",
       "assembly": "SMT",
-      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved."
+      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. SNM3018W primary is a candidate, but its1.7nC typical at10V is not directly comparable with original0.68nC maximum at4.5V. Controller gate-drive/switching budget, SOT323 lands/pins and supply remain unresolved."
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 77,
+  "applied_replacement_refs": 88,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,

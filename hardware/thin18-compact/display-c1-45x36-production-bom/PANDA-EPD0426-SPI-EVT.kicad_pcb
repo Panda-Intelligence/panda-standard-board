@@ -428,11 +428,11 @@
 			)
 		)
 	)
-	(footprint "panda-r6-display:L_Taiyo_NRH3010_3030"
+	(footprint "panda-r6-display:Sunlord_SWPA3012_47u"
 		(layer "F.Cu")
 		(uuid "19669f89-e815-4106-83f5-9580e1658690")
 		(at 7 8)
-		(descr "Taiyo Yuden NRH3010 / LSXNE3030KK, 3.0x3.0mm maxH1.0mm. Catalog NR30 recommended land A0.8/Bcentre2.2/C2.7; supplier footprint review pending.")
+		(descr "Sunlord SWPA3012S manufacturer land pattern; original series drawing reviewed; Fab uses maximum body XY and no foreign 3D model.")
 		(property "Reference" "L1"
 			(at 0 2.924999 0)
 			(layer "F.SilkS")
@@ -444,7 +444,7 @@
 				)
 			)
 		)
-		(property "Value" "47u 0.25A"
+		(property "Value" "47uH / Sunlord"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -456,7 +456,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.yuden.co.jp/"
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -466,8 +466,19 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Taiyo Yuden" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "3baefbff-99f3-5e70-b4e5-4f14c06133c6") (effects (font (size 1 1))))
-		(property "Description" ""
+		)
+(property "LCSC" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aafb0444-c27b-57fe-a006-728ca642b0e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)(property "Manufacturer" "Sunlord" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "3baefbff-99f3-5e70-b4e5-4f14c06133c6") (effects (font (size 1 1))))
+		(property "Description" "47uH +/-20%,DCR1.885ohm max,Isat(Max/Typ).27/.35A,Irms(Max/Typ).35/.40A from original2024-06-19 p5; current headings retained, not claimed as guaranteed minimum. Body3.0+/-0.2mm square,max height1.2mm. p2 lands0.8x2.7mm,inner gap1.5mm,centers+/-1.15mm. Original maxDCR2.46ohm,height1.0mm,current.25A; boost peak/RESE corners, ripple, thermal and efficiency remain EVT. Taller by.2mm, mechanical budget updated. Exact supply/packing not yet accepted."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -478,7 +489,7 @@
 				)
 			)
 		)
-		(property "MPN" "LSXNE3030KKT470MN"
+		(property "MPN" "SWPA3012S470MT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -493,50 +504,12 @@
 		(path "/726dfb64-f2f5-58e2-8c91-e06d73c4b78d/79d3e71f-8417-543b-b9db-7e6c84814cfa")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -1.6 -1.6)
-			(end 1.6 -1.6)
-			(stroke
-				(width 0.12)
-				(type default)
-			)
-			(layer "F.SilkS")
-			(uuid "e76c5182-aff9-401c-a812-ab38ce1a4fc8")
-		)
-		(fp_line
-			(start -1.6 1.6)
-			(end 1.6 1.6)
-			(stroke
-				(width 0.12)
-				(type default)
-			)
-			(layer "F.SilkS")
-			(uuid "7ff8ef5e-2772-43c9-9423-fee42f02710f")
-		)
-		(fp_rect
-			(start -1.8 -1.8)
-			(end 1.8 1.8)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "395ff1ea-7bda-4586-8834-dd8fc94f35fc")
-		)
-		(fp_rect
-			(start -1.5 -1.5)
-			(end 1.5 1.5)
-			(stroke
-				(width 0.1)
-				(type default)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "44f9a38a-407f-441f-baf0-54f4e4297946")
-		)
+
+
+
+
 		(pad "1" smd rect
-			(at -1.1 0)
+			(at -1.15 0)
 			(size 0.8 2.7)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "/EPD_3V3")
@@ -545,7 +518,7 @@
 			(uuid "9546acfc-aec9-4303-88e4-1cd88c74239b")
 		)
 		(pad "2" smd rect
-			(at 1.1 0)
+			(at 1.15 0)
 			(size 0.8 2.7)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "/BOOST_SW")
@@ -554,7 +527,16 @@
 			(uuid "3ac0de1e-4718-4474-9428-580dfde71c5e")
 		)
 		(embedded_fonts no)
-	)
+
+
+
+
+
+
+
+(fp_rect (start -1.6 -1.6) (end 1.6 1.6) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") (uuid "a43609a2-2843-5741-8ed5-bf682ed25b7d"))
+(fp_rect (start -1.85 -1.85) (end 1.85 1.85) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "a097383e-92cf-57bf-9121-abe32ce260a5"))
+)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "1a38a086-2616-45de-adfe-8e82f5a796c4")

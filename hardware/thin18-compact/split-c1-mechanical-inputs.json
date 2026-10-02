@@ -43,15 +43,6 @@
     "manufacturing_tolerance_reserve": null,
     "core_back_outside_display_max_component_height": null
   },
-  "usb_midmount": {
-    "ref": "J201",
-    "mpn": "USB4500-03-0-A",
-    "source_url": "https://gct.co/connector/usb4500",
-    "published_offset_height_mm": 0.8,
-    "published_shell_stake_length_mm": 0.7,
-    "below_core_b_maximum_including_solder_mm": null,
-    "note": "Product-page lengths are not a complete mounting-plane/solder-fillet Z tolerance; drawing and mounted sample are required."
-  },
   "manufacturing_release": false,
   "design_stage": "PCB design only; user confirmed on 2026-10-01 that no physical Core-C1 or Display-C1 sample exists.",
   "enclosure_xy_study": {
@@ -194,6 +185,143 @@
       "source_locator": "exact part detailed specifications: connector height2mm",
       "checked_on": "2026-10-01",
       "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J302",
+      "mpn": "HC-1.0-3PWT",
+      "height_nominal_mm": 3.2,
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J502",
+      "mpn": "HC-1.0-2PWT",
+      "height_nominal_mm": 3.2,
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J803",
+      "mpn": "X05A10H06G",
+      "height_nominal_mm": 1.1,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+      "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J804",
+      "mpn": "X05A10H06G",
+      "height_nominal_mm": 1.1,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+      "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L401",
+      "mpn": "MWSA0402S-R47MT",
+      "height_nominal_mm": 2.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L402",
+      "mpn": "MWSA0402S-1R0MTB01",
+      "height_nominal_mm": 2.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Display-C1",
+      "ref": "L1",
+      "mpn": "SWPA3012S470MT",
+      "height_nominal_mm": 1.2,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
+      "source_locator": "2024-06-19 p2;1.2mm max",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J201",
+      "mpn": "U20405-01",
+      "height_nominal_mm": 3.46,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+      "source_locator": "Rev4 p1 vs exact product https://mupconn.com/product/usbc/3368.html",
+      "checked_on": "2026-10-02",
+      "height_basis": "Conservative engineering budget from official3.26mm on-board +0.20mm drawing general tolerance; not manufacturer-certified mounted maximum."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW201",
+      "mpn": "TS-1186E-B-B",
+      "height_nominal_mm": 1.6,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+      "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+      "checked_on": "2026-10-02",
+      "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW202",
+      "mpn": "TS-1186E-B-B",
+      "height_nominal_mm": 1.6,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+      "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+      "checked_on": "2026-10-02",
+      "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "D202",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "height_nominal_mm": 0.55,
+      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+      "source_locator": "August2024 Rev.A p7 package maximum A=.55mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "Maximum bare-package height; excludes solder/mounted tolerance. No foreign 3D model carried forward."
     }
-  ]
+  ],
+  "connector_layout_changes": {
+    "J803_J804": "XKB A2 180deg rotation and -Y2.5mm shift preserve original world signal positions;entry-Y;FT01C FPC pose not frozen",
+    "H804": "(3,33)mm,1.6mm NPTH;original1.6mm-radius courtyard retained;case boss not frozen",
+    "physical_fit_verified": false
+  },
+  "usb_connector": {
+    "ref": "J201",
+    "mpn": "U20405-01",
+    "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+    "mounting": "TOPMOUNT_WITHOUT_POST",
+    "drawing": "DWG-U20405-XX-01 Rev4,2023-10-25",
+    "published_nominal_body_height_mm": 3.2,
+    "published_nominal_shell_leg_length_mm": 0.6,
+    "conservative_above_core_f_height_budget_mm": 3.46,
+    "below_core_b_maximum_including_solder_mm": null,
+    "note": "Drawing3.20mm with general+/-0.20; exact official product page says on-board3.26mm. Budget3.46 is a conservative engineering screen, not supplier-mounted maximum.0.6mm nominal shell leg does not prove zero solder/body protrusion. Case/plug/panel gap and lot approval pending."
+  },
+  "rtc_backup_requirement": {
+    "minimum_retention_hours": 24,
+    "confirmed_by": "User: 保持24小时就行了",
+    "confirmed_on": "2026-10-02",
+    "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
+    "event_input_required": false,
+    "physical_verification": "NOT_RUN",
+    "selected_backup_assembly": null,
+    "acceptance": "Duration >=24h with no RTC time loss at approved room/cold/hot and source-age conditions; no supply through debugger or signal pins."
+  }
 }

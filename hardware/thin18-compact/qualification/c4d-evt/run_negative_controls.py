@@ -228,6 +228,46 @@ def run_pair_binding_controls() -> None:
 
 
 
+def run_rtc_retention_controls() -> None:
+    from copy import deepcopy
+    from verify_qualification import validate_rtc_backup_pass
+    test = next(item for item in json.loads((HERE / "qualification-plan.json").read_text())["tests"]
+                if item["id"] == "Q14")
+    states = test["rtc_backup_protocol"]["required_retention_states"]
+    rows = [
+        {"state": state, "metric": metric, "observed_value": value, "unit": unit}
+        for state in states
+        for metric, value, unit in [
+            ("rtc_backup_duration_h", "24", "h"),
+            ("rtc_backup_ending_voltage_v", "2.4", "V"),
+            ("rtc_backup_time_valid_result", "PASS", "result"),
+            ("rtc_backup_main_supply_isolated_result", "PASS", "result"),
+        ]
+    ]
+    # These are synthetic validator inputs, never physical measurements.
+    validate_rtc_backup_pass(test, rows)
+    cases = []
+    for value in ("23.99", "nan"):
+        wrong = deepcopy(rows); wrong[-4]["observed_value"] = value
+        cases.append((f"RTC hot-corner duration {value} rejected", wrong, "duration is below"))
+    wrong = deepcopy(rows); wrong[-4]["unit"] = "s"
+    cases.append(("RTC seconds mislabeled as hours rejected", wrong, "duration is below"))
+    wrong = deepcopy(rows); wrong[-1]["observed_value"] = "FAIL"
+    cases.append(("RTC still powered by main supply rejected", wrong, "isolated_result is not PASS"))
+    wrong = deepcopy(rows); wrong[-2]["observed_value"] = "FAIL"
+    cases.append(("RTC lost time despite duration rejected", wrong, "time_valid_result is not PASS"))
+    cases.append(("RTC missing hot-corner measurement rejected", rows[:-4], "requires exactly one"))
+    cases.append(("RTC duplicate duration measurement rejected", rows + [deepcopy(rows[0])], "requires exactly one"))
+    for name, wrong, fragment in cases:
+        try:
+            validate_rtc_backup_pass(test, wrong)
+        except ValueError as exc:
+            if fragment not in str(exc): raise
+            results.append({"name": name, "rejected_as_expected": True, "validator_error": str(exc)})
+        else:
+            raise SystemExit(f"negative RTC control was accepted: {name}")
+
+
 try:
     expect_failure("Display physical test omitted rejected", remove_display_test, "qualification test coverage changed")
     expect_failure("paper-only MEASURED_PASS rejected", paper_only_pass, "measured status without rows")
@@ -241,6 +281,7 @@ try:
     )
     restore()
     run_pair_binding_controls()
+    run_rtc_retention_controls()
 finally:
     restore()
 
@@ -250,7 +291,7 @@ if final.returncode != 0:
     raise SystemExit(f"restored current state failed: {final.stdout}\n{final.stderr}")
 
 report = {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "tests": results,
     "all_rejected_as_expected": all(item["rejected_as_expected"] for item in results),
     "inputs_restored": True,

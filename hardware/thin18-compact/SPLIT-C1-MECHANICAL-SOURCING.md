@@ -7,24 +7,28 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 ## Current result
 
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
-The original catalog-mapping pass changed purchasing properties only. A later
-controlled prototype ECO corrects L402 lands, replaces the generic C301 land
-with a polarized derived pattern, raises Display refdes text, and assigns
-C506/C513 to exact HRE C22399626. Poses, nets and the 60-pin interface remain
-verified; current CAD equals a deterministic fresh rebuild including the ECO.
-The current all-domestic audit covers 156 populated system-BOM refs: 138 mainland
-manufacturer refs and 18 foreign refs still requiring replacement. See
-[SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for 77 controlled
-substitutions, added U403 output C516 and corrected Icore datasheets. New HCTL
-J601/J1 retain the reviewed 1.5mm nominal mating transform; no mixed-family
-mating or physical fit is approved.
+The CAD includes 88 controlled mainland substitutions (Core59/Display29), local
+U403 bypass C516, reviewed HCTL NTC/speaker lands, Sunlord power/EPD lands,
+and XKB A2 six-pin dual-contact connectors. L402 is intentionally changed from
+2.2uH to1uH for SGM41513; power routing and C402/R306 support changes are
+predecessor-guarded. J803/J804 rotate180deg and shift -Y2.5mm to preserve all
+signal world coordinates; entry reverses to -Y. H804 moves to(3,33), and SDA
+bypasses the J804 support. Rule minima are not relaxed; the USB ECO removes three obsolete J201 exceptions.
+XKB TS-1186E-B-B A1 side switches replace both ALPS parts with two original0.6x1.6mm lands and new signal/ground routes. C504 moves0.25mm to clear the courtyard; its nets/value remain unchanged. Maximum bare-part height1.6mm is taken from the side view; catalog H3.55 is actuator depth in the top view. Enclosure opening, force, travel and lifecycle remain unqualified.
+SGM05HU1ALXUGY2G/TR replaces D202 with a polarized K/A symbol and primary0.25x0.50mm lands at0.65mm pitch. The old TI C48260 is retired; exact JLC supply remains open.
+Current CAD equals a deterministic fresh rebuild including these changes.
+The current all-domestic audit covers156 populated system-BOM refs:149 mainland
+manufacturer refs and7 foreign refs still requiring replacement. See
+[SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for qualification
+calculations and differences. The60pin HCTL pair retains the reviewed1.5mm
+nominal mating transform; physical fit and mixed-family mating are not approved.
 
 | Board | Present SMT library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 111 / 118 | 7 | 1: Shiheng TH301, C394023 |
+| Core-C1 | 110 / 118 | 8 | 1: Shiheng TH301, C394023 |
 | Display-C1 | 36 / 37 | 1 | 0 |
 
-The reviewed sourcing register now covers 89 refs, including manual TH301.
+The reviewed sourcing register now covers 93 refs, including manual TH301.
 Exact current identities/evidence are in split-c1-sourcing-evidence.json and
 split-c1-domestic-policy.json. Previously present IDs remain PREEXISTING_ID.
 The old Hirose/Murata/Yageo/UNI-ROYAL/onsemi IDs are not current replacement IDs.
@@ -32,48 +36,43 @@ Core R615 is precisely FH RS-03K5231FT / C140082.
 
 Builders pin the original connector wiring seed, apply checked predecessor ECOs,
 then reviewed sourcing. They reject MPN/ID conflicts; policy audit rejects an
-unreviewed identity or manufacturer-only relabel. Core USB cutout remains a
-0.02mm copper-edge CAM blocker; Display standard DFM passes. No stock is reserved.
+unreviewed identity or manufacturer-only relabel. The MUP topmount USB ECO removes
+the old cutout/0.02mm edge blocker; both boards pass standard DFM. No stock is reserved.
 
 ## Supply readiness for the original seven SMT refs
 
-The following original seven-ref supply research is historical for the still-foreign
-C301/L402/L1: it is not permission to procure these parts under the new all-domestic
-requirement. Four new U402-U405 SGM2578SDYG/TR also require exact supply/packing
-and assembler acceptance. One Core-C1 plus one Display-C1 needs the quantities below. Board fabrication,
-assembly orders, BOMs and CPLs are separate for the two boards. For N pairs,
-required usable placements are N times the table quantities; add only the
-assembler's quoted attrition and feeder/leader/trailer requirement. N is unset.
+The original seven-ref supply list is updated to current exact identities;
+Coilcraft/Taiyo followups are retired. C301 is still foreign and blocked under
+the all-mainland requirement. Four SGM2578SDYG/TR switches and every new connector
+also require exact supply/packing and assembler acceptance. One Core plus one
+Display needs the quantities below. For N pairs, usable placements are N times
+the quantities; add assembler-approved attrition and tape leader/trailer. N is unset.
 
-| Board / refs | Qty per pair | Exact retained MPN | Supply path and verified status | Still needed |
-|---|---:|---|---|---|
-| Core C301 | 1 | Seiko CPH3225A | JLC C6048128; exact SMT identity confirmed | Available quantity, packing and PCBA allocation |
-| Core C506, C513 | 2 | HRE CGA0603X7R106K100JT | Controlled exact-spec prototype ECO, JLC C22399626 | Actual stock, allocation and later effective-capacitance qualification |
-| Core L402 | 1 | Coilcraft XGL4015-222MEC | Manufacturer direct purchase route; C=7-inch reel, 1000/reel | Quantity/quote and machine-ready partial tape or full reel; assembler acceptance |
-| Core U902 | 1 | SGM62125AXG/TR | Manufacturer Active; exact WLCSP A/15-ball variant; authorized distributor route | Firm quote, lead time, packing/lot and WLCSP assembly acceptance |
-| Core U905 | 1 | SGM37601YTRL20G/TR | Manufacturer Active; exact TQFN20 variant, MSL2 | Firm quote, lead time, packing/lot, floor-life handling and assembly acceptance |
-| Display L1 | 1 | Taiyo Yuden LSXNE3030KKT470MN | [DigiKey exact listing](https://www.digikey.de/en/products/detail/taiyo-yuden/LSXNE3030KKT470MN/16660699); public Germany page showed 1256 on 2026-10-01; CT/Digi-Reel or TR 2000/reel | Recheck destination stock; confirm feeder-compatible tape and consignment, or obtain exact JLC ID |
+| Board / refs | Qty per pair | Current exact MPN / ID | Still needed |
+|---|---:|---|---|
+| Core C301 | 1 | Seiko CPH3225A / C6048128, still foreign | RTC/backup subsystem domestic redesign; current foreign part cannot be ordered |
+| Core C506, C513 | 2 | HRE CGA0603X7R106K100JT / C22399626 | Actual stock, allocation and effective DC-bias capacitance |
+| Core L402 | 1 | Sunlord MWSA0402S-1R0MTB01 / no confirmed ID | Exact B01 order/packing, code assignment and assembly acceptance; ordinary1R0MT forbidden |
+| Core U902 | 1 | SGM62125AXG/TR / no confirmed ID | Exact A WLCSP15 code, quote/packing and assembly acceptance |
+| Core U905 | 1 | SGM37601YTRL20G/TR / no confirmed ID | Exact TQFN20 code, packing/MSL handling;24pin not interchangeable |
+| Display L1 | 1 | Sunlord SWPA3012S470MT / no confirmed ID | Exact code/packing and assembly acceptance |
+| Core U402-U405 | 4 | SGM2578SDYG/TR / no confirmed ID | Exact SD WLCSP version, enabled-state RCB clarification and assembly acceptance |
 
-C301 has no reliable rendered stock count. Coilcraft's stock configuration is
-loaded dynamically; no stock count is asserted. SGM manufacturer prices/status
-are not formal supplier quotes. A search miss does not prove unavailability.
-The LCSC related-parts snippet for L1 has not yielded a verifiable exact code;
-no inferred code or Sumida/other alternative was copied into the BOM.
+Core L401 now has exact Sunlord MWSA0402S-R47MT/C6331050 tape identity. HCTL
+HC-1.0-3PWT/C2845362 and2PWT/C2845361 require matching new housings/contacts;
+old JST harnesses are not transferred. XKB X05A10H06G/C528032 requires dimensions
+from A2 p2 dated2026-01-15; a catalog ID alone does not establish the supplied
+revision. No stock count, quote, reservation, purchase or supplier message is
+asserted. These identities/evidence are in split-c1-sourcing-evidence.json.
+No live inventory or assembler acceptance is implied by a cached listing.
+TH301 is manual/offboard Shiheng MF52D-103F3435-100/C394023,100mm AWG30 and
+4mm-max tip; matching termination, thermal attachment and charge thresholds are open.
 
-L1 is manufacturer-listed Mass Production (Preferred), 47uH +/-20%, maximum
-1.0mm seated height, DCR max2.46ohm and saturation current250mA. UTY-DN25-02D
-lists it as a suggested alternative for older parts, not as the discontinued
-part. See [manufacturer](https://ds.yuden.co.jp/TYCOMPAS/or/detail?pn=LSXNE3030KKT470MN&u=M).
-
-Primary paths: [Coilcraft](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/),
+Primary paths: [Sunlord MWSA2025](https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf),
+[Sunlord SWPA2024](https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf),
 [SGM62125](https://www.sg-micro.com/product/SGM62125),
 [SGM37601](https://www.sg-micro.com/product/SGM37601),
 [SGMICRO authorized distributors](https://www.sg-micro.com/authorized-distributors).
-The 24-pin SGM37601 and non-A SGM62125 variants are not interchangeable.
-No purchase, supplier message, quote or stock reservation has occurred.
-Procurement followup and dated observations are committed in
-split-c1-sourcing-evidence.json and exported into each assembly-sourcing.csv.
-TH301 is now manual/offboard Shiheng MF52D-103F3435-100 / C394023, with a 100mm AWG30 harness and a 4mm-max tip; its termination, thermal attachment and threshold qualification remain open.
 
 For JLC consignment, an exact accepted C-code is required before shipping. If
 missing, submit the exact manufacturer/MPN/package for engineering acceptance
@@ -100,18 +99,15 @@ Display. Other Core B.Cu SMT footprints lie outside the Display rectangle
 x=38..83, y=30..66. This is a conservative native footprint-bounding-box screen,
 not a body-model collision or maximum-height qualification.
 
-J201 has two plated shell-pad envelopes intersecting the Display projection:
+J201 is now the mainland MUP U20405-01 topmount part, without posts. The right shell lands still intersect the Display projection:
 
 | Pad center, native mm | Pad envelope, native mm |
 |---|---|
-| (44.62, 62.4) | x=44.12..45.12; y=61.5..63.3 |
-| (44.62, 66.4) | x=44.12..45.12; y=65.3..67.5 |
+| (43.32,61.8) | x=42.72..43.92; y=60.8..62.8 |
+| (43.32,66.3) | x=42.72..43.92; y=65.25..67.35 |
 
-GCT publishes 0.8-mm offset and 0.7-mm shell-stake length for USB4500
-([official product page](https://gct.co/connector/usb4500)). Those values alone
-do not establish below-Core-B protrusion including solder, mounting tolerance and
-PCB warp. The official drawing download returned HTTP403 in this session; retain
-the J201 body/stake/solder Z-clearance gate.
+[MUP Rev4 original drawing](https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf)
+and the [exact official product](https://mupconn.com/product/usbc/3368.html) differ on nominal height (3.20mm drawing /3.26mm on-board page). Use3.46mm as a conservative design budget, not a certified mounted maximum. Nominal0.6mm shell legs do not establish solder protrusion/PCB-warp clearance. The new PCB has a straight edge, no midmount cutout and no J201 DRC exemptions; both boards pass independent standard DFM. Case aperture, plug, panel and maximum mounted-Z clearances remain open.
 
 ## Battery layering and Z budget
 
@@ -151,7 +147,7 @@ X4 Pro comparison goal is recorded as5.95mm; the audit never turns a candidate c
 | EEMB LP503450 | Bare-cell max52x34.5x5.3mm including tab-length envelope | 950mAh typical,900 minimum | Total slack12x25.5mm; body passes an illustrative1mm-per-side screen | Full protected pack, connector/NTC harness and swelling; runtime and peak-load budget |
 | FP Battery LP505060 | Protected-pack length62+/-1mm; width50 and thickness5mm have no stated maximum tolerance;100mm leads | 1800mAh | Using63x50 leaves only1x10mm total; fails illustrative1mm-per-side X screen | Width/thickness maximums, lead folding, connector and swelling; runtime and load budget |
 
-Sources: [EEMB product and linked drawing](https://www.eemb.com/product-138),
+Sources: [EEMB product and linked drawing](https://www.eemb.com/product-145),
 [FP manufacturer's drawing](https://www.fpbattery.com/wp-content/uploads/2024/04/fpbattery-505060-3.7V-1800mAh-Lithium-Polymer-Battery-Specification.pdf).
 The two makers' model numbers are distinct procurement identities. EEMB is a
 bare cell, not a ready protected battery pack. Neither candidate is selected.
@@ -169,10 +165,17 @@ pose, USB plug and microSD travel, antenna, speaker, harness, bosses and
 retention geometry may enlarge it. The X4 Pro5.95mm reference is now recorded; no enclosure thickness is signed off.
 
 The audit exports current port/switch envelope coordinates and Core mounting
-holes: H801(15,2),H802(81,2),H803(93,34),H804(3,34), all1.6mm NPTH for the
+holes: H801(15,2),H802(81,2),H803(93,34),H804(3,33), all1.6mm NPTH for the
 existing M1.2-clearance footprints. The Display has no dedicated mounting-hole
 footprint. Provide insulating supports/retention; the HCTL pair must not be the
 sole structural support. These dimensions do not approve a boss or cutout.
+
+New closed-height screens are recorded separately: HCTL J302/J5023.2mm
+conservative budget, MWSA L401/L4022.0mm max, SWPA L1 1.2mm max, XKB
+J803/J8041.1mm max (open actuator nominal1.55mm). They do not replace body models
+or FPC fold/connector insertion envelopes. J803/J804 entries now face-Y and H804
+moves1mm toward-Y; enclosure bosses and FT01C folded tails must follow the new
+native poses before a case drawing can be frozen. No physical clearance is approved.
 
 ## XTEINK X4 Pro reference and design consequences
 

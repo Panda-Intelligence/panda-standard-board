@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "tests": [
     {
       "name": "Display physical test omitted rejected",
@@ -74,6 +74,41 @@
       "name": "omitted paired-board operating state rejected",
       "rejected_as_expected": true,
       "validator_error": "Q14 missing required sample states"
+    },
+    {
+      "name": "RTC hot-corner duration 23.99 rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit RTC backup duration is below 24h or invalid"
+    },
+    {
+      "name": "RTC hot-corner duration nan rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit RTC backup duration is below 24h or invalid"
+    },
+    {
+      "name": "RTC seconds mislabeled as hours rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit RTC backup duration is below 24h or invalid"
+    },
+    {
+      "name": "RTC still powered by main supply rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit rtc_backup_main_supply_isolated_result is not PASS"
+    },
+    {
+      "name": "RTC lost time despite duration rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit rtc_backup_time_valid_result is not PASS"
+    },
+    {
+      "name": "RTC missing hot-corner measurement rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_hot_limit requires exactly one rtc_backup_duration_h measurement"
+    },
+    {
+      "name": "RTC duplicate duration measurement rejected",
+      "rejected_as_expected": true,
+      "validator_error": "Q14/rtc_backup_24h_room_temperature requires exactly one rtc_backup_duration_h measurement"
     }
   ],
   "all_rejected_as_expected": true,

@@ -55,15 +55,16 @@ def main():
                     "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."}
             record["files"][board] = {"native_checks": {"current": counts(current), "fresh_rebuild": counts(rebuilt)}}
     source_paths = [ROOT / name for name in [
-        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
+        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
         "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
-        "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "export_production.py",
+        "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "C4D8-RTC-DECISION.md", "export_production.py",
         "export_jlc.py", "freeze_split_c1_release.py", "release_split_c1.py",
         "split-c1-sourcing-evidence.json", "core-c1-routing-closure.json",
         "package_jlc_prototype.py", "JLC-PROTOTYPE-HANDOFF.md",
         "split-c1-mechanical-inputs.json", "tools/prune_core_c1_stubs.py",
-        "qualification/c4d-evt/verify_qualification.py", "qualification/c4d-evt/qualification-plan.json"]]
+        "qualification/c4d-evt/verify_qualification.py", "qualification/c4d-evt/run_negative_controls.py",
+        "qualification/c4d-evt/qualification-plan.json"]]
     for candidate in ["core-c1-96x68-split", "display-c1-45x36-production-bom"]:
         source_paths.extend(p for p in (ROOT / candidate).rglob("*") if p.is_file()
                             and (p.suffix in {".kicad_mod", ".kicad_sym", ".kicad_pro", ".kicad_dru"}

@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8",
-    "Display-C1": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
+    "Core-C1": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f",
+    "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
-  "inputs_sha256": "a87e09677367e825819119b5c98358f171df4d7b0707b5fa8996277e198e411a",
-  "interface_sha256": "e9d224dd76653aed7f9b53a66f155b6d82e045a5f944587ef6895cd1812690ea",
+  "inputs_sha256": "32c9aa6008527c6b3664fc280be2f5a30d79224df02ed769b8f2940f6588f0dc",
+  "interface_sha256": "05d6e91430d3c5cb25e188cc5ae0e78d6fbe779ac2859efd25696ad44bcea017",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -423,14 +423,14 @@
       "pad": "SH",
       "uuid": "165d0ec1-6961-5a5a-a708-7fd867b93f2e",
       "bbox_mm": [
-        44.12,
-        61.5,
-        45.12,
-        63.3
+        42.72,
+        60.8,
+        43.92,
+        62.8
       ],
       "center_mm": [
-        44.62,
-        62.4
+        43.32,
+        61.8
       ],
       "z_clearance_verified": false
     },
@@ -439,14 +439,14 @@
       "pad": "SH",
       "uuid": "4f6d084f-cf82-57f0-a1e3-17a690cfcd65",
       "bbox_mm": [
-        44.12,
-        65.3,
-        45.12,
-        67.5
+        42.72,
+        65.25,
+        43.92,
+        67.35
       ],
       "center_mm": [
-        44.62,
-        66.4
+        43.32,
+        66.3
       ],
       "z_clearance_verified": false
     }
@@ -642,10 +642,10 @@
     {
       "ref": "L1",
       "world_bbox_mm": [
-        43.175,
-        56.175,
-        46.825,
-        59.825
+        43.125,
+        56.125,
+        46.875,
+        59.875
       ],
       "overlap_battery_planning_projection": true,
       "maximum_body_height_mm": null
@@ -921,6 +921,8 @@
           65.185
         ],
         "published_height_nominal_mm": 3.2,
+        "height_basis": "published module height; solder/mount maximum tolerance not signed off",
+        "source_locator": "v1.8 Table1-2; exact WROOM-1U family, not WROOM-1",
         "nominal_overlap_section_screen_without_battery_walls_mm": 8.28,
         "exceeds_reference_in_nominal_xy_screen": true,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
@@ -944,10 +946,247 @@
           40.025
         ],
         "published_height_nominal_mm": 2.0,
+        "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off",
+        "source_locator": "exact part detailed specifications: connector height2mm",
         "nominal_overlap_section_screen_without_battery_walls_mm": 7.08,
         "exceeds_reference_in_nominal_xy_screen": true,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://www.hirose.com/product/p/CL0586-0521-0-55",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J302",
+        "mpn": "HC-1.0-3PWT",
+        "world_native_bbox_mm": [
+          46.1,
+          13.575,
+          52.5,
+          19.425
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 3.2,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J502",
+        "mpn": "HC-1.0-2PWT",
+        "world_native_bbox_mm": [
+          6.575,
+          10.35,
+          11.425,
+          16.75
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 3.2,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J803",
+        "mpn": "X05A10H06G",
+        "world_native_bbox_mm": [
+          3.425,
+          34.695,
+          9.275,
+          38.795
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.1,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J804",
+        "mpn": "X05A10H06G",
+        "world_native_bbox_mm": [
+          3.425,
+          40.825,
+          9.275,
+          44.925
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.1,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "L401",
+        "mpn": "MWSA0402S-R47MT",
+        "world_native_bbox_mm": [
+          29.075,
+          0.475,
+          34.375,
+          5.475
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 2.0,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "L402",
+        "mpn": "MWSA0402S-1R0MTB01",
+        "world_native_bbox_mm": [
+          38.175,
+          4.0,
+          43.175,
+          9.3
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 2.0,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Display-C1",
+        "ref": "L1",
+        "mpn": "SWPA3012S470MT",
+        "world_native_bbox_mm": [
+          43.125,
+          56.125,
+          46.875,
+          59.875
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          43.125,
+          56.125,
+          46.875,
+          59.875
+        ],
+        "published_height_nominal_mm": 1.2,
+        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
+        "source_locator": "2024-06-19 p2;1.2mm max",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 6.28,
+        "exceeds_reference_in_nominal_xy_screen": true,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J201",
+        "mpn": "U20405-01",
+        "world_native_bbox_mm": [
+          33.805,
+          60.525,
+          44.195,
+          68.775
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          38,
+          60.525,
+          44.195,
+          65.185
+        ],
+        "published_height_nominal_mm": 3.46,
+        "height_basis": "Conservative engineering budget from official3.26mm on-board +0.20mm drawing general tolerance; not manufacturer-certified mounted maximum.",
+        "source_locator": "Rev4 p1 vs exact product https://mupconn.com/product/usbc/3368.html",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 8.54,
+        "exceeds_reference_in_nominal_xy_screen": true,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "SW201",
+        "mpn": "TS-1186E-B-B",
+        "world_native_bbox_mm": [
+          -0.175,
+          3.675,
+          4.125,
+          9.825
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.6,
+        "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed.",
+        "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "SW202",
+        "mpn": "TS-1186E-B-B",
+        "world_native_bbox_mm": [
+          -0.175,
+          10.175,
+          4.125,
+          16.325
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.6,
+        "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed.",
+        "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "D202",
+        "mpn": "SGM05HU1ALXUGY2G/TR",
+        "world_native_bbox_mm": [
+          47.825,
+          59.425,
+          49.56,
+          60.575
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          47.825,
+          59.425,
+          49.56,
+          60.575
+        ],
+        "published_height_nominal_mm": 0.55,
+        "height_basis": "Maximum bare-package height; excludes solder/mounted tolerance. No foreign 3D model carried forward.",
+        "source_locator": "August2024 Rev.A p7 package maximum A=.55mm",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 5.63,
+        "exceeds_reference_in_nominal_xy_screen": false,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
         "physical_fit_verified": false
       }
     ],
@@ -1030,9 +1269,9 @@
       ],
       "native_orientation_deg": 0.0,
       "world_bbox_mm": [
-        32.605,
-        59.85,
-        45.395,
+        33.805,
+        60.525,
+        44.195,
         68.775
       ],
       "enclosure_opening_verified": false
@@ -1062,10 +1301,10 @@
       ],
       "native_orientation_deg": 90.0,
       "world_bbox_mm": [
-        45.945,
-        13.075,
-        52.555,
-        19.925
+        46.1,
+        13.575,
+        52.5,
+        19.425
       ],
       "enclosure_opening_verified": false
     },
@@ -1094,10 +1333,10 @@
       ],
       "native_orientation_deg": 0.0,
       "world_bbox_mm": [
-        6.075,
-        10.195,
-        11.925,
-        16.805
+        6.575,
+        10.35,
+        11.425,
+        16.75
       ],
       "enclosure_opening_verified": false
     },
@@ -1138,14 +1377,14 @@
       "ref": "J803",
       "native_center_mm": [
         6.35,
-        39.37
+        36.87
       ],
-      "native_orientation_deg": 0.0,
+      "native_orientation_deg": 180.0,
       "world_bbox_mm": [
-        3.773,
-        37.015,
-        8.927,
-        41.121
+        3.425,
+        34.695,
+        9.275,
+        38.795
       ],
       "enclosure_opening_verified": false
     },
@@ -1154,14 +1393,14 @@
       "ref": "J804",
       "native_center_mm": [
         6.35,
-        45.5
+        43.0
       ],
-      "native_orientation_deg": 0.0,
+      "native_orientation_deg": 180.0,
       "world_bbox_mm": [
-        3.773,
-        43.145,
-        8.927,
-        47.251
+        3.425,
+        40.825,
+        9.275,
+        44.925
       ],
       "enclosure_opening_verified": false
     },
@@ -1174,10 +1413,10 @@
       ],
       "native_orientation_deg": -90.0,
       "world_bbox_mm": [
-        0.05,
-        3.975,
-        4.35,
-        9.525
+        -0.175,
+        3.675,
+        4.125,
+        9.825
       ],
       "enclosure_opening_verified": false
     },
@@ -1190,10 +1429,10 @@
       ],
       "native_orientation_deg": -90.0,
       "world_bbox_mm": [
-        0.05,
-        10.475,
-        4.35,
-        16.025
+        -0.175,
+        10.175,
+        4.125,
+        16.325
       ],
       "enclosure_opening_verified": false
     },
@@ -1275,7 +1514,7 @@
       "ref": "H804",
       "world_center_mm": [
         3.0,
-        34.0
+        33.0
       ],
       "drill_mm": [
         1.6,
@@ -1335,7 +1574,7 @@
   "physical_mating_verified": false,
   "manufacturing_release": false,
   "open_gates": [
-    "J201 midmount body/stakes/solder Z clearance at Display projection edge",
+    "J201 MUP topmount maximum mounted height, plug/case opening and shell/solder Z clearance at Display projection edge",
     "Exact battery assembly maximum dimensions, swelling, protection PCB and harness",
     "Supplier maximum component heights, solder/mount tolerances and PCB warp",
     "FT01C XY pose, actual thickness tolerance, FPC contact side and bend/access envelope",
