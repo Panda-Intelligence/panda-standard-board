@@ -5,7 +5,7 @@
   "pcb_identities": {
     "Core-C1": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "ab70350956b4a60af0f011cbceee526fdee52e0f285da6d4098380403e7e68f3"
+      "sha256": "35b83b11b4384b7af4f8cf99c31cc71d039b5a81b0a6ca7dadfa1b9e54c1cd33"
     },
     "Display-C1": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",

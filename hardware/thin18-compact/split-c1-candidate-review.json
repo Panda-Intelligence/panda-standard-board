@@ -69,19 +69,34 @@
     },
     "backup": {
       "manufacturer": "KAMCAP / 锦州凯美能源有限公司",
-      "mpn": "SE-5R5-D105VYH",
-      "library_id": "C118887",
-      "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
-      "primary_sha256": "6d92dd32a36495c143b8f52239bd25e68c7dab187ff1b00b9b4db54cdd689dbb",
+      "mpn": "SE-5R5-D105VYH3C",
+      "library_id": "C2894294",
+      "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+      "primary_sha256": "494434d2d504d277f3fe46b967d16e752efe29c1a6e4976cda5cfd0a65c74c40",
       "type": "rechargeable1F/5.5V horizontal THT, hand-solder after SMT",
       "max_body_mm": {
         "diameter": 19.2,
-        "height": 6.0
+        "height": 6.5
       },
-      "nominal_lead_pitch_mm": 19,
-      "land_basis": "derived engineering plated slots1.8x1.4mm/lands2.4x2.0; actual marked positive terminal to pad1",
-      "stock_observed": 0,
-      "stock_reserved": false
+      "nominal_lead_pitch_mm": 20,
+      "land_basis": "Derived engineering20mm pitch,platedslots1.8x1.4/lands2.4x2.0; negative mark to pad2GND, opposite positive to pad1; drawing has polarity symbols but no PCB numbering",
+      "stock_observed": null,
+      "stock_reserved": false,
+      "lead_pitch_tolerance_mm": 0.5,
+      "flat_lead_max_mm": {
+        "width": 1.1,
+        "thickness": 0.25
+      },
+      "stock_note": "Current LCSC stock quantity not retrievable. JLC public search returned queryString SE5R5D155VYH3C for requested D105VYH3C; mismatched response excluded, no stock conclusion or reservation.",
+      "rated_capacitance_test_window_v": [
+        4.4,
+        2.75
+      ],
+      "capacitance_tolerance_percent": [
+        0,
+        30
+      ],
+      "rtc_capacitance_extra_engineering_factor": 0.8
     },
     "charge_register_18h": "0x82 every main-power boot; rechargeable capacitor only",
     "retention_requirement_hours": 24,
@@ -92,7 +107,7 @@
     "effective_min_capacitance_minus25c_aged_f": 0.28,
     "conditional_room_retention_h": 66.111111,
     "conditional_minus25c_retention_h": 33.055556,
-    "planning_limit": "Conditional engineering budget only: RTC maximum current and cap leakage are not published;6h precharge is preliminary and actual start>=3.15V required. At4uA cold estimate16.53h fails. Cap -25..70C limits backup range; approved system/temperature/age conditions and all physical tests remain open. Firmware must be ported outside this repository."
+    "planning_limit": "Conditional engineering budget: retain0.8 extra capacitance factor because manufacturer1F0/+30% discharge test4.4..2.75V does not qualify RTC3.15..2.3V.0.7 age and0.5 cold factors give0.28F;33.06h at2uA,16.53h at4uA. RTC maximum current/cap leakage and actual precharge are unqualified. Start>=3.15V, end>=2.3V; all physical tests NOT_RUN."
   },
   "Display_Q1": {
     "decision": "APPLIED_PROTOTYPE_CAD_PHYSICAL_QUALIFICATION_NOT_RUN",

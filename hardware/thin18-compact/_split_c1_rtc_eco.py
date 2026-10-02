@@ -9,10 +9,10 @@ RTC_NAME='SD3078'
 RTC_SYMBOL='panda-standard:'+RTC_NAME
 RTC_FP='panda-standard:WAVE_SD3078_SOP8_208mil'
 RTC_DOC='https://www.whwave.com.cn/filedownload/3045413'
-CAP_FP='panda-standard:KAMCAP_SE5R5_D105VYH'
-CAP_DOC='https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf'
+CAP_FP='panda-standard:KAMCAP_SE5R5_D105VYH3C'
+CAP_DOC='https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf'
 RTC_DESCRIPTION='WAVE SD3078 Rev4.4:1SCL,2F32K,3VDD,4NC,5VBAT,6GND,7INT,8SDA;integrated crystal;VDD2.7..5.5,VBAT2.3..3.6;0x32,100kHz at3.3V;MSL3,maxheight1.9. Derived engineering lands2.0x0.7 at1.27 pitch/7.3 row pitch;not manufacturer recommended. Retention/firmware/temperature qualification remains NOT_RUN.'
-CAP_DESCRIPTION='KAMCAP SE-5R5-D105VYH primary2017:1F -20/+80%,5.5V,15ohm maxESR;maxbody19.2diameter/6.0height;leadpitch19+/-0.5,lead1.0+/-0.1. Engineering19mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND:install actual marked+ terminal on PCB+;drawing has no numbered polarity view. Hand-solder after SMT;body must clear PCB0.2,cut lead belowCore B<=0.5. Prototype retention budget conditional on precharge/current;not physical validation.'
+CAP_DESCRIPTION='KAMCAP SE-5R5-D105VYH3C primaryJune2020 p3-4:1F 0/+30% at4.4..2.75V,5.5V,15ohm maxAC ESR;maxbody19.2diameter/6.5height;pitch20+/-0.5;flatleads width1.0+/-0.1,thickness0.2+/-0.05. Engineering20mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND;marked negative terminal to pad2,other positive to PCB+. Post-SMT manual solder only;primary260C<=5s based1.6mm PCB,0.8mmCore process needs qualification;bodyclearance0.2,trimrearleads<=0.5. Conditional24h budget;leakage/low-voltage capacitance/physical EVT not qualified.'
 PINMAP={'1':'2','2':'7','3':'1','4':'8','5':'6','6':'5','7':'3','8':'4'}
 PINS={'1':('SCL','input','I2C_SCL'),'2':('F32K','open_collector','unconnected-(U302-F32K-Pad2)'),'3':('VDD','power_in','3V3_AON'),'4':('NC','no_connect','unconnected-(U302-NC-Pad4)'),'5':('VBAT','power_in','RTC_VBACKUP'),'6':('GND','power_in','GND'),'7':('INT','open_collector','EXP_INT'),'8':('SDA','bidirectional','I2C_SDA')}
 def uid(s):return str(uuid.uuid5(uuid.NAMESPACE_URL,'panda/split-c1/sd3078/'+s))
@@ -34,14 +34,14 @@ def rtc_geometry(f):
     return f[:f.rfind(')')]+'\n'+'\n'.join(extra)+'\n)'
 def cap_geometry(f):
     if property_value(f,'Reference')!='C301' or '(at 45 22.5 90)' not in f:raise ValueError('CAP predecessor pose differs')
-    f=remove_graphics(f).replace('(at 45 22.5 90)','(at 58.9 43.5)',1).replace('(attr smd)','(attr through_hole)',1)
-    extra=[rect('F.CrtYd',(-10.95,-9.85,10.95,9.85),.05,'capCourtyard')]
+    f=remove_graphics(f).replace('(at 45 22.5 90)','(at 59.4 43.5)',1).replace('(attr smd)','(attr through_hole)',1)
+    extra=[rect('F.CrtYd',(-11.45,-9.85,11.45,9.85),.05,'capCourtyard')]
     extra.append('(fp_circle (center 0 0) (end 9.6 0) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") (uuid "%s"))'%uid('capFab'))
-    for n,x,net in [('1',-9.5,'RTC_VBACKUP'),('2',9.5,'GND')]:
+    for n,x,net in [('1',-10,'RTC_VBACKUP'),('2',10,'GND')]:
         extra.append('(pad "%s" thru_hole oval (at %s 0) (size 2.4 2.0) (drill oval 1.8 1.4) (layers "*.Cu" "*.Mask") (net "%s") (pinfunction "%s") (pintype "passive") (uuid "%s"))'%(n,x,net,'+' if n=='1' else '-',uid('capPad'+n)))
     extra.append('(fp_text user "+" (at -8 -1.8 0) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))) (uuid "%s"))'%uid('capPlus'))
     f=re.sub(r'\(descr\s+"(?:\\.|[^"\\])*"\)',lambda m:'(descr '+json.dumps(CAP_DESCRIPTION)+')',f,count=1)
-    f=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)',lambda m:'(tags '+json.dumps('KAMCAP SE-5R5-D105VYH horizontal THT rechargeable RTC backup')+')',f,count=1)
+    f=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)',lambda m:'(tags '+json.dumps('KAMCAP SE-5R5-D105VYH3C horizontal THT rechargeable RTC backup')+')',f,count=1)
     return f[:f.rfind(')')]+'\n'+'\n'.join(extra)+'\n)'
 def clone_rtc_symbol(text):
     if '(symbol "'+RTC_SYMBOL+'"' in text:return text
@@ -75,6 +75,24 @@ def support(candidate):
         if property_value(z,'Reference')=='C302':
             z=set_prop(z,'Datasheet',RTC_DOC);z=set_prop(z,'Description','FH100nF/25V X7R local SD3078 VDD bypass.');t=t[:a]+z+t[b:]
     e=t.rfind(')');t=t[:e]+'\n(no_connect (at 317.5 71.12) (uuid "'+uid('nc4')+'"))\n'+t[e:];p.write_text(t)
+    p=folder/'evt-interfaces.kicad_sch';t=p.read_text()
+    notes={
+      'RTC: R304 DNP; C301 polarity required. RV3028 EEPROM37h: TCE=1, TCR=3k, BSM=11; precharge first.':
+      'SD3078: R303/R304 removed; write18H=0x82 on every main boot. C301 exact H3C/C2894294; negative to pad2GND. StartVBAT>=3.15V before isolated24h test; firmware/EVT pending.',
+      'ERC power-source declaration attached to the real RV-3028 internal trickle and C301 RTC backup path; EEPROM charge configuration and precharge are required; no-backup mode is not claimed.':
+      'ERC source declaration for SD3078 internal charging to C301 H3C rechargeable backup; configure18H=0x82 every main boot and measure precharge. Physical24h qualification NOT_RUN.',
+      'NTC commissioning: external 103JT-025-600AY required; R615/R616 are bias only.':
+      'NTC: exact Shiheng MF52D-103F3435-100/C394023 required; R615/R616 are bias only. New R-T curve and thermal coupling require qualification.',
+      'BQ25628E: REG1A TS_IGNORE=0, TS_ISET_WARM[3:2]=00 (charge suspend); read back before charging.':
+      'SGM41513 charger: preserve TS protection; use current register/temperature contract and readback. Legacy BQ25628E REG1A/1B instructions do not apply.',
+      'REG1B: cold[7:5]=001, warm/hot[4:2]=001. Nominal JT trip ~1C / 44C; pack thermal validation pending.':
+      'Charge/NTC/pack limits are preliminary; protected all-mainland pack not selected. Temperature/current/thermal acceptance and firmware enforcement remain pending.',
+      'J301 battery receptacle is reserved/unplaced. This sheet does not establish HY1.25 mating compatibility.':
+      'J301 is placed HCTL HC-HY-2AWT,2mm pitch; mate HC-HY-2Y/HC-HY-T, pin1BAT+. Actual harness polarity and mated volume need qualification.'}
+    for old,new in notes.items():
+        if t.count(old)!=1:raise ValueError('Interface commissioning note predecessor differs')
+        t=t.replace(old,new,1)
+    p.write_text(t)
     p=folder/(STEM+'.kicad_pcb');t=p.read_text()
     for a,b,s in reversed(list(blocks(t,r'\(footprint\s'))):
         r=property_value(s,'Reference')

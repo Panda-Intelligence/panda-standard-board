@@ -213,19 +213,20 @@
         "C301"
       ],
       "manufacturer": "KAMCAP",
-      "mpn": "SE-5R5-D105VYH",
-      "library_id": "C118887",
+      "mpn": "SE-5R5-D105VYH3C",
+      "library_id": "C2894294",
       "catalog_manufacturer": "KAMCAP",
-      "catalog_mpn": "SE-5R5-D105VYH",
-      "source_url": "https://www.lcsc.com/product-detail/C118887.html",
+      "catalog_mpn": "SE-5R5-D105VYH3C",
+      "source_url": "https://item.szlcsc.com/3128601.html",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact catalog identity plus primary manufacturer package reviewed; not an assembly/supply approval.",
+      "identity_note": "Intentional current H3C20mm ECO, primaryJune2020 drawing p4; exact C2894294 verified on LCSC CN. Not legacy H/C118887 alias or assembly approval.",
       "stock_observation": {
-        "quantity": 0,
+        "quantity": null,
         "observed_date": "2026-10-02",
-        "stock_reserved": false
+        "stock_reserved": false,
+        "note": "Current LCSC stock quantity not retrievable. JLC public search returned queryString SE5R5D155VYH3C for requested D105VYH3C; mismatched response excluded, no stock conclusion or reservation."
       },
       "assembly_process": "THROUGH_HOLE_HAND_SOLDER_AFTER_SMT_NOT_REFLOW"
     },
@@ -874,22 +875,23 @@
         "C301"
       ],
       "manufacturer": "KAMCAP",
-      "mpn": "SE-5R5-D105VYH",
+      "mpn": "SE-5R5-D105VYH3C",
       "units_per_core_display_pair": 1,
       "supply_route": "Independent KAMCAP/LCSC supply and customer post-PCBA hand-solder; do not consign ultracapacitor to JLCPCB",
-      "source_url": "https://www.lcsc.com/product-detail/C118887.html",
-      "supply_status": "EXACT_LEGACY_DRAWING_AND_ACTUAL_SUPPLY_PENDING",
-      "packing": "Exact horizontal H leads;not reflow or machine CPL;marked positive terminal and cut leads<=0.5mm",
+      "source_url": "https://item.szlcsc.com/3128601.html",
+      "supply_status": "CURRENT_H3C_CAD_APPLIED_ACTUAL_SUPPLY_PENDING",
+      "packing": "Exact H3C horizontal flat leads, LCSC box; not reflow/machine CPL; marked negative to pad2 GND, positive to pad1; rear leads<=0.5mm",
       "stock_observation": {
-        "quantity": 0,
+        "quantity": null,
         "observed_date": "2026-10-02",
-        "stock_reserved": false
+        "stock_reserved": false,
+        "note": "Current LCSC stock quantity not retrievable. JLC public search returned queryString SE5R5D155VYH3C for requested D105VYH3C; mismatched response excluded, no stock conclusion or reservation."
       },
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Current manufacturer lists SE-5R5-D105VYH3C at20mm pitch, not the legacy19+/-0.5mm drawing. No alias or direct substitution; obtain exact legacy drawing/lot or review a separate PCB ECO. Leakage upper bound still missing.",
+      "note": "Current exact H3C/C2894294 intentionally selected and20mm native lands reviewed; no legacy H/C118887 or vertical V3C substitution. Actual lot/quantity, leakage limit and low-voltage capacitance remain pending.",
       "jlc_consignment_allowed": false,
       "restriction_source": "https://jlcpcb.com/help/article/consignment-part-terms-conditions"
     },

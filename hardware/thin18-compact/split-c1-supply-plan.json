@@ -173,40 +173,44 @@
         "C301"
       ],
       "manufacturer": "KAMCAP",
-      "mpn": "SE-5R5-D105VYH",
-      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH",
-      "catalog_code": "C118887",
+      "mpn": "SE-5R5-D105VYH3C",
+      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH3C",
+      "catalog_code": "C2894294",
       "quantity_per_two_board_set": 1,
       "assembly_route": "CUSTOMER_POST_ASSEMBLY",
-      "supplier_route": "KAMCAP factory exact legacy H drawing or LCSC exact C118887; independent receiving and post-PCBA soldering",
+      "supplier_route": "KAMCAP factory exact current H3C or LCSC C2894294; independent receiving and post-PCBA soldering",
       "manufacturer_product_url": "https://www.kamcappower.com/products/coin-type-5.5v-super-capacitors/",
       "package": "Horizontal polarized THT EDLC; not SMT",
       "packing": {
-        "packing": "LCSC catalog tube; actual packing pending",
+        "packing": "LCSC catalog box; actual lot/packing pending",
         "msl": null,
         "reflow_allowed": false,
-        "solder_after_smt": true
+        "solder_after_smt": true,
+        "solder_process_basis": "Manufacturer p7:260C<=5s based1.6mm board;0.8mmCore temperature/time/fixture require qualification"
       },
       "public_supply_observation": {
-        "url": "https://item.szlcsc.com/120155.html",
+        "url": "https://item.szlcsc.com/3128601.html",
         "observed_date": "2026-10-02",
-        "warehouse_quantity": 0,
+        "warehouse_quantity": null,
         "stock_reserved": false,
-        "note": "LCSC zero-stock observation; JLC stock/buy refresh both no result. Broker claims not treated as verified stock."
+        "catalog_identity_verified": true,
+        "note": "Current LCSC stock quantity not retrievable. JLC public search returned queryString SE5R5D155VYH3C for requested D105VYH3C; mismatched response excluded, no stock conclusion or reservation.",
+        "jlc_public_query_status": "REJECTED_RESPONSE_MPN_MISMATCH"
       },
       "primary_datasheet": {
-        "url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
-        "sha256": "6d92dd32a36495c143b8f52239bd25e68c7dab187ff1b00b9b4db54cdd689dbb"
+        "url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+        "sha256": "494434d2d504d277f3fe46b967d16e752efe29c1a6e4976cda5cfd0a65c74c40"
       },
       "required_drawing": {
-        "lead_pitch_mm": 19,
+        "lead_pitch_mm": 20,
         "lead_pitch_tolerance_mm": 0.5,
-        "lead_diameter_max_mm": 1.1,
+        "lead_width_max_mm": 1.1,
+        "lead_thickness_max_mm": 0.25,
         "body_diameter_max_mm": 19.2,
-        "body_height_max_mm": 6.0,
-        "positive_terminal": "Actual marked positive to PCB pad1; pad2 GND"
+        "body_height_max_mm": 6.5,
+        "positive_terminal": "Drawing p4 +/−; marked negative to PCB pad2 GND, opposite positive to pad1+"
       },
-      "engineering_confirmation_required": "Current manufacturer lists SE-5R5-D105VYH3C at20mm pitch, not the legacy19+/-0.5mm drawing. No alias or direct substitution; obtain exact legacy drawing/lot or review a separate PCB ECO. Leakage upper bound still missing.",
+      "engineering_confirmation_required": "Actual exact H3C lot/dimension/polarity acceptance; manufacturer leakage upper bound and capacitance at RTC3.15..2.3V; manual solder qualification for0.8mm Core (primary process based1.6mm PCB)",
       "current_manufacturer_page_sha256": "10ee5e89b5c32399bd62373b809f785cf0e3c47dead6e8a2256f6de32bb6f472",
       "jlc_consignment_allowed": false,
       "restriction_source": "https://jlcpcb.com/help/article/consignment-part-terms-conditions",

@@ -44,7 +44,7 @@
 | Core-C1 | J501 | XUNPU / TF-122-CCP9 | C41347844 |
 | Display-C1 | Q1 | JSMSEMI / NX3008NBK,215-JSM | C53113911 |
 | Core-C1 | U302 | WAVE / SD3078 | C916255 |
-| Core-C1 | C301 | KAMCAP / SE-5R5-D105VYH | C118887 |
+| Core-C1 | C301 | KAMCAP / SE-5R5-D105VYH3C | C2894294 |
 
 ## 与原器件存在差异的资格项
 
@@ -76,7 +76,7 @@
 | 板／位号 | 国产精确选择 | 已完成 |
 |---|---|---|
 | Core U302 | WAVE SD3078 / C916255 | 1SCL/2F32K/3VDD/4NC/5VBAT/6GND/7INT/8SDA新符号、208milSOP8工程焊盘及重布线 |
-| Core C301 | KAMCAP SE-5R5-D105VYH / C118887 | 1F水平通孔超级电容；工程槽孔／极性、备援走线；SMT后手焊 |
+| Core C301 | KAMCAP SE-5R5-D105VYH3C / C2894294 | 1F水平通孔；现行20mm封装明确改型，整体最大高6.5mm，独立SMT后手焊 |
 | Display Q1 | JSMSEMI NX3008NBK,215-JSM / C53113911 | 1G/2D/3S、原厂0.8×0.6mm焊盘、源漏网络及局部重布线 |
 
 U302/C301详见C4D8-RTC-DECISION.md与SPLIT-C1-RTC-FIRMWARE.md。原型要求RTC断电有效时间≥24h；总节点≤2µA、实测起点≥3.15V、终点≥2.3V是待验证工程目标。条件估算室温66.11h／−25°C老化角33.06h，不是保证值；RTC最大电流／电容漏电缺少限值。一次性电池不允许装到充电节点。驱动未集成，实板Q04–Q14全部NOT_RUN。
@@ -86,9 +86,9 @@ Q1原厂V1.0 p1功能图明确1G/2D/3S，p5提供推荐焊盘；实际样件极�
 ## 供料仍有6个SMT映射缺口
 Core精确C码110/116，Display37/37。U902、U905、U402–U405共6个SMT仍无确认的精确C码／客供接收；逐位号CAD封装和网表已整理为split-c1-smt-consignment.json。不能用相似型号补码、不能不贴，未检索到不代表停产。
 
-SD3078公开4674／Q1公开2306未预留；C301/C118887与D202/C55274065库存观察0。全部物料的实际库存、批次／MSL、头尾／损耗及PCBA接收仍需闭环；没有报价、采购、预留、供应商消息或订单。assembly_request_ready／assembly_order_ready=false。
+SD3078公开4674／Q1公开2306未预留；C301现行H3C/C2894294目录身份已确认，库存数量未核实；D202/C55274065库存观察0。全部物料实际库存、批次／MSL、头尾／损耗及PCBA接收仍待闭环；没有报价、采购、预留、供方消息或订单。assembly_request_ready／assembly_order_ready=false。
 
-裸板Gerber／钻孔可以作为当前两板工程审核资料。标准DFM、DRC与全国产身份通过不代表整机或PCBA下单条件全部满足。电池完整最大输入54×36×5.5mm、外壳112×75×20mm仍是工程预算；未选完整国产电池包／冻结外壳。
+裸板Gerber／钻孔可以作为当前两板工程审核资料。DFM、DRC与全国产身份通过不代表整机或PCBA下单条件全部满足。电池完整最大输入54×36×5.5mm、外壳112×75×21mm仍是工程预算；未选完整国产电池包／冻结外壳。
 
 ## 复现
 python3 hardware/thin18-compact/release_split_c1.py

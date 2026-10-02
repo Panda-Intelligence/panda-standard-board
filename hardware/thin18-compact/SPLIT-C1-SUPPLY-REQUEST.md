@@ -7,7 +7,7 @@
 | U905 | SGMICRO SGM37601YTRL20G/TR | 待分配 | 1 | 圣邦官网20脚型号Active；公开JLC stock/buy查询均无精确结果，交期／实际供料待报价 |
 | U402–U405 | SGMICRO SGM2578SDYG/TR | 待分配 | 4 | [世强精确商品](https://www.sekorm.com/product/578179499.html)显示世强仓3940颗、品牌仓0、约3–4工作日；支持1颗起订，未预留 |
 | D202 | SGMICRO SGM05HU1ALXUGY2G/TR | C55274065 | 1 | JLC精确buy目录库存0；预订／圣邦授权渠道交期和实际入库待确认 |
-| C301 | KAMCAP SE-5R5-D105VYH | C118887 | 1 | 旧H型目录库存0；独立向凯美／立创取得精确旧图和实际供料，PCBA回板后后装 |
+| C301 | KAMCAP SE-5R5-D105VYH3C | C2894294 | 1 | [现行精确目录](https://item.szlcsc.com/3128601.html)及原厂20mm图纸已核对并实施CAD改型；库存数量未能核实，独立供料／PCBA后装 |
 
 授权代理身份以[圣邦官方名单](https://www.sg-micro.com/authorized-distributors)为依据。世强商品页当日快照已核对精确SD型号、0.9×0.9-4B-D和3000／卷；搜索摘要的4000不是当前商品页3940。公开查询和网页哈希记录在split-c1-jlc-catalog-observation.json、split-c1-supply-plan.json；未能查到不表示停产或整条渠道无货。世强公开搜索接口的正对照也没有结果，未把该接口的空结果用于库存结论。
 
@@ -38,9 +38,9 @@
 ## C301独立供料与后装
 [JLCPCB2026-09-09客供条款第4项](https://jlcpcb.com/help/article/consignment-part-terms-conditions)排除超级电容。国内服务是否有例外未核实，默认不寄入SMT客供仓；交回SMT完成的PCBA后，由客户／独立后装工位焊接。C301仍在完整系统BOM中，未被删去，不进入SMT BOM/CPL。
 
-要求凯美返回SE-5R5-D105VYH的当前有效、签认图／批次与供货数量：1F−20/+80%、5.5V、19±0.5mm脚距、引脚最大1.1mm、本体最大直径19.2mm／高6.0mm和实际正端标记。现行官网SE-5R5-D105VYH3C为20mm脚距，未获得与旧型号相同的确认，不能照名近似采购；VYV垂直型也不能代用。若只能供H3C，需先做明确改型、封装／走线／机械复核和重新打样资料，不压弯引脚硬塞原19mm槽。
+当前已明确改为SE-5R5-D105VYH3C/C2894294，并按[2020年6月原厂p4尺寸图](https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf)重建20mm封装。1F0/+30%、5.5V、20±0.5mm脚距、扁脚最大宽1.1／厚0.25mm、本体最大直径19.2／整体高6.5mm；负极标记对应PCB pad2 GND。旧H/C118887及VYV3C垂直型不可代用。采购仍需核对现行批次、尺寸一致性和实际数量，不能把目录C码当成有货或嘉立创接收。
 
-独立接收须记录实物标签／批次、数量、尺寸图和正端，漏电上限／测量条件仍向原厂确认。后装遵循原厂手焊260°C≤5秒、不回流、本体离板暂留0.2mm，正端接PCB+／pad1，pad2 GND；后脚剪到Core背面下≤0.5mm并检查1.5mm板间隙。焊后24h RTC保持由首板Q14实测，当前NOT_RUN。
+独立接收须记录实物精确H3C标签／批次、可用数量、尺寸和负端标记；漏电上限、3.15→2.3V容量和寿命仍须原厂确认／首板测量。p7手焊260°C≤5秒以1.6mm板为依据，Core0.8mm的温度／时间／支撑需工艺验证，不回流；本体离板暂留0.2mm，负端pad2 GND、正端pad1+。后脚剪到Core背面下≤0.5mm并检查1.5mm板间隙。焊后≥24h RTC保持由Q14实测，当前NOT_RUN。
 
 ## 供料核对命令
 在仓库根目录运行python3 hardware/thin18-compact/verify_split_c1_supply.py --sets 5，5只表示示例批量。加--require-requested-supply会在实际回执／精确C码缺失时退出1；不加则报告等待项，允许继续裸板原型打样准备。该核对只覆盖本次8个位号，不能代替其余供料、完整PCBA订单接收或实板EVT。

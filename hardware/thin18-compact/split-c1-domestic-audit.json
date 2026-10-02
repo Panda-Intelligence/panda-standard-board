@@ -5,19 +5,19 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "2ae0f9d6337e69c4794234e93767e30ea6d5286bde31eb11e3dac3d88f17c80b"
+      "sha256": "da0879d17de6e130b7e9eb00e08c732b2124d1fdb2f12300fdcffde8922d04e6"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "a6c8c91b59dbb4b8c85889c9a2e2e18726cf8ceda5b6a365bbc4b577d8362fb7"
+      "sha256": "e7ee8a991af6061064aa251363774232659f146989f995daa02bb2005cdec41d"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "ab70350956b4a60af0f011cbceee526fdee52e0f285da6d4098380403e7e68f3"
+      "sha256": "35b83b11b4384b7af4f8cf99c31cc71d039b5a81b0a6ca7dadfa1b9e54c1cd33"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "b09383347738d4f09ae2e88a60216336b0669c30e5dd32d2ed7f4bfe40763852"
+      "sha256": "2e4ccc87d54b904e3a23b3e037dc93e65d9a5539668b83f535050e0ab6947f0f"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",

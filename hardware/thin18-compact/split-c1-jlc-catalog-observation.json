@@ -743,5 +743,43 @@
       "rows": []
     }
   ],
-  "negative_result_limit": "Zero results means not returned by this public query on this date, not a manufacturer discontinuation or proof that no other regional/my-parts route exists."
+  "negative_result_limit": "Zero results means not returned by this public query on this date, not a manufacturer discontinuation or proof that no other regional/my-parts route exists.",
+  "current_capacitor_identity": {
+    "manufacturer": "KAMCAP",
+    "mpn": "SE-5R5-D105VYH3C",
+    "catalog_code": "C2894294",
+    "catalog_url": "https://item.szlcsc.com/3128601.html",
+    "catalog_identity_verified": true,
+    "packing": "Box",
+    "observed_date": "2026-10-02",
+    "warehouse_quantity": null,
+    "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+    "primary_sha256": "494434d2d504d277f3fe46b967d16e752efe29c1a6e4976cda5cfd0a65c74c40",
+    "locator": "June2020 p3 electrical/p4 dimension",
+    "stock_note": "Current LCSC stock quantity not retrievable. JLC public search returned queryString SE5R5D155VYH3C for requested D105VYH3C; mismatched response excluded, no stock conclusion or reservation."
+  },
+  "rejected_capacitor_queries": [
+    {
+      "keyword": "SE-5R5-D105VYH3C",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "6b211b7c139233a8be3654b2531b4b99734aa7b50e62c4593910408bd0e267b0",
+      "rows": [],
+      "response_query_string": "SE5R5D155VYH3C",
+      "rejection": "Requested exact D105VYH3C but returned D155VYH3C; excluded from stock evidence"
+    },
+    {
+      "keyword": "SE-5R5-D105VYH3C",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "6b211b7c139233a8be3654b2531b4b99734aa7b50e62c4593910408bd0e267b0",
+      "rows": [],
+      "response_query_string": "SE5R5D155VYH3C",
+      "rejection": "Requested exact D105VYH3C but returned D155VYH3C; excluded from stock evidence"
+    }
+  ]
 }

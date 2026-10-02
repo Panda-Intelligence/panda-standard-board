@@ -112,7 +112,7 @@ def main():
     domestic=json.loads((ROOT/'split-c1-domestic-audit.json').read_text());verify_fresh(domestic)
     core=ROOT/BOARDS[0][1]/BOARDS[0][3]
     text=core.read_text()
-    cap=verify_land(text,"C301",(2.4,2.0),9.5)
+    cap=verify_land(text,"C301",(2.4,2.0),10)
     capnets={re.match(r'\(pad\s+"(\d+)"',p).group(1): re.search(r'\(net\s+"([^"]+)"',p).group(1) for _,_,p in blocks(cap,r"\(pad\s")}
     if capnets!={"1":"RTC_VBACKUP","2":"GND"} or '(fp_text user "+"' not in cap: raise ValueError("EDLC polarity missing or reversed")
     verify_land(text,"L401",(1.5,2.5),1.85)
@@ -202,7 +202,7 @@ def main():
                          assembly_order_released=False,assembly_request_ready=False,
                          all_domestic_bom_complete=domestic["all_domestic_bom_complete"],
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
-                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact legacy19mm H drawing, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
+                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact current H3C20mm drawing/C2894294, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
