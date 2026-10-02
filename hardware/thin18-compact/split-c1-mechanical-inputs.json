@@ -348,13 +348,13 @@
     {
       "board": "Core-C1",
       "ref": "C301",
-      "mpn": "SE-5R5-D105VYH",
-      "height_nominal_mm": 5.5,
-      "height_maximum_mm": 6.0,
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
-      "source_locator": "2017 primary p5:max body18.7+/-0.5diameter,5.5+/-0.5height;H leads19+/-0.5 pitch",
+      "mpn": "SE-5R5-D105VYH3C",
+      "height_nominal_mm": 6.0,
+      "height_maximum_mm": 6.5,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+      "source_locator": "June2020 primary p4:PhiD18.7+/-0.5,L5.3+/-0.5,H6.0+/-0.5;H3C20+/-0.5pitch,flat1.0+/-0.1wide/0.2+/-0.05thick",
       "checked_on": "2026-10-02",
-      "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN"
+      "height_basis": "Primary overall H maximum6.5mm plus separate0.2mm mounting allowance; PCB/case fit NOT_RUN"
     },
     {
       "board": "Core-C1",
@@ -414,10 +414,10 @@
     "proposed_outer_xyz_mm": [
       112,
       75,
-      20
+      21
     ],
     "z_parameters_mm": {
-      "core_front_component_budget": 6.0,
+      "core_front_component_budget": 6.5,
       "front_mounted_allowance": 0.2,
       "panel_clearance": 0.5,
       "panel_thickness_budget": 2.2,
@@ -455,7 +455,7 @@
       "Main power0.2mm copper and existing via bottlenecks require load/current redesign or qualified lower current contract",
       "Two-board physical mating, safety isolation, temperature/charging and all EVT remain NOT_RUN",
       "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review",
-      "C301 horizontal KAMCAP max body19.2mm diameter/6.0mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
+      "C301 horizontal KAMCAP max body19.2mm diameter/6.5mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
     ],
     "minimum_j503_body_xy_clearance_mm": 1.5
   }

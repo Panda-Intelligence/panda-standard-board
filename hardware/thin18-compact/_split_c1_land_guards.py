@@ -56,9 +56,10 @@ def verify_20261002_lands(core,display):
         i=int(n);x=-3.65 if i<=4 else 3.65;y=round(-1.905+(i-1)*1.27 if i<=4 else 1.905-(i-5)*1.27,6)
         rtc.append((n,(x,y),(2.0,.7),net))
     check(core,'U302','SD3078',(73,27.5,0),rtc)
-    check(core,'C301','SE-5R5-D105VYH',(58.9,43.5,0),[
-        ('1',(-9.5,0),(2.4,2.0),'RTC_VBACKUP'),('2',(9.5,0),(2.4,2.0),'GND')])
+    check(core,'C301','SE-5R5-D105VYH3C',(59.4,43.5,0),[
+        ('1',(-10,0),(2.4,2.0),'RTC_VBACKUP'),('2',(10,0),(2.4,2.0),'GND')])
     cap=next(f for _,_,f in blocks(core,r'\(footprint\s') if property_value(f,'Reference')=='C301')
+    if property_value(cap,'LCSC')!='C2894294' or not cap.startswith('(footprint \"panda-standard:KAMCAP_SE5R5_D105VYH3C\"'):raise ValueError('C301 exact H3C catalog/footprint differs')
     if '(attr through_hole)' not in cap or '(fp_text user "+"' not in cap:raise ValueError('C301 hand-solder attribute/polarity differs')
     if any('thru_hole oval' not in p or '(drill oval 1.8 1.4)' not in p or '"F.Paste"' in p for _,_,p in blocks(cap,r'\(pad\s')):
         raise ValueError('C301 reviewed plated slots differ')

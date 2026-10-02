@@ -846,17 +846,17 @@
       "old_mpn": "CPH3225A",
       "new_fields": {
         "Manufacturer": "KAMCAP",
-        "MPN": "SE-5R5-D105VYH",
-        "Value": "SE-5R5-D105VYH",
-        "LCSC": "C118887",
-        "Footprint": "panda-standard:KAMCAP_SE5R5_D105VYH",
-        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
-        "Description": "KAMCAP SE-5R5-D105VYH primary2017:1F -20/+80%,5.5V,15ohm maxESR;maxbody19.2diameter/6.0height;leadpitch19+/-0.5,lead1.0+/-0.1. Engineering19mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND:install actual marked+ terminal on PCB+;drawing has no numbered polarity view. Hand-solder after SMT;body must clear PCB0.2,cut lead belowCore B<=0.5. Prototype retention budget conditional on precharge/current;not physical validation."
+        "MPN": "SE-5R5-D105VYH3C",
+        "Value": "SE-5R5-D105VYH3C",
+        "LCSC": "C2894294",
+        "Footprint": "panda-standard:KAMCAP_SE5R5_D105VYH3C",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+        "Description": "KAMCAP SE-5R5-D105VYH3C primaryJune2020 p3-4:1F 0/+30% at4.4..2.75V,5.5V,15ohm maxAC ESR;maxbody19.2diameter/6.5height;pitch20+/-0.5;flatleads width1.0+/-0.1,thickness0.2+/-0.05. Engineering20mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND;marked negative terminal to pad2,other positive to PCB+. Post-SMT manual solder only;primary260C<=5s based1.6mm PCB,0.8mmCore process needs qualification;bodyclearance0.2,trimrearleads<=0.5. Conditional24h budget;leakage/low-voltage capacitance/physical EVT not qualified."
       },
       "rtc_cap": true,
-      "qualification": "KAMCAP SE-5R5-D105VYH primary2017:1F -20/+80%,5.5V,15ohm maxESR;maxbody19.2diameter/6.0height;leadpitch19+/-0.5,lead1.0+/-0.1. Engineering19mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND:install actual marked+ terminal on PCB+;drawing has no numbered polarity view. Hand-solder after SMT;body must clear PCB0.2,cut lead belowCore B<=0.5. Prototype retention budget conditional on precharge/current;not physical validation.",
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
-      "catalog_url": "https://www.lcsc.com/product-detail/C118887.html"
+      "qualification": "KAMCAP SE-5R5-D105VYH3C primaryJune2020 p3-4:1F 0/+30% at4.4..2.75V,5.5V,15ohm maxAC ESR;maxbody19.2diameter/6.5height;pitch20+/-0.5;flatleads width1.0+/-0.1,thickness0.2+/-0.05. Engineering20mm pitch,platedslots1.8x1.4,lands2.4x2.0. Pin1=positive,2=GND;marked negative terminal to pad2,other positive to PCB+. Post-SMT manual solder only;primary260C<=5s based1.6mm PCB,0.8mmCore process needs qualification;bodyclearance0.2,trimrearleads<=0.5. Conditional24h budget;leakage/low-voltage capacitance/physical EVT not qualified.",
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+      "catalog_url": "https://item.szlcsc.com/3128601.html"
     }
   ],
   "all_domestic_complete": false,

@@ -358,9 +358,9 @@
         "C301"
       ],
       "manufacturer": "KAMCAP",
-      "mpn": "SE-5R5-D105VYH",
-      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH",
-      "library_id": "C118887",
+      "mpn": "SE-5R5-D105VYH3C",
+      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH3C",
+      "library_id": "C2894294",
       "origin": "MAINLAND_MANUFACTURER"
     },
     {

@@ -14,6 +14,8 @@ def side_battery_budget(inputs,display_rect,core_t,gap,display_t):
     if abs(r[2]-r[0]-dim[0])>1e-6 or abs(r[3]-r[1]-dim[1])>1e-6:raise ValueError('Pack and cavity XY budget differ')
     separation=display_rect[0]-r[2]
     if separation<s['minimum_display_xy_separation_mm']:raise ValueError('Side battery intersects Display projection')
+    cap=next(x for x in inputs['published_component_height_screens'] if x.get('ref')=='C301')
+    if v['core_front_component_budget']<cap['height_maximum_mm']:raise ValueError('Front budget is below C301 primary maximum height')
     panel_back=core_t+v['core_front_component_budget']+v['front_mounted_allowance']+v['panel_clearance']
     front=panel_back+v['panel_thickness_budget']+v['front_wall']
     battery_top=-(v['core_back_component_budget']+v['battery_insulation'])
@@ -61,7 +63,7 @@ def openscad_study(inputs):
       'color([1,.6,.2,.25])slab(pack_rect,battery_top-pack_max[2]-swelling,swelling);',
       'color([.15,.15,.15])slab([-4.665,2.815,100.665,65.185],panel_back,panel_thickness);',
       'color([.6,.8,1,.10])translate([48-outer[0]/2,34-outer[1]/2,rear])cube(outer);',
-      '// Engineering shell box112x75x20; no fabrication or3D-print approval.',
-      'color([.7,.3,.2])translate([58.9,43.5,1.0])cylinder(h=6.0,d=19.2,$fn=80); // C301 max body plus0.2mm stand-off',
+      '// Engineering shell box112x75x21; no fabrication or3D-print approval.',
+      'color([.7,.3,.2])translate([59.4,43.5,1.0])cylinder(h=6.5,d=19.2,$fn=80); // C301 H3C primary overall H maximum plus0.2mm stand-off',
       '// Component/lead/FPC/tool/antenna/speaker solids and mount bosses omitted.',
       ''])

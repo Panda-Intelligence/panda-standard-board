@@ -14,13 +14,13 @@ Generated packages are ignored; the committed authorities are native CAD,
 required libraries, replay scripts, purchasing evidence and audit summaries. Every populated BOM ref has Manufacturer and exact MPN.
 Current all-domestic audit:155/155 populated system-BOM refs,0 foreign/unknown.
 Core has116 SMT placements plus hand-solder C301 and offboard TH301;Display37.
-Last foreign refs now use WAVE SD3078/C916255,KAMCAP SE-5R5-D105VYH/C118887
+Last foreign refs now use WAVE SD3078/C916255,KAMCAP SE-5R5-D105VYH3C/C2894294
 and JSM NX3008NBK,215-JSM/C53113911. Symbols,primary/derived lands and copper
 are replayed from guarded source ECOs. R303/R304 are removed.
 
 Exact SMT library coverage:Core110/116,Display37/37. Six Core refs
 (U902,U905,U402-U405) still require exact JLC ID/consignment acceptance.
-C301/D202 public stock is0;no stock is reserved or assembly accepted.
+C301 exact current H3C catalog/drawing verified;quantity unverified. D202 observation0;no reserved/accepted supply.
 audit_split_c1_domestic.py --require-complete passes identity coverage;
 PCBA supply/order readiness remains false.
 
@@ -28,7 +28,7 @@ See SPLIT-C1-DOMESTICIZATION.md and JLC-PROTOTYPE-HANDOFF.md for current
 decisions. RTC >=24h isolated backup is a pending prototype validation,
 with a2uA total-node engineering target and measured start>=3.15V/end>=2.3V.
 Firmware port is required;Q04-Q14 remainNOT_RUN because no board exists.
-The two-board side-pack space study is112x75x20mm;pack complete max input
+The two-board side-pack space study is112x75x21mm,calculated thickness20.5mm;pack complete max input
 54x36x5.5mm. No exact pack/enclosure is frozen or physical fit claimed.
 X4 Pro1100mAh/5.95mm remains a reference. Manufacturing release remains false.
 Older C0/C2/C4D notes below are historical and do not override Split-C1.

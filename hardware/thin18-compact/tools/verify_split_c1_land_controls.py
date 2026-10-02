@@ -21,7 +21,10 @@ cases=[
  ('MOS reversed drain/source',core,change(display,'Q1','(net "/BOOST_SW")','(net "/RESE")')),
  ('MOS obsolete land',core,change(display,'Q1','(size 0.8 0.6)','(size 0.9 0.8)')),
  ('RTC wrong VBAT/VDD',change(core,'U302','(net "RTC_VBACKUP")','(net "3V3_AON")'),display),
- ('backup vertical instead of horizontal SKU',change(core,'C301','(property "MPN" "SE-5R5-D105VYH"','(property "MPN" "SE-5R5-D105VYV"'),display),
+ ('backup vertical instead of horizontal SKU',change(core,'C301','(property "MPN" "SE-5R5-D105VYH3C"','(property "MPN" "SE-5R5-D105VYV3C"'),display),
+ ('backup previous center causes pad1 interference',change(core,'C301','(at 59.4 43.5)','(at 58.9 43.5)'),display),
+ ('backup obsolete19mm pitch',change(core,'C301','(at -10 0)','(at -9.5 0)'),display),
+ ('backup legacy C-code',change(core,'C301','(property \"LCSC\" \"C2894294\"','(property \"LCSC\" \"C118887\"'),display),
  ('backup undersize lead slot',change(core,'C301','(drill oval 1.8 1.4)','(drill oval 1.4 1.0)'),display),
  ('microSD wrong row height',change(core,'J501','(size 0.6 1.6)','(size 0.6 1.5)'),display),
  ('microSD swapped supply/command',change(core,'J501','(net "3V3_SD")','(net "SDMMC_CMD_CARD")'),display),
@@ -41,6 +44,8 @@ for name,c,d in cases:
     else:raise ValueError('Incorrect primary footprint accepted: '+name)
 for name,mutate in [
  ('battery overlaps Display',lambda s:s.update(battery_rect_xyxy_mm=[3,6,39,60])),
+ ('previous20mm case under current H3C budget',lambda s:s.update(proposed_outer_xyz_mm=[112,75,20])),
+ ('underdeclared front height',lambda s:s['z_parameters_mm'].update(core_front_component_budget=6.0)),
  ('unsupported5.95mm case',lambda s:s.update(proposed_outer_xyz_mm=[112,75,5.95]))]:
     wrong=deepcopy(inputs);mutate(wrong['side_battery_study'])
     try:side_battery_budget(wrong,[38,30,83,66],.8,1.5,.8)

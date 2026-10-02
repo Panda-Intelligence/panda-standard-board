@@ -11,18 +11,18 @@ Current source documents supersede older integrated-board studies in Git history
 | SMT mapping |Core110/116,Display37/37;six Core exact IDs/consignment acceptance missing|
 | Manual assembly |Core C301 horizontal1F cap after SMT;offboard Shiheng TH301|
 | Main pack |complete54×36×5.5mm maximum budget;1100mAh nominal/900mAh minimum targets;no selected exact mainland pack|
-| Enclosure |112×75×20mm engineering budget;not released CAD or certified fit|
+| Enclosure |112×75×21mm engineering box;calculated thickness20.5mm;not released CAD/fit|
 | RTC |SD3078+KAMCAP rechargeable cap;>=24h isolated backup target,physical testsNOT_RUN|
 
 The side pack sits below Core B in[1,11,37,65];Display projects[38,30,83,66].
 It is1mm apart in XY and avoids the static J503 body;its mated antenna cable
 still needs a solid volume. Backside parts/bosses budget1.5mm plus0.3mm insulation,
 pack5.5mm plus0.7mm swelling and rear wall0.8mm give rearZ−8.8mm.
-Core0.8+front max6.0+mount0.2+panel clearance0.5+panel2.2+front wall0.8
-give frontZ10.5mm;reserve0.7mm gives20mm. These are explicit engineering
+Core0.8+front max6.5+mount0.2+panel clearance0.5+panel2.2+front wall0.8
+give frontZ11.0mm;reserve0.7mm gives20.5mm,rounded enclosure box21mm. These are explicit engineering
 allowances,not supplier-signed pack/panel/mounted maxima.
 
-C301 KAMCAP SE-5R5-D105VYH max body diameter19.2mm/height6.0mm lies on Core F.
+C301 KAMCAP SE-5R5-D105VYH3C/C2894294 has max diameter19.2mm/overall H6.5mm on Core F,20mm nominal pitch.
 It is horizontal THT,mounted0.2mm above PCB and hand-soldered after SMT;
 rear lead protrusion must be<=0.5mm. Both plated pads overlap Display XY and
 must clear the opposite board/connector/solder/retention solids. Native
@@ -47,7 +47,7 @@ This is distinct from native DRC/parity/electrical continuity checks.
 Six SMT positions/three procurement groups,net maps,prohibited substitutions and
 unaccepted JLC IDs are in split-c1-smt-consignment.json.
 Actual stock,MSL/lot/tape attrition,double-sided carrier panel and assembler
-acceptance are pending. C301/C118887 and D202/C55274065 stock observations0;
+acceptance are pending. C301/H3C/C2894294 catalog is exact but current stock quantity is unverified;D202/C55274065 observation0;
 read-only catalog results do not reserve supply. No orders/messages shipped.
 Current plans and primary source links:
 - SPLIT-C1-DOMESTICIZATION.md / split-c1-domestic-eco.json

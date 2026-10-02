@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "ab70350956b4a60af0f011cbceee526fdee52e0f285da6d4098380403e7e68f3",
+    "Core-C1": "35b83b11b4384b7af4f8cf99c31cc71d039b5a81b0a6ca7dadfa1b9e54c1cd33",
     "Display-C1": "3aa2f5b7e04e0813c9ae5406f8a80ec2de15217b8c6dcafde03689d11482a490"
   },
-  "inputs_sha256": "005d8b39465eece519b1655c1c950c07544e4bfb01eda40fc04db8a194d15131",
-  "interface_sha256": "da98499fe9677de0299eef66e1f5577adab9ce2e02a268a82030eb006577ac8e",
+  "inputs_sha256": "dd0e0e7e3bd3752541f5bf966d8a19d6e6f0ecd36c4067111ba56c0aad06ebcb",
+  "interface_sha256": "bce28e9863a1188e7e4ad3e035a6763f0abd292089a024555c3151f70925b8b0",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -439,13 +439,13 @@
       "pad": "2",
       "uuid": "5019110f-1741-5fef-9ce1-bfefd39f1ee0",
       "bbox_mm": [
-        67.2,
+        68.2,
         42.5,
-        69.6,
+        70.6,
         44.5
       ],
       "center_mm": [
-        68.4,
+        69.4,
         43.5
       ],
       "z_clearance_verified": false
@@ -1274,26 +1274,26 @@
       {
         "board": "Core-C1",
         "ref": "C301",
-        "mpn": "SE-5R5-D105VYH",
+        "mpn": "SE-5R5-D105VYH3C",
         "world_native_bbox_mm": [
           47.925,
           33.625,
-          69.875,
+          70.875,
           53.375
         ],
         "shared_panel_core_display_xy_screen_mm": [
           47.925,
           33.625,
-          69.875,
+          70.875,
           53.375
         ],
-        "published_height_nominal_mm": 5.5,
-        "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN",
-        "source_locator": "2017 primary p5:max body18.7+/-0.5diameter,5.5+/-0.5height;H leads19+/-0.5 pitch",
-        "nominal_overlap_section_screen_without_battery_walls_mm": 10.58,
+        "published_height_nominal_mm": 6.0,
+        "height_basis": "Primary overall H maximum6.5mm plus separate0.2mm mounting allowance; PCB/case fit NOT_RUN",
+        "source_locator": "June2020 primary p4:PhiD18.7+/-0.5,L5.3+/-0.5,H6.0+/-0.5;H3C20+/-0.5pitch,flat1.0+/-0.1wide/0.2+/-0.05thick",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 11.08,
         "exceeds_reference_in_nominal_xy_screen": true,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
-        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
         "physical_fit_verified": false
       },
       {
@@ -1745,15 +1745,15 @@
     "proposed_outer_xyz_mm": [
       112,
       75,
-      20
+      21
     ],
-    "panel_back_core_b_z_mm": 7.5,
-    "outer_front_core_b_z_mm": 10.5,
+    "panel_back_core_b_z_mm": 8.0,
+    "outer_front_core_b_z_mm": 11.0,
     "battery_top_core_b_z_mm": -1.8,
     "battery_bottom_with_swelling_core_b_z_mm": -8.0,
     "display_front_extent_core_b_z_mm": -4.0,
     "outer_rear_core_b_z_mm": -8.8,
-    "calculated_outer_thickness_with_reserve_mm": 20.0,
+    "calculated_outer_thickness_with_reserve_mm": 20.5,
     "parameter_budget_passed": true,
     "engineering_allowances_are_not_supplier_maxima": true,
     "selected_pack": null,
@@ -1768,7 +1768,7 @@
       "Main power0.2mm copper and existing via bottlenecks require load/current redesign or qualified lower current contract",
       "Two-board physical mating, safety isolation, temperature/charging and all EVT remain NOT_RUN",
       "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review",
-      "C301 horizontal KAMCAP max body19.2mm diameter/6.0mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
+      "C301 horizontal KAMCAP max body19.2mm diameter/6.5mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
     ],
     "basis": "Core B plane=0; Core F=+0.8; Display B=-1.5; Display F=-2.3. Pack sits beside Display in XY and below Core backside components.",
     "native_back_overlaps_battery_xy": [
