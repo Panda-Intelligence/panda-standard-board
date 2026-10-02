@@ -95,3 +95,5 @@ python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 
 第二条现在应通过155/155身份审计，但不会批准实际供料或EVT。当前与不可变基线重建的两板DRC/open/parity/ERC必须全0；60针逻辑／插接变换不变；焊盘和负向控制拒绝错误引脚、槽孔或SKU。生产文件绑定源哈希及ZIP CRC；生成ZIP、PDF、PNG、生产CSV和临时脚本不提交git。
+
+本次供料跟进见SPLIT-C1-SUPPLY-REQUEST.md：SGM2578SD授权世强精确库存3940未预留；六个SMT缺码／客供回执仍未关闭。C301不寄JLCPCB客供仓，独立供料后装；官网H3C脚距20mm不能直接代替已设计旧H型19±0.5mm。

@@ -62,7 +62,7 @@ def main():
         "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "_split_c1_panel_eco.py", "_split_c1_microsd_eco.py", "_split_c1_mos_eco.py", "split-c1-mos-layout.json", "_split_c1_rtc_eco.py", "split-c1-rtc-layout.json", "split-c1-microsd-layout.json", "split-c1-candidate-review.json", "SPLIT-C1-PROCUREMENT-QUESTIONS.md", "_split_c1_esd_eco.py", "_split_c1_battery_eco.py", "_split_c1_land_guards.py", "_split_c1_enclosure_study.py", "SPLIT-C1-ENCLOSURE-STUDY.scad", "SPLIT-C1-PACK-INPUTS.md", "split-c1-jlc-catalog-observation.json", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
         "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
-        "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "C4D8-RTC-DECISION.md", "SPLIT-C1-RTC-FIRMWARE.md", "split-c1-smt-consignment.json", "export_production.py",
+        "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "C4D8-RTC-DECISION.md", "SPLIT-C1-RTC-FIRMWARE.md", "split-c1-smt-consignment.json", "split-c1-supply-plan.json", "verify_split_c1_supply.py", "SPLIT-C1-SUPPLY-REQUEST.md", "export_production.py",
         "export_jlc.py", "freeze_split_c1_release.py", "release_split_c1.py",
         "split-c1-sourcing-evidence.json", "core-c1-routing-closure.json",
         "package_jlc_prototype.py", "JLC-PROTOTYPE-HANDOFF.md",

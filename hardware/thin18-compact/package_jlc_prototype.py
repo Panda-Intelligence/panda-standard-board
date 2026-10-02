@@ -127,13 +127,15 @@ def main():
     out.mkdir()
     shutil.copy2(ROOT/"JLC-PROTOTYPE-HANDOFF.md",out/"START-HERE.md")
     registry=json.loads((ROOT/"split-c1-sourcing-evidence.json").read_text())
+    from verify_split_c1_supply import audit as audit_supply
+    supply=audit_supply(json.loads((ROOT/"split-c1-supply-plan.json").read_text()))
     expected={b:{ref for row in registry["unresolved_smt"] if row["board"]==b for ref in row["refs"]} for b,_,_,_ in BOARDS}
     report={"schema":"panda-split-c1-prototype-orderpack-v1","date":"2026-10-02",
             "purpose":"Bench EVT prototype; no physical board exists yet","manufacturing_release":False,
             "physical_evt_passed":False,"assembly_request_ready":False,
             "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
             "domestic_foreign_ref_count":domestic["foreign_ref_count"],
-            "domestic_status":domestic["status"],"boards":{}}
+            "domestic_status":domestic["status"],"requested_supply":supply,"boards":{}}
     with tempfile.TemporaryDirectory(prefix="panda-jlc-prototype-") as tmp:
         for board,candidate,production,relative in BOARDS:
             folder=ROOT/candidate;pcb=folder/relative
@@ -200,7 +202,7 @@ def main():
                          assembly_order_released=False,assembly_request_ready=False,
                          all_domestic_bom_complete=domestic["all_domestic_bom_complete"],
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
-                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 hand-solder after SMT, exact H SKU, plated slots, marked positive terminal, <=0.5mm trimmed rear leads"])
+                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact legacy19mm H drawing, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
@@ -208,8 +210,8 @@ def main():
                  "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json",
                  "split-c1-candidate-review.json","split-c1-microsd-layout.json",
                  "split-c1-rtc-layout.json","split-c1-mos-layout.json","SPLIT-C1-RTC-FIRMWARE.md",
-                 "split-c1-smt-consignment.json",
-                 "SPLIT-C1-PROCUREMENT-QUESTIONS.md"]:
+                 "split-c1-smt-consignment.json", "split-c1-supply-plan.json",
+                 "SPLIT-C1-SUPPLY-REQUEST.md", "SPLIT-C1-PROCUREMENT-QUESTIONS.md"]:
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")

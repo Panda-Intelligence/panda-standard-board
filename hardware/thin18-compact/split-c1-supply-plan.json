@@ -1,0 +1,233 @@
+{
+  "schema": "panda-split-c1-requested-supply-v1",
+  "observed_date": "2026-10-02",
+  "scope": "Eight requested Core-C1 refs, five exact procurement groups; one set includes both Core-C1 and Display-C1",
+  "kit_quantity": null,
+  "submission_performed": false,
+  "stock_reserved": false,
+  "assembly_order_released": false,
+  "rows": [
+    {
+      "group": "U902",
+      "board": "Core-C1",
+      "refs": [
+        "U902"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "footprint": "panda-standard:SGM62125_XG_WLCSP15_1.46x2.3_P0.4",
+      "catalog_code": null,
+      "quantity_per_two_board_set": 1,
+      "assembly_route": "JLC_SMT",
+      "manufacturer_product_url": "https://www.sg-micro.com/product/SGM62125",
+      "primary_datasheet": {
+        "url": "https://www.sg-micro.com/rect/assets/e4d6402f-12aa-4071-bb80-6e7c6c4b8975/SGM62125.pdf",
+        "sha256": "01b947a894603b1c95e8ff9d33f7005f48a98cfd241b297416ea3916a6499de7"
+      },
+      "package": "WLCSP-1.46x2.3-15B",
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 37,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; formal exact-package quotation required",
+      "public_supply_observation": null,
+      "engineering_confirmation_required": null,
+      "supply_receipt": null
+    },
+    {
+      "group": "U905",
+      "board": "Core-C1",
+      "refs": [
+        "U905"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM37601YTRL20G/TR",
+      "footprint": "PandaDomestic:SGM37601_TQFN20_3P5x3P5_EP2P05",
+      "catalog_code": null,
+      "quantity_per_two_board_set": 1,
+      "assembly_route": "JLC_SMT",
+      "manufacturer_product_url": "https://www.sg-micro.com/product/SGM37601",
+      "primary_datasheet": {
+        "url": "https://www.sg-micro.com/rect/assets/6e743e52-53c6-452c-9493-15d39787a1ad/SGM37601.pdf",
+        "sha256": "36cd0306800a414a148d03a74368de6db3ed8522fe4be39073a5775ada4fac19"
+      },
+      "package": "TQFN-3.5x3.5-20L",
+      "packing": {
+        "msl": 2,
+        "units_per_factory_reel": 4000,
+        "reel_inches": 13,
+        "tape_width_mm": 12,
+        "pocket_pitch_mm": 8,
+        "pin1_quadrant": "Q2",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 37,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; formal exact-package quotation required",
+      "public_supply_observation": null,
+      "engineering_confirmation_required": null,
+      "supply_receipt": null
+    },
+    {
+      "group": "U402-U405",
+      "board": "Core-C1",
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM2578SDYG/TR",
+      "footprint": "panda-standard:SGM2578SD_WLCSP_09x09_P05",
+      "catalog_code": null,
+      "quantity_per_two_board_set": 4,
+      "assembly_route": "JLC_SMT",
+      "manufacturer_product_url": "https://www.sg-micro.com/product/SGM2578SD",
+      "primary_datasheet": {
+        "url": "https://www.sg-micro.com/rect/assets/d7f6bab2-25db-4935-8da5-745cf9661265/SGM2578S_SGM2578SD.pdf",
+        "sha256": "a06ce941cacdaf1a23f620881247653fc86ca8be0ea47eb2f33a462b9fe1c5d1"
+      },
+      "package": "WLCSP-0.9x0.9-4B-D",
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 12,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
+      "public_supply_observation": {
+        "url": "https://www.sekorm.com/product/578179499.html",
+        "observed_date": "2026-10-02",
+        "page_sha256": "7d5645fe5daa9c2ec69c0b49eed6154971b2d100319b5f7ef460958412b3a255",
+        "exact_mpn": "SGM2578SDYG/TR",
+        "warehouse_quantity": 3940,
+        "brand_warehouse_quantity": 0,
+        "displayed_delivery_workdays": "3-4",
+        "minimum_purchase_pcs": 1,
+        "packing": "Tape and reel,3000/reel",
+        "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+        "authorization_page_sha256": "1bafa7360923252d570505b580ea652db744f22571ad719b4344ccacc386f56b",
+        "stock_reserved": false,
+        "quotation_confirmed": false
+      },
+      "engineering_confirmation_required": "Manufacturer clarification of ON-high/low RCB in Rev.A.2 p9 versus disabled-only feature wording; no AAD substitution",
+      "supply_receipt": null
+    },
+    {
+      "group": "D202",
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
+      "catalog_code": "C55274065",
+      "quantity_per_two_board_set": 1,
+      "assembly_route": "JLC_SMT",
+      "manufacturer_product_url": "https://www.sg-micro.com/product/SGM05HU1AL",
+      "primary_datasheet": {
+        "url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+        "sha256": "fd2487242f163f57bba056f10e302c28c497e7ffc340283a454ebd711d42468b"
+      },
+      "package": "UTDFN-1x0.6-2BL",
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 10000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 2,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 8,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; formal exact-package quotation required",
+      "public_supply_observation": {
+        "url": "https://jlcpcb.com/partdetail/SGMICRO-SGM05HU1ALXUGY2GTR/C55274065",
+        "observed_date": "2026-10-02",
+        "warehouse_quantity": 0,
+        "stock_reserved": false,
+        "note": "Exact buy listing; no in-stock result. Pre-order or authorized supply and factory receipt pending."
+      },
+      "engineering_confirmation_required": null,
+      "supply_receipt": null
+    },
+    {
+      "group": "C301",
+      "board": "Core-C1",
+      "refs": [
+        "C301"
+      ],
+      "manufacturer": "KAMCAP",
+      "mpn": "SE-5R5-D105VYH",
+      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH",
+      "catalog_code": "C118887",
+      "quantity_per_two_board_set": 1,
+      "assembly_route": "CUSTOMER_POST_ASSEMBLY",
+      "supplier_route": "KAMCAP factory exact legacy H drawing or LCSC exact C118887; independent receiving and post-PCBA soldering",
+      "manufacturer_product_url": "https://www.kamcappower.com/products/coin-type-5.5v-super-capacitors/",
+      "package": "Horizontal polarized THT EDLC; not SMT",
+      "packing": {
+        "packing": "LCSC catalog tube; actual packing pending",
+        "msl": null,
+        "reflow_allowed": false,
+        "solder_after_smt": true
+      },
+      "public_supply_observation": {
+        "url": "https://item.szlcsc.com/120155.html",
+        "observed_date": "2026-10-02",
+        "warehouse_quantity": 0,
+        "stock_reserved": false,
+        "note": "LCSC zero-stock observation; JLC stock/buy refresh both no result. Broker claims not treated as verified stock."
+      },
+      "primary_datasheet": {
+        "url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
+        "sha256": "6d92dd32a36495c143b8f52239bd25e68c7dab187ff1b00b9b4db54cdd689dbb"
+      },
+      "required_drawing": {
+        "lead_pitch_mm": 19,
+        "lead_pitch_tolerance_mm": 0.5,
+        "lead_diameter_max_mm": 1.1,
+        "body_diameter_max_mm": 19.2,
+        "body_height_max_mm": 6.0,
+        "positive_terminal": "Actual marked positive to PCB pad1; pad2 GND"
+      },
+      "engineering_confirmation_required": "Current manufacturer lists SE-5R5-D105VYH3C at20mm pitch, not the legacy19+/-0.5mm drawing. No alias or direct substitution; obtain exact legacy drawing/lot or review a separate PCB ECO. Leakage upper bound still missing.",
+      "current_manufacturer_page_sha256": "10ee5e89b5c32399bd62373b809f785cf0e3c47dead6e8a2256f6de32bb6f472",
+      "jlc_consignment_allowed": false,
+      "restriction_source": "https://jlcpcb.com/help/article/consignment-part-terms-conditions",
+      "restriction_scope": "Published JLCPCB consignment terms dated2026-09-09 exclude ultracapacitors. Domestic service exceptions are unverified; default is independent post-PCBA assembly, no shipment to SMT warehouse.",
+      "supply_receipt": null
+    }
+  ],
+  "quantity_rule": "N sets need N U902,N U905,4N switches,N D202,N C301; accepted assembly attrition/leader/trailer and independent spare caps are additional, not guessed",
+  "receipt_template": {
+    "manufacturer": null,
+    "mpn": null,
+    "footprint": null,
+    "catalog_code": null,
+    "route": null,
+    "acceptance_reference": null,
+    "inventory_reference": null,
+    "usable_quantity": null,
+    "additional_quantity": null,
+    "lot_reference": null,
+    "packing_accepted": false,
+    "engineering_confirmation_reference": null
+  },
+  "limitations": "This closes only requested supply when backed by real receipts. Remaining assembly parts/TH301 stock and full order/assembly acceptance are separately required; never infer assembly ready or EVT passed."
+}
