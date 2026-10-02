@@ -10,7 +10,7 @@
         "FH (Fenghua Advanced)",
         "FH (Guangdong Fenghua Advanced Tech)"
       ],
-      "company": "\u5e7f\u4e1c\u98ce\u534e\u9ad8\u65b0\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东风华高新科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.fhcomp.com/"
@@ -20,7 +20,7 @@
       "aliases": [
         "SGMICRO"
       ],
-      "company": "\u5723\u90a6\u5fae\u7535\u5b50\uff08\u5317\u4eac\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "圣邦微电子（北京）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.sg-micro.com/cnsales-office"
@@ -30,7 +30,7 @@
       "aliases": [
         "FOJAN"
       ],
-      "company": "\u5b89\u5fbd\u7701\u5bcc\u6377\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "安徽省富捷电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.fojan.cn/"
@@ -40,7 +40,7 @@
       "aliases": [
         "HCTL"
       ],
-      "company": "\u6df1\u5733\u5e02\u534e\u707f\u5929\u7984\u7535\u5b50\u6709\u9650\u516c\u53f8",
+      "company": "深圳市华灿天禄电子有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.hctldz.com/about-us/"
@@ -50,7 +50,7 @@
       "aliases": [
         "XINLUDA"
       ],
-      "company": "\u82af\u8def\u8fbe\u4fe1\u606f\u6280\u672f\uff08\u53a6\u95e8\uff09\u6709\u9650\u516c\u53f8",
+      "company": "芯路达信息技术（厦门）有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.xinluda.com/en/About-Us/"
@@ -60,7 +60,7 @@
       "aliases": [
         "CCTC"
       ],
-      "company": "\u6f6e\u5dde\u4e09\u73af\uff08\u96c6\u56e2\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "潮州三环（集团）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.cctc.cc/about.html"
@@ -70,7 +70,7 @@
       "aliases": [
         "QST (Shanghai QST)"
       ],
-      "company": "\u4e0a\u6d77\u77fd\u777f\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "上海矽睿科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.qstcorp.com/intro/"
@@ -80,7 +80,7 @@
       "aliases": [
         "Cellwise"
       ],
-      "company": "\u5e7f\u4e1c\u8d5b\u5fae\u5fae\u7535\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东赛微微电子股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://static.sse.com.cn/stock/disclosure/announcement/c/202203/000962_20220316_N2XP.pdf"
@@ -91,7 +91,7 @@
         "CJ",
         "JSCJ"
       ],
-      "company": "\u6c5f\u82cf\u957f\u6676\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "江苏长晶科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.jscj-elec.com/"
@@ -101,7 +101,7 @@
       "aliases": [
         "Shenzhen Nsiway Tech"
       ],
-      "company": "\u6df1\u5733\u5e02\u7eb3\u82af\u5a01\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "深圳市纳芯威科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.nsiway.com.cn/list_40/138.html"
@@ -111,7 +111,7 @@
       "aliases": [
         "Espressif"
       ],
-      "company": "\u4e50\u946b\u4fe1\u606f\u79d1\u6280\uff08\u4e0a\u6d77\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "乐鑫信息科技（上海）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.espressif.com/en/company/about-espressif"
@@ -121,7 +121,7 @@
       "aliases": [
         "Sunlord"
       ],
-      "company": "\u6df1\u5733\u987a\u7edc\u7535\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "深圳顺络电子股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.sunlordinc.com/"
@@ -131,7 +131,7 @@
       "aliases": [
         "HRE"
       ],
-      "company": "\u6c5f\u82cf\u82af\u58f0\u5fae\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8 / Jiangsu Holy Ram Electronics Technology Limited",
+      "company": "江苏芯声微电子科技有限公司 / Jiangsu Holy Ram Electronics Technology Limited",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.kes.org/eng/search/company_view.asp?admission=2026&user_no=6801",
@@ -142,7 +142,7 @@
       "aliases": [
         "Wuxi I-core Elec"
       ],
-      "company": "\u65e0\u9521\u4e2d\u5fae\u7231\u82af\u7535\u5b50\u6709\u9650\u516c\u53f8",
+      "company": "无锡中微爱芯电子有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.i-coreic.com/about-us"
@@ -152,7 +152,7 @@
       "aliases": [
         "Nanjing Shiheng Elec"
       ],
-      "company": "\u5357\u4eac\u65f6\u6052\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "南京时恒电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.shiheng.com.cn/products/mf55xl.html"
@@ -162,7 +162,7 @@
       "aliases": [
         "XKB Connection"
       ],
-      "company": "\u5e7f\u4e1c\u661f\u5764\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东星坤科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.helloxkb.com/home/search/tzzgl.html",
@@ -174,7 +174,7 @@
       "aliases": [
         "MUP"
       ],
-      "company": "\u6df1\u5733\u5e02\u5fb7\u6d77\u5a01\u5b9e\u4e1a\u6709\u9650\u516c\u53f8 / Shenzhen MUP Industrial Co., Ltd.",
+      "company": "深圳市德海威实业有限公司 / Shenzhen MUP Industrial Co., Ltd.",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.mupconnector.com/about/summary/"
@@ -184,7 +184,7 @@
       "aliases": [
         "LRC"
       ],
-      "company": "\u4e50\u5c71\u65e0\u7ebf\u7535\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "乐山无线电股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.lrc.cn/about/connect.html"
@@ -194,11 +194,41 @@
       "aliases": [
         "XUNPU"
       ],
-      "company": "\u4e1c\u839e\u5e02\u8baf\u666e\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "东莞市讯普电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.xunpu.com.cn/",
         "https://atta.szlcsc.com/upload/public/pdf/source/20240813/A78F94B574A12E0EF5650C3B7EED35AF.pdf"
+      ]
+    },
+    {
+      "aliases": [
+        "JSMSEMI"
+      ],
+      "company": "深圳市杰盛微半导体有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.jsmsemi.com/about/1.html"
+      ]
+    },
+    {
+      "aliases": [
+        "WAVE"
+      ],
+      "company": "深圳市兴威帆电子技术有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.whwave.com.cn/SD3078"
+      ]
+    },
+    {
+      "aliases": [
+        "KAMCAP"
+      ],
+      "company": "锦州凯美能源有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.kamcappower.com/"
       ]
     }
   ],
@@ -327,11 +357,11 @@
       "refs": [
         "C301"
       ],
-      "manufacturer": "Seiko Instruments",
-      "mpn": "CPH3225A",
-      "footprint": "panda-standard:CPH3225A_Polarized_Derived",
-      "library_id": "C6048128",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "KAMCAP",
+      "mpn": "SE-5R5-D105VYH",
+      "footprint": "panda-standard:KAMCAP_SE5R5_D105VYH",
+      "library_id": "C118887",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -569,7 +599,6 @@
     {
       "board": "Core-C1",
       "refs": [
-        "R303",
         "R510",
         "R511",
         "R512",
@@ -763,11 +792,11 @@
       "refs": [
         "U302"
       ],
-      "manufacturer": "Micro Crystal",
-      "mpn": "RV-3028-C7-32.768KHZ-1PPM-TA-QA",
-      "footprint": "Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm",
-      "library_id": "C3304278",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "WAVE",
+      "mpn": "SD3078",
+      "footprint": "panda-standard:WAVE_SD3078_SOP8_208mil",
+      "library_id": "C916255",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -964,11 +993,16 @@
       "refs": [
         "Q1"
       ],
-      "manufacturer": "Nexperia",
-      "mpn": "NX3008NBK,215",
-      "footprint": "Package_TO_SOT_SMD:SOT-23",
-      "library_id": "C179399",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "JSMSEMI",
+      "mpn": "NX3008NBK,215-JSM",
+      "footprint": "panda-r6-display:JSM_NX3008NBK_SOT23",
+      "library_id": "C53113911",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+        "https://www.jsmsemi.com/about/1.html"
+      ],
+      "note": "Native prototype ECO; exact primary pin numbers/lands reviewed. No physical qualification claim."
     },
     {
       "board": "Display-C1",
@@ -1103,82 +1137,6 @@
       "origin": "MAINLAND_MANUFACTURER"
     }
   ],
-  "remaining_redesigns": [
-    {
-      "board": "Core-C1",
-      "refs": [
-        "C301"
-      ],
-      "function": "RTC backup EDLC",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "FH5R5H104T-D009: 100mF/5uA leakage entry does not establish24h; not selected",
-        "No-charge mainland CR1220 plus reviewed isolation and holder: preferred architecture study, no assembly selected"
-      ],
-      "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking. Q&J C70381 family primary obtained but coverCR1220-2 vs final BS-12-B3AA004 SKU/material/plating coupling requires confirmation; locating holes and polarity must be reviewed. Hardware reverse-charge isolation and disabled-charge firmware required. Physical24h qualification occurs after prototypes.",
-      "source_urls": [
-        "https://www.sii.co.jp/en/me/datasheets/chip-type/cph3225a/",
-        "https://www.fhcomp.com/zh-cn/product_page/?code=011013&page=7",
-        "https://www.fhcomp.com/uploads/20251105/174307_%E7%BA%BD%E6%89%A3%E8%B6%85%E7%BA%A7%E7%94%B5%E5%AE%B9%E5%99%A8-Coin-type%20Supercapacitor%20Products%20Specification.zip",
-        "https://valbis.com/wp-content/uploads/2019/01/cr1220_eve.pdf",
-        "https://atta.szlcsc.com/upload/public/pdf/source/20240508/105D3BE3DF78AB74B6E639FC10A0C203.pdf"
-      ],
-      "foreign_retention_allowed": false,
-      "backup_requirement": {
-        "minimum_retention_hours": 24,
-        "confirmed_by": "User: \u4fdd\u630124\u5c0f\u65f6\u5c31\u884c\u4e86",
-        "confirmed_on": "2026-10-02",
-        "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
-        "event_input_required": false,
-        "physical_verification": "NOT_RUN",
-        "selected_backup_assembly": null,
-        "acceptance": "Duration >=24h with no RTC time loss at approved room/cold/hot and source-age conditions; no supply through debugger or signal pins."
-      },
-      "primary_specification_sha256": "1ae93ece3405ec51600a67af6bff1750c598fae383d50a7b6dff9886a9d16047"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "U302"
-      ],
-      "function": "Integrated-crystal RTC",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "WHWAVE SD3900, temperature grade and supply code not yet selected"
-      ],
-      "next_action": "SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. User retention target is24h. Native RTC_EVI connects only unused U302.8 and R303.2; external event capture is not required. R303 may be removed in a reviewed SD3900 ECO; preserve shared open-drain EXP_INT/GPIO4. Q14 includes24h isolated-main-supply retention at room/cold/hot; all remain NOT_RUN. SD3078B Rev2.0 also leaves maximum backup current absent and is not a solution to that missing guarantee. Public custom C9900195775 labels JLCPCB Assembly, not confirmed WHWAVE/temperature grade; exact identity required before verified mapping. Physical24h Q14 follows fabrication, not a pre-CAD requirement. See candidate-review and procurement questions.",
-      "source_urls": [
-        "https://www.whwave.com.cn/SD3078",
-        "https://www.whwave.com.cn/filedownload/3021773",
-        "https://jlcpcb.com/partdetail/JLCPCBAssembly-SD3900/C9900195775"
-      ],
-      "foreign_retention_allowed": false,
-      "primary_sha256": "ee59dba774d8854f2a4e7e6a41478d3ec6347a0551ade33635bdbb8c4df4cc8a"
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
-        "Q1"
-      ],
-      "function": "EPD boost N-MOSFET",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "JSM NX3008NBK,215-JSM/C53113911: electrical screen promising; physical pin drawing unresolved",
-        "WILLSEMI WNM3018-3/TR/C719462: weak continuous current/2.5V Rds; not selected",
-        "SNM3018W: no exact JLC ID confirmed"
-      ],
-      "next_action": "SSD1677 official reference uses Si1304BDL with Qg max2.7nC@4.5V and1.7nC@2.5V, so original0.68nC is not an absolute controller limit. JSM NX3008NBK,215-JSM has0.87nC max@4.5V but primary p1 explicitly Drain(Pin2,TAB),Source3 and p5 lacks numbered top view; current CAD1G2S3D. Obtain corrected/confirmed physical terminal drawing before selecting custom symbol/lands/routing. Then verify GDR drive, RESE peak, switching/thermal after prototypes. Same names from other makers are different identities.",
-      "source_urls": [
-        "https://www.jscj-elec.com/related/23180.html",
-        "https://assets.nexperia.com/documents/data-sheet/NX3008NBK.pdf",
-        "https://semiware.com/small-signal-mosfets/snm3018w/",
-        "https://semiware.com/uploads/datasheet/SNM3018W.pdf",
-        "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
-        "https://v4.cecdn.yun300.cn/100001_1909185148/SSD1677.pdf",
-        "https://www.vishay.com/docs/73480/si1304bd.pdf"
-      ],
-      "foreign_retention_allowed": false
-    }
-  ],
+  "remaining_redesigns": [],
   "classification_note": "Exact manufacturer/MPN/footprint/library-ID identities are pinned. New or changed identities fail closed until policy review; LCSC location and a renamed Manufacturer field do not prove origin."
 }

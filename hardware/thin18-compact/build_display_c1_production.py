@@ -143,11 +143,7 @@ if counts!={'drc':0,'open':0,'parity':0,'erc':0}: raise SystemExit(counts)
 (DST/'production-bom-resolution.json').write_text(json.dumps({
  'date':'2026-10-01','candidate':DST.name,'native_checks':counts,
  'domestic_changes':{'U1-U3':'SN74AUP2G17DCKR -> AIP74LVC2G17GC363.TR / Wuxi I-core / C3294722', 'later_eco':'See split-c1-domestic-eco.json for exact native substitutions'},
- 'retained_blocked':{
-  'J2':'Hirose FH12 retained: FPC geometry contract',
-  'Q1':'Nexperia NX3008 retained: mainland MOSFET VDS/Rds/Qg not qualified',
-  'L1':'Taiyo Yuden LSXNE3030 retained: domestic exact magnetic not qualified'
- },
+ 'qualification_pending':'Current domestic Q1/J2/L1 exact selections are replayed from split-c1-domestic-eco.json; physical EPD/fit tests remain NOT_RUN',
  'manufacturing_release':False
 },indent=2)+'\n')
 print(json.dumps({'patched_refs':len(parts),'native_checks':counts},indent=2))

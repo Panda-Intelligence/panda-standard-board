@@ -215,8 +215,9 @@
           "rtc_backup_time_valid_result",
           "rtc_backup_main_supply_isolated_result"
         ],
-        "test_setup": "Disconnect USB, main battery and debugger power. Prevent GPIO/I2C/INT backfeed. Verify main rails are unpowered. Log source initial state, backup current, temperatures, end voltage, time and oscillator/power-loss flags. R304 backup shunt is DNP.",
-        "corner_policy": "Approved limits must define temperature, cell shelf-age or minimum capacitor charge and allowed final backup voltage; no guaranteed corners are invented here."
+        "test_setup": "Disconnect USB,main battery,debugger;prevent GPIO/I2C/INT backfeed. R303/R304 removed. SD3078+C301 rechargeable cap,18H=0x82 every boot;precharge preliminary6h but measure initialVBAT>=3.15V. Log total backup current,temperatures,time/flags,end voltage. No primary cells on charged node.",
+        "corner_policy": "Approved limits must define temperature, cell shelf-age or minimum capacitor charge and allowed final backup voltage; no guaranteed corners are invented here.",
+        "prototype_engineering_targets": {"status": "NOT_MEASURED_NOT_APPROVED_LIMITS", "source": "SD3078+KAMCAP SE-5R5-D105VYH", "initial_voltage_min_v": 3.15, "ending_voltage_min_v": 2.3, "total_backup_node_current_max_target_ua": 2, "cap_nominal_f": 1, "conditional_minus25c_aged_effective_min_f": 0.28, "physical_result": "NOT_RUN", "approval_required": "Actual operating/temperature/age/charge/voltage limits after prototype evidence;do not widen cap -25..70C range"}
       }
     }
   ],

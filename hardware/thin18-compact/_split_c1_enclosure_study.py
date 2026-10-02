@@ -61,6 +61,7 @@ def openscad_study(inputs):
       'color([1,.6,.2,.25])slab(pack_rect,battery_top-pack_max[2]-swelling,swelling);',
       'color([.15,.15,.15])slab([-4.665,2.815,100.665,65.185],panel_back,panel_thickness);',
       'color([.6,.8,1,.10])translate([48-outer[0]/2,34-outer[1]/2,rear])cube(outer);',
-      '// Engineering shell box112x75x19; no fabrication or3D-print approval.',
+      '// Engineering shell box112x75x20; no fabrication or3D-print approval.',
+      'color([.7,.3,.2])translate([58.9,43.5,1.0])cylinder(h=6.0,d=19.2,$fn=80); // C301 max body plus0.2mm stand-off',
       '// Component/lead/FPC/tool/antenna/speaker solids and mount bosses omitted.',
       ''])

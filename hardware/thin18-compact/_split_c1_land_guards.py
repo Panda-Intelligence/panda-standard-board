@@ -47,3 +47,20 @@ def verify_20261002_lands(core,display):
     l=next(b for _,_,b in blocks(core,r'\(footprint\s') if property_value(b,'Reference')=='L402')
     if property_value(l,'MPN')!='MWSA0402S-1R0MT' or property_value(l,'LCSC')!='C408332':
         raise ValueError('L402 reviewed MT variant/code differs')
+
+    check(display,'Q1','NX3008NBK,215-JSM',(10,12,0),[
+        ('1',(-1.01,-.95),(.8,.6),'/GDR'),('2',(-1.01,.95),(.8,.6),'/BOOST_SW'),('3',(1.01,0),(.8,.6),'/RESE')])
+    from _split_c1_rtc_eco import PINS
+    rtc=[]
+    for n,(_,_,net) in PINS.items():
+        i=int(n);x=-3.65 if i<=4 else 3.65;y=round(-1.905+(i-1)*1.27 if i<=4 else 1.905-(i-5)*1.27,6)
+        rtc.append((n,(x,y),(2.0,.7),net))
+    check(core,'U302','SD3078',(73,27.5,0),rtc)
+    check(core,'C301','SE-5R5-D105VYH',(58.9,43.5,0),[
+        ('1',(-9.5,0),(2.4,2.0),'RTC_VBACKUP'),('2',(9.5,0),(2.4,2.0),'GND')])
+    cap=next(f for _,_,f in blocks(core,r'\(footprint\s') if property_value(f,'Reference')=='C301')
+    if '(attr through_hole)' not in cap or '(fp_text user "+"' not in cap:raise ValueError('C301 hand-solder attribute/polarity differs')
+    if any('thru_hole oval' not in p or '(drill oval 1.8 1.4)' not in p or '"F.Paste"' in p for _,_,p in blocks(cap,r'\(pad\s')):
+        raise ValueError('C301 reviewed plated slots differ')
+    refs={property_value(f,'Reference') for _,_,f in blocks(core,r'\(footprint\s')}
+    if refs&{'R303','R304'}:raise ValueError('Removed EVI/shunt parts reintroduced')

@@ -50,42 +50,64 @@
     "calculation_limit": "3A scenario is not a battery/copper operating approval;1.38MHz does not cover every unpublished temperature corner."
   },
   "RTC": {
-    "decision": "JOINT_ECO_PENDING_EXACT_BACKUP_ASSEMBLY_AND_GRADE",
-    "candidate": "WHWAVE SD3900",
-    "supply_candidate_url": "https://jlcpcb.com/partdetail/JLCPCBAssembly-SD3900/C9900195775",
-    "supply_limit": "Generic JLCPCB Assembly manufacturer label does not confirm WHWAVE identity or temperature grade. Do not map as verified.",
+    "decision": "APPLIED_PROTOTYPE_CAD_PHYSICAL_QUALIFICATION_NOT_RUN",
+    "manufacturer": "WAVE / 深圳市兴威帆电子技术有限公司",
+    "mpn": "SD3078",
+    "library_id": "C916255",
+    "primary_url": "https://www.whwave.com.cn/filedownload/3045413",
+    "primary_revision": "Rev4.4 July2026",
+    "primary_sha256": "a11cb8cfb0cca2e2f44d137f7d1cff6a0ba4d2e7c7211c9058fa967b95c9231c",
+    "pin_map": {
+      "1": "SCL",
+      "2": "F32K unused",
+      "3": "VDD",
+      "4": "NC",
+      "5": "VBAT",
+      "6": "GND",
+      "7": "INT EXP_INT",
+      "8": "SDA"
+    },
+    "backup": {
+      "manufacturer": "KAMCAP / 锦州凯美能源有限公司",
+      "mpn": "SE-5R5-D105VYH",
+      "library_id": "C118887",
+      "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
+      "primary_sha256": "6d92dd32a36495c143b8f52239bd25e68c7dab187ff1b00b9b4db54cdd689dbb",
+      "type": "rechargeable1F/5.5V horizontal THT, hand-solder after SMT",
+      "max_body_mm": {
+        "diameter": 19.2,
+        "height": 6.0
+      },
+      "nominal_lead_pitch_mm": 19,
+      "land_basis": "derived engineering plated slots1.8x1.4mm/lands2.4x2.0; actual marked positive terminal to pad1",
+      "stock_observed": 0,
+      "stock_reserved": false
+    },
+    "charge_register_18h": "0x82 every main-power boot; rechargeable capacitor only",
     "retention_requirement_hours": 24,
-    "candidate_holder": "Q&J CR1220-2 / C70381",
-    "holder_primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240508/105D3BE3DF78AB74B6E639FC10A0C203.pdf",
-    "holder_primary_sha256": "f34e3a99c3d5c459e2856c84146f4159be52682b128144c3881f7f090d593ed5",
-    "holder_limit": "CoverCR1220-2 but final sheet BS-12-B3AA004/QJ1220-2SMT. Exact housing/contact/plating SKU coupling, polarity and solder process need confirmation before library/CAD approval. Drawing includes locating holes.",
-    "planning_total_backup_current_ua": 10,
-    "planning_24h_charge_mah": 0.24,
-    "planning_usable_capacity_mah": 1,
-    "planning_margin": 4.166666666666667,
-    "planning_limit": "Targets only; usable capacity after diode drop and worst corner current not guaranteed. Q14 physical24h test follows fabrication, not a pre-CAD requirement."
+    "total_backup_node_current_target_ua": 2,
+    "precharge_voltage_acceptance_v": 3.15,
+    "minimum_rtc_operating_voltage_v": 2.3,
+    "effective_min_capacitance_room_aged_f": 0.56,
+    "effective_min_capacitance_minus25c_aged_f": 0.28,
+    "conditional_room_retention_h": 66.111111,
+    "conditional_minus25c_retention_h": 33.055556,
+    "planning_limit": "Conditional engineering budget only: RTC maximum current and cap leakage are not published;6h precharge is preliminary and actual start>=3.15V required. At4uA cold estimate16.53h fails. Cap -25..70C limits backup range; approved system/temperature/age conditions and all physical tests remain open. Firmware must be ported outside this repository."
   },
   "Display_Q1": {
-    "decision": "NO_SUBSTITUTION_APPROVED",
-    "official_reference_mos": "Si1304BDL",
-    "official_reference_url": "https://v4.cecdn.yun300.cn/100001_1909185148/SSD1677.pdf",
-    "reference_locator": "Rev1.0 p45 boost circuit",
-    "reference_mos_primary_url": "https://www.vishay.com/docs/73480/si1304bd.pdf",
-    "reference_mos_primary_sha256": "37f8cb39edac4ed352df2789586b8a89e83e68d8be16f970cf73911cf23ad1e8",
-    "reference_qg_max_nc_at4v5": 2.7,
-    "reference_qg_max_nc_at2v5": 1.7,
-    "comparison_limit": "Reference ID0.9A differs from candidate1A; gate-charge test points are not identical. Controller GDR drive current/frequency limits not provided.",
-    "candidate": "JSM NX3008NBK,215-JSM / C53113911",
-    "candidate_primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
-    "candidate_primary_sha256": "d4d132f44720b5387eedc5eb176bba85d7f8220798352be8429665c95b2e6cfd",
-    "electrical_screen": "30V;Rds0.6ohm max at2.5V/0.2A;Qg0.65typ/0.87nC max at4.5V/VDS15V/ID1A. Promising electrical screen, not a pin verification.",
-    "blocker": "p1 says Drain(Pin2,TAB),Source3; current board1G2S3D. p5 outline lacks numbered terminal view. Need manufacturer confirmed/corrected physical pin drawing; matching NX3008 name is not drop-in.",
-    "other_not_selected": [
-      "WILLSEMI WNM3018-3/TR:6ohm max at2.5V/10mA,steady0.2A25C/minimum pads;1A pulse<380us/<2pct duty.",
-      "JSM NX3008NBKW:1G2S3D but1.4ohm max at4.5V,no2.5V Rds guarantee.",
-      "HXY NX3008NBK-HXY:1G2D3S,Qg4.6nC typical/no max at4.5V,different die.",
-      "TECHPUBLIC NX3008NBK:Taiwan-domain manufacturer and5.2nC Qg max;mainland origin not confirmed."
-    ]
+    "decision": "APPLIED_PROTOTYPE_CAD_PHYSICAL_QUALIFICATION_NOT_RUN",
+    "manufacturer": "JSMSEMI",
+    "mpn": "NX3008NBK,215-JSM",
+    "library_id": "C53113911",
+    "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+    "primary_sha256": "d4d132f44720b5387eedc5eb176bba85d7f8220798352be8429665c95b2e6cfd",
+    "pin_map": {
+      "1": "G /GDR",
+      "2": "D /BOOST_SW",
+      "3": "S /RESE"
+    },
+    "land_basis": "primary p5 recommended0.8x0.6mm,pair1.9mm,row2.02mm",
+    "selection_limit": "30V;Rds max0.6ohm@2.5V/200mA;Qg max0.87nC@4.5V/15V/1A. Prototype primary pin function diagram sufficient for CAD; actual marked sample polarity/GDR/RESE/thermal after fabrication."
   },
   "load_switch": {
     "exact_mpn": "SGM2578SDYG/TR",

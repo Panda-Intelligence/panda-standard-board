@@ -27,15 +27,15 @@ Both packages contain generic BOM/CPL, Gerbers, separate PTH/NPTH drills,
 CRC-checked Gerber ZIP, JLC BOM/CPL, assembly-sourcing CSV, native check reports,
 production manifest, board release-candidate record and SHA256SUMS.
 Blank LCSC IDs remain explicit MPN/consigned-part sourcing tasks:
-Core has 6 SMT refs requiring mapping/consignment and 1 manual assembly item;
-Display has 1 ref requiring mapping/consignment. The follow-up added 34 reviewed
-exact-part mappings with source URLs; see SPLIT-C1-MECHANICAL-SOURCING.md. These are not claimed as
-automatic JLC library matches.
+Core has6 SMT refs requiring exact mapping/consignment,plus2 manual items
+(C301 on-board hand-solder and TH301 offboard);Display has0 missing IDs.
+Current155-ref domestic identity audit is complete;actual PCBA supply/acceptance
+is not. See SPLIT-C1-PROCUREMENT-QUESTIONS.md and split-c1-smt-consignment.json.
 
 ## Electrical and mechanical interface
 
-Core J601 is Hirose DF40C-60DS-0.4V(58), B.Cu, 0°, center (61,62) mm.
-Display J1 is DF40C-60DP-0.4V(51), B.Cu, 0°, center (23,4) mm.
+Core J601 is HCTL HC-PBB40C-60DS-0.4V-1.5-02, B.Cu, 0°, center (61,62) mm.
+Display J1 is HCTL HC-PBB40C-60DP-0.4V-02, B.Cu, 0°, center (23,4) mm.
 The socket orientation was corrected from the exploratory 180° placement.
 
 All 60 pins are verified against both PCB pads and schematic netlists:

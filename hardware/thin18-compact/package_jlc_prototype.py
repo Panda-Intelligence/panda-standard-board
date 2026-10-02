@@ -112,7 +112,7 @@ def main():
     domestic=json.loads((ROOT/'split-c1-domestic-audit.json').read_text());verify_fresh(domestic)
     core=ROOT/BOARDS[0][1]/BOARDS[0][3]
     text=core.read_text()
-    cap=verify_land(text,"C301",(1.3,1.3),1.1)
+    cap=verify_land(text,"C301",(2.4,2.0),9.5)
     capnets={re.match(r'\(pad\s+"(\d+)"',p).group(1): re.search(r'\(net\s+"([^"]+)"',p).group(1) for _,_,p in blocks(cap,r"\(pad\s")}
     if capnets!={"1":"RTC_VBACKUP","2":"GND"} or '(fp_text user "+"' not in cap: raise ValueError("EDLC polarity missing or reversed")
     verify_land(text,"L401",(1.5,2.5),1.85)
@@ -200,13 +200,15 @@ def main():
                          assembly_order_released=False,assembly_request_ready=False,
                          all_domestic_bom_complete=domestic["all_domestic_bom_complete"],
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
-                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 derived land and terminal-positive mounting review"])
+                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 hand-solder after SMT, exact H SKU, plated slots, marked positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
                  "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
                  "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json",
                  "split-c1-candidate-review.json","split-c1-microsd-layout.json",
+                 "split-c1-rtc-layout.json","split-c1-mos-layout.json","SPLIT-C1-RTC-FIRMWARE.md",
+                 "split-c1-smt-consignment.json",
                  "SPLIT-C1-PROCUREMENT-QUESTIONS.md"]:
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")

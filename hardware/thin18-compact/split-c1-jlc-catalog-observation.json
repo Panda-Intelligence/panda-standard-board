@@ -28,7 +28,7 @@
           "componentCode": "C55274065",
           "componentModelEn": "SGM05HU1ALXUGY2G/TR",
           "componentBrandEn": "SGMICRO",
-          "componentSpecificationEn": "UTDFN-1\u00d70.6-2BL",
+          "componentSpecificationEn": "UTDFN-1×0.6-2BL",
           "stockCount": 0,
           "allowPostFlag": true,
           "assemblyComponentFlag": false,
@@ -222,7 +222,7 @@
           "componentCode": "C2880917",
           "componentModelEn": "X05A10L24G",
           "componentBrandEn": "XKB Connection",
-          "componentSpecificationEn": "SMD,P=0.5mm,Surface Mount\uff0cRight Angle",
+          "componentSpecificationEn": "SMD,P=0.5mm,Surface Mount，Right Angle",
           "stockCount": 3736,
           "allowPostFlag": true,
           "assemblyComponentFlag": false,
@@ -264,7 +264,7 @@
           "componentCode": "C2845705",
           "componentModelEn": "HC-HY-2AWT",
           "componentBrandEn": "HCTL",
-          "componentSpecificationEn": "SMD,P=2mm,Surface Mount\uff0cRight Angle",
+          "componentSpecificationEn": "SMD,P=2mm,Surface Mount，Right Angle",
           "stockCount": 2050,
           "allowPostFlag": true,
           "assemblyComponentFlag": false,
@@ -364,6 +364,282 @@
         }
       ],
       "note": "Focused exact-model rows only; remaining candidates are not silently approved."
+    },
+    {
+      "keyword": "SD3078",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 1,
+      "response_sha256": "cc2e90f2de766c367940fedcb9ca47961feaf37eac23e30dabcfc449d998dae8",
+      "rows": [
+        {
+          "componentCode": "C916255",
+          "componentModelEn": "SD3078",
+          "componentBrandEn": "WAVE",
+          "componentSpecificationEn": "SOP-8-208mil",
+          "stockCount": 4674,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://datasheet.lcsc.com/lcsc/2205310930_WAVE-SD3078_C916255.pdf",
+          "urlSuffix": "WAVE-SD3078/C916255"
+        }
+      ]
+    },
+    {
+      "keyword": "NX3008NBK",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 19,
+      "response_sha256": "c4108152583517c340c7175e69de37fd40091595a64dffdadb3c4d4fa0f161f0",
+      "rows": [
+        {
+          "componentCode": "C179399",
+          "componentModelEn": "NX3008NBK,215",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 45922,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407241027_Nexperia-NX3008NBK-215_C179399.pdf",
+          "urlSuffix": "Nexperia-NX3008NBK215/C179399"
+        },
+        {
+          "componentCode": "C282548",
+          "componentModelEn": "NX3008NBKW,115",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "SC-70",
+          "stockCount": 9655,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2410010101_Nexperia-NX3008NBKW-115_C282548.pdf",
+          "urlSuffix": "Nexperia-NX3008NBKW115/C282548"
+        },
+        {
+          "componentCode": "C396098",
+          "componentModelEn": "NX3008NBKS,115",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "TSSOP-6(SOT-363)",
+          "stockCount": 4451,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407241028_Nexperia-NX3008NBKS-115_C396098.pdf",
+          "urlSuffix": "Nexperia-NX3008NBKS115/C396098"
+        },
+        {
+          "componentCode": "C551597",
+          "componentModelEn": "NX3008NBKMB,315",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "DFN-3(1x0.6)",
+          "stockCount": 9992,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2006101341_Nexperia-NX3008NBKMB-315_C551597.pdf",
+          "urlSuffix": "Nexperia-NX3008NBKMB315/C551597"
+        },
+        {
+          "componentCode": "C551598",
+          "componentModelEn": "NX3008NBKSH",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "TSSOP-6-1.3mm",
+          "stockCount": 65,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407250958_Nexperia-NX3008NBKSH_C551598.pdf",
+          "urlSuffix": "Nexperia-NX3008NBKSH/C551598"
+        },
+        {
+          "componentCode": "C551599",
+          "componentModelEn": "NX3008NBKV,115",
+          "componentBrandEn": "Nexperia",
+          "componentSpecificationEn": "SOT-666",
+          "stockCount": 1,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407250958_Nexperia-NX3008NBKV-115_C551599.pdf",
+          "urlSuffix": "Nexperia-NX3008NBKV115/C551599"
+        },
+        {
+          "componentCode": "C6285734",
+          "componentModelEn": "NX3008NBK-HXY",
+          "componentBrandEn": "HXY MOSFET",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 4490,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2309151201_HXY-MOSFET-NX3008NBK-HXY_C6285734.pdf",
+          "urlSuffix": "HXYMOSFET-NX3008NBKHXY/C6285734"
+        },
+        {
+          "componentCode": "C22358687",
+          "componentModelEn": "NX3008NBK",
+          "componentBrandEn": "TECH PUBLIC",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 6281,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2403131446_TECH-PUBLIC-NX3008NBK_C22358687.pdf",
+          "urlSuffix": "TECHPUBLIC-NX3008NBK/C22358687"
+        },
+        {
+          "componentCode": "C28646359",
+          "componentModelEn": "NX3008NBKMB",
+          "componentBrandEn": "TECH PUBLIC",
+          "componentSpecificationEn": "DFN-3L(1x0.6)",
+          "stockCount": 5502,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "TECHPUBLIC-NX3008NBKMB/C28646359"
+        },
+        {
+          "componentCode": "C52148513",
+          "componentModelEn": "NX3008NBK-VB",
+          "componentBrandEn": "VBsemi Elec",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 10,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "VBsemiElec-NX3008NBKVB/C52148513"
+        },
+        {
+          "componentCode": "C20755169",
+          "componentModelEn": "NX3008NBKW-VB",
+          "componentBrandEn": "VBsemi Elec",
+          "componentSpecificationEn": "SOT-323(SC-70)",
+          "stockCount": 30,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2408141035_VBsemi-Elec-NX3008NBKW-VB_C20755169.pdf",
+          "urlSuffix": "VBsemiElec-NX3008NBKWVB/C20755169"
+        },
+        {
+          "componentCode": "C47117546",
+          "componentModelEn": "NX3008NBKW-TP",
+          "componentBrandEn": "TECH PUBLIC",
+          "componentSpecificationEn": "SOT-323",
+          "stockCount": 3014,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2504151445_TECH-PUBLIC-NX3008NBKW-TP_C47117546.pdf",
+          "urlSuffix": "TECHPUBLIC-NX3008NBKWTP/C47117546"
+        },
+        {
+          "componentCode": "C48543207",
+          "componentModelEn": "NX3008NBKS-TP",
+          "componentBrandEn": "TECH PUBLIC",
+          "componentSpecificationEn": "SOT-363",
+          "stockCount": 3905,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2504251720_TECH-PUBLIC-NX3008NBKS-TP_C48543207.pdf",
+          "urlSuffix": "TECHPUBLIC-NX3008NBKSTP/C48543207"
+        },
+        {
+          "componentCode": "C55315443",
+          "componentModelEn": "NX3008NBKMB-MS",
+          "componentBrandEn": "MSKSEMI",
+          "componentSpecificationEn": "DFN-3(0.6x1)",
+          "stockCount": 6000,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "MSKSEMI-NX3008NBKMBMS/C55315443"
+        },
+        {
+          "componentCode": "C49108760",
+          "componentModelEn": "NX3008NBK,215(ES)",
+          "componentBrandEn": "ElecSuper",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 1,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "",
+          "urlSuffix": "ElecSuper-NX3008NBK_215_ES/C49108760"
+        },
+        {
+          "componentCode": "C53113911",
+          "componentModelEn": "NX3008NBK,215-JSM",
+          "componentBrandEn": "JSMSEMI",
+          "componentSpecificationEn": "SOT-23",
+          "stockCount": 2306,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "JSMSEMI-NX3008NBK_215JSM/C53113911"
+        },
+        {
+          "componentCode": "C53113947",
+          "componentModelEn": "NX3008NBKW,115-JSM",
+          "componentBrandEn": "JSMSEMI",
+          "componentSpecificationEn": "SOT-323",
+          "stockCount": 3328,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "JSMSEMI-NX3008NBKW_115JSM/C53113947"
+        },
+        {
+          "componentCode": "C53114156",
+          "componentModelEn": "NX3008NBKS,115-JSM",
+          "componentBrandEn": "JSMSEMI",
+          "componentSpecificationEn": "SOT-363",
+          "stockCount": 2872,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "JSMSEMI-NX3008NBKS_115JSM/C53114156"
+        },
+        {
+          "componentCode": "C53199118",
+          "componentModelEn": "NX3008NBKW,115(ES)",
+          "componentBrandEn": "ElecSuper",
+          "componentSpecificationEn": "SOT-323",
+          "stockCount": 2679,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "ElecSuper-NX3008NBKW_115_ES/C53199118"
+        }
+      ]
+    },
+    {
+      "keyword": "SGM62125A",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "92354fd43343e5829d09b0a65dda98736b3a00ee75ddae33c3e19f540c802316",
+      "rows": []
+    },
+    {
+      "keyword": "SGM37601",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "fc17339868603610f99acd77c60f69d57195201d17464ccf3ebf403fe45319a7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM2575S",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "32bb96fbb3392239d929298ad1692d4661071a13484c0768bdcc6f97ad2e3ba4",
+      "rows": []
+    },
+    {
+      "keyword": "SE-5R5-D105VYH",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "d4eacfb70164b6b3bd72553d3de68c5fffdee608d38fbdea51bb443956a8a3d5",
+      "rows": []
     }
   ],
   "negative_result_limit": "Zero results means not returned by this public query on this date, not a manufacturer discontinuation or proof that no other regional/my-parts route exists."
