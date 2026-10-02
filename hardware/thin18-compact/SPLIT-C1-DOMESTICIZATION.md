@@ -78,7 +78,7 @@
 | Core-C1 | D201 | USB D+/D-/CC ESD | Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. |
 | Core-C1 | J301 | Battery power connector | Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. |
 | Core-C1 | J501 | MicroSD socket with detect | Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD. |
-| Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. |
+| Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required for user-confirmed >=24h isolated RTC backup. Native EVI is unused, R304 is DNP; preserve shared EXP_INT and use100kHz at3.3V. No RV3028-compatible pin/register/drop-in claim; select exact backup assembly/grade and review charging policy/lands/supply before ECO. See C4D8-RTC-DECISION.md. |
 | Display-C1 | J2 | 24-pin panel FPC | Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph. |
 | Display-C1 | Q1 | EPD boost N-MOSFET | Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. |
 
@@ -86,7 +86,7 @@
 
 ## 供料及下单状态
 
-当前 SMT 精确 C 码：Core 111/118，Display 36/37。未确认8个：Core D202、L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
+当前 SMT 精确 C 码：Core 110/118，Display 36/37。未确认9个：Core D202、L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
 
 SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余7项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
 
