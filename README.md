@@ -2,6 +2,13 @@
 
 Open hardware design sources and engineering documentation for the **Panda Standard Board**, maintained by Panda Intelligence.
 
+## Active compact product work
+
+The compact product now targets **112 x 75 x 7.0 mm** with two PCBs.
+See [Thin7 redesign](hardware/thin18-compact/thin7/THIN7-REDESIGN.md).
+Its mechanical outlines require electronic relayout and part qualification;
+current Split-C1 routed CAD does not meet 7 mm and is not a factory release.
+
 ## Current hardware baseline
 
 The current published engineering baseline is:

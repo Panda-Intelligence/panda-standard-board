@@ -1,0 +1,93 @@
+{
+  "schema": "panda-thin7-audit-v1",
+  "outer_xyz_mm": [
+    112.0,
+    75.0,
+    7.0
+  ],
+  "board_count": 2,
+  "partition_xy_passed": true,
+  "parameterized_stack_passed": true,
+  "battery_section_mm": 7.0,
+  "boards": {
+    "Core-Thin7": {
+      "bounding_size_mm": [
+        99,
+        30
+      ],
+      "area_mm2": 2055.0,
+      "component_top_mm": 3.9,
+      "panel_gap_before_adhesive_mm": 0.7
+    },
+    "Display-Thin7": {
+      "bounding_size_mm": [
+        45.0,
+        36
+      ],
+      "area_mm2": 1620.0,
+      "component_top_mm": 3.9,
+      "panel_gap_before_adhesive_mm": 0.7
+    }
+  },
+  "battery_top_with_swelling_mm": 4.3,
+  "native_design_blockers": [
+    {
+      "ref": "C301",
+      "mpn": "SE-5R5-D105VYH3C",
+      "published_body_height_mm": 6.5,
+      "thin7_mounted_ceiling_mm": 2.4,
+      "required_action": "replace, not compress",
+      "height_basis": "Primary overall H maximum6.5mm plus separate0.2mm mounting allowance; PCB/case fit NOT_RUN"
+    },
+    {
+      "ref": "U501",
+      "mpn": "ESP32-S3-WROOM-1U-N16R8",
+      "published_body_height_mm": 3.2,
+      "thin7_mounted_ceiling_mm": 2.4,
+      "required_action": "replace, not compress",
+      "height_basis": "published module height; solder/mount maximum tolerance not signed off"
+    },
+    {
+      "ref": "J301",
+      "mpn": "HC-HY-2AWT",
+      "published_body_height_mm": 5.5,
+      "thin7_mounted_ceiling_mm": 2.4,
+      "required_action": "replace, not compress",
+      "height_basis": "Bare-body drawing/general tolerance budget5.5mm; mounted solder/mate/wire bend not verified"
+    },
+    {
+      "ref": "J302",
+      "mpn": "HC-1.0-3PWT",
+      "published_body_height_mm": 3.2,
+      "thin7_mounted_ceiling_mm": 2.4,
+      "required_action": "replace, not compress",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "ref": "J502",
+      "mpn": "HC-1.0-2PWT",
+      "published_body_height_mm": 3.2,
+      "thin7_mounted_ceiling_mm": 2.4,
+      "required_action": "replace, not compress",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "ref": "J601/J1",
+      "required_action": "replace native 1.5mm stacked interconnect with qualified coplanar flex"
+    },
+    {
+      "ref": "Core-C1",
+      "required_action": "96x68 native outline overlaps battery/Display regions; re-place and re-route"
+    },
+    {
+      "ref": "main battery",
+      "required_action": "legacy 5.5mm pack input exceeds Thin7 whole-pack ceiling 3.1mm"
+    }
+  ],
+  "native_thin7_ready": false,
+  "manufacturing_release": false,
+  "supplier_or_physical_fit_verified": false,
+  "basis": "Requirements/envelope calculation only. Blank KiCad outlines and render are not routed PCBs or accepted supply.",
+  "contract_sha256": "156a7b9720ae8de30d59eaa326aae36ebc3382596f8599c04762c5b943811263",
+  "legacy_inputs_sha256": "18a7ef8149b1e418836cce253c21c4964fc6667259d9b33b7b66c947e2b18d27"
+}

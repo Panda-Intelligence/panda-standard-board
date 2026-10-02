@@ -286,6 +286,12 @@ def audit(inputs_path):
         if intersection(expanded,r):raise ValueError('Side battery intersects J503 body clearance screen')
         study['j503_body_xy_clearance_screen_passed']=True
         study['j503_mated_cable_envelope_verified']=False
+    report["product_requirements"] = inputs.get("product_requirements")
+    if inputs.get("product_requirements", {}).get("outer_thickness_target_mm") == 7.0:
+        report["legacy_native_stack_analysis"] = True
+        report["native_design_meets_current_thickness"] = False
+        report["current_mechanical_authority"] = "thin7/thin7-mechanical-contract.json"
+        report["battery_proposal"] = "SUPERSEDED: old native stacked layout is incompatible with Thin7; see current coplanar redesign contract."
     return report
 
 def main():

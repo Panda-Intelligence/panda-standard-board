@@ -1,0 +1,254 @@
+{
+  "schema": "panda-thin7-mechanical-contract-v1",
+  "status": "MECHANICAL_PARTITION_NOT_ROUTED_OR_RELEASED",
+  "requested_outer_thickness_mm": 7.0,
+  "outer_xyz_mm": [
+    112.0,
+    75.0,
+    7.0
+  ],
+  "coordinate_system": "case origin at rear lower XY corner; front +Z; mm",
+  "board_count": 2,
+  "architecture": "coplanar_core_display_and_battery_below_recessed_panel",
+  "panel": {
+    "mpn": "GDEQ0426T82-FT01C",
+    "rect_xyxy_mm": [
+      3.335,
+      2.0,
+      108.665,
+      64.37
+    ],
+    "nominal_thickness_mm": 1.98,
+    "thickness_budget_mm": 2.2,
+    "z_bottom_mm": 4.6,
+    "front_recess_mm": 0.2,
+    "active_area_mm": [
+      92.8,
+      55.68
+    ],
+    "supplier_maximum_and_fpc_pose_verified": false,
+    "front_bezel_overlaps_border_only": true,
+    "extra_front_cover_included": false,
+    "source": "C2-DISPLAY-FREEZE.md"
+  },
+  "boards": {
+    "Core-Thin7": {
+      "outline_xy_mm": [
+        [
+          5,
+          57
+        ],
+        [
+          66,
+          57
+        ],
+        [
+          66,
+          42
+        ],
+        [
+          104,
+          42
+        ],
+        [
+          104,
+          72
+        ],
+        [
+          5,
+          72
+        ]
+      ],
+      "partition_rects_xyxy_mm": [
+        [
+          5,
+          57,
+          104,
+          72
+        ],
+        [
+          66,
+          42,
+          104,
+          57
+        ]
+      ],
+      "thickness_mm": 0.8,
+      "copper_layers": 4,
+      "z_bottom_mm": 0.7,
+      "component_side": "front_only",
+      "maximum_mounted_component_height_mm": 2.4,
+      "status": "OUTLINE_TEMPLATE_NO_COMPONENTS_OR_COPPER"
+    },
+    "Display-Thin7": {
+      "outline_xy_mm": [
+        [
+          65.9,
+          4
+        ],
+        [
+          110.9,
+          4
+        ],
+        [
+          110.9,
+          40
+        ],
+        [
+          65.9,
+          40
+        ]
+      ],
+      "partition_rects_xyxy_mm": [
+        [
+          65.9,
+          4,
+          110.9,
+          40
+        ]
+      ],
+      "thickness_mm": 0.8,
+      "copper_layers": 2,
+      "z_bottom_mm": 0.7,
+      "component_side": "front_only",
+      "maximum_mounted_component_height_mm": 2.4,
+      "status": "OUTLINE_TEMPLATE_J1_REPLACEMENT_AND_REROUTE_REQUIRED"
+    }
+  },
+  "battery": {
+    "rect_xyxy_mm": [
+      3,
+      3,
+      65,
+      54
+    ],
+    "maximum_complete_pack_xyz_mm": [
+      62,
+      51,
+      3.1
+    ],
+    "maximum_is_design_requirement_not_supplier_evidence": true,
+    "z_bottom_mm": 0.7,
+    "swelling_allowance_mm": 0.5,
+    "swelling_allowance_supplier_approved": false,
+    "nominal_capacity_target_mah": 1100,
+    "minimum_capacity_target_mah": 900,
+    "selected_mpn": null,
+    "minimum_continuous_current_target_a": 1.5,
+    "minimum_peak_current_target_a": 3.0,
+    "peak_duration_s": 3,
+    "prototype_charge_ceiling_a": 0.45,
+    "origin": "cell, PCM, NTC, leads and any connector require mainland identity",
+    "lead_exit": "toward Core bottom strip; folded harness stays outside cell footprint",
+    "candidate_screen": {
+      "manufacturer": "DNK Power",
+      "model": "LP305060",
+      "published_nominal_capacity_mah": 1000,
+      "published_nominal_pack_xyz_mm": [
+        62,
+        50,
+        3
+      ],
+      "published_continuous_current_a": 1,
+      "published_peak_current_a": 2,
+      "supplier_maximum_dimensions_known": false,
+      "meets_capacity_target": false,
+      "meets_current_contract": false,
+      "selected": false,
+      "source_url": "https://www.dnkpower.com/products/305060-3-7v-1000mah-lithium-polymer-battery/",
+      "checked_on": "2026-10-02"
+    }
+  },
+  "interconnect": {
+    "architecture": "60-contact flexible link; exact connectors and flex not selected",
+    "keepout_rect_xyxy_mm": [
+      67,
+      36,
+      103,
+      46
+    ],
+    "flex_nominal_thickness_budget_mm": 0.3,
+    "maximum_closed_connector_height_budget_mm": 1.1,
+    "preserve_all_60_native_interface_contacts": true,
+    "electrical_mapping_and_mechanical_bends_verified": false
+  },
+  "z_budget_mm": {
+    "rear_wall": 0.55,
+    "battery_insulation": 0.15,
+    "maximum_complete_pack": 3.1,
+    "battery_swelling": 0.5,
+    "battery_to_panel_clearance_and_reserve": 0.15,
+    "panel_adhesive": 0.15,
+    "panel_thickness": 2.2,
+    "panel_front_recess": 0.2
+  },
+  "required_ecos": [
+    {
+      "refs": [
+        "C301",
+        "U301"
+      ],
+      "action": "Replace 6.5mm H3C supercapacitor with qualified thin RTC backup assembly <=2.4mm mounted. Retain isolated >=24h RTC goal; charger and cell chemistry need circuit/firmware review.",
+      "implemented": false
+    },
+    {
+      "refs": [
+        "U501"
+      ],
+      "action": "Bare ESP32-S3R8 plus domestic external 16MB flash, crystal, RF network/antenna. Preserve 8MB PSRAM and existing GPIO contract. PICO N8 is not a 16MB replacement.",
+      "implemented": false,
+      "candidate_source_url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf"
+    },
+    {
+      "refs": [
+        "J301",
+        "J302",
+        "J502"
+      ],
+      "action": "Replace tall wire housings with qualified low-profile mainland connectors or supplier-terminated solder harness; include strain relief and service access.",
+      "implemented": false
+    },
+    {
+      "refs": [
+        "J601",
+        "J1"
+      ],
+      "action": "Replace stacked 1.5mm board pair with 60-contact flex; preserve each net and power/ground contact, current capacity and SI contract.",
+      "implemented": false
+    },
+    {
+      "refs": [
+        "J201",
+        "J501"
+      ],
+      "action": "Relocate USB to bottom bezel outside panel XY or use qualified mid-mount USB. Retain microSD service access and full card/plug envelope.",
+      "implemented": false
+    },
+    {
+      "refs": [
+        "Core-C1",
+        "Display-C1"
+      ],
+      "action": "Re-place and re-route in Thin7 outlines; retain feature set and all-mainland populated BOM. Four-layer Core and two-layer Display remain two separate PCBs.",
+      "implemented": false
+    }
+  ],
+  "preserved_requirements": {
+    "rtc_isolated_retention_hours": 24,
+    "main_reading_runtime_hours": null,
+    "flash_mb": 16,
+    "psram_mb": 8,
+    "all_populated_components_mainland": true,
+    "screen_frontlight_touch_audio_imu_microsd": true,
+    "no_physical_prototypes_exist": true
+  },
+  "release_evidence": {
+    "native_ecad_rebuilt_and_routed": false,
+    "native_erc_drc_open_parity_verified": false,
+    "complete_supplier_solids_and_tolerances_verified": false,
+    "exact_battery_capacity_current_and_pack_envelope_verified": false,
+    "all_mainland_supply_accepted": false,
+    "fpc_usb_sd_antenna_speaker_harness_supports_verified": false,
+    "manufacturing_release": false
+  }
+}

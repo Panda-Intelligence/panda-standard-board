@@ -1,6 +1,17 @@
 # Thin18 Compact EVT
 
-## Current authoritative state — Split-C1 (2026-10-02)
+## Current product requirement — Thin7 (2026-10-02)
+
+The user requires about **7 mm whole-device thickness**. The previous 21 mm
+side-pack study is superseded. See [Thin7 redesign](thin7/THIN7-REDESIGN.md)
+and the dimensioned contract. The two routed Split-C1 boards below remain
+electrical references; they do **not** satisfy the new mechanical requirement.
+Thin7 contains two empty mechanical outline templates, not routed PCBs.
+`release_split_c1.py` now rejects the incompatible native CAD before creating
+new factory packages. Core relayout, high-part ECOs and battery qualification
+are still required.
+
+## Current native electrical reference — Split-C1 (2026-10-02)
 
 The current PCB authorities are core-c1-96x68-split and
 display-c1-45x36-production-bom. The Core is 96 x 68 mm / four copper layers;
@@ -28,8 +39,10 @@ See SPLIT-C1-DOMESTICIZATION.md and JLC-PROTOTYPE-HANDOFF.md for current
 decisions. RTC >=24h isolated backup is a pending prototype validation,
 with a2uA total-node engineering target and measured start>=3.15V/end>=2.3V.
 Firmware port is required;Q04-Q14 remainNOT_RUN because no board exists.
-The two-board side-pack space study is112x75x21mm,calculated thickness20.5mm;pack complete max input
-54x36x5.5mm. No exact pack/enclosure is frozen or physical fit claimed.
+The historical two-board side-pack study was112x75x21mm (20.5mm budget)
+and is rejected for the Thin7 product. Thin7 targets112x75x7.0mm with a
+62x51x3.1mm complete-pack maximum requirement. Exact pack/supplier dimensions
+and the new PCB layout are not qualified; no physical fit is claimed.
 X4 Pro1100mAh/5.95mm remains a reference. Manufacturing release remains false.
 Older C0/C2/C4D notes below are historical and do not override Split-C1.
 

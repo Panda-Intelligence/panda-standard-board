@@ -1,3 +1,10 @@
+# Thin7 thickness gate — current PCB must be redesigned
+
+User requires about 7 mm whole-device thickness. The routed Split-C1 CAD
+and earlier 21 mm study do not meet it. Read thin7/THIN7-REDESIGN.md before
+any fabrication; its blank outline templates are not fabrication inputs.
+Previously generated packages are superseded for this product requirement.
+
 # Split-C1 嘉立创原型打样交接
 2026-10-02。Core-C1+Display-C1两板，没有真实样板；本包是台架EVT原型资料，不是量产放行。
 
