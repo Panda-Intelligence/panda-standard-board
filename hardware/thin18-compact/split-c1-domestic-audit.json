@@ -5,35 +5,35 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "d7a58d784c033f3e90fdaec3f1fdfc83828fe4d764c35968ca4abbcdea68509e"
+      "sha256": "6cee0524da67c5ec1d09d1f2542883d8e4034d1711583f42167fc900776421e8"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "7ea5f66abdf2a0095983e353fc668eea7983f45b1ce97d7a976f42fcfce3f330"
+      "sha256": "743e9ba49233b6259759c8c44be2b1898e9ad8311139c494d68e58c0e8dd38c6"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8"
+      "sha256": "17794450f9343003ee9a64ab8e7c278a11d7facd4d5163aa83e2ba06d9443c5a"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "35864dfde7e731a5d7805577723b77029dedc56ed2816961b95966fc21c6f8f8"
+      "sha256": "8a105fa2a4e0747c2a0fc7e0fa1907c2fe1d434c190cf949c41cb564d2a6dc27"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "8ffe8b2a84ae1a570963369e02afda52f0137da704c39117ba7855cc955c6116"
+      "sha256": "97baebc884b5f8a397e26704d71ba91e709fee7f8db9d72d5b04822ca2d89d46"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
-      "sha256": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
+      "sha256": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
     },
     "Display-C1/bom": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
-      "sha256": "780875f8e979880bfd4aea1560cce40409984da81f38e1219e4f8cfe154ae995"
+      "sha256": "836becbb8ea16c6b46db9b6518bdff97033f018b799398c8b11dbd236813b51f"
     },
     "Display-C1/cpl": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
-      "sha256": "0274098b777d95c74aca676772e5a2f464d7bcce8cff221a340b31253fe78324"
+      "sha256": "b0f535a8722205bfe765a5b759affa24506cc682988c5d99f5ff3b9dbf106863"
     }
   },
   "boards": {
@@ -43,20 +43,14 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 104,
+      "domestic_refs": 110,
       "foreign_refs": [
         "C301",
         "D201",
         "D202",
         "J201",
         "J301",
-        "J302",
         "J501",
-        "J502",
-        "J803",
-        "J804",
-        "L401",
-        "L402",
         "SW201",
         "SW202",
         "U302"
@@ -77,10 +71,9 @@
       "populated_refs": 37,
       "smt_refs": 37,
       "manual_or_offboard_refs": [],
-      "domestic_refs": 34,
+      "domestic_refs": 35,
       "foreign_refs": [
         "J2",
-        "L1",
         "Q1"
       ],
       "unreviewed_refs": [],
@@ -91,8 +84,8 @@
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 138,
-  "foreign_ref_count": 18,
+  "domestic_refs": 145,
+  "foreign_ref_count": 11,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -133,7 +126,7 @@
       "footprint": "panda-layout:USB4500_08mm_MidMount_LayoutReview",
       "library_id": "C5354966",
       "assembly": "SMT",
-      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker."
+      "next_action": "Exact HCTL0.8mm midmount primary drawing obtained; signal-row datum is7.10mm behind front edge, not6.77mm. Review complete cutout/corner tolerance and shell stakes; resolve0.2mm fabrication copper-edge clearance by proper connector/cutout redesign, not rule exception."
     },
     {
       "board": "Core-C1",
@@ -147,16 +140,6 @@
     },
     {
       "board": "Core-C1",
-      "ref": "J302",
-      "manufacturer": "JST",
-      "mpn": "SM03B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
-      "library_id": "C160403",
-      "assembly": "SMT",
-      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance."
-    },
-    {
-      "board": "Core-C1",
       "ref": "J501",
       "manufacturer": "Molex",
       "mpn": "104031-0811",
@@ -164,56 +147,6 @@
       "library_id": "C585350",
       "assembly": "SMT",
       "next_action": "Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J502",
-      "manufacturer": "JST",
-      "mpn": "SM02B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
-      "library_id": "C160402",
-      "assembly": "SMT",
-      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J803",
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "assembly": "SMT",
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J804",
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "assembly": "SMT",
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "L401",
-      "manufacturer": "Coilcraft",
-      "mpn": "XFL4015-471MEC",
-      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
-      "library_id": "C18221164",
-      "assembly": "SMT",
-      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "L402",
-      "manufacturer": "Coilcraft",
-      "mpn": "XGL4015-222MEC",
-      "footprint": "panda-standard:XGL4015_Coilcraft",
-      "library_id": "",
-      "assembly": "SMT",
-      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern."
     },
     {
       "board": "Core-C1",
@@ -253,17 +186,7 @@
       "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
       "library_id": "C202112",
       "assembly": "SMT",
-      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating."
-    },
-    {
-      "board": "Display-C1",
-      "ref": "L1",
-      "manufacturer": "Taiyo Yuden",
-      "mpn": "LSXNE3030KKT470MN",
-      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
-      "library_id": "",
-      "assembly": "SMT",
-      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor."
+      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph."
     },
     {
       "board": "Display-C1",
@@ -277,7 +200,7 @@
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 77,
+  "applied_replacement_refs": 84,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,

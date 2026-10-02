@@ -1,0 +1,109 @@
+(footprint "Sunlord_SWPA3012_47u" (version 20260206) (generator "pcbnew")
+		(layer "F.Cu")
+
+
+		(descr "Sunlord SWPA3012S manufacturer land pattern; original series drawing reviewed; Fab uses maximum body XY and no foreign 3D model.")
+		(property "Reference" "REF**"
+			(at 0 2.924999 0.0)
+			(layer "F.SilkS")
+
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "Sunlord_SWPA3012_47u"
+			(at 0 2.4 0.0)
+			(layer "F.Fab")
+			(hide yes)
+
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf"
+			(at 0 0 0.0)
+			(layer "F.Fab")
+			(hide yes)
+
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+(property "LCSC" ""
+			(at 0 0 0.0)
+			(layer "F.Fab")
+			(hide yes)
+
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)(property "Manufacturer" "Sunlord" (at 0 0 0.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1))))
+		(property "Description" "47uH +/-20%,DCR1.885ohm max,Isat(Max/Typ).27/.35A,Irms(Max/Typ).35/.40A from original2024-06-19 p5; current headings retained, not claimed as guaranteed minimum. Body3.0+/-0.2mm square,max height1.2mm. p2 lands0.8x2.7mm,inner gap1.5mm,centers+/-1.15mm. Original maxDCR2.46ohm,height1.0mm,current.25A; boost peak/RESE corners, ripple, thermal and efficiency remain EVT. Taller by.2mm, mechanical budget updated. Exact supply/packing not yet accepted."
+			(at 0 0 0.0)
+			(layer "F.Fab")
+			(hide yes)
+
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SWPA3012S470MT"
+			(at 0 0 0.0)
+			(layer "F.SilkS")
+			(hide yes)
+
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+
+
+
+
+		(pad "1" smd rect
+			(at -1.15 0)
+			(size 0.8 2.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+
+			(pinfunction "1_1")
+			(pintype "passive")
+
+		)
+		(pad "2" smd rect
+			(at 1.15 0)
+			(size 0.8 2.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+
+			(pinfunction "2_2")
+			(pintype "passive")
+
+		)
+		(embedded_fonts no)
+
+
+
+
+
+
+
+(fp_rect (start -1.6 -1.6) (end 1.6 1.6) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") )
+(fp_rect (start -1.85 -1.85) (end 1.85 1.85) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") )
+)

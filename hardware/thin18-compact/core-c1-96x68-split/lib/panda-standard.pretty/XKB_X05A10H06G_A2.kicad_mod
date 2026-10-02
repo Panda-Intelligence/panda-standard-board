@@ -1,0 +1,20 @@
+(footprint "XKB_X05A10H06G_A2" (version 20260206) (generator "pcbnew") (layer "F.Cu")
+
+(descr "XKB X05A10H06G A2 p2: 6-pin dual-contact back-flip, 0.5mm pitch, 0.3mm FPC. Signal lands 0.3x0.8mm, anchors 0.4x0.8mm, rows 2.5mm apart. Conservative land/body envelope, not 3D model.") (tags "XKB X05A10H06G FPC 6pin 0.5mm dual-contact A2")
+(property "Reference" "REF**" (at 0.65 0 -180.0) (layer "F.SilkS") (hide yes)  (effects (font (size 1 1) (thickness 0.15))))
+(property "Value" "XKB_X05A10H06G_A2" (at 0 -4.298 -180.0) (layer "F.Fab")  (effects (font (size 1 1) (thickness 0.15))))
+(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf" (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1))))
+(property "Description" "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit." (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1))))
+(property "Manufacturer" "XKB Connection" (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1) (thickness 0.15)))) (property "MPN" "X05A10H06G" (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1) (thickness 0.15)))) (property "LCSC" "C528032" (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1) (thickness 0.15)))) (property "ECO_ID" "THIN18-C4D10B-FRONTLIGHT" (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1) (thickness 0.15)))) (property "Qualification" "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit." (at 0 0 -180.0) (layer "F.Fab") (hide yes)  (effects (font (size 1 1) (thickness 0.15)))) (attr smd)
+
+
+
+
+
+
+
+
+(pad "1" smd rect (at -1.25 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "2" smd rect (at -0.75 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "3" smd rect (at -0.25 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "4" smd rect (at 0.25 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "5" smd rect (at 0.75 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "6" smd rect (at 1.25 -1.25 0.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask")  ) (pad "S1" smd rect (at -2.3 1.25 0.0) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") ) (pad "S2" smd rect (at 2.3 1.25 0.0) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") )
+(fp_rect (start -2.65 -1.65) (end 2.65 1.9) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") )
+(fp_rect (start -2.9 -1.9) (end 2.9 2.15) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") )
+)

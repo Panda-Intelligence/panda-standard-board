@@ -30,6 +30,39 @@ def verify_land(text, ref, size, center):
         if abs(x-(-center if n=="1" else center))>1e-6 or y!=0 or (w,h)!=size:
             raise ValueError("Incorrect reviewed land "+ref)
     return fp
+def verify_new_connectors(text):
+    """Reject wrong primary lands, reversed pin numbering or unreviewed poses."""
+    expected={
+        'J302':('HC-1.0-3PWT', {str(n):((n-2,-2),(0.7,1.75)) for n in range(1,4)}, [((-2.1,1.7),(1.0,2.55)),((2.1,1.7),(1.0,2.55))]),
+        'J502':('HC-1.0-2PWT', {'1':((-0.5,-2),(0.7,1.75)),'2':((0.5,-2),(0.7,1.75))}, [((-1.6,1.7),(1.0,2.55)),((1.6,1.7),(1.0,2.55))])}
+    for ref,(mpn,signals,mounts) in expected.items():
+        fp=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,'Reference')==ref)
+        if property_value(fp,'MPN')!=mpn:raise ValueError('Unexpected connector identity '+ref)
+        found={};anchors=[]
+        for _,_,pad in blocks(fp,r"\(pad\s"):
+            num=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+            xy=tuple(map(float,re.search(r"\(at\s+([-\d.]+)\s+([-\d.]+)",pad).groups()))
+            size=tuple(map(float,re.search(r"\(size\s+([-\d.]+)\s+([-\d.]+)",pad).groups()))
+            if num=='MP':anchors.append((xy,size))
+            elif num in found:raise ValueError('Duplicate connector signal '+ref)
+            else:found[num]=(xy,size)
+        if found!=signals or sorted(anchors)!=sorted(mounts):raise ValueError('Incorrect HCTL lands '+ref)
+    for ref,y in [('J803',36.87),('J804',43.0)]:
+        fp=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,'Reference')==ref)
+        if property_value(fp,'MPN')!='X05A10H06G':raise ValueError('Unexpected FPC6 identity')
+        pose=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\)',fp).groups()))
+        if pose!=(6.35,y,180):raise ValueError('FPC6 entry/pose differs '+ref)
+        pads=list(blocks(fp,r"\(pad\s"))
+        if len(pads)!=8:raise ValueError('FPC6 land count')
+        for _,_,pad in pads:
+            n=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+            if n in ['S1','S2']:xy=(-2.3 if n=='S1' else 2.3,1.25);size=(.4,.8)
+            elif n in {str(k) for k in range(1,7)}:xy=((int(n)-3.5)*.5,-1.25);size=(.3,.8)
+            else:raise ValueError('Unexpected FPC6 pin')
+            actualxy=tuple(map(float,re.search(r"\(at\s+([-\d.]+)\s+([-\d.]+)",pad).groups()))
+            actualsize=tuple(map(float,re.search(r"\(size\s+([-\d.]+)\s+([-\d.]+)",pad).groups()))
+            if actualxy!=xy or actualsize!=size:raise ValueError('Incorrect XKB A2 land/pin '+ref)
+
 def run(*args):
     subprocess.run([K,*map(str,args)],check=True,capture_output=True)
 def main():
@@ -44,7 +77,11 @@ def main():
     cap=verify_land(text,"C301",(1.3,1.3),1.1)
     capnets={re.match(r'\(pad\s+"(\d+)"',p).group(1): re.search(r'\(net\s+"([^"]+)"',p).group(1) for _,_,p in blocks(cap,r"\(pad\s")}
     if capnets!={"1":"RTC_VBACKUP","2":"GND"} or '(fp_text user "+"' not in cap: raise ValueError("EDLC polarity missing or reversed")
-    verify_land(text,"L402",(0.98,3.4),1.185)
+    verify_land(text,"L401",(1.5,2.5),1.85)
+    verify_land(text,"L402",(1.5,2.5),1.85)
+    display_text=(ROOT/BOARDS[1][1]/BOARDS[1][3]).read_text()
+    verify_land(display_text,"L1",(0.8,2.7),1.15)
+    verify_new_connectors(text)
     out=ROOT/"production/jlc-prototype-orderpack"
     if out.exists(): shutil.rmtree(out)
     out.mkdir()

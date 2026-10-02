@@ -5,7 +5,8 @@ Bounding boxes are conservative 2D footprint envelopes, not solid body models.
 This check never signs off the enclosure, battery, or physical mating.
 """
 from pathlib import Path
-import argparse, hashlib, json, math
+import argparse, hashlib, json, math, re
+from _split_c1_sourcing import blocks, property_value
 import wx
 APP = wx.App(False)
 import pcbnew
@@ -41,6 +42,9 @@ def audit(inputs_path):
     assert contract["assembly"]["display_to_core_matrix"] == [
         [1, 0, 0, 38], [0, -1, 0, 66], [0, 0, -1, -1.5], [0, 0, 0, 1]]
     boards = {name: pcbnew.LoadBoard(str(path)) for name, path in PCB.items()}
+    identities = {name: {property_value(fp, "Reference"): property_value(fp, "MPN")
+                         for _, _, fp in blocks(path.read_text(), r"\(footprint\s")}
+                  for name, path in PCB.items()}
     display_rect = [38, 30, 83, 66]
     battery_rect = inputs["battery"]["rect_xyxy_mm"]
     if len(battery_rect) != 4 or not (battery_rect[0] < battery_rect[2] and battery_rect[1] < battery_rect[3]):
@@ -181,7 +185,7 @@ def audit(inputs_path):
         for item in inputs.get("published_component_height_screens", []):
             board_name = item["board"]
             footprint = next(f for f in boards[board_name].GetFootprints() if f.GetReference() == item["ref"])
-            if footprint.GetValue() != item["mpn"] or footprint.GetLayer() != pcbnew.F_Cu:
+            if identities[board_name].get(item["ref"]) != item["mpn"] or footprint.GetLayer() != pcbnew.F_Cu:
                 raise ValueError("Published-height identity or layer mismatch: " + item["ref"])
             height = item["height_nominal_mm"]
             if not isinstance(height, (int, float)) or not math.isfinite(height) or height <= 0:
@@ -194,6 +198,8 @@ def audit(inputs_path):
             component_z.append({"board": board_name, "ref": item["ref"], "mpn": item["mpn"],
                                 "world_native_bbox_mm": world, "shared_panel_core_display_xy_screen_mm": shared_overlap,
                                 "published_height_nominal_mm": height,
+                                "height_basis": item.get("height_basis", "published nominal height; maximum mounted height unverified"),
+                                "source_locator": item.get("source_locator"),
                                 "nominal_overlap_section_screen_without_battery_walls_mm": subtotal,
                                 "exceeds_reference_in_nominal_xy_screen": None if subtotal is None else subtotal > reference_dims[2],
                                 "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",

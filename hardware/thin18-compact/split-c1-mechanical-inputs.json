@@ -194,6 +194,81 @@
       "source_locator": "exact part detailed specifications: connector height2mm",
       "checked_on": "2026-10-01",
       "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J302",
+      "mpn": "HC-1.0-3PWT",
+      "height_nominal_mm": 3.2,
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J502",
+      "mpn": "HC-1.0-2PWT",
+      "height_nominal_mm": 3.2,
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "source_locator": "p18;3.2mm conservative catalog/drawing discrepancy budget",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J803",
+      "mpn": "X05A10H06G",
+      "height_nominal_mm": 1.1,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+      "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J804",
+      "mpn": "X05A10H06G",
+      "height_nominal_mm": 1.1,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+      "source_locator": "A2 p2 dated2026-01-15;closed1.0+/-0.1mm;open1.55mm nominal",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L401",
+      "mpn": "MWSA0402S-R47MT",
+      "height_nominal_mm": 2.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L402",
+      "mpn": "MWSA0402S-1R0MTB01",
+      "height_nominal_mm": 2.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+    },
+    {
+      "board": "Display-C1",
+      "ref": "L1",
+      "mpn": "SWPA3012S470MT",
+      "height_nominal_mm": 1.2,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
+      "source_locator": "2024-06-19 p2;1.2mm max",
+      "checked_on": "2026-10-02",
+      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
     }
-  ]
+  ],
+  "connector_layout_changes": {
+    "J803_J804": "XKB A2 180deg rotation and -Y2.5mm shift preserve original world signal positions;entry-Y;FT01C FPC pose not frozen",
+    "H804": "(3,33)mm,1.6mm NPTH;original1.6mm-radius courtyard retained;case boss not frozen",
+    "physical_fit_verified": false
+  }
 }

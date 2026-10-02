@@ -2,9 +2,9 @@
 
 当前要求：Core-C1 和 Display-C1 两块 PCB 的所有已装配位号均采用中国大陆厂家器件，不保留进口料例外。当前只有设计文件，没有真实样板。这里的国产身份指厂家身份；电气、固件、供料及实物 EVT 分别验证。
 
-**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：138 个国产厂家，18 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
+**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：145 个国产厂家，11 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
 
-本轮对 77 个位号执行受控替换（Core 49、Display 28），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
+本轮对 84 个位号执行受控替换（Core 55、Display 29），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
 
 ## 已应用替换
 
@@ -33,8 +33,14 @@
 | Core-C1 | J601 | HCTL / `HC-PBB40C-60DS-0.4V-1.5-02` | C19089250 |
 | Display-C1 | J1 | HCTL / `HC-PBB40C-60DP-0.4V-02` | C19089235 |
 | Core-C1 | TH301 | Nanjing Shiheng Elec / `MF52D-103F3435-100` | C394023 |
+| Core-C1 | J302 | HCTL / `HC-1.0-3PWT` | C2845362 |
+| Core-C1 | J502 | HCTL / `HC-1.0-2PWT` | C2845361 |
+| Core-C1 | J803, J804 | XKB Connection / `X05A10H06G`，原厂 A2 p2 | C528032 |
+| Core-C1 | L401 | Sunlord / `MWSA0402S-R47MT` | C6331050 |
+| Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MTB01` | 未确认，必须为 B01 |
+| Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | 未确认 |
 
-完整逐项原身份、规格/封装评估及原厂来源见 [split-c1-domestic-eco.json](split-c1-domestic-eco.json)。实际已装配 BOM 身份与逐项审查政策见 [split-c1-domestic-policy.json](split-c1-domestic-policy.json)，结果见 [split-c1-domestic-audit.json](split-c1-domestic-audit.json)。
+完整逐项原身份、规格/封装评估及原厂来源见 [split-c1-domestic-eco.json](split-c1-domestic-eco.json)。设计中已装配 BOM 身份与逐项审查政策见 [split-c1-domestic-policy.json](split-c1-domestic-policy.json)，结果见 [split-c1-domestic-audit.json](split-c1-domestic-audit.json)。
 
 ## 与原器件存在差异的资格项
 
@@ -46,6 +52,11 @@
 - Display D1–D3：JSCJ MBR0530 的原厂推荐焊盘0.94×0.91mm、中心距3.3mm，pin1为阴极；独立封装已应用。0.5A时 VF 最大0.55V，旧 onsemi 为0.43V；最大反漏也不同。EPD升压效率、纹波、调节范围及温升待测。
 - J601/J1：整对更换 HCTL DS1.5/DP，60针0.4mm间距、名义1.5mm配合高。逐一核对原厂图中 DS 0.2×0.7mm、行中心±1.54mm；DP 0.23×0.66mm、行中心±1.355mm及四支撑焊盘。当前几何相符，保留网线和60针映射，移除不适用的 Hirose 3D 模型。额定0.3A/触点、最大接触电阻90mΩ、30次插拔；两件均须用准确HCTL型号，不混用Hirose。实际插接、pin1及接触/支撑资格未通过。
 - TH301：时恒 MF52D-103F3435-100 / C394023，R25=10kΩ±1%、B25/85=3435K±1%；完成品−20..105°C、100mm AWG30导线、环氧头最大4mm、静止空气 τ≤7s、δ≥2mW/°C。旧 Semitec 为600mm AWG26线、3±0.5mm头。新R-T表给0°C=27.513kΩ、45°C=4.923kΩ；同R25/B不代表全曲线相同。保持温控保护，J302接线、绝缘、包体间隙、热贴合及低/高温充电阈值按新曲线验证。TH301仅板外手工件，不进入机器CPL。
+- J302/J502：HCTL HC-1.0 PWT 原厂第18页，信号焊盘0.7×1.75mm、支撑1.0×2.55mm，行中心相距3.70mm；独立封装已应用。J302 的 NTC 支路过孔和地线已受控调整，温控不旁路。两件按3.2mm保守高度预算，需匹配 HC-1.0-3Y/2Y 壳和端子；旧 JST 线束不沿用。J502 为浮地 BTL 喇叭输出，两端均不得接地；2.5W/4Ω算例为0.791Arms/1.118Apeak，1A连接器额定值仍需核对连续音频温升条件。
+- J803/J804：XKB X05A10H06G 原厂 A2（2026-01-15，ECN-P-2026011502）第2页，6针双触点、0.5mm间距、0.3mm FPC、0.5A/50V。信号焊盘0.3×0.8mm、支撑0.4×0.8mm，支撑中心x=±2.3mm，两行相距2.5mm；原厂钢网建议0.25×0.65mm、厚0.1mm须另与装配厂确认，不能将普通焊盘大小当成已批准钢网。原厂pin1在左，PCB整件旋转180°并向−Y移动2.5mm，保持全部原信号焊盘世界坐标与网名；入口改向−Y。H804孔移至(3,33)，保留1.6mm孔径和原3.2mm直径安装包络；SDA绕开J804支撑焊盘。闭合高最大1.1mm、开启锁扣名义1.55mm；FT01C排线折弯、安装柱、锁扣工具空间与实际A2供料版本未冻结，不能据CAD检查宣布插接合格。
+- L401：Sunlord MWSA0402S-R47MT / C6331050，0.47uH±20%，DCR14mΩ最大；2025-05-29原厂表的 Isat Max/Typ 为7.6/9.5A，Irms Max/Typ 为6.65/7.5A。保留原表标题，不当作保证下限；饱和与温升判据需确认。原厂焊盘1.5×2.5mm、中心距3.7mm、本体最大4.75×4.45×2.0mm已应用。SGM62125算例（Vin1.9V、Vout3.3V、2A输出、效率80%、2MHz、Lmin0.376uH）得到5.23A峰值及1.2倍6.28A筛选目标；效率/频率是假设，不能代替低温、限流及热最坏角验证。
+- L402：精确B01变体 MWSA0402S-1R0MTB01，1uH±20%、DCR27mΩ最大，原厂 Isat Max/Typ 8/9A、Irms Max/Typ 5.4/6A；普通1R0MT不等效。按SGM41513典型应用将旧2.2uH受控改为1uH，采用同系列原厂焊盘，中心移至(40.675,6.65)、旋转270°；C402/R306和相关电源/电池走线受控调整，C201补齐Courtyard。VBUS13.5V、D=0.5、1.38MHz、Lmin0.8uH、3A平均算例为3.057App、4.529A峰值、3.13Arms、0.265W绕组损耗（不含磁芯损耗）。充电+SYS、反向升压、OCP、铜图压降及温升仍需闭环；原0.2mm电源支路不能因DRC为0就宣称通过3A载流。
+- Display L1：Sunlord SWPA3012S470MT，47uH±20%、DCR1.885Ω最大，原厂 Isat Max/Typ 0.27/0.35A、Irms Max/Typ 0.35/0.40A（表头不是保证下限）。原厂焊盘0.8×2.7mm、中心距2.3mm、高度最大1.2mm；较旧料增高0.2mm，已登记机械输入。EPD升压峰值、RESE最坏角、纹波、效率及热测试仍需资格确认；精确C码/供料未确认。
 - Display U1–U3 的 MPN/铜图未更换，本来已是中微爱芯 AIP74LVC2G17GC363.TR；将错误的 TI SN74AUP2G17 数据手册链接改为原厂 B032EN/A5。LVC 的静态/关断泄漏和输入非轨电压额外耗电应按原厂最坏值预算，不能引用 AUP 低功耗规格。
 
 以上均为工程候选资格，不是制造或 EVT 放行。受控新引脚、焊盘和 C516 已纳入当前/重建 CAD 检查；原有 DRC 规则与例外未放宽。
@@ -57,27 +68,21 @@
 | Core-C1 | C301 | RTC backup EDLC | Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker. |
 | Core-C1 | D201 | USB D+/D-/CC ESD | Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. |
 | Core-C1 | D202 | VBUS ESD | Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID. |
-| Core-C1 | J201 | Mid-mount USB-C | Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker. |
+| Core-C1 | J201 | Mid-mount USB-C | Exact HCTL0.8mm midmount primary drawing obtained; signal-row datum is7.10mm behind front edge, not6.77mm. Review complete cutout/corner tolerance and shell stakes; resolve0.2mm fabrication copper-edge clearance by proper connector/cutout redesign, not rule exception. |
 | Core-C1 | J301 | Battery power connector | Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. |
-| Core-C1 | J302 | External NTC connector | Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance. |
 | Core-C1 | J501 | MicroSD socket with detect | Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD. |
-| Core-C1 | J502 | Speaker connector | Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match. |
-| Core-C1 | J803, J804 | Touch/frontlight six-pin FPC | Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ. |
-| Core-C1 | L401 | AON buck-boost 0.47uH | Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID. |
-| Core-C1 | L402 | Charger inductor 2.2uH | Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern. |
 | Core-C1 | SW201, SW202 | Side-actuated buttons | Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval. |
 | Core-C1 | U302 | Integrated-crystal RTC | Treat as subsystem redesign: SD3078 VDD2.7..5.5V/VBAT2.3..3.6V and typical0.8uA backup differ from RV3028 low-voltage/45nA. New footprint/pin map/driver and backup C301/current/accuracy budget are required; no equivalent selected yet. |
-| Display-C1 | J2 | 24-pin panel FPC | Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating. |
-| Display-C1 | L1 | EPD boost 47uH | SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor. |
+| Display-C1 | J2 | 24-pin panel FPC | Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph. |
 | Display-C1 | Q1 | EPD boost N-MOSFET | Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. |
 
 这些位号都是阻止全国产打样的待改项，不是获准保留的例外。候选及原厂依据详见政策 JSON 的 remaining_redesigns。未检索到精确 C 码不等于停产；候选不能从典型电流、相似名字或同值同封装直接替换。
 
 ## 供料及下单状态
 
-当前 SMT 精确 C 码：Core 111/118，Display 36/37。未确认8个：Core L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；进口 C301/L402/L1 的原供料路径不构成当前全国产采购许可。所有库存观察均不等于预留。
+当前 SMT 精确 C 码：Core 111/118，Display 36/37。未确认8个：Core L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
 
-SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余18项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。Core USB槽边0.02mm的CAM问题、电池/外壳最终尺寸和没有实板的EVT也继续保留。
+SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余11项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。Core USB槽边0.02mm的CAM问题、电池/外壳最终尺寸和没有实板的EVT也继续保留。
 
 ## 复现与检查
 
@@ -86,4 +91,4 @@ python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 ```
 
-第二条在18个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
+第二条在11个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。

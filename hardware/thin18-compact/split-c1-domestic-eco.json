@@ -465,6 +465,134 @@
       "source_url": "https://datasheet.lcsc.com/datasheet/pdf/82ea799f177b8342022ee6baa5ce253b.pdf?productCode=C394023",
       "catalog_url": "https://www.lcsc.com/product-detail/C394023.html",
       "qualification": "Manufacturer approval sheet JK/JXD190509011-A, 2019-05-10: R25 10k +/-1%, B25/85 3435K +/-1%, finished -20..105C, delta>=2mW/C, tau<=7s in still air, 4mm max tip, 100mm AWG30 leads. Original Semitec assembly has 600mm AWG26 leads and 3+/-0.5mm tip. Same R25/B does not guarantee identical R-T; new primary table gives R0 27.513k and R45 4.923k. Retain temperature protection; verify thresholds/attachment and harness geometry before assembly. No PCB/CPL footprint added."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J302"
+      ],
+      "old_manufacturer": "JST",
+      "old_mpn": "SM03B-SRSS-TB(LF)(SN)",
+      "wire_connector_pins": 3,
+      "new_fields": {
+        "Manufacturer": "HCTL",
+        "MPN": "HC-1.0-3PWT",
+        "LCSC": "C2845362",
+        "Value": "HC-1.0-3PWT NTC",
+        "Footprint": "panda-standard:HCTL_HC10_3PWT",
+        "Datasheet": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+        "Description": "NTC: pin1 BQ_TS, pin2 GND, pin3 NC; two populated harness wires, no temperature-protection bypass. Mate HC-1.0-3Y with manufacturer-qualified contacts; Shiheng sensor termination/attachment pending."
+      },
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "catalog_url": "https://www.lcsc.com/zh-CN/product-detail/C2845362.html",
+      "qualification": "Manufacturer HC-1.0 approval p18: signal lands 0.7x1.75mm at 1mm pitch, anchors 1.0x2.55mm; retained signal-row y=-2mm, anchors y=1.7mm and x=+/-2.1mm. Center rows 3.70mm; total land Y 5.85mm. Pin1 orientation and signal nets retained. Manufacturer 1A AC/DC,50V,20mohm initial,0.6..1.2mm PCB; budget height3.2mm pending exact approval (drawing3.0, catalog3.2). No JST model retained. Mating cable/contact, packing and physical qualification remain pending."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J502"
+      ],
+      "old_manufacturer": "JST",
+      "old_mpn": "SM02B-SRSS-TB(LF)(SN)",
+      "wire_connector_pins": 2,
+      "new_fields": {
+        "Manufacturer": "HCTL",
+        "MPN": "HC-1.0-2PWT",
+        "LCSC": "C2845361",
+        "Value": "HC-1.0-2PWT BTL",
+        "Footprint": "panda-standard:HCTL_HC10_2PWT",
+        "Datasheet": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+        "Description": "Speaker: pin1 SPK_P, pin2 SPK_N; floating BTL, neither grounded. Mate HC-1.0-2Y with manufacturer-qualified contacts; 1A AC/DC contacts, current/thermal and continuous-play qualification pending."
+      },
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf",
+      "catalog_url": "https://www.lcsc.com/zh-CN/product-detail/C2845361.html",
+      "qualification": "Manufacturer HC-1.0 approval p18: signal lands 0.7x1.75mm at 1mm pitch, anchors 1.0x2.55mm; retained signal-row y=-2mm, anchors y=1.7mm and x=+/-1.6mm. Center rows 3.70mm; total land Y 5.85mm. Pin1 orientation and signal nets retained. Manufacturer 1A AC/DC,50V,20mohm initial,0.6..1.2mm PCB; budget height3.2mm pending exact approval (drawing3.0, catalog3.2). No JST model retained. Mating cable/contact, packing and physical qualification remain pending."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L401"
+      ],
+      "old_manufacturer": "Coilcraft",
+      "old_mpn": "XFL4015-471MEC",
+      "inductor_land": "MWSA0402S",
+      "new_fields": {
+        "Manufacturer": "Sunlord",
+        "MPN": "MWSA0402S-R47MT",
+        "LCSC": "C6331050",
+        "Value": "0.47uH / SGM62125",
+        "Footprint": "panda-standard:Sunlord_MWSA0402_R47",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+        "Description": "Sunlord MWSA0402S-R47MT 0.47uH +/-20%; DCR 14mOhm max; manufacturer table Isat Max/Typ 7.6/9.5A and Irms Max/Typ 6.65/7.5A (manufacturer headings retained; not guaranteed minimum). Max height 2.0mm. Selected for compact power loop; supply and EVT pending."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "catalog_url": "https://item.szlcsc.com/7279230.html",
+      "qualification": "2025/5/29 manufacturer MWSA catalog pp2-3: R47 ordering code, 4.2+/-0.25 x 4.4+/-0.35 x 1.8+/-0.2mm, 1.5x2.5mm lands at +/-1.85mm. SGM62125 Rev.A.3 requires Isat >=1.2x worst peak. Engineering scenario Vin1.9V, Vout3.3V, Iout2A, eta80%, f2MHz and Lmin0.376uH gives 5.23A peak/6.28A target; f/eta are assumptions, not guaranteed corners. The lower catalog current column is labelled Max, not a guaranteed minimum; obtain the exact saturation/temperature-rise criteria before treating it as a worst-case bound. Exact current-limit/temperature/thermal validation and transient EVT pending. 0515 alternative discarded before commit because its larger body caused collisions and would enlarge switching loops."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "old_manufacturer": "Coilcraft",
+      "old_mpn": "XGL4015-222MEC",
+      "inductor_land": "MWSA0402S",
+      "new_fields": {
+        "Manufacturer": "Sunlord",
+        "MPN": "MWSA0402S-1R0MTB01",
+        "LCSC": "",
+        "Value": "1uH / SGM41513 buck",
+        "Footprint": "panda-standard:Sunlord_MWSA0402_1R0B01",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+        "Description": "Sunlord MWSA0402S-1R0MTB01 1uH +/-20%; DCR 27mOhm max; manufacturer table Isat Max/Typ 8/9A and Irms Max/Typ 5.4/6A (manufacturer headings retained; not guaranteed minimum). Max height 2.0mm. Exact B01 variant required; 1R0MT is not an equivalent. Supply and EVT pending."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+      "catalog_url": null,
+      "qualification": "2025/5/29 manufacturer MWSA catalog pp2-3 explicitly lists 1R0MTB01 (not ordinary 1R0MT): 4.2+/-0.25 x 4.4+/-0.35 x 1.8+/-0.2mm, 1.5x2.5mm lands at +/-1.85mm. SGM41513 typical circuit specifies 1uH; this is an intentional filter change from 2.2uH. Conservative buck scenario VBUS13.5V, D0.5, f1.38MHz and Lmin0.8uH gives 3.057App ripple, 4.529A peak at 3A average, 3.13A RMS and 0.265W winding loss using DCRmax27mOhm (core loss excluded). Frequency minimum applies at stated datasheet temperature, not all corners. SYS plus charge and boost-mode/OCP/thermal budgets remain EVT. Do not substitute ordinary 1R0MT."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "old_manufacturer": "Taiyo Yuden",
+      "old_mpn": "LSXNE3030KKT470MN",
+      "inductor_land": "SWPA3012S",
+      "new_fields": {
+        "Manufacturer": "Sunlord",
+        "MPN": "SWPA3012S470MT",
+        "LCSC": "",
+        "Value": "47uH / Sunlord",
+        "Footprint": "panda-r6-display:Sunlord_SWPA3012_47u",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
+        "Description": "47uH +/-20%,DCR1.885ohm max,Isat(Max/Typ).27/.35A,Irms(Max/Typ).35/.40A from original2024-06-19 p5; current headings retained, not claimed as guaranteed minimum. Body3.0+/-0.2mm square,max height1.2mm. p2 lands0.8x2.7mm,inner gap1.5mm,centers+/-1.15mm. Original maxDCR2.46ohm,height1.0mm,current.25A; boost peak/RESE corners, ripple, thermal and efficiency remain EVT. Taller by.2mm, mechanical budget updated. Exact supply/packing not yet accepted."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
+      "catalog_url": null,
+      "qualification": "47uH +/-20%,DCR1.885ohm max,Isat(Max/Typ).27/.35A,Irms(Max/Typ).35/.40A from original2024-06-19 p5; current headings retained, not claimed as guaranteed minimum. Body3.0+/-0.2mm square,max height1.2mm. p2 lands0.8x2.7mm,inner gap1.5mm,centers+/-1.15mm. Original maxDCR2.46ohm,height1.0mm,current.25A; boost peak/RESE corners, ripple, thermal and efficiency remain EVT. Taller by.2mm, mechanical budget updated. Exact supply/packing not yet accepted."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J803",
+        "J804"
+      ],
+      "old_manufacturer": "Hirose",
+      "old_mpn": "FH34SRJ-6S-0.5SH(50)",
+      "fpc6_footprint": true,
+      "new_fields": {
+        "Manufacturer": "XKB Connection",
+        "MPN": "X05A10H06G",
+        "LCSC": "C528032",
+        "Value": "X05A10H06G",
+        "Footprint": "panda-standard:XKB_X05A10H06G_A2",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+        "Description": "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit.",
+        "Qualification": "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
+      "catalog_url": "https://item.szlcsc.com/546342.html",
+      "qualification": "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
     }
   ],
   "all_domestic_complete": false,
@@ -479,5 +607,194 @@
       "Correct U1-U3 AIP74LVC2G17GC363.TR component datasheet from unrelated TI AUP part to Icore B032EN/A5 March2022; no MPN/package/net change."
     ]
   },
-  "all_domestic_requirement_complete": false
+  "all_domestic_requirement_complete": false,
+  "power_layout": {
+    "schema": "panda-domestic-power-layout-v1",
+    "intent": "Compact manufacturer-sized inductors, preserve WLCSP placement and short switching loops; shift battery sense shunt and cap ground escape. No rule changes.",
+    "footprint_moves": [
+      {
+        "ref": "L402",
+        "old_at": [
+          40.995,
+          7.1,
+          180
+        ],
+        "new_at": [
+          40.675,
+          6.65,
+          270
+        ],
+        "pad_angle_old": 180,
+        "pad_angle_new": 270
+      }
+    ],
+    "footprint_blocks": [
+      {
+        "ref": "C402",
+        "predecessor_sha256": "902a2dc1d70f0714614a9e962f3c4c4c5dacd721fe7f449a0a5a030f3339cf1c",
+        "new_block": "(footprint \"panda-standard:C_0603_POWER_SEED\" (locked yes) (layer \"F.Cu\") (uuid \"48d9737a-994b-415d-afc0-250aac5a3ae8\") (at 34.925 4.955 90) (property \"Reference\" \"C402\" (at 0 -1.1 90) (layer \"F.Fab\") (hide yes) (uuid \"58c283cb-bf99-4404-b272-0fb7f3e2f51d\") (effects (font (size 0.6 0.6) (thickness 0.1)))) (property \"Value\" \"22u / VOUT\" (at 0 1.1 90) (layer \"F.Fab\") (uuid \"31cf954b-0d2e-4aef-b85b-be62de2347ac\") (effects (font (size 0.55 0.55) (thickness 0.08)))) (property \"Datasheet\" \"\" (at 0 0 90) (layer \"F.Fab\") (hide yes) (uuid \"b964b68e-d189-43e7-ae62-a83f2e3c3366\") (effects (font (size 1.27 1.27))))(property \"Manufacturer\" \"FH (Fenghua Advanced)\" (at 0 0 90) (layer \"F.Fab\") (hide yes) (uuid \"77c7b7c4-bbfc-5bdb-b7c6-ba31664fffb7\") (effects (font (size 1 1))))(property \"MPN\" \"0603X226M100NT\" (at 0 0 90) (layer \"F.Fab\") (hide yes) (uuid \"791387dd-8dc9-5ca9-818a-2d6cee546599\") (effects (font (size 1 1))))(property \"LCSC\" \"C60077\" (at 0 0 90) (layer \"F.Fab\") (hide yes) (uuid \"daf63518-2208-5c52-9edc-46fd79618b55\") (effects (font (size 1 1)))) (property \"Description\" \"Unpolarized capacitor\" (at 0 0 90) (layer \"F.Fab\") (hide yes) (uuid \"61deeb91-dede-4906-89ec-8a4bcf777f50\") (effects (font (size 1.27 1.27)))) (attr smd) (duplicate_pad_numbers_are_jumpers no) (fp_rect (start -0.8 -0.4) (end 0.8 0.4) (stroke (width 0.08) (type solid)) (fill no) (layer \"F.Fab\") (uuid \"01fa0fae-4aeb-4111-93ed-fbacc95c853f\")) (pad \"1\" smd roundrect (at -0.75 0 90) (size 0.85 0.9) (layers \"F.Cu\" \"F.Mask\" \"F.Paste\") (roundrect_rratio 0.2) (net \"3V3_AON_SRC\") (uuid \"7e781c38-cee7-4749-a2a5-7fc52129d882\")) (pad \"2\" smd roundrect (at 0.75 0 90) (size 0.85 0.9) (layers \"F.Cu\" \"F.Mask\" \"F.Paste\") (roundrect_rratio 0.2) (net \"GND\") (uuid \"422cc0ea-74a7-4ccf-88e0-8edcb31ee79a\")) (embedded_fonts no))"
+      },
+      {
+        "ref": "C201",
+        "predecessor_sha256": "eadf1935e94976cd737ec117de9c6368e79522192d0d3b00d644baddc1cfb2e8",
+        "new_block": "(footprint \"panda-standard:C201_CBOOT_0603_SEED\" (locked yes) (layer \"F.Cu\") (uuid \"a101f0f1-4411-4cb0-a222-000000000201\") (at 43.92 5.25 90) (property \"Reference\" \"C201\" (at 0 1.1 0) (layer \"F.Fab\") (hide yes) (uuid \"a101f0f1-4411-4cb0-a223-000000000201\") (effects (font (size 0.6 0.6) (thickness 0.1)))) (property \"Value\" \"47n / CBOOT\" (at 0 -1.1 0) (layer \"F.Fab\") (uuid \"a101f0f1-4411-4cb0-a224-000000000201\") (effects (font (size 0.55 0.55) (thickness 0.08)))) (property \"Datasheet\" \"https://www.ti.com/lit/ds/symlink/bq25628e.pdf\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"a101f0f1-4411-4cb0-a225-000000000201\") (effects (font (size 1.27 1.27))))(property \"Manufacturer\" \"FH (Fenghua Advanced)\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"90a89a83-17f4-5fa0-bb76-76318ef61df4\") (effects (font (size 1 1))))(property \"MPN\" \"0603B473K500NT\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7c9c70cf-6f89-5dde-a3aa-cd207f12ee64\") (effects (font (size 1 1))))(property \"LCSC\" \"C285123\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"d34d4a08-b373-518d-917b-79c1fd60a089\") (effects (font (size 1 1)))) (property \"Description\" \"BQ25628E bootstrap capacitor, 47 nF from BTST to SW; provisional 0603 seed, MPN and voltage rating pending review\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"a101f0f1-4411-4cb0-a226-000000000201\") (effects (font (size 1.27 1.27)))) (attr smd) (duplicate_pad_numbers_are_jumpers no) (fp_rect (start -0.8 0.4) (end 0.8 -0.4) (stroke (width 0.08) (type solid)) (fill no) (layer \"F.Fab\") (uuid \"a101f0f1-4411-4cb0-a227-000000000201\")) (pad \"1\" smd roundrect (at -0.75 0 270) (size 0.85 0.9) (layers \"F.Cu\" \"F.Mask\" \"F.Paste\") (roundrect_rratio 0.2) (net \"SGM41513_BTST\") (uuid \"a101f0f1-4411-4cb0-a228-000000000201\")) (pad \"2\" smd roundrect (at 0.75 0 270) (size 0.85 0.9) (layers \"F.Cu\" \"F.Mask\" \"F.Paste\") (roundrect_rratio 0.2) (net \"SGM41513_SW\") (uuid \"a101f0f1-4411-4cb0-a229-000000000201\")) (embedded_fonts no)\n(fp_rect (start -1.45 -0.7) (end 1.45 0.7) (stroke (width 0.05) (type solid)) (fill no) (layer \"F.CrtYd\") (uuid \"90f0c330-055e-5d2f-85d4-ab59ee636ffd\"))\n)"
+      },
+      {
+        "ref": "R306",
+        "predecessor_sha256": "a5da9a9cf6e1724c8784f13b1121db0a2ab49dfcbc76889738bfe1e35e8aba36",
+        "new_block": "(footprint \"Resistor_SMD:R_1206_3216Metric\" (locked yes) (layer \"F.Cu\") (uuid \"72c57c34-72d6-580c-8a37-b7c6060f1908\") (at 35.6 9.25 0)\n(property \"Reference\" \"R306\" (at 0 -2 0) (layer \"F.SilkS\") (hide yes) (uuid \"4af2b907-5aa9-5937-b1f6-90590a8ce57f\") (effects (font (size 0.8 0.8))))\n(property \"Value\" \"10m / CW2217 SHUNT\" (at 0 2 0) (layer \"F.Fab\") (hide yes) (uuid \"ae93a61d-c9d6-5f7e-8683-28b60e6433bb\") (effects (font (size 0.8 0.8))))\n(property \"Datasheet\" \"https://jlcpcb.com/partdetail/FOJAN-FRM121WFR010TM/C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e6a18170-ebf3-5725-96a6-219cd1f720e5\") (effects (font (size 1 1))))\n(property \"LCSC\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e00070f-4ad9-540d-9916-c61a0ea989dc\") (effects (font (size 1 1)))) (property \"Description\" \"FOJAN 10mΩ 1W ±1% ±50ppm 1206 current sense shunt for CW2217\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d05348b-511c-509d-818c-d2768be21fb3\") (effects (font (size 1 1)))) (property \"Manufacturer\" \"FOJAN\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"026e013b-7205-5d19-a615-3690b29b9193\") (effects (font (size 1 1)))) (property \"MPN\" \"FRM121WFR010TM\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"4e93491b-0cda-5016-b6b0-45be80d30ad1\") (effects (font (size 1 1)))) (property \"JLCPCB\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e57cfcc-1889-59e2-8965-869b95c9a239\") (effects (font (size 1 1)))) (property \"Tolerance\" \"1%\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e119409a-f33d-586b-8a8a-ebed762e6a7e\") (effects (font (size 1 1)))) (property \"Power_Rating\" \"1W\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"38ffb104-0914-5c77-8a38-3d92c6b79563\") (effects (font (size 1 1)))) (property \"Tempco\" \"50ppm/C\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"fea8421c-78cd-5ec3-98fc-e877bf1eb647\") (effects (font (size 1 1)))) (property \"ECO_ID\" \"THIN18-C4D5-CW2217-SHUNT\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"2958fca9-b656-5ef7-9524-e1c1f15a5e14\") (effects (font (size 1 1)))) (property \"Qualification\" \"10m 1% 1W 50ppm; shunt thermal/accuracy EVT open\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d593034-8293-5185-af60-11e563fa84ec\") (effects (font (size 1 1)))) (attr smd) (fp_line\n\t\t(start -0.727064 -0.91)\n\t\t(end 0.727064 -0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_line\n\t\t(start -0.727064 0.91)\n\t\t(end 0.727064 0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_rect\n\t\t(start -2.28 -1.13)\n\t\t(end 2.28 1.13)\n\t\t(stroke\n\t\t\t(width 0.05)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.CrtYd\")\n\t) (fp_rect\n\t\t(start -1.6 -0.8)\n\t\t(end 1.6 0.8)\n\t\t(stroke\n\t\t\t(width 0.1)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.Fab\")\n\t) (pad \"1\" smd roundrect\n\t\t(at -1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_CONN_P\")) (pad \"2\" smd roundrect\n\t\t(at 1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_PACKP\")))"
+      }
+    ],
+    "copper_changes": [
+      {
+        "uuid": "1e92bce7-8e0c-4f32-abd6-1393b22f890e",
+        "predecessor_sha256": "16542585d7eca4149fd7c1d2af6dec75c12599c90519af6d15e78ad3c9109721",
+        "new_block": "(segment\n\t\t(start 34.925 4.205)\n\t\t(end 34.6508 4.205)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"1e92bce7-8e0c-4f32-abd6-1393b22f890e\")\n\t)"
+      },
+      {
+        "uuid": "ab4bd79d-cdd1-49b0-8e29-2acb82137625",
+        "predecessor_sha256": "0b4c1ab0322e437a3d4b1b3518ed973eb26cdcc4a4f2adb9ce64bccf8eef88f1",
+        "new_block": "(segment\n\t\t(start 31.8906 10.0894)\n\t\t(end 33.0 8.05)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"ab4bd79d-cdd1-49b0-8e29-2acb82137625\")\n\t)"
+      },
+      {
+        "uuid": "ca82e47f-e3f7-480d-bae4-f1a8427ccfd4",
+        "predecessor_sha256": "a41551fda68675ca720de76c242568ac6a70a45cee24c76399b1856c55daef6f",
+        "new_block": "(segment\n\t\t(start 42.495 5.925)\n\t\t(end 40.675 4.8)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"SGM41513_SW\")\n\t\t(uuid \"ca82e47f-e3f7-480d-bae4-f1a8427ccfd4\")\n\t)"
+      },
+      {
+        "uuid": "1a86aa40-15d8-48e7-969e-bfd6b5cb38bb",
+        "predecessor_sha256": "d34260171fd4b3b48cc53a3f848e46e3fc4e03a97ad5b3a3098c3cffc69acf24",
+        "new_block": "(segment\n\t\t(start 40.55 10.2346)\n\t\t(end 40.55 7.7154)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"1a86aa40-15d8-48e7-969e-bfd6b5cb38bb\")\n\t)"
+      },
+      {
+        "uuid": "1d9e3f7e-8767-4e84-a305-ca1c10802efc",
+        "predecessor_sha256": "50bf22f2deb11ebb020188e9577d9a49d29136fb47826e32abd3bd4ef805516b",
+        "new_block": "(segment\n\t\t(start 28.6 4.6633)\n\t\t(end 28.6 1.15)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"1d9e3f7e-8767-4e84-a305-ca1c10802efc\")\n\t)"
+      },
+      {
+        "uuid": "26623737-2e6b-4fa0-817e-21cb15a8a93c",
+        "predecessor_sha256": "0bda88020d319e98ff1c65ed0fe1620d508f3880b4a2cb28d482195b3c6709d1",
+        "new_block": "(segment\n\t\t(start 39.995 10.35)\n\t\t(end 40.55 10.2346)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"26623737-2e6b-4fa0-817e-21cb15a8a93c\")\n\t)"
+      },
+      {
+        "uuid": "26bd314e-bf36-4fef-8032-a3ac5083bac9",
+        "predecessor_sha256": "d150b271886180ddd4c2fe78e58a8e41adadbc98003e8efc85379936cf491d8b",
+        "new_block": "(segment\n\t\t(start 27.6824 0.6674)\n\t\t(end 28.6 1.15)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"26bd314e-bf36-4fef-8032-a3ac5083bac9\")\n\t)"
+      },
+      {
+        "uuid": "26fbf276-b806-4fe6-9f21-e5cb6269b536",
+        "predecessor_sha256": "cad880653d2ac668fb456530f4bbacbb7e3499298f901aee3d2f58ca2aafcc4b",
+        "new_block": "(segment\n\t\t(start 44.3727 3.7)\n\t\t(end 39.1 3.7)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"26fbf276-b806-4fe6-9f21-e5cb6269b536\")\n\t)"
+      },
+      {
+        "uuid": "4a39d14e-3fe1-4fee-9a87-c8cfd18de47d",
+        "predecessor_sha256": "01c2addb49833572bede5a6a13af8ac38e38b0610e7bcdaa6b4845a34b4b9d37",
+        "new_block": "(segment\n\t\t(start 39.1 3.7)\n\t\t(end 39.1 7.1)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"4a39d14e-3fe1-4fee-9a87-c8cfd18de47d\")\n\t)"
+      },
+      {
+        "uuid": "4d6e7204-413b-42cc-9fe8-ef0a96d2e696",
+        "predecessor_sha256": "b0dff75ecf994a45584fa4ca73a6fa71c6ef6666f0dd163d7c81a12cf34c4ed9",
+        "new_block": "(segment\n\t\t(start 30.025 5.325)\n\t\t(end 28.6 4.6633)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"4d6e7204-413b-42cc-9fe8-ef0a96d2e696\")\n\t)"
+      },
+      {
+        "uuid": "5ad7459f-b093-40a5-b849-03c5c166c27f",
+        "predecessor_sha256": "7a101ac846774883bc1638fc5638a2cec7ab881d21bf7251a60a2e7579731849",
+        "new_block": "(segment\n\t\t(start 40.55 7.7154)\n\t\t(end 39.1 7.1)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"5ad7459f-b093-40a5-b849-03c5c166c27f\")\n\t)"
+      },
+      {
+        "uuid": "8119a0e8-35fb-4664-af48-31001ad1f058",
+        "predecessor_sha256": "b83b3ade5b2f6b1c27d8f6bf6087a147bcab60726eb4e0dae8bd3f8134dba8a7",
+        "new_block": "(segment\n\t\t(start 28.6 1.15)\n\t\t(end 30.3682 1.3434)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"8119a0e8-35fb-4664-af48-31001ad1f058\")\n\t)"
+      },
+      {
+        "uuid": "b98917aa-4c6a-4053-bda6-b1943fa4bc20",
+        "predecessor_sha256": "36edd8768106112957918fba2ccc3cc067c09b745d9f4c0e71ae1c98628fe813",
+        "new_block": "(segment\n\t\t(start 42.195 10.75)\n\t\t(end 39.995 10.75)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"b98917aa-4c6a-4053-bda6-b1943fa4bc20\")\n\t)"
+      },
+      {
+        "uuid": "d213d4a8-a75a-4e55-a820-9d4686b0534b",
+        "predecessor_sha256": "d416b8786c0bb1aaa88bc7958667f81c4f30ea0382015ecbfcade11aa52d8166",
+        "new_block": "(segment\n\t\t(start 37.0205 1.3434)\n\t\t(end 39.1 3.7)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"d213d4a8-a75a-4e55-a820-9d4686b0534b\")\n\t)"
+      },
+      {
+        "uuid": "da4f1cc7-4166-4bc2-9cdc-9477293c64ce",
+        "predecessor_sha256": "b59d4b4238d31300cfd66a335af73035dd1c53d74a981cdf33a7ecdd56fa98b3",
+        "new_block": "(segment\n\t\t(start 44.6263 4.0715)\n\t\t(end 44.3727 3.7)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"VSYS_RAW\")\n\t\t(uuid \"da4f1cc7-4166-4bc2-9cdc-9477293c64ce\")\n\t)"
+      },
+      {
+        "uuid": "71acd054-fb0c-4655-8be0-a897d3da4ff1",
+        "predecessor_sha256": "a60b5669b5d6e8e212a5fbe07694200f188cb0440bd3a129a3a2e98d53acbab0",
+        "new_block": "(segment\n\t\t(start 35.3674 5.7049)\n\t\t(end 34.925 5.7049)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"3V3_AON_SRC\")\n\t\t(uuid \"71acd054-fb0c-4655-8be0-a897d3da4ff1\")\n\t)"
+      },
+      {
+        "uuid": "7bb2b596-fcbd-4d15-82c6-ed134daa3c89",
+        "predecessor_sha256": "d481e75930cc32eb9d93388b88812f00cdfec2083d0f008c4ca5bd0e7c384250",
+        "new_block": "(segment\n\t\t(start 34.925 5.705)\n\t\t(end 33.625 6.605)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"3V3_AON_SRC\")\n\t\t(uuid \"7bb2b596-fcbd-4d15-82c6-ed134daa3c89\")\n\t)"
+      },
+      {
+        "uuid": "9016bf20-4beb-4629-9f93-16fdb87d5786",
+        "predecessor_sha256": "604c204d15e7c415ea64f016fbec64bf0f869468e3c47d6c275a09715b74cba7",
+        "new_block": "(segment\n\t\t(start 34.925 5.7049)\n\t\t(end 34.925 5.705)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"3V3_AON_SRC\")\n\t\t(uuid \"9016bf20-4beb-4629-9f93-16fdb87d5786\")\n\t)"
+      },
+      {
+        "uuid": "c2e1188a-c3a6-4e87-9b94-479f1b04115b",
+        "predecessor_sha256": "ddc054ffb6927c3b61d003877d4a296dfc45916930e552bf255520d5dd198c85",
+        "new_block": "(segment\n\t\t(start 36.0983 7.6892)\n\t\t(end 34.1375 9.25)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"BAT_CONN_P\")\n\t\t(uuid \"c2e1188a-c3a6-4e87-9b94-479f1b04115b\")\n\t)"
+      },
+      {
+        "uuid": "56af017b-7213-4c1c-ba58-568553506338",
+        "predecessor_sha256": "b26c22a59b40949fd2857b5c569f07abc012fb0577162be25763d1930f8bbcbd",
+        "new_block": "(segment\n\t\t(start 38.3 10.1)\n\t\t(end 41.1 10.2)\n\t\t(width 0.2)\n\t\t(layer \"B.Cu\")\n\t\t(net \"BAT_PACKP\")\n\t\t(uuid \"56af017b-7213-4c1c-ba58-568553506338\")\n\t)"
+      },
+      {
+        "uuid": "adab0079-c981-4b0f-bdd0-59102445f448",
+        "predecessor_sha256": "a790a6c08ebc4fb2d6f17363f102334c4300ec2bb3c154d3c29bbf8cfb7d1b97",
+        "new_block": "(segment\n\t\t(start 37.7294 9.5169)\n\t\t(end 38.3 10.1)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"BAT_PACKP\")\n\t\t(uuid \"adab0079-c981-4b0f-bdd0-59102445f448\")\n\t)"
+      },
+      {
+        "uuid": "b0f4d9bf-c2c0-402f-a382-9148ce84edda",
+        "predecessor_sha256": "9dade24f1f778332899966121a084b855a3f964745dff969ae5888af433db12c",
+        "new_block": "(segment\n\t\t(start 37.0625 9.25)\n\t\t(end 37.7294 9.5169)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"BAT_PACKP\")\n\t\t(uuid \"b0f4d9bf-c2c0-402f-a382-9148ce84edda\")\n\t)"
+      },
+      {
+        "uuid": "3ba4c10a-2ab0-4d22-8111-c7b65192cec5",
+        "predecessor_sha256": "283bfde580a008501316c0dcedca055be092b32cdb531aedc84f86f3e1021e00",
+        "new_block": "(via\n\t\t(at 41.1 10.2)\n\t\t(size 0.45)\n\t\t(drill 0.25)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"BAT_PACKP\")\n\t\t(uuid \"3ba4c10a-2ab0-4d22-8111-c7b65192cec5\")\n\t)"
+      },
+      {
+        "uuid": "e1a9b0ff-8ca2-44c7-abad-29f1cc4ca206",
+        "predecessor_sha256": "bb1f3680a6bafc682c7b4b22d995e88b2dc8008a092619f1ade0ef0b4b9ec435",
+        "new_block": "(segment\n\t\t(start 41.1 10.2)\n\t\t(end 40.8637 9.2982)\n\t\t(width 0.2)\n\t\t(layer \"In1.Cu\")\n\t\t(net \"BAT_PACKP\")\n\t\t(uuid \"e1a9b0ff-8ca2-44c7-abad-29f1cc4ca206\")\n\t)"
+      },
+      {
+        "uuid": "3fc1f3b1-1a90-4a03-9591-04faa2ca89a7",
+        "predecessor_sha256": "2353ab1f0844175cf007cc7a6a01108addafb6aa35322e2321a2e8a84e77dd89",
+        "new_block": "(segment\n\t\t(start 44.3781 6)\n\t\t(end 43.92 6.0)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"SGM41513_BTST\")\n\t\t(uuid \"3fc1f3b1-1a90-4a03-9591-04faa2ca89a7\")\n\t)"
+      }
+    ],
+    "new_copper": [
+      "(segment (start 33.0 8.05) (end 34.0 8.05) (width 0.2) (layer \"F.Cu\") (net \"GND\") (uuid \"bc2b624a-6d03-5584-8a30-ef16ed732971\"))",
+      "(segment (start 34.0 8.05) (end 35.125 6.855) (width 0.2) (layer \"F.Cu\") (net \"GND\") (uuid \"358ab7dc-f7cc-5460-8850-2025ad389af0\"))",
+      "(via (at 38.3 10.1) (size 0.45) (drill 0.25) (layers \"F.Cu\" \"B.Cu\") (net \"BAT_PACKP\") (uuid \"8f339b44-a04c-5395-845a-a5116a5280c8\"))"
+    ]
+  },
+  "fpc6_layout": {
+    "status": "engineering_candidate_not_mechanical_release",
+    "note": "H804 provisional M1.2/1.6mm NPTH moves from(3,34) to(3,33), retaining its1.6mm-radius courtyard; enclosure boss pose must follow. SDA bypasses J804 non-electrical support, without assigning support a net or changing minimum rules. FPC entry/latch and real panel fold remain unverified.",
+    "changed_blocks": [
+      {
+        "uuid": "c1cd6a2a-9506-5d1a-96a1-f9fdb33a5fcb",
+        "predecessor_sha256": "a130d6e2bc96b827e1d2a32775e15fdd82fae4e81459f0cd51834fdc3b7a91e2",
+        "new_block": "(footprint \"panda-thin16:MountingHole_M1.2_1.6mm\" (locked yes) (layer \"F.Cu\") (uuid \"c1cd6a2a-9506-5d1a-96a1-f9fdb33a5fcb\") (at 3 33) (property \"Reference\" \"H804\" (at 0 -2.4 0) (layer \"F.SilkS\") (hide yes) (uuid \"15b1c7ef-6b99-4665-8a3d-ceac8037b511\") (effects (font (size 1 1)))) (property \"Value\" \"M1.2 clearance / NPTH 1.6\" (at 0 2.4 0) (layer \"F.Fab\") (uuid \"d28ced9d-b3ab-4c9b-9f28-9a946a5b027e\") (effects (font (size 1 1)))) (property \"Datasheet\" \"\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"d039c04b-517c-4c97-ba89-5859ddc38e0f\") (effects (font (size 1.27 1.27)))) (property \"Description\" \"thin15 mechanical allocation; supplier process not yet approved\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"15622a80-9c7d-4680-b46d-69c1c41eaf38\") (effects (font (size 1.27 1.27)))) (path \"/d3a81e0f-b7aa-4a42-8725-c0778e1c21b4/5c981e0e-d44f-5569-a533-0a321193d8be/681c423b-8c9b-538d-8969-66990715502d\") (attr through_hole exclude_from_pos_files exclude_from_bom) (duplicate_pad_numbers_are_jumpers no) (fp_circle (center 0 0) (end 1.6 0) (stroke (width 0.05) (type solid)) (fill no) (layer \"F.CrtYd\") (uuid \"9fa3cdd1-1c91-4605-8892-e570bd155101\")) (pad \"\" np_thru_hole circle (at 0 0) (size 1.6 1.6) (drill 1.6) (layers \"*.Cu\" \"*.Mask\") (uuid \"d4c89d81-269b-4fde-ae33-e889c38cf941\")) (embedded_fonts no))"
+      },
+      {
+        "uuid": "7435dd5f-5d2f-425e-af8b-7864a8d48e60",
+        "predecessor_sha256": "221e73a2a715fb9002459aaa561913f94e8cde228da3bc2053d05553ac99b1c2",
+        "new_block": "(segment\n\t\t(start 5.6 40.276)\n\t\t(end 4.6 42.5)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"I2C_SDA\")\n\t\t(uuid \"7435dd5f-5d2f-425e-af8b-7864a8d48e60\")\n\t)"
+      }
+    ],
+    "new_copper": [
+      "(segment (start 4.6 42.5) (end 2.275 43.601) (width 0.2) (layer \"F.Cu\") (net \"I2C_SDA\") (uuid \"07db4eac-4942-5bd7-9a47-581038cd1656\"))"
+    ]
+  }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Replay exact mainland substitutions with checked predecessor identities."""
 from pathlib import Path
-import json, re, uuid
+import hashlib, json, re, uuid
 from _split_c1_sourcing import blocks, property_value, balanced, patch_block
 
 ROOT = Path(__file__).resolve().parent
@@ -13,6 +13,13 @@ SWITCH_DESCRIPTION = 'SGMICRO SGM2578SDYG/TR; active-high 2A load switch with QO
 def set_prop(block, field, value):
     pattern = r'(\(property\s+' + re.escape(json.dumps(field)) + r'\s+)("(?:\\.|[^"\\])*")'
     result, count = re.subn(pattern, lambda m: m.group(1)+json.dumps(value), block, count=1)
+    if count==0 and field=='Description':
+        templates=[(a,b,p) for a,b,p in blocks(block,r'\(property\s') if property_value(p,'Datasheet') is not None]
+        if len(templates)!=1:raise ValueError('Description template absent')
+        _,end,prop=templates[0]
+        prop=re.sub(r'\(property\s+"Datasheet"\s+"(?:\\.|[^"\\])*"','(property "Description" '+json.dumps(value),prop,count=1)
+        prop=re.sub(r'\(uuid "[^"]+"\)','(uuid "'+eco_uuid('Description/'+str(property_value(block,'Reference')))+'")',prop)
+        return block[:end]+'\n'+prop+block[end:]
     if count != 1:
         raise ValueError('Required field absent: '+field)
     return result
@@ -50,6 +57,79 @@ def clone_switch_symbol(text, cache):
         i=text.index('(lib_symbols');end=balanced(text,i)-1
     else:end=text.rfind(')')
     return text[:end]+'\n'+symbol+'\n'+text[end:]
+
+def change_wire_connector_geometry(fp, pins):
+    """HCTL HC-1.0 PWT p18 lands, in the retained signal-row datum."""
+    if pins not in (2,3): raise ValueError('Unreviewed HCTL pin count')
+    for a,b,pad in reversed(list(blocks(fp,r'\(pad\s'))):
+        number=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+        if number=='MP':
+            x=float(re.search(r'\(at\s+([-\d.]+)',pad).group(1))
+            new_x=(1 if x>0 else -1)*((pins-1)/2+1.1)
+            pad=re.sub(r'(\(at\s+)[-\d.]+\s+[-\d.]+',lambda m:m.group(1)+str(new_x)+' 1.7',pad,count=1)
+            size='1.0 2.55'
+        else:
+            if number not in {str(n) for n in range(1,pins+1)}:raise ValueError('Unexpected HCTL pad')
+            size='0.7 1.75'
+        pad=re.sub(r'\(size\s+[-\d.]+\s+[-\d.]+\)','(size '+size+')',pad,count=1)
+        pad=pad.replace('smd roundrect','smd rect')
+        pad=re.sub(r'\s*\(roundrect_rratio\s+[-\d.]+\)','',pad)
+        fp=fp[:a]+pad+fp[b:]
+    for a,b,_ in reversed(list(blocks(fp,r'\((?:fp_line|fp_text|model)\s'))):fp=fp[:a]+fp[b:]
+    # Fab is explicitly a conservative land/housing envelope, not a 3D body model.
+    width=pins+2.3
+    extras=[]
+    for layer,half,top,bottom,stroke in [('F.Fab',width/2,-2.875,2.975,0.1),('F.CrtYd',width/2+0.25,-3.125,3.225,0.05)]:
+        corners=[(-half,top),(half,top),(half,bottom),(-half,bottom)]
+        for n,(s,e) in enumerate(zip(corners,corners[1:]+corners[:1])):
+            extras.append('(fp_line (start %s %s) (end %s %s) (stroke (width %s) (type solid)) (layer "%s") (uuid "%s"))'%(*s,*e,stroke,layer,eco_uuid('HC10/'+str(pins)+'/'+layer+'/'+str(n))))
+    fp=re.sub(r'\(descr\s+"(?:\\.|[^"\\])*"\)', '(descr "HCTL HC-1.0 PWT original p18 land pattern: signal 0.7x1.75, anchors 1.0x2.55, signal-to-anchor center rows 3.70mm. Fab is conservative envelope; maximum height budget 3.2mm.")',fp,count=1)
+    fp=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)','(tags "HCTL HC-1.0 PWT domestic side-entry 1A")',fp,count=1)
+    return fp[:fp.rfind(')')]+'\n'+'\n'.join(extras)+'\n)'
+
+def change_fpc6_geometry(fp):
+    """XKB X05A10H06G, p2 A2 dated 2026-01-15; rotate physical part, never renumber pins."""
+    m=re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)(?:\s+([-\d.]+))?\)',fp)
+    x,y,angle=[float(v or 0) for v in m.groups()]
+    if x!=6.35 or y not in (39.37,45.5) or angle!=0:raise ValueError('FPC6 pose predecessor differs')
+    fp=fp[:m.start()]+'(at %s %s 180)'%(x,y-2.5)+fp[m.end():]
+    for a,b,pad in reversed(list(blocks(fp,r'\(pad\s'))):
+        number=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+        if number in ('S1','S2'):
+            px=-2.3 if number=='S1' else 2.3;py=1.25;size='0.4 0.8'
+        elif number in {str(n) for n in range(1,7)}:
+            px=(int(number)-3.5)*0.5;py=-1.25;size='0.3 0.8'
+        else:raise ValueError('Unexpected FPC6 pad')
+        pad=re.sub(r'\(at\s+[-\d.]+\s+[-\d.]+(?:\s+[-\d.]+)?\)','(at %s %s 180)'%(px,py),pad,count=1)
+        pad=re.sub(r'\(size\s+[-\d.]+\s+[-\d.]+\)','(size '+size+')',pad,count=1)
+        fp=fp[:a]+pad+fp[b:]
+    for a,b,_ in reversed(list(blocks(fp,r'\((?:fp_line|fp_rect|fp_text|model)\s'))):fp=fp[:a]+fp[b:]
+    fp=re.sub(r'\(descr\s+"(?:\\.|[^"\\])*"\)', '(descr "XKB X05A10H06G A2 p2: 6-pin dual-contact back-flip, 0.5mm pitch, 0.3mm FPC. Signal lands 0.3x0.8mm, anchors 0.4x0.8mm, rows 2.5mm apart. Conservative land/body envelope, not 3D model.")',fp,count=1)
+    fp=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)', '(tags "XKB X05A10H06G FPC 6pin 0.5mm dual-contact A2")',fp,count=1)
+    extras=[]
+    for layer,x,y1,y2,stroke in [('F.Fab',2.65,-1.65,1.9,.1),('F.CrtYd',2.9,-1.9,2.15,.05)]:
+        extras.append('(fp_rect (start %s %s) (end %s %s) (stroke (width %s) (type solid)) (fill no) (layer "%s") (uuid "%s"))'%(-x,y1,x,y2,stroke,layer,eco_uuid('XKB6/'+str(property_value(fp,'Reference'))+'/'+layer)))
+    return fp[:fp.rfind(')')]+'\n'+'\n'.join(extras)+'\n)'
+
+def change_inductor_geometry(fp, series):
+    if series=='MWSA0402S':center,size,body,clear=(1.85,'1.5 2.5',(2.375,2.225),(2.625,2.475))
+    elif series=='SWPA3012S':center,size,body,clear=(1.15,'0.8 2.7',(1.6,1.6),(1.85,1.85))
+    else:raise ValueError('Unreviewed Sunlord series')
+    for a,b,pad in reversed(list(blocks(fp,r'\(pad\s'))):
+        number=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+        if number not in ('1','2'):raise ValueError('Unexpected inductor pad')
+        x=float(re.search(r'\(at\s+([-\d.]+)',pad).group(1))
+        pad=re.sub(r'(\(at\s+)[-\d.]+\s+[-\d.]+',lambda m:m.group(1)+str(center if x>0 else -center)+' 0',pad,count=1)
+        pad=re.sub(r'\(size\s+[-\d.]+\s+[-\d.]+\)','(size '+size+')',pad,count=1)
+        pad=pad.replace('smd roundrect','smd rect');pad=re.sub(r'\s*\(roundrect_rratio\s+[-\d.]+\)','',pad)
+        fp=fp[:a]+pad+fp[b:]
+    for a,b,_ in reversed(list(blocks(fp,r'\((?:fp_line|fp_rect|fp_text|model)\s'))):fp=fp[:a]+fp[b:]
+    extras=[]
+    for layer,(x,y),stroke in [('F.Fab',body,0.1),('F.CrtYd',clear,0.05)]:
+        extras.append('(fp_rect (start %s %s) (end %s %s) (stroke (width %s) (type solid)) (fill no) (layer "%s") (uuid "%s"))'%(-x,-y,x,y,stroke,layer,eco_uuid(series+'/'+str(property_value(fp,'Reference'))+'/'+layer)))
+    fp=re.sub(r'\(descr\s+"(?:\\.|[^"\\])*"\)', '(descr '+json.dumps('Sunlord '+series+' manufacturer land pattern; original series drawing reviewed; Fab uses maximum body XY and no foreign 3D model.')+')',fp,count=1)
+    fp=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)', '(tags '+json.dumps('Sunlord '+series+' power inductor')+')',fp,count=1)
+    return fp[:fp.rfind(')')]+'\n'+'\n'.join(extras)+'\n)'
 
 def apply_domestic_eco(candidate, board, refs_only=None):
     candidate=Path(candidate)
@@ -90,6 +170,12 @@ def apply_domestic_eco(candidate, board, refs_only=None):
                 block=re.sub(r'\(tags\s+"(?:\\.|[^"\\])*"\)', '(tags "HCTL 60pin 0.4mm 1.5mm mate")',block,count=1)
                 for c,d,_ in reversed(list(blocks(block,r'\(model\s'))):block=block[:c]+block[d:]
                 block=re.sub(r'(?m)^[ \t]+$','',block)
+            if item.get('wire_connector_pins') and pcb:
+                block=change_wire_connector_geometry(block,item['wire_connector_pins'])
+            if item.get('fpc6_footprint') and pcb:
+                block=change_fpc6_geometry(block)
+            if item.get('inductor_land') and pcb:
+                block=change_inductor_geometry(block,item['inductor_land'])
             if item.get('diode_land') and pcb:
                 block=re.sub(r'^\(footprint\s+"[^"]+"','(footprint "panda-r6-display:MBR0530_JSCJ_SOD123"',block,count=1)
                 block=change_pad_geometry(block,False)
@@ -97,6 +183,7 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         path.write_text(text)
     expected_pcb={ref for ref,item in targets.items() if not item.get('manual')}
     if seen[False]!=set(targets) or seen[True]!=expected_pcb:raise ValueError('Domestic ECO ref coverage differs')
+    if board=='Core-C1' and {'L401','L402'} <= set(targets):apply_power_layout(candidate)
     if board=='Core-C1':
         lib=candidate/'lib/panda-standard.kicad_sym'
         lib.write_text(clone_switch_symbol(lib.read_text(),False))
@@ -114,17 +201,110 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         lib.write_text(library_from_board(diode,'MBR0530_JSCJ_SOD123'))
     from _split_c1_prototype_eco import library_from_board
     for ref,item in targets.items():
-        if not item.get('connector_footprint'):continue
+        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint')):continue
         pcb=next(folder.glob('*.kicad_pcb'))
         fp=next(b for _,_,b in blocks(pcb.read_text(),r'\(footprint\s') if property_value(b,'Reference')==ref)
         name=item['new_fields']['Footprint'].split(':')[1]
         libdir=candidate/'lib/panda-standard.pretty' if board=='Core-C1' else folder/'panda-r6-display.pretty'
         (libdir/(name+'.kicad_mod')).write_text(library_from_board(fp,name))
+    if board=='Core-C1' and 'J302' in targets:apply_wire_connector_routing(candidate)
+    if board=='Core-C1' and {'J803','J804'}<=set(targets):apply_fpc6_support(candidate)
     if refs_only is None:apply_domestic_support(candidate,board)
     return {'board':board,'applied_refs':sorted(targets),'manufacturing_release':False}
 
 def eco_uuid(value):
     return str(uuid.uuid5(uuid.NAMESPACE_URL,'panda/split-c1/domestic-support/'+value))
+
+def apply_wire_connector_routing(candidate):
+    """Move the NTC spur via and ground escape away from enlarged HCTL lands."""
+    path=next((Path(candidate)/REL).glob('*.kicad_pcb'));text=path.read_text()
+    changes={
+        '64af7e6b-0c6c-48d6-8c8f-9036f573ea9c':{'start':((48.3378,19.3008),(48.5,19.3008)),'end':((48.3378,17.2335),(48.5,16.5))},
+        '855526fb-cf8f-45d8-9735-0f6e7ae96985':{'start':((48.3378,17.2335),(48.5,16.5))},
+        '8ba710f5-f668-4595-9bc1-4445b586d3e8':{'end':((48.3378,19.3008),(48.5,19.3008))},
+        'e8eec420-2290-46ae-8611-878f7672a3f5':{'start':((48.3378,19.3008),(48.5,19.3008))},
+        '48929bd4-5e9d-4210-845f-2dae2f353b9a':{'at':((49.8046,19.0727),(49.8046,19.7))},
+        'f777faa2-f915-4b21-85c6-95b2db668ec6':{'start':((49.8046,19.0727),(49.8046,19.7))},
+        'fa4afe0f-2518-4973-b2b9-6e36fa8cc076':{'start':((49.8046,19.0727),(49.8046,19.7))}}
+    seen=set()
+    for a,b,block in reversed(list(blocks(text,r'\((?:segment|via)\s'))):
+        uid=re.search(r'\(uuid "([^"]+)"\)',block).group(1)
+        if uid not in changes:continue
+        for field,(old,new) in changes[uid].items():
+            pattern=r'\('+field+r'\s+([-\d.]+)\s+([-\d.]+)\)'
+            found=re.search(pattern,block)
+            if not found or tuple(map(float,found.groups()))!=old:raise ValueError('HCTL routing predecessor differs: '+uid)
+            block=re.sub(pattern,'('+field+' %s %s)'%new,block,count=1)
+        seen.add(uid);text=text[:a]+block+text[b:]
+    if seen!=set(changes):raise ValueError('HCTL routing coverage differs')
+    path.write_text(text)
+
+def apply_fpc6_support(candidate):
+    """Move the provisional M1.2 hole and SDA escape, retaining all rule minima."""
+    path=next((Path(candidate)/REL).glob('*.kicad_pcb'));text=path.read_text()
+    data=json.loads((ROOT/'split-c1-domestic-eco.json').read_text())['fpc6_layout']
+    replacements={i['uuid']:i for i in data['changed_blocks']};seen=set()
+    for a,b,block in reversed(list(blocks(text,r'\((?:footprint|segment|via)\s'))):
+        uid=re.search(r'\(uuid "([^"]+)"\)',block).group(1)
+        if uid not in replacements:continue
+        i=replacements[uid]
+        if native_block_hash(block)!=i['predecessor_sha256']:raise ValueError('FPC6 support predecessor differs: '+uid)
+        text=text[:a]+i['new_block']+text[b:];seen.add(uid)
+    if seen!=set(replacements):raise ValueError('FPC6 support coverage differs')
+    for block in data['new_copper']:
+        uid=re.search(r'\(uuid "([^"]+)"\)',block).group(1)
+        if '(uuid "'+uid+'")' in text:raise ValueError('FPC6 support already applied')
+    path.write_text(text[:text.rfind(')')]+'\n'+'\n'.join(data['new_copper'])+'\n)\n')
+
+def native_block_hash(block):
+    tokens=re.findall(r'"(?:\\.|[^"\\])*"|[()]|[^\s()]+',block)
+    return hashlib.sha256(json.dumps(tokens,separators=(',',':')).encode()).hexdigest()
+
+def apply_power_layout(candidate):
+    """Replay reviewed power routing, checking exact canonical predecessors."""
+    path=next((Path(candidate)/REL).glob('*.kicad_pcb'));text=path.read_text()
+    layout=json.loads((ROOT/'split-c1-domestic-eco.json').read_text())['power_layout']
+    moves={i['ref']:i for i in layout['footprint_moves']}
+    replacements={i['ref']:i for i in layout['footprint_blocks']}
+    seen=set()
+    for a,b,fp in reversed(list(blocks(text,r'\(footprint\s'))):
+        ref=property_value(fp,'Reference')
+        if ref in moves:
+            i=moves[ref];m=re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)(?:\s+([-\d.]+))?\)',fp)
+            if not m or [float(v or 0) for v in m.groups()]!=i['old_at']:raise ValueError('Power footprint predecessor differs: '+ref)
+            fp=fp[:m.start()]+'(at %s %s %s)'%tuple(i['new_at'])+fp[m.end():]
+            for c,d,pad in reversed(list(blocks(fp,r'\(pad\s'))):
+                m=re.search(r'\(at\s+[-\d.]+\s+[-\d.]+\s+([-\d.]+)\)',pad)
+                if not m or float(m.group(1))!=i['pad_angle_old']:raise ValueError('Power pad angle differs')
+                pad=pad[:m.start(1)]+str(i['pad_angle_new'])+pad[m.end(1):];fp=fp[:c]+pad+fp[d:]
+            seen.add(ref)
+        if ref in replacements:
+            if property_value(fp,'LCSC') is None:
+                registry=json.loads((ROOT/'split-c1-sourcing-evidence.json').read_text())
+                rows=[i for i in registry['entries'] if i['board']=='Core-C1' and ref in i['refs']]
+                if len(rows)!=1:raise ValueError('Power support exact sourcing identity missing')
+                fp=patch_block(fp,ref,rows[0],True)
+            i=replacements[ref]
+            if native_block_hash(fp)!=i['predecessor_sha256']:raise ValueError('Power support footprint differs: '+ref)
+            fp=i['new_block'];seen.add(ref)
+        text=text[:a]+fp+text[b:]
+    if seen!=set(moves)|set(replacements):raise ValueError('Power footprint coverage differs')
+    changes={i['uuid']:i for i in layout['copper_changes']};seen=set()
+    for a,b,cu in reversed(list(blocks(text,r'\((?:segment|via)\s'))):
+        uid=re.search(r'\(uuid "([^"]+)"\)',cu).group(1)
+        if uid not in changes:continue
+        i=changes[uid]
+        if native_block_hash(cu)!=i['predecessor_sha256']:raise ValueError('Power copper predecessor differs: '+uid)
+        text=text[:a]+i['new_block']+text[b:];seen.add(uid)
+    if seen!=set(changes):raise ValueError('Power copper coverage differs')
+    for cu in layout['new_copper']:
+        uid=re.search(r'\(uuid "([^"]+)"\)',cu).group(1)
+        if '(uuid "'+uid+'")' in text:raise ValueError('Power copper already applied')
+    text=text[:text.rfind(')')]+'\n'+'\n'.join(layout['new_copper'])+'\n)\n';path.write_text(text)
+    from _split_c1_prototype_eco import library_from_board
+    fp=next(b for _,_,b in blocks(text,r'\(footprint\s') if property_value(b,'Reference')=='C201')
+    lib=Path(candidate)/'lib/panda-standard.pretty/C201_CBOOT_0603_SEED.kicad_mod'
+    lib.write_text(library_from_board(fp,'C201_CBOOT_0603_SEED'))
 
 def regenerate_uuids(text, prefix):
     return re.sub(r'\(uuid "([^"]+)"\)',lambda m:'(uuid "'+eco_uuid(prefix+'/'+m.group(1))+'")',text)
@@ -200,3 +380,16 @@ def apply_domestic_support(candidate, board):
             block=set_prop(block,'Description','FH 1uF 25V X7R +/-10% 0603 local input bypass for SGM2578SD. Application review in split-c1-domestic-eco.json; DC-bias remains qualification.')
             text=text[:a]+block+text[b:]
         path.write_text(text)
+    # C201 belongs to SGM41513 now; remove stale BQ25628E documentation from live CAD.
+    for path in sorted(folder.glob('*.kicad_sch'))+sorted(folder.glob('*.kicad_pcb')):
+        text=path.read_text();pcb=path.suffix=='.kicad_pcb'
+        for a,b,block in reversed(list(blocks(text,r'\(footprint\s' if pcb else r'\(symbol\s+\(lib_id\s'))):
+            if property_value(block,'Reference')!='C201':continue
+            if property_value(block,'MPN')!='0603B473K500NT':raise ValueError('C201 exact capacitor identity drift')
+            block=set_prop(block,'Datasheet','https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf')
+            block=set_prop(block,'Description','FH 47nF 50V X7R +/-10% 0603 bootstrap capacitor from SGM41513 BTST to SW; effective capacitance and switching qualification pending.')
+            text=text[:a]+block+text[b:]
+        path.write_text(text)
+    from _split_c1_prototype_eco import library_from_board
+    fp=next(b for _,_,b in blocks(pcbpath.read_text(),r'\(footprint\s') if property_value(b,'Reference')=='C201')
+    (candidate/'lib/panda-standard.pretty/C201_CBOOT_0603_SEED.kicad_mod').write_text(library_from_board(fp,'C201_CBOOT_0603_SEED'))

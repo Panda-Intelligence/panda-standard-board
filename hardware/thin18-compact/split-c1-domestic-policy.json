@@ -157,6 +157,18 @@
       "source_urls": [
         "https://www.shiheng.com.cn/products/mf55xl.html"
       ]
+    },
+    {
+      "aliases": [
+        "XKB Connection"
+      ],
+      "company": "广东星坤科技股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.helloxkb.com/home/search/tzzgl.html",
+        "https://www.helloxkb.cn/"
+      ],
+      "note": "Mainland manufacturer profile; manufacturer drawings use XKB Industrial Precision Co., Limited title. Exact legal supply/lot identity must be verified before purchase."
     }
   ],
   "foreign_manufacturers": [
@@ -447,34 +459,12 @@
     {
       "board": "Core-C1",
       "refs": [
-        "J302"
-      ],
-      "manufacturer": "JST",
-      "mpn": "SM03B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
-      "library_id": "C160403",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "J501"
       ],
       "manufacturer": "Molex",
       "mpn": "104031-0811",
       "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
       "library_id": "C585350",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J502"
-      ],
-      "manufacturer": "JST",
-      "mpn": "SM02B-SRSS-TB(LF)(SN)",
-      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
-      "library_id": "C160402",
       "origin": "FOREIGN_MANUFACTURER"
     },
     {
@@ -494,33 +484,33 @@
         "J803",
         "J804"
       ],
-      "manufacturer": "Hirose",
-      "mpn": "FH34SRJ-6S-0.5SH(50)",
-      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
-      "library_id": "C224194",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "XKB Connection",
+      "mpn": "X05A10H06G",
+      "footprint": "panda-standard:XKB_X05A10H06G_A2",
+      "library_id": "C528032",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
       "refs": [
         "L401"
       ],
-      "manufacturer": "Coilcraft",
-      "mpn": "XFL4015-471MEC",
-      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
-      "library_id": "C18221164",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0402S-R47MT",
+      "footprint": "panda-standard:Sunlord_MWSA0402_R47",
+      "library_id": "C6331050",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
       "refs": [
         "L402"
       ],
-      "manufacturer": "Coilcraft",
-      "mpn": "XGL4015-222MEC",
-      "footprint": "panda-standard:XGL4015_Coilcraft",
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0402S-1R0MTB01",
+      "footprint": "panda-standard:Sunlord_MWSA0402_1R0B01",
       "library_id": "",
-      "origin": "FOREIGN_MANUFACTURER"
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -965,11 +955,11 @@
       "refs": [
         "L1"
       ],
-      "manufacturer": "Taiyo Yuden",
-      "mpn": "LSXNE3030KKT470MN",
-      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA3012S470MT",
+      "footprint": "panda-r6-display:Sunlord_SWPA3012_47u",
       "library_id": "",
-      "origin": "FOREIGN_MANUFACTURER"
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Display-C1",
@@ -1058,6 +1048,28 @@
       "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
       "library_id": "C3294722",
       "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J302"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-1.0-3PWT",
+      "footprint": "panda-standard:HCTL_HC10_3PWT",
+      "library_id": "C2845362",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J502"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-1.0-2PWT",
+      "footprint": "panda-standard:HCTL_HC10_2PWT",
+      "library_id": "C2845361",
+      "origin": "MAINLAND_MANUFACTURER"
     }
   ],
   "remaining_redesigns": [
@@ -1114,10 +1126,13 @@
       ],
       "function": "Mid-mount USB-C",
       "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker.",
+      "candidates": [
+        "HCTL HC-TYPE-C-16P-CB0.8 C2894900"
+      ],
+      "next_action": "Exact HCTL0.8mm midmount primary drawing obtained; signal-row datum is7.10mm behind front edge, not6.77mm. Review complete cutout/corner tolerance and shell stakes; resolve0.2mm fabrication copper-edge clearance by proper connector/cutout redesign, not rule exception.",
       "source_urls": [
-        "https://gct.co/connector/usb4500"
+        "https://gct.co/connector/usb4500",
+        "https://atta.szlcsc.com/upload/public/pdf/source/20221116/907898E599CAF1C2BBDA7CF982E7F544.pdf"
       ],
       "foreign_retention_allowed": false
     },
@@ -1138,22 +1153,6 @@
     {
       "board": "Core-C1",
       "refs": [
-        "J302"
-      ],
-      "function": "External NTC connector",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "HCTL HC-1.0-3PWT C2845362"
-      ],
-      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance.",
-      "source_urls": [
-        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "J501"
       ],
       "function": "MicroSD socket with detect",
@@ -1162,71 +1161,6 @@
       "next_action": "Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD.",
       "source_urls": [
         "https://www.molex.com/en-us/products/part-detail/1040310811"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J502"
-      ],
-      "function": "Speaker connector",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "HCTL HC-1.0-2PWT C2845361"
-      ],
-      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match.",
-      "source_urls": [
-        "https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J803",
-        "J804"
-      ],
-      "function": "Touch/frontlight six-pin FPC",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ.",
-      "source_urls": [
-        "https://www.hirose.com/product/series/FH34"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "L401"
-      ],
-      "function": "AON buck-boost 0.47uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord MWSA0412S-R47MT"
-      ],
-      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID.",
-      "source_urls": [
-        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
-        "https://www.coilcraft.com/en-us/products/power/high-voltage-inductors/xfl/xfl4015/xfl4015-471/"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "L402"
-      ],
-      "function": "Charger inductor 2.2uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord MWSA0412S-2R2MT C6807730"
-      ],
-      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern.",
-      "source_urls": [
-        "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/MWSA_2D00_S-series-of-SMD-Power-Inductor_2D00_1.pdf",
-        "https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xgl/xgl4015/xgl4015-222/"
       ],
       "foreign_retention_allowed": false
     },
@@ -1274,26 +1208,10 @@
         "XKB X05B20L24T C388688",
         "XKB X05A10L24G C2880917"
       ],
-      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating.",
+      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph.",
       "source_urls": [
-        "https://www.lcsc.com/product-detail/C388688.html"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
-        "L1"
-      ],
-      "function": "EPD boost 47uH",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "Sunlord SWPA3010S470MT C96826",
-        "Sunlord SWPA3012S470MT"
-      ],
-      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor.",
-      "source_urls": [
-        "https://www.alfatec.de/fileadmin/productfiles/datasheets/sunlord_swpa3010s_series.pdf"
+        "https://www.lcsc.com/product-detail/C388688.html",
+        "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf"
       ],
       "foreign_retention_allowed": false
     },

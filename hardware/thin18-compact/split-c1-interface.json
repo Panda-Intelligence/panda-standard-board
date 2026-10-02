@@ -99,8 +99,8 @@
   "cad_complete": true,
   "manufacturing_release": false,
   "pcb_sha256": {
-    "Core-C1": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8",
-    "Display-C1": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
+    "Core-C1": "17794450f9343003ee9a64ab8e7c278a11d7facd4d5163aa83e2ba06d9443c5a",
+    "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
   "mapping": [
     {
