@@ -285,6 +285,16 @@
       "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
       "checked_on": "2026-10-02",
       "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "D202",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "height_nominal_mm": 0.55,
+      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+      "source_locator": "August2024 Rev.A p7 package maximum A=.55mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "Maximum bare-package height; excludes solder/mounted tolerance. No foreign 3D model carried forward."
     }
   ],
   "connector_layout_changes": {

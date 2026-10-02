@@ -638,6 +638,27 @@
       "catalog_url": "https://item.szlcsc.com/3095645.html",
       "source_sha256": "226a936ddfed9d9695e5f593017ed80b0143b1df522e206da2672226b36547cc",
       "qualification": "Manufacturer TS-1186E-B-B drawing A1 2025-06-06.160gf nominal operating force,0.20mm travel,50mA12VDC,100mohm maximum contact resistance,-30..85C operation. Board height1.50+/-0.10mm; catalog Height3.55 matches drawing top-view actuator depth, not physical Z. Pin1 left/pin2 right in component top view; two lands0.6x1.6 with4.3 inner gap/5.5 outer span. B suffix without posts: no NPTH holes. Core pose retained2.3mm edge datum/-90deg; former four-land common-pair copper removed, signal/ground reconnected. C504 shifts0.25mm to clear courtyard; capacitor nets/value retained. Physical case force/travel/overtravel, lifetime, exact lot and JLC allocation remain pending."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "old_manufacturer": "Texas Instruments",
+      "old_mpn": "TPD1E10B06DPYR",
+      "vbus_protector": true,
+      "new_fields": {
+        "Manufacturer": "SGMICRO",
+        "MPN": "SGM05HU1ALXUGY2G/TR",
+        "LCSC": "",
+        "Value": "SGM05HU1ALXUGY2G/TR",
+        "Footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
+        "Datasheet": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+        "Description": "SGMICRO SGM05HU1ALXUGY2G/TR, August2024 Rev.A. Unidirectional5.5V VRWM;1=cathode/VBUS,2=anode/GND. Primary0.25x0.50mm lands at0.65mm pitch.5V USB sink only/no PD; board ESD, leakage and exact assembly supply pending."
+      },
+      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+      "source_sha256": "fd2487242f163f57bba056f10e302c28c497e7ffc340283a454ebd711d42468b",
+      "qualification": "Primary SGM05HU1AL August2024 Rev.A pp1/2/3/7: unidirectional, pin1=cathode/VBUS, pin2=anode/GND; exact XUGY2G/TR UTDFN1x0.6-2BL, 10000/reel. VRWM5.5V, VBR5.7..9.1V at1mA; 12.1V maximum clamp at43A8/20us. Existing product baseline is USB2 device +5V sink only, no PD/PPS or9/12V input; original TPD1E10B06 also5.5V VRWM. SGM41513 VBUS/VAC absolute maximum22V applies only converter-not-switching; this rating and TVS data do not constitute operating-system ESD qualification. Leakage1uA maximum at5V versus old100nA; junction capacitance100pF typical/130pF maximum is confined to VBUS, never USB data. Original primary recommended lands0.25x0.50mm with0.65mm center pitch, maximum body1.05x0.65x0.55mm; native symbol K/A, cathode mark and custom footprint remove foreign model. Existing trace ends remain inside the new lands; no trace topology edited. Negative clamp, board ESD/hot leakage/protected divider/charger transient response, mounted height, exact supplier lot and JLC acceptance remain pending. Datasheet p5 generic bidirectional wording conflicts with p1 title/equivalent circuit; implementation follows the explicit unidirectional pin diagram, not generic wording."
     }
   ],
   "all_domestic_complete": false,

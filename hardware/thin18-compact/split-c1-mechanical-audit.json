@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "f126916550d5638f65c748698b3a85e56f00e308adbbef662fa0de779de36ffe",
+    "Core-C1": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f",
     "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
-  "inputs_sha256": "bb7735e9ec13f5ddb2b68c9858a652d81b8e1648ecb5dd1b89a4d7fa96578ba0",
-  "interface_sha256": "a8cefd7594fd3db53c414b744d30e2335b6de12cd4b200775e80a48dec33e8ba",
+  "inputs_sha256": "fdc363cf83b648b1d5a73884f93f557ce7e069cca2db8510e903d9431cc435dd",
+  "interface_sha256": "05d6e91430d3c5cb25e188cc5ae0e78d6fbe779ac2859efd25696ad44bcea017",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -1162,6 +1162,31 @@
         "exceeds_reference_in_nominal_xy_screen": null,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "D202",
+        "mpn": "SGM05HU1ALXUGY2G/TR",
+        "world_native_bbox_mm": [
+          47.825,
+          59.425,
+          49.56,
+          60.575
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          47.825,
+          59.425,
+          49.56,
+          60.575
+        ],
+        "published_height_nominal_mm": 0.55,
+        "height_basis": "Maximum bare-package height; excludes solder/mounted tolerance. No foreign 3D model carried forward.",
+        "source_locator": "August2024 Rev.A p7 package maximum A=.55mm",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 5.63,
+        "exceeds_reference_in_nominal_xy_screen": false,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
         "physical_fit_verified": false
       }
     ],

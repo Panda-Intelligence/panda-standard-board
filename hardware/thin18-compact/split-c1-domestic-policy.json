@@ -427,11 +427,11 @@
       "refs": [
         "D202"
       ],
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD1E10B06DPYR",
-      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
-      "library_id": "C48260",
-      "origin": "FOREIGN_MANUFACTURER"
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -1113,20 +1113,6 @@
       "source_urls": [
         "https://www.setfuse.com/SdwlUploads/Ed/file/20240904/ESD%20SD0504F25U1(DFN2510)_SETsafe%20&%20SETfuse.pdf",
         "https://datasheet.lcsc.com/lcsc/CREATEK-CESD2510UC5VU-M_C266652.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "D202"
-      ],
-      "function": "VBUS ESD",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [],
-      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID.",
-      "source_urls": [
-        "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf"
       ],
       "foreign_retention_allowed": false
     },

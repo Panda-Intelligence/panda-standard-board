@@ -2,9 +2,9 @@
 
 当前要求：Core-C1 和 Display-C1 两块 PCB 的所有已装配位号均采用中国大陆厂家器件，不保留进口料例外。当前只有设计文件，没有真实样板。这里的国产身份指厂家身份；电气、固件、供料及实物 EVT 分别验证。
 
-**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：148 个国产厂家，8 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
+**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：149 个国产厂家，7 個進口廠家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
 
-本轮对 87 个位号执行受控替换（Core 58、Display 29），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
+本轮对 88 个位号执行受控替换（Core 59、Display 29），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
 
 ## 已应用替换
 
@@ -39,6 +39,7 @@
 | Core-C1 | L401 | Sunlord / `MWSA0402S-R47MT` | C6331050 |
 | Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MTB01` | 未确认，必须为 B01 |
 | Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | 未确认 |
+| Core-C1 | D202 | SGMICRO / `SGM05HU1ALXUGY2G/TR` | 未确认，旧C48260撤销 |
 | Core-C1 | SW201, SW202 | XKB Connection / `TS-1186E-B-B` | C2885153 |
 | Core-C1 | J201 | MUP / `U20405-01`，原厂 Rev4 | C20624794 |
 
@@ -65,6 +66,8 @@
 
 - SW201/SW202：XKB TS-1186E-B-B/C2885153，A1（2025-06-06）无定位柱侧按160gf、行程0.20mm、50mA/12VDC。板上高度为侧视图1.50±0.10mm；目录H3.55是顶视图含按钮方向深度，不能当作Z高度。原厂两焊盘0.6×1.6mm、内距4.3mm/外距5.5mm、中心x=±2.45mm，pin1左/pin2右；整件原PCB位置与−90°旋转保持。原四焊盘铜线移除，按键/地线重新接通，C504仅移0.25mm以留Courtyard。无定位柱变体不钻孔。外壳按钮开口、作用力、超行程、寿命和实际供料仍待确认。
 
+- D202：聖邦微 SGM05HU1ALXUGY2G/TR，原廠August2024 Rev.A；5.5V單向保護，pin1陰極接VBUS、pin2陽極接GND。採用原廠0.25×0.50mm焊盤、0.65mm中心距與独立K/A符號，移除TI模型；原走線端點仍在新焊盤內。現有USB2/5V sink/no PD基線保持，不開放9/12V輸入。漏電最大1uA@5V高於舊料100nA；100pF典型/130pF最大僅適用VBUS。12.1V最大鉗位@43A8/20us與SGM41513關閉轉換器時22V绝对最大值不能替代整板ESD、分壓支路與運行中充電器瞬態驗證。資料p5通用bidirectional文字與p1單向圖衝突，按p1明確極性實施。精確C碼及供料接收未確認，原C48260已撤销。
+
 以上均为工程候选资格，不是制造或 EVT 放行。受控新引脚、焊盘和 C516 已纳入当前/重建 CAD 检查；原有 DRC 规则与例外未放宽。
 
 ## 剩余进口位号及工作
@@ -73,7 +76,6 @@
 | --- | --- | --- | --- |
 | Core-C1 | C301 | RTC backup EDLC | Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker. |
 | Core-C1 | D201 | USB D+/D-/CC ESD | Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. |
-| Core-C1 | D202 | VBUS ESD | Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID. |
 | Core-C1 | J301 | Battery power connector | Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. |
 | Core-C1 | J501 | MicroSD socket with detect | Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD. |
 | Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. |
@@ -84,9 +86,9 @@
 
 ## 供料及下单状态
 
-当前 SMT 精确 C 码：Core 111/118，Display 36/37。未确认8个：Core L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
+当前 SMT 精确 C 码：Core 111/118，Display 36/37。未确认8个：Core D202、L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
 
-SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余10项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
+SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余7项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
 
 ## 复现与检查
 
@@ -95,4 +97,4 @@ python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 ```
 
-第二条在8个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
+第二条在7个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。

@@ -23,22 +23,6 @@
     {
       "board": "Core-C1",
       "refs": [
-        "D202"
-      ],
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD1E10B06DPYR",
-      "library_id": "C48260",
-      "catalog_manufacturer": "TI",
-      "catalog_mpn": "TPD1E10B06DPYR",
-      "source_url": "https://www.lcsc.com/product-detail/C48260.html",
-      "identity_verified": true,
-      "stock_reserved": false,
-      "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "J201"
       ],
       "manufacturer": "MUP",
@@ -763,6 +747,18 @@
       "refs": [
         "L1"
       ]
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+      "next_action": "Obtain exact XUGY2G/TR UTDFN1x0.6-2BL part ID or approved consignment; 10000/reel,8mm tape,2mm pitch per primary. No exact JLC/LCSC ID verified; old C48260 is retired.",
+      "stock_reserved": false,
+      "assembly_order_confirmed": false
     }
   ],
   "manual": [
@@ -958,6 +954,23 @@
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
       "note": "Supersedes historical foreign inductor supply routes. B01 suffix mandatory for L402."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "units_per_core_display_pair": 1,
+      "supply_route": "Manufacturer/authorized distributor; approved JLC consignment pending",
+      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
+      "supply_status": "EXACT_PART_ID_AND_ASSEMBLY_SUPPLY_PENDING",
+      "packing": "10000/reel,7inch reel,8mm tape,2mm pitch,Pin1Q1 per primary; actual lot, leader/trailer and assembler acceptance pending",
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false
     }
   ],
   "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",

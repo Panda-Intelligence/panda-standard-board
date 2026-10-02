@@ -5,23 +5,23 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "81be9402590d2868b0cf1cf1fa0bfcee311616450c8298645c4be847d6fdbaeb"
+      "sha256": "5d37d396be335840d700da8c4ad853cc98bbab759ca7b4d45203c29b678771ca"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "b882f267e71aced38c828f9aff50de3fe4a6b11c6f5954e53b233af3a8ca5dbc"
+      "sha256": "34411ba75b85decf4836ef753350ae33bb3a08f0f600ba86a4a26163190ef3db"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "f126916550d5638f65c748698b3a85e56f00e308adbbef662fa0de779de36ffe"
+      "sha256": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "1219bb82898c0cff00dbc684511811e73576a7974d02371cbcc76e7c453c1bab"
+      "sha256": "55d9cc5351bf6198431e47a3e0a773983ed672036803a4021cdfe2a12511f1fd"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "5ea9395f819b8f5d9cd6d903ab70c0313117cba6a5de34e2ca33b5f10d42ecda"
+      "sha256": "d6b85b7bba4d5c6eb9a0b0b80e7d0db57572865b8a6f5e5852de95beac478a6b"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
@@ -43,18 +43,18 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 113,
+      "domestic_refs": 114,
       "foreign_refs": [
         "C301",
         "D201",
-        "D202",
         "J301",
         "J501",
         "U302"
       ],
       "unreviewed_refs": [],
-      "mapped_smt_refs": 111,
+      "mapped_smt_refs": 110,
       "unmapped_smt_refs": [
+        "D202",
         "L402",
         "U402",
         "U403",
@@ -81,8 +81,8 @@
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 148,
-  "foreign_ref_count": 8,
+  "domestic_refs": 149,
+  "foreign_ref_count": 7,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -104,16 +104,6 @@
       "library_id": "C138714",
       "assembly": "SMT",
       "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "D202",
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD1E10B06DPYR",
-      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
-      "library_id": "C48260",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID."
     },
     {
       "board": "Core-C1",
@@ -167,7 +157,7 @@
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 87,
+  "applied_replacement_refs": 88,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,

@@ -27,6 +27,12 @@ def verify_land(text, ref, size, center):
     return fp
 def verify_new_connectors(text):
     """Reject wrong primary lands, reversed pin numbering or unreviewed poses."""
+    from _split_c1_vbus_eco import MPN,FP
+    protector=verify_land(text,'D202',(.25,.5),.325)
+    pose=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\)',protector).groups()))
+    nets={re.match(r'\(pad\s+"([^"]+)"',p).group(1):re.search(r'\(net\s+"([^"]+)"\)',p).group(1) for _,_,p in blocks(protector,r'\(pad\s')}
+    if property_value(protector,'MPN')!=MPN or not protector.startswith('(footprint '+json.dumps(FP)) or pose!=(48.6,60,180) or nets!={'1':'VBUS_USB','2':'GND'} or '(model ' in protector:
+        raise ValueError('VBUS protector reviewed identity/polarity/pose differs')
     usb=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,'Reference')=='J201')
     if property_value(usb,'MPN')!='U20405-01' or re.search(r'\(at\s+39\s+68\)',usb) is None:raise ValueError('USB identity/PCB-edge datum differs')
     if '"Edge.Cuts"' in usb or '(model ' in usb:raise ValueError('USB foreign model or old cutout retained')

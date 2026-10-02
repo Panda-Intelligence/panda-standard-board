@@ -144,6 +144,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         pcb=path.suffix=='.kicad_pcb';text=path.read_text()
         if not pcb and board=='Core-C1' and '(symbol "panda-standard:TPS22916CYFPT"' in text:
             text=clone_switch_symbol(text,True)
+        if not pcb and board=='Core-C1' and 'D202' in targets and '(symbol "panda-standard:TPD1E10B06DPYR"' in text:
+            from _split_c1_vbus_eco import clone_vbus_symbol
+            text=clone_vbus_symbol(text,True)
         pattern=r'\(footprint\s' if pcb else r'\(symbol\s+\(lib_id\s'
         for a,b,block in reversed(list(blocks(text,pattern))):
             ref=property_value(block,'Reference')
@@ -177,6 +180,10 @@ def apply_domestic_eco(candidate, board, refs_only=None):
             if item.get('side_switch') and pcb:
                 from _split_c1_switch_eco import switch_geometry
                 block=switch_geometry(block)
+            if item.get('vbus_protector'):
+                from _split_c1_vbus_eco import vbus_geometry,SYMBOL
+                if pcb:block=vbus_geometry(block)
+                else:block=block.replace('(lib_id "panda-standard:TPD1E10B06DPYR")','(lib_id "panda-standard:'+SYMBOL+'")',1)
             if item.get('usb_topmount') and pcb:
                 from _split_c1_usb_eco import usb_geometry
                 block=usb_geometry(block)
@@ -193,6 +200,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
     if board=='Core-C1':
         lib=candidate/'lib/panda-standard.kicad_sym'
         lib.write_text(clone_switch_symbol(lib.read_text(),False))
+        if 'D202' in targets:
+            from _split_c1_vbus_eco import clone_vbus_symbol
+            lib.write_text(clone_vbus_symbol(lib.read_text(),False))
         src=candidate/'lib/panda-standard.pretty/TPS22916CYFPT_YFP0004.kicad_mod'
         text=change_pad_geometry(src.read_text(),True)
         text=set_prop(text,'Value','SGM2578SD_WLCSP_09x09_P05')
@@ -207,7 +217,7 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         lib.write_text(library_from_board(diode,'MBR0530_JSCJ_SOD123'))
     from _split_c1_prototype_eco import library_from_board
     for ref,item in targets.items():
-        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch')):continue
+        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch') or item.get('vbus_protector')):continue
         pcb=next(folder.glob('*.kicad_pcb'))
         fp=next(b for _,_,b in blocks(pcb.read_text(),r'\(footprint\s') if property_value(b,'Reference')==ref)
         name=item['new_fields']['Footprint'].split(':')[1]

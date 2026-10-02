@@ -7,7 +7,7 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 ## Current result
 
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
-The CAD includes 87 controlled mainland substitutions (Core58/Display29), local
+The CAD includes 88 controlled mainland substitutions (Core59/Display29), local
 U403 bypass C516, reviewed HCTL NTC/speaker lands, Sunlord power/EPD lands,
 and XKB A2 six-pin dual-contact connectors. L402 is intentionally changed from
 2.2uH to1uH for SGM41513; power routing and C402/R306 support changes are
@@ -15,19 +15,20 @@ predecessor-guarded. J803/J804 rotate180deg and shift -Y2.5mm to preserve all
 signal world coordinates; entry reverses to -Y. H804 moves to(3,33), and SDA
 bypasses the J804 support. Rule minima are not relaxed; the USB ECO removes three obsolete J201 exceptions.
 XKB TS-1186E-B-B A1 side switches replace both ALPS parts with two original0.6x1.6mm lands and new signal/ground routes. C504 moves0.25mm to clear the courtyard; its nets/value remain unchanged. Maximum bare-part height1.6mm is taken from the side view; catalog H3.55 is actuator depth in the top view. Enclosure opening, force, travel and lifecycle remain unqualified.
+SGM05HU1ALXUGY2G/TR replaces D202 with a polarized K/A symbol and primary0.25x0.50mm lands at0.65mm pitch. The old TI C48260 is retired; exact JLC supply remains open.
 Current CAD equals a deterministic fresh rebuild including these changes.
-The current all-domestic audit covers156 populated system-BOM refs:148 mainland
-manufacturer refs and8 foreign refs still requiring replacement. See
+The current all-domestic audit covers156 populated system-BOM refs:149 mainland
+manufacturer refs and7 foreign refs still requiring replacement. See
 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for qualification
 calculations and differences. The60pin HCTL pair retains the reviewed1.5mm
 nominal mating transform; physical fit and mixed-family mating are not approved.
 
 | Board | Present SMT library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 111 / 118 | 7 | 1: Shiheng TH301, C394023 |
+| Core-C1 | 110 / 118 | 8 | 1: Shiheng TH301, C394023 |
 | Display-C1 | 36 / 37 | 1 | 0 |
 
-The reviewed sourcing register now covers 94 refs, including manual TH301.
+The reviewed sourcing register now covers 93 refs, including manual TH301.
 Exact current identities/evidence are in split-c1-sourcing-evidence.json and
 split-c1-domestic-policy.json. Previously present IDs remain PREEXISTING_ID.
 The old Hirose/Murata/Yageo/UNI-ROYAL/onsemi IDs are not current replacement IDs.
