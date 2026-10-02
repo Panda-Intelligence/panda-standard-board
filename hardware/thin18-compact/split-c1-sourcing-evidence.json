@@ -33,7 +33,7 @@
       "manufacturer": "MUP",
       "mpn": "U20405-01",
       "library_id": "C20624794",
-      "catalog_manufacturer": "MUP(德海威)",
+      "catalog_manufacturer": "MUP(\u5fb7\u6d77\u5a01)",
       "catalog_mpn": "U20405-01",
       "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
@@ -68,16 +68,21 @@
       "refs": [
         "J501"
       ],
-      "manufacturer": "Molex",
-      "mpn": "104031-0811",
-      "library_id": "C585350",
-      "catalog_manufacturer": "MOLEX",
-      "catalog_mpn": "1040310811",
-      "source_url": "https://www.lcsc.com/product-detail/C585350.html",
+      "manufacturer": "XUNPU",
+      "mpn": "TF-122-CCP9",
+      "library_id": "C41347844",
+      "catalog_manufacturer": "XUNPU",
+      "catalog_mpn": "TF-122-CCP9",
+      "source_url": "https://jlcpcb.com/partdetail/XUNPU-TF_122CCP9/C41347844",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Molex ordering-number formatting: 104031-0811 = 1040310811."
+      "identity_note": "Exact TF-122-CCP9 reviewed against manufacturer RevA; original Molex C585350 revoked.",
+      "stock_observation": {
+        "quantity": 36,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     },
     {
       "board": "Core-C1",
@@ -748,6 +753,27 @@
         "observed_date": "2026-10-02",
         "stock_reserved": false
       }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "L402"
+      ],
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0402S-1R0MT",
+      "library_id": "C408332",
+      "catalog_manufacturer": "Sunlord",
+      "catalog_mpn": "MWSA0402S-1R0MT",
+      "source_url": "https://jlcpcb.com/partdetail/Sunlord-MWSA0402S1R0MT/C408332",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact MT variant chosen by an explicit primary/electrical review; not an alias for B01.",
+      "stock_observation": {
+        "quantity": 19754,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     }
   ],
   "unresolved_smt": [
@@ -780,18 +806,6 @@
       "mpn": "SGM2578SDYG/TR",
       "source_url": "https://www.sg-micro.com/product/SGM2578SD",
       "next_action": "Exact manufacturer ordering number selected; obtain confirmed JLC ID or approved consignment, stock and tape/reel acceptance."
-    },
-    {
-      "board": "Core-C1",
-      "manufacturer": "Sunlord",
-      "mpn": "MWSA0402S-1R0MTB01",
-      "next_action": "Obtain exact-part manufacturer/authorized supply, packing and JLC consignment acceptance. No JLC/LCSC ID verified; historical foreign supply routes are superseded.",
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
-      "stock_reserved": false,
-      "assembly_order_confirmed": false,
-      "refs": [
-        "L402"
-      ]
     }
   ],
   "manual": [
@@ -940,7 +954,7 @@
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Supersedes historical foreign inductor supply routes. B01 suffix mandatory for L402."
+      "note": "Current L402 is an intentional MT/C408332 prototype redesign; do not purchase the old B01 candidate as an undocumented substitute."
     },
     {
       "board": "Core-C1",
@@ -948,22 +962,22 @@
         "L402"
       ],
       "manufacturer": "Sunlord",
-      "mpn": "MWSA0402S-1R0MTB01",
+      "mpn": "MWSA0402S-1R0MT",
       "units_per_core_display_pair": 1,
-      "supply_route": "Sunlord/authorized distributor exact B01 variant; assembler-approved consignment pending",
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
-      "supply_status": "EXACT_MANUFACTURER_VARIANT_QUOTE_AND_CONSIGNMENT_PENDING",
-      "packing": "Tape and reel; reel quantity, leader/trailer and PCBA feeder acceptance pending",
+      "supply_route": "JLC exact library C408332",
+      "source_url": "https://jlcpcb.com/partdetail/Sunlord-MWSA0402S1R0MT/C408332",
+      "supply_status": "CATALOG_ID_CONFIRMED_STOCK_UNRESERVED",
+      "packing": "3000/reel public catalog; actual tape, leader/trailer and assembly acceptance pending.",
       "stock_observation": {
-        "quantity": null,
+        "quantity": 19754,
         "observed_date": "2026-10-02",
-        "note": "No live stock allocation verified."
+        "note": "Unreserved public observation"
       },
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Supersedes historical foreign inductor supply routes. B01 suffix mandatory for L402."
+      "note": "Intentional MT prototype ECO; B01 is superseded in current Split-C1. Primary/current corners remain unmeasured."
     },
     {
       "board": "Display-C1",
@@ -1010,6 +1024,28 @@
         "note": "Public search API observation; no reservation or assembly order. All acceptance flags remain false."
       },
       "note": "Exact catalog identity now verified; manufacturer primary defines electrical/land requirements. D202 has zero stock; pre-order listing is not an assembly supply commitment."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J501"
+      ],
+      "manufacturer": "XUNPU",
+      "mpn": "TF-122-CCP9",
+      "units_per_core_display_pair": 1,
+      "supply_route": "JLC exact catalog C41347844",
+      "source_url": "https://jlcpcb.com/partdetail/XUNPU-TF_122CCP9/C41347844",
+      "supply_status": "CATALOG_ID_CONFIRMED_UNRESERVED",
+      "packing": "Catalog1000/reel; primary tape/leader/trailer and assembler acceptance pending",
+      "quote_confirmed": false,
+      "stock_reserved": false,
+      "purchase_confirmed": false,
+      "assembly_vendor_accepted": false,
+      "stock_observation": {
+        "quantity": 36,
+        "observed_date": "2026-10-02",
+        "note": "Public catalog observation; prototype quantity only, not a reservation."
+      }
     }
   ],
   "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",

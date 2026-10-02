@@ -52,7 +52,7 @@ the quantities; add assembler-approved attrition and tape leader/trailer. N is u
 |---|---:|---|---|
 | Core C301 | 1 | Seiko CPH3225A / C6048128, still foreign | RTC/backup subsystem domestic redesign; current foreign part cannot be ordered |
 | Core C506, C513 | 2 | HRE CGA0603X7R106K100JT / C22399626 | Actual stock, allocation and effective DC-bias capacitance |
-| Core L402 | 1 | Sunlord MWSA0402S-1R0MTB01 / no confirmed ID | Exact B01 order/packing, code assignment and assembly acceptance; ordinary1R0MT forbidden |
+| Core L402 | 1 | Sunlord MWSA0402S-1R0MT / C408332 | Explicit MT prototype ECO; public stock19754 unreserved; packing/assembly acceptance pending |
 | Core U902 | 1 | SGM62125AXG/TR / no confirmed ID | Exact A WLCSP15 code, quote/packing and assembly acceptance |
 | Core U905 | 1 | SGM37601YTRL20G/TR / no confirmed ID | Exact TQFN20 code, packing/MSL handling;24pin not interchangeable |
 | Display L1 | 1 | Sunlord SWPA3012S470MT / C83420 | Public stock2173 on2026-10-02, not reserved; packing/assembly acceptance |
@@ -157,7 +157,7 @@ alone does not establish runtime. No cell is added to the PCB BOM.
 With the panel centered at Core(48,34) as an explicitly unverified study pose,
 the two PCB outlines, nominal panel and current populated footprint envelopes
 have a union105.33x68.775mm. The extra0.775mm includes J201's native envelope;
-J501's envelope extends to x98.55mm. Illustrative1mm edge clearance plus1.5mm
+The historical Molex J501 envelope extended to x98.55mm; it is superseded by the current XUNPU footprint. Use the regenerated mechanical audit for port coordinates. Illustrative1mm edge clearance plus1.5mm
 wall on each side gives110.33x73.775mm, rounded111x74mm **XY only**.
 This is a calculated study envelope, not a finished enclosure size. Panel/FPC
 pose, USB plug and microSD travel, antenna, speaker, harness, bosses and
@@ -287,6 +287,12 @@ mechanical scenes do not override the split candidates. packaging/ is untouched.
 - J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
 - J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
 
-公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MWSA0402S-1R0MT/C408332、停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 均不能静默代用。
+公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MT 已经显式电气复核并作为当前 L402/C408332；停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 仍不能静默代用。
 
 两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。
+
+2026-10-02 后续 ECO：J501 已应用 XUNPU TF-122-CCP9/C41347844，原厂 RevA 信号/检测焊盘0.60×1.60mm，两个1.00mm定位孔、孔距8.00mm；检测触点插卡时闭合到接地壳体。整件改为(81.75,17.315)、90°，入口朝 Core +X；25条新增局部线段/6个过孔，旧卡座支路受控撤销或截短，孔距规则不放宽。9=CD、10/SH=壳体地是工程编号，并非原厂额外编号触点。原C585350采购身份撤销。公开目录仅36件，未预留。卡片行程、壳体开口/压入和取卡工具空间仍须确认，不能只按静态包络制作外壳。
+
+L402当前 MT/C408332 已有明确改型依据，不是 B01 别名。Core 精确 SMT C码112/118、Display37/37；当前6个缺口为U902、U905、U402–U405。RTC/备援和显示Q1三个位号仍阻止全国产 BOM。新的候选审查与原厂哈希见 [split-c1-candidate-review.json](split-c1-candidate-review.json)。
+
+Current TF-122-CCP9 card travel is local+Y/world+X. Primary RevA labels push/lock/eject positions1.30/2.30/5.00mm, each±0.30mm; these are not an approved case cutout. The card mouth is recessed from the outer-study wall: provide a recessed access opening or reviewed push/withdraw tool path. Front panel projection alone is insufficient. Housing height2.00mm maximum remains below the J301-dominated front budget, so the112×75×19mm side-pack study is unchanged. The new body outline in CAD is a placement screen, not a certified solid model.

@@ -5,23 +5,23 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "31ee641723cdc3a3c14d6d05ee893a065170b7931829a663ca667186ec72beb3"
+      "sha256": "227357492ae019cdc883d660f9c7e3877a7121cef37e35f4c389d964accf9c50"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "cc6129c0995d42225cf007ac2f7aaf9fa4d40da93eabc41e1ce5163ed35414cc"
+      "sha256": "69195572ecf94bd888dc9614e5a47112a87767f4464c794de04148eff10e712b"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "0b13bcc6b34ac7d9a9420138d155d706ddba726916591a864d59d2d12685a098"
+      "sha256": "f6a15cf69a1cf80b1876958d17f088f47a0315de44db268248ad44930854729d"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "c69df72416ca00d227d155437ec2277d2b214fc00fcfd861a1ec8b7500f528b8"
+      "sha256": "896b23b8617b66e44ff13bb7e8f537dd8b4b1c89cfefb8abf167a81dca3da60d"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "491747ba8d430bc464e3d8a89159cb80d6e9b3a33e724880cd67a36aa1aa510e"
+      "sha256": "8b43c2b877df7882c54e6f87a5b4429fa340af81649a735c4409e48d3f79aa7b"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
@@ -43,16 +43,14 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 116,
+      "domestic_refs": 117,
       "foreign_refs": [
         "C301",
-        "J501",
         "U302"
       ],
       "unreviewed_refs": [],
-      "mapped_smt_refs": 111,
+      "mapped_smt_refs": 112,
       "unmapped_smt_refs": [
-        "L402",
         "U402",
         "U403",
         "U404",
@@ -75,8 +73,8 @@
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 152,
-  "foreign_ref_count": 4,
+  "domestic_refs": 153,
+  "foreign_ref_count": 3,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -87,17 +85,7 @@
       "footprint": "panda-standard:CPH3225A_Polarized_Derived",
       "library_id": "C6048128",
       "assembly": "SMT",
-      "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J501",
-      "manufacturer": "Molex",
-      "mpn": "104031-0811",
-      "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
-      "library_id": "C585350",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD."
+      "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking. Q&J C70381 family primary obtained but coverCR1220-2 vs final BS-12-B3AA004 SKU/material/plating coupling requires confirmation; locating holes and polarity must be reviewed. Hardware reverse-charge isolation and disabled-charge firmware required. Physical24h qualification occurs after prototypes."
     },
     {
       "board": "Core-C1",
@@ -107,7 +95,7 @@
       "footprint": "Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm",
       "library_id": "C3304278",
       "assembly": "SMT",
-      "next_action": "SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. User retention target is24h. Native RTC_EVI connects only unused U302.8 and R303.2; external event capture is not required. R303 may be removed in a reviewed SD3900 ECO; preserve shared open-drain EXP_INT/GPIO4. Q14 includes24h isolated-main-supply retention at room/cold/hot; all remain NOT_RUN. SD3078B Rev2.0 also leaves maximum backup current absent and is not a solution to that missing guarantee."
+      "next_action": "SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required. No RV3028-compatible pin/register/drop-in claim; determine retention/charging policy and exact temperature grade, manufacturer lands and supply before ECO. User retention target is24h. Native RTC_EVI connects only unused U302.8 and R303.2; external event capture is not required. R303 may be removed in a reviewed SD3900 ECO; preserve shared open-drain EXP_INT/GPIO4. Q14 includes24h isolated-main-supply retention at room/cold/hot; all remain NOT_RUN. SD3078B Rev2.0 also leaves maximum backup current absent and is not a solution to that missing guarantee. Public custom C9900195775 labels JLCPCB Assembly, not confirmed WHWAVE/temperature grade; exact identity required before verified mapping. Physical24h Q14 follows fabrication, not a pre-CAD requirement. See candidate-review and procurement questions."
     },
     {
       "board": "Display-C1",
@@ -117,11 +105,11 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "library_id": "C179399",
       "assembly": "SMT",
-      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. SNM3018W primary is a candidate, but its1.7nC typical at10V is not directly comparable with original0.68nC maximum at4.5V. Controller gate-drive/switching budget, SOT323 lands/pins and supply remain unresolved."
+      "next_action": "SSD1677 official reference uses Si1304BDL with Qg max2.7nC@4.5V and1.7nC@2.5V, so original0.68nC is not an absolute controller limit. JSM NX3008NBK,215-JSM has0.87nC max@4.5V but primary p1 explicitly Drain(Pin2,TAB),Source3 and p5 lacks numbered top view; current CAD1G2S3D. Obtain corrected/confirmed physical terminal drawing before selecting custom symbol/lands/routing. Then verify GDR drive, RESE peak, switching/thermal after prototypes. Same names from other makers are different identities."
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 91,
+  "applied_replacement_refs": 92,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,

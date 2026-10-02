@@ -1,0 +1,96 @@
+{
+  "schema": "panda-split-c1-candidate-review-v1",
+  "date": "2026-10-02",
+  "manufacturing_release": false,
+  "physical_measurements_added": 0,
+  "L402": {
+    "decision": "APPLIED_INTENTIONAL_MT_PROTOTYPE_ECO",
+    "mpn": "MWSA0402S-1R0MT",
+    "library_id": "C408332",
+    "primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
+    "primary_sha256": "1ac5f3c6fc8f8cf7fddb002fcad66b71eab003b93b8ad53f59af33b5640ecbf3",
+    "locator": "2025-05-29 p3 MWSA0402S table",
+    "isat_table_max_typ_a": [
+      5.6,
+      7.0
+    ],
+    "irms_table_max_typ_a": [
+      5.4,
+      6.0
+    ],
+    "table_limit": "Preserve Max/Typ headings; no guaranteed minimum or temperature derating inferred.",
+    "scenarios": [
+      {
+        "vin_v": 5.5,
+        "average_current_a": 3,
+        "duty": 0.5,
+        "l_min_uh": 0.8,
+        "frequency_mhz": 1.38,
+        "ripple_pp_a": 1.2454710144927537,
+        "peak_a": 3.622735507246377,
+        "rms_a": 3.021467607636252,
+        "winding_loss_w_dcr27mohm": 0.24649019560786864,
+        "peak_with_20pct_screen_a": 4.347282608695652
+      },
+      {
+        "vin_v": 13.5,
+        "average_current_a": 3,
+        "duty": 0.5,
+        "l_min_uh": 0.8,
+        "frequency_mhz": 1.38,
+        "ripple_pp_a": 3.0570652173913047,
+        "peak_a": 4.528532608695652,
+        "rms_a": 3.1271079256423677,
+        "winding_loss_w_dcr27mohm": 0.2640277074226134,
+        "peak_with_20pct_screen_a": 5.434239130434783
+      }
+    ],
+    "input_contract": "Existing non-PD5V-only USB sink.5.5V is normal-input upper screening assumption.13.5V is historical screening, not supported USB input.",
+    "prototype_bringup_policy": "Keep SGM41513 reverse boost disabled. Firmware enforcement NOT_IMPLEMENTED. Confirm OCP, hot saturation and full path thermal behavior after samples.",
+    "calculation_limit": "3A scenario is not a battery/copper operating approval;1.38MHz does not cover every unpublished temperature corner."
+  },
+  "RTC": {
+    "decision": "JOINT_ECO_PENDING_EXACT_BACKUP_ASSEMBLY_AND_GRADE",
+    "candidate": "WHWAVE SD3900",
+    "supply_candidate_url": "https://jlcpcb.com/partdetail/JLCPCBAssembly-SD3900/C9900195775",
+    "supply_limit": "Generic JLCPCB Assembly manufacturer label does not confirm WHWAVE identity or temperature grade. Do not map as verified.",
+    "retention_requirement_hours": 24,
+    "candidate_holder": "Q&J CR1220-2 / C70381",
+    "holder_primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240508/105D3BE3DF78AB74B6E639FC10A0C203.pdf",
+    "holder_primary_sha256": "f34e3a99c3d5c459e2856c84146f4159be52682b128144c3881f7f090d593ed5",
+    "holder_limit": "CoverCR1220-2 but final sheet BS-12-B3AA004/QJ1220-2SMT. Exact housing/contact/plating SKU coupling, polarity and solder process need confirmation before library/CAD approval. Drawing includes locating holes.",
+    "planning_total_backup_current_ua": 10,
+    "planning_24h_charge_mah": 0.24,
+    "planning_usable_capacity_mah": 1,
+    "planning_margin": 4.166666666666667,
+    "planning_limit": "Targets only; usable capacity after diode drop and worst corner current not guaranteed. Q14 physical24h test follows fabrication, not a pre-CAD requirement."
+  },
+  "Display_Q1": {
+    "decision": "NO_SUBSTITUTION_APPROVED",
+    "official_reference_mos": "Si1304BDL",
+    "official_reference_url": "https://v4.cecdn.yun300.cn/100001_1909185148/SSD1677.pdf",
+    "reference_locator": "Rev1.0 p45 boost circuit",
+    "reference_mos_primary_url": "https://www.vishay.com/docs/73480/si1304bd.pdf",
+    "reference_mos_primary_sha256": "37f8cb39edac4ed352df2789586b8a89e83e68d8be16f970cf73911cf23ad1e8",
+    "reference_qg_max_nc_at4v5": 2.7,
+    "reference_qg_max_nc_at2v5": 1.7,
+    "comparison_limit": "Reference ID0.9A differs from candidate1A; gate-charge test points are not identical. Controller GDR drive current/frequency limits not provided.",
+    "candidate": "JSM NX3008NBK,215-JSM / C53113911",
+    "candidate_primary_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+    "candidate_primary_sha256": "d4d132f44720b5387eedc5eb176bba85d7f8220798352be8429665c95b2e6cfd",
+    "electrical_screen": "30V;Rds0.6ohm max at2.5V/0.2A;Qg0.65typ/0.87nC max at4.5V/VDS15V/ID1A. Promising electrical screen, not a pin verification.",
+    "blocker": "p1 says Drain(Pin2,TAB),Source3; current board1G2S3D. p5 outline lacks numbered terminal view. Need manufacturer confirmed/corrected physical pin drawing; matching NX3008 name is not drop-in.",
+    "other_not_selected": [
+      "WILLSEMI WNM3018-3/TR:6ohm max at2.5V/10mA,steady0.2A25C/minimum pads;1A pulse<380us/<2pct duty.",
+      "JSM NX3008NBKW:1G2S3D but1.4ohm max at4.5V,no2.5V Rds guarantee.",
+      "HXY NX3008NBK-HXY:1G2D3S,Qg4.6nC typical/no max at4.5V,different die.",
+      "TECHPUBLIC NX3008NBK:Taiwan-domain manufacturer and5.2nC Qg max;mainland origin not confirmed."
+    ]
+  },
+  "load_switch": {
+    "exact_mpn": "SGM2578SDYG/TR",
+    "decision": "KEEP_EXACT_PENDING_SUPPLY_AND_ENABLED_RCB_CONFIRMATION",
+    "rejected_stock_substitute": "SGM2578AADYG/TR/C5151451",
+    "reason": "RCB only disabled cannot silently replace the explicit enabled/disabled reverse-blocking contract."
+  }
+}

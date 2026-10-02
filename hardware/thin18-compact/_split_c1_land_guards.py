@@ -9,10 +9,10 @@ def verify_20261002_lands(core,display):
         if property_value(f,'MPN')!=mpn or actual!=pose or '(model ' in f:raise ValueError(ref+' identity/pose/model differs')
         pads=[]
         for _,_,p in blocks(f,r'\(pad\s'):
-            n=re.match(r'\(pad\s+"([^"]+)"',p).group(1)
+            n=re.match(r'\(pad\s+"([^"]*)"',p).group(1)
             xy=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)',p).groups()))
             sz=tuple(map(float,re.search(r'\(size\s+([-\d.]+)\s+([-\d.]+)',p).groups()))
-            net=re.search(r'\(net\s+"([^"]+)"',p)
+            net=re.search(r'\(net\s+"([^"]*)"',p)
             pads.append((n,xy,sz,net.group(1) if net else None))
         if sorted(pads)!=sorted(expected):raise ValueError(ref+' reviewed primary lands/pin mapping differ')
     esd=[]
@@ -33,3 +33,17 @@ def verify_20261002_lands(core,display):
          for n,name in enumerate(names,1)]
     fpc += [('MP',(-6.635,.005),(.3,.76),None),('MP',(6.635,.005),(.3,.76),None)]
     check(display,'J2','X05A10L24G',(23,29,0),fpc)
+
+    sdnet={1:'SDMMC_D2_CARD',2:'SDMMC_D3_CARD',3:'SDMMC_CMD_CARD',4:'3V3_SD',5:'SDMMC_CLK_CARD',6:'GND',7:'SDMMC_D0_CARD',8:'SDMMC_D1_CARD'}
+    sd=[(str(n),(round(2.27-(n-1)*1.1,6),-.8),(.6,1.6),sdnet[n]) for n in range(1,9)]
+    sd += [('9',(-6.53,-.8),(.6,1.6),'SD_CD'),('10',(-7.73,.5),(1.2,1.8),'GND'),
+           ('SH',(7.77,9.8),(1.2,2.2),'GND'),('SH',(-7.73,9.8),(1.2,2.2),'GND'),('SH',(6.87,.25),(1.6,1.5),'GND'),
+           ('',(-4.93,10.2),(1,1),None),('',(3.07,10.2),(1,1),None)]
+    check(core,'J501','TF-122-CCP9',(81.75,17.315,90),sd)
+    f=next(b for _,_,b in blocks(core,r'\(footprint\s') if property_value(b,'Reference')=='J501')
+    holes=[p for _,_,p in blocks(f,r'\(pad\s') if p.startswith('(pad ""')]
+    if len(holes)!=2 or any('np_thru_hole circle' not in p or '(drill 1)' not in p for p in holes):
+        raise ValueError('J501 primary locating holes differ')
+    l=next(b for _,_,b in blocks(core,r'\(footprint\s') if property_value(b,'Reference')=='L402')
+    if property_value(l,'MPN')!='MWSA0402S-1R0MT' or property_value(l,'LCSC')!='C408332':
+        raise ValueError('L402 reviewed MT variant/code differs')
