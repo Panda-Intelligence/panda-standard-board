@@ -18,6 +18,11 @@ def change(text,ref,old,new):
     if old not in f:raise ValueError('Test predecessor absent')
     return text[:a]+f.replace(old,new,1)+text[b:]
 cases=[
+ ('microSD wrong row height',change(core,'J501','(size 0.6 1.6)','(size 0.6 1.5)'),display),
+ ('microSD swapped supply/command',change(core,'J501','(net "3V3_SD")','(net "SDMMC_CMD_CARD")'),display),
+ ('microSD reversed entry',change(core,'J501','(at 81.75 17.315 90)','(at 81.75 17.315 -90)'),display),
+ ('microSD missing locating drill',change(core,'J501','(drill 1)','(drill .8)'),display),
+ ('undocumented inductor B01 variant',change(core,'L402','MWSA0402S-1R0MT','MWSA0402S-1R0MTB01'),display),
  ('battery wrong pitch',change(core,'J301','(at -1 -2.21 90)','(at -.625 -2.21 90)'),display),
  ('battery reversed polarity',change(core,'J301','(net "BAT_CONN_P")','(net "GND")'),display),
  ('battery grounded anchors',change(core,'J301','(at -3.2 5.39 90)','(at -3.2 5.39 90) (net "GND")'),display),

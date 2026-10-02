@@ -266,12 +266,12 @@
     {
       "board": "Core-C1",
       "ref": "L402",
-      "mpn": "MWSA0402S-1R0MTB01",
+      "mpn": "MWSA0402S-1R0MT",
       "height_nominal_mm": 2.0,
       "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf",
-      "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+      "source_locator": "2025-05-29 MWSA0402S series p2 dimensions; p3 ordinary1R0MT",
       "checked_on": "2026-10-02",
-      "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open"
+      "height_basis": "Same MWSA0402S body maximum2.0mm as B01; explicit MT electrical review in candidate-review JSON."
     },
     {
       "board": "Display-C1",
@@ -333,6 +333,17 @@
       "source_locator": "Rev.A p22;5.2mm nominal with general X.X +/-0.30mm",
       "checked_on": "2026-10-02",
       "height_basis": "Bare-body drawing/general tolerance budget5.5mm; mounted solder/mate/wire bend not verified"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J501",
+      "mpn": "TF-122-CCP9",
+      "height_nominal_mm": 1.8,
+      "height_maximum_mm": 2.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240813/A78F94B574A12E0EF5650C3B7EED35AF.pdf",
+      "source_locator": "RevA p1 side view1.80 +0.20/-0.00",
+      "checked_on": "2026-10-02",
+      "height_basis": "Manufacturer maximum housing height; card travel, mounted tolerance and recessed case opening remain mechanical EVT."
     }
   ],
   "connector_layout_changes": {
@@ -355,7 +366,7 @@
   },
   "rtc_backup_requirement": {
     "minimum_retention_hours": 24,
-    "confirmed_by": "User: 保持24小时就行了",
+    "confirmed_by": "User: \u4fdd\u630124\u5c0f\u65f6\u5c31\u884c\u4e86",
     "confirmed_on": "2026-10-02",
     "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
     "event_input_required": false,

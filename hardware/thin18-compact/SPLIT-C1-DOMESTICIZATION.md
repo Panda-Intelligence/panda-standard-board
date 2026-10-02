@@ -2,9 +2,9 @@
 
 当前要求：Core-C1 和 Display-C1 两块 PCB 的所有已装配位号均采用中国大陆厂家器件，不保留进口料例外。当前只有设计文件，没有真实样板。这里的国产身份指厂家身份；电气、固件、供料及实物 EVT 分别验证。
 
-**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：152 个国产厂家，4 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
+**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：153 个国产厂家，3 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
 
-本轮对 91 个位号执行受控替换（Core 61、Display 30），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
+本轮对 92 个位号执行受控替换（Core 62、Display 30），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
 
 ## 已应用替换
 
@@ -37,7 +37,7 @@
 | Core-C1 | J502 | HCTL / `HC-1.0-2PWT` | C2845361 |
 | Core-C1 | J803, J804 | XKB Connection / `X05A10H06G`，原厂 A2 p2 | C528032 |
 | Core-C1 | L401 | Sunlord / `MWSA0402S-R47MT` | C6331050 |
-| Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MTB01` | 未确认，必须为 B01 |
+| Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MT` | C408332，受控改型 |
 | Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | C83420 |
 | Core-C1 | D202 | SGMICRO / `SGM05HU1ALXUGY2G/TR` | C55274065，公开库存0 |
 | Core-C1 | SW201, SW202 | XKB Connection / `TS-1186E-B-B` | C2885153 |
@@ -45,6 +45,7 @@
 | Core-C1 | D201 | LRC / `LRC8804FDT1G` | C2856698 |
 | Core-C1 | J301 | HCTL / `HC-HY-2AWT` | C2845705 |
 | Display-C1 | J2 | XKB Connection / `X05A10L24G` | C2880917 |
+| Core-C1 | J501 | XUNPU / `TF-122-CCP9` | C41347844 |
 
 完整逐项原身份、规格/封装评估及原厂来源见 [split-c1-domestic-eco.json](split-c1-domestic-eco.json)。设计中已装配 BOM 身份与逐项审查政策见 [split-c1-domestic-policy.json](split-c1-domestic-policy.json)，结果见 [split-c1-domestic-audit.json](split-c1-domestic-audit.json)。
 
@@ -61,7 +62,7 @@
 - J302/J502：HCTL HC-1.0 PWT 原厂第18页，信号焊盘0.7×1.75mm、支撑1.0×2.55mm，行中心相距3.70mm；独立封装已应用。J302 的 NTC 支路过孔和地线已受控调整，温控不旁路。两件按3.2mm保守高度预算，需匹配 HC-1.0-3Y/2Y 壳和端子；旧 JST 线束不沿用。J502 为浮地 BTL 喇叭输出，两端均不得接地；2.5W/4Ω算例为0.791Arms/1.118Apeak，1A连接器额定值仍需核对连续音频温升条件。
 - J803/J804：XKB X05A10H06G 原厂 A2（2026-01-15，ECN-P-2026011502）第2页，6针双触点、0.5mm间距、0.3mm FPC、0.5A/50V。信号焊盘0.3×0.8mm、支撑0.4×0.8mm，支撑中心x=±2.3mm，两行相距2.5mm；原厂钢网建议0.25×0.65mm、厚0.1mm须另与装配厂确认，不能将普通焊盘大小当成已批准钢网。原厂pin1在左，PCB整件旋转180°并向−Y移动2.5mm，保持全部原信号焊盘世界坐标与网名；入口改向−Y。H804孔移至(3,33)，保留1.6mm孔径和原3.2mm直径安装包络；SDA绕开J804支撑焊盘。闭合高最大1.1mm、开启锁扣名义1.55mm；FT01C排线折弯、安装柱、锁扣工具空间与实际A2供料版本未冻结，不能据CAD检查宣布插接合格。
 - L401：Sunlord MWSA0402S-R47MT / C6331050，0.47uH±20%，DCR14mΩ最大；2025-05-29原厂表的 Isat Max/Typ 为7.6/9.5A，Irms Max/Typ 为6.65/7.5A。保留原表标题，不当作保证下限；饱和与温升判据需确认。原厂焊盘1.5×2.5mm、中心距3.7mm、本体最大4.75×4.45×2.0mm已应用。SGM62125算例（Vin1.9V、Vout3.3V、2A输出、效率80%、2MHz、Lmin0.376uH）得到5.23A峰值及1.2倍6.28A筛选目标；效率/频率是假设，不能代替低温、限流及热最坏角验证。
-- L402：精确B01变体 MWSA0402S-1R0MTB01，1uH±20%、DCR27mΩ最大，原厂 Isat Max/Typ 8/9A、Irms Max/Typ 5.4/6A；普通1R0MT不等效。按SGM41513典型应用将旧2.2uH受控改为1uH，采用同系列原厂焊盘，中心移至(40.675,6.65)、旋转270°；C402/R306和相关电源/电池走线受控调整，C201补齐Courtyard。VBUS13.5V、D=0.5、1.38MHz、Lmin0.8uH、3A平均算例为3.057App、4.529A峰值、3.13Arms、0.265W绕组损耗（不含磁芯损耗）。充电+SYS、反向升压、OCP、铜图压降及温升仍需闭环；原0.2mm电源支路不能因DRC为0就宣称通过3A载流。
+- L402：本轮明确从 B01 改为 MWSA0402S-1R0MT/C408332。1uH±20%、DCR27mΩ最大、Isat Max/Typ 5.6/7A、Irms Max/Typ 5.4/6A；保留原表标题，不推定保证下限。原厂焊盘与 B01 相同。5.5V、D=0.5、Lmin0.8uH、1.38MHz、3A平均算例为3.623A峰值/3.022Arms；历史13.5V算例含20%峰值筛选为5.435A，13.5V不是允许的USB输入。反向升压在首板 bring-up 中必须保持关闭，固件尚未实现该约束；OCP/饱和/热及既有0.2mm铜图仍未验证。完整算例和限制见 split-c1-candidate-review.json。
 - Display L1：Sunlord SWPA3012S470MT，47uH±20%、DCR1.885Ω最大，原厂 Isat Max/Typ 0.27/0.35A、Irms Max/Typ 0.35/0.40A（表头不是保证下限）。原厂焊盘0.8×2.7mm、中心距2.3mm、高度最大1.2mm；较旧料增高0.2mm，已登记机械输入。EPD升压峰值、RESE最坏角、纹波、效率及热测试仍需资格确认；精确C码C83420已确认；实际供料/装配接收未确认。
 - Display U1–U3 的 MPN/铜图未更换，本来已是中微爱芯 AIP74LVC2G17GC363.TR；将错误的 TI SN74AUP2G17 数据手册链接改为原厂 B032EN/A5。LVC 的静态/关断泄漏和输入非轨电压额外耗电应按原厂最坏值预算，不能引用 AUP 低功耗规格。
 
@@ -78,7 +79,6 @@
 | 板 | 位号 | 功能 | 待完成 |
 | --- | --- | --- | --- |
 | Core-C1 | C301 | RTC backup EDLC | Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker. |
-| Core-C1 | J501 | MicroSD socket with detect | Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD. |
 | Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required for user-confirmed >=24h isolated RTC backup. Native EVI is unused, R304 is DNP; preserve shared EXP_INT and use100kHz at3.3V. No RV3028-compatible pin/register/drop-in claim; select exact backup assembly/grade and review charging policy/lands/supply before ECO. See C4D8-RTC-DECISION.md. |
 | Display-C1 | Q1 | EPD boost N-MOSFET | Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. |
 
@@ -86,9 +86,9 @@
 
 ## 供料及下单状态
 
-当前 SMT 精确 C 码：Core 111/118，Display 37/37。未确认7个均在Core：L402、U902、U905、U402–U405。D202的C55274065为零库存预购目录身份，不等于实际供料；L1精确C83420公开库存观察2173件，未预留。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
+当前 SMT 精确 C 码：Core 112/118，Display 37/37。未确认6个均在Core：U902、U905、U402–U405。D202的C55274065为零库存预购目录身份，不等于实际供料；L1精确C83420公开库存观察2173件，未预留。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
 
-SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余4项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
+SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余3项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
 
 ## 复现与检查
 
@@ -97,7 +97,7 @@ python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 ```
 
-第二条在4个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
+第二条在3个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
 
 2026-10-02 本轮补齐：D201 改用 LRC8804FDT1G/C2856698；J301 改用 HCTL HC-HY-2AWT/C2845705；Display J2 改用 XKB X05A10L24G/C2880917。原理图、原厂焊盘、PCB 走线和可重建 ECO 同步修改。
 
@@ -105,6 +105,12 @@ python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 - J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
 - J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
 
-公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MWSA0402S-1R0MT/C408332、停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 均不能静默代用。
+公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MT 已经显式电气复核并作为当前 L402/C408332；停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 仍不能静默代用。
 
 两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。
+
+2026-10-02 后续 ECO：J501 已应用 XUNPU TF-122-CCP9/C41347844，原厂 RevA 信号/检测焊盘0.60×1.60mm，两个1.00mm定位孔、孔距8.00mm；检测触点插卡时闭合到接地壳体。整件改为(81.75,17.315)、90°，入口朝 Core +X；25条新增局部线段/6个过孔，旧卡座支路受控撤销或截短，孔距规则不放宽。9=CD、10/SH=壳体地是工程编号，并非原厂额外编号触点。原C585350采购身份撤销。公开目录仅36件，未预留。卡片行程、壳体开口/压入和取卡工具空间仍须确认，不能只按静态包络制作外壳。
+
+L402当前 MT/C408332 已有明确改型依据，不是 B01 别名。Core 精确 SMT C码112/118、Display37/37；当前6个缺口为U902、U905、U402–U405。RTC/备援和显示Q1三个位号仍阻止全国产 BOM。新的候选审查与原厂哈希见 [split-c1-candidate-review.json](split-c1-candidate-review.json)。
+
+当前剩余事项已整理为可给供方逐项答复的 [SPLIT-C1-PROCUREMENT-QUESTIONS.md](SPLIT-C1-PROCUREMENT-QUESTIONS.md)，含精确6个SMT位号、零库存D202、RTC等级/备援、MOS引脚与完整电池/卡口尺寸；目前没有供方回执。

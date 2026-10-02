@@ -205,7 +205,9 @@ def main():
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
                  "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
-                 "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json"]:
+                 "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json",
+                 "split-c1-candidate-review.json","split-c1-microsd-layout.json",
+                 "SPLIT-C1-PROCUREMENT-QUESTIONS.md"]:
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")

@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "0b13bcc6b34ac7d9a9420138d155d706ddba726916591a864d59d2d12685a098",
+    "Core-C1": "f6a15cf69a1cf80b1876958d17f088f47a0315de44db268248ad44930854729d",
     "Display-C1": "4a7f1b277381a2fc9fe71a80966b3c8263f452bbe51d1c7694fb2bf27c536bbc"
   },
-  "inputs_sha256": "f11c9f03926675ef3246f9047ba9c8733cacdfc4885258ff4d4da260558cd825",
-  "interface_sha256": "7b4ee4cdd2fd4981662be2cb81cdc0799f0cf1c94e42fbf1151c5dd369e988d4",
+  "inputs_sha256": "7065d8f706d1c80c61d6e7479cea12f1b5c5c72b905075bbf61aca5cdf895ff7",
+  "interface_sha256": "0bca6030ebe0bdfdf3a3645f6d707ebdac25214c3461e05b4338a46256f131c6",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -1067,7 +1067,7 @@
       {
         "board": "Core-C1",
         "ref": "L402",
-        "mpn": "MWSA0402S-1R0MTB01",
+        "mpn": "MWSA0402S-1R0MT",
         "world_native_bbox_mm": [
           38.175,
           4.0,
@@ -1076,8 +1076,8 @@
         ],
         "shared_panel_core_display_xy_screen_mm": null,
         "published_height_nominal_mm": 2.0,
-        "height_basis": "datasheet maximum/conservative closed-body height screen; mounted solder/tolerance, cable/actuator volume and mechanical release remain open",
-        "source_locator": "2025-05-29 p2;1.8+/-0.2mm",
+        "height_basis": "Same MWSA0402S body maximum2.0mm as B01; explicit MT electrical review in candidate-review JSON.",
+        "source_locator": "2025-05-29 MWSA0402S series p2 dimensions; p3 ordinary1R0MT",
         "nominal_overlap_section_screen_without_battery_walls_mm": null,
         "exceeds_reference_in_nominal_xy_screen": null,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
@@ -1218,6 +1218,26 @@
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510175810.pdf",
         "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J501",
+        "mpn": "TF-122-CCP9",
+        "world_native_bbox_mm": [
+          79.725,
+          8.62,
+          96.025,
+          25.97
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.8,
+        "height_basis": "Manufacturer maximum housing height; card travel, mounted tolerance and recessed case opening remain mechanical EVT.",
+        "source_locator": "RevA p1 side view1.80 +0.20/-0.00",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240813/A78F94B574A12E0EF5650C3B7EED35AF.pdf",
+        "physical_fit_verified": false
       }
     ],
     "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
@@ -1342,15 +1362,15 @@
       "board": "Core-C1",
       "ref": "J501",
       "native_center_mm": [
-        88.8,
-        18.75
+        81.75,
+        17.315
       ],
-      "native_orientation_deg": -90.0,
+      "native_orientation_deg": 90.0,
       "world_bbox_mm": [
-        82.225,
-        11.885,
-        98.55,
-        25.615
+        79.725,
+        8.62,
+        96.025,
+        25.97
       ],
       "enclosure_opening_verified": false
     },

@@ -49,7 +49,10 @@ engineering_files={'mechanical_audit':mechanical_path,'mechanical_inputs':mechan
                    'domestic_audit':domestic_path,'domestic_policy':ROOT/'split-c1-domestic-policy.json',
                    'domestic_eco':ROOT/'split-c1-domestic-eco.json',
                    'domestic_notes':ROOT/'SPLIT-C1-DOMESTICIZATION.md',
-                   'rtc_design':ROOT/'C4D8-RTC-DECISION.md'}
+                   'rtc_design':ROOT/'C4D8-RTC-DECISION.md',
+                   'candidate_review':ROOT/'split-c1-candidate-review.json',
+                   'procurement_questions':ROOT/'SPLIT-C1-PROCUREMENT-QUESTIONS.md',
+                   'microsd_layout':ROOT/'split-c1-microsd-layout.json'}
 boards={}
 for name,folder in [("Core-C1","core-c1-96x68"),("Display-C1","display-c1-45x36")]:
     out=ROOT/"production"/folder
