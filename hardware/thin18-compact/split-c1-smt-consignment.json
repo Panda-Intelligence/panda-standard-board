@@ -33,7 +33,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 37,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; formal exact-package quotation required",
+      "supply_plan_group": "U902"
     },
     {
       "board": "Core-C1",
@@ -70,7 +83,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 2,
+        "units_per_factory_reel": 4000,
+        "reel_inches": 13,
+        "tape_width_mm": 12,
+        "pocket_pitch_mm": 8,
+        "pin1_quadrant": "Q2",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 37,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; formal exact-package quotation required",
+      "supply_plan_group": "U905"
     },
     {
       "board": "Core-C1",
@@ -90,7 +116,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 12,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
+      "supply_plan_group": "U402-U405"
     },
     {
       "board": "Core-C1",
@@ -110,7 +149,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 12,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
+      "supply_plan_group": "U402-U405"
     },
     {
       "board": "Core-C1",
@@ -130,7 +182,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 12,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
+      "supply_plan_group": "U402-U405"
     },
     {
       "board": "Core-C1",
@@ -150,7 +215,20 @@
       "usable_my_parts_quantity": null,
       "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
       "do_not_omit": true,
-      "substitution_approved": false
+      "substitution_approved": false,
+      "packing": {
+        "msl": 1,
+        "units_per_factory_reel": 3000,
+        "reel_inches": 7,
+        "tape_width_mm": 8,
+        "pocket_pitch_mm": 4,
+        "pin1_quadrant": "Q1",
+        "packing": "Tape and reel",
+        "tape_drawing_page": 12,
+        "actual_lot_and_cut_tape_acceptance": null
+      },
+      "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
+      "supply_plan_group": "U402-U405"
     }
   ],
   "quantity_formula": "N sets: U902=N,U905=N,SGM2578SD=4N; assembly attrition and tape leader/trailer additional per accepted factory rules",
@@ -158,5 +236,5 @@
   "parts_shipped": false,
   "stock_reserved": false,
   "assembly_request_ready": false,
-  "instructions": "Get each exact package/MPN accepted and JLC C-code assigned; never ship with unapproved blank code. Verify lot/MSL/floor life/tape/reel and sufficient received My Parts stock, then bind to exact six CAD refs. No lookalike C-code, non-A regulator,24pin LED driver or disabled-only RCB substitute."
+  "instructions": "Get each exact package/MPN accepted and JLC C-code assigned; never ship with unapproved blank code. Verify lot/MSL/floor life/tape/reel and sufficient received My Parts stock, then bind to exact six CAD refs. No lookalike C-code, non-A regulator,24pin LED driver or disabled-only RCB substitute. C301 is not part of this six-SMT consignment: procure independently and hand-solder after PCBA return; published JLCPCB terms exclude ultracapacitors. See split-c1-supply-plan.json and SPLIT-C1-SUPPLY-REQUEST.md."
 }

@@ -8,6 +8,7 @@ def run(script, *arguments, native=False):
                     *map(str, arguments)], check=True, cwd=ROOT)
 
 run("validate_split_c1.py")
+run("verify_split_c1_supply.py")
 run("audit_split_c1_mechanical.py", native=True)
 for board, candidate, output in [
     ("Core-C1", "core-c1-96x68-split", "core-c1-96x68"),

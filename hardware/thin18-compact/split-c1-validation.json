@@ -80,10 +80,10 @@
       "sha256": "d1474bac694fac69fa62aa650da1de836e643be96ccc26f040800f8c0090949b"
     },
     "hardware/thin18-compact/JLC-PROTOTYPE-HANDOFF.md": {
-      "sha256": "270f60d3b5014373ff10ec6aa718042f3280ad3efdeae540d211840aba3ba3da"
+      "sha256": "0a099e103ae298fafe0e04ec98a861d5cd0a75d9b373ec0735cc9d275b00ec97"
     },
     "hardware/thin18-compact/SPLIT-C1-DOMESTICIZATION.md": {
-      "sha256": "9cf5fec3b8c658e1bd6136a40ecbaa7b16c282da9b5a939bc3cb5b2ce4d4355b"
+      "sha256": "2dae8fc66c4d15b42396004f42cdaa6f1bb720b17a8e399805deab77546d728e"
     },
     "hardware/thin18-compact/SPLIT-C1-ENCLOSURE-STUDY.scad": {
       "sha256": "ba9f2b7dc51f310ea5a360bd314f109b7e1a71e67eaa4dd16f00bd9ef46d348e"
@@ -92,10 +92,13 @@
       "sha256": "88a5e2996ea862124b5e42894061be4da73d11b79e795688f1b79d9ea8562bf2"
     },
     "hardware/thin18-compact/SPLIT-C1-PROCUREMENT-QUESTIONS.md": {
-      "sha256": "47b1737e9123ce64799fe220999fc7708c64bcc5bcbf08a0bdf3de4cac8ed8eb"
+      "sha256": "608964a4577dc56677bc6113cc58ae2dd52beb81c21921cdb865cec370902de1"
     },
     "hardware/thin18-compact/SPLIT-C1-RTC-FIRMWARE.md": {
       "sha256": "a6992bb7e782688b3db7cd5c6be88decc331133064c324e83d19d904ac6861e9"
+    },
+    "hardware/thin18-compact/SPLIT-C1-SUPPLY-REQUEST.md": {
+      "sha256": "587273cc2c990f5adf02a17f55a5e19c3bed235dd853cd6b4a3f35b860afba82"
     },
     "hardware/thin18-compact/_core_c1_pcb_patch.py": {
       "sha256": "c35a750256c33f566df9aa084029b83b1005f838082fc1251dcf5894445efc22"
@@ -389,7 +392,7 @@
       "sha256": "6569a97cbf1bbc8758bb220275162bafef180b33f1fcb12ad5df06224cea381f"
     },
     "hardware/thin18-compact/package_jlc_prototype.py": {
-      "sha256": "ca014ae8d6adb67eec0f882aeaf4cebbb2e9f84625bd7971b0a818b6ed990bfa"
+      "sha256": "57c65e96879f4c1cf3d01115e4ffbfd83107f7064c7d43f36b02145bf0004728"
     },
     "hardware/thin18-compact/qualification/c4d-evt/qualification-plan.json": {
       "sha256": "2e0384b3ac83cbe706453741b0a688191180d70de33b887d1fb535a14682cf24"
@@ -401,7 +404,7 @@
       "sha256": "7d65c305a35496ad4286b2dcb54a8715450a033cc1f647521c929ac6c58c5cd6"
     },
     "hardware/thin18-compact/release_split_c1.py": {
-      "sha256": "18e77074982bed39c731de083afcb985a8d11d587c0546a6814dad809b324423"
+      "sha256": "e5dc70e2d1d2d7d48caa6a98132cb074ad306ff6522b684c57021ef45de2b4d8"
     },
     "hardware/thin18-compact/split-c1-candidate-review.json": {
       "sha256": "9331906ce82a650ee6e8d65cdbda206d7f905a43807a741e429aa8655438ea57"
@@ -413,7 +416,7 @@
       "sha256": "2ae0f9d6337e69c4794234e93767e30ea6d5286bde31eb11e3dac3d88f17c80b"
     },
     "hardware/thin18-compact/split-c1-jlc-catalog-observation.json": {
-      "sha256": "d4b666a87c7646a75c708db27597d5eb401cc1e9e4e1d4252fe76d467adc57a8"
+      "sha256": "7f23531ae3bceac5d1f5c939bc2726a57efdd50482b795f33f2152efd051d4de"
     },
     "hardware/thin18-compact/split-c1-mechanical-inputs.json": {
       "sha256": "005d8b39465eece519b1655c1c950c07544e4bfb01eda40fc04db8a194d15131"
@@ -428,10 +431,13 @@
       "sha256": "7c957b28a93968e18fa82986f3c694ad405aec2a1783b132171efd171a1cb0cd"
     },
     "hardware/thin18-compact/split-c1-smt-consignment.json": {
-      "sha256": "aacbfd3bae6e72cfe9b2ad98be1746016523fec3d9471d57293497f361188b14"
+      "sha256": "88ac96b414321950f655af3b50cd6fc385fad61c8c7e6d6aa719608f114570b7"
     },
     "hardware/thin18-compact/split-c1-sourcing-evidence.json": {
-      "sha256": "f719f36229a47c513d3e6ad973396f560f7712bbf959c18921b504cd390ae8f7"
+      "sha256": "d122ee2b8a5df823e156edb9a2f5a8dbf5af3bede323b0ad60b8eee864f25acb"
+    },
+    "hardware/thin18-compact/split-c1-supply-plan.json": {
+      "sha256": "533f64d549f89997a5b8d34f3d70165d2c37a94d72469bf7f757a4f3f4917861"
     },
     "hardware/thin18-compact/tools/prune_core_c1_stubs.py": {
       "sha256": "e9aa1ffe254d97b3dd414b4fe82958f06b2c2b44bf68c2d9a046f6556fe6786c"
@@ -440,10 +446,13 @@
       "sha256": "c767e7069503dcc78a6e01fdc294bc86c6a2ffa8228c35c0556b552935707314"
     },
     "hardware/thin18-compact/validate_split_c1.py": {
-      "sha256": "7a3dd0e6c35d3211f00e82ea8354c22bed791f44882b9f94d9f0146f25221156"
+      "sha256": "534650f0374b0e37743c77ca888244f17fca4279d777177571878e082d738181"
     },
     "hardware/thin18-compact/verify_split_c1.py": {
       "sha256": "0f17c70c2254c44038539b5543899cf8a2ff383aa64c5565811a181d9cafa678"
+    },
+    "hardware/thin18-compact/verify_split_c1_supply.py": {
+      "sha256": "aa1932230beb292d560731ff0f217b18d3da77f70990bb3810225681e9b17a21"
     }
   },
   "manufacturing_release": false,

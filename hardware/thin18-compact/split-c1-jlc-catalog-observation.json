@@ -640,6 +640,107 @@
       "total": 0,
       "response_sha256": "d4eacfb70164b6b3bd72553d3de68c5fffdee608d38fbdea51bb443956a8a3d5",
       "rows": []
+    },
+    {
+      "keyword": "SGM62125AXG",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "77440ac66a467d41bce05179f90c4ca27a0525fca05cba91bd52d34e88f77535",
+      "rows": []
+    },
+    {
+      "keyword": "SGM62125AXG",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "77440ac66a467d41bce05179f90c4ca27a0525fca05cba91bd52d34e88f77535",
+      "rows": []
+    },
+    {
+      "keyword": "SGM37601YTRL20G",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "ef4979b6b6690f73f5658c540010cd5eb95184c3c2f3a7dc15370340d868518e",
+      "rows": []
+    },
+    {
+      "keyword": "SGM37601YTRL20G",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "ef4979b6b6690f73f5658c540010cd5eb95184c3c2f3a7dc15370340d868518e",
+      "rows": []
+    },
+    {
+      "keyword": "SGM2578SDYG",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "063ab07bb5c7a6c13743d8d044a83c49b6ec3a6292f79c0a5ad27f114390ebf7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM2578SDYG",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "063ab07bb5c7a6c13743d8d044a83c49b6ec3a6292f79c0a5ad27f114390ebf7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM05HU1AL",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "dfb2348cbf9fd15b8a0ac292ff8aa2e0dbca4794420f6cf8f3d9ea6808095ac0",
+      "rows": []
+    },
+    {
+      "keyword": "SGM05HU1AL",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 1,
+      "response_sha256": "2fdd88f6473eafbf6a9e648ff0fc6da82ba37a45c42df9717a3a7706d98d3245",
+      "rows": [
+        {
+          "componentCode": "C55274065",
+          "componentModelEn": "SGM05HU1ALXUGY2G/TR",
+          "componentBrandEn": "SGMICRO",
+          "componentSpecificationEn": "UTDFN-1×0.6-2BL",
+          "stockCount": 0,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "urlSuffix": "SGMICRO-SGM05HU1ALXUGY2GTR/C55274065"
+        }
+      ]
+    },
+    {
+      "keyword": "SE-5R5-D105VYH",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "d4eacfb70164b6b3bd72553d3de68c5fffdee608d38fbdea51bb443956a8a3d5",
+      "rows": []
+    },
+    {
+      "keyword": "SE-5R5-D105VYH",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 50,
+      "total": 0,
+      "response_sha256": "d4eacfb70164b6b3bd72553d3de68c5fffdee608d38fbdea51bb443956a8a3d5",
+      "rows": []
     }
   ],
   "negative_result_limit": "Zero results means not returned by this public query on this date, not a manufacturer discontinuation or proof that no other regional/my-parts route exists."

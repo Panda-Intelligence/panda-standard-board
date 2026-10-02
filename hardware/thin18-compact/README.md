@@ -74,3 +74,4 @@ This candidate is **placement-only and NOT routed**. routing142 remains the auth
 7. USB-C, microSD, side switches, display FPC and antenna cable exits are mechanically frozen.
 
 Do not fabricate the C0 board.
+精确供料跟进：SPLIT-C1-SUPPLY-REQUEST.md、split-c1-supply-plan.json。verify_split_c1_supply.py核对本次8个位号的精确身份、实际回执／数量和C301独立后装路线；不把公开库存或采购准备当作完整PCBA接收。

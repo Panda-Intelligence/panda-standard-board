@@ -837,7 +837,22 @@
       ],
       "mpn": "SGM2578SDYG/TR",
       "source_url": "https://www.sg-micro.com/product/SGM2578SD",
-      "next_action": "Exact manufacturer ordering number selected; obtain confirmed JLC ID or approved consignment, stock and tape/reel acceptance."
+      "next_action": "Exact Sekorm authorized stock observed3940,unreserved. Submit exact SD/package for JLC C-code/consignment acceptance; settle RCB text and actual lot/tape before ordering.",
+      "authorized_supply_observation": {
+        "url": "https://www.sekorm.com/product/578179499.html",
+        "observed_date": "2026-10-02",
+        "page_sha256": "7d5645fe5daa9c2ec69c0b49eed6154971b2d100319b5f7ef460958412b3a255",
+        "exact_mpn": "SGM2578SDYG/TR",
+        "warehouse_quantity": 3940,
+        "brand_warehouse_quantity": 0,
+        "displayed_delivery_workdays": "3-4",
+        "minimum_purchase_pcs": 1,
+        "packing": "Tape and reel,3000/reel",
+        "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+        "authorization_page_sha256": "1bafa7360923252d570505b580ea652db744f22571ad719b4344ccacc386f56b",
+        "stock_reserved": false,
+        "quotation_confirmed": false
+      }
     }
   ],
   "manual": [
@@ -861,9 +876,9 @@
       "manufacturer": "KAMCAP",
       "mpn": "SE-5R5-D105VYH",
       "units_per_core_display_pair": 1,
-      "supply_route": "Exact C118887 manual THT procurement,hand-solder after SMT",
+      "supply_route": "Independent KAMCAP/LCSC supply and customer post-PCBA hand-solder; do not consign ultracapacitor to JLCPCB",
       "source_url": "https://www.lcsc.com/product-detail/C118887.html",
-      "supply_status": "EXACT_CATALOG_ID_ZERO_OBSERVED_STOCK_HAND_SOLDER_ACCEPTANCE_PENDING",
+      "supply_status": "EXACT_LEGACY_DRAWING_AND_ACTUAL_SUPPLY_PENDING",
       "packing": "Exact horizontal H leads;not reflow or machine CPL;marked positive terminal and cut leads<=0.5mm",
       "stock_observation": {
         "quantity": 0,
@@ -874,7 +889,9 @@
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Current domestic rechargeable cap;old foreignC6048128 route retired"
+      "note": "Current manufacturer lists SE-5R5-D105VYH3C at20mm pitch, not the legacy19+/-0.5mm drawing. No alias or direct substitution; obtain exact legacy drawing/lot or review a separate PCB ECO. Leakage upper bound still missing.",
+      "jlc_consignment_allowed": false,
+      "restriction_source": "https://jlcpcb.com/help/article/consignment-part-terms-conditions"
     },
     {
       "board": "Core-C1",
@@ -957,13 +974,28 @@
       "manufacturer": "SGMICRO",
       "mpn": "SGM2578SDYG/TR",
       "units_per_core_display_pair": 4,
-      "supply_route": "Manufacturer/authorized distributor; approved JLC consignment pending",
+      "supply_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
       "source_url": "https://www.sg-micro.com/product/SGM2578SD",
-      "supply_status": "EXACT_PART_ID_AND_ASSEMBLY_SUPPLY_PENDING",
+      "supply_status": "AUTHORIZED_EXACT_STOCK_OBSERVED_JLC_CODE_AND_RECEIPT_PENDING",
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
-      "assembly_vendor_accepted": false
+      "assembly_vendor_accepted": false,
+      "authorized_supply_observation": {
+        "url": "https://www.sekorm.com/product/578179499.html",
+        "observed_date": "2026-10-02",
+        "page_sha256": "7d5645fe5daa9c2ec69c0b49eed6154971b2d100319b5f7ef460958412b3a255",
+        "exact_mpn": "SGM2578SDYG/TR",
+        "warehouse_quantity": 3940,
+        "brand_warehouse_quantity": 0,
+        "displayed_delivery_workdays": "3-4",
+        "minimum_purchase_pcs": 1,
+        "packing": "Tape and reel,3000/reel",
+        "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+        "authorization_page_sha256": "1bafa7360923252d570505b580ea652db744f22571ad719b4344ccacc386f56b",
+        "stock_reserved": false,
+        "quotation_confirmed": false
+      }
     },
     {
       "board": "Core-C1",
@@ -1082,7 +1114,7 @@
   ],
   "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",
   "jlc_consignment_requirements": {
-    "checked_date": "2026-10-01",
+    "checked_date": "2026-10-02",
     "official_guidance": [
       "https://jlcpcb.com/help/article/important-note-before-you-consign-the-part-to-jlcpcb",
       "https://jlcpcb.com/help/article/how-to-consign-parts-to-jlcpcb-from-mainland-china",
@@ -1095,6 +1127,6 @@
       "After receipt, verify sufficient exact stock in My Parts and explicitly select it for each board assembly BOM/CPL"
     ],
     "status": "PREPARATION_ONLY_NO_SUBMISSION",
-    "note": "A distributor catalog entry alone does not make a part immediately consignable. Do not ship stock with blank/unapproved JLC code. Quote and destination/import costs require order-time confirmation."
+    "note": "A distributor catalog entry alone does not make a part immediately consignable. Do not ship stock with blank/unapproved JLC code. Quote and destination/import costs require order-time confirmation. Published2026-09-09 terms exclude ultracapacitors: C301 follows independent post-PCBA procurement/assembly, not consignment. Same-part JLC/pre-order stock cannot be added to consigned/global-source stock to claim sufficient quantity; use the accepted source pool."
   }
 }
