@@ -2,7 +2,7 @@
 
 本包是 Core-C1 + Display-C1 两块 PCB 的台架 EVT 原型资料。当前没有实板。不要把旧 Murphy 串口板作为本版本样板，也不要依据本包进行量产放行。
 
-**全国产要求尚未完成：当前156个已装配系统位号中仍有10个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成85个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
+**全国产要求尚未完成：当前156个已装配系统位号中仍有8个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成87个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
 
 ## 提交范围和当前状态
 
@@ -67,7 +67,7 @@ BOM/CPL 必须在嘉立创预览中复核底面视图与旋转约定，尤其 J6
 
 生成器要求当前 CAD 与从不可变基线重建结果一致，两板 DRC/open/parity/ERC 全部为 0，60 针逻辑与插接变换一致，并检查生产文件源哈希、Gerber ZIP CRC、机器 BOM/CPL 位号完全相等。两板独立嘉立创 DFM 零违规结果在 prototype-status.json 中公开；SHA256SUMS 覆盖交接包内文件。
 
-全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在10个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
+全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在8个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
 
 XTEINK X4 Pro 的 5.95 mm / 1100 mAh 仅是参照。当前双板、1.5 mm HCTL 名义间隙、屏幕与器件叠层尚未证明能实现该外壳厚度，电池包最大尺寸、保护板/线尾及膨胀余量也未冻结。首轮可在外部限流电源和夹具上完成板级 EVT，再由实测电流及真实屏幕/电池决定最终外壳；不要给本包添加虚假的 EVT 通过结果。
 
@@ -90,3 +90,4 @@ python3 hardware/thin18-compact/release_split_c1.py
 - HCTL线对板原厂图：https://www.hctldz.com/static/upload/2025/10/17/202510178492.pdf
 - XKB 6针原厂A2图：https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf
 - HRE 精确 C 码：https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626
+侧按键 SW201/SW202 为 XKB TS-1186E-B-B/C2885153 原厂 A1 无定位柱型，两个0.6×1.6mm焊盘；不要按旧ALPS四焊盘或有柱A变体采购。侧视图板上高1.50±0.10mm，目录3.55为顶视按钮深度；按钮开口/行程/供料仍需确认。原厂图：https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf

@@ -265,6 +265,26 @@
       "source_locator": "Rev4 p1 vs exact product https://mupconn.com/product/usbc/3368.html",
       "checked_on": "2026-10-02",
       "height_basis": "Conservative engineering budget from official3.26mm on-board +0.20mm drawing general tolerance; not manufacturer-certified mounted maximum."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW201",
+      "mpn": "TS-1186E-B-B",
+      "height_nominal_mm": 1.6,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+      "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+      "checked_on": "2026-10-02",
+      "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW202",
+      "mpn": "TS-1186E-B-B",
+      "height_nominal_mm": 1.6,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+      "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+      "checked_on": "2026-10-02",
+      "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed."
     }
   ],
   "connector_layout_changes": {

@@ -2,7 +2,7 @@
 
 Date: 2026-09-29 (historical C4 study)
 
-Current authority: [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md). The new requirement permits no retained foreign-component exception; 18 refs remain blocked. This C4 study does not override current Split-C1 CAD or its audited BOM.
+Current authority: [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md). The new requirement permits no retained foreign-component exception; 8 refs remain blocked. This C4 study does not override current Split-C1 CAD or its audited BOM.
 
 Goal: replace every realistically replaceable foreign-origin component with a mainland-China manufacturer part, while reducing chip count where a domestic architecture is safer/cheaper than one-for-one substitution.
 

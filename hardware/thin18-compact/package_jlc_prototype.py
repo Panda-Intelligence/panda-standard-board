@@ -78,6 +78,23 @@ def verify_new_connectors(text):
             actualsize=tuple(map(float,re.search(r"\(size\s+([-\d.]+)\s+([-\d.]+)",pad).groups()))
             if actualxy!=xy or actualsize!=size:raise ValueError('Incorrect XKB A2 land/pin '+ref)
 
+    for ref,y,signal in [('SW201',6.75,'KEY_POWER_MCU'),('SW202',13.25,'BQ_QON')]:
+        fp=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,'Reference')==ref)
+        if property_value(fp,'MPN')!='TS-1186E-B-B':raise ValueError('Side-switch identity differs')
+        pose=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\)',fp).groups()))
+        if pose!=(2.3,y,-90) or '(model ' in fp:raise ValueError('Side-switch pose/model differs')
+        pads=list(blocks(fp,r"\(pad\s"))
+        if len(pads)!=2:raise ValueError('Side-switch must have two no-post lands')
+        seen=set()
+        for _,_,pad in pads:
+            n=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+            xy=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)',pad).groups()))
+            size=tuple(map(float,re.search(r'\(size\s+([-\d.]+)\s+([-\d.]+)',pad).groups()))
+            net=re.search(r'\(net\s+"([^"]+)"\)',pad).group(1)
+            if n not in {'1','2'} or n in seen or xy!=(-2.45 if n=='1' else 2.45,0) or size!=(.6,1.6) or net!=(signal if n=='1' else 'GND'):
+                raise ValueError('Side-switch reviewed land/pin/net differs')
+            seen.add(n)
+
 def run(*args):
     subprocess.run([K,*map(str,args)],check=True,capture_output=True)
 def main():

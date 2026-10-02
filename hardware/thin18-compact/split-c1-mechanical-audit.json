@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "51dabf42bb7386827965f54eaedfc9a23868d98a7b3db54e0ffb11eecb1a3711",
+    "Core-C1": "f126916550d5638f65c748698b3a85e56f00e308adbbef662fa0de779de36ffe",
     "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
-  "inputs_sha256": "2f16dd0191dcc6d5109b3bfc2da43f5daa66654d4c790d373ee4b7f63b9a8094",
-  "interface_sha256": "ed17a5998da564f4e0246e77755cb66da72d6232171ad362eafbc0193667de5b",
+  "inputs_sha256": "bb7735e9ec13f5ddb2b68c9858a652d81b8e1648ecb5dd1b89a4d7fa96578ba0",
+  "interface_sha256": "a8cefd7594fd3db53c414b744d30e2335b6de12cd4b200775e80a48dec33e8ba",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -1123,6 +1123,46 @@
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
         "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "SW201",
+        "mpn": "TS-1186E-B-B",
+        "world_native_bbox_mm": [
+          -0.175,
+          3.675,
+          4.125,
+          9.825
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.6,
+        "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed.",
+        "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "SW202",
+        "mpn": "TS-1186E-B-B",
+        "world_native_bbox_mm": [
+          -0.175,
+          10.175,
+          4.125,
+          16.325
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 1.6,
+        "height_basis": "Drawing maximum bare part height, excludes solder and mounted tolerance; top-view H3.55 is not board height. Side case opening/force/travel/overtravel must be reviewed.",
+        "source_locator": "A1 2025-06-06;side view1.50+/-0.10mm board height; no locating posts",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf",
+        "physical_fit_verified": false
       }
     ],
     "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
@@ -1348,10 +1388,10 @@
       ],
       "native_orientation_deg": -90.0,
       "world_bbox_mm": [
-        0.05,
-        3.975,
-        4.35,
-        9.525
+        -0.175,
+        3.675,
+        4.125,
+        9.825
       ],
       "enclosure_opening_verified": false
     },
@@ -1364,10 +1404,10 @@
       ],
       "native_orientation_deg": -90.0,
       "world_bbox_mm": [
-        0.05,
-        10.475,
-        4.35,
-        16.025
+        -0.175,
+        10.175,
+        4.125,
+        16.325
       ],
       "enclosure_opening_verified": false
     },

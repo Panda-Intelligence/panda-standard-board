@@ -5,23 +5,23 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "52a170c0ddbd5bc8a530f1e622710aa4761f43871e61298592e98c693c65ea1d"
+      "sha256": "81be9402590d2868b0cf1cf1fa0bfcee311616450c8298645c4be847d6fdbaeb"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "05229855c7f15570b23571d139f8ffac0460478dab0effd9fc86308bc42c568e"
+      "sha256": "b882f267e71aced38c828f9aff50de3fe4a6b11c6f5954e53b233af3a8ca5dbc"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "51dabf42bb7386827965f54eaedfc9a23868d98a7b3db54e0ffb11eecb1a3711"
+      "sha256": "f126916550d5638f65c748698b3a85e56f00e308adbbef662fa0de779de36ffe"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "5ceb12697f4193951e2d820fe15be656c04020a966e137f6f51120f2d8f56b7e"
+      "sha256": "1219bb82898c0cff00dbc684511811e73576a7974d02371cbcc76e7c453c1bab"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "d1d7fbe50eaeb0d14aabd42cc42e2f09880d52f080cc38a08c89cd9f008fe117"
+      "sha256": "5ea9395f819b8f5d9cd6d903ab70c0313117cba6a5de34e2ca33b5f10d42ecda"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
@@ -43,15 +43,13 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 111,
+      "domestic_refs": 113,
       "foreign_refs": [
         "C301",
         "D201",
         "D202",
         "J301",
         "J501",
-        "SW201",
-        "SW202",
         "U302"
       ],
       "unreviewed_refs": [],
@@ -83,8 +81,8 @@
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 146,
-  "foreign_ref_count": 10,
+  "domestic_refs": 148,
+  "foreign_ref_count": 8,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -139,26 +137,6 @@
     },
     {
       "board": "Core-C1",
-      "ref": "SW201",
-      "manufacturer": "ALPSALPINE",
-      "mpn": "SKSCLCE010",
-      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
-      "library_id": "C139799",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "SW202",
-      "manufacturer": "ALPSALPINE",
-      "mpn": "SKSCLCE010",
-      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
-      "library_id": "C139799",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
-    },
-    {
-      "board": "Core-C1",
       "ref": "U302",
       "manufacturer": "Micro Crystal",
       "mpn": "RV-3028-C7-32.768KHZ-1PPM-TA-QA",
@@ -189,7 +167,7 @@
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 85,
+  "applied_replacement_refs": 87,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,
