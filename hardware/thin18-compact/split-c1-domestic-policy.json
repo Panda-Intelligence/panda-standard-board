@@ -179,6 +179,16 @@
       "source_urls": [
         "https://www.mupconnector.com/about/summary/"
       ]
+    },
+    {
+      "aliases": [
+        "LRC"
+      ],
+      "company": "乐山无线电股份有限公司",
+      "origin": "MAINLAND_MANUFACTURER",
+      "source_urls": [
+        "https://www.lrc.cn/about/connect.html"
+      ]
     }
   ],
   "foreign_manufacturers": [
@@ -414,23 +424,12 @@
     {
       "board": "Core-C1",
       "refs": [
-        "D201"
-      ],
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD4E05U06DQAR",
-      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
-      "library_id": "C138714",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "D202"
       ],
       "manufacturer": "SGMICRO",
       "mpn": "SGM05HU1ALXUGY2G/TR",
       "footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
-      "library_id": "",
+      "library_id": "C55274065",
       "origin": "MAINLAND_MANUFACTURER"
     },
     {
@@ -454,17 +453,6 @@
       "footprint": "panda-standard:MUP_U20405_01_R4",
       "library_id": "C20624794",
       "origin": "MAINLAND_MANUFACTURER"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J301"
-      ],
-      "manufacturer": "Hirose",
-      "mpn": "DF58-2P-1.2V(21)",
-      "footprint": "panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical",
-      "library_id": "C597951",
-      "origin": "FOREIGN_MANUFACTURER"
     },
     {
       "board": "Core-C1",
@@ -952,23 +940,12 @@
     {
       "board": "Display-C1",
       "refs": [
-        "J2"
-      ],
-      "manufacturer": "Hirose",
-      "mpn": "FH12-24S-0.5SH(55)",
-      "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
-      "library_id": "C202112",
-      "origin": "FOREIGN_MANUFACTURER"
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
         "L1"
       ],
       "manufacturer": "Sunlord",
       "mpn": "SWPA3012S470MT",
       "footprint": "panda-r6-display:Sunlord_SWPA3012_47u",
-      "library_id": "",
+      "library_id": "C83420",
       "origin": "MAINLAND_MANUFACTURER"
     },
     {
@@ -1080,6 +1057,39 @@
       "footprint": "panda-standard:HCTL_HC10_2PWT",
       "library_id": "C2845361",
       "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "manufacturer": "XKB Connection",
+      "mpn": "X05A10L24G",
+      "footprint": "panda-r6-display:XKB_X05A10L24G",
+      "library_id": "C2880917",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D201"
+      ],
+      "manufacturer": "LRC",
+      "mpn": "LRC8804FDT1G",
+      "footprint": "panda-standard:LRC8804F_DFN2510",
+      "library_id": "C2856698",
+      "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J301"
+      ],
+      "manufacturer": "HCTL",
+      "mpn": "HC-HY-2AWT",
+      "footprint": "panda-standard:HCTL_HC_HY_2AWT",
+      "library_id": "C2845705",
+      "origin": "MAINLAND_MANUFACTURER"
     }
   ],
   "remaining_redesigns": [
@@ -1117,49 +1127,6 @@
     {
       "board": "Core-C1",
       "refs": [
-        "D201"
-      ],
-      "function": "USB D+/D-/CC ESD",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "SET SD0504F25U1",
-        "CREATEK CESD2510UC5VU-M C266652",
-        "LRC8804DT1G C2912064, current July2026 RevD: 5.5V VRWM but +/-8kV air/contact; not applied",
-        "LRC8804FDT1G C2856698 and LRC8804AT1G: manufacturer VRWM5V, not5.5V; not applied"
-      ],
-      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. Current LRC8804DT1G manufacturer RevD resolves VRWM to5.5V, but air/contact ESD rating is8kV, below original TI12kV contact/15kV air. Older15kV catalog/RevC values must not be used for current supply. Requires reviewed system ESD target and exact revised GND lands before ECO.",
-      "source_urls": [
-        "https://www.setfuse.com/SdwlUploads/Ed/file/20240904/ESD%20SD0504F25U1(DFN2510)_SETsafe%20&%20SETfuse.pdf",
-        "https://datasheet.lcsc.com/lcsc/CREATEK-CESD2510UC5VU-M_C266652.pdf",
-        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804DT1G.pdf",
-        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804FDT1G.pdf",
-        "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804AT1G.pdf"
-      ],
-      "foreign_retention_allowed": false,
-      "latest_candidate_primary_sha256": "4fbc865f73778bfce8798db282e99c5ecef54427e85af93e8a2c38d782ac50f7"
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "J301"
-      ],
-      "function": "Battery power connector",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "HCTL HC-ZHF2PLT-05: manufacturer family rating2.5A, not catalog3A; not selected",
-        "KONNRA KR1201: primary1.5A/28AWG, not3A; not selected"
-      ],
-      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. HCTL current ZHF primary specifies2.5A despite distributor3A listing; no silent current-rating downgrade. KONNRA KR1201 primary1.5A is also insufficient for an unchanged3A contract.",
-      "source_urls": [
-        "https://www.hirose.com/product/series/DF58",
-        "https://www.hctldz.com/static/upload/2026/07/13/202607137250.pdf",
-        "https://www.konnra.com.cn/wp-content/uploads/2023/12/PS-KR1201-01.pdf"
-      ],
-      "foreign_retention_allowed": false
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
         "J501"
       ],
       "function": "MicroSD socket with detect",
@@ -1188,24 +1155,6 @@
       ],
       "foreign_retention_allowed": false,
       "primary_sha256": "ee59dba774d8854f2a4e7e6a41478d3ec6347a0551ade33635bdbb8c4df4cc8a"
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
-        "J2"
-      ],
-      "function": "24-pin panel FPC",
-      "candidate_status": "NOT_APPLIED_REQUIRES_REVIEW_OR_REDESIGN",
-      "candidates": [
-        "XKB X05B20L24T C388688",
-        "XKB X05A10L24G C2880917"
-      ],
-      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph.",
-      "source_urls": [
-        "https://www.lcsc.com/product-detail/C388688.html",
-        "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf"
-      ],
-      "foreign_retention_allowed": false
     },
     {
       "board": "Display-C1",

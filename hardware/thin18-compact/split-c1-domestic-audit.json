@@ -5,35 +5,35 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "42c58d38dc6aeaa7a86e5261a0e094f5b15933623c4845090cb2d425886e30c7"
+      "sha256": "31ee641723cdc3a3c14d6d05ee893a065170b7931829a663ca667186ec72beb3"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
-      "sha256": "34411ba75b85decf4836ef753350ae33bb3a08f0f600ba86a4a26163190ef3db"
+      "sha256": "cc6129c0995d42225cf007ac2f7aaf9fa4d40da93eabc41e1ce5163ed35414cc"
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f"
+      "sha256": "0b13bcc6b34ac7d9a9420138d155d706ddba726916591a864d59d2d12685a098"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "55d9cc5351bf6198431e47a3e0a773983ed672036803a4021cdfe2a12511f1fd"
+      "sha256": "c69df72416ca00d227d155437ec2277d2b214fc00fcfd861a1ec8b7500f528b8"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "d6b85b7bba4d5c6eb9a0b0b80e7d0db57572865b8a6f5e5852de95beac478a6b"
+      "sha256": "491747ba8d430bc464e3d8a89159cb80d6e9b3a33e724880cd67a36aa1aa510e"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
-      "sha256": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
+      "sha256": "4a7f1b277381a2fc9fe71a80966b3c8263f452bbe51d1c7694fb2bf27c536bbc"
     },
     "Display-C1/bom": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
-      "sha256": "836becbb8ea16c6b46db9b6518bdff97033f018b799398c8b11dbd236813b51f"
+      "sha256": "729b8424e07aa8e095b39e2359aeabaaccb1e865d56db7cdfeb8c46dd05ab555"
     },
     "Display-C1/cpl": {
       "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
-      "sha256": "b0f535a8722205bfe765a5b759affa24506cc682988c5d99f5ff3b9dbf106863"
+      "sha256": "385a0b344e26a925b7cb5ee972b7f8452725f0417c87d7edbd3c5eb37a081c29"
     }
   },
   "boards": {
@@ -43,18 +43,15 @@
       "manual_or_offboard_refs": [
         "TH301"
       ],
-      "domestic_refs": 114,
+      "domestic_refs": 116,
       "foreign_refs": [
         "C301",
-        "D201",
-        "J301",
         "J501",
         "U302"
       ],
       "unreviewed_refs": [],
-      "mapped_smt_refs": 110,
+      "mapped_smt_refs": 111,
       "unmapped_smt_refs": [
-        "D202",
         "L402",
         "U402",
         "U403",
@@ -68,21 +65,18 @@
       "populated_refs": 37,
       "smt_refs": 37,
       "manual_or_offboard_refs": [],
-      "domestic_refs": 35,
+      "domestic_refs": 36,
       "foreign_refs": [
-        "J2",
         "Q1"
       ],
       "unreviewed_refs": [],
-      "mapped_smt_refs": 36,
-      "unmapped_smt_refs": [
-        "L1"
-      ]
+      "mapped_smt_refs": 37,
+      "unmapped_smt_refs": []
     }
   },
   "total_populated_refs": 156,
-  "domestic_refs": 149,
-  "foreign_ref_count": 7,
+  "domestic_refs": 152,
+  "foreign_ref_count": 4,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [
     {
@@ -94,26 +88,6 @@
       "library_id": "C6048128",
       "assembly": "SMT",
       "next_action": "User confirmed >=24h RTC retention after main-supply removal. FH H conventional primary specification obtained: 100mF D009 lists5uA at5V/25C/24h and thickness4.5+/-0.5mm, not qualified SMT reflow. 80mF at3.3->2.2V with0.8uA RTC plus5uA leakage gives4.21h only as a scenario. Select an exact mainland backup assembly with minimum usable capacity, load/leakage/voltage and all mechanical/process corners; prefer evaluating a hardware-isolated no-charge primary cell. Native R304 is DNP and must not be installed with backup. Current foreign C301 remains blocking."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "D201",
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD4E05U06DQAR",
-      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
-      "library_id": "C138714",
-      "assembly": "SMT",
-      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. Current LRC8804DT1G manufacturer RevD resolves VRWM to5.5V, but air/contact ESD rating is8kV, below original TI12kV contact/15kV air. Older15kV catalog/RevC values must not be used for current supply. Requires reviewed system ESD target and exact revised GND lands before ECO."
-    },
-    {
-      "board": "Core-C1",
-      "ref": "J301",
-      "manufacturer": "Hirose",
-      "mpn": "DF58-2P-1.2V(21)",
-      "footprint": "panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical",
-      "library_id": "C597951",
-      "assembly": "SMT",
-      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. HCTL current ZHF primary specifies2.5A despite distributor3A listing; no silent current-rating downgrade. KONNRA KR1201 primary1.5A is also insufficient for an unchanged3A contract."
     },
     {
       "board": "Core-C1",
@@ -137,16 +111,6 @@
     },
     {
       "board": "Display-C1",
-      "ref": "J2",
-      "manufacturer": "Hirose",
-      "mpn": "FH12-24S-0.5SH(55)",
-      "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
-      "library_id": "C202112",
-      "assembly": "SMT",
-      "next_action": "Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph."
-    },
-    {
-      "board": "Display-C1",
       "ref": "Q1",
       "manufacturer": "Nexperia",
       "mpn": "NX3008NBK,215",
@@ -157,7 +121,7 @@
     }
   ],
   "unreviewed_identities": [],
-  "applied_replacement_refs": 88,
+  "applied_replacement_refs": 91,
   "applied_replacement_identities_verified": true,
   "manufacturer_only_relabel_rejected": true,
   "all_domestic_bom_complete": false,

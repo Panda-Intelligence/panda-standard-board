@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f",
-    "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
+    "Core-C1": "0b13bcc6b34ac7d9a9420138d155d706ddba726916591a864d59d2d12685a098",
+    "Display-C1": "4a7f1b277381a2fc9fe71a80966b3c8263f452bbe51d1c7694fb2bf27c536bbc"
   },
-  "inputs_sha256": "32c9aa6008527c6b3664fc280be2f5a30d79224df02ed769b8f2940f6588f0dc",
-  "interface_sha256": "05d6e91430d3c5cb25e188cc5ae0e78d6fbe779ac2859efd25696ad44bcea017",
+  "inputs_sha256": "f11c9f03926675ef3246f9047ba9c8733cacdfc4885258ff4d4da260558cd825",
+  "interface_sha256": "7b4ee4cdd2fd4981662be2cb81cdc0799f0cf1c94e42fbf1151c5dd369e988d4",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -631,10 +631,10 @@
     {
       "ref": "J2",
       "world_bbox_mm": [
-        51.925,
-        32.075,
-        70.075,
-        40.025
+        53.725,
+        34.7,
+        68.275,
+        39.75
       ],
       "overlap_battery_planning_projection": true,
       "maximum_body_height_mm": null
@@ -901,6 +901,16 @@
         "exceeds_reference_thickness_before_other_terms": true,
         "nominal_capacity_delta_from_reference_mah": 700,
         "selected": false
+      },
+      {
+        "manufacturer": "EEMB",
+        "mpn": "LP503450-PCM-NTC-LD/",
+        "published_battery_thickness_mm": 5.3,
+        "thickness_basis": "published cell maximum; excludes added PCM/harness",
+        "fixed_plus_published_battery_thickness_mm": 10.38,
+        "exceeds_reference_thickness_before_other_terms": true,
+        "nominal_capacity_delta_from_reference_mah": -100,
+        "selected": false
       }
     ],
     "published_component_overlap_z_screens": [
@@ -932,26 +942,26 @@
       {
         "board": "Display-C1",
         "ref": "J2",
-        "mpn": "FH12-24S-0.5SH(55)",
+        "mpn": "X05A10L24G",
         "world_native_bbox_mm": [
-          51.925,
-          32.075,
-          70.075,
-          40.025
+          53.725,
+          34.7,
+          68.275,
+          39.75
         ],
         "shared_panel_core_display_xy_screen_mm": [
-          51.925,
-          32.075,
-          70.075,
-          40.025
+          53.725,
+          34.7,
+          68.275,
+          39.75
         ],
-        "published_height_nominal_mm": 2.0,
-        "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off",
-        "source_locator": "exact part detailed specifications: connector height2mm",
-        "nominal_overlap_section_screen_without_battery_walls_mm": 7.08,
+        "published_height_nominal_mm": 1.0,
+        "height_basis": "Primary1.0+/-0.1mm closed-body; actuator and0.3mm FPC bend/tool space still require mechanical verification.",
+        "source_locator": "A1 2024-11-29 p1",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 6.08,
         "exceeds_reference_in_nominal_xy_screen": true,
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
-        "source_url": "https://www.hirose.com/product/p/CL0586-0521-0-55",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf",
         "physical_fit_verified": false
       },
       {
@@ -1188,6 +1198,26 @@
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
         "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J301",
+        "mpn": "HC-HY-2AWT",
+        "world_native_bbox_mm": [
+          57.35,
+          7.525,
+          71.865,
+          16.475
+        ],
+        "shared_panel_core_display_xy_screen_mm": null,
+        "published_height_nominal_mm": 5.2,
+        "height_basis": "Bare-body drawing/general tolerance budget5.5mm; mounted solder/mate/wire bend not verified",
+        "source_locator": "Rev.A p22;5.2mm nominal with general X.X +/-0.30mm",
+        "nominal_overlap_section_screen_without_battery_walls_mm": null,
+        "exceeds_reference_in_nominal_xy_screen": null,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510175810.pdf",
+        "physical_fit_verified": false
       }
     ],
     "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
@@ -1280,15 +1310,15 @@
       "board": "Core-C1",
       "ref": "J301",
       "native_center_mm": [
-        49.75,
-        23.0
+        62.0,
+        12.0
       ],
-      "native_orientation_deg": 0.0,
+      "native_orientation_deg": 90.0,
       "world_bbox_mm": [
-        47.025,
-        20.175,
-        52.475,
-        25.725
+        57.35,
+        7.525,
+        71.865,
+        16.475
       ],
       "enclosure_opening_verified": false
     },
@@ -1461,10 +1491,10 @@
       ],
       "native_orientation_deg": 0.0,
       "world_bbox_mm": [
-        51.925,
-        32.075,
-        70.075,
-        40.025
+        53.725,
+        34.7,
+        68.275,
+        39.75
       ],
       "enclosure_opening_verified": false
     }
@@ -1554,6 +1584,21 @@
       "passes_example_1mm_each_side_body_only": false,
       "pcm_harness_swelling_verified": false,
       "battery_selected": false
+    },
+    {
+      "manufacturer": "EEMB",
+      "mpn": "LP503450-PCM-NTC-LD/",
+      "candidate_xy_mm": [
+        34.5,
+        52
+      ],
+      "total_xy_slack_mm": [
+        29.5,
+        8
+      ],
+      "passes_example_1mm_each_side_body_only": true,
+      "pcm_harness_swelling_verified": false,
+      "battery_selected": false
     }
   ],
   "maximum_battery_plus_swelling_budget_mm": null,
@@ -1579,5 +1624,326 @@
     "Supplier maximum component heights, solder/mount tolerances and PCB warp",
     "FT01C XY pose, actual thickness tolerance, FPC contact side and bend/access envelope",
     "Enclosure walls/supports, insulation, retention, heat and physical EVT"
-  ]
+  ],
+  "side_battery_study": {
+    "status": "PARAMETER_BUDGET_ONLY_NOT_SELECTED_PACK_OR_RELEASED_CASE",
+    "architecture": "battery_beside_display_below_core_b",
+    "battery_rect_xyxy_mm": [
+      1,
+      11,
+      37,
+      65
+    ],
+    "maximum_pack_xy_thickness_mm": [
+      36,
+      54,
+      5.5
+    ],
+    "battery_display_xy_separation_mm": 1,
+    "proposed_outer_xyz_mm": [
+      112,
+      75,
+      19
+    ],
+    "panel_back_core_b_z_mm": 7.0,
+    "outer_front_core_b_z_mm": 10.0,
+    "battery_top_core_b_z_mm": -1.8,
+    "battery_bottom_with_swelling_core_b_z_mm": -8.0,
+    "display_front_extent_core_b_z_mm": -4.0,
+    "outer_rear_core_b_z_mm": -8.8,
+    "calculated_outer_thickness_with_reserve_mm": 19.0,
+    "parameter_budget_passed": true,
+    "engineering_allowances_are_not_supplier_maxima": true,
+    "selected_pack": null,
+    "enclosure_fit_verified": false,
+    "manufacturing_release": false,
+    "open_constraints": [
+      "Exact protected pack MPN/maximum assembled envelope including PCM, tabs and lead exit; lithium pouch swelling allowance approved by supplier",
+      "Panel2.2mm, backside1.5mm and display1.7mm are engineering budgets, not signed supplier-mounted maxima",
+      "J3015.5mm is bare-body/general tolerance budget; exact housing/mate STEP, lead bend and solder tolerance need review",
+      "No fastener/boss beneath battery may exceed1.5mm below Core B before insulation; H804 lies in battery XY and cannot receive an unreviewed through-battery boss",
+      "Panel/FPC/lock/tool/USB/microSD/antenna/speaker/port and retention volumes not yet complete",
+      "Main power0.2mm copper and existing via bottlenecks require load/current redesign or qualified lower current contract",
+      "Two-board physical mating, safety isolation, temperature/charging and all EVT remain NOT_RUN",
+      "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review"
+    ],
+    "basis": "Core B plane=0; Core F=+0.8; Display B=-1.5; Display F=-2.3. Pack sits beside Display in XY and below Core backside components.",
+    "native_back_overlaps_battery_xy": [
+      {
+        "ref": "C511",
+        "value": "1u / U404 VIN",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          14.745,
+          59.495,
+          16.255,
+          62.505
+        ],
+        "world_bbox_mm": [
+          14.745,
+          59.495,
+          16.255,
+          62.505
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "C516",
+        "value": "1u / U403 VOUT",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "world_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": true,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "R302",
+        "value": "1M / SDA PD DNP",
+        "dnp": true,
+        "in_bom": true,
+        "native_bbox_mm": [
+          14.045,
+          18.505,
+          15.955,
+          19.495
+        ],
+        "world_bbox_mm": [
+          14.045,
+          18.505,
+          15.955,
+          19.495
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "R615",
+        "value": "5.23k",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          16.995,
+          14.745,
+          20.005,
+          16.255
+        ],
+        "world_bbox_mm": [
+          16.995,
+          14.745,
+          20.005,
+          16.255
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "R616",
+        "value": "30.1k",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          16.995,
+          17.245,
+          20.005,
+          18.755
+        ],
+        "world_bbox_mm": [
+          16.995,
+          17.245,
+          20.005,
+          18.755
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP11",
+        "value": "I2C_SCL",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          17.225,
+          52.725,
+          19.775,
+          55.275
+        ],
+        "world_bbox_mm": [
+          17.225,
+          52.725,
+          19.775,
+          55.275
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP12",
+        "value": "I2C_SDA",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          16.725,
+          11.225,
+          19.275,
+          13.775
+        ],
+        "world_bbox_mm": [
+          16.725,
+          11.225,
+          19.275,
+          13.775
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP13",
+        "value": "EXP_INT",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          17.225,
+          20.725,
+          19.775,
+          23.275
+        ],
+        "world_bbox_mm": [
+          17.225,
+          20.725,
+          19.775,
+          23.275
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP16",
+        "value": "PG_3V3_MAIN",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          13.225,
+          10.225,
+          15.775,
+          12.775
+        ],
+        "world_bbox_mm": [
+          13.225,
+          10.225,
+          15.775,
+          12.775
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP5",
+        "value": "3V3_SD",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          13.725,
+          22.225,
+          16.275,
+          24.775
+        ],
+        "world_bbox_mm": [
+          13.725,
+          22.225,
+          16.275,
+          24.775
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP7",
+        "value": "3V3_EPD_LOGIC",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          4.725,
+          15.725,
+          7.275,
+          18.275
+        ],
+        "world_bbox_mm": [
+          4.725,
+          15.725,
+          7.275,
+          18.275
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TP8",
+        "value": "VSYS_AUDIO",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          5.725,
+          24.225,
+          8.275,
+          26.775
+        ],
+        "world_bbox_mm": [
+          5.725,
+          24.225,
+          8.275,
+          26.775
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
+        "ref": "TPG2",
+        "value": "GND",
+        "dnp": false,
+        "in_bom": false,
+        "native_bbox_mm": [
+          17.225,
+          60.725,
+          19.775,
+          63.275
+        ],
+        "world_bbox_mm": [
+          17.225,
+          60.725,
+          19.775,
+          63.275
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": false,
+        "model_path_is_not_a_verified_body": true
+      }
+    ],
+    "j503_body_xy_clearance_screen_passed": true,
+    "j503_mated_cable_envelope_verified": false
+  }
 }

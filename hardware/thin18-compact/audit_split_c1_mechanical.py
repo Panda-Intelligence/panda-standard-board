@@ -275,6 +275,17 @@ def audit(inputs_path):
                        "FT01C XY pose, actual thickness tolerance, FPC contact side and bend/access envelope",
                        "Enclosure walls/supports, insulation, retention, heat and physical EVT"],
     }
+    from _split_c1_enclosure_study import side_battery_budget
+    report['side_battery_study']=side_battery_budget(inputs,display_rect,core_t,gap,display_t)
+    if report['side_battery_study'] is not None:
+        study=report['side_battery_study'];r=study['battery_rect_xyxy_mm']
+        study['native_back_overlaps_battery_xy']=[e for e in back['Core-C1'] if intersection(e['world_bbox_mm'],r)]
+        antenna=next(e['world_bbox_mm'] for e in back['Core-C1'] if e['ref']=='J503')
+        clearance=inputs['side_battery_study']['minimum_j503_body_xy_clearance_mm']
+        expanded=[antenna[0]-clearance,antenna[1]-clearance,antenna[2]+clearance,antenna[3]+clearance]
+        if intersection(expanded,r):raise ValueError('Side battery intersects J503 body clearance screen')
+        study['j503_body_xy_clearance_screen_passed']=True
+        study['j503_mated_cable_envelope_verified']=False
     return report
 
 def main():

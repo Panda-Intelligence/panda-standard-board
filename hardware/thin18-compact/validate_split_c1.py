@@ -54,15 +54,19 @@ def main():
                     "rebuild_geometry_and_properties_equal": True,
                     "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."}
             record["files"][board] = {"native_checks": {"current": counts(current), "fresh_rebuild": counts(rebuilt)}}
+    from _split_c1_enclosure_study import openscad_study
+    mechanical_inputs=json.loads((ROOT/'split-c1-mechanical-inputs.json').read_text())
+    if (ROOT/'SPLIT-C1-ENCLOSURE-STUDY.scad').read_text()!=openscad_study(mechanical_inputs):
+        raise ValueError('Stale side-battery OpenSCAD study')
     source_paths = [ROOT / name for name in [
-        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
+        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "_split_c1_panel_eco.py", "_split_c1_esd_eco.py", "_split_c1_battery_eco.py", "_split_c1_land_guards.py", "_split_c1_enclosure_study.py", "SPLIT-C1-ENCLOSURE-STUDY.scad", "SPLIT-C1-PACK-INPUTS.md", "split-c1-jlc-catalog-observation.json", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
         "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
         "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "C4D8-RTC-DECISION.md", "export_production.py",
         "export_jlc.py", "freeze_split_c1_release.py", "release_split_c1.py",
         "split-c1-sourcing-evidence.json", "core-c1-routing-closure.json",
         "package_jlc_prototype.py", "JLC-PROTOTYPE-HANDOFF.md",
-        "split-c1-mechanical-inputs.json", "tools/prune_core_c1_stubs.py",
+        "split-c1-mechanical-inputs.json", "tools/prune_core_c1_stubs.py", "tools/verify_split_c1_land_controls.py",
         "qualification/c4d-evt/verify_qualification.py", "qualification/c4d-evt/run_negative_controls.py",
         "qualification/c4d-evt/qualification-plan.json"]]
     for candidate in ["core-c1-96x68-split", "display-c1-45x36-production-bom"]:

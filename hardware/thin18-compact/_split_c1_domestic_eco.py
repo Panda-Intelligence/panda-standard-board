@@ -147,6 +147,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         if not pcb and board=='Core-C1' and 'D202' in targets and '(symbol "panda-standard:TPD1E10B06DPYR"' in text:
             from _split_c1_vbus_eco import clone_vbus_symbol
             text=clone_vbus_symbol(text,True)
+        if not pcb and board=='Core-C1' and 'D201' in targets and '(symbol "panda-standard:TPD4E05U06DQAR"' in text:
+            from _split_c1_esd_eco import clone_esd_symbol
+            text=clone_esd_symbol(text,True)
         pattern=r'\(footprint\s' if pcb else r'\(symbol\s+\(lib_id\s'
         for a,b,block in reversed(list(blocks(text,pattern))):
             ref=property_value(block,'Reference')
@@ -184,9 +187,19 @@ def apply_domestic_eco(candidate, board, refs_only=None):
                 from _split_c1_vbus_eco import vbus_geometry,SYMBOL
                 if pcb:block=vbus_geometry(block)
                 else:block=block.replace('(lib_id "panda-standard:TPD1E10B06DPYR")','(lib_id "panda-standard:'+SYMBOL+'")',1)
+            if item.get('usb_esd'):
+                from _split_c1_esd_eco import esd_geometry,SYMBOL
+                if pcb:block=esd_geometry(block)
+                else:block=block.replace('(lib_id "panda-standard:TPD4E05U06DQAR")','(lib_id "panda-standard:'+SYMBOL+'")',1)
             if item.get('usb_topmount') and pcb:
                 from _split_c1_usb_eco import usb_geometry
                 block=usb_geometry(block)
+            if item.get('battery_connector') and pcb:
+                from _split_c1_battery_eco import battery_geometry
+                block=battery_geometry(block)
+            if item.get('panel_fpc') and pcb:
+                from _split_c1_panel_eco import panel_geometry
+                block=panel_geometry(block)
             if item.get('inductor_land') and pcb:
                 block=change_inductor_geometry(block,item['inductor_land'])
             if item.get('diode_land') and pcb:
@@ -203,6 +216,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         if 'D202' in targets:
             from _split_c1_vbus_eco import clone_vbus_symbol
             lib.write_text(clone_vbus_symbol(lib.read_text(),False))
+        if 'D201' in targets:
+            from _split_c1_esd_eco import clone_esd_symbol
+            lib.write_text(clone_esd_symbol(lib.read_text(),False))
         src=candidate/'lib/panda-standard.pretty/TPS22916CYFPT_YFP0004.kicad_mod'
         text=change_pad_geometry(src.read_text(),True)
         text=set_prop(text,'Value','SGM2578SD_WLCSP_09x09_P05')
@@ -217,12 +233,14 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         lib.write_text(library_from_board(diode,'MBR0530_JSCJ_SOD123'))
     from _split_c1_prototype_eco import library_from_board
     for ref,item in targets.items():
-        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch') or item.get('vbus_protector')):continue
+        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch') or item.get('vbus_protector') or item.get('panel_fpc') or item.get('usb_esd') or item.get('battery_connector')):continue
         pcb=next(folder.glob('*.kicad_pcb'))
         fp=next(b for _,_,b in blocks(pcb.read_text(),r'\(footprint\s') if property_value(b,'Reference')==ref)
         name=item['new_fields']['Footprint'].split(':')[1]
         libdir=candidate/'lib/panda-standard.pretty' if board=='Core-C1' else folder/'panda-r6-display.pretty'
-        (libdir/(name+'.kicad_mod')).write_text(library_from_board(fp,name))
+        library=library_from_board(fp,name)
+        if item.get('panel_fpc'):library=re.sub(r'(?m)^[ \t]*\n','',library)
+        (libdir/(name+'.kicad_mod')).write_text(library)
     if board=='Core-C1' and 'J302' in targets:apply_wire_connector_routing(candidate)
     if board=='Core-C1' and {'J803','J804'}<=set(targets):apply_fpc6_support(candidate)
     if refs_only is None:apply_domestic_support(candidate,board)
@@ -232,6 +250,14 @@ def apply_domestic_eco(candidate, board, refs_only=None):
     if board=='Core-C1' and {'SW201','SW202'}<=set(targets):
         from _split_c1_switch_eco import apply_switch_layout
         apply_switch_layout(candidate)
+    if board=='Core-C1' and 'J301' in targets:
+        from _split_c1_battery_eco import apply_battery_routing
+        apply_battery_routing(candidate)
+    if board=='Display-C1' and 'J2' in targets:
+        from _split_c1_panel_eco import apply_panel_routing
+        apply_panel_routing(candidate)
+    for path in folder.glob('*.kicad_pcb'):
+        path.write_text(re.sub(r'(?m)^[ \t]+$', '',path.read_text()))
     return {'board':board,'applied_refs':sorted(targets),'manufacturing_release':False}
 
 def eco_uuid(value):

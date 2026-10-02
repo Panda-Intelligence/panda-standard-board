@@ -9,16 +9,21 @@
       "refs": [
         "D201"
       ],
-      "manufacturer": "Texas Instruments",
-      "mpn": "TPD4E05U06DQAR",
-      "library_id": "C138714",
-      "catalog_manufacturer": "TI",
-      "catalog_mpn": "TPD4E05U06DQAR",
-      "source_url": "https://www.lcsc.com/product-detail/C138714.html",
+      "manufacturer": "LRC",
+      "mpn": "LRC8804FDT1G",
+      "library_id": "C2856698",
+      "catalog_manufacturer": "LRC",
+      "catalog_mpn": "LRC8804FDT1G",
+      "source_url": "https://jlcpcb.com/partdetail/LRC-LRC8804FDT1G/C2856698",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+      "identity_note": "Exact public JLC identity; primary Jan2023 Rev.B5V rating reviewed against actual CC normal operation. No5.5V VRWM claim.",
+      "stock_observation": {
+        "quantity": 2464,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     },
     {
       "board": "Core-C1",
@@ -28,7 +33,7 @@
       "manufacturer": "MUP",
       "mpn": "U20405-01",
       "library_id": "C20624794",
-      "catalog_manufacturer": "MUP(\u5fb7\u6d77\u5a01)",
+      "catalog_manufacturer": "MUP(德海威)",
       "catalog_mpn": "U20405-01",
       "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
@@ -42,16 +47,21 @@
       "refs": [
         "J301"
       ],
-      "manufacturer": "Hirose",
-      "mpn": "DF58-2P-1.2V(21)",
-      "library_id": "C597951",
-      "catalog_manufacturer": "HRS",
-      "catalog_mpn": "DF58-2P-1.2V(21)",
-      "source_url": "https://www.lcsc.com/product-detail/C597951.html",
+      "manufacturer": "HCTL",
+      "mpn": "HC-HY-2AWT",
+      "library_id": "C2845705",
+      "catalog_manufacturer": "HCTL",
+      "catalog_mpn": "HC-HY-2AWT",
+      "source_url": "https://jlcpcb.com/partdetail/HCTL-HC_HY2AWT/C2845705",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+      "identity_note": "Exact HC-HY-2AWT identity from JLC public API on2026-10-02; primary3A/2.0mm, not HC-HY folder-category1.25mm.",
+      "public_stock_observation": {
+        "date": "2026-10-02",
+        "quantity": 2050,
+        "not_reserved": true
+      }
     },
     {
       "board": "Core-C1",
@@ -169,22 +179,6 @@
       "identity_note": "HCTL exact paired connector identity; manufacturer drawings reviewed; physical mating and stock allocation unverified.",
       "checked_date": "2026-10-02",
       "note": "HCTL paired domestic ECO; stock not reserved; do not mix with Hirose mate."
-    },
-    {
-      "board": "Display-C1",
-      "refs": [
-        "J2"
-      ],
-      "manufacturer": "Hirose",
-      "mpn": "FH12-24S-0.5SH(55)",
-      "library_id": "C202112",
-      "catalog_manufacturer": "HRS",
-      "catalog_mpn": "FH12-24S-0.5SH(55)",
-      "source_url": "https://www.lcsc.com/product-detail/C202112.html",
-      "identity_verified": true,
-      "stock_reserved": false,
-      "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
     },
     {
       "board": "Display-C1",
@@ -691,6 +685,69 @@
       "assembly_order_confirmed": false,
       "checked_date": "2026-10-02",
       "identity_note": "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "L1"
+      ],
+      "manufacturer": "Sunlord",
+      "mpn": "SWPA3012S470MT",
+      "library_id": "C83420",
+      "catalog_manufacturer": "Sunlord",
+      "catalog_mpn": "SWPA3012S470MT",
+      "source_url": "https://jlcpcb.com/partdetail/Sunlord-SWPA3012S470MT/C83420",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact manufacturer, MPN and package found via public JLC search API; snapshot split-c1-jlc-catalog-observation.json. ID coverage does not imply available assembly supply.",
+      "stock_observation": {
+        "quantity": 2173,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D202"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM05HU1ALXUGY2G/TR",
+      "library_id": "C55274065",
+      "catalog_manufacturer": "SGMICRO",
+      "catalog_mpn": "SGM05HU1ALXUGY2G/TR",
+      "source_url": "https://jlcpcb.com/partdetail/SGMICRO-SGM05HU1ALXUGY2GTR/C55274065",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact manufacturer, MPN and package found via public JLC search API; snapshot split-c1-jlc-catalog-observation.json. ID coverage does not imply available assembly supply.",
+      "stock_observation": {
+        "quantity": 0,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "manufacturer": "XKB Connection",
+      "mpn": "X05A10L24G",
+      "library_id": "C2880917",
+      "catalog_manufacturer": "XKB Connection",
+      "catalog_mpn": "X05A10L24G",
+      "source_url": "https://jlcpcb.com/partdetail/XKBConnection-X05A10L24G/C2880917",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact manufacturer, MPN and package found via public JLC search API; snapshot split-c1-jlc-catalog-observation.json. ID coverage does not imply available assembly supply.",
+      "stock_observation": {
+        "quantity": 3736,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     }
   ],
   "unresolved_smt": [
@@ -735,30 +792,6 @@
       "refs": [
         "L402"
       ]
-    },
-    {
-      "board": "Display-C1",
-      "manufacturer": "Sunlord",
-      "mpn": "SWPA3012S470MT",
-      "next_action": "Obtain exact-part manufacturer/authorized supply, packing and JLC consignment acceptance. No JLC/LCSC ID verified; historical foreign supply routes are superseded.",
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
-      "stock_reserved": false,
-      "assembly_order_confirmed": false,
-      "refs": [
-        "L1"
-      ]
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "D202"
-      ],
-      "manufacturer": "SGMICRO",
-      "mpn": "SGM05HU1ALXUGY2G/TR",
-      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
-      "next_action": "Obtain exact XUGY2G/TR UTDFN1x0.6-2BL part ID or approved consignment; 10000/reel,8mm tape,2mm pitch per primary. No exact JLC/LCSC ID verified; old C48260 is retired.",
-      "stock_reserved": false,
-      "assembly_order_confirmed": false
     }
   ],
   "manual": [
@@ -940,20 +973,20 @@
       "manufacturer": "Sunlord",
       "mpn": "SWPA3012S470MT",
       "units_per_core_display_pair": 1,
-      "supply_route": "Sunlord/authorized distributor exact MPN; assembler-approved consignment pending",
-      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
-      "supply_status": "EXACT_MANUFACTURER_VARIANT_QUOTE_AND_CONSIGNMENT_PENDING",
+      "supply_route": "JLC exact catalog C83420; purchase/assembly acceptance pending",
+      "source_url": "https://jlcpcb.com/partdetail/Sunlord-SWPA3012S470MT/C83420",
+      "supply_status": "CATALOG_ID_CONFIRMED_STOCK_AND_PACKING_PENDING",
       "packing": "Tape and reel; reel quantity, leader/trailer and PCBA feeder acceptance pending",
       "stock_observation": {
-        "quantity": null,
+        "quantity": 2173,
         "observed_date": "2026-10-02",
-        "note": "No live stock allocation verified."
+        "note": "Public search API observation; no reservation or assembly order. All acceptance flags remain false."
       },
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": "Supersedes historical foreign inductor supply routes. B01 suffix mandatory for L402."
+      "note": "Exact catalog identity verified; stock observation is not a reservation."
     },
     {
       "board": "Core-C1",
@@ -963,14 +996,20 @@
       "manufacturer": "SGMICRO",
       "mpn": "SGM05HU1ALXUGY2G/TR",
       "units_per_core_display_pair": 1,
-      "supply_route": "Manufacturer/authorized distributor; approved JLC consignment pending",
-      "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
-      "supply_status": "EXACT_PART_ID_AND_ASSEMBLY_SUPPLY_PENDING",
+      "supply_route": "JLC exact catalog C55274065; purchase/assembly acceptance pending",
+      "source_url": "https://jlcpcb.com/partdetail/SGMICRO-SGM05HU1ALXUGY2GTR/C55274065",
+      "supply_status": "CATALOG_ID_CONFIRMED_NO_STOCK",
       "packing": "10000/reel,7inch reel,8mm tape,2mm pitch,Pin1Q1 per primary; actual lot, leader/trailer and assembler acceptance pending",
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
-      "assembly_vendor_accepted": false
+      "assembly_vendor_accepted": false,
+      "stock_observation": {
+        "quantity": 0,
+        "observed_date": "2026-10-02",
+        "note": "Public search API observation; no reservation or assembly order. All acceptance flags remain false."
+      },
+      "note": "Exact catalog identity now verified; manufacturer primary defines electrical/land requirements. D202 has zero stock; pre-order listing is not an assembly supply commitment."
     }
   ],
   "quantity_rule": "For N Core boards and N Display boards: each group needs N*units_per_core_display_pair usable placements plus assembler-specified attrition and tape leader/trailer; N is not yet set. Core and Display receive separate BOM/CPL and assembly orders.",
