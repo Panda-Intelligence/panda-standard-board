@@ -18,6 +18,11 @@ def change(text,ref,old,new):
     if old not in f:raise ValueError('Test predecessor absent')
     return text[:a]+f.replace(old,new,1)+text[b:]
 cases=[
+ ('MOS reversed drain/source',core,change(display,'Q1','(net "/BOOST_SW")','(net "/RESE")')),
+ ('MOS obsolete land',core,change(display,'Q1','(size 0.8 0.6)','(size 0.9 0.8)')),
+ ('RTC wrong VBAT/VDD',change(core,'U302','(net "RTC_VBACKUP")','(net "3V3_AON")'),display),
+ ('backup vertical instead of horizontal SKU',change(core,'C301','(property "MPN" "SE-5R5-D105VYH"','(property "MPN" "SE-5R5-D105VYV"'),display),
+ ('backup undersize lead slot',change(core,'C301','(drill oval 1.8 1.4)','(drill oval 1.4 1.0)'),display),
  ('microSD wrong row height',change(core,'J501','(size 0.6 1.6)','(size 0.6 1.5)'),display),
  ('microSD swapped supply/command',change(core,'J501','(net "3V3_SD")','(net "SDMMC_CMD_CARD")'),display),
  ('microSD reversed entry',change(core,'J501','(at 81.75 17.315 90)','(at 81.75 17.315 -90)'),display),

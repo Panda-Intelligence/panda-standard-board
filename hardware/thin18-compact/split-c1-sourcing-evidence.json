@@ -33,7 +33,7 @@
       "manufacturer": "MUP",
       "mpn": "U20405-01",
       "library_id": "C20624794",
-      "catalog_manufacturer": "MUP(\u5fb7\u6d77\u5a01)",
+      "catalog_manufacturer": "MUP(德海威)",
       "catalog_mpn": "U20405-01",
       "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
@@ -190,32 +190,44 @@
       "refs": [
         "Q1"
       ],
-      "manufacturer": "Nexperia",
-      "mpn": "NX3008NBK,215",
-      "library_id": "C179399",
-      "catalog_manufacturer": "Nexperia",
-      "catalog_mpn": "NX3008NBK,215",
-      "source_url": "https://www.lcsc.com/product-detail/C179399.html",
+      "manufacturer": "JSMSEMI",
+      "mpn": "NX3008NBK,215-JSM",
+      "library_id": "C53113911",
+      "catalog_manufacturer": "JSMSEMI",
+      "catalog_mpn": "NX3008NBK,215-JSM",
+      "source_url": "https://jlcpcb.com/partdetail/JSMSEMI-NX3008NBK_215JSM/C53113911",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+      "identity_note": "Exact primary V1.0 and public catalog. Replaces Nexperia;1G2D3S custom symbol/land/copper ECO,not drop-in.",
+      "checked_date": "2026-10-02",
+      "stock_observation": {
+        "quantity": 2306,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     },
     {
       "board": "Core-C1",
       "refs": [
         "C301"
       ],
-      "manufacturer": "Seiko Instruments",
-      "mpn": "CPH3225A",
-      "library_id": "C6048128",
-      "catalog_manufacturer": "Seiko",
-      "catalog_mpn": "CPH3225A",
-      "source_url": "https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128",
+      "manufacturer": "KAMCAP",
+      "mpn": "SE-5R5-D105VYH",
+      "library_id": "C118887",
+      "catalog_manufacturer": "KAMCAP",
+      "catalog_mpn": "SE-5R5-D105VYH",
+      "source_url": "https://www.lcsc.com/product-detail/C118887.html",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact Seiko CPH3225A; JLC lists SMT assembly, SMD 3.2x2.5mm, maximum seated height 0.9mm. Visible stock quantity/packing not returned."
+      "identity_note": "Exact catalog identity plus primary manufacturer package reviewed; not an assembly/supply approval.",
+      "stock_observation": {
+        "quantity": 0,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      },
+      "assembly_process": "THROUGH_HOLE_HAND_SOLDER_AFTER_SMT_NOT_REFLOW"
     },
     {
       "board": "Core-C1",
@@ -269,7 +281,6 @@
     {
       "board": "Core-C1",
       "refs": [
-        "R303",
         "R510",
         "R511",
         "R512",
@@ -774,6 +785,27 @@
         "observed_date": "2026-10-02",
         "stock_reserved": false
       }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U302"
+      ],
+      "manufacturer": "WAVE",
+      "mpn": "SD3078",
+      "library_id": "C916255",
+      "catalog_manufacturer": "WAVE",
+      "catalog_mpn": "SD3078",
+      "source_url": "https://www.lcsc.com/product-detail/C916255.html",
+      "identity_verified": true,
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Exact catalog identity plus primary manufacturer package reviewed; not an assembly/supply approval.",
+      "stock_observation": {
+        "quantity": 4674,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
+      }
     }
   ],
   "unresolved_smt": [
@@ -826,23 +858,23 @@
       "refs": [
         "C301"
       ],
-      "manufacturer": "Seiko Instruments",
-      "mpn": "CPH3225A",
+      "manufacturer": "KAMCAP",
+      "mpn": "SE-5R5-D105VYH",
       "units_per_core_display_pair": 1,
-      "supply_route": "JLC exact library C6048128",
-      "source_url": "https://jlcpcb.com/partdetail/SEIKO_INSTRUMENTSINC-CPH3225A/C6048128",
-      "supply_status": "CATALOG_ID_CONFIRMED_STOCK_AND_PACKING_PENDING",
-      "packing": "Supplier packing and actual PCBA availability pending",
+      "supply_route": "Exact C118887 manual THT procurement,hand-solder after SMT",
+      "source_url": "https://www.lcsc.com/product-detail/C118887.html",
+      "supply_status": "EXACT_CATALOG_ID_ZERO_OBSERVED_STOCK_HAND_SOLDER_ACCEPTANCE_PENDING",
+      "packing": "Exact horizontal H leads;not reflow or machine CPL;marked positive terminal and cut leads<=0.5mm",
       "stock_observation": {
-        "quantity": null,
-        "observed_date": "2026-10-01",
-        "note": "No reliable live quantity rendered."
+        "quantity": 0,
+        "observed_date": "2026-10-02",
+        "stock_reserved": false
       },
       "quote_confirmed": false,
       "stock_reserved": false,
       "purchase_confirmed": false,
       "assembly_vendor_accepted": false,
-      "note": ""
+      "note": "Current domestic rechargeable cap;old foreignC6048128 route retired"
     },
     {
       "board": "Core-C1",

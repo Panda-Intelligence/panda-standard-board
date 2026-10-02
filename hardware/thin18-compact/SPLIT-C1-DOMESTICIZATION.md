@@ -1,53 +1,50 @@
 # Split-C1 全量国产化设计记录
+2026-10-02。当前只有Core-C1／Display-C1两块PCB设计，没有实物样板。所有已装配BOM位号使用中国大陆厂家身份；这项身份审计与电气、固件、实际供料及EVT分别验证。
 
-当前要求：Core-C1 和 Display-C1 两块 PCB 的所有已装配位号均采用中国大陆厂家器件，不保留进口料例外。当前只有设计文件，没有真实样板。这里的国产身份指厂家身份；电气、固件、供料及实物 EVT 分别验证。
+**155个已装配系统位号全部为大陆厂家，0进口、0未知。** Core118个（116SMT、板上手焊C301、板外TH301），Display37SMT。R303、R304已移除；DNP不计入。当前实施94个位号、39组受控替换，另有C516本地输出旁路。完整身份／原厂来源和ECO见split-c1-domestic-policy.json、split-c1-domestic-eco.json、split-c1-domestic-audit.json。
 
-**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：153 个国产厂家，3 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
-
-本轮对 92 个位号执行受控替换（Core 62、Display 30），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
-
-## 已应用替换
-
-| 板 | 位号 | 新厂家 / 精确 MPN | C 码 |
-| --- | --- | --- | --- |
-| Core-C1 | R201 | FH (Fenghua Advanced) / `RS-03K5601FT` | C99891 |
-| Core-C1 | R204 | FH (Fenghua Advanced) / `RS-03K1201FT` | C118396 |
-| Core-C1 | R303, R510, R511, R512, R513, R523, R524, R525, R526, R527, R528, R600 | FH (Fenghua Advanced) / `RC-02K1002FT` | C140215 |
-| Core-C1 | R501, R502, R507, R604, R605, R606, R607, R608, R609, R610, R611, R612 | FH (Fenghua Advanced) / `RC-02K1003FT` | C140219 |
-| Core-C1 | R508, R509, R514, R515, R516 | FH (Fenghua Advanced) / `RS-05000FT` | C132364 |
-| Core-C1 | R517, R518, R519, R520, R521, R522 | FH (Fenghua Advanced) / `RS-03000FT` | C136582 |
-| Core-C1 | R529, R530 | FH (Fenghua Advanced) / `RC-02K22R0FT` | C324769 |
-| Core-C1 | R613, R614 | FH (Fenghua Advanced) / `RC-02K2201FT` | C140192 |
-| Core-C1 | R615 | FH (Fenghua Advanced) / `RS-03K5231FT` | C140082 |
-| Core-C1 | R616 | FH (Fenghua Advanced) / `RS-03K3012FT` | C321843 |
-| Display-C1 | C4, C5, C6, C7, C8, C9 | FH (Fenghua Advanced) / `0805B475K250NT` | C37818 |
-| Display-C1 | C10 | FH (Fenghua Advanced) / `0805B105K250NT` | C89190 |
-| Display-C1 | C11, C12, C13 | FH (Fenghua Advanced) / `0603B104K250NT` | C694249 |
-| Display-C1 | R1, R2, R3, R4, R5 | FH (Fenghua Advanced) / `RC-02K22R0FT` | C324769 |
-| Display-C1 | R6 | FH (Fenghua Advanced) / `RC-02K1000FT` | C140217 |
-| Display-C1 | R7, R8, R9, R10, R11, R12 | FH (Fenghua Advanced) / `RC-02K1003FT` | C140219 |
-| Display-C1 | R13 | FH (Fenghua Advanced) / `RS-03L2R20FT` | C322118 |
-| Display-C1 | R14 | FH (Fenghua Advanced) / `RC-02K1002FT` | C140215 |
-| Core-C1 | U402, U403, U404, U405 | SGMICRO / `SGM2578SDYG/TR` | 未确认，待精确供料接收 |
-| Display-C1 | D1, D2, D3 | JSCJ / `MBR0530` | C77336 |
-| Core-C1 | J601 | HCTL / `HC-PBB40C-60DS-0.4V-1.5-02` | C19089250 |
-| Display-C1 | J1 | HCTL / `HC-PBB40C-60DP-0.4V-02` | C19089235 |
-| Core-C1 | TH301 | Nanjing Shiheng Elec / `MF52D-103F3435-100` | C394023 |
-| Core-C1 | J302 | HCTL / `HC-1.0-3PWT` | C2845362 |
-| Core-C1 | J502 | HCTL / `HC-1.0-2PWT` | C2845361 |
-| Core-C1 | J803, J804 | XKB Connection / `X05A10H06G`，原厂 A2 p2 | C528032 |
-| Core-C1 | L401 | Sunlord / `MWSA0402S-R47MT` | C6331050 |
-| Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MT` | C408332，受控改型 |
-| Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | C83420 |
-| Core-C1 | D202 | SGMICRO / `SGM05HU1ALXUGY2G/TR` | C55274065，公开库存0 |
-| Core-C1 | SW201, SW202 | XKB Connection / `TS-1186E-B-B` | C2885153 |
-| Core-C1 | J201 | MUP / `U20405-01`，原厂 Rev4 | C20624794 |
-| Core-C1 | D201 | LRC / `LRC8804FDT1G` | C2856698 |
-| Core-C1 | J301 | HCTL / `HC-HY-2AWT` | C2845705 |
-| Display-C1 | J2 | XKB Connection / `X05A10L24G` | C2880917 |
-| Core-C1 | J501 | XUNPU / `TF-122-CCP9` | C41347844 |
-
-完整逐项原身份、规格/封装评估及原厂来源见 [split-c1-domestic-eco.json](split-c1-domestic-eco.json)。设计中已装配 BOM 身份与逐项审查政策见 [split-c1-domestic-policy.json](split-c1-domestic-policy.json)，结果见 [split-c1-domestic-audit.json](split-c1-domestic-audit.json)。
+## 已实施国产ECO
+| 板 | 位号 | 当前厂家／精确MPN | 精确C码 |
+|---|---|---|---|
+| Core-C1 | R201 | FH (Fenghua Advanced) / RS-03K5601FT | C99891 |
+| Core-C1 | R204 | FH (Fenghua Advanced) / RS-03K1201FT | C118396 |
+| Core-C1 | R510, R511, R512, R513, R523, R524, R525, R526, R527, R528, R600 | FH (Fenghua Advanced) / RC-02K1002FT | C140215 |
+| Core-C1 | R501, R502, R507, R604, R605, R606, R607, R608, R609, R610, R611, R612 | FH (Fenghua Advanced) / RC-02K1003FT | C140219 |
+| Core-C1 | R508, R509, R514, R515, R516 | FH (Fenghua Advanced) / RS-05000FT | C132364 |
+| Core-C1 | R517, R518, R519, R520, R521, R522 | FH (Fenghua Advanced) / RS-03000FT | C136582 |
+| Core-C1 | R529, R530 | FH (Fenghua Advanced) / RC-02K22R0FT | C324769 |
+| Core-C1 | R613, R614 | FH (Fenghua Advanced) / RC-02K2201FT | C140192 |
+| Core-C1 | R615 | FH (Fenghua Advanced) / RS-03K5231FT | C140082 |
+| Core-C1 | R616 | FH (Fenghua Advanced) / RS-03K3012FT | C321843 |
+| Display-C1 | C4, C5, C6, C7, C8, C9 | FH (Fenghua Advanced) / 0805B475K250NT | C37818 |
+| Display-C1 | C10 | FH (Fenghua Advanced) / 0805B105K250NT | C89190 |
+| Display-C1 | C11, C12, C13 | FH (Fenghua Advanced) / 0603B104K250NT | C694249 |
+| Display-C1 | R1, R2, R3, R4, R5 | FH (Fenghua Advanced) / RC-02K22R0FT | C324769 |
+| Display-C1 | R6 | FH (Fenghua Advanced) / RC-02K1000FT | C140217 |
+| Display-C1 | R7, R8, R9, R10, R11, R12 | FH (Fenghua Advanced) / RC-02K1003FT | C140219 |
+| Display-C1 | R13 | FH (Fenghua Advanced) / RS-03L2R20FT | C322118 |
+| Display-C1 | R14 | FH (Fenghua Advanced) / RC-02K1002FT | C140215 |
+| Core-C1 | U402, U403, U404, U405 | SGMICRO / SGM2578SDYG/TR | 未确认 |
+| Display-C1 | D1, D2, D3 | JSCJ / MBR0530 | C77336 |
+| Core-C1 | J601 | HCTL / HC-PBB40C-60DS-0.4V-1.5-02 | C19089250 |
+| Display-C1 | J1 | HCTL / HC-PBB40C-60DP-0.4V-02 | C19089235 |
+| Core-C1 | TH301 | Nanjing Shiheng Elec / MF52D-103F3435-100 | C394023 |
+| Core-C1 | J302 | HCTL / HC-1.0-3PWT | C2845362 |
+| Core-C1 | J502 | HCTL / HC-1.0-2PWT | C2845361 |
+| Core-C1 | L401 | Sunlord / MWSA0402S-R47MT | C6331050 |
+| Core-C1 | L402 | Sunlord / MWSA0402S-1R0MT | C408332 |
+| Display-C1 | L1 | Sunlord / SWPA3012S470MT | C83420 |
+| Core-C1 | J803, J804 | XKB Connection / X05A10H06G | C528032 |
+| Core-C1 | J201 | MUP / U20405-01 | C20624794 |
+| Core-C1 | SW201, SW202 | XKB Connection / TS-1186E-B-B | C2885153 |
+| Core-C1 | D202 | SGMICRO / SGM05HU1ALXUGY2G/TR | C55274065 |
+| Display-C1 | J2 | XKB Connection / X05A10L24G | C2880917 |
+| Core-C1 | D201 | LRC / LRC8804FDT1G | C2856698 |
+| Core-C1 | J301 | HCTL / HC-HY-2AWT | C2845705 |
+| Core-C1 | J501 | XUNPU / TF-122-CCP9 | C41347844 |
+| Display-C1 | Q1 | JSMSEMI / NX3008NBK,215-JSM | C53113911 |
+| Core-C1 | U302 | WAVE / SD3078 | C916255 |
+| Core-C1 | C301 | KAMCAP / SE-5R5-D105VYH | C118887 |
 
 ## 与原器件存在差异的资格项
 
@@ -74,43 +71,27 @@
 
 以上均为工程候选资格，不是制造或 EVT 放行。受控新引脚、焊盘和 C516 已纳入当前/重建 CAD 检查；原有 DRC 规则与例外未放宽。
 
-## 剩余进口位号及工作
 
-| 板 | 位号 | 功能 | 待完成 |
-| --- | --- | --- | --- |
-| Core-C1 | C301 | RTC backup EDLC | Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker. |
-| Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required for user-confirmed >=24h isolated RTC backup. Native EVI is unused, R304 is DNP; preserve shared EXP_INT and use100kHz at3.3V. No RV3028-compatible pin/register/drop-in claim; select exact backup assembly/grade and review charging policy/lands/supply before ECO. See C4D8-RTC-DECISION.md. |
-| Display-C1 | Q1 | EPD boost N-MOSFET | Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. |
+## 最后3个进口位号已完成设计替换
+| 板／位号 | 国产精确选择 | 已完成 |
+|---|---|---|
+| Core U302 | WAVE SD3078 / C916255 | 1SCL/2F32K/3VDD/4NC/5VBAT/6GND/7INT/8SDA新符号、208milSOP8工程焊盘及重布线 |
+| Core C301 | KAMCAP SE-5R5-D105VYH / C118887 | 1F水平通孔超级电容；工程槽孔／极性、备援走线；SMT后手焊 |
+| Display Q1 | JSMSEMI NX3008NBK,215-JSM / C53113911 | 1G/2D/3S、原厂0.8×0.6mm焊盘、源漏网络及局部重布线 |
 
-这些位号都是阻止全国产打样的待改项，不是获准保留的例外。候选及原厂依据详见政策 JSON 的 remaining_redesigns。未检索到精确 C 码不等于停产；候选不能从典型电流、相似名字或同值同封装直接替换。
+U302/C301详见C4D8-RTC-DECISION.md与SPLIT-C1-RTC-FIRMWARE.md。原型要求RTC断电有效时间≥24h；总节点≤2µA、实测起点≥3.15V、终点≥2.3V是待验证工程目标。条件估算室温66.11h／−25°C老化角33.06h，不是保证值；RTC最大电流／电容漏电缺少限值。一次性电池不允许装到充电节点。驱动未集成，实板Q04–Q14全部NOT_RUN。
 
-## 供料及下单状态
+Q1原厂V1.0 p1功能图明确1G/2D/3S，p5提供推荐焊盘；实际样件极性／GDR／RESE／效率／温升在样板后验证。30V，Rds最大0.6Ω@2.5V/200mA、Qg最大0.87nC@4.5V/15V/1A，仅构成原型选型筛选；测试条件不同不能直接用参考MOS的Qg数值证明动态合格。
 
-当前 SMT 精确 C 码：Core 112/118，Display 37/37。未确认6个均在Core：U902、U905、U402–U405。D202的C55274065为零库存预购目录身份，不等于实际供料；L1精确C83420公开库存观察2173件，未预留。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
+## 供料仍有6个SMT映射缺口
+Core精确C码110/116，Display37/37。U902、U905、U402–U405共6个SMT仍无确认的精确C码／客供接收；逐位号CAD封装和网表已整理为split-c1-smt-consignment.json。不能用相似型号补码、不能不贴，未检索到不代表停产。
 
-SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余3项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
+SD3078公开4674／Q1公开2306未预留；C301/C118887与D202/C55274065库存观察0。全部物料的实际库存、批次／MSL、头尾／损耗及PCBA接收仍需闭环；没有报价、采购、预留、供应商消息或订单。assembly_request_ready／assembly_order_ready=false。
 
-## 复现与检查
+裸板Gerber／钻孔可以作为当前两板工程审核资料。标准DFM、DRC与全国产身份通过不代表整机或PCBA下单条件全部满足。电池完整最大输入54×36×5.5mm、外壳112×75×20mm仍是工程预算；未选完整国产电池包／冻结外壳。
 
-```sh
+## 复现
 python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
-```
 
-第二条在3个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
-
-2026-10-02 本轮补齐：D201 改用 LRC8804FDT1G/C2856698；J301 改用 HCTL HC-HY-2AWT/C2845705；Display J2 改用 XKB X05A10L24G/C2880917。原理图、原厂焊盘、PCB 走线和可重建 ECO 同步修改。
-
-- D201：原厂 Rev.B 的 VRWM 是 5 V。当前非 PD 的 USB 5 V 受电端，CC 接 5.1kΩ±5% Rd；以 5.5 V 源电压和 8kΩ 保守最小 Rp 计算，正常 CC 最大约 2.205 V。USB DP/DM 适用该低电容保护器，VBUS 保留独立 5.5 V D202。没有声明 CC 短接 VBUS 或违规高压故障已验证。pin3/pin8 的原厂 GND 焊盘尺寸不同，不能套成对称焊盘。
-- J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
-- J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
-
-公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MT 已经显式电气复核并作为当前 L402/C408332；停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 仍不能静默代用。
-
-两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。
-
-2026-10-02 后续 ECO：J501 已应用 XUNPU TF-122-CCP9/C41347844，原厂 RevA 信号/检测焊盘0.60×1.60mm，两个1.00mm定位孔、孔距8.00mm；检测触点插卡时闭合到接地壳体。整件改为(81.75,17.315)、90°，入口朝 Core +X；25条新增局部线段/6个过孔，旧卡座支路受控撤销或截短，孔距规则不放宽。9=CD、10/SH=壳体地是工程编号，并非原厂额外编号触点。原C585350采购身份撤销。公开目录仅36件，未预留。卡片行程、壳体开口/压入和取卡工具空间仍须确认，不能只按静态包络制作外壳。
-
-L402当前 MT/C408332 已有明确改型依据，不是 B01 别名。Core 精确 SMT C码112/118、Display37/37；当前6个缺口为U902、U905、U402–U405。RTC/备援和显示Q1三个位号仍阻止全国产 BOM。新的候选审查与原厂哈希见 [split-c1-candidate-review.json](split-c1-candidate-review.json)。
-
-当前剩余事项已整理为可给供方逐项答复的 [SPLIT-C1-PROCUREMENT-QUESTIONS.md](SPLIT-C1-PROCUREMENT-QUESTIONS.md)，含精确6个SMT位号、零库存D202、RTC等级/备援、MOS引脚与完整电池/卡口尺寸；目前没有供方回执。
+第二条现在应通过155/155身份审计，但不会批准实际供料或EVT。当前与不可变基线重建的两板DRC/open/parity/ERC必须全0；60针逻辑／插接变换不变；焊盘和负向控制拒绝错误引脚、槽孔或SKU。生产文件绑定源哈希及ZIP CRC；生成ZIP、PDF、PNG、生产CSV和临时脚本不提交git。

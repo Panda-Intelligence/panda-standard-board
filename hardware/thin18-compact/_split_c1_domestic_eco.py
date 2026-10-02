@@ -153,6 +153,12 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         if not pcb and board=='Core-C1' and 'J501' in targets and '(lib_id "Connector:Micro_SD_Card_Det2")' in text:
             from _split_c1_microsd_eco import clone_microsd_symbol
             text=clone_microsd_symbol(text,True)
+        if not pcb and board=='Display-C1' and 'Q1' in targets:
+            from _split_c1_mos_eco import clone_mos_symbol
+            text=clone_mos_symbol(text)
+        if not pcb and board=='Core-C1' and 'U302' in targets and '(symbol "Timer_RTC:RV-3028-C7"' in text:
+            from _split_c1_rtc_eco import clone_rtc_symbol
+            text=clone_rtc_symbol(text)
         pattern=r'\(footprint\s' if pcb else r'\(symbol\s+\(lib_id\s'
         for a,b,block in reversed(list(blocks(text,pattern))):
             ref=property_value(block,'Reference')
@@ -204,6 +210,16 @@ def apply_domestic_eco(candidate, board, refs_only=None):
                 from _split_c1_microsd_eco import microsd_geometry
                 if pcb:block=microsd_geometry(block)
                 else:block=block.replace('(lib_id "Connector:Micro_SD_Card_Det2")','(lib_id "panda-standard:XUNPU_TF_122_CCP9")',1)
+            if item.get('rtc'):
+                from _split_c1_rtc_eco import rtc_geometry,rtc_instance
+                block=rtc_geometry(block) if pcb else rtc_instance(block)
+            if item.get('rtc_cap') and pcb:
+                from _split_c1_rtc_eco import cap_geometry
+                block=cap_geometry(block)
+            if item.get('display_mos'):
+                from _split_c1_mos_eco import mos_geometry,SYMBOL
+                if pcb:block=mos_geometry(block)
+                else:block=block.replace('(lib_id "Transistor_FET:Q_NMOS_GSD")','(lib_id "'+SYMBOL+'")',1)
             if item.get('panel_fpc') and pcb:
                 from _split_c1_panel_eco import panel_geometry
                 block=panel_geometry(block)
@@ -240,13 +256,15 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         lib.write_text(library_from_board(diode,'MBR0530_JSCJ_SOD123'))
     from _split_c1_prototype_eco import library_from_board
     for ref,item in targets.items():
-        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch') or item.get('vbus_protector') or item.get('panel_fpc') or item.get('usb_esd') or item.get('battery_connector') or item.get('micro_sd')):continue
+        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount') or item.get('side_switch') or item.get('vbus_protector') or item.get('panel_fpc') or item.get('usb_esd') or item.get('battery_connector') or item.get('micro_sd') or item.get('display_mos') or item.get('rtc') or item.get('rtc_cap')):continue
         pcb=next(folder.glob('*.kicad_pcb'))
         fp=next(b for _,_,b in blocks(pcb.read_text(),r'\(footprint\s') if property_value(b,'Reference')==ref)
         name=item['new_fields']['Footprint'].split(':')[1]
         libdir=candidate/'lib/panda-standard.pretty' if board=='Core-C1' else folder/'panda-r6-display.pretty'
         library=library_from_board(fp,name)
         if item.get('panel_fpc'):library=re.sub(r'(?m)^[ \t]*\n','',library)
+        if item.get('display_mos') or item.get('rtc') or item.get('rtc_cap'):
+            library=re.sub(r'[ \t]+$', '',library,flags=re.M)
         (libdir/(name+'.kicad_mod')).write_text(library)
     if board=='Core-C1' and 'J302' in targets:apply_wire_connector_routing(candidate)
     if board=='Core-C1' and {'J803','J804'}<=set(targets):apply_fpc6_support(candidate)
@@ -267,6 +285,14 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         from _split_c1_microsd_eco import install_symbol_library,apply_microsd_routing
         install_symbol_library(candidate)
         apply_microsd_routing(candidate)
+    if board=='Core-C1' and {'U302','C301'}<=set(targets):
+        from _split_c1_rtc_eco import support,apply_rtc_routing
+        support(candidate)
+        apply_rtc_routing(candidate)
+    if board=='Display-C1' and 'Q1' in targets:
+        from _split_c1_mos_eco import install_mos_library,apply_mos_routing
+        install_mos_library(candidate)
+        apply_mos_routing(candidate)
     for path in folder.glob('*.kicad_pcb'):
         path.write_text(re.sub(r'(?m)^[ \t]+$', '',path.read_text()))
     return {'board':board,'applied_refs':sorted(targets),'manufacturing_release':False}

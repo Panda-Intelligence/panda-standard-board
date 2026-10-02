@@ -344,6 +344,28 @@
       "source_locator": "RevA p1 side view1.80 +0.20/-0.00",
       "checked_on": "2026-10-02",
       "height_basis": "Manufacturer maximum housing height; card travel, mounted tolerance and recessed case opening remain mechanical EVT."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "C301",
+      "mpn": "SE-5R5-D105VYH",
+      "height_nominal_mm": 5.5,
+      "height_maximum_mm": 6.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20170717/C118887_1500269960558820748.pdf",
+      "source_locator": "2017 primary p5:max body18.7+/-0.5diameter,5.5+/-0.5height;H leads19+/-0.5 pitch",
+      "checked_on": "2026-10-02",
+      "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "U302",
+      "mpn": "SD3078",
+      "height_nominal_mm": 1.9,
+      "height_maximum_mm": 1.9,
+      "source_url": "https://www.whwave.com.cn/filedownload/3045413",
+      "source_locator": "Rev4.4 p22:SOP8 208mil maximum1.9mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN"
     }
   ],
   "connector_layout_changes": {
@@ -366,7 +388,7 @@
   },
   "rtc_backup_requirement": {
     "minimum_retention_hours": 24,
-    "confirmed_by": "User: \u4fdd\u630124\u5c0f\u65f6\u5c31\u884c\u4e86",
+    "confirmed_by": "User: 保持24小时就行了",
     "confirmed_on": "2026-10-02",
     "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
     "event_input_required": false,
@@ -392,10 +414,10 @@
     "proposed_outer_xyz_mm": [
       112,
       75,
-      19
+      20
     ],
     "z_parameters_mm": {
-      "core_front_component_budget": 5.5,
+      "core_front_component_budget": 6.0,
       "front_mounted_allowance": 0.2,
       "panel_clearance": 0.5,
       "panel_thickness_budget": 2.2,
@@ -405,7 +427,7 @@
       "battery_swelling": 0.7,
       "display_front_component_budget": 1.7,
       "rear_wall": 0.8,
-      "manufacturing_reserve": 0.2
+      "manufacturing_reserve": 0.7
     },
     "pack_purchase_input": {
       "chemistry": "1S lithium-polymer3.7V nominal/4.2V charge; protected",
@@ -432,7 +454,8 @@
       "Panel/FPC/lock/tool/USB/microSD/antenna/speaker/port and retention volumes not yet complete",
       "Main power0.2mm copper and existing via bottlenecks require load/current redesign or qualified lower current contract",
       "Two-board physical mating, safety isolation, temperature/charging and all EVT remain NOT_RUN",
-      "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review"
+      "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review",
+      "C301 horizontal KAMCAP max body19.2mm diameter/6.0mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
     ],
     "minimum_j503_body_xy_clearance_mm": 1.5
   }

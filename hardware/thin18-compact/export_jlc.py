@@ -132,7 +132,7 @@ summary={
     'identity_verified_designators':sum(r['Identity evidence']=='EXACT_MANUFACTURER_MPN_VERIFIED' for r in sourcing),
     'stock_reserved':False,
     'cpl_refs_missing_from_bom':unknown,
-    'note':'JLC BOM includes only CPL machine placements; offboard TH301 remains in system BOM and sourcing CSV. JLC format follows official BOM/CPL headers. Blank IDs require mapping/consignment. Present IDs do not reserve stock or confirm an assembly order; new reviewed mappings include identity evidence.'
+    'note':'JLC BOM includes only CPL machine placements; hand-solder C301 and offboard TH301 remain in system BOM and sourcing CSV. JLC format follows official BOM/CPL headers. Blank IDs require mapping/consignment. Present IDs do not reserve stock or confirm an assembly order; new reviewed mappings include identity evidence.'
 }
 (out/'jlc-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))
