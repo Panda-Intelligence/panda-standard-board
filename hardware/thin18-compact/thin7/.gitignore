@@ -1,0 +1,6 @@
+# Mechanical templates need only native board outlines.
+# KiCad creates these local preference/default-project sidecars on load.
+*-OUTLINE-ONLY.kicad_prl
+*-OUTLINE-ONLY.kicad_pro
+__pycache__/
+*.pyc

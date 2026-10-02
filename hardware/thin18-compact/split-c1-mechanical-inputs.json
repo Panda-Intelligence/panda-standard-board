@@ -28,12 +28,12 @@
     "source_sha256": "e83aa40df8b374aad3412a1ada16a187ea92a8290b5157bec4485c2c897c7c02"
   },
   "proposal": {
-    "front": "Panel outside Core F.Cu components",
-    "rear": "Historical behind-Display study retained; new side_battery_study places pack beside Display projection below Core B. Neither is released.",
+    "front": "Thin7 recessed panel in border-only front bezel; see mechanical contract",
+    "rear": "Thin7 coplanar Core/Display/battery partition; native stacked PCB layout must be redesigned",
     "frozen": false
   },
   "budget_parameters_mm": {
-    "target_outer_thickness": 5.95,
+    "target_outer_thickness": 7.0,
     "core_front_max_component_height": null,
     "display_front_max_component_height": null,
     "panel_clearance_and_adhesive": null,
@@ -398,7 +398,7 @@
   },
   "side_battery_study": {
     "architecture": "battery_beside_display_below_core_b",
-    "status": "PARAMETER_BUDGET_ONLY_NOT_SELECTED_PACK_OR_RELEASED_CASE",
+    "status": "SUPERSEDED_REJECTED_BY_7MM_USER_REQUIREMENT",
     "battery_rect_xyxy_mm": [
       1,
       11,
@@ -458,5 +458,12 @@
       "C301 horizontal KAMCAP max body19.2mm diameter/6.5mm height plus0.2mm assembly allowance; hand-soldered leads below Core B <=0.5mm;2D slot envelope overlaps Display projection and needs physical clearance check"
     ],
     "minimum_j503_body_xy_clearance_mm": 1.5
+  },
+  "product_requirements": {
+    "outer_thickness_target_mm": 7.0,
+    "source": "User instruction 2026-10-02",
+    "mechanical_authority": "thin7/thin7-mechanical-contract.json",
+    "keep_two_pcbs": true,
+    "native_design_currently_meets_target": false
   }
 }

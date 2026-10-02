@@ -1,3 +1,10 @@
+# Thin7 active pack requirement (2026-10-02)
+
+Current complete-pack maximum requirement is 62 x 51 x 3.1 mm, plus 0.5 mm swelling
+space, 1100 mAh nominal target / 900 mAh minimum target. These are unqualified
+design inputs; no exact pack is selected. See thin7/THIN7-REDESIGN.md.
+The 5.5 mm pack / 21 mm case study below is historical and superseded.
+
 # Split-C1 电池包与外壳采购输入（未发给供应商）
 
 当前阶段只有两板 PCB 设计，没有实板；这是规格输入，不是已选定或获准采购的电池包。

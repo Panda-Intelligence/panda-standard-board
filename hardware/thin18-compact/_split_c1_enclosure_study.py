@@ -42,6 +42,8 @@ def side_battery_budget(inputs,display_rect,core_t,gap,display_t):
       'basis':'Core B plane=0; Core F=+0.8; Display B=-1.5; Display F=-2.3. Pack sits beside Display in XY and below Core backside components.'}
 
 def openscad_study(inputs):
+    if inputs.get("product_requirements", {}).get("outer_thickness_target_mm") == 7.0:
+        return "// Thin7 requirement supersedes the old21mm study.\ninclude <thin7/THIN7-ENCLOSURE-STUDY.scad>\n"
     import json
     b=side_battery_budget(inputs,[38,30,83,66],.8,1.5,.8)
     s=inputs['side_battery_study']

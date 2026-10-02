@@ -7,6 +7,7 @@ def run(script, *arguments, native=False):
     subprocess.run([kicad_python() if native else sys.executable, str(ROOT / script),
                     *map(str, arguments)], check=True, cwd=ROOT)
 
+run("thin7/audit_thin7.py", "--require-native-ready")
 run("validate_split_c1.py")
 run("verify_split_c1_supply.py")
 run("audit_split_c1_mechanical.py", native=True)
