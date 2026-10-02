@@ -2,9 +2,9 @@
 
 当前要求：Core-C1 和 Display-C1 两块 PCB 的所有已装配位号均采用中国大陆厂家器件，不保留进口料例外。当前只有设计文件，没有真实样板。这里的国产身份指厂家身份；电气、固件、供料及实物 EVT 分别验证。
 
-**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：149 个国产厂家，7 個進口廠家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
+**尚未完成，不能按全国产 BOM 下单。** 当前系统 BOM 共 156 个已装配位号：152 个国产厂家，4 个进口厂家。Core 有 118 个 SMT 位号及板外 TH301；Display 有 37 个 SMT 位号。DNP 和已移除的旧集成电路不计入。屏幕、电池包、线束、天线和外壳选型仍需各自冻结。
 
-本轮对 88 个位号执行受控替换（Core 59、Display 29），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
+本轮对 91 个位号执行受控替换（Core 61、Display 30），另新增 Core C516 本地输出旁路。每项替换同时修改原理图、PCB、精确 MPN/厂家/C 码及可重建脚本；不通过只改厂家字段声明国产化。
 
 ## 已应用替换
 
@@ -38,10 +38,13 @@
 | Core-C1 | J803, J804 | XKB Connection / `X05A10H06G`，原厂 A2 p2 | C528032 |
 | Core-C1 | L401 | Sunlord / `MWSA0402S-R47MT` | C6331050 |
 | Core-C1 | L402 | Sunlord / `MWSA0402S-1R0MTB01` | 未确认，必须为 B01 |
-| Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | 未确认 |
-| Core-C1 | D202 | SGMICRO / `SGM05HU1ALXUGY2G/TR` | 未确认，旧C48260撤销 |
+| Display-C1 | L1 | Sunlord / `SWPA3012S470MT` | C83420 |
+| Core-C1 | D202 | SGMICRO / `SGM05HU1ALXUGY2G/TR` | C55274065，公开库存0 |
 | Core-C1 | SW201, SW202 | XKB Connection / `TS-1186E-B-B` | C2885153 |
 | Core-C1 | J201 | MUP / `U20405-01`，原厂 Rev4 | C20624794 |
+| Core-C1 | D201 | LRC / `LRC8804FDT1G` | C2856698 |
+| Core-C1 | J301 | HCTL / `HC-HY-2AWT` | C2845705 |
+| Display-C1 | J2 | XKB Connection / `X05A10L24G` | C2880917 |
 
 完整逐项原身份、规格/封装评估及原厂来源见 [split-c1-domestic-eco.json](split-c1-domestic-eco.json)。设计中已装配 BOM 身份与逐项审查政策见 [split-c1-domestic-policy.json](split-c1-domestic-policy.json)，结果见 [split-c1-domestic-audit.json](split-c1-domestic-audit.json)。
 
@@ -59,14 +62,14 @@
 - J803/J804：XKB X05A10H06G 原厂 A2（2026-01-15，ECN-P-2026011502）第2页，6针双触点、0.5mm间距、0.3mm FPC、0.5A/50V。信号焊盘0.3×0.8mm、支撑0.4×0.8mm，支撑中心x=±2.3mm，两行相距2.5mm；原厂钢网建议0.25×0.65mm、厚0.1mm须另与装配厂确认，不能将普通焊盘大小当成已批准钢网。原厂pin1在左，PCB整件旋转180°并向−Y移动2.5mm，保持全部原信号焊盘世界坐标与网名；入口改向−Y。H804孔移至(3,33)，保留1.6mm孔径和原3.2mm直径安装包络；SDA绕开J804支撑焊盘。闭合高最大1.1mm、开启锁扣名义1.55mm；FT01C排线折弯、安装柱、锁扣工具空间与实际A2供料版本未冻结，不能据CAD检查宣布插接合格。
 - L401：Sunlord MWSA0402S-R47MT / C6331050，0.47uH±20%，DCR14mΩ最大；2025-05-29原厂表的 Isat Max/Typ 为7.6/9.5A，Irms Max/Typ 为6.65/7.5A。保留原表标题，不当作保证下限；饱和与温升判据需确认。原厂焊盘1.5×2.5mm、中心距3.7mm、本体最大4.75×4.45×2.0mm已应用。SGM62125算例（Vin1.9V、Vout3.3V、2A输出、效率80%、2MHz、Lmin0.376uH）得到5.23A峰值及1.2倍6.28A筛选目标；效率/频率是假设，不能代替低温、限流及热最坏角验证。
 - L402：精确B01变体 MWSA0402S-1R0MTB01，1uH±20%、DCR27mΩ最大，原厂 Isat Max/Typ 8/9A、Irms Max/Typ 5.4/6A；普通1R0MT不等效。按SGM41513典型应用将旧2.2uH受控改为1uH，采用同系列原厂焊盘，中心移至(40.675,6.65)、旋转270°；C402/R306和相关电源/电池走线受控调整，C201补齐Courtyard。VBUS13.5V、D=0.5、1.38MHz、Lmin0.8uH、3A平均算例为3.057App、4.529A峰值、3.13Arms、0.265W绕组损耗（不含磁芯损耗）。充电+SYS、反向升压、OCP、铜图压降及温升仍需闭环；原0.2mm电源支路不能因DRC为0就宣称通过3A载流。
-- Display L1：Sunlord SWPA3012S470MT，47uH±20%、DCR1.885Ω最大，原厂 Isat Max/Typ 0.27/0.35A、Irms Max/Typ 0.35/0.40A（表头不是保证下限）。原厂焊盘0.8×2.7mm、中心距2.3mm、高度最大1.2mm；较旧料增高0.2mm，已登记机械输入。EPD升压峰值、RESE最坏角、纹波、效率及热测试仍需资格确认；精确C码/供料未确认。
+- Display L1：Sunlord SWPA3012S470MT，47uH±20%、DCR1.885Ω最大，原厂 Isat Max/Typ 0.27/0.35A、Irms Max/Typ 0.35/0.40A（表头不是保证下限）。原厂焊盘0.8×2.7mm、中心距2.3mm、高度最大1.2mm；较旧料增高0.2mm，已登记机械输入。EPD升压峰值、RESE最坏角、纹波、效率及热测试仍需资格确认；精确C码C83420已确认；实际供料/装配接收未确认。
 - Display U1–U3 的 MPN/铜图未更换，本来已是中微爱芯 AIP74LVC2G17GC363.TR；将错误的 TI SN74AUP2G17 数据手册链接改为原厂 B032EN/A5。LVC 的静态/关断泄漏和输入非轨电压额外耗电应按原厂最坏值预算，不能引用 AUP 低功耗规格。
 
 - J201：MUP U20405-01/C20624794，原厂Rev4无定位柱顶装16针。0.4mm间距、0.25×0.80mm独立焊盘、y=-6.55mm行；壳脚铜盘1.2×2.0/2.1mm、槽0.6×1.4/1.5mm。完整重接USB/CC/VBUS/GND，保留16针逻辑；删除中沉槽、旧GCT模型及三条J201历史例外，恢复直板边。两板0.2mm板边标准DFM为零。5A为VBUS触点总额定，0.2mm板上支路仍需3A载流审查；新增数据过孔需USB全速验证。官方安装高3.26mm与图3.20mm不同，暂按3.46mm保守预算，尚无5.95mm整机证明。原厂1200/盘、24mm带宽/12mm步距、192mm头尾；实际供料与装配接收待确认。
 
 - SW201/SW202：XKB TS-1186E-B-B/C2885153，A1（2025-06-06）无定位柱侧按160gf、行程0.20mm、50mA/12VDC。板上高度为侧视图1.50±0.10mm；目录H3.55是顶视图含按钮方向深度，不能当作Z高度。原厂两焊盘0.6×1.6mm、内距4.3mm/外距5.5mm、中心x=±2.45mm，pin1左/pin2右；整件原PCB位置与−90°旋转保持。原四焊盘铜线移除，按键/地线重新接通，C504仅移0.25mm以留Courtyard。无定位柱变体不钻孔。外壳按钮开口、作用力、超行程、寿命和实际供料仍待确认。
 
-- D202：聖邦微 SGM05HU1ALXUGY2G/TR，原廠August2024 Rev.A；5.5V單向保護，pin1陰極接VBUS、pin2陽極接GND。採用原廠0.25×0.50mm焊盤、0.65mm中心距與独立K/A符號，移除TI模型；原走線端點仍在新焊盤內。現有USB2/5V sink/no PD基線保持，不開放9/12V輸入。漏電最大1uA@5V高於舊料100nA；100pF典型/130pF最大僅適用VBUS。12.1V最大鉗位@43A8/20us與SGM41513關閉轉換器時22V绝对最大值不能替代整板ESD、分壓支路與運行中充電器瞬態驗證。資料p5通用bidirectional文字與p1單向圖衝突，按p1明確極性實施。精確C碼及供料接收未確認，原C48260已撤销。
+- D202：聖邦微 SGM05HU1ALXUGY2G/TR，原廠August2024 Rev.A；5.5V單向保護，pin1陰極接VBUS、pin2陽極接GND。採用原廠0.25×0.50mm焊盤、0.65mm中心距與独立K/A符號，移除TI模型；原走線端點仍在新焊盤內。現有USB2/5V sink/no PD基線保持，不開放9/12V輸入。漏電最大1uA@5V高於舊料100nA；100pF典型/130pF最大僅適用VBUS。12.1V最大鉗位@43A8/20us與SGM41513關閉轉換器時22V绝对最大值不能替代整板ESD、分壓支路與運行中充電器瞬態驗證。資料p5通用bidirectional文字與p1單向圖衝突，按p1明確極性實施。精確C碼C55274065已確認，公開庫存0；供料接收未確認，原C48260已撤销。
 
 以上均为工程候选资格，不是制造或 EVT 放行。受控新引脚、焊盘和 C516 已纳入当前/重建 CAD 检查；原有 DRC 规则与例外未放宽。
 
@@ -75,20 +78,17 @@
 | 板 | 位号 | 功能 | 待完成 |
 | --- | --- | --- | --- |
 | Core-C1 | C301 | RTC backup EDLC | Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker. |
-| Core-C1 | D201 | USB D+/D-/CC ESD | Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection. |
-| Core-C1 | J301 | Battery power connector | Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map. |
 | Core-C1 | J501 | MicroSD socket with detect | Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD. |
 | Core-C1 | U302 | Integrated-crystal RTC | SD3900 Rev2.4 primary obtained: integrated crystal10pad3225,max0.78mm,VDD2.7..5.5V,VBAT1.8..3.6V,backup0.8uA typical (maximum absent),100kHz I2C at3.3V. Joint C301/driver redesign still required for user-confirmed >=24h isolated RTC backup. Native EVI is unused, R304 is DNP; preserve shared EXP_INT and use100kHz at3.3V. No RV3028-compatible pin/register/drop-in claim; select exact backup assembly/grade and review charging policy/lands/supply before ECO. See C4D8-RTC-DECISION.md. |
-| Display-C1 | J2 | 24-pin panel FPC | Exact X05A10L24G/C2880917 primary drawing obtained (bottom contact,0.3mm FPC,1.0+/-0.1mm). Resolve ordinate land dimensions and physical pin1/entry side against native 24pin topology before applying. Do not substitute dual-contact H6pin drawing or infer lands from catalog photograph. |
 | Display-C1 | Q1 | EPD boost N-MOSFET | Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved. |
 
 这些位号都是阻止全国产打样的待改项，不是获准保留的例外。候选及原厂依据详见政策 JSON 的 remaining_redesigns。未检索到精确 C 码不等于停产；候选不能从典型电流、相似名字或同值同封装直接替换。
 
 ## 供料及下单状态
 
-当前 SMT 精确 C 码：Core 110/118，Display 36/37。未确认9个：Core D202、L402、U902、U905、U402–U405；Display L1。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
+当前 SMT 精确 C 码：Core 111/118，Display 37/37。未确认7个均在Core：L402、U902、U905、U402–U405。D202的C55274065为零库存预购目录身份，不等于实际供料；L1精确C83420公开库存观察2173件，未预留。手工 TH301 的 C394023 单列，不充当 SMT 覆盖率。原7个供料事项的库存、包装和装配接收仍未完成；旧进口 L402/L1 供料路径已撤销，改为精确 Sunlord 身份；仍进口 C301 不构成当前全国产采购许可。所有库存观察均不等于预留。
 
-SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余7项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
+SGM2578SD 的精确供料、原厂 RCB 文字确认及全国产剩余4项解决前，assembly_request_ready 和 assembly_order_ready 均为 false。可以生成工程审核资料、Gerber/BOM/CPL 供设计/CAM复核；不能把资料生成成功称作全国产可下单。MUP顶装USB已消除旧槽边例外，两板独立标准DFM均通过；电池/外壳最终尺寸、供料与没有实板的EVT继续保留。
 
 ## 复现与检查
 
@@ -97,4 +97,14 @@ python3 hardware/thin18-compact/release_split_c1.py
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 ```
 
-第二条在7个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
+第二条在4个进口位号未解决时按预期失败。审计读取 KiCad 已装配完整系统 BOM 和机器 CPL，并验证源哈希；任何未审查的厂家/MPN/封装/C码变化均阻止完成状态。两板DNP不计入，但手工TH301不允许漏审。打样包携带相同审计、政策、替换证据和说明，其哈希与CAD及导出文件绑定。生成ZIP、PDF、预览、生产CSV及临时脚本不提交git。
+
+2026-10-02 本轮补齐：D201 改用 LRC8804FDT1G/C2856698；J301 改用 HCTL HC-HY-2AWT/C2845705；Display J2 改用 XKB X05A10L24G/C2880917。原理图、原厂焊盘、PCB 走线和可重建 ECO 同步修改。
+
+- D201：原厂 Rev.B 的 VRWM 是 5 V。当前非 PD 的 USB 5 V 受电端，CC 接 5.1kΩ±5% Rd；以 5.5 V 源电压和 8kΩ 保守最小 Rp 计算，正常 CC 最大约 2.205 V。USB DP/DM 适用该低电容保护器，VBUS 保留独立 5.5 V D202。没有声明 CC 短接 VBUS 或违规高压故障已验证。pin3/pin8 的原厂 GND 焊盘尺寸不同，不能套成对称焊盘。
+- J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
+- J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
+
+公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MWSA0402S-1R0MT/C408332、停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 均不能静默代用。
+
+两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。

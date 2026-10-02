@@ -120,6 +120,8 @@ def main():
     display_text=(ROOT/BOARDS[1][1]/BOARDS[1][3]).read_text()
     verify_land(display_text,"L1",(0.8,2.7),1.15)
     verify_new_connectors(text)
+    from _split_c1_land_guards import verify_20261002_lands
+    verify_20261002_lands(text,display_text)
     out=ROOT/"production/jlc-prototype-orderpack"
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
@@ -202,7 +204,8 @@ def main():
             report["boards"][board]=state
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
-                 "C4D8-RTC-DECISION.md"]:
+                 "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
+                 "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json"]:
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")

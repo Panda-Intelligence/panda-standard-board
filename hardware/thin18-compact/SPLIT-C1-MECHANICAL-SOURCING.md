@@ -7,7 +7,7 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 ## Current result
 
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
-The CAD includes 88 controlled mainland substitutions (Core59/Display29), local
+The CAD includes 91 controlled mainland substitutions (Core61/Display30), local
 U403 bypass C516, reviewed HCTL NTC/speaker lands, Sunlord power/EPD lands,
 and XKB A2 six-pin dual-contact connectors. L402 is intentionally changed from
 2.2uH to1uH for SGM41513; power routing and C402/R306 support changes are
@@ -17,18 +17,18 @@ bypasses the J804 support. Rule minima are not relaxed; the USB ECO removes thre
 XKB TS-1186E-B-B A1 side switches replace both ALPS parts with two original0.6x1.6mm lands and new signal/ground routes. C504 moves0.25mm to clear the courtyard; its nets/value remain unchanged. Maximum bare-part height1.6mm is taken from the side view; catalog H3.55 is actuator depth in the top view. Enclosure opening, force, travel and lifecycle remain unqualified.
 SGM05HU1ALXUGY2G/TR replaces D202 with a polarized K/A symbol and primary0.25x0.50mm lands at0.65mm pitch. The old TI C48260 is retired; exact JLC supply remains open.
 Current CAD equals a deterministic fresh rebuild including these changes.
-The current all-domestic audit covers156 populated system-BOM refs:149 mainland
-manufacturer refs and7 foreign refs still requiring replacement. See
+The current all-domestic audit covers156 populated system-BOM refs:152 mainland
+manufacturer refs and4 foreign refs still requiring replacement. See
 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for qualification
 calculations and differences. The60pin HCTL pair retains the reviewed1.5mm
 nominal mating transform; physical fit and mixed-family mating are not approved.
 
 | Board | Present SMT library IDs | SMT refs still MPN-only | Manual/off-board |
 |---|---:|---:|---:|
-| Core-C1 | 110 / 118 | 8 | 1: Shiheng TH301, C394023 |
-| Display-C1 | 36 / 37 | 1 | 0 |
+| Core-C1 | 111 / 118 | 7 | 1: Shiheng TH301, C394023 |
+| Display-C1 | 37 / 37 | 0 | 0 |
 
-The reviewed sourcing register now covers 93 refs, including manual TH301.
+The reviewed sourcing register now covers 95 refs, including manual TH301.
 Exact current identities/evidence are in split-c1-sourcing-evidence.json and
 split-c1-domestic-policy.json. Previously present IDs remain PREEXISTING_ID.
 The old Hirose/Murata/Yageo/UNI-ROYAL/onsemi IDs are not current replacement IDs.
@@ -55,15 +55,14 @@ the quantities; add assembler-approved attrition and tape leader/trailer. N is u
 | Core L402 | 1 | Sunlord MWSA0402S-1R0MTB01 / no confirmed ID | Exact B01 order/packing, code assignment and assembly acceptance; ordinary1R0MT forbidden |
 | Core U902 | 1 | SGM62125AXG/TR / no confirmed ID | Exact A WLCSP15 code, quote/packing and assembly acceptance |
 | Core U905 | 1 | SGM37601YTRL20G/TR / no confirmed ID | Exact TQFN20 code, packing/MSL handling;24pin not interchangeable |
-| Display L1 | 1 | Sunlord SWPA3012S470MT / no confirmed ID | Exact code/packing and assembly acceptance |
+| Display L1 | 1 | Sunlord SWPA3012S470MT / C83420 | Public stock2173 on2026-10-02, not reserved; packing/assembly acceptance |
 | Core U402-U405 | 4 | SGM2578SDYG/TR / no confirmed ID | Exact SD WLCSP version, enabled-state RCB clarification and assembly acceptance |
 
 Core L401 now has exact Sunlord MWSA0402S-R47MT/C6331050 tape identity. HCTL
 HC-1.0-3PWT/C2845362 and2PWT/C2845361 require matching new housings/contacts;
 old JST harnesses are not transferred. XKB X05A10H06G/C528032 requires dimensions
 from A2 p2 dated2026-01-15; a catalog ID alone does not establish the supplied
-revision. No stock count, quote, reservation, purchase or supplier message is
-asserted. These identities/evidence are in split-c1-sourcing-evidence.json.
+revision. Read-only public stock observations are recorded with dates; no quote, reservation, purchase or supplier message is asserted. These identities/evidence are in split-c1-sourcing-evidence.json.
 No live inventory or assembler acceptance is implied by a cached listing.
 TH301 is manual/offboard Shiheng MF52D-103F3435-100/C394023,100mm AWG30 and
 4mm-max tip; matching termination, thermal attachment and charge thresholds are open.
@@ -282,3 +281,12 @@ USB midmount maximum Z and enclosure supports. Physical verification is a
 future step after sample assembly.
 manufacturing_release stays false. Historical integrated C4D-20 and routing141
 mechanical scenes do not override the split candidates. packaging/ is untouched.
+2026-10-02 本轮补齐：D201 改用 LRC8804FDT1G/C2856698；J301 改用 HCTL HC-HY-2AWT/C2845705；Display J2 改用 XKB X05A10L24G/C2880917。原理图、原厂焊盘、PCB 走线和可重建 ECO 同步修改。
+
+- D201：原厂 Rev.B 的 VRWM 是 5 V。当前非 PD 的 USB 5 V 受电端，CC 接 5.1kΩ±5% Rd；以 5.5 V 源电压和 8kΩ 保守最小 Rp 计算，正常 CC 最大约 2.205 V。USB DP/DM 适用该低电容保护器，VBUS 保留独立 5.5 V D202。没有声明 CC 短接 VBUS 或违规高压故障已验证。pin3/pin8 的原厂 GND 焊盘尺寸不同，不能套成对称焊盘。
+- J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
+- J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
+
+公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MWSA0402S-1R0MT/C408332、停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 均不能静默代用。
+
+两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。

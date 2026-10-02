@@ -29,7 +29,7 @@
   },
   "proposal": {
     "front": "Panel outside Core F.Cu components",
-    "rear": "Battery outside Display F.Cu components and interboard gap",
+    "rear": "Historical behind-Display study retained; new side_battery_study places pack beside Display projection below Core B. Neither is released.",
     "frozen": false
   },
   "budget_parameters_mm": {
@@ -130,6 +130,32 @@
       "drawing_sha256": "5e93078f77c9e532d7bd894d8da1dde11d60848876f57a5b63c3554b65c29061",
       "selected": false,
       "qualification": "63mm pack length leaves only1mm total X margin in64mm planning region; width/thickness tolerance, swelling and folded harness not specified; no fit signoff"
+    },
+    {
+      "manufacturer": "EEMB",
+      "mpn": "LP503450-PCM-NTC-LD/",
+      "capacity_nominal_mah": 1000,
+      "capacity_minimum_mah": 900,
+      "body_maximum_l_w_t_mm": [
+        52,
+        34.5,
+        5.3
+      ],
+      "proposed_core_xy_dimensions_mm": [
+        34.5,
+        52
+      ],
+      "type": "protected pack with NTC and45+/-5mm AWG26 leads; historical2017 supplier-authored specification",
+      "maximum_continuous_discharge_current_a": 1,
+      "pulse_discharge_current_a": 2,
+      "pulse_duration_ms": 3000,
+      "maximum_charge_current_a": 1,
+      "source_url": "https://macrogroup.ru/upload/iblock/80a/i2bksi77p3ephpa70n95kv0izxtrs2jg/LP503450.pdf",
+      "drawing_url": "https://macrogroup.ru/upload/iblock/80a/i2bksi77p3ephpa70n95kv0izxtrs2jg/LP503450.pdf",
+      "drawing_sha256": "63a8823adc39f1b1e2c9daddf275639d63b7f117b697990172eaa11283478551",
+      "drawing_revision": "2017-11-13 ZJQM-RD-SPC-A03483 v0.0 p8 pack maximum; p9 PCM",
+      "selected": false,
+      "qualification": "Fits side-study XY/body budget only. Stock drawing uses imported JST ADHR-03V-H,45mm leads, unspecified NTC curve/PCM chip origins and only1A continuous PCM. Requires exact mainland connector/harness/PCM identity, approved charge/current limits and updated supplier maximum drawing; cannot order as all-mainland selected pack."
     }
   ],
   "reference_benchmark": {
@@ -179,12 +205,13 @@
     {
       "board": "Display-C1",
       "ref": "J2",
-      "mpn": "FH12-24S-0.5SH(55)",
-      "height_nominal_mm": 2.0,
-      "source_url": "https://www.hirose.com/product/p/CL0586-0521-0-55",
-      "source_locator": "exact part detailed specifications: connector height2mm",
-      "checked_on": "2026-10-01",
-      "height_basis": "published connector height; maximum mounted Z/actuator/FPC envelope not signed off"
+      "mpn": "X05A10L24G",
+      "height_nominal_mm": 1.0,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf",
+      "source_locator": "A1 2024-11-29 p1",
+      "checked_on": "2026-10-02",
+      "height_basis": "Primary1.0+/-0.1mm closed-body; actuator and0.3mm FPC bend/tool space still require mechanical verification.",
+      "height_maximum_mm": 1.1
     },
     {
       "board": "Core-C1",
@@ -295,12 +322,24 @@
       "source_locator": "August2024 Rev.A p7 package maximum A=.55mm",
       "checked_on": "2026-10-02",
       "height_basis": "Maximum bare-package height; excludes solder/mounted tolerance. No foreign 3D model carried forward."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J301",
+      "mpn": "HC-HY-2AWT",
+      "height_nominal_mm": 5.2,
+      "height_maximum_mm": 5.5,
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510175810.pdf",
+      "source_locator": "Rev.A p22;5.2mm nominal with general X.X +/-0.30mm",
+      "checked_on": "2026-10-02",
+      "height_basis": "Bare-body drawing/general tolerance budget5.5mm; mounted solder/mate/wire bend not verified"
     }
   ],
   "connector_layout_changes": {
     "J803_J804": "XKB A2 180deg rotation and -Y2.5mm shift preserve original world signal positions;entry-Y;FT01C FPC pose not frozen",
     "H804": "(3,33)mm,1.6mm NPTH;original1.6mm-radius courtyard retained;case boss not frozen",
-    "physical_fit_verified": false
+    "physical_fit_verified": false,
+    "J301": "HCTL HC-HY-2AWT3A/2.0mm; moved(62,12)rot90; mounting envelope and harness require case review"
   },
   "usb_connector": {
     "ref": "J201",
@@ -323,5 +362,67 @@
     "physical_verification": "NOT_RUN",
     "selected_backup_assembly": null,
     "acceptance": "Duration >=24h with no RTC time loss at approved room/cold/hot and source-age conditions; no supply through debugger or signal pins."
+  },
+  "side_battery_study": {
+    "architecture": "battery_beside_display_below_core_b",
+    "status": "PARAMETER_BUDGET_ONLY_NOT_SELECTED_PACK_OR_RELEASED_CASE",
+    "battery_rect_xyxy_mm": [
+      1,
+      11,
+      37,
+      65
+    ],
+    "maximum_pack_xy_thickness_mm": [
+      36,
+      54,
+      5.5
+    ],
+    "minimum_display_xy_separation_mm": 1,
+    "proposed_outer_xyz_mm": [
+      112,
+      75,
+      19
+    ],
+    "z_parameters_mm": {
+      "core_front_component_budget": 5.5,
+      "front_mounted_allowance": 0.2,
+      "panel_clearance": 0.5,
+      "panel_thickness_budget": 2.2,
+      "front_wall": 0.8,
+      "core_back_component_budget": 1.5,
+      "battery_insulation": 0.3,
+      "battery_swelling": 0.7,
+      "display_front_component_budget": 1.7,
+      "rear_wall": 0.8,
+      "manufacturing_reserve": 0.2
+    },
+    "pack_purchase_input": {
+      "chemistry": "1S lithium-polymer3.7V nominal/4.2V charge; protected",
+      "capacity_nominal_target_mah": 1100,
+      "capacity_minimum_required_mah": 900,
+      "minimum_continuous_pack_discharge_target_a": 1.5,
+      "minimum_peak_pack_discharge_target_a": 3,
+      "minimum_peak_duration_s": 3,
+      "prototype_charge_current_ceiling_a": 0.45,
+      "cold_charge_0_to_20c_ceiling_a": 0.27,
+      "charge_outside_0_to_45c": "disabled; actual supplier approved temperatures and TH301 curve govern firmware",
+      "power_connector": "HCTL HC-HY-2Y housing and HC-HY-T terminals to J301 HC-HY-2AWT; exact polarity drawing required",
+      "wire": "AWG26, reviewed100..120mm preliminary route; no45mm or imported JST harness reuse",
+      "ntc": "external TH301 MF52D-103F3435-100 remains separate; pack NTC must not parallel it",
+      "origin": "cell/PCM populated parts/connector/terminals all mainland-manufacturer identities required",
+      "selected_mpn": null,
+      "capacity_claim": "No hours/day runtime guaranteed;24h requirement applies RTC only"
+    },
+    "open_constraints": [
+      "Exact protected pack MPN/maximum assembled envelope including PCM, tabs and lead exit; lithium pouch swelling allowance approved by supplier",
+      "Panel2.2mm, backside1.5mm and display1.7mm are engineering budgets, not signed supplier-mounted maxima",
+      "J3015.5mm is bare-body/general tolerance budget; exact housing/mate STEP, lead bend and solder tolerance need review",
+      "No fastener/boss beneath battery may exceed1.5mm below Core B before insulation; H804 lies in battery XY and cannot receive an unreviewed through-battery boss",
+      "Panel/FPC/lock/tool/USB/microSD/antenna/speaker/port and retention volumes not yet complete",
+      "Main power0.2mm copper and existing via bottlenecks require load/current redesign or qualified lower current contract",
+      "Two-board physical mating, safety isolation, temperature/charging and all EVT remain NOT_RUN",
+      "Battery region moved to y11..65 to clear native J503 body; mated antenna connector/cable bend envelope still needs solid review"
+    ],
+    "minimum_j503_body_xy_clearance_mm": 1.5
   }
 }

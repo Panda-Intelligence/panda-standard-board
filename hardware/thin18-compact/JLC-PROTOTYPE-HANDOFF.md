@@ -2,7 +2,7 @@
 
 本包是 Core-C1 + Display-C1 两块 PCB 的台架 EVT 原型资料。当前没有实板。不要把旧 Murphy 串口板作为本版本样板，也不要依据本包进行量产放行。
 
-**全国产要求尚未完成：当前156个已装配系统位号中仍有7个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成88个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
+**全国产要求尚未完成：当前156个已装配系统位号中仍有4个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成91个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
 
 ## 提交范围和当前状态
 
@@ -39,13 +39,13 @@ Core 的0.20mm钻孔/0.40mm过孔需选择小过孔工艺；保留0.8mm板厚。
 | Core L402 | Sunlord MWSA0402S-1R0MTB01 | 精确厂家身份，JLC 料号或客供接收待确认 |
 | Core U902 | SGMICRO SGM62125AXG/TR | A 版 WLCSP-15，JLC 料号或客供接收待确认 |
 | Core U905 | SGMICRO SGM37601YTRL20G/TR | TQFN-20，不能换成 24 引脚型号；供料接收待确认 |
-| Display L1 | Sunlord SWPA3012S470MT | JLC 料号或客供接收待确认 |
+| Display L1 | Sunlord SWPA3012S470MT / C83420 | 公开库存2173，未预留；包装/装配接收待确认 |
 
-当前9个尚无精确C码的SMT位号（Core D202、L402、U902、U905、U402–U405；Display L1）不能被默默不贴：会影响关键电源/显示功能。先让 JLC 接收精确 MPN/封装并分配料号，再创建 Parts Manager 客供记录；收货后核对 My Parts 的可用数量、损耗及料带头尾。本包没有询价回执、库存预留、采购或付款记录。
+当前7个尚无精确C码的SMT位号（Core L402、U902、U905、U402–U405）不能被默默不贴：会影响关键电源/显示功能。先让 JLC 接收精确 MPN/封装并分配料号，再创建 Parts Manager 客供记录；收货后核对 My Parts 的可用数量、损耗及料带头尾。本包没有询价回执、库存预留、采购或付款记录。
 
-D202已替換為SGM05HU1ALXUGY2G/TR，採用單向陰極/陽極符號和原廠焊盤；舊TI C48260已撤銷，精確新料C碼/客供接收待確認。USB僅5V sink/no PD，整板ESD仍待首板驗證。
+D202已替換為SGM05HU1ALXUGY2G/TR，採用單向陰極/陽極符號和原廠焊盤；舊TI C48260已撤銷，精確C55274065已確認，公開庫存0；客供接收待確認。USB僅5V sink/no PD，整板ESD仍待首板驗證。
 
-旧进口L402/L1路径已撤销；当前Sunlord精确型号需重新确认供料，不能沿用旧厂家的料号或库存。C301仍进口，不能按全国产采购。U402–U405需取得精确SGM2578SDYG/TR供料及enabled-state RCB确认；不能用非SD或不同封装代替。Core/Display SMT C码覆盖为110/118和36/37；全部原7项供料及新4个负载开关仍待实际库存/料带/接收确认。
+旧进口L402/L1路径已撤销；L1已映射C83420，实际库存/包装仍须接收确认；L402必须为精确B01，不沿用旧厂家的料号或普通1R0MT。C301仍进口，不能按全国产采购。U402–U405需取得精确SGM2578SDYG/TR供料及enabled-state RCB确认；不能用非SD或不同封装代替。Core/Display SMT C码覆盖为111/118和37/37；全部原7项供料及新4个负载开关仍待实际库存/料带/接收确认。
 
 TH301 是板外时恒MF52D-103F3435-100 / C394023热敏电阻，R25=10k±1%、B25/85=3435K±1%、100mm AWG30线和4mm-max环氧头；曲线、温控阈值、线束终端及热固定待确认；已从机器贴装 BOM 移出，完整系统 BOM 和 sourcing 表仍保留它。电池、连接线、TH301 固定与屏幕/FPC/板间插接为后装，不经过 SMT 回流。
 
@@ -69,7 +69,7 @@ BOM/CPL 必须在嘉立创预览中复核底面视图与旋转约定，尤其 J6
 
 生成器要求当前 CAD 与从不可变基线重建结果一致，两板 DRC/open/parity/ERC 全部为 0，60 针逻辑与插接变换一致，并检查生产文件源哈希、Gerber ZIP CRC、机器 BOM/CPL 位号完全相等。两板独立嘉立创 DFM 零违规结果在 prototype-status.json 中公开；SHA256SUMS 覆盖交接包内文件。
 
-全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在7个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
+全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在4个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
 
 RTC 斷電保持目標已由使用者確認為至少24小時，獨立於整機閱讀續航。Q14將在USB、主電池和調試供電斷開、無信號反灌的狀態下驗證24h時間有效性、末端電壓及常溫/批准冷熱條件；R304備援短接電阻保持DNP。國產RTC/備援方案尚未選定，不能把典型耗電換算當成已通過；詳見C4D8-RTC-DECISION.md。
 
@@ -95,3 +95,13 @@ python3 hardware/thin18-compact/release_split_c1.py
 - XKB 6针原厂A2图：https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf
 - HRE 精确 C 码：https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626
 侧按键 SW201/SW202 为 XKB TS-1186E-B-B/C2885153 原厂 A1 无定位柱型，两个0.6×1.6mm焊盘；不要按旧ALPS四焊盘或有柱A变体采购。侧视图板上高1.50±0.10mm，目录3.55为顶视按钮深度；按钮开口/行程/供料仍需确认。原厂图：https://atta.szlcsc.com/upload/public/pdf/source/20260728/758CDD32F102D63D6B0CBF7CD2FCF600.pdf
+
+2026-10-02 本轮补齐：D201 改用 LRC8804FDT1G/C2856698；J301 改用 HCTL HC-HY-2AWT/C2845705；Display J2 改用 XKB X05A10L24G/C2880917。原理图、原厂焊盘、PCB 走线和可重建 ECO 同步修改。
+
+- D201：原厂 Rev.B 的 VRWM 是 5 V。当前非 PD 的 USB 5 V 受电端，CC 接 5.1kΩ±5% Rd；以 5.5 V 源电压和 8kΩ 保守最小 Rp 计算，正常 CC 最大约 2.205 V。USB DP/DM 适用该低电容保护器，VBUS 保留独立 5.5 V D202。没有声明 CC 短接 VBUS 或违规高压故障已验证。pin3/pin8 的原厂 GND 焊盘尺寸不同，不能套成对称焊盘。
+- J301：原厂 p22 为 HY **2.0 mm** 系列、3 A。信号焊盘 1.2×3.8 mm，支撑 1.2×3.7 mm，信号/支撑行中心相隔 7.6 mm；整件移至 (62,12)、旋转 90°。pin1 BAT+ / pin2 GND，支撑无网络，独立 NTC 保持 J302。新主逃线 1.2 mm，接既有铜图处仍有 0.2 mm 短颈和过孔，不能声明整条电源路径通过 3 A。原厂高度 5.2 mm，按一般公差暂预算 5.5 mm。
+- J2：原厂 A1、24×0.5 mm、下接触、0.3 mm FPC、闭合高 1.0±0.1 mm。信号焊盘 0.30×0.65 mm，支撑 0.30×0.76 mm、中心 x=±6.635 mm。入口保持局部 +Y，板上 contact1 在局部 −X，24 根逻辑网不变；原厂未标 terminal1，这个号码是屏幕接口约定。MOSI/地线绕开新的支撑焊盘，实物插接仍未测试。
+
+公开目录在 2026-10-02 观察到：L1=C83420/2173 件，D201=C2856698/2464 件，J301=C2845705/2050 件，J2=C2880917/3736 件；D202=C55274065 只有预购目录、库存 0。全部未预留，也未获得装配接收。精确 SGM2578SDYG/TR、SGM62125AXG/TR、SGM37601YTRL20G/TR 和 MWSA0402S-1R0MTB01 查询未找到匹配：不等于停产。普通 MWSA0402S-1R0MT/C408332、停产 SGM2578YG/TR/C403706、仅关闭态 RCB 的 SGM2578AADYG/TR/C5151451 均不能静默代用。
+
+两板旁置电池的外壳工程预算为 **112×75×19 mm**，电池包完整最大输入 **54×36×5.5 mm**，不是选定电池或释放壳体尺寸。完整规格与受控 OpenSCAD 空间模型见 [SPLIT-C1-PACK-INPUTS.md](SPLIT-C1-PACK-INPUTS.md)。24 h 仍仅为 RTC 断电保持要求，实板 EVT 均为 NOT_RUN。

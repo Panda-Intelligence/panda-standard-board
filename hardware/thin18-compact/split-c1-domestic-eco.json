@@ -561,7 +561,7 @@
       "new_fields": {
         "Manufacturer": "Sunlord",
         "MPN": "SWPA3012S470MT",
-        "LCSC": "",
+        "LCSC": "C83420",
         "Value": "47uH / Sunlord",
         "Footprint": "panda-r6-display:Sunlord_SWPA3012_47u",
         "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
@@ -650,7 +650,7 @@
       "new_fields": {
         "Manufacturer": "SGMICRO",
         "MPN": "SGM05HU1ALXUGY2G/TR",
-        "LCSC": "",
+        "LCSC": "C55274065",
         "Value": "SGM05HU1ALXUGY2G/TR",
         "Footprint": "panda-standard:SGM05HU1AL_UTDFN_1006_2BL",
         "Datasheet": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
@@ -659,6 +659,107 @@
       "source_url": "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf",
       "source_sha256": "fd2487242f163f57bba056f10e302c28c497e7ffc340283a454ebd711d42468b",
       "qualification": "Primary SGM05HU1AL August2024 Rev.A pp1/2/3/7: unidirectional, pin1=cathode/VBUS, pin2=anode/GND; exact XUGY2G/TR UTDFN1x0.6-2BL, 10000/reel. VRWM5.5V, VBR5.7..9.1V at1mA; 12.1V maximum clamp at43A8/20us. Existing product baseline is USB2 device +5V sink only, no PD/PPS or9/12V input; original TPD1E10B06 also5.5V VRWM. SGM41513 VBUS/VAC absolute maximum22V applies only converter-not-switching; this rating and TVS data do not constitute operating-system ESD qualification. Leakage1uA maximum at5V versus old100nA; junction capacitance100pF typical/130pF maximum is confined to VBUS, never USB data. Original primary recommended lands0.25x0.50mm with0.65mm center pitch, maximum body1.05x0.65x0.55mm; native symbol K/A, cathode mark and custom footprint remove foreign model. Existing trace ends remain inside the new lands; no trace topology edited. Negative clamp, board ESD/hot leakage/protected divider/charger transient response, mounted height, exact supplier lot and JLC acceptance remain pending. Datasheet p5 generic bidirectional wording conflicts with p1 title/equivalent circuit; implementation follows the explicit unidirectional pin diagram, not generic wording."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J2"
+      ],
+      "old_manufacturer": "Hirose",
+      "old_mpn": "FH12-24S-0.5SH(55)",
+      "panel_fpc": true,
+      "new_fields": {
+        "Manufacturer": "XKB Connection",
+        "MPN": "X05A10L24G",
+        "LCSC": "C2880917",
+        "Value": "X05A10L24G",
+        "Footprint": "panda-r6-display:XKB_X05A10L24G",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf",
+        "Description": "XKB X05A10L24G A1 2024-11-29; 24x0.5mm bottom contacts, 0.3mm FPC, height1.0+/-0.1mm. Signal lands0.30x0.65; support lands0.30x0.76, D13.27mm. Entry local+Y; board contact1 at local-X, preserving panel contact order. Primary does not label terminal1: board numbering is the panel interface contract, not a manufacturer marking. Insertion/orientation remains EVT."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf",
+      "catalog_url": "https://jlcpcb.com/partdetail/XKBConnection-X05A10L24G/C2880917",
+      "qualification": "XKB X05A10L24G A1 2024-11-29; 24x0.5mm bottom contacts, 0.3mm FPC, height1.0+/-0.1mm. Signal lands0.30x0.65; support lands0.30x0.76, D13.27mm. Entry local+Y; board contact1 at local-X, preserving panel contact order. Primary does not label terminal1: board numbering is the panel interface contract, not a manufacturer marking. Insertion/orientation remains EVT.",
+      "primary_sha256": "ee85789903bf5e6d37bff460ca1bd95fb1b01dbc9a33b585c825e350fe4dbb3a"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "D201"
+      ],
+      "old_manufacturer": "Texas Instruments",
+      "old_mpn": "TPD4E05U06DQAR",
+      "usb_esd": true,
+      "new_fields": {
+        "Manufacturer": "LRC",
+        "MPN": "LRC8804FDT1G",
+        "LCSC": "C2856698",
+        "Value": "LRC8804FDT1G",
+        "Footprint": "panda-standard:LRC8804F_DFN2510",
+        "Datasheet": "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804FDT1G.pdf",
+        "Description": "LRC8804FDT1G Jan2023 Rev.B; VRWM5V (not5.5V), +/-15kV contact/air, Cio0.3pF max. Pins1/2/4/5=IO,3/8=GND,6/7/9/10=NC. Reviewed only for non-PD5V sink: CC has5.1k+/-5% Rd and normal CC is below5V; VBUS uses separate5.5V D202. No CC-to-VBUS fault or board ESD certification inferred. Primary unequal GND lands; board ESD/USB qualification remains NOT_RUN."
+      },
+      "source_url": "https://www.lrc.cn/Upload/PDF/Product/ESD/LRC8804FDT1G.pdf",
+      "catalog_url": "https://jlcpcb.com/partdetail/LRC-LRC8804FDT1G/C2856698",
+      "qualification": "LRC8804FDT1G Jan2023 Rev.B; VRWM5V (not5.5V), +/-15kV contact/air, Cio0.3pF max. Pins1/2/4/5=IO,3/8=GND,6/7/9/10=NC. Reviewed only for non-PD5V sink: CC has5.1k+/-5% Rd and normal CC is below5V; VBUS uses separate5.5V D202. No CC-to-VBUS fault or board ESD certification inferred. Primary unequal GND lands; board ESD/USB qualification remains NOT_RUN.",
+      "primary_sha256": "a7be63066933d1b0f3b0d1588c42e99331033f0a3b2b4e650b26d01ea7eb72c6",
+      "normal_cc_review": {
+        "Rd_refs": [
+          "R206",
+          "R207"
+        ],
+        "Rd_ohm": 5100,
+        "Rd_tolerance_percent": 5,
+        "conservative_source_voltage_v": 5.5,
+        "conservative_minimum_Rp_ohm": 8000,
+        "conservative_passive_CC_max_v": 2.2053538000748785,
+        "interface": "USB2 non-PD5V sink with passive Rd; USB-C Rd +/-10% termination range covers these +/-5% parts",
+        "primary_reference": "https://docs.espressif.com/projects/esp-iot-solution/en/latest/usb/usb_overview/usb_typec_hardware_guide.html",
+        "exclusion": "CC-to-VBUS and noncompliant high-voltage faults are not claimed as qualified; separate VBUS D202 remains5.5V."
+      }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J301"
+      ],
+      "old_manufacturer": "Hirose",
+      "old_mpn": "DF58-2P-1.2V(21)",
+      "battery_connector": true,
+      "new_fields": {
+        "Manufacturer": "HCTL",
+        "MPN": "HC-HY-2AWT",
+        "LCSC": "C2845705",
+        "Value": "HC-HY-2AWT",
+        "Footprint": "panda-standard:HCTL_HC_HY_2AWT",
+        "Datasheet": "https://www.hctldz.com/static/upload/2025/10/17/202510175810.pdf",
+        "Description": "HCTL HC-HY-2AWT Rev.A primary p22: 2.0mm pitch,3A,250V,-40..105C. Signal lands1.2x3.80,anchors1.2x3.70,rows7.60mm. Height5.2mm nominal/+0.3 general tolerance. Pin1=BAT_CONN_P,pin2=GND,MP no-net. Housing/mate AWG26 polarity and mounted clearance require EVT. Connector rating does not certify the existing battery copper or pack for3A."
+      },
+      "source_url": "https://www.hctldz.com/static/upload/2025/10/17/202510175810.pdf",
+      "primary_sha256": "924b2835ea5209f00df564868d7a324f490d7665c4806a43f4ec8b59dc36effe",
+      "source_locator": "Rev.A p22 HC-HY-NAWT, 2-pin row A2.00 B8.00 C4.90 D2.50; general X.X +/-0.30mm",
+      "qualification": "HCTL HC-HY-2AWT Rev.A primary p22: 2.0mm pitch,3A,250V,-40..105C. Signal lands1.2x3.80,anchors1.2x3.70,rows7.60mm. Height5.2mm nominal/+0.3 general tolerance. Pin1=BAT_CONN_P,pin2=GND,MP no-net. Housing/mate AWG26 polarity and mounted clearance require EVT. Connector rating does not certify the existing battery copper or pack for3A.",
+      "current_path_review": {
+        "new_connector_rating_a": 3,
+        "new_escape_width_mm": 1.2,
+        "existing_battery_path_width_mm": 0.2,
+        "path_current_thermal_qualification": "NOT_RUN; connector rating alone does not establish whole-path3A capability",
+        "mate": "HC-HY-2Y; terminal HC-HY-T; exact assembly lead/polarity and supplier qualification pending",
+        "required_harness": "AWG26 prototype target; separate external NTC on J302; no direct JST mating compatibility",
+        "existing_via_neck_width_mm": 0.2
+      },
+      "pose_change_mm_deg": {
+        "old": [
+          49.75,
+          23,
+          0
+        ],
+        "new": [
+          62,
+          12,
+          90
+        ]
+      }
     }
   ],
   "all_domestic_complete": false,
@@ -708,7 +809,7 @@
       {
         "ref": "R306",
         "predecessor_sha256": "a5da9a9cf6e1724c8784f13b1121db0a2ab49dfcbc76889738bfe1e35e8aba36",
-        "new_block": "(footprint \"Resistor_SMD:R_1206_3216Metric\" (locked yes) (layer \"F.Cu\") (uuid \"72c57c34-72d6-580c-8a37-b7c6060f1908\") (at 35.6 9.25 0)\n(property \"Reference\" \"R306\" (at 0 -2 0) (layer \"F.SilkS\") (hide yes) (uuid \"4af2b907-5aa9-5937-b1f6-90590a8ce57f\") (effects (font (size 0.8 0.8))))\n(property \"Value\" \"10m / CW2217 SHUNT\" (at 0 2 0) (layer \"F.Fab\") (hide yes) (uuid \"ae93a61d-c9d6-5f7e-8683-28b60e6433bb\") (effects (font (size 0.8 0.8))))\n(property \"Datasheet\" \"https://jlcpcb.com/partdetail/FOJAN-FRM121WFR010TM/C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e6a18170-ebf3-5725-96a6-219cd1f720e5\") (effects (font (size 1 1))))\n(property \"LCSC\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e00070f-4ad9-540d-9916-c61a0ea989dc\") (effects (font (size 1 1)))) (property \"Description\" \"FOJAN 10m\u03a9 1W \u00b11% \u00b150ppm 1206 current sense shunt for CW2217\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d05348b-511c-509d-818c-d2768be21fb3\") (effects (font (size 1 1)))) (property \"Manufacturer\" \"FOJAN\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"026e013b-7205-5d19-a615-3690b29b9193\") (effects (font (size 1 1)))) (property \"MPN\" \"FRM121WFR010TM\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"4e93491b-0cda-5016-b6b0-45be80d30ad1\") (effects (font (size 1 1)))) (property \"JLCPCB\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e57cfcc-1889-59e2-8965-869b95c9a239\") (effects (font (size 1 1)))) (property \"Tolerance\" \"1%\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e119409a-f33d-586b-8a8a-ebed762e6a7e\") (effects (font (size 1 1)))) (property \"Power_Rating\" \"1W\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"38ffb104-0914-5c77-8a38-3d92c6b79563\") (effects (font (size 1 1)))) (property \"Tempco\" \"50ppm/C\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"fea8421c-78cd-5ec3-98fc-e877bf1eb647\") (effects (font (size 1 1)))) (property \"ECO_ID\" \"THIN18-C4D5-CW2217-SHUNT\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"2958fca9-b656-5ef7-9524-e1c1f15a5e14\") (effects (font (size 1 1)))) (property \"Qualification\" \"10m 1% 1W 50ppm; shunt thermal/accuracy EVT open\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d593034-8293-5185-af60-11e563fa84ec\") (effects (font (size 1 1)))) (attr smd) (fp_line\n\t\t(start -0.727064 -0.91)\n\t\t(end 0.727064 -0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_line\n\t\t(start -0.727064 0.91)\n\t\t(end 0.727064 0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_rect\n\t\t(start -2.28 -1.13)\n\t\t(end 2.28 1.13)\n\t\t(stroke\n\t\t\t(width 0.05)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.CrtYd\")\n\t) (fp_rect\n\t\t(start -1.6 -0.8)\n\t\t(end 1.6 0.8)\n\t\t(stroke\n\t\t\t(width 0.1)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.Fab\")\n\t) (pad \"1\" smd roundrect\n\t\t(at -1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_CONN_P\")) (pad \"2\" smd roundrect\n\t\t(at 1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_PACKP\")))"
+        "new_block": "(footprint \"Resistor_SMD:R_1206_3216Metric\" (locked yes) (layer \"F.Cu\") (uuid \"72c57c34-72d6-580c-8a37-b7c6060f1908\") (at 35.6 9.25 0)\n(property \"Reference\" \"R306\" (at 0 -2 0) (layer \"F.SilkS\") (hide yes) (uuid \"4af2b907-5aa9-5937-b1f6-90590a8ce57f\") (effects (font (size 0.8 0.8))))\n(property \"Value\" \"10m / CW2217 SHUNT\" (at 0 2 0) (layer \"F.Fab\") (hide yes) (uuid \"ae93a61d-c9d6-5f7e-8683-28b60e6433bb\") (effects (font (size 0.8 0.8))))\n(property \"Datasheet\" \"https://jlcpcb.com/partdetail/FOJAN-FRM121WFR010TM/C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e6a18170-ebf3-5725-96a6-219cd1f720e5\") (effects (font (size 1 1))))\n(property \"LCSC\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e00070f-4ad9-540d-9916-c61a0ea989dc\") (effects (font (size 1 1)))) (property \"Description\" \"FOJAN 10mΩ 1W ±1% ±50ppm 1206 current sense shunt for CW2217\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d05348b-511c-509d-818c-d2768be21fb3\") (effects (font (size 1 1)))) (property \"Manufacturer\" \"FOJAN\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"026e013b-7205-5d19-a615-3690b29b9193\") (effects (font (size 1 1)))) (property \"MPN\" \"FRM121WFR010TM\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"4e93491b-0cda-5016-b6b0-45be80d30ad1\") (effects (font (size 1 1)))) (property \"JLCPCB\" \"C7467248\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"9e57cfcc-1889-59e2-8965-869b95c9a239\") (effects (font (size 1 1)))) (property \"Tolerance\" \"1%\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"e119409a-f33d-586b-8a8a-ebed762e6a7e\") (effects (font (size 1 1)))) (property \"Power_Rating\" \"1W\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"38ffb104-0914-5c77-8a38-3d92c6b79563\") (effects (font (size 1 1)))) (property \"Tempco\" \"50ppm/C\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"fea8421c-78cd-5ec3-98fc-e877bf1eb647\") (effects (font (size 1 1)))) (property \"ECO_ID\" \"THIN18-C4D5-CW2217-SHUNT\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"2958fca9-b656-5ef7-9524-e1c1f15a5e14\") (effects (font (size 1 1)))) (property \"Qualification\" \"10m 1% 1W 50ppm; shunt thermal/accuracy EVT open\" (at 0 0 0) (layer \"F.Fab\") (hide yes) (uuid \"7d593034-8293-5185-af60-11e563fa84ec\") (effects (font (size 1 1)))) (attr smd) (fp_line\n\t\t(start -0.727064 -0.91)\n\t\t(end 0.727064 -0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_line\n\t\t(start -0.727064 0.91)\n\t\t(end 0.727064 0.91)\n\t\t(stroke\n\t\t\t(width 0.12)\n\t\t\t(type solid)\n\t\t)\n\t\t(layer \"F.SilkS\")\n\t) (fp_rect\n\t\t(start -2.28 -1.13)\n\t\t(end 2.28 1.13)\n\t\t(stroke\n\t\t\t(width 0.05)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.CrtYd\")\n\t) (fp_rect\n\t\t(start -1.6 -0.8)\n\t\t(end 1.6 0.8)\n\t\t(stroke\n\t\t\t(width 0.1)\n\t\t\t(type solid)\n\t\t)\n\t\t(fill no)\n\t\t(layer \"F.Fab\")\n\t) (pad \"1\" smd roundrect\n\t\t(at -1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_CONN_P\")) (pad \"2\" smd roundrect\n\t\t(at 1.4625 0)\n\t\t(size 1.125 1.75)\n\t\t(layers \"F.Cu\" \"F.Mask\" \"F.Paste\")\n\t\t(roundrect_rratio 0.222222)\n\t (net \"BAT_PACKP\")))"
       }
     ],
     "copper_changes": [

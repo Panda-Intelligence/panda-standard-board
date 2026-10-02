@@ -1,0 +1,278 @@
+{
+  "schema": "panda-public-jlc-observation-v1",
+  "observed_date": "2026-10-02",
+  "endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList",
+  "request_method": "POST",
+  "operation": "read-only public component search",
+  "assembly_acceptance": false,
+  "stock_reserved": false,
+  "queries": [
+    {
+      "keyword": "MWSA0402S-1R0MTB01",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "ef988c47a773725e95159d6accc4f674a7ea20c3c7a5d1cfcba488d1994a11b3",
+      "rows": []
+    },
+    {
+      "keyword": "SGM05HU1AL",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 1,
+      "response_sha256": "23039b2cc5b8335baa11686fb1dca4a33024b5d1e072b5494fff8a787629dc79",
+      "rows": [
+        {
+          "componentCode": "C55274065",
+          "componentModelEn": "SGM05HU1ALXUGY2G/TR",
+          "componentBrandEn": "SGMICRO",
+          "componentSpecificationEn": "UTDFN-1×0.6-2BL",
+          "stockCount": 0,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": null,
+          "urlSuffix": "SGMICRO-SGM05HU1ALXUGY2GTR/C55274065"
+        }
+      ]
+    },
+    {
+      "keyword": "SGM2578SD",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "94c29095f38c9289f050bde9163423b2c23b2d192f73e4c85932719b32570c51",
+      "rows": []
+    },
+    {
+      "keyword": "SGM37601",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "fc17339868603610f99acd77c60f69d57195201d17464ccf3ebf403fe45319a7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM62125",
+      "presaleType": "buy",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "03e4627163c2843174fdaf7026501dceb56af2e783de6ca9271759f521c3a576",
+      "rows": []
+    },
+    {
+      "keyword": "MWSA0402S-1R0MTB01",
+      "presaleType": "post",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "ef988c47a773725e95159d6accc4f674a7ea20c3c7a5d1cfcba488d1994a11b3",
+      "rows": []
+    },
+    {
+      "keyword": "SGM05HU1AL",
+      "presaleType": "post",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "dfb2348cbf9fd15b8a0ac292ff8aa2e0dbca4794420f6cf8f3d9ea6808095ac0",
+      "rows": []
+    },
+    {
+      "keyword": "SGM2578SD",
+      "presaleType": "post",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "94c29095f38c9289f050bde9163423b2c23b2d192f73e4c85932719b32570c51",
+      "rows": []
+    },
+    {
+      "keyword": "SGM37601",
+      "presaleType": "post",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "fc17339868603610f99acd77c60f69d57195201d17464ccf3ebf403fe45319a7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM62125",
+      "presaleType": "post",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "03e4627163c2843174fdaf7026501dceb56af2e783de6ca9271759f521c3a576",
+      "rows": []
+    },
+    {
+      "keyword": "MWSA0402S-1R0",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 1,
+      "response_sha256": "4c1165221de3c3f8172973d42244be17256fa910df4f6d7ee2fd32137ba4cd8c",
+      "rows": [
+        {
+          "componentCode": "C408332",
+          "componentModelEn": "MWSA0402S-1R0MT",
+          "componentBrandEn": "Sunlord",
+          "componentSpecificationEn": "SMD,4.4x4.2mm",
+          "stockCount": 19754,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2310251550_Sunlord-MWSA0402S-1R0MT_C408332.pdf",
+          "urlSuffix": "Sunlord-MWSA0402S1R0MT/C408332"
+        }
+      ]
+    },
+    {
+      "keyword": "SGM05HU1AL",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "dfb2348cbf9fd15b8a0ac292ff8aa2e0dbca4794420f6cf8f3d9ea6808095ac0",
+      "rows": []
+    },
+    {
+      "keyword": "SGM2578",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 2,
+      "response_sha256": "7a68dccb07c44e382caee8c5e9b4e833f6b03b51b58bea7c33099e7e9258f5a4",
+      "rows": [
+        {
+          "componentCode": "C403706",
+          "componentModelEn": "SGM2578YG/TR",
+          "componentBrandEn": "SGMICRO",
+          "componentSpecificationEn": "WLCSP-4B",
+          "stockCount": 2951,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2005142136_SGMICRO-SGM2578YG-TR_C403706.pdf",
+          "urlSuffix": "SGMICRO-SGM2578YGTR/C403706"
+        },
+        {
+          "componentCode": "C5151451",
+          "componentModelEn": "SGM2578AADYG/TR",
+          "componentBrandEn": "SGMICRO",
+          "componentSpecificationEn": "WLCSP-4B-A(0.9x0.9)",
+          "stockCount": 2709,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2210142030_SGMICRO-SGM2578AADYG-TR_C5151451.pdf",
+          "urlSuffix": "SGMICRO-SGM2578AADYGTR/C5151451"
+        }
+      ]
+    },
+    {
+      "keyword": "SGM37601",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "fc17339868603610f99acd77c60f69d57195201d17464ccf3ebf403fe45319a7",
+      "rows": []
+    },
+    {
+      "keyword": "SGM62125",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 0,
+      "response_sha256": "03e4627163c2843174fdaf7026501dceb56af2e783de6ca9271759f521c3a576",
+      "rows": []
+    },
+    {
+      "keyword": "SWPA3012S470",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 1,
+      "response_sha256": "8c301e400d8a66a3538308dcb9461a5686f9eb189b95d20424808cade3a8776c",
+      "rows": [
+        {
+          "componentCode": "C83420",
+          "componentModelEn": "SWPA3012S470MT",
+          "componentBrandEn": "Sunlord",
+          "componentSpecificationEn": "SMD,3x3mm",
+          "stockCount": 2173,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310251550_Sunlord-SWPA3012S470MT_C83420.pdf",
+          "urlSuffix": "Sunlord-SWPA3012S470MT/C83420"
+        }
+      ]
+    },
+    {
+      "keyword": "X05A10L24G",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 1,
+      "response_sha256": "29fc3ba3c223b7e51a3f0369cf9f3d8246526ff1524ef4ac01419ac0e2175493",
+      "rows": [
+        {
+          "componentCode": "C2880917",
+          "componentModelEn": "X05A10L24G",
+          "componentBrandEn": "XKB Connection",
+          "componentSpecificationEn": "SMD,P=0.5mm,Surface Mount，Right Angle",
+          "stockCount": 3736,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2110151830_XKB-Connection-X05A10L24G_C2880917.pdf",
+          "urlSuffix": "XKBConnection-X05A10L24G/C2880917"
+        }
+      ]
+    },
+    {
+      "keyword": "LRC8804FDT1G",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 2,
+      "response_sha256": "70accd021611e39eead727b36f9dbe1c654e6093af46682cd224e9aa6fca29c5",
+      "rows": [
+        {
+          "componentCode": "C2856698",
+          "componentModelEn": "LRC8804FDT1G",
+          "componentBrandEn": "LRC",
+          "componentSpecificationEn": "DFN2510-10",
+          "stockCount": 2464,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2108150030_LRC-LRC8804FDT1G_C2856698.pdf",
+          "urlSuffix": "LRC-LRC8804FDT1G/C2856698"
+        }
+      ]
+    },
+    {
+      "keyword": "HC-HY-2AWT",
+      "presaleType": "stock",
+      "currentPage": 1,
+      "pageSize": 25,
+      "total": 1,
+      "response_sha256": "3d36b53b321a3e84e48b4c2801ef851a3aebe8916b6836d6fb0032b58bf86aa0",
+      "rows": [
+        {
+          "componentCode": "C2845705",
+          "componentModelEn": "HC-HY-2AWT",
+          "componentBrandEn": "HCTL",
+          "componentSpecificationEn": "SMD,P=2mm,Surface Mount，Right Angle",
+          "stockCount": 2050,
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "urlSuffix": "HCTL-HC_HY2AWT/C2845705",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2406241052_HCTL-HC-HY-2AWT_C2845705.pdf"
+        }
+      ]
+    }
+  ],
+  "negative_result_limit": "Zero results means not returned by this public query on this date, not a manufacturer discontinuation or proof that no other regional/my-parts route exists."
+}
