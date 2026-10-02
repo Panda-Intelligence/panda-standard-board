@@ -144,12 +144,80 @@
       "name": "Core-C1 plus Display-C1 mating, enclosure and power-sequence qualification",
       "status": "NOT_RUN",
       "stage": "PLANNED_AFTER_ASSEMBLY",
-      "board_scope": ["Core-C1", "Display-C1"],
-      "required_sample_states": ["separate_unpowered", "mated_unpowered", "core_only_powered_without_display", "mated_cold_start", "mated_reset", "mated_deep_sleep_wake", "repeated_unpowered_mating", "enclosure_closed"],
-      "required_instrument_roles": ["microscope_or_camera", "continuity_meter", "dimensional_measurement_tools", "current_limited_supply", "oscilloscope", "logic_analyzer", "precision_current_meter"],
-      "required_metrics": ["core_display_serial_pair_result", "connector_polarity_and_60pin_matrix_result", "ground_and_35_36_power_continuity_result", "reserved_nc_shorts_result", "mated_gap_mm", "j201_stake_solder_display_clearance_mm", "display_support_retention_result", "panel_fpc_contact_bend_clearance_result", "battery_pack_harness_swelling_clearance_result", "cold_start_refresh_result", "power_off_backfeed_current_ua", "sleep_wake_refresh_result", "reset_recovery_result", "unpowered_mating_cycles", "enclosure_dimensions_and_ports_result"],
-      "pass_rule": "Current Core J601 socket mates to current Display J1 plug at the documented transform and approved 1.5mm nominal gap tolerance. All60 contacts follow the interface contract, including grounds,35/36 power and reserved NCs. USB shell/stake/solder clearance, independent Display support, full battery pack/NTC harness/swelling and FT01C flex fit meet released maximum dimensions. Startup/sleep/reset/shutdown remain controlled with no signal backfeed and safe port access.",
-      "blocked_until": ["both assembled current boards registered as one serial pair", "maximum-dimension mechanical drawing for enclosure/battery/FT01C flex", "approved fit/mating/power-sequence limits", "registered instruments"]
+      "board_scope": [
+        "Core-C1",
+        "Display-C1"
+      ],
+      "required_sample_states": [
+        "separate_unpowered",
+        "mated_unpowered",
+        "core_only_powered_without_display",
+        "mated_cold_start",
+        "mated_reset",
+        "mated_deep_sleep_wake",
+        "repeated_unpowered_mating",
+        "enclosure_closed",
+        "rtc_backup_24h_room_temperature",
+        "rtc_backup_24h_cold_limit",
+        "rtc_backup_24h_hot_limit"
+      ],
+      "required_instrument_roles": [
+        "microscope_or_camera",
+        "continuity_meter",
+        "dimensional_measurement_tools",
+        "current_limited_supply",
+        "oscilloscope",
+        "logic_analyzer",
+        "precision_current_meter",
+        "temperature_chamber_or_fixture"
+      ],
+      "required_metrics": [
+        "core_display_serial_pair_result",
+        "connector_polarity_and_60pin_matrix_result",
+        "ground_and_35_36_power_continuity_result",
+        "reserved_nc_shorts_result",
+        "mated_gap_mm",
+        "j201_stake_solder_display_clearance_mm",
+        "display_support_retention_result",
+        "panel_fpc_contact_bend_clearance_result",
+        "battery_pack_harness_swelling_clearance_result",
+        "cold_start_refresh_result",
+        "power_off_backfeed_current_ua",
+        "sleep_wake_refresh_result",
+        "reset_recovery_result",
+        "unpowered_mating_cycles",
+        "enclosure_dimensions_and_ports_result",
+        "rtc_backup_duration_h",
+        "rtc_backup_ending_voltage_v",
+        "rtc_backup_time_valid_result",
+        "rtc_backup_main_supply_isolated_result"
+      ],
+      "pass_rule": "Current Core J601 socket mates to current Display J1 plug at the documented transform and approved 1.5mm nominal gap tolerance. All60 contacts follow the interface contract, including grounds,35/36 power and reserved NCs. USB shell/stake/solder clearance, independent Display support, full battery pack/NTC harness/swelling and FT01C flex fit meet released maximum dimensions. Startup/sleep/reset/shutdown remain controlled with no signal backfeed and safe port access. RTC backup must retain valid uninterrupted time for at least24h in every declared room/cold/hot state with the main supplies physically isolated; measured duration and end voltage are required.",
+      "blocked_until": [
+        "both assembled current boards registered as one serial pair",
+        "maximum-dimension mechanical drawing for enclosure/battery/FT01C flex",
+        "approved fit/mating/power-sequence limits",
+        "registered instruments",
+        "exact domestic RTC/backup assembly and reviewed no-charge or charge circuit",
+        "approved backup temperature, source age/initial-charge and ending-voltage limits"
+      ],
+      "rtc_backup_protocol": {
+        "minimum_retention_hours": 24,
+        "requirement_source": "User: 保持24小时就行了",
+        "required_retention_states": [
+          "rtc_backup_24h_room_temperature",
+          "rtc_backup_24h_cold_limit",
+          "rtc_backup_24h_hot_limit"
+        ],
+        "required_metrics_per_retention_state": [
+          "rtc_backup_duration_h",
+          "rtc_backup_ending_voltage_v",
+          "rtc_backup_time_valid_result",
+          "rtc_backup_main_supply_isolated_result"
+        ],
+        "test_setup": "Disconnect USB, main battery and debugger power. Prevent GPIO/I2C/INT backfeed. Verify main rails are unpowered. Log source initial state, backup current, temperatures, end voltage, time and oscillator/power-loss flags. R304 backup shunt is DNP.",
+        "corner_policy": "Approved limits must define temperature, cell shelf-age or minimum capacitor charge and allowed final backup voltage; no guaranteed corners are invented here."
+      }
     }
   ],
   "runtime_benchmark_protocol": {

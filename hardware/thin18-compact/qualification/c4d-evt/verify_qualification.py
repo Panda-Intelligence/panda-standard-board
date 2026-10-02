@@ -7,6 +7,7 @@ import csv
 import datetime as dt
 import hashlib
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -175,6 +176,32 @@ def validate_sample_states(test: dict[str, Any], rows: list[dict[str, str]]) -> 
             f"{test['id']} missing required sample states")
 
 
+def validate_rtc_backup_pass(test: dict[str, Any], rows: list[dict[str, str]]) -> None:
+    """Check measured retention at every declared corner, beyond row PASS labels."""
+    protocol = test["rtc_backup_protocol"]
+    minimum_h = protocol["minimum_retention_hours"]
+    require(minimum_h >= 24, "RTC backup requirement is below the user-confirmed 24h")
+    for state in protocol["required_retention_states"]:
+        by_metric: dict[str, list[dict[str, str]]] = {}
+        for row in rows:
+            if row["state"] == state:
+                by_metric.setdefault(row["metric"], []).append(row)
+        for metric in protocol["required_metrics_per_retention_state"]:
+            require(len(by_metric.get(metric, [])) == 1,
+                    f"Q14/{state} requires exactly one {metric} measurement")
+        duration = by_metric["rtc_backup_duration_h"][0]
+        value = float(duration["observed_value"])
+        require(duration["unit"] == "h" and math.isfinite(value) and value >= minimum_h,
+                f"Q14/{state} RTC backup duration is below {minimum_h}h or invalid")
+        end_voltage = by_metric["rtc_backup_ending_voltage_v"][0]
+        voltage = float(end_voltage["observed_value"])
+        require(end_voltage["unit"] == "V" and math.isfinite(voltage) and voltage > 0,
+                f"Q14/{state} RTC backup ending voltage is invalid")
+        for metric in ("rtc_backup_time_valid_result", "rtc_backup_main_supply_isolated_result"):
+            require(by_metric[metric][0]["observed_value"] == "PASS",
+                    f"Q14/{state} {metric} is not PASS")
+
+
 def main(release: bool) -> int:
     plan = load_json("qualification-plan.json")
     sample_manifest = load_json("sample-manifest.json")
@@ -259,6 +286,8 @@ def main(release: bool) -> int:
         require(len(test_limit_ids) == 1, f"{test_id} must use one approved limit revision")
         if status == "MEASURED_PASS":
             require(all_pass, f"{test_id} marked PASS with failing row")
+            if test_id == "Q14":
+                validate_rtc_backup_pass(test, test_rows)
         else:
             require(not all_pass, f"{test_id} marked FAIL but all rows pass")
         result_rows.append({"test_id": test_id, "status": status, "rows": len(test_rows), "sample_id": sample_id})

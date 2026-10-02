@@ -63,7 +63,8 @@ def main():
         "split-c1-sourcing-evidence.json", "core-c1-routing-closure.json",
         "package_jlc_prototype.py", "JLC-PROTOTYPE-HANDOFF.md",
         "split-c1-mechanical-inputs.json", "tools/prune_core_c1_stubs.py",
-        "qualification/c4d-evt/verify_qualification.py", "qualification/c4d-evt/qualification-plan.json"]]
+        "qualification/c4d-evt/verify_qualification.py", "qualification/c4d-evt/run_negative_controls.py",
+        "qualification/c4d-evt/qualification-plan.json"]]
     for candidate in ["core-c1-96x68-split", "display-c1-45x36-production-bom"]:
         source_paths.extend(p for p in (ROOT / candidate).rglob("*") if p.is_file()
                             and (p.suffix in {".kicad_mod", ".kicad_sym", ".kicad_pro", ".kicad_dru"}

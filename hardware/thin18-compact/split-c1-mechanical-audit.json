@@ -4,7 +4,7 @@
     "Core-C1": "86fce44b5ab67b4a27a892a4fdb601efdd5cb31eaaaee3c5f833e4591965d23f",
     "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
-  "inputs_sha256": "fdc363cf83b648b1d5a73884f93f557ce7e069cca2db8510e903d9431cc435dd",
+  "inputs_sha256": "32c9aa6008527c6b3664fc280be2f5a30d79224df02ed769b8f2940f6588f0dc",
   "interface_sha256": "05d6e91430d3c5cb25e188cc5ae0e78d6fbe779ac2859efd25696ad44bcea017",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,

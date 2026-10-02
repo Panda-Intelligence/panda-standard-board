@@ -313,5 +313,15 @@
     "conservative_above_core_f_height_budget_mm": 3.46,
     "below_core_b_maximum_including_solder_mm": null,
     "note": "Drawing3.20mm with general+/-0.20; exact official product page says on-board3.26mm. Budget3.46 is a conservative engineering screen, not supplier-mounted maximum.0.6mm nominal shell leg does not prove zero solder/body protrusion. Case/plug/panel gap and lot approval pending."
+  },
+  "rtc_backup_requirement": {
+    "minimum_retention_hours": 24,
+    "confirmed_by": "User: 保持24小时就行了",
+    "confirmed_on": "2026-10-02",
+    "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
+    "event_input_required": false,
+    "physical_verification": "NOT_RUN",
+    "selected_backup_assembly": null,
+    "acceptance": "Duration >=24h with no RTC time loss at approved room/cold/hot and source-age conditions; no supply through debugger or signal pins."
   }
 }
