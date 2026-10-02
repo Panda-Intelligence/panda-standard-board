@@ -263,6 +263,8 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         libdir=candidate/'lib/panda-standard.pretty' if board=='Core-C1' else folder/'panda-r6-display.pretty'
         library=library_from_board(fp,name)
         if item.get('panel_fpc'):library=re.sub(r'(?m)^[ \t]*\n','',library)
+        if item.get('display_mos') or item.get('rtc') or item.get('rtc_cap'):
+            library=re.sub(r'[ \t]+$', '',library,flags=re.M)
         (libdir/(name+'.kicad_mod')).write_text(library)
     if board=='Core-C1' and 'J302' in targets:apply_wire_connector_routing(candidate)
     if board=='Core-C1' and {'J803','J804'}<=set(targets):apply_fpc6_support(candidate)

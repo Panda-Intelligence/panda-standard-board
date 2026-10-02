@@ -107,7 +107,7 @@
       "sha256": "306f50811266de96e86dbcefa161e4709d70085d317493d812baa84bb63cee68"
     },
     "hardware/thin18-compact/_split_c1_domestic_eco.py": {
-      "sha256": "5ff5ebbd0f5e455988ff6e8609f873cb6d41e057872c59e45f29f6694b25954a"
+      "sha256": "f22b9d8a547304421df450089a86e3bbcf7779ed3b273ddcab91c1bf00243de2"
     },
     "hardware/thin18-compact/_split_c1_enclosure_study.py": {
       "sha256": "91bab94383c95b5addbccb53a087605830d37f0c8acccad5383c889b517c8a6b"
@@ -362,7 +362,7 @@
       "sha256": "190201d93607998def4e5ef1732672c028a3038f8e8ec267e7519ec148cbbbc9"
     },
     "hardware/thin18-compact/display-c1-45x36-production-bom/panda-r6-display.pretty/JSM_NX3008NBK_SOT23.kicad_mod": {
-      "sha256": "d1362b4cb9d0e09501a8443efa398c9517102ccadc0d323bff6fb35e8cc77c99"
+      "sha256": "099d9234aeac4decd5818b96ecbaa1e21b3ea626e4b2368e8c0200772bad1937"
     },
     "hardware/thin18-compact/display-c1-45x36-production-bom/panda-r6-display.pretty/L_Taiyo_NRH3010_3030.kicad_mod": {
       "sha256": "b8bf0b853cba983b465429a810dce4af501b80ba24baf3aa01dafc7f9dfa2964"
