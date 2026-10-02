@@ -78,10 +78,11 @@
     "physical_mating_verified": false
   },
   "adapter_removed_from_core": true,
-  "unchanged_native_rule_hashes": {
+  "verified_native_rule_hashes": {
     ".kicad_pro": "f6750faa21f2b383d3f8d0babd975edff6153174cb31a41b2ad058c65efd914a",
-    ".kicad_dru": "c1a20113a5a4b320fbf2f43af0c2a14a20249626c19385ac1901987d5e4967b7"
+    ".kicad_dru": "a01affc71b9e782b6197b0cb53f8c569572d7d4560bebbe35f6bbd0952d3249e"
   },
+  "native_rule_change_policy": "Project settings pinned; exactly three obsolete J201 rules removed by reviewed canonical predecessor hashes. No added suppressions or reduced minima.",
   "native_checks": {
     "Core-C1": {
       "drc": 0,
@@ -99,7 +100,7 @@
   "cad_complete": true,
   "manufacturing_release": false,
   "pcb_sha256": {
-    "Core-C1": "17794450f9343003ee9a64ab8e7c278a11d7facd4d5163aa83e2ba06d9443c5a",
+    "Core-C1": "51dabf42bb7386827965f54eaedfc9a23868d98a7b3db54e0ffb11eecb1a3711",
     "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
   "mapping": [

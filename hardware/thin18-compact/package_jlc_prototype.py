@@ -9,16 +9,11 @@ BOARDS = [("Core-C1","core-c1-96x68-split","core-c1-96x68",REL/(STEM+".kicad_pcb
           ("Display-C1","display-c1-45x36-production-bom","display-c1-45x36",Path("PANDA-EPD0426-SPI-EVT.kicad_pcb"))]
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def classify_dfm(board, data):
-    pending=[]
-    for item in data["violations"]:
-        known=(board=="Core-C1" and item["type"]=="copper_edge_clearance"
-               and "actual 0.0200 mm" in item["description"]
-               and any("Pad " in x["description"] and "of J201" in x["description"] for x in item["items"]))
-        if not known: raise ValueError("Unexpected prototype DFM failure: "+item["description"])
-        pending.append(item)
+    if data["violations"]:
+        raise ValueError("Prototype DFM failure: "+data["violations"][0]["description"])
     if data["unconnected_items"]: raise ValueError("DFM copy has unconnected items")
-    return {"standard_fabrication_ready":not pending,"cam_acceptance_required":bool(pending),
-            "pending_violations":pending}
+    return {"standard_fabrication_ready":True,"cam_acceptance_required":False,
+            "pending_violations":[]}
 def verify_land(text, ref, size, center):
     fp=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,"Reference")==ref)
     pads=list(blocks(fp,r"\(pad\s"))
@@ -32,6 +27,26 @@ def verify_land(text, ref, size, center):
     return fp
 def verify_new_connectors(text):
     """Reject wrong primary lands, reversed pin numbering or unreviewed poses."""
+    usb=next(b for _,_,b in blocks(text,r"\(footprint\s") if property_value(b,'Reference')=='J201')
+    if property_value(usb,'MPN')!='U20405-01' or re.search(r'\(at\s+39\s+68\)',usb) is None:raise ValueError('USB identity/PCB-edge datum differs')
+    if '"Edge.Cuts"' in usb or '(model ' in usb:raise ValueError('USB foreign model or old cutout retained')
+    order=['B12','A1','B9','A4','A5','A6','A7','A8','B8','B7','B6','B5','B4','A9','B1','A12']
+    nets={'A1':'GND','B12':'GND','A4':'VBUS_USB','B9':'VBUS_USB','A5':'USB_CC1','A6':'USB_DP','A7':'USB_DM','A8':'unconnected-(J201-PadA8)','B8':'unconnected-(J201-PadB8)','B7':'USB_DM','B6':'USB_DP','B5':'USB_CC2','B4':'VBUS_USB','A9':'VBUS_USB','B1':'GND','A12':'GND'}
+    pads=list(blocks(usb,r'\(pad\s'));found=set();shells=[]
+    if len(pads)!=20:raise ValueError('USB must have16 independent signals and4 shell lands')
+    for _,_,pad in pads:
+        n=re.match(r'\(pad\s+"([^"]+)"',pad).group(1)
+        xy=tuple(map(float,re.search(r'\(at\s+([-\d.]+)\s+([-\d.]+)',pad).groups()))
+        size=tuple(map(float,re.search(r'\(size\s+([-\d.]+)\s+([-\d.]+)',pad).groups()))
+        net=re.search(r'\(net\s+"([^"]+)"\)',pad).group(1)
+        if n=='SH':
+            drill=tuple(map(float,re.search(r'\(drill oval\s+([-\d.]+)\s+([-\d.]+)',pad).groups()))
+            if net!='GND':raise ValueError('USB shell grounding differs')
+            shells.append((xy,size,drill))
+        elif n not in order or n in found or xy!=(round(-3+order.index(n)*.4,6),-6.55) or size!=(.25,.8) or net!=nets[n]:raise ValueError('Incorrect MUP USB land/pin/net '+n)
+        else:found.add(n)
+    expected_shells=[((x,y),(1.2,2.0 if y==-6.2 else 2.1),(.6,1.4 if y==-6.2 else 1.5)) for x in [-4.32,4.32] for y in [-6.2,-1.7]]
+    if found!=set(order) or sorted(shells)!=sorted(expected_shells):raise ValueError('Incorrect MUP USB shell land')
     expected={
         'J302':('HC-1.0-3PWT', {str(n):((n-2,-2),(0.7,1.75)) for n in range(1,4)}, [((-2.1,1.7),(1.0,2.55)),((2.1,1.7),(1.0,2.55))]),
         'J502':('HC-1.0-2PWT', {'1':((-0.5,-2),(0.7,1.75)),'2':((0.5,-2),(0.7,1.75))}, [((-1.6,1.7),(1.0,2.55)),((1.6,1.7),(1.0,2.55))])}
@@ -163,7 +178,8 @@ def main():
                          assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 derived land and terminal-positive mounting review"])
             report["boards"][board]=state
     for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
-                 "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md"]:
+                 "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
+                 "C4D8-RTC-DECISION.md"]:
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")

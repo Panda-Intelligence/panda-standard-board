@@ -174,6 +174,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
                 block=change_wire_connector_geometry(block,item['wire_connector_pins'])
             if item.get('fpc6_footprint') and pcb:
                 block=change_fpc6_geometry(block)
+            if item.get('usb_topmount') and pcb:
+                from _split_c1_usb_eco import usb_geometry
+                block=usb_geometry(block)
             if item.get('inductor_land') and pcb:
                 block=change_inductor_geometry(block,item['inductor_land'])
             if item.get('diode_land') and pcb:
@@ -201,7 +204,7 @@ def apply_domestic_eco(candidate, board, refs_only=None):
         lib.write_text(library_from_board(diode,'MBR0530_JSCJ_SOD123'))
     from _split_c1_prototype_eco import library_from_board
     for ref,item in targets.items():
-        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint')):continue
+        if not (item.get('connector_footprint') or item.get('wire_connector_pins') or item.get('inductor_land') or item.get('fpc6_footprint') or item.get('usb_topmount')):continue
         pcb=next(folder.glob('*.kicad_pcb'))
         fp=next(b for _,_,b in blocks(pcb.read_text(),r'\(footprint\s') if property_value(b,'Reference')==ref)
         name=item['new_fields']['Footprint'].split(':')[1]
@@ -210,6 +213,9 @@ def apply_domestic_eco(candidate, board, refs_only=None):
     if board=='Core-C1' and 'J302' in targets:apply_wire_connector_routing(candidate)
     if board=='Core-C1' and {'J803','J804'}<=set(targets):apply_fpc6_support(candidate)
     if refs_only is None:apply_domestic_support(candidate,board)
+    if board=='Core-C1' and 'J201' in targets:
+        from _split_c1_usb_eco import apply_usb_layout
+        apply_usb_layout(candidate)
     return {'board':board,'applied_refs':sorted(targets),'manufacturing_release':False}
 
 def eco_uuid(value):

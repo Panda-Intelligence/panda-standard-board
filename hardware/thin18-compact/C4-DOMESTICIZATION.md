@@ -115,7 +115,7 @@ Tradeoff accepted for study:
 - not an accuracy/current equivalent;
 - firmware + crystal + backup-current qualification required.
 
-No domestic integrated-crystal RTC has yet been proven equivalent to RV-3028.
+SD3900 Rev2.4 is now documented as an integrated-crystal/backup-pin mainland redesign candidate, with higher backup current and different pin/register map. No equivalent is qualified; see C4D8-RTC-DECISION.md.
 
 ### C4-AUDIO
 

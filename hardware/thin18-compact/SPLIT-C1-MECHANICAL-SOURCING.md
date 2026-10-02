@@ -7,16 +7,16 @@ Status: engineering constraints and exact-part catalog mapping; manufacturing_re
 ## Current result
 
 Both native boards remain DRC/open/parity/ERC = 0/0/0/0.
-The CAD includes 84 controlled mainland substitutions (Core55/Display29), local
+The CAD includes 85 controlled mainland substitutions (Core56/Display29), local
 U403 bypass C516, reviewed HCTL NTC/speaker lands, Sunlord power/EPD lands,
 and XKB A2 six-pin dual-contact connectors. L402 is intentionally changed from
 2.2uH to1uH for SGM41513; power routing and C402/R306 support changes are
 predecessor-guarded. J803/J804 rotate180deg and shift -Y2.5mm to preserve all
 signal world coordinates; entry reverses to -Y. H804 moves to(3,33), and SDA
-bypasses the J804 support. Existing rule minima/exceptions are unchanged.
+bypasses the J804 support. Rule minima are not relaxed; the USB ECO removes three obsolete J201 exceptions.
 Current CAD equals a deterministic fresh rebuild including these changes.
-The current all-domestic audit covers156 populated system-BOM refs:145 mainland
-manufacturer refs and11 foreign refs still requiring replacement. See
+The current all-domestic audit covers156 populated system-BOM refs:146 mainland
+manufacturer refs and10 foreign refs still requiring replacement. See
 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md) for qualification
 calculations and differences. The60pin HCTL pair retains the reviewed1.5mm
 nominal mating transform; physical fit and mixed-family mating are not approved.
@@ -34,8 +34,8 @@ Core R615 is precisely FH RS-03K5231FT / C140082.
 
 Builders pin the original connector wiring seed, apply checked predecessor ECOs,
 then reviewed sourcing. They reject MPN/ID conflicts; policy audit rejects an
-unreviewed identity or manufacturer-only relabel. Core USB cutout remains a
-0.02mm copper-edge CAM blocker; Display standard DFM passes. No stock is reserved.
+unreviewed identity or manufacturer-only relabel. The MUP topmount USB ECO removes
+the old cutout/0.02mm edge blocker; both boards pass standard DFM. No stock is reserved.
 
 ## Supply readiness for the original seven SMT refs
 
@@ -97,18 +97,15 @@ Display. Other Core B.Cu SMT footprints lie outside the Display rectangle
 x=38..83, y=30..66. This is a conservative native footprint-bounding-box screen,
 not a body-model collision or maximum-height qualification.
 
-J201 has two plated shell-pad envelopes intersecting the Display projection:
+J201 is now the mainland MUP U20405-01 topmount part, without posts. The right shell lands still intersect the Display projection:
 
 | Pad center, native mm | Pad envelope, native mm |
 |---|---|
-| (44.62, 62.4) | x=44.12..45.12; y=61.5..63.3 |
-| (44.62, 66.4) | x=44.12..45.12; y=65.3..67.5 |
+| (43.32,61.8) | x=42.72..43.92; y=60.8..62.8 |
+| (43.32,66.3) | x=42.72..43.92; y=65.25..67.35 |
 
-GCT publishes 0.8-mm offset and 0.7-mm shell-stake length for USB4500
-([official product page](https://gct.co/connector/usb4500)). Those values alone
-do not establish below-Core-B protrusion including solder, mounting tolerance and
-PCB warp. The official drawing download returned HTTP403 in this session; retain
-the J201 body/stake/solder Z-clearance gate.
+[MUP Rev4 original drawing](https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf)
+and the [exact official product](https://mupconn.com/product/usbc/3368.html) differ on nominal height (3.20mm drawing /3.26mm on-board page). Use3.46mm as a conservative design budget, not a certified mounted maximum. Nominal0.6mm shell legs do not establish solder protrusion/PCB-warp clearance. The new PCB has a straight edge, no midmount cutout and no J201 DRC exemptions; both boards pass independent standard DFM. Case aperture, plug, panel and maximum mounted-Z clearances remain open.
 
 ## Battery layering and Z budget
 

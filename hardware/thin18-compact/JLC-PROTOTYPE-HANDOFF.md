@@ -2,29 +2,27 @@
 
 本包是 Core-C1 + Display-C1 两块 PCB 的台架 EVT 原型资料。当前没有实板。不要把旧 Murphy 串口板作为本版本样板，也不要依据本包进行量产放行。
 
-**全国产要求尚未完成：当前156个已装配系统位号中仍有11个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成84个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
+**全国产要求尚未完成：当前156个已装配系统位号中仍有10个进口料，禁止按本BOM提交装配申请或下单。** 本包供设计/CAM审核。已完成85个位号受控替换，另增U403输出旁路C516；详见 [SPLIT-C1-DOMESTICIZATION.md](SPLIT-C1-DOMESTICIZATION.md)。
 
 ## 提交范围和当前状态
 
 | 项目 | Core-C1 | Display-C1 |
 | --- | --- | --- |
-| 成品板外形 | 96 × 68 mm，USB 边缘开槽 | 45 × 36 mm |
+| 成品板外形 | 96 × 68 mm，USB 直板边 | 45 × 36 mm |
 | FR-4 / 铜层 | 0.8 mm，4 层 | 0.8 mm，2 层 |
 | 外铜 / 内铜 | 1 oz / 0.5 oz | 1 oz / 无 |
 | 表面 / 阻焊 | ENIG 沉金、绿油 | ENIG 沉金、绿油 |
 | SMT | 双面，118 个坐标 | 双面，37 个坐标 |
-| 标准裸板工艺下单 | **待 CAM 确认 USB 开槽边距** | 制造数据可提交 |
+| 标准裸板工艺下单 | 独立标准DFM通过，完整下单门禁仍未通过 | 制造数据可提交 |
 | PCBA | 全国产及供料未完成；装配申请/订单未放行 | 全国产及供料未完成；装配申请/订单未放行 |
 
 待全国产设计及CAM条件闭环后，裸板下单仅上传各板目录内的 *Gerber-Drill.zip。当前生成文件只能供工程审核。总交接 ZIP 含审核资料，不是 Gerber 上传文件。两块板各自下单，勿把旧 c4d20 集成板作为第三块成品板。
 
-## Core 必须先取得的 CAM 确认
+## Core USB 制造问题已修正
 
-J201 为 GCT USB4500-03-0-A，0.8 mm mid-mount。真实 CAD 有 9.24 mm 宽的开槽及角部避让，不是直边无开槽。现有原厂模式焊盘距开槽水平边只有 0.02 mm，低于嘉立创标准 0.2 mm 铣边铜距。本包独立 DFM 将旧 edge_clearance=0 的例外提升至 0.2 mm，明确输出 16 项 J201 焊盘问题；不会把它们当作通过。
+J201已替换为国产MUP U20405-01/C20624794，采用原厂Rev4无定位柱顶装16针图，保持所有USB/CC/VBUS/GND逻辑针序。独立焊盘为0.25×0.80mm、间距0.4mm；壳脚铜盘1.2×2.0/2.1mm、槽0.6×1.4/1.5mm。原中沉开槽和J201三个历史DRC例外已删除，板边恢复为直线。两板独立0.2mm铜到板边DFM均为零；打包器不再放过旧16项USB间距错误或任何新DFM失败。
 
-CAM 需明确接受此 0.02 mm 距离、槽边/角部刀具半径及公差，确认焊盘不被铣削、不会露铜影响焊接。如果拒绝，应做受控连接器/焊盘/槽形 ECO 后重新生成全套资料，不能让 CAM 随意移动铜、缩小接触焊盘或取消装配开槽。Core 标准工艺放行状态因此仍为 false。
-
-Core 的 0.20 mm 钻孔 / 0.40 mm 过孔需选择嘉立创小过孔规格；不能把普通过孔自动放大。0.8 mm 名义板厚须按其公差复核 USB4500 的安装面，不能改成 1.6 mm 默认板。
+Core 的0.20mm钻孔/0.40mm过孔需选择小过孔工艺；保留0.8mm板厚。MUP图壳脚名义0.6mm，并不证明焊料/公差在Display投影处无干涉。顶装接口安装高按3.46mm保守预算，原厂最大安装高度、外壳口和插头空间仍须冻结。5A接触额定不能替代现有窄VBUS/GND铜图的3A载流/温升资格；新增USB数据过孔需首板信号验证。
 
 ## SMT 供料和工艺确认
 
@@ -67,9 +65,9 @@ BOM/CPL 必须在嘉立创预览中复核底面视图与旋转约定，尤其 J6
 
 ## 验证证据与收到样板后的范围
 
-生成器要求当前 CAD 与从不可变基线重建结果一致，两板 DRC/open/parity/ERC 全部为 0，60 针逻辑与插接变换一致，并检查生产文件源哈希、Gerber ZIP CRC、机器 BOM/CPL 位号完全相等。独立嘉立创 DFM 及已知 USB 例外在 prototype-status.json 中公开；SHA256SUMS 覆盖交接包内文件。
+生成器要求当前 CAD 与从不可变基线重建结果一致，两板 DRC/open/parity/ERC 全部为 0，60 针逻辑与插接变换一致，并检查生产文件源哈希、Gerber ZIP CRC、机器 BOM/CPL 位号完全相等。两板独立嘉立创 DFM 零违规结果在 prototype-status.json 中公开；SHA256SUMS 覆盖交接包内文件。
 
-全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在11个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
+全量国产化审计绑定完整系统BOM、CPL、CAD与政策/替换证据的哈希；未知或变更的厂家/MPN/封装/C码必须重审。`audit_split_c1_domestic.py --require-complete`当前按预期在10个进口位号处失败。工程资料可复核，但不能据此提交全国产装配或声明可下单。收到样板后执行现有 Q04–Q14：限流上电、各电源轨/峰值、I2C 设备、显示刷新、前光、反灌/保护、RTC、温度、实测续航及板间/FPC 插接。记录样板 ID、仪器、原始波形和电流；所有现有未测结果继续 NOT_RUN。
 
 XTEINK X4 Pro 的 5.95 mm / 1100 mAh 仅是参照。当前双板、1.5 mm HCTL 名义间隙、屏幕与器件叠层尚未证明能实现该外壳厚度，电池包最大尺寸、保护板/线尾及膨胀余量也未冻结。首轮可在外部限流电源和夹具上完成板级 EVT，再由实测电流及真实屏幕/电池决定最终外壳；不要给本包添加虚假的 EVT 通过结果。
 
@@ -85,7 +83,7 @@ python3 hardware/thin18-compact/release_split_c1.py
 
 - 嘉立创 PCB：https://jlcpcb.com/capabilities/Capabilities
 - 嘉立创装配：https://jlcpcb.com/capabilities/pcb-assembly-capabilities
-- GCT 图：https://gct.co/files/drawings/usb4500.pdf
+- MUP USB原厂Rev4图：https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf
 - Sunlord MWSA原厂2025图：https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf
 - Seiko 图：https://www.sii.co.jp/en/me/datasheets/chip-capacitor/cph3225a/
 - Sunlord SWPA原厂2024图：https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf

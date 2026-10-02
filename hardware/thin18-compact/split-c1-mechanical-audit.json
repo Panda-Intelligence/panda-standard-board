@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "17794450f9343003ee9a64ab8e7c278a11d7facd4d5163aa83e2ba06d9443c5a",
+    "Core-C1": "51dabf42bb7386827965f54eaedfc9a23868d98a7b3db54e0ffb11eecb1a3711",
     "Display-C1": "0d0c18e7987b6281d375d9256a8652f1de10dee03fadc6ae93fbb6b93a9db54f"
   },
-  "inputs_sha256": "2c391869ab3ec0d81fc9c9bacf03d9b6e57318b31a3bbe45447c6768e10b6fea",
-  "interface_sha256": "dfd3f35f532d275a2b341d21ca41de2c8e40c2e64961def4391ceb119464bfc6",
+  "inputs_sha256": "2f16dd0191dcc6d5109b3bfc2da43f5daa66654d4c790d373ee4b7f63b9a8094",
+  "interface_sha256": "ed17a5998da564f4e0246e77755cb66da72d6232171ad362eafbc0193667de5b",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -423,14 +423,14 @@
       "pad": "SH",
       "uuid": "165d0ec1-6961-5a5a-a708-7fd867b93f2e",
       "bbox_mm": [
-        44.12,
-        61.5,
-        45.12,
-        63.3
+        42.72,
+        60.8,
+        43.92,
+        62.8
       ],
       "center_mm": [
-        44.62,
-        62.4
+        43.32,
+        61.8
       ],
       "z_clearance_verified": false
     },
@@ -439,14 +439,14 @@
       "pad": "SH",
       "uuid": "4f6d084f-cf82-57f0-a1e3-17a690cfcd65",
       "bbox_mm": [
-        44.12,
-        65.3,
-        45.12,
-        67.5
+        42.72,
+        65.25,
+        43.92,
+        67.35
       ],
       "center_mm": [
-        44.62,
-        66.4
+        43.32,
+        66.3
       ],
       "z_clearance_verified": false
     }
@@ -1098,6 +1098,31 @@
         "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
         "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20241120/5FB31A17AAA509171003FB8365AF70A5.pdf",
         "physical_fit_verified": false
+      },
+      {
+        "board": "Core-C1",
+        "ref": "J201",
+        "mpn": "U20405-01",
+        "world_native_bbox_mm": [
+          33.805,
+          60.525,
+          44.195,
+          68.775
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          38,
+          60.525,
+          44.195,
+          65.185
+        ],
+        "published_height_nominal_mm": 3.46,
+        "height_basis": "Conservative engineering budget from official3.26mm on-board +0.20mm drawing general tolerance; not manufacturer-certified mounted maximum.",
+        "source_locator": "Rev4 p1 vs exact product https://mupconn.com/product/usbc/3368.html",
+        "nominal_overlap_section_screen_without_battery_walls_mm": 8.54,
+        "exceeds_reference_in_nominal_xy_screen": true,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+        "physical_fit_verified": false
       }
     ],
     "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
@@ -1179,9 +1204,9 @@
       ],
       "native_orientation_deg": 0.0,
       "world_bbox_mm": [
-        32.605,
-        59.85,
-        45.395,
+        33.805,
+        60.525,
+        44.195,
         68.775
       ],
       "enclosure_opening_verified": false
@@ -1484,7 +1509,7 @@
   "physical_mating_verified": false,
   "manufacturing_release": false,
   "open_gates": [
-    "J201 midmount body/stakes/solder Z clearance at Display projection edge",
+    "J201 MUP topmount maximum mounted height, plug/case opening and shell/solder Z clearance at Display projection edge",
     "Exact battery assembly maximum dimensions, swelling, protection PCB and harness",
     "Supplier maximum component heights, solder/mount tolerances and PCB warp",
     "FT01C XY pose, actual thickness tolerance, FPC contact side and bend/access envelope",

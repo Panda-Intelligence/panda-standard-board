@@ -593,6 +593,28 @@
       "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf",
       "catalog_url": "https://item.szlcsc.com/546342.html",
       "qualification": "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J201"
+      ],
+      "old_manufacturer": "GCT",
+      "old_mpn": "USB4500-03-0-A",
+      "usb_topmount": true,
+      "new_fields": {
+        "Manufacturer": "MUP",
+        "MPN": "U20405-01",
+        "LCSC": "C20624794",
+        "Value": "U20405-01 USB2.0",
+        "Footprint": "panda-standard:MUP_U20405_01_R4",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+        "Description": "MUP U20405-01, drawing MUP-U20405-XX Rev4 2023-10-25: on-board without post,16 separate 0.4mm-pitch contacts, Au3u. Manufacturer lands retained; no USB cutout or edge/hole exception. 5A total VBUS rating does not qualify existing narrow board power fanout. 3.46mm conservative height budget; lot/drawing and physical assembly pending."
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240223/861C7C148AA03685D8854DCE43F31033.pdf",
+      "catalog_url": "https://item.szlcsc.com/22027027.html",
+      "source_sha256": "47747dc6224d4033ae784ad8101e08b1f51b69bbe4870b6440158a942fc44172",
+      "qualification": "Manufacturer DWG-U20405-XX-01 Rev4 p1: no posts,16x0.25x0.80mm lands at0.40mm pitch; C1=B12 then A1,B9,A4,A5,A6,A7,A8,B8,B7,B6,B5,B4,A9,B1,A12. Signal row y=-6.55mm from PCB edge; shell slots x=+/-4.32,y=-6.2/-1.7mm, drills0.6x1.4/1.5, lands1.2x2.0/2.1. Native16pin topology retained; copper fanout and straight edge rebuilt with canonical guards. Nominal drawing body3.20mm with general+/-0.20; official product page3.26mm on-board, budget3.46 pending maximum mounted approval.5A VBUS total,40mohm max contact,-40..85C,10000cycles; PCB copper current,ESD,USB signal/plug-cycle and case opening qualification remain open. p2 reel1200,24mm tape,12mm pitch,192mm empty leader/trailer; actual allocated cut tape/JLC acceptance pending."
     }
   ],
   "all_domestic_complete": false,
@@ -795,6 +817,197 @@
     ],
     "new_copper": [
       "(segment (start 4.6 42.5) (end 2.275 43.601) (width 0.2) (layer \"F.Cu\") (net \"I2C_SDA\") (uuid \"07db4eac-4942-5bd7-9a47-581038cd1656\"))"
+    ]
+  },
+  "usb_layout": {
+    "description": "MUP topmount USB redesign; preserve logical USB pin nets, remove edge/hole exemptions, restore straight board edge. No new DRC exemptions.",
+    "changes": [
+      {
+        "uuid": "31e4530f-87f0-4477-b634-11da4966516f",
+        "predecessor_sha256": "4d7f40a4577dbac3892271ce122c4dac4403f8f7910f11ad3166ee553b9f1be9",
+        "new_block": null
+      },
+      {
+        "uuid": "38abcce0-102d-491f-9b19-a923eee39c18",
+        "predecessor_sha256": "d7f22e5f82a7f1b05979f47cb8a873af85d5f6aa1417d245c9e9ed2bb0f20e7f",
+        "new_block": null
+      },
+      {
+        "uuid": "640834f8-7d10-4f49-9fae-083b2a81c988",
+        "predecessor_sha256": "531bfcc301e3205628adf8dc6d9ef851112bbf2f3ff88b2ba6fc870896093d9c",
+        "new_block": null
+      },
+      {
+        "uuid": "c09220a1-e8c7-4bcc-9edd-34cf6fef85eb",
+        "predecessor_sha256": "338456d56ae09e66eb6196aeb4096509ac3fd5fd0035475baac53b3b86661235",
+        "new_block": null
+      },
+      {
+        "uuid": "fc02b9b0-ea12-474f-889f-f43b7278a05e",
+        "predecessor_sha256": "b9dfdd24d6059157adddbc03b623cffe7752c38b2b8ad4271959c0f9c7e56a0b",
+        "new_block": null
+      },
+      {
+        "uuid": "0199378a-95f6-42e6-90da-d573cdb2c9cc",
+        "predecessor_sha256": "a1dea154316a145445fb278b6f875ce8fb22fcd731483ff83807aaae349d0b88",
+        "new_block": null
+      },
+      {
+        "uuid": "3c948706-07f8-44b6-b072-38fabdc5f966",
+        "predecessor_sha256": "57fa915ddc22228db00429351b574274fcca732e7f2a440cb192bf87cf70cccb",
+        "new_block": null
+      },
+      {
+        "uuid": "2d2fef30-878c-40a9-b783-1ba9ca51304a",
+        "predecessor_sha256": "df135d707febfa4c861bc11ce9855b8d9dfff90a70ec6cd6c4dadd8b7e5c32c0",
+        "new_block": "(segment\n\t\t(start 34.2 60.4283)\n\t\t(end 36 60.4283)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"2d2fef30-878c-40a9-b783-1ba9ca51304a\")\n\t)"
+      },
+      {
+        "uuid": "6ee0486e-eb66-4ea8-bca2-f676649c17d0",
+        "predecessor_sha256": "9d5be86c5f7f549f00234a35e9a65069922897ccec8936eedcb955ec2cf33e9e",
+        "new_block": "(segment\n\t\t(start 42 61.45)\n\t\t(end 42.2 60.4283)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"6ee0486e-eb66-4ea8-bca2-f676649c17d0\")\n\t)"
+      },
+      {
+        "uuid": "b24cf510-35b4-4d6f-a796-2664120c1b65",
+        "predecessor_sha256": "5db8c1cd0352ee408c338a4038d190683681ad68380381bae081aafe55c9d8bd",
+        "new_block": "(segment\n\t\t(start 43.32 61.8)\n\t\t(end 44.62 61.2483)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"b24cf510-35b4-4d6f-a796-2664120c1b65\")\n\t)"
+      },
+      {
+        "uuid": "cd0ed14a-fde0-4ac6-be42-ea1aea335006",
+        "predecessor_sha256": "1fcaa061da62afba95936c4dae9e82b50ed6739d8e892c71deba87b5bbfb3a86",
+        "new_block": "(segment\n\t\t(start 36.76 59.4683)\n\t\t(end 36 60.4283)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"cd0ed14a-fde0-4ac6-be42-ea1aea335006\")\n\t)"
+      },
+      {
+        "uuid": "ea8d15ca-e09c-4441-84d8-7604c871438d",
+        "predecessor_sha256": "ce7069fe6b21797e6e5e50f1f5899ba23f6b3f29b8d5da119ae30109a709cd87",
+        "new_block": "(segment\n\t\t(start 34.68 61.8)\n\t\t(end 33.38 61.2483)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"ea8d15ca-e09c-4441-84d8-7604c871438d\")\n\t)"
+      },
+      {
+        "uuid": "eb376c0f-219e-450b-b731-b77e1ec4041e",
+        "predecessor_sha256": "99541f02fa4829dff3be09d5edd15e831e7cbd014a7d7884591c91a2a069d129",
+        "new_block": "(segment\n\t\t(start 36 61.45)\n\t\t(end 36 60.4283)\n\t\t(width 0.2)\n\t\t(layer \"F.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"eb376c0f-219e-450b-b731-b77e1ec4041e\")\n\t)"
+      },
+      {
+        "uuid": "3af4d858-b958-4c5f-accd-c76412a3a374",
+        "predecessor_sha256": "d325b9f462569f1e09cc3f8dce84da6324f8c5978f1ec6942b05bca5982e547a",
+        "new_block": "(segment\n\t\t(start 46 61)\n\t\t(end 43.32 61.8)\n\t\t(width 0.15)\n\t\t(layer \"B.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"3af4d858-b958-4c5f-accd-c76412a3a374\")\n\t)"
+      },
+      {
+        "uuid": "1b32cc6b-d5c2-4da9-a1a6-20bf43e6cf8d",
+        "predecessor_sha256": "403701115f0f5cf40308c2cdc54ecd2db87fbf2918f78ee500d682b60e0c9efb",
+        "new_block": "(segment\n\t\t(start 34.68 61.8)\n\t\t(end 34.68 66.3)\n\t\t(width 0.2)\n\t\t(layer \"In1.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"1b32cc6b-d5c2-4da9-a1a6-20bf43e6cf8d\")\n\t)"
+      },
+      {
+        "uuid": "3739a852-e900-4563-9554-9e8688385559",
+        "predecessor_sha256": "81fb2c5d04f2a2d7389d9a05d72c3874417e11af50aec9e1e4d50630778d3021",
+        "new_block": "(segment\n\t\t(start 43.32 66.3)\n\t\t(end 43.32 61.8)\n\t\t(width 0.2)\n\t\t(layer \"In1.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"3739a852-e900-4563-9554-9e8688385559\")\n\t)"
+      },
+      {
+        "uuid": "0d44096e-f75e-493b-a261-c6c11c13b675",
+        "predecessor_sha256": "5d99adda5b8adcf4f7e2aea0ec0bc82476c603f000c01c96a312a62609f01100",
+        "new_block": null
+      },
+      {
+        "uuid": "63a7aa9e-a123-4dc5-8d55-7d1a5e6f89a5",
+        "predecessor_sha256": "ded151ae381d96ca45ff6743710aac8bce6b65d9a0f86a1bc205b4d8991769ce",
+        "new_block": null
+      },
+      {
+        "uuid": "77f667ca-9956-4302-b64a-e8bfb539d632",
+        "predecessor_sha256": "9ef132c00020e0d2d2fc3c3a4f2c2276daa266200c130c074c6c86d4fe9f7c2d",
+        "new_block": null
+      },
+      {
+        "uuid": "d31e79dc-cb5b-404c-b767-60c15b0236c6",
+        "predecessor_sha256": "348513460bf2a8631d7575c07ee509490019bf7c96b64e89bc64acdd8aa187f3",
+        "new_block": null
+      },
+      {
+        "uuid": "15b5138f-890c-4a5a-89a7-09c969987414",
+        "predecessor_sha256": "b5d8fe366729542018751004d7042ff76019370beb87b60faf4ed1ab2050ddc7",
+        "new_block": null
+      },
+      {
+        "uuid": "a990f68e-69bd-410b-a3ac-bb843add8a0a",
+        "predecessor_sha256": "a7657d946d9398e67dbf98a59f7f7e8188e9460954292dd5ea2c1f80d9c041e6",
+        "new_block": null
+      },
+      {
+        "uuid": "8474ec7b-e25d-427b-838a-6de5d7f465fd",
+        "predecessor_sha256": "4b7626f8298082182a3b6d511dcc51d6913afe3bd94bf8665a4d343ba80f9212",
+        "new_block": null
+      },
+      {
+        "uuid": "d7580047-9437-4192-9883-2d6493098129",
+        "predecessor_sha256": "84e4b526bb9887472c5764d6a7afa315a9d1cb67eb995de9952164ca760c1fe9",
+        "new_block": null
+      },
+      {
+        "uuid": "f3f6ca14-a8b8-45d3-b28a-f7e011661b4c",
+        "predecessor_sha256": "bc838724679004c3cf771e4b2aaa657ee319735435c80525e9a4725115078f65",
+        "new_block": null
+      },
+      {
+        "uuid": "ed77276e-5674-4d17-9ba0-581352348b1e",
+        "predecessor_sha256": "665107941118d02885013742751e52f36576704dc75df984c422b824769e4f36",
+        "new_block": "(via\n\t\t(at 40 62.3)\n\t\t(size 0.4)\n\t\t(drill 0.2)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"USB_DP\")\n\t\t(uuid \"ed77276e-5674-4d17-9ba0-581352348b1e\")\n\t)"
+      },
+      {
+        "uuid": "092c81ee-08d1-4de1-9314-ab7fdb486dc1",
+        "predecessor_sha256": "1e8cd422134f362cad372eb00c7bb35424a50414a88b8d13dd8e25924231a1fe",
+        "new_block": "(segment\n\t\t(start 40 62.3)\n\t\t(end 42 61.25)\n\t\t(width 0.15)\n\t\t(layer \"B.Cu\")\n\t\t(net \"USB_DP\")\n\t\t(uuid \"092c81ee-08d1-4de1-9314-ab7fdb486dc1\")\n\t)"
+      },
+      {
+        "uuid": "3e97d8c0-39fa-4478-b7c9-8f2130ba50f4",
+        "predecessor_sha256": "8328c8d556d04ed26c4c0ee06da4c53b20087fcd777daddbbb316be3821d8a83",
+        "new_block": null
+      },
+      {
+        "uuid": "df5acbc6-bf7b-4e7d-936c-52bcdcd5feb8",
+        "predecessor_sha256": "61e32a15bf940b932dc811aa4ca0f417e309bb402a6fea6c5966396e7cbf3a47",
+        "new_block": null
+      }
+    ],
+    "new_copper": [
+      "(segment (start 38 61.45) (end 38 62.3) (width 0.15) (layer \"F.Cu\") (net \"USB_DP\") (uuid \"268165e0-82ff-53e0-937f-0dd933f5cd0f\"))",
+      "(segment (start 40 61.45) (end 40 62.3) (width 0.15) (layer \"F.Cu\") (net \"USB_DP\") (uuid \"15c20027-0588-54de-af05-87ac94c80527\"))",
+      "(segment (start 38 62.3) (end 40 62.3) (width 0.15) (layer \"B.Cu\") (net \"USB_DP\") (uuid \"d3c75928-04c5-5f0b-b7a0-f78a1e3df679\"))",
+      "(via (at 38 62.3) (size .4) (drill .2) (layers \"F.Cu\" \"B.Cu\") (net \"USB_DP\") (uuid \"a8534236-b12e-5487-b199-d6642a900030\"))",
+      "(segment (start 38.4 61.45) (end 38.4 59.7) (width 0.15) (layer \"F.Cu\") (net \"USB_DM\") (uuid \"66bc501d-4c25-5bba-859b-65929285f376\"))",
+      "(segment (start 38.4 59.7) (end 38.34 59.64) (width 0.15) (layer \"F.Cu\") (net \"USB_DM\") (uuid \"98ff25e2-7b0c-5a11-982a-990f59b6c2e0\"))",
+      "(segment (start 38.34 59.64) (end 38.34 59.4293) (width 0.15) (layer \"F.Cu\") (net \"USB_DM\") (uuid \"b905ce99-fbdf-5220-a1c0-67855b34f1b2\"))",
+      "(segment (start 39.6 61.45) (end 39.6 59.9781) (width 0.15) (layer \"F.Cu\") (net \"USB_DM\") (uuid \"57334509-2ce5-5c91-942a-3ee465bff849\"))",
+      "(segment (start 39.6 59.9781) (end 40.4875 59.9781) (width 0.15) (layer \"F.Cu\") (net \"USB_DM\") (uuid \"aea983ac-ff41-5adc-8aa2-8f183f9083c2\"))",
+      "(segment (start 40.8891 60.7479) (end 40.8891 63.3) (width 0.2) (layer \"In2.Cu\") (net \"USB_DM\") (uuid \"342884d7-9542-5745-a2ad-bfb86127999d\"))",
+      "(segment (start 40.8891 63.3) (end 45.02 63.3) (width 0.2) (layer \"In2.Cu\") (net \"USB_DM\") (uuid \"e55d201d-63ab-50f8-9b99-7faa669e7e9a\"))",
+      "(segment (start 45.02 63.3) (end 46.8529 62.5808) (width 0.2) (layer \"In2.Cu\") (net \"USB_DM\") (uuid \"e09b622f-3bce-5d2b-b61e-c4e7a9d58f7c\"))",
+      "(segment (start 37.6 61.45) (end 37.6 60.8) (width 0.15) (layer \"F.Cu\") (net \"USB_CC1\") (uuid \"281560c8-1833-547e-93e2-916fb49be384\"))",
+      "(segment (start 37.6 60.8) (end 37.8208 60.5792) (width 0.15) (layer \"F.Cu\") (net \"USB_CC1\") (uuid \"e3af84b2-36ff-5cb6-a7d1-e045fa0dbf47\"))",
+      "(segment (start 37.8208 60.5792) (end 37.8208 60.1712) (width 0.15) (layer \"F.Cu\") (net \"USB_CC1\") (uuid \"5d42be2a-cd29-5d3a-83b9-92b1a83bde87\"))",
+      "(segment (start 40.4 61.45) (end 40.4 60.6) (width 0.15) (layer \"F.Cu\") (net \"USB_CC2\") (uuid \"c876011b-9c0e-55ea-8f3d-e7cf4f253699\"))",
+      "(segment (start 40.4 60.6) (end 40.9642 60.6) (width 0.15) (layer \"F.Cu\") (net \"USB_CC2\") (uuid \"88fb8f43-cded-56c6-b627-25d06d8a4056\"))",
+      "(segment (start 40.9642 60.6) (end 40.9642 60.1755) (width 0.15) (layer \"F.Cu\") (net \"USB_CC2\") (uuid \"378d1d94-78ff-5a97-ba9d-f4b9144cee3c\"))",
+      "(segment (start 36.8 61.45) (end 36.8 60.6) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"ca6fba13-008b-5592-9b6b-4166e81b3c5f\"))",
+      "(segment (start 36.8 60.6) (end 36.9777 60.298) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"10214478-9035-588c-b8a8-149e76165e33\"))",
+      "(segment (start 37.2 61.45) (end 37.2 61.65) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"50fb54fe-68d9-53ff-b278-b554fb1c05b8\"))",
+      "(segment (start 37.2 61.65) (end 36.8 61.65) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"44b2582e-82d7-5ed7-b1b0-82bbfe33ff03\"))",
+      "(segment (start 36.8 61.65) (end 36.8 61.45) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"11767147-ee8b-5e0e-b5de-443f4459d195\"))",
+      "(segment (start 40.8 61.45) (end 40.8 61.65) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"f80e26fb-440d-5c29-8192-de94c189ca52\"))",
+      "(segment (start 40.8 61.65) (end 41.2 61.65) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"481c350d-0c39-55e5-bc45-63e757d12b59\"))",
+      "(segment (start 41.2 61.65) (end 41.2 61.45) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"59b09a2b-2e73-5e4f-851c-87f0fe7de3f4\"))",
+      "(segment (start 41.2 61.45) (end 41.2 60.95) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"072fb201-8940-587c-bb5f-77d03f583ac3\"))",
+      "(segment (start 41.2 60.95) (end 41.35 60.8) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"5274ce3b-eb24-52f2-b0e6-72ed2f1d9a63\"))",
+      "(segment (start 41.35 60.8) (end 41.35 60.0) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"dd18052e-043b-5962-b4fa-5745727a8edf\"))",
+      "(segment (start 41.35 60.0) (end 41.4 59.9874) (width 0.2) (layer \"F.Cu\") (net \"VBUS_USB\") (uuid \"33b905b3-9afc-5093-bfaf-62ac85611939\"))",
+      "(segment (start 36 61.45) (end 36.4 61.45) (width 0.2) (layer \"F.Cu\") (net \"GND\") (uuid \"42399da1-0967-59a3-8d92-0336753b517d\"))",
+      "(segment (start 41.6 61.45) (end 42 61.45) (width 0.2) (layer \"F.Cu\") (net \"GND\") (uuid \"fdf93038-baa7-51b9-82a5-f96e624d5a2f\"))",
+      "(gr_line (start 34.38 68) (end 43.62 68) (stroke (width .05) (type default)) (layer \"Edge.Cuts\") (uuid \"e385d0bb-b3c1-5442-b923-8692b8d0d3d0\"))"
+    ],
+    "rules_predecessor_sha256": "5698bbb1e4d42b326050981f4edd0bd9fb771efac60d595cfb3089b61fe50f5c",
+    "removed_rules": [
+      "d88c32b3a771a3d08cc16b9dc84455a5947264738f7c865430d82d0dac221bc1",
+      "540439044a478f85ee83d5e4057b668837dc95ee677f58db346e654b35e3c85e",
+      "eb6d64ea8c77de901af10439ecce211ed3856847dd1813c57036d859653e6145"
     ]
   }
 }

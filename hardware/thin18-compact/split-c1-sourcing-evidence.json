@@ -41,16 +41,17 @@
       "refs": [
         "J201"
       ],
-      "manufacturer": "GCT",
-      "mpn": "USB4500-03-0-A",
-      "library_id": "C5354966",
-      "catalog_manufacturer": "Global Connector Technology",
-      "catalog_mpn": "USB4500-03-0-A",
-      "source_url": "https://www.lcsc.com/product-detail/C5354966.html",
+      "manufacturer": "MUP",
+      "mpn": "U20405-01",
+      "library_id": "C20624794",
+      "catalog_manufacturer": "MUP(德海威)",
+      "catalog_mpn": "U20405-01",
+      "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
       "stock_reserved": false,
       "assembly_order_confirmed": false,
-      "identity_note": "Exact MPN, including package/packing suffix; catalog manufacturer alias matches."
+      "identity_note": "Exact catalog U20405-01/C20624794; manufacturer drawing prefix MUP-U20405-01 is the3uAu variant. Drawing Rev4 geometry/packing reviewed; no reserved inventory or PCBA acceptance inferred.",
+      "checked_date": "2026-10-02"
     },
     {
       "board": "Core-C1",

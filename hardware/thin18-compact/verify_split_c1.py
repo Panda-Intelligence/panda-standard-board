@@ -78,12 +78,25 @@ for n in range(1,61):
     assert abs(abs(c[1]-world[1])-0.185)<1e-6, "land-pattern row geometry differs"
     mapping.append({"pin":n,"role":role,"core_net":cn,"display_net":dn,
         "core_pad_mm":c,"display_pad_mm":d,"display_pad_world_mm":world})
-# Native rules are inherited intact; no new suppressions or minimum reductions.
+# Project settings remain pinned; only the reviewed obsolete J201 rules are removed.
+from _split_c1_domestic_eco import native_block_hash
+layout=json.loads((ROOT/'split-c1-domestic-eco.json').read_text())['usb_layout']
 rules={}
 for ext in [".kicad_pro",".kicad_dru"]:
     p=core/REL/(STEM+ext)
-    expected=hashlib.sha256(git_bytes(str(REL/(STEM+ext)))).hexdigest()
-    assert sha(p)==expected,"routing rules changed"
+    original=git_bytes(str(REL/(STEM+ext)))
+    if ext=='.kicad_dru':
+        expected_text=original.decode()
+        assert native_block_hash(expected_text)==layout['rules_predecessor_sha256'],'USB rule baseline differs'
+        removed=set()
+        for a,b,rule in reversed(list(blocks(expected_text,r'\(rule\s'))):
+            h=native_block_hash(rule)
+            if h in layout['removed_rules']:
+                removed.add(h);expected_text=expected_text[:a]+expected_text[b:]
+        assert removed==set(layout['removed_rules']),'USB rule removal list differs'
+        original=expected_text.encode()
+    expected=hashlib.sha256(original).hexdigest()
+    assert sha(p)==expected,"unreviewed routing rules changed"
     rules[ext]=sha(p)
 counts={}
 for name,folder in [("Core-C1",core),("Display-C1",display)]:
@@ -112,7 +125,8 @@ report={"schema":"panda-split-c1-interface-v1","logical_pin_mapping_verified":Tr
         "enclosure_z_stack_verified":False,
         "battery_stack_verified":False,
         "physical_mating_verified":False},
-    "adapter_removed_from_core":True,"unchanged_native_rule_hashes":rules,
+    "adapter_removed_from_core":True,"verified_native_rule_hashes":rules,
+    "native_rule_change_policy":"Project settings pinned; exactly three obsolete J201 rules removed by reviewed canonical predecessor hashes. No added suppressions or reduced minima.",
     "native_checks":counts,"cad_complete":cad_complete,"manufacturing_release":False,
     "pcb_sha256":{"Core-C1":sha(pcb_paths[0]),"Display-C1":sha(pcb_paths[1])},
     "mapping":mapping,

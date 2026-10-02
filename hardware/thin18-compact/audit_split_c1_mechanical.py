@@ -269,7 +269,7 @@ def audit(inputs_path):
         "nominal_budget_is_not_tolerance_signoff": True,
         "enclosure_z_stack_verified": False, "battery_stack_verified": False,
         "physical_mating_verified": False, "manufacturing_release": False,
-        "open_gates": ["J201 midmount body/stakes/solder Z clearance at Display projection edge",
+        "open_gates": ["J201 MUP topmount maximum mounted height, plug/case opening and shell/solder Z clearance at Display projection edge",
                        "Exact battery assembly maximum dimensions, swelling, protection PCB and harness",
                        "Supplier maximum component heights, solder/mount tolerances and PCB warp",
                        "FT01C XY pose, actual thickness tolerance, FPC contact side and bend/access envelope",
