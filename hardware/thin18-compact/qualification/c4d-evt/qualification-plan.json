@@ -116,13 +116,13 @@
     {
       "id": "Q12",
       "user_item": 12,
-      "name": "RF, thermal and complete EVT soak",
+      "name": "RF, thermal, reading-runtime benchmark and complete EVT soak",
       "status": "NOT_RUN",
-      "required_sample_states": ["WiFi_tx", "WiFi_rx", "BLE", "EPD_full_refresh", "frontlight_max", "audio_max", "charging", "worst_concurrent_load", "cold_start", "hot_soak", "long_run"],
-      "required_instrument_roles": ["rf_test_set_or_spectrum_analyzer", "vna_or_antenna_fixture", "thermal_camera_or_thermocouples", "temperature_chamber", "current_limited_supply", "data_logger"],
-      "required_metrics": ["wifi_tx_power_result", "wifi_rx_sensitivity_or_throughput_result", "ble_result", "antenna_match_result", "maximum_component_temperature_c", "maximum_surface_temperature_c", "brownout_reset_count", "functional_error_count", "soak_duration_h", "post_soak_regression_result"],
-      "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption.",
-      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities"],
+      "required_sample_states": ["WiFi_tx", "WiFi_rx", "BLE", "EPD_full_refresh", "frontlight_max", "audio_max", "charging", "worst_concurrent_load", "cold_start", "hot_soak", "long_run", "reading_frontlight_off_radios_off", "reading_frontlight_cool_radios_off", "reading_frontlight_warm_radios_off", "reading_frontlight_mixed_radios_off", "reading_sync_then_sleep"],
+      "required_instrument_roles": ["rf_test_set_or_spectrum_analyzer", "vna_or_antenna_fixture", "thermal_camera_or_thermocouples", "temperature_chamber", "current_limited_supply", "data_logger", "precision_current_meter", "lux_or_luminance_meter"],
+      "required_metrics": ["wifi_tx_power_result", "wifi_rx_sensitivity_or_throughput_result", "ble_result", "antenna_match_result", "maximum_component_temperature_c", "maximum_surface_temperature_c", "brownout_reset_count", "functional_error_count", "soak_duration_h", "post_soak_regression_result", "battery_current_reading_ma", "battery_current_sync_ma", "battery_current_sleep_ua", "usable_capacity_mah", "reading_discharge_runtime_h", "energy_per_page_mj", "white_page_luminance_cd_m2", "x4_pro_reference_identity_result", "runtime_conditions_match_result", "runtime_reference_comparison_result"],
+      "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption. Reading runtime and measured battery-terminal energy meet the approved product budget. X4 Pro comparison requires a real identified reference device, matched page workload, measured frontlight output, wireless schedule, temperature and shutdown endpoint; capacity or UI brightness percent alone is not runtime evidence.",
+      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities", "selected complete battery pack and approved runtime/current limits", "identified physical X4 Pro reference and matched approved comparison protocol"],
       "board_scope": ["Core-C1", "Display-C1"],
       "stage": "PLANNED_AFTER_ASSEMBLY"
     },
@@ -152,6 +152,43 @@
       "blocked_until": ["both assembled current boards registered as one serial pair", "maximum-dimension mechanical drawing for enclosure/battery/FT01C flex", "approved fit/mating/power-sequence limits", "registered instruments"]
     }
   ],
+  "runtime_benchmark_protocol": {
+    "status": "PLANNED_NO_SAMPLES_NOT_EXECUTED",
+    "reference_model": "XTEINK X4 Pro",
+    "reference_source_url": "https://www.xteink.com/blogs/product/x4-pro-faq-specs-support",
+    "official_capacity_mah": 1100,
+    "official_runtime_hours": null,
+    "official_runtime_days": null,
+    "numeric_runtime_limit_status": "No official reproducible duration; product limits must be approved using a matched reference measurement.",
+    "reference_device_registration": [
+      "serial or uniquely identified device",
+      "firmware/configuration",
+      "battery identity and age/health",
+      "charger/charge termination and normal shutdown endpoint"
+    ],
+    "proposed_common_conditions": {
+      "ambient_temperature_c": 25,
+      "temperature_tolerance_c": 2,
+      "page_turn_interval_s": 30,
+      "full_refresh_every_pages": 10,
+      "document": "same fixed, hashed text workload; match visible text size and content",
+      "frontlight_off": "both devices off",
+      "frontlight_on": "match measured white-page luminance and warm/cool mode; target luminance pending approval",
+      "wireless": "radios off for baseline; separately define and log identical sync schedule",
+      "start_end": "manufacturer-normal full charge to normal firmware shutdown; never bypass cell protection"
+    },
+    "required_raw_records": [
+      "whole-battery current/voltage time series including sleep",
+      "integrated charge and energy",
+      "page/refresh and sync timestamps",
+      "elapsed reading and sleep durations",
+      "optical settings and measured luminance",
+      "reference and Panda firmware/build identifiers",
+      "shutdown reason and temperature log"
+    ],
+    "comparability_rule": "UI brightness percentages and equal mAh do not establish equal runtime. Report unmatched reference conditions explicitly; do not label an unmatched result as reference-equivalent.",
+    "scope": "Reading mode comparison; full WiFi/BLE/audio/concurrent-load qualification remains separate within Q12."
+  },
   "project_stage": "PCB_DESIGN_NO_PHYSICAL_SAMPLES",
   "physical_test_status_reason": "User confirmed no real Core-C1 or Display-C1 boards exist yet; this is a future EVT plan, not a failed physical test campaign.",
   "sample_pair_requirement": "Register Core and Display serials, both PCB hashes, both assembly BOMs and firmware; independently test each PCB before unpowered mating, then test the pair. Never mate/unmate under power."

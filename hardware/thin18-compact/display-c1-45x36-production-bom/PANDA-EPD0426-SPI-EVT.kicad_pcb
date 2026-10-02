@@ -105,8 +105,8 @@
 			(uuid "c1d318e0-b134-4fb5-a9b4-63066e6a8e1b")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -122,7 +122,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -132,7 +132,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9d37e91b-bc36-5026-bdd0-15949871aafa") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "5613df85-b1ce-55cf-a12c-2bc968a867b9") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9d37e91b-bc36-5026-bdd0-15949871aafa") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "5613df85-b1ce-55cf-a12c-2bc968a867b9") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -156,7 +156,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -267,8 +267,8 @@
 			(uuid "d81a27c7-4ae2-4ad2-8c0a-a8ea890d1b6c")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -284,7 +284,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -295,7 +295,7 @@
 				)
 			)
 		)
-(property "LCSC" "C114765"
+(property "LCSC" "C324769"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -305,7 +305,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "1ed28861-d813-5cbe-bc1e-dbaf6b9d0d97") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "1ed28861-d813-5cbe-bc1e-dbaf6b9d0d97") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -329,7 +329,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-0722RL"
+		(property "MPN" "RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -439,8 +439,8 @@
 			(uuid "1ad34875-7a3e-4c1e-8be1-381209655a85")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -567,12 +567,12 @@
 			(uuid "510b663a-766a-463d-8cbe-4302914f9810")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -584,7 +584,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -595,7 +595,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -605,7 +605,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "27d537df-8fe3-5d5e-b939-3e87c3462ae7") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "27d537df-8fe3-5d5e-b939-3e87c3462ae7") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -629,7 +629,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -728,7 +728,7 @@
 			)
 		)
 	)
-	(footprint "Diode_SMD:D_SOD-123"
+	(footprint "panda-r6-display:MBR0530_JSCJ_SOD123"
 		(layer "F.Cu")
 		(uuid "282e7f9b-b26c-4576-a3cb-40b92403d6d8")
 		(at 4 17 180)
@@ -740,12 +740,12 @@
 			(uuid "ad82b615-bbb2-4693-b2c8-2ef946aa7234")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "MBR0530T1G"
+		(property "Value" "MBR0530"
 			(at 0 2.1 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -757,7 +757,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf"
+		(property "Datasheet" "https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -770,7 +770,7 @@
 				)
 			)
 		)
-(property "LCSC" "C82046"
+(property "LCSC" "C77336"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -782,7 +782,7 @@
 					(thickness 0.15)
 				)
 			)
-		)(property "Manufacturer" "onsemi" (at 0 0 180) (layer "F.Fab") (hide yes) (uuid "c9a3b689-438f-5a60-9811-716f88f43f18") (effects (font (size 1 1))))
+		)(property "Manufacturer" "JSCJ" (at 0 0 180) (layer "F.Fab") (hide yes) (uuid "c9a3b689-438f-5a60-9811-716f88f43f18") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
@@ -796,7 +796,7 @@
 				)
 			)
 		)
-		(property "MPN" "MBR0530T1G"
+		(property "MPN" "MBR0530"
 			(at 0 0 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1002,21 +1002,19 @@
 				)
 			)
 		)
-		(pad "1" smd roundrect
+		(pad "1" smd rect
 			(at -1.65 0 180)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/BOOST_CP")
 			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "ee3e488c-f4a1-4055-b765-7441adcd4076")
 		)
-		(pad "2" smd roundrect
+		(pad "2" smd rect
 			(at 1.65 0 180)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/VGL")
 			(pinfunction "A_2")
 			(pintype "passive")
@@ -1047,8 +1045,8 @@
 			(uuid "fe25df71-a845-4f3e-ba21-33c73850036c")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1064,7 +1062,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1074,7 +1072,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "ba5e433b-5c69-5767-862a-49a68e1df35b") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "5fc3a651-0a16-5314-a5db-b16a82325d70") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "ba5e433b-5c69-5767-862a-49a68e1df35b") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "5fc3a651-0a16-5314-a5db-b16a82325d70") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1098,7 +1096,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1209,12 +1207,12 @@
 			(uuid "010e9c46-21b7-4c05-9dc5-eaac6bb122c8")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1226,7 +1224,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1237,7 +1235,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1247,7 +1245,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "2c11800c-d221-5429-9509-fa1781543662") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "2c11800c-d221-5429-9509-fa1781543662") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1271,7 +1269,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1382,8 +1380,8 @@
 			(uuid "bbe046cf-cc62-464a-aa8d-8a68462425e8")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1399,7 +1397,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1410,7 +1408,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77050"
+(property "LCSC" "C694249"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1420,7 +1418,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9836515e-2237-5601-81ce-99e9c5e4af6e") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9836515e-2237-5601-81ce-99e9c5e4af6e") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1444,7 +1442,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM188R71E104KA01D"
+		(property "MPN" "0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1555,8 +1553,8 @@
 			(uuid "3a60d20b-baad-4ba3-a999-b787191cf9c5")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1572,7 +1570,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RS-03L2R20FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1583,7 +1581,7 @@
 				)
 			)
 		)
-(property "LCSC" "C112307"
+(property "LCSC" "C322118"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1593,7 +1591,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "c649d93e-514c-5fc5-83a0-53f8ab8e18ff") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "c649d93e-514c-5fc5-83a0-53f8ab8e18ff") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1617,7 +1615,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0603FR-072R2L"
+		(property "MPN" "RS-03L2R20FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1728,8 +1726,8 @@
 			(uuid "a3b8f9ac-f25b-4ada-9d28-55cc3a7db79e")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1745,7 +1743,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1755,7 +1753,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "a745ec65-9a6f-5821-b5e7-fbddfcebea04") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "bca90249-af32-5483-898f-e7fff8b35cca") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "a745ec65-9a6f-5821-b5e7-fbddfcebea04") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "bca90249-af32-5483-898f-e7fff8b35cca") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -1779,7 +1777,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1890,8 +1888,8 @@
 			(uuid "854eafe0-62a7-4613-971c-340c4bdb95ba")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1907,7 +1905,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/788534d9ddb7ae9e0dfc8df35b525e01.pdf?productCode=C3294723"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2256,8 +2254,8 @@
 			(uuid "76e5adad-e124-4848-bd91-ec4a666a207c")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -2273,7 +2271,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2284,7 +2282,7 @@
 				)
 			)
 		)
-(property "LCSC" "C114765"
+(property "LCSC" "C324769"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2294,7 +2292,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "3c2911de-dca2-5f9d-b717-e7069e360c40") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "3c2911de-dca2-5f9d-b717-e7069e360c40") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -2318,7 +2316,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-0722RL"
+		(property "MPN" "RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -2429,8 +2427,8 @@
 			(uuid "621e3321-4ff7-49cf-ace3-0fad2d3d5777")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -2446,7 +2444,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2456,7 +2454,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "012ae7a5-e013-570c-b1b8-ea45f0e267c3") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "69bbb952-8dcd-51ce-a3a4-5eb1f017024e") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "012ae7a5-e013-570c-b1b8-ea45f0e267c3") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "69bbb952-8dcd-51ce-a3a4-5eb1f017024e") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -2480,7 +2478,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -2591,8 +2589,8 @@
 			(uuid "a5fdac8f-c68e-4c41-b2e9-0920dcd991c0")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -2976,7 +2974,7 @@
 			)
 		)
 	)
-	(footprint "Diode_SMD:D_SOD-123"
+	(footprint "panda-r6-display:MBR0530_JSCJ_SOD123"
 		(layer "F.Cu")
 		(uuid "6ad62cc6-02af-4cb3-81b1-50b266387366")
 		(at 10 18 180)
@@ -2988,12 +2986,12 @@
 			(uuid "ed36de2e-9ea2-4ef2-8063-5858bc051171")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "MBR0530T1G"
+		(property "Value" "MBR0530"
 			(at 0 2.1 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -3005,7 +3003,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf"
+		(property "Datasheet" "https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3018,7 +3016,7 @@
 				)
 			)
 		)
-(property "LCSC" "C82046"
+(property "LCSC" "C77336"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3030,7 +3028,7 @@
 					(thickness 0.15)
 				)
 			)
-		)(property "Manufacturer" "onsemi" (at 0 0 180) (layer "F.Fab") (hide yes) (uuid "7b9e49da-af8e-5fc6-9fe0-c7b85912dd86") (effects (font (size 1 1))))
+		)(property "Manufacturer" "JSCJ" (at 0 0 180) (layer "F.Fab") (hide yes) (uuid "7b9e49da-af8e-5fc6-9fe0-c7b85912dd86") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
@@ -3044,7 +3042,7 @@
 				)
 			)
 		)
-		(property "MPN" "MBR0530T1G"
+		(property "MPN" "MBR0530"
 			(at 0 0 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -3250,21 +3248,19 @@
 				)
 			)
 		)
-		(pad "1" smd roundrect
+		(pad "1" smd rect
 			(at -1.65 0 180)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/GND")
 			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "4443ce56-71da-47c2-ab00-981b905617a2")
 		)
-		(pad "2" smd roundrect
+		(pad "2" smd rect
 			(at 1.65 0 180)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/BOOST_CP")
 			(pinfunction "A_2")
 			(pintype "passive")
@@ -3295,12 +3291,12 @@
 			(uuid "6deeb3f1-ab00-47f2-b1b6-c99d3fc8f955")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3312,7 +3308,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3323,7 +3319,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3333,7 +3329,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "5dd27aa6-2e65-58f7-bfd1-a07cef72856e") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "5dd27aa6-2e65-58f7-bfd1-a07cef72856e") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -3357,7 +3353,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -3468,8 +3464,8 @@
 			(uuid "060dd6ec-b6ab-47d8-81a3-7d04a1b32692")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3485,7 +3481,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/788534d9ddb7ae9e0dfc8df35b525e01.pdf?productCode=C3294723"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3834,8 +3830,8 @@
 			(uuid "d4b0a740-34f8-46d4-a239-2515d2fecc61")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3851,7 +3847,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74aup2g17.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/datasheet/pdf/788534d9ddb7ae9e0dfc8df35b525e01.pdf?productCode=C3294723"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -4200,8 +4196,8 @@
 			(uuid "9d13f996-3289-4390-92fb-3a1d52244fc2")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4362,8 +4358,8 @@
 			(uuid "62fdcacb-b59e-48f5-b343-5c40eeaab772")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4379,7 +4375,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4389,7 +4385,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "f8cca08a-88d0-5d60-8d65-010592ae2bcf") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9d429c29-26e9-54d3-918f-f88ff0cdab72") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "f8cca08a-88d0-5d60-8d65-010592ae2bcf") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "9d429c29-26e9-54d3-918f-f88ff0cdab72") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4413,7 +4409,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4524,8 +4520,8 @@
 			(uuid "4308e010-97e8-4d06-8e3d-b1bb69bd2fc7")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4686,8 +4682,8 @@
 			(uuid "9a402fe6-db8a-4656-b8f1-f9f49ce0548c")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4703,7 +4699,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4714,7 +4710,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77050"
+(property "LCSC" "C694249"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4724,7 +4720,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "bdbdd9f2-edc5-581a-8c0b-27514500b7a8") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "bdbdd9f2-edc5-581a-8c0b-27514500b7a8") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4748,7 +4744,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM188R71E104KA01D"
+		(property "MPN" "0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4859,8 +4855,8 @@
 			(uuid "58d8a1d4-156f-4013-a65c-e17b1fad430f")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4876,7 +4872,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B105K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4887,7 +4883,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77080"
+(property "LCSC" "C89190"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4897,7 +4893,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "ad891a1a-d2a9-50dd-a958-9b70de4232a8") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "ad891a1a-d2a9-50dd-a958-9b70de4232a8") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -4921,7 +4917,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR71E105KA99L"
+		(property "MPN" "0805B105K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5032,8 +5028,8 @@
 			(uuid "55a841c6-2ef3-4f16-b5fa-0f996183a107")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5194,12 +5190,12 @@
 			(uuid "64cf3b51-57b9-4f4b-b8b9-e1f9766106f1")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -5211,7 +5207,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -5222,7 +5218,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -5232,7 +5228,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 270) (layer "F.Fab") (hide yes) (uuid "a25a0ea0-29ee-546e-b73d-7794af87b56d") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 270) (layer "F.Fab") (hide yes) (uuid "a25a0ea0-29ee-546e-b73d-7794af87b56d") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 270)
 			(layer "F.Fab")
@@ -5256,7 +5252,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5367,8 +5363,8 @@
 			(uuid "f492a62c-8d9b-4dbd-aa98-e6e343d57ab1")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5384,7 +5380,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1000FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5395,7 +5391,7 @@
 				)
 			)
 		)
-(property "LCSC" "C106232"
+(property "LCSC" "C140217"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5405,7 +5401,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "14e0941b-9347-59e7-8359-5bf2d81752bf") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "14e0941b-9347-59e7-8359-5bf2d81752bf") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -5429,7 +5425,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-07100RL"
+		(property "MPN" "RC-02K1000FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5528,7 +5524,7 @@
 			)
 		)
 	)
-	(footprint "Diode_SMD:D_SOD-123"
+	(footprint "panda-r6-display:MBR0530_JSCJ_SOD123"
 		(layer "F.Cu")
 		(uuid "c54f21c7-5be1-4548-92a0-ee65b9b29e91")
 		(at 13.5 12 90)
@@ -5540,12 +5536,12 @@
 			(uuid "71d79d96-a0b6-45b9-81dd-eedce93f3d7d")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "MBR0530T1G"
+		(property "Value" "MBR0530"
 			(at 0 2.1 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5557,7 +5553,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf"
+		(property "Datasheet" "https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5570,7 +5566,7 @@
 				)
 			)
 		)
-(property "LCSC" "C82046"
+(property "LCSC" "C77336"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5582,7 +5578,7 @@
 					(thickness 0.15)
 				)
 			)
-		)(property "Manufacturer" "onsemi" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "9a604847-76be-54a4-aff1-b2cc250ee0be") (effects (font (size 1 1))))
+		)(property "Manufacturer" "JSCJ" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "9a604847-76be-54a4-aff1-b2cc250ee0be") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
@@ -5596,7 +5592,7 @@
 				)
 			)
 		)
-		(property "MPN" "MBR0530T1G"
+		(property "MPN" "MBR0530"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5802,21 +5798,19 @@
 				)
 			)
 		)
-		(pad "1" smd roundrect
+		(pad "1" smd rect
 			(at -1.65 0 90)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/VGH")
 			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "e21e48b8-ca0a-499e-8bab-638abd0ee6d9")
 		)
-		(pad "2" smd roundrect
+		(pad "2" smd rect
 			(at 1.65 0 90)
-			(size 0.9 1.2)
+			(size 0.94 0.91)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
 			(net "/BOOST_SW")
 			(pinfunction "A_2")
 			(pintype "passive")
@@ -5847,8 +5841,8 @@
 			(uuid "402b1f5c-3a77-4550-b44f-8d68b9d5388f")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5864,7 +5858,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5875,7 +5869,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77050"
+(property "LCSC" "C694249"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5885,7 +5879,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "acc03f82-0538-59c5-b5a3-00ec1df6094a") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "acc03f82-0538-59c5-b5a3-00ec1df6094a") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -5909,7 +5903,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM188R71E104KA01D"
+		(property "MPN" "0603B104K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6020,12 +6014,12 @@
 			(uuid "c4cbe1bc-98fc-43e6-b9fb-2eca0c0e19d6")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6037,7 +6031,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6048,7 +6042,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6058,7 +6052,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "5954ae94-51e2-5d83-88a7-fba96e7cacd0") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "5954ae94-51e2-5d83-88a7-fba96e7cacd0") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -6082,7 +6076,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6193,8 +6187,8 @@
 			(uuid "8b93cb18-a2cc-4186-9f71-e310a0e376ae")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6210,7 +6204,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6221,7 +6215,7 @@
 				)
 			)
 		)
-(property "LCSC" "C114765"
+(property "LCSC" "C324769"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6231,7 +6225,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "0791db89-402b-5fac-a612-803af9948134") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "0791db89-402b-5fac-a612-803af9948134") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -6255,7 +6249,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-0722RL"
+		(property "MPN" "RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6366,8 +6360,8 @@
 			(uuid "35fbd984-989e-44a1-8ad6-9190b8311411")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6383,7 +6377,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6393,7 +6387,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25741" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "c97a1ecb-8ec4-542e-a283-938dd9a4d003") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "19c8ec78-eec5-5b97-9672-31f9812eb190") (effects (font (size 1 1))))
+		)(property "LCSC" "C140219" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "c97a1ecb-8ec4-542e-a283-938dd9a4d003") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "19c8ec78-eec5-5b97-9672-31f9812eb190") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6417,7 +6411,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1003TCE"
+		(property "MPN" "RC-02K1003FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6528,8 +6522,8 @@
 			(uuid "96e91e03-a1db-4d24-ac41-3598279d8721")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6545,7 +6539,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6556,7 +6550,7 @@
 				)
 			)
 		)
-(property "LCSC" "C114765"
+(property "LCSC" "C324769"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6566,7 +6560,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "4580786f-a79d-59c7-a51c-6145f9d4c50b") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "4580786f-a79d-59c7-a51c-6145f9d4c50b") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -6590,7 +6584,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-0722RL"
+		(property "MPN" "RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6701,8 +6695,8 @@
 			(uuid "c4c4099b-ca23-4a56-9db8-1db79db6a712")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6718,7 +6712,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6729,7 +6723,7 @@
 				)
 			)
 		)
-(property "LCSC" "C114765"
+(property "LCSC" "C324769"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6739,7 +6733,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "YAGEO" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "f0893c4d-050e-515d-ac45-08650560ebae") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 90) (layer "F.Fab") (hide yes) (uuid "f0893c4d-050e-515d-ac45-08650560ebae") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
@@ -6763,7 +6757,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC0402FR-0722RL"
+		(property "MPN" "RC-02K22R0FT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6874,12 +6868,12 @@
 			(uuid "dbe64d2d-9aad-4f8d-beb1-ad8d65532278")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Value" "4.7u 25V X5R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6891,7 +6885,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6902,7 +6896,7 @@
 				)
 			)
 		)
-(property "LCSC" "C77077"
+(property "LCSC" "C37818"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6912,7 +6906,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "Manufacturer" "Murata" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "98d50f0f-49be-5664-b17f-a3e55f46d240") (effects (font (size 1 1))))
+		)(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "98d50f0f-49be-5664-b17f-a3e55f46d240") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -6936,7 +6930,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRM21BR61E475KA12L"
+		(property "MPN" "0805B475K250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7047,8 +7041,8 @@
 			(uuid "9e2cd432-2649-4de9-9533-66a31ba420c0")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -7639,8 +7633,8 @@
 			(uuid "e08b2719-3e2f-4681-8975-54eb895ff00d")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -7656,7 +7650,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -7666,7 +7660,7 @@
 					(size 1.27 1.27)
 				)
 			)
-		)(property "LCSC" "C25744" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "fa2cf277-e79a-5c74-980e-51c5393b284c") (effects (font (size 1 1))))(property "Manufacturer" "UNI-ROYAL" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "69375bf6-2554-5bf8-9349-620d050c182c") (effects (font (size 1 1))))
+		)(property "LCSC" "C140215" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "fa2cf277-e79a-5c74-980e-51c5393b284c") (effects (font (size 1 1))))(property "Manufacturer" "FH (Fenghua Advanced)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "69375bf6-2554-5bf8-9349-620d050c182c") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 0)
 			(layer "F.Fab")
@@ -7690,7 +7684,7 @@
 				)
 			)
 		)
-		(property "MPN" "0402WGF1002TCE"
+		(property "MPN" "RC-02K1002FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7789,25 +7783,25 @@
 			)
 		)
 	)
-	(footprint "Connector_Hirose_DF40:Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm"
+	(footprint "panda-r6-display:HCTL_PBB40C_60DP_04V"
 		(layer "B.Cu")
 		(uuid "c6dece39-be65-4fa3-8d9b-4633d031ca57")
 		(at 23 4)
-		(descr "0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)")
-		(tags "conn hirose board-to-board mezzanine stacking plug")
+		(descr "HCTL paired DS1.5/DP; 60 signals,0.4mm pitch,1.5mm nominal mate,0.3A/contact,contact resistance90mohm max,30cycles. DS lands0.2x0.7 at y+/-1.54; DP0.23x0.66 at y+/-1.355 with four0.35x0.66 supports at x+/-6.275. Manufacturer drawing matches all retained land coordinates and body outlines; pad1/odd/even inspected. No mixed HCTL/Hirose mating authorized. Mechanical mating/contact/panel supply qualification remains pending.")
+		(tags "HCTL 60pin 0.4mm 1.5mm mate")
 		(property "Reference" "J1"
 			(at 0 3.56 0)
 			(layer "B.SilkS")
 			(uuid "89d1e9a6-09bf-4b92-8595-ef3d839c6f93")
 			(effects
 				(font
-					(size 0.8 0.8)
-					(thickness 0.1)
+					(size 1 1)
+					(thickness 0.15)
 				)
 				(justify mirror)
 			)
 		)
-		(property "Value" "DF40C-60DP-0.4V(51)"
+		(property "Value" "HC-PBB40C-60DP-0.4V-02"
 			(at 0 -2.89 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -7820,7 +7814,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" "https://www.hirose.com/en/product/p/CL0684-4003-3-51"
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20250421/1D7BA14108151E8660428C4797015DB7.pdf"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -7832,7 +7826,7 @@
 				(justify mirror)
 			)
 		)
-(property "LCSC" "C424647"
+(property "LCSC" "C19089235"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -7843,7 +7837,7 @@
 				)
 				(justify mirror)
 			)
-		)(property "Manufacturer" "Hirose" (at 0 0 180) (layer "B.Fab") (hide yes) (uuid "0a45de78-3073-5e19-9247-31c6cf74d093") (effects (font (size 1 1))))
+		)(property "Manufacturer" "HCTL" (at 0 0 180) (layer "B.Fab") (hide yes) (uuid "0a45de78-3073-5e19-9247-31c6cf74d093") (effects (font (size 1 1))))
 		(property "Description" ""
 			(at 0 0 180)
 			(layer "B.Fab")
@@ -7869,7 +7863,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "DF40C-60DP-0.4V(51)"
+		(property "MPN" "HC-PBB40C-60DP-0.4V-02"
 			(at 0 0 180)
 			(layer "B.SilkS")
 			(hide yes)
@@ -8683,17 +8677,7 @@
 			(uuid "ff00eae5-0d5e-4a62-991d-7cae9269f322")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Hirose_DF40.3dshapes/Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
+
 	)
 	(gr_line
 		(start 0 0)

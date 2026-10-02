@@ -1,0 +1,289 @@
+{
+  "schema": "panda-split-c1-domestic-audit-v1",
+  "requirement": "All populated two-board BOM parts must have a mainland manufacturer; no retained foreign exception.",
+  "scope": "All populated Core-C1 and Display-C1 system-BOM refs, including offboard TH301. DNP/removed historical circuitry excluded. Battery, panel, antenna, cables and enclosure not yet represented by these PCB BOMs remain separate mechanical/sourcing work.",
+  "inputs": {
+    "policy": {
+      "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
+      "sha256": "d7a58d784c033f3e90fdaec3f1fdfc83828fe4d764c35968ca4abbcdea68509e"
+    },
+    "eco": {
+      "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
+      "sha256": "7ea5f66abdf2a0095983e353fc668eea7983f45b1ce97d7a976f42fcfce3f330"
+    },
+    "Core-C1/pcb": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "sha256": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8"
+    },
+    "Core-C1/bom": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
+      "sha256": "35864dfde7e731a5d7805577723b77029dedc56ed2816961b95966fc21c6f8f8"
+    },
+    "Core-C1/cpl": {
+      "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
+      "sha256": "8ffe8b2a84ae1a570963369e02afda52f0137da704c39117ba7855cc955c6116"
+    },
+    "Display-C1/pcb": {
+      "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
+      "sha256": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
+    },
+    "Display-C1/bom": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/bom.csv",
+      "sha256": "780875f8e979880bfd4aea1560cce40409984da81f38e1219e4f8cfe154ae995"
+    },
+    "Display-C1/cpl": {
+      "path": "hardware/thin18-compact/production/display-c1-45x36/manufacturing/cpl.csv",
+      "sha256": "0274098b777d95c74aca676772e5a2f464d7bcce8cff221a340b31253fe78324"
+    }
+  },
+  "boards": {
+    "Core-C1": {
+      "populated_refs": 119,
+      "smt_refs": 118,
+      "manual_or_offboard_refs": [
+        "TH301"
+      ],
+      "domestic_refs": 104,
+      "foreign_refs": [
+        "C301",
+        "D201",
+        "D202",
+        "J201",
+        "J301",
+        "J302",
+        "J501",
+        "J502",
+        "J803",
+        "J804",
+        "L401",
+        "L402",
+        "SW201",
+        "SW202",
+        "U302"
+      ],
+      "unreviewed_refs": [],
+      "mapped_smt_refs": 111,
+      "unmapped_smt_refs": [
+        "L402",
+        "U402",
+        "U403",
+        "U404",
+        "U405",
+        "U902",
+        "U905"
+      ]
+    },
+    "Display-C1": {
+      "populated_refs": 37,
+      "smt_refs": 37,
+      "manual_or_offboard_refs": [],
+      "domestic_refs": 34,
+      "foreign_refs": [
+        "J2",
+        "L1",
+        "Q1"
+      ],
+      "unreviewed_refs": [],
+      "mapped_smt_refs": 36,
+      "unmapped_smt_refs": [
+        "L1"
+      ]
+    }
+  },
+  "total_populated_refs": 156,
+  "domestic_refs": 138,
+  "foreign_ref_count": 18,
+  "unreviewed_ref_count": 0,
+  "remaining_foreign": [
+    {
+      "board": "Core-C1",
+      "ref": "C301",
+      "manufacturer": "Seiko Instruments",
+      "mpn": "CPH3225A",
+      "footprint": "panda-standard:CPH3225A_Polarized_Derived",
+      "library_id": "C6048128",
+      "assembly": "SMT",
+      "next_action": "Select an exact mainland low-leakage backup part together with RTC U302; obtain polarity/land/height drawings and recalculate backup duration. Current 11mF EDLC is foreign and remains a release blocker."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "D201",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD4E05U06DQAR",
+      "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+      "library_id": "C138714",
+      "assembly": "SMT",
+      "next_action": "Reviewed candidates have 5.0V VRWM; this cannot be assumed adequate on CC at the USB supply high corner. Select suitable VRWM/clamp and review pin map, pad geometry and signal capacitance, or split CC and USB protection."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "D202",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPD1E10B06DPYR",
+      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
+      "library_id": "C48260",
+      "assembly": "SMT",
+      "next_action": "Select exact mainland VBUS protection with verified standoff/clamping/polarity and package; review USB maximum voltage and protected-node absolute maximum. Do not copy a similar part-number ID."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J201",
+      "manufacturer": "GCT",
+      "mpn": "USB4500-03-0-A",
+      "footprint": "panda-layout:USB4500_08mm_MidMount_LayoutReview",
+      "library_id": "C5354966",
+      "assembly": "SMT",
+      "next_action": "Obtain exact mainland connector drawing for 0.8mm mid-mount board, all contacts/shell pads and cutout. Redesign copper/cutout as required and resolve the existing 0.02mm edge-clearance CAM blocker."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J301",
+      "manufacturer": "Hirose",
+      "mpn": "DF58-2P-1.2V(21)",
+      "footprint": "panda-battery:Hirose_DF58-2P-1.2V_1x02_P1.2mm_Vertical",
+      "library_id": "C597951",
+      "assembly": "SMT",
+      "next_action": "Select exact mainland battery connector and mating harness with current rating for peak/charge current; original DF58 is 3A. Do not downgrade to the 1A HC-1.0 NTC/speaker series; check polarity, height and pad map."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J302",
+      "manufacturer": "JST",
+      "mpn": "SM03B-SRSS-TB(LF)(SN)",
+      "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
+      "library_id": "C160403",
+      "assembly": "SMT",
+      "next_action": "Use a custom mainland footprint and reroute three signals/supports: HCTL signal lands 0.7x1.75mm/supports 1.1x1.75mm and row offset differ from current JST lands. Freeze matching harness termination and TH301 tip/100mm lead clearance."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J501",
+      "manufacturer": "Molex",
+      "mpn": "104031-0811",
+      "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
+      "library_id": "C585350",
+      "assembly": "SMT",
+      "next_action": "Select exact mainland microSD socket with detect switch, reviewed sales drawing and pin map. Recheck outline/card insertion window, support lands, ESD, power and native routing before changing CAD."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J502",
+      "manufacturer": "JST",
+      "mpn": "SM02B-SRSS-TB(LF)(SN)",
+      "footprint": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
+      "library_id": "C160402",
+      "assembly": "SMT",
+      "next_action": "Use custom HCTL lands and reroute pads/supports; confirm 1A contact rating against speaker peak current and select matching mainland cable. Current JST geometry is not a drop-in match."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J803",
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
+      "library_id": "C224194",
+      "assembly": "SMT",
+      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "J804",
+      "manufacturer": "Hirose",
+      "mpn": "FH34SRJ-6S-0.5SH(50)",
+      "footprint": "PandaDomestic:FH34SRJ-6S-0.5SH_50",
+      "library_id": "C224194",
+      "assembly": "SMT",
+      "next_action": "Obtain exact mainland 6-pin 0.5mm connector drawings and mating FPC/contact side. Preserve pin-1, signal assignment, locking/entry clearance and maximum height; replace footprint and reroute if lands differ."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L401",
+      "manufacturer": "Coilcraft",
+      "mpn": "XFL4015-471MEC",
+      "footprint": "panda-standard:L401_XFL4015_ENVELOPE",
+      "library_id": "C18221164",
+      "assembly": "SMT",
+      "next_action": "Review exact recommended land/body dimensions and the SGM62125 peak/ripple/thermal corner. Candidate DCR21mohm max differs from incumbent 8.36mohm max; do not infer equal efficiency/current heating or a JLC ID."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "L402",
+      "manufacturer": "Coilcraft",
+      "mpn": "XGL4015-222MEC",
+      "footprint": "panda-standard:XGL4015_Coilcraft",
+      "library_id": "",
+      "assembly": "SMT",
+      "next_action": "Candidate minimum saturation2.4A and maximum DCR83.5mohm are materially different from incumbent saturation4.9A and DCR36mohm. Recalculate charger peak/ripple/loss or choose a stronger exact mainland part, then apply manufacturer land pattern."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW201",
+      "manufacturer": "ALPSALPINE",
+      "mpn": "SKSCLCE010",
+      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
+      "library_id": "C139799",
+      "assembly": "SMT",
+      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "SW202",
+      "manufacturer": "ALPSALPINE",
+      "mpn": "SKSCLCE010",
+      "footprint": "panda-standard:SW_Alps_SKSCLCE010",
+      "library_id": "C139799",
+      "assembly": "SMT",
+      "next_action": "Select exact mainland switch with matched actuation direction, force/travel, land/peg drawing and enclosure datum. Update footprint/copper and button mechanism before approval."
+    },
+    {
+      "board": "Core-C1",
+      "ref": "U302",
+      "manufacturer": "Micro Crystal",
+      "mpn": "RV-3028-C7-32.768KHZ-1PPM-TA-QA",
+      "footprint": "Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm",
+      "library_id": "C3304278",
+      "assembly": "SMT",
+      "next_action": "Treat as subsystem redesign: SD3078 VDD2.7..5.5V/VBAT2.3..3.6V and typical0.8uA backup differ from RV3028 low-voltage/45nA. New footprint/pin map/driver and backup C301/current/accuracy budget are required; no equivalent selected yet."
+    },
+    {
+      "board": "Display-C1",
+      "ref": "J2",
+      "manufacturer": "Hirose",
+      "mpn": "FH12-24S-0.5SH(55)",
+      "footprint": "Connector_FFC-FPC:Hirose_FH12-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
+      "library_id": "C202112",
+      "assembly": "SMT",
+      "next_action": "Confirm exact original manufacturer land drawing, bottom-contact side, 0.3mm FPC, latch and height for an orderable mainland variant. Catalog-only dimensional claims are insufficient; then replace footprint/routing and recheck panel mating."
+    },
+    {
+      "board": "Display-C1",
+      "ref": "L1",
+      "manufacturer": "Taiyo Yuden",
+      "mpn": "LSXNE3030KKT470MN",
+      "footprint": "panda-r6-display:L_Taiyo_NRH3010_3030",
+      "library_id": "",
+      "assembly": "SMT",
+      "next_action": "SWPA3010 minimum saturation0.22A does not meet the incumbent0.25A rating merely because typical is0.35A. Verify the taller3012 exact ratings/land/height and boost current corners or choose another exact mainland inductor."
+    },
+    {
+      "board": "Display-C1",
+      "ref": "Q1",
+      "manufacturer": "Nexperia",
+      "mpn": "NX3008NBK,215",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "library_id": "C179399",
+      "assembly": "SMT",
+      "next_action": "Retain30V VDS requirement. CJ3400 lower RDS is not sufficient: qualify its gate charge versus the display controller driver/switching loss and check SOT23 pin map/land. No direct replacement approved."
+    }
+  ],
+  "unreviewed_identities": [],
+  "applied_replacement_refs": 77,
+  "applied_replacement_identities_verified": true,
+  "manufacturer_only_relabel_rejected": true,
+  "all_domestic_bom_complete": false,
+  "smt_mapping_complete": false,
+  "assembly_order_ready": false,
+  "physical_evt_passed": false,
+  "manufacturing_release": false,
+  "status": "BLOCKED_ALL_DOMESTIC_REQUIREMENT"
+}

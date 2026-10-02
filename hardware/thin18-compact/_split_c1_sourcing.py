@@ -99,7 +99,8 @@ def apply_sourcing(candidate, board_id):
         if before != after: raise ValueError("Sourcing patch changed non-property CAD data")
         staged.append((path, text, before))
     for pcb in (False, True):
-        if seen[pcb] != set(items): raise ValueError(f"Missing {'PCB' if pcb else 'schematic'} refs: {set(items)-seen[pcb]}")
+        expected={ref for ref,item in items.items() if not pcb or not item.get("manual")}
+        if seen[pcb] != expected: raise ValueError(f"Missing {'PCB' if pcb else 'schematic'} refs: {expected-seen[pcb]}")
     for path, text, _ in staged: path.write_text(text)
     report = {"schema": "panda-split-c1-sourcing-patch-v1", "board": board_id,
               "identity_verified_refs": sorted(items), "manufacturer_mpn_unchanged": True,

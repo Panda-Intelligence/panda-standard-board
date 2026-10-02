@@ -101,7 +101,10 @@ if missing: raise RuntimeError(f'offboard schematic refs missing: {sorted(missin
 
 # Import the standard 60-pin connector library definition and reuse the
 # complete, already ERC-clean J1 connector wiring section from Display-C1.
-display_s=(ROOT/'display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_sch').read_text()
+# Pin the original wiring seed; current Display procurement ECOs must not leak
+# into the predecessor socket identity used by the deterministic Core replay.
+display_s=subprocess.check_output(['git','show',
+    'e8746467e57d7fd4571bdc881b1be4c021110b4f:hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_sch'],cwd=ROOT).decode()
 libname='Connector_Generic:Conn_02x30_Odd_Even'
 if f'(symbol "{libname}"' not in s:
     definition=extract_symbol_definition(display_s,libname)
@@ -299,6 +302,10 @@ closure=ROOT/'core-c1-routing-closure.json'
 if closure.exists():
     from _core_c1_pcb_patch import apply_closure
     apply_closure(pcb,closure)
+from _split_c1_prototype_eco import apply_prototype_eco
+apply_prototype_eco(DST, 'Core-C1')
+from _split_c1_domestic_eco import apply_domestic_eco
+apply_domestic_eco(DST, 'Core-C1')
 from _split_c1_sourcing import apply_sourcing
 apply_sourcing(DST, 'Core-C1')
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
@@ -313,7 +320,7 @@ if closure.exists() and any(counts.values()):
 (DST/'split-transform-report.json').write_text(json.dumps({
  'date':'2026-10-01','source':SRC.name,'source_commit':BASELINE_COMMIT,'candidate':DST.name,
  'offboard_adapter_refs':sorted(OFFBOARD_REFS),
- 'j601':{'mpn':'DF40C-60DS-0.4V(58)','position_mm':[61,62],'layer':'B.Cu','rotation_deg':0,
+ 'j601':{'mpn':'HC-PBB40C-60DS-0.4V-1.5-02','position_mm':[61,62],'layer':'B.Cu','rotation_deg':0,
          'pins':{'1':'EPD_D0/SCLK','3':'EPD_D1/MOSI','5':'EPD_D2/CS','7':'EPD_D3/DC','9':'EPD_D4/RESET','11':'EPD_D5/BUSY','35-36':'3V3_EPD_LOGIC','even2-34+55-60':'GND'}},
  'pcb_eco':{'method':'deterministic KiCad S-expression transform','removed_segments':removed_segments,'removed_vias':removed_vias},
  'native_checks_initial':counts,'manufacturing_release':False

@@ -18,4 +18,7 @@ for board, candidate, output in [
     run("export_production.py", "--candidate", ROOT / candidate,
         "--output", ROOT / "production" / output, "--board-id", board, *extra)
     run("export_jlc.py", "--production", ROOT / "production" / output)
+run("audit_split_c1_domestic.py")
 run("freeze_split_c1_release.py")
+
+run("package_jlc_prototype.py")

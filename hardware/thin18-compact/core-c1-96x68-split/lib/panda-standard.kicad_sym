@@ -781,4 +781,49 @@
 (pin power_in line (at 0 -11.43 90) (length 2.54) (name "GND" (effects (font (size 1 1)))) (number "7" (effects (font (size 1 1)))))
 (pin output line (at 11.43 3.81 180) (length 2.54) (name "VOP" (effects (font (size 1 1)))) (number "8" (effects (font (size 1 1)))))
 (pin power_in line (at 3.81 -11.43 90) (length 2.54) (name "EP" (effects (font (size 1 1)))) (number "9" (effects (font (size 1 1)))))
-)))
+))
+(symbol "SGM2578SDYG_TR"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -7.62 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "SGM2578SDYG/TR"
+			(at -1.27 8.89 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "panda-standard:SGM2578SD_WLCSP_09x09_P05"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" "https://www.sg-micro.com/rect/assets/d7f6bab2-25db-4935-8da5-745cf9661265/SGM2578S_SGM2578SD.pdf"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "SGMICRO SGM2578SDYG/TR; active-high 2A load switch with QOD; January 2026 Rev.A.2 p9 specifies RCB with ON high/low. WLCSP 0.5mm pitch, 0.22mm lands. Leakage/rise-time/RCB qualification pending."
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "SGM2578SDYG_TR_0_1"
+			(rectangle
+				(start -7.62 7.62)
+				(end 7.62 -7.62)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+		)
+		(symbol "SGM2578SDYG_TR_1_1"
+			(pin power_out line (at 10.16 2.54 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "A1" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -10.16 2.54 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "A2" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at 0 -10.16 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "B1" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -10.16 -2.54 0) (length 2.54) (name "ON" (effects (font (size 1.27 1.27)))) (number "B2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+)

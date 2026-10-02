@@ -1,11 +1,11 @@
 {
   "schema": "panda-split-c1-mechanical-audit-v1",
   "pcb_sha256": {
-    "Core-C1": "2b432e7cf7db7866eb8ac8c28b9e3c3abbfde84cf3e0503669867048f86dd198",
-    "Display-C1": "c2f1282a18cca6a244fd4f48488401a0317a5ba10d2e3ae53282e1ebb37dea45"
+    "Core-C1": "91e8c6372f0b14ba2d7b2de823d26b2c5778e951c928808bd7e7a2c300605dc8",
+    "Display-C1": "bf4e8dde5be7367dc01ef0d5621f2c6bb8866cd55d9275888939de92a3d9b00a"
   },
-  "inputs_sha256": "3e8c8a2e4d007ab8342b59e5204df6555eb605dc3363ab22a55a048be8170d5a",
-  "interface_sha256": "75ca8c131861107f7f145451c323fd149925064d1a54c0298192ec43997f1987",
+  "inputs_sha256": "a87e09677367e825819119b5c98358f171df4d7b0707b5fa8996277e198e411a",
+  "interface_sha256": "e9d224dd76653aed7f9b53a66f155b6d82e045a5f944587ef6895cd1812690ea",
   "method": "Native footprint bounding-box XY screening; no verified solid model or Z-body collision test.",
   "component_gap_xy_screen_passed": true,
   "unexpected_gap_facing_smt": {
@@ -36,6 +36,27 @@
         "model_path_is_not_a_verified_body": true
       },
       {
+        "ref": "C516",
+        "value": "1u / U403 VOUT",
+        "dnp": false,
+        "in_bom": true,
+        "native_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "world_bbox_mm": [
+          36.395,
+          15.145,
+          39.405,
+          16.655
+        ],
+        "overlap_display_projection": false,
+        "overlap_battery_planning_projection": true,
+        "model_path_is_not_a_verified_body": true
+      },
+      {
         "ref": "J503",
         "value": "TC2030-IDC-NL / DEBUG",
         "dnp": false,
@@ -58,7 +79,7 @@
       },
       {
         "ref": "J601",
-        "value": "DF40C-60DS-0.4V(58)",
+        "value": "HC-PBB40C-60DS-0.4V-1.5-02",
         "dnp": false,
         "in_bom": true,
         "native_bbox_mm": [
@@ -375,7 +396,7 @@
     "Display-C1": [
       {
         "ref": "J1",
-        "value": "DF40C-60DP-0.4V(51)",
+        "value": "HC-PBB40C-60DP-0.4V-02",
         "dnp": false,
         "in_bom": true,
         "native_bbox_mm": [
@@ -845,6 +866,123 @@
     "display_f": -2.3
   },
   "fixed_nominal_z_contribution_mm": 5.08,
+  "reference_benchmark_screen": {
+    "model": "XTEINK X4 Pro",
+    "published_body_dimensions_mm": [
+      111,
+      69,
+      5.95
+    ],
+    "published_battery_capacity_mah": 1100,
+    "fixed_nominal_z_mm": 5.08,
+    "remaining_for_battery_components_walls_and_all_allowances_mm": 0.87,
+    "remaining_budget_is_optimistic_not_a_fit_signoff": true,
+    "example_outer_xy_minus_reference_xy_mm": [
+      -0.67,
+      4.775
+    ],
+    "battery_candidate_z_screens": [
+      {
+        "manufacturer": "EEMB",
+        "mpn": "LP503450",
+        "published_battery_thickness_mm": 5.3,
+        "thickness_basis": "published cell maximum; excludes added PCM/harness",
+        "fixed_plus_published_battery_thickness_mm": 10.38,
+        "exceeds_reference_thickness_before_other_terms": true,
+        "nominal_capacity_delta_from_reference_mah": -150,
+        "selected": false
+      },
+      {
+        "manufacturer": "FP Battery",
+        "mpn": "LP505060",
+        "published_battery_thickness_mm": 5,
+        "thickness_basis": "published nominal pack thickness; maximum tolerance unknown",
+        "fixed_plus_published_battery_thickness_mm": 10.08,
+        "exceeds_reference_thickness_before_other_terms": true,
+        "nominal_capacity_delta_from_reference_mah": 700,
+        "selected": false
+      }
+    ],
+    "published_component_overlap_z_screens": [
+      {
+        "board": "Core-C1",
+        "ref": "U501",
+        "mpn": "ESP32-S3-WROOM-1U-N16R8",
+        "world_native_bbox_mm": [
+          75.825,
+          48.295,
+          95.375,
+          68.495
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          75.825,
+          48.295,
+          83,
+          65.185
+        ],
+        "published_height_nominal_mm": 3.2,
+        "nominal_overlap_section_screen_without_battery_walls_mm": 8.28,
+        "exceeds_reference_in_nominal_xy_screen": true,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+        "physical_fit_verified": false
+      },
+      {
+        "board": "Display-C1",
+        "ref": "J2",
+        "mpn": "FH12-24S-0.5SH(55)",
+        "world_native_bbox_mm": [
+          51.925,
+          32.075,
+          70.075,
+          40.025
+        ],
+        "shared_panel_core_display_xy_screen_mm": [
+          51.925,
+          32.075,
+          70.075,
+          40.025
+        ],
+        "published_height_nominal_mm": 2.0,
+        "nominal_overlap_section_screen_without_battery_walls_mm": 7.08,
+        "exceeds_reference_in_nominal_xy_screen": true,
+        "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+        "source_url": "https://www.hirose.com/product/p/CL0586-0521-0-55",
+        "physical_fit_verified": false
+      }
+    ],
+    "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
+    "reference_goal_verified": false
+  },
+  "runtime_design_budget": {
+    "capacity_basis_mah": 1100,
+    "usable_capacity_fraction": 0.8,
+    "illustrative_usable_capacity_mah": 880.0,
+    "battery_current_sensitivity": [
+      {
+        "total_battery_current_ma": 10,
+        "calculated_runtime_h": 88.0
+      },
+      {
+        "total_battery_current_ma": 20,
+        "calculated_runtime_h": 44.0
+      },
+      {
+        "total_battery_current_ma": 40,
+        "calculated_runtime_h": 22.0
+      },
+      {
+        "total_battery_current_ma": 80,
+        "calculated_runtime_h": 11.0
+      }
+    ],
+    "assumption_status": "Illustrative design allowance for cutoff, aging and temperature; not measured or manufacturer-guaranteed.",
+    "current_measurement_basis": "At battery terminals, includes conversion losses and all active/sleep loads; not a 3.3V rail current.",
+    "runtime_target_hours": null,
+    "target_policy": "Compare reading runtime with an actual X4 Pro under matched approved conditions; no unsupported days-per-charge requirement.",
+    "is_physical_measurement": false,
+    "is_x4_pro_runtime_claim": false
+  },
   "budget_formula": "T_outer = T_core + T_panel + H_core_F + max(gap + T_display + H_display_F, H_core_B_outside_Display) + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
   "rear_component_extent_below_core_b_mm": null,
   "enclosure_xy_study": {
@@ -1182,7 +1320,6 @@
   "maximum_battery_plus_swelling_budget_mm": null,
   "battery_fits_parameter_budget": null,
   "unresolved_budget_parameters": [
-    "target_outer_thickness",
     "core_front_max_component_height",
     "display_front_max_component_height",
     "panel_clearance_and_adhesive",

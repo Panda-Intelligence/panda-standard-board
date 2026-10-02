@@ -154,6 +154,81 @@ def audit(inputs_path):
                                "candidate_xy_mm":dims,"total_xy_slack_mm":slack,
                                "passes_example_1mm_each_side_body_only":all(v>=2 for v in slack),
                                "pcm_harness_swelling_verified":False,"battery_selected":False})
+    reference = inputs.get("reference_benchmark")
+    reference_screen = None
+    runtime_budget = None
+    if reference is not None:
+        reference_dims = reference["published_body_dimensions_mm"]
+        if len(reference_dims) != 3 or any(not isinstance(v, (int, float)) or not math.isfinite(v) or v <= 0 for v in reference_dims):
+            raise ValueError("Invalid reference body dimensions")
+        capacity = reference["published_battery_capacity_mah"]
+        if not isinstance(capacity, (int, float)) or not math.isfinite(capacity) or capacity <= 0:
+            raise ValueError("Invalid reference battery capacity")
+        candidate_z = []
+        for cell in inputs["battery_candidates"]:
+            maximum = cell.get("body_maximum_l_w_t_mm")
+            nominal = cell.get("body_nominal_l_w_t_mm")
+            thickness = (maximum or nominal)[2]
+            subtotal = round(fixed + thickness, 6)
+            candidate_z.append({"manufacturer": cell["manufacturer"], "mpn": cell["mpn"],
+                                "published_battery_thickness_mm": thickness,
+                                "thickness_basis": "published cell maximum; excludes added PCM/harness" if maximum else "published nominal pack thickness; maximum tolerance unknown",
+                                "fixed_plus_published_battery_thickness_mm": subtotal,
+                                "exceeds_reference_thickness_before_other_terms": subtotal > reference_dims[2],
+                                "nominal_capacity_delta_from_reference_mah": cell["capacity_nominal_mah"] - capacity,
+                                "selected": False})
+        component_z = []
+        for item in inputs.get("published_component_height_screens", []):
+            board_name = item["board"]
+            footprint = next(f for f in boards[board_name].GetFootprints() if f.GetReference() == item["ref"])
+            if footprint.GetValue() != item["mpn"] or footprint.GetLayer() != pcbnew.F_Cu:
+                raise ValueError("Published-height identity or layer mismatch: " + item["ref"])
+            height = item["height_nominal_mm"]
+            if not isinstance(height, (int, float)) or not math.isfinite(height) or height <= 0:
+                raise ValueError("Invalid published component height")
+            world = bbox(footprint)
+            if board_name == "Display-C1": world = display_world(world)
+            panel_overlap = intersection(world, panel_rect)
+            shared_overlap = intersection(panel_overlap, display_rect) if panel_overlap else None
+            subtotal = round(fixed + height, 6) if shared_overlap else None
+            component_z.append({"board": board_name, "ref": item["ref"], "mpn": item["mpn"],
+                                "world_native_bbox_mm": world, "shared_panel_core_display_xy_screen_mm": shared_overlap,
+                                "published_height_nominal_mm": height,
+                                "nominal_overlap_section_screen_without_battery_walls_mm": subtotal,
+                                "exceeds_reference_in_nominal_xy_screen": None if subtotal is None else subtotal > reference_dims[2],
+                                "method": "Conservative native footprint bbox plus published height; exact solid-body and mounting tolerances remain open.",
+                                "source_url": item["source_url"], "physical_fit_verified": False})
+        reference_screen = {"model": reference["model"],
+                            "published_body_dimensions_mm": reference_dims,
+                            "published_battery_capacity_mah": capacity,
+                            "fixed_nominal_z_mm": fixed,
+                            "remaining_for_battery_components_walls_and_all_allowances_mm": round(reference_dims[2] - fixed, 6),
+                            "remaining_budget_is_optimistic_not_a_fit_signoff": True,
+                            "example_outer_xy_minus_reference_xy_mm": [round(example_outer[i]-reference_dims[i], 6) for i in (0,1)],
+                            "battery_candidate_z_screens": candidate_z,
+                            "published_component_overlap_z_screens": component_z,
+                            "architecture_action": "Current DF40 overlap stack and studied 5mm-class batteries do not support a 5.95mm case. A two-board mechanical/interconnect ECO must precede any claim of matching the reference.",
+                            "reference_goal_verified": False}
+        planning = inputs["runtime_planning"]
+        fraction, basis = planning["usable_capacity_fraction"], planning["capacity_basis_mah"]
+        if not isinstance(fraction, (int, float)) or not math.isfinite(fraction) or not 0 < fraction <= 1:
+            raise ValueError("Invalid usable-capacity fraction")
+        if not isinstance(basis, (int, float)) or not math.isfinite(basis) or basis <= 0:
+            raise ValueError("Invalid runtime capacity basis")
+        usable = basis * fraction
+        sensitivity = []
+        for current in planning["total_battery_current_sensitivity_ma"]:
+            if not isinstance(current, (int, float)) or not math.isfinite(current) or current <= 0:
+                raise ValueError("Invalid total battery current")
+            sensitivity.append({"total_battery_current_ma": current, "calculated_runtime_h": round(usable/current, 6)})
+        runtime_budget = {"capacity_basis_mah": basis, "usable_capacity_fraction": fraction,
+                          "illustrative_usable_capacity_mah": round(usable, 6),
+                          "battery_current_sensitivity": sensitivity,
+                          "assumption_status": planning["usable_capacity_fraction_status"],
+                          "current_measurement_basis": planning["current_measurement_basis"],
+                          "runtime_target_hours": planning["runtime_target_hours"],
+                          "target_policy": planning["target_policy"],
+                          "is_physical_measurement": False, "is_x4_pro_runtime_claim": False}
     report = {
         "schema": "panda-split-c1-mechanical-audit-v1",
         "pcb_sha256": {name: sha(path) for name, path in PCB.items()},
@@ -170,6 +245,7 @@ def audit(inputs_path):
         "board_planes_core_b_z_mm": {"core_b": 0, "core_f": core_t,
                                      "display_b": -gap, "display_f": round(-gap-display_t, 6)},
         "fixed_nominal_z_contribution_mm": fixed,
+        "reference_benchmark_screen": reference_screen, "runtime_design_budget": runtime_budget,
         "budget_formula": "T_outer = T_core + T_panel + H_core_F + max(gap + T_display + H_display_F, H_core_B_outside_Display) + panel_clearance_and_adhesive + battery_clearance_and_insulation + front_wall + rear_wall + manufacturing_tolerance_reserve + T_battery_max + swelling_allowance",
         "rear_component_extent_below_core_b_mm": rear_component_extent,
         "enclosure_xy_study": {"panel_rect_mm":panel_rect,"panel_pose_verified":False,

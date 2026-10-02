@@ -37,8 +37,18 @@ for label,info in validation['files'].items():
         raise SystemExit('CAD validation source hash is stale: '+label)
     for counts in info.get('native_checks',{}).values():
         if any(counts.values()):raise SystemExit('CAD rebuild validation failed')
+from audit_split_c1_domestic import verify_fresh
+domestic_path=ROOT/'split-c1-domestic-audit.json'
+domestic=json.loads(domestic_path.read_text());verify_fresh(domestic)
+if domestic['manufacturing_release'] is not False or domestic['assembly_order_ready'] is not False:
+    raise SystemExit('Domestic audit incorrectly releases manufacturing/order')
+if not domestic['applied_replacement_identities_verified'] or not domestic['manufacturer_only_relabel_rejected']:
+    raise SystemExit('Domestic identity guards did not run')
 engineering_files={'mechanical_audit':mechanical_path,'mechanical_inputs':mechanical_inputs,
-                   'sourcing_evidence':sourcing_evidence,'cad_validation':validation_path}
+                   'sourcing_evidence':sourcing_evidence,'cad_validation':validation_path,
+                   'domestic_audit':domestic_path,'domestic_policy':ROOT/'split-c1-domestic-policy.json',
+                   'domestic_eco':ROOT/'split-c1-domestic-eco.json',
+                   'domestic_notes':ROOT/'SPLIT-C1-DOMESTICIZATION.md'}
 boards={}
 for name,folder in [("Core-C1","core-c1-96x68"),("Display-C1","display-c1-45x36")]:
     out=ROOT/"production"/folder
@@ -58,6 +68,9 @@ for name,folder in [("Core-C1","core-c1-96x68"),("Display-C1","display-c1-45x36"
         m['files'][label]=entry(target)
     summary=json.loads((jlc/"jlc-summary.json").read_text())
     if summary["cpl_refs_missing_from_bom"]:raise SystemExit("BOM/CPL mismatch")
+    m["all_domestic_bom_complete"]=domestic["all_domestic_bom_complete"]
+    m["domestic_foreign_ref_count"]=domestic["foreign_ref_count"]
+    m["assembly_order_ready"]=False
     m["assembly_sourcing_status"]={
         "lcsc_mapped_designators":summary["lcsc_mapped_designators"],
         "mpn_only_designators":summary["mpn_only_designators"],
@@ -73,6 +86,8 @@ for name,folder in [("Core-C1","core-c1-96x68"),("Display-C1","display-c1-45x36"
     rc={"schema":"panda-board-c1-release-candidate-v1","board_id":name,
         "native_checks":m["native_checks"],"dimensions_mm":m["board_dimensions_mm"],
         "production_data_complete":True,"manufacturing_release":False,
+        "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
+        "assembly_request_ready":False,"assembly_order_ready":False,
         "production_manifest":entry(manifest_path),"interface_contract":entry(interface),
         "assembly_sourcing":m["assembly_sourcing_status"],
         "physical_gates":"Physical electrical EVT, enclosure/battery Z-stack, panel fit and actual mating remain unverified."}
@@ -93,6 +108,8 @@ for name,folder in [("Core-C1","core-c1-96x68"),("Display-C1","display-c1-45x36"
         "release_candidate":entry(rc_path),"sha256_manifest":entry(sums)}
 release={"schema":"panda-split-c1-release-v1","architecture":"Core-C1 + Display-C1",
     "cad_manufacturing_data_complete":True,"manufacturing_release":False,
+    "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
+    "domestic_audit":entry(domestic_path),"assembly_order_ready":False,
     "interface_contract":entry(interface),"boards":boards,
     "mechanical_audit":entry(mechanical_path),"mechanical_inputs":entry(mechanical_inputs),
     "sourcing_evidence":entry(sourcing_evidence),"cad_validation":entry(validation_path),

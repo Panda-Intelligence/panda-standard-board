@@ -1,0 +1,483 @@
+{
+  "schema": "panda-split-c1-domestic-eco-v1",
+  "date": "2026-10-02",
+  "direction": "Replace foreign and ambiguous-origin selections with mainland manufacturer parts; retain existing domestic selections including Espressif.",
+  "goal": "ALL populated procurement items use qualified mainland manufacturer brands; no automatic exemptions for connectors/RTC/ESD.",
+  "applied_groups": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R201"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0603WAF5601T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03K5601FT",
+        "LCSC": "C99891",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K5601FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K5601FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C99891.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R204"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0603WAF1201T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03K1201FT",
+        "LCSC": "C118396",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C118396.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R303",
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R523",
+        "R524",
+        "R525",
+        "R526",
+        "R527",
+        "R528",
+        "R600"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF1002TCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K1002FT",
+        "LCSC": "C140215",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140215.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R501",
+        "R502",
+        "R507",
+        "R604",
+        "R605",
+        "R606",
+        "R607",
+        "R608",
+        "R609",
+        "R610",
+        "R611",
+        "R612"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF1003TCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K1003FT",
+        "LCSC": "C140219",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140219.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R508",
+        "R509",
+        "R514",
+        "R515",
+        "R516"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0805W8F0000T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-05000FT",
+        "LCSC": "C132364",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-05000FT"
+      },
+      "qualification": "FH jumper specification I12.0: F grade <=10mohm, 0603 rated 3A / 0805 rated 4A at70C, exceeds 2A branch envelope. At2A <=40mW; temperature derating and measured heating remain EVT.",
+      "source_url": "https://www.fhcomp.com/uploads/20260521/143110_5-R-%E5%8E%9A%E8%86%9C%E7%89%87%E5%BC%8F%E8%B7%A8%E6%8E%A5%E5%9B%BA%E5%AE%9A%E7%94%B5%E9%98%BB%E5%99%A8-I%2012.0.pdf",
+      "catalog_url": "https://www.lcsc.com/product-detail/C132364.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R517",
+        "R518",
+        "R519",
+        "R520",
+        "R521",
+        "R522"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0603WAF0000T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03000FT",
+        "LCSC": "C136582",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03000FT"
+      },
+      "qualification": "FH jumper specification I12.0: F grade <=10mohm, 0603 rated 3A / 0805 rated 4A at70C, exceeds 2A branch envelope. At2A <=40mW; temperature derating and measured heating remain EVT.",
+      "source_url": "https://www.fhcomp.com/uploads/20260521/143110_5-R-%E5%8E%9A%E8%86%9C%E7%89%87%E5%BC%8F%E8%B7%A8%E6%8E%A5%E5%9B%BA%E5%AE%9A%E7%94%B5%E9%98%BB%E5%99%A8-I%2012.0.pdf",
+      "catalog_url": "https://www.lcsc.com/product-detail/C136582.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R529",
+        "R530"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF220JTCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K22R0FT",
+        "LCSC": "C324769",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C324769.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R613",
+        "R614"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF2201TCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K2201FT",
+        "LCSC": "C140192",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K2201FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K2201FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140192.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R615"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0603WAF5231T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03K5231FT",
+        "LCSC": "C140082",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K5231FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K5231FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140082.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R616"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0603WAF3012T5E",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03K3012FT",
+        "LCSC": "C321843",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K3012FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K3012FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C321843.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "old_manufacturer": "Murata",
+      "old_mpn": "GRM21BR61E475KA12L",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "0805B475K250NT",
+        "LCSC": "C37818",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT",
+        "Value": "4.7u 25V X7R"
+      },
+      "qualification": "Same capacitance/package/25V/+/-10%; X7R replaces X5R where applicable. Effective DC-bias capacitance and rail ripple remain EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=0805B475K250NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C37818.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C10"
+      ],
+      "old_manufacturer": "Murata",
+      "old_mpn": "GRM21BR71E105KA99L",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "0805B105K250NT",
+        "LCSC": "C89190",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=0805B105K250NT"
+      },
+      "qualification": "Same capacitance/package/25V/+/-10%; X7R replaces X5R where applicable. Effective DC-bias capacitance and rail ripple remain EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=0805B105K250NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C89190.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "old_manufacturer": "Murata",
+      "old_mpn": "GRM188R71E104KA01D",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "0603B104K250NT",
+        "LCSC": "C694249",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=0603B104K250NT"
+      },
+      "qualification": "Same capacitance/package/25V/+/-10%; X7R replaces X5R where applicable. Effective DC-bias capacitance and rail ripple remain EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=0603B104K250NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C694249.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "old_manufacturer": "YAGEO",
+      "old_mpn": "RC0402FR-0722RL",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K22R0FT",
+        "LCSC": "C324769",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K22R0FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C324769.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R6"
+      ],
+      "old_manufacturer": "YAGEO",
+      "old_mpn": "RC0402FR-07100RL",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K1000FT",
+        "LCSC": "C140217",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1000FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1000FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140217.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R7",
+        "R8",
+        "R9",
+        "R10",
+        "R11",
+        "R12"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF1003TCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K1003FT",
+        "LCSC": "C140219",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140219.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R13"
+      ],
+      "old_manufacturer": "YAGEO",
+      "old_mpn": "RC0603FR-072R2L",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RS-03L2R20FT",
+        "LCSC": "C322118",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03L2R20FT"
+      },
+      "qualification": "2.2ohm +/-1%, 100mW 0603; +/-250ppm/C versus original +/-100ppm/C. Extra RESE drift at 60C delta <=33mohm; current-limit/boost corner qualification required.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03L2R20FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C322118.html"
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "R14"
+      ],
+      "old_manufacturer": "UNI-ROYAL",
+      "old_mpn": "0402WGF1002TCE",
+      "new_fields": {
+        "Manufacturer": "FH (Fenghua Advanced)",
+        "MPN": "RC-02K1002FT",
+        "LCSC": "C140215",
+        "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT"
+      },
+      "qualification": "Same resistance/package; exact +/-1% FH part, power/voltage not reduced. 0-ohm links retain package/current class. Actual heating remains EVT.",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140215.html"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "old_manufacturer": "Texas Instruments",
+      "old_mpn": "TPS22916CYFPT",
+      "switch": true,
+      "new_fields": {
+        "Manufacturer": "SGMICRO",
+        "MPN": "SGM2578SDYG/TR",
+        "LCSC": "",
+        "Value": "SGM2578SDYG/TR",
+        "Footprint": "panda-standard:SGM2578SD_WLCSP_09x09_P05",
+        "Datasheet": "https://www.sg-micro.com/rect/assets/d7f6bab2-25db-4935-8da5-745cf9661265/SGM2578S_SGM2578SD.pdf",
+        "Description": "SGMICRO SGM2578SDYG/TR; active-high 2A load switch with QOD; January 2026 Rev.A.2 p9 specifies RCB with ON high/low. WLCSP 0.5mm pitch, 0.22mm lands. Leakage/rise-time/RCB qualification pending."
+      },
+      "source_url": "https://www.sg-micro.com/product/SGM2578SD",
+      "catalog_url": null,
+      "qualification": "Engineering selection based on Rev.A.2 pp3-5/9/package TX00541.000. 1.2..5.5V covers 3.3V rails; 2A; QOD; RCB with ON high/low. ON VIH .71V max, VIL .3V. At 3.3V IQ .39uA typ/1.3uA max, tON <=1.6ms, tR <=.8ms; not TI timing/leakage equivalence. Output bypass coverage and shutdown/RCB/thermal/leakage need review/EVT. No supplier acceptance."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "old_manufacturer": "onsemi",
+      "old_mpn": "MBR0530T1G",
+      "diode_land": true,
+      "new_fields": {
+        "Manufacturer": "JSCJ",
+        "MPN": "MBR0530",
+        "LCSC": "C77336",
+        "Value": "MBR0530",
+        "Footprint": "panda-r6-display:MBR0530_JSCJ_SOD123",
+        "Datasheet": "https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf"
+      },
+      "source_url": "https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf",
+      "catalog_url": "https://www.lcsc.com/product-detail/C77336.html",
+      "qualification": "30V .5A SOD123, pin1 cathode. CJ suggested .94x.91mm lands /3.3mm center pitch applied. VF max .55V at .5A vs onsemi .43V; max IR80uA at30V vs130uA. Boost regulation/ripple/thermal efficiency remain EVT; not identical VF."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "J601"
+      ],
+      "old_manufacturer": "Hirose",
+      "old_mpn": "DF40C-60DS-0.4V(58)",
+      "connector_footprint": true,
+      "new_fields": {
+        "Manufacturer": "HCTL",
+        "MPN": "HC-PBB40C-60DS-0.4V-1.5-02",
+        "LCSC": "C19089250",
+        "Value": "HC-PBB40C-60DS-0.4V-1.5-02",
+        "Footprint": "panda-standard:HCTL_PBB40C_60DS_04V_15",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20240919/9AC60CBEB0CC244F18C3CAA79B732E7D.pdf"
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20240919/9AC60CBEB0CC244F18C3CAA79B732E7D.pdf",
+      "catalog_url": "https://item.szlcsc.com/20296000.html",
+      "qualification": "HCTL paired DS1.5/DP; 60 signals,0.4mm pitch,1.5mm nominal mate,0.3A/contact,contact resistance90mohm max,30cycles. DS lands0.2x0.7 at y+/-1.54; DP0.23x0.66 at y+/-1.355 with four0.35x0.66 supports at x+/-6.275. Manufacturer drawing matches all retained land coordinates and body outlines; pad1/odd/even inspected. No mixed HCTL/Hirose mating authorized. Mechanical mating/contact/panel supply qualification remains pending."
+    },
+    {
+      "board": "Display-C1",
+      "refs": [
+        "J1"
+      ],
+      "old_manufacturer": "Hirose",
+      "old_mpn": "DF40C-60DP-0.4V(51)",
+      "connector_footprint": true,
+      "new_fields": {
+        "Manufacturer": "HCTL",
+        "MPN": "HC-PBB40C-60DP-0.4V-02",
+        "LCSC": "C19089235",
+        "Value": "HC-PBB40C-60DP-0.4V-02",
+        "Footprint": "panda-r6-display:HCTL_PBB40C_60DP_04V",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20250421/1D7BA14108151E8660428C4797015DB7.pdf"
+      },
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20250421/1D7BA14108151E8660428C4797015DB7.pdf",
+      "catalog_url": "https://item.szlcsc.com/20295985.html",
+      "qualification": "HCTL paired DS1.5/DP; 60 signals,0.4mm pitch,1.5mm nominal mate,0.3A/contact,contact resistance90mohm max,30cycles. DS lands0.2x0.7 at y+/-1.54; DP0.23x0.66 at y+/-1.355 with four0.35x0.66 supports at x+/-6.275. Manufacturer drawing matches all retained land coordinates and body outlines; pad1/odd/even inspected. No mixed HCTL/Hirose mating authorized. Mechanical mating/contact/panel supply qualification remains pending."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "TH301"
+      ],
+      "manual": true,
+      "old_manufacturer": "SEMITEC",
+      "old_mpn": "103JT-025-600AY",
+      "new_fields": {
+        "Manufacturer": "Nanjing Shiheng Elec",
+        "MPN": "MF52D-103F3435-100",
+        "LCSC": "C394023",
+        "Value": "MF52D-103F3435-100 10k B3435 external NTC",
+        "Datasheet": "https://datasheet.lcsc.com/datasheet/pdf/82ea799f177b8342022ee6baa5ce253b.pdf?productCode=C394023",
+        "Description": "Shiheng MF52D-103F3435-100 external battery sensor: R25 10k +/-1%, B25/85 3435K +/-1%; epoxy tip 4mm max, 100mm AWG30 leads. Manual assembly only. Different R-T curve, harness termination, tip clearance and thermal attachment must be qualified."
+      },
+      "source_url": "https://datasheet.lcsc.com/datasheet/pdf/82ea799f177b8342022ee6baa5ce253b.pdf?productCode=C394023",
+      "catalog_url": "https://www.lcsc.com/product-detail/C394023.html",
+      "qualification": "Manufacturer approval sheet JK/JXD190509011-A, 2019-05-10: R25 10k +/-1%, B25/85 3435K +/-1%, finished -20..105C, delta>=2mW/C, tau<=7s in still air, 4mm max tip, 100mm AWG30 leads. Original Semitec assembly has 600mm AWG26 leads and 3+/-0.5mm tip. Same R25/B does not guarantee identical R-T; new primary table gives R0 27.513k and R45 4.923k. Retain temperature protection; verify thresholds/attachment and harness geometry before assembly. No PCB/CPL footprint added."
+    }
+  ],
+  "all_domestic_complete": false,
+  "manufacturing_release": false,
+  "physical_evt_passed": false,
+  "support_changes": {
+    "Core-C1": [
+      "Add C516 FH 0603B105K250NT C59302, 1uF 25V X7R +/-10%, on U403 3V3_TOUCH_SW output to GND; local bottom placement and controlled tracks/via.",
+      "Correct C508-C511 component datasheet/description for FH bypass and SGM application."
+    ],
+    "Display-C1": [
+      "Correct U1-U3 AIP74LVC2G17GC363.TR component datasheet from unrelated TI AUP part to Icore B032EN/A5 March2022; no MPN/package/net change."
+    ]
+  },
+  "all_domestic_requirement_complete": false
+}

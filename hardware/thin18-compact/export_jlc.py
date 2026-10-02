@@ -45,9 +45,10 @@ if evidence_path.exists() and manifest_path.exists():
 for r in bom_rows:
     refs=expand_refs(r['Refs'])
     all_bom_refs.update(refs)
-    designators=','.join(refs)
+    machine_refs=[ref for ref in refs if ref in cpl_by_ref]
+    designators=','.join(machine_refs)
     lcsc=(r.get('LCSC') or '').strip()
-    jlc_bom.append({
+    if machine_refs: jlc_bom.append({
         'Comment':r['Value'],
         'Designator':designators,
         'Footprint':r['Footprint'].split(':')[-1],
@@ -116,18 +117,22 @@ unknown=sorted(cpl_refs-all_bom_refs)
 if unknown:
     raise SystemExit(f'CPL refs missing from BOM: {unknown}')
 summary={
-    'bom_group_rows':len(bom_rows),
+    'full_system_bom_group_rows':len(bom_rows),
+    'bom_group_rows':len(jlc_bom),
+    'jlc_bom_designators':len(cpl_by_ref),
     'bom_designators':len(all_bom_refs),
     'cpl_rows':len(cpl_rows),
     'cpl_top':sum(r['Side'].lower()=='top' for r in cpl_rows),
     'cpl_bottom':sum(r['Side'].lower()=='bottom' for r in cpl_rows),
     'lcsc_mapped_designators':sum(bool(r['LCSC Part #']) for r in sourcing),
+    'lcsc_mapped_smt_designators':sum(bool(r['LCSC Part #']) and r['In CPL']=='TRUE' for r in sourcing),
+    'lcsc_mapped_manual_designators':sum(bool(r['LCSC Part #']) and r['In CPL']=='FALSE' for r in sourcing),
     'mpn_only_designators':sum(r['Assembly status']=='MPN_ONLY_REQUIRES_JLC_MAPPING_OR_CONSIGNED_PART' for r in sourcing),
     'manual_or_offboard_designators':sum(r['Assembly status']=='MANUAL_OR_OFFBOARD' for r in sourcing),
     'identity_verified_designators':sum(r['Identity evidence']=='EXACT_MANUFACTURER_MPN_VERIFIED' for r in sourcing),
     'stock_reserved':False,
     'cpl_refs_missing_from_bom':unknown,
-    'note':'JLC format follows official BOM/CPL headers. Blank IDs require mapping/consignment. Present IDs do not reserve stock or confirm an assembly order; new reviewed mappings include identity evidence.'
+    'note':'JLC BOM includes only CPL machine placements; offboard TH301 remains in system BOM and sourcing CSV. JLC format follows official BOM/CPL headers. Blank IDs require mapping/consignment. Present IDs do not reserve stock or confirm an assembly order; new reviewed mappings include identity evidence.'
 }
 (out/'jlc-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))
