@@ -3,7 +3,9 @@
 ## Authoritative continuation
 
 Worktree: `/Users/isaac/workspace/AI/panda-standard-board-main-ic`.
-Branch: `hw/split-c1-main-ic-audit`. Base remote main: `6906a246`.
+Authoritative branch: `main`. Hardware closure is merged through PR #16
+(`ebacff2`), and C301 drilling/fabrication closure through PR #17 (`d77a33c`).
+Start new work from current remote main, not an old unmerged experiment.
 The user wants the already routed two-board main-branch design finished for
 prototype fabrication. Do NOT restart Thin7/portrait-R2 or expand unrelated
 firmware. Other worktrees and the original packaging/ directory are untouched.
@@ -102,3 +104,34 @@ from historical prose. `verify_split_c1_fabrication.py` rechecks layer functions
 plated/nonplated drills, per-board source identities and every package checksum.
 The power verification hashes the semantic netlist rather than its changing
 export timestamp; power-pin/variant validation has not been relaxed.
+
+## SMT via-process closure — 2026-10-04
+
+PR #17 was pushed, freshly validated and merged by explicit user request. This
+process follow-up starts from the merged main, without native PCB/schematic,
+footprint, layer, rule or firmware edits.
+
+Fresh native shape screening finds269 Core through vias,13 of whose drill circles
+intersect exposed SMT copper lands (including near-edge intersections); Display
+has36 vias and0 such intersections. Core **requires Epoxy Filled & Capped** for
+the listed sites, not mere soldermask tenting/plugging. C301 lead holes, USB slots,
+component PTH and NPTH are not via-fill targets. Full via treatment may cover
+Core's269-via inventory only after CAM agrees the scope.
+
+The new native auditor compares actual filled copper polygons to drill circles,
+not bounding boxes or the annular copper diameter. It rejects unsupported pad
+voids/blind vias, records nominal geometry and the1um polygon tolerance, and
+separately lists0.22/0.23mm WLCSP and small rectangular SMT lands for ENIG/stencil
+review. It does not certify solder paste apertures, fabricated tolerances or yield.
+
+`audit_split_c1_assembly_process.py` plus29 synthetic tests are required by the
+existing release command. `split-c1-assembly-process.json` records source hashes,
+via UUIDs and the measured list. The generated packet includes
+`ASSEMBLY-PROCESS.md`, `assembly-process.json` and per-board `VIA-IN-PAD.csv`.
+The final fabrication verifier matches the entire via inventory against actual
+PTH Excellon hits and checks the copied maps and requirements. Do not silently
+select ordinary open vias for Core when submitting the Gerbers.
+
+All162 exact mainland identities and the seven supplier-acceptance gaps remain
+unchanged. Actual fill/cap quote, CAM acceptance, stencil approval, assembly and
+physical EVT are not closed by generating this record.

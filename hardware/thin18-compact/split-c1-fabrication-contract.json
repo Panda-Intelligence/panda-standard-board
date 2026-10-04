@@ -55,7 +55,8 @@
     "Confirm the 0.8mm thickness tolerance, actual dielectric build and ENIG/green-mask selection for each board.",
     "Core C301 now uses two1.9mm round PTHs with2.3mm lands at20mm pitch. Preserve the circular holes; do not revert to the obsolete1.8x1.4mm short slots. Verify actual part insertion/solder fill at first assembly.",
     "Preserve separate plated/nonplated drill files, USB shell slots, fine-pitch lands and test points; do not scale or mirror copper.",
-    "WLCSP assembly, via-in-pad treatment, stencil apertures, panel rails and CPL bottom rotations require the assembly shop's acceptance."
+    "WLCSP assembly, via-in-pad treatment, stencil apertures, panel rails and CPL bottom rotations require the assembly shop's acceptance.",
+    "Core requires Epoxy Filled & Capped for the exact SMT-overlap via list. Read ASSEMBLY-PROCESS.md and each board VIA-IN-PAD.csv; ordinary tenting/plugging is not the accepted substitute, and lead/slot/NPTH holes must remain open."
   ],
   "sources_checked_on": "2026-10-04",
   "sources": [
@@ -77,5 +78,34 @@
   ],
   "cam_accepted": false,
   "assembly_order_ready": false,
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "assembly_process": {
+    "scope": "Native SMT copper/through-via process screen; no CAD change or supplier approval.",
+    "core_via_treatment": "Epoxy Filled & Capped",
+    "required_scope": "Every native via whose drilled hole overlaps an exposed SMT copper land in the generated per-board VIA-IN-PAD.csv. Full-board via fill/cap is acceptable only after CAM confirms the exact via inventory.",
+    "do_not_substitute": [
+      "Soldermask tenting",
+      "Soldermask plugging",
+      "Open via under an SMT land"
+    ],
+    "never_fill": "Component PTH holes/slots, C301 lead holes, USB shell slots, mounting holes and NPTHs are not via-fill targets.",
+    "small_land_review": "Preserve original lands; obtain assembly approval for WLCSP round lands 0.22/0.23mm and the listed small rectangular lands. ENIG is mandatory; paste apertures, stencil thickness and solder voiding remain unqualified.",
+    "coordinate_system": "Unmirrored native PCB top-view millimeters. Positive Y follows KiCad board coordinates; Excellon export Y is negated. B.Cu rows must not be mirrored a second time.",
+    "sources": [
+      {
+        "url": "https://jlcpcb.com/capabilities/Capabilities?type=1",
+        "checked_on": "2026-10-04",
+        "sections": [
+          "BGA",
+          "JLCPCB Via-in-Pad Process",
+          "Plugged vias",
+          "SMD pad to pad clearance",
+          "Min. Via hole size/diameter"
+        ]
+      }
+    ],
+    "cam_accepted": false,
+    "stencil_accepted": false,
+    "physical_qualification_passed": false
+  }
 }

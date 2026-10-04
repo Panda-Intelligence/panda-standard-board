@@ -96,3 +96,15 @@ the native four-layer35um Core copper construction and ENIG/green-mask selection
 C301 now has checked1.9mm round PTHs instead of short slots; the actual stackup
 and assembly process still need CAM acceptance.
 Native DRC/DFM success is not automatic fabrication/PCBA order approval.
+
+## Split-C1 SMT process selection
+
+The native [assembly-process auditor](hardware/thin18-compact/audit_split_c1_assembly_process.py)
+and its tests now run before fabrication export. Core contains13 drilled vias
+intersecting SMT copper lands; its order must explicitly include epoxy filling
+and copper capping for the generated list. This is distinct from soldermask
+tenting/plugging and must not fill component lead holes or slots. The generated
+prototype package includes ASSEMBLY-PROCESS.md and per-board VIA-IN-PAD.csv,
+bound to the saved PCB and checked against Excellon drill hits. Small WLCSP and
+connector lands retain ENIG and need assembler stencil/process confirmation.
+No source copper is changed by this audit; supplier acceptance is still required.

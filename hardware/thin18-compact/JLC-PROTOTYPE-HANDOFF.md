@@ -1,3 +1,8 @@
+> **2026-10-04 SMT 過孔工藝補充：Core 有13顆孔與SMT銅焊盤相交，須明確指定
+> Epoxy Filled & Capped，至少覆蓋本包逐板VIA-IN-PAD.csv。一般蓋油／塞油不得替代；
+> C301引腳孔、USB槽及其他元件PTH／NPTH不能填堵。詳見自動生成的ASSEMBLY-PROCESS.md。
+> 這是製程要求，不是已取得CAM／貼片接收。
+
 # Split-C1 工程打樣交接
 
 目前主線是已完成拆板的 Core-C1＋Display-C1。Thin7／portrait-R2 是另一個未完成的機構方案，不能替代本次台架原型的來源。
