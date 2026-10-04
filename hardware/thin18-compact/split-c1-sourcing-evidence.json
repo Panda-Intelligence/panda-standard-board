@@ -854,6 +854,15 @@
         "stock_reserved": false,
         "quotation_confirmed": false
       }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U906"
+      ],
+      "mpn": "SGM809B-TXN3LG/TR",
+      "source_url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "next_action": "Confirm exact 3.08V push-pull SOT-23 version, authorized supply and assembler code/acceptance. Do not substitute SGM803B/open-drain or SGM810B/active-high. No stock or catalog code asserted."
     }
   ],
   "manual": [

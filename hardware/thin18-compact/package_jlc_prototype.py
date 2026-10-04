@@ -204,7 +204,8 @@ def main():
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
                          assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact current H3C20mm drawing/C2894294, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
-    for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
+    for name in ["split-c1-power-integrity.json","split-c1-power-integrity-verification.json",
+                 "SPLIT-C1-POWER-INTEGRITY.md","split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
                  "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
                  "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json",

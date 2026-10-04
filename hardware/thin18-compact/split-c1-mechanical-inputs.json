@@ -366,6 +366,17 @@
       "source_locator": "Rev4.4 p22:SOP8 208mil maximum1.9mm",
       "checked_on": "2026-10-02",
       "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "U906",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "height_nominal_mm": 1.12,
+      "height_maximum_mm": 1.12,
+      "source_url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "source_locator": "RevA.2 p10 TX00031.001 max package height",
+      "checked_on": "2026-10-04",
+      "height_basis": "1.12mm is published package maximum, not nominal or a qualified mounted height; retain solder/warp allowances"
     }
   ],
   "connector_layout_changes": {
@@ -465,5 +476,6 @@
     "mechanical_authority": "thin7/thin7-mechanical-contract.json",
     "keep_two_pcbs": true,
     "native_design_currently_meets_target": false
-  }
+  },
+  "current_work_scope": "Split-C1 bench prototype on unchanged main-branch board outline; Thin7 remains a separate uncompleted mechanical target"
 }

@@ -1,0 +1,30 @@
+{
+  "schema": "panda-split-c1-power-integrity-verification-v1",
+  "native_source": {
+    "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+    "sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
+  },
+  "netlist": {
+    "path": "hardware/thin18-compact/core-c1-96x68-split/verification/netlist.xml",
+    "sha256": "74a097688e33ae14da27febc909a0b40767db43a9debedf78dfc8ee198ce8a4e"
+  },
+  "contract": {
+    "path": "hardware/thin18-compact/split-c1-power-integrity.json",
+    "sha256": "d4c6adcc8bd4ff0893fea0d1c538cb45b5ba7499965eaba7251fa4893b9619fb"
+  },
+  "checker": {
+    "path": "hardware/thin18-compact/verify_split_c1_power_integrity.py",
+    "sha256": "a9c7f26c7323c3d27eb0fade1c6d675f159dd84f99114e52cad8a701de388a9f"
+  },
+  "functional_pin_contract_passed": true,
+  "original_maker_supervisor_lands_passed": true,
+  "required_populated_core_ic_refs": 14,
+  "exact_variant_checks_passed": true,
+  "obsolete_ilim_control_nets_absent": true,
+  "pg_hardware_source_present": true,
+  "psel_bias_independent_of_aon": true,
+  "physical_evt_passed": false,
+  "firmware_policy_verified": false,
+  "assembly_order_ready": false,
+  "manufacturing_release": false
+}

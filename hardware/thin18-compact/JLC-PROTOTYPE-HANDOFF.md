@@ -1,5 +1,15 @@
 # Thin7 thickness gate — current PCB must be redesigned
 
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
+
 User requires about 7 mm whole-device thickness. The routed Split-C1 CAD
 and earlier 21 mm study do not meet it. Read thin7/THIN7-REDESIGN.md before
 any fabrication; its blank outline templates are not fabrication inputs.

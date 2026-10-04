@@ -5,7 +5,7 @@
   "inputs": {
     "policy": {
       "path": "hardware/thin18-compact/split-c1-domestic-policy.json",
-      "sha256": "da0879d17de6e130b7e9eb00e08c732b2124d1fdb2f12300fdcffde8922d04e6"
+      "sha256": "f8f3adf486d0b580a5bb57f39dc69b3f49f659c615d9b63b42e65eba7ca3926e"
     },
     "eco": {
       "path": "hardware/thin18-compact/split-c1-domestic-eco.json",
@@ -13,15 +13,15 @@
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "35b83b11b4384b7af4f8cf99c31cc71d039b5a81b0a6ca7dadfa1b9e54c1cd33"
+      "sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",
-      "sha256": "2e4ccc87d54b904e3a23b3e037dc93e65d9a5539668b83f535050e0ab6947f0f"
+      "sha256": "84cc0e45d3ed8f1533e06cb1d6cd63a9c11a0cc52e124f8e23f38f519e332fad"
     },
     "Core-C1/cpl": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/cpl.csv",
-      "sha256": "25d6fdb37c820e22e9a7d0e4db532b233427b5b7b2aedc5b218e0d3e4a6ae000"
+      "sha256": "afbfc1ff71bfe088d515e34363ebe79ec0d0ba29afdd37285866c2d591942c8a"
     },
     "Display-C1/pcb": {
       "path": "hardware/thin18-compact/display-c1-45x36-production-bom/PANDA-EPD0426-SPI-EVT.kicad_pcb",
@@ -38,13 +38,13 @@
   },
   "boards": {
     "Core-C1": {
-      "populated_refs": 118,
-      "smt_refs": 116,
+      "populated_refs": 119,
+      "smt_refs": 117,
       "manual_or_offboard_refs": [
         "C301",
         "TH301"
       ],
-      "domestic_refs": 118,
+      "domestic_refs": 119,
       "foreign_refs": [],
       "unreviewed_refs": [],
       "mapped_smt_refs": 110,
@@ -54,7 +54,8 @@
         "U404",
         "U405",
         "U902",
-        "U905"
+        "U905",
+        "U906"
       ]
     },
     "Display-C1": {
@@ -68,8 +69,8 @@
       "unmapped_smt_refs": []
     }
   },
-  "total_populated_refs": 155,
-  "domestic_refs": 155,
+  "total_populated_refs": 156,
+  "domestic_refs": 156,
   "foreign_ref_count": 0,
   "unreviewed_ref_count": 0,
   "remaining_foreign": [],

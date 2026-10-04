@@ -308,6 +308,8 @@ from _split_c1_domestic_eco import apply_domestic_eco
 apply_domestic_eco(DST, 'Core-C1')
 from _split_c1_sourcing import apply_sourcing
 apply_sourcing(DST, 'Core-C1')
+from _split_c1_power_integrity_eco import apply_power_integrity_eco
+apply_power_integrity_eco(DST)
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
 subprocess.run([K,'sch','erc','--format','json','--severity-all','--output',str(verify/'erc.json'),str(core/(STEM+'.kicad_sch'))],check=True)
 subprocess.run([K,'sch','export','netlist','--format','kicadxml','--output',str(verify/'netlist.xml'),str(core/(STEM+'.kicad_sch'))],check=True)

@@ -2,16 +2,29 @@
 
 Open hardware design sources and engineering documentation for the **Panda Standard Board**, maintained by Panda Intelligence.
 
-## Active compact product work
+## Active Split-C1 prototype and mainland IC continuation
 
-The compact product now targets **112 x 75 x 7.0 mm** with two PCBs.
-See [Thin7 redesign](hardware/thin18-compact/thin7/THIN7-REDESIGN.md).
-Its mechanical outlines require electronic relayout and part qualification;
-current Split-C1 routed CAD does not meet 7 mm and is not a factory release.
+The active continuation is the populated **Core-C1 96 x 68 mm / 4-layer** plus
+**Display-C1 45 x 36 mm / 2-layer** design already split and routed on main.
+Start with [Split-C1 handoff](hardware/thin18-compact/SPLIT-C1-HANDOFF.md) and the
+[PG/PSEL functional migration](hardware/thin18-compact/SPLIT-C1-POWER-INTEGRITY.md).
+Do not replace it with Thin7/portrait-R2 experimental CAD merely because an
+experiment has a newer timestamp. Thin7 remains a separate, incomplete 7-mm
+mechanical target and is not claimed by the Split-C1 bench prototype.
 
-## Current hardware baseline
+Generate checked prototype data explicitly:
 
-The current published engineering baseline is:
+```sh
+python3 hardware/thin18-compact/release_split_c1.py --target split-c1
+```
+
+Bare-board CAM/DFM, accepted PCBA supply and physical EVT are separate gates.
+The new supervisor is a mainland part, but its exact assembly code/receipt is
+not yet confirmed. No production qualification or actual purchase is implied.
+
+## Historical published Thin18 baseline
+
+The earlier published integrated-board engineering baseline was:
 
 - **Board:** Thin18 domestic EVT
 - **PCB checkpoint:** `routing142`
@@ -34,12 +47,13 @@ docs/
 LICENSES/
 ```
 
-## Opening the design
+## Opening the active two-board design
 
 The design was validated with **KiCad 10.0.5**. Open the complete project under:
 
 ```text
-hardware/thin18/routing142/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/
+hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/
+hardware/thin18-compact/display-c1-45x36-production-bom/
 ```
 
 Project-local symbol and footprint libraries are included where the design depends on them.

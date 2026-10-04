@@ -1135,8 +1135,22 @@
       "footprint": "panda-standard:HCTL_HC_HY_2AWT",
       "library_id": "C2845705",
       "origin": "MAINLAND_MANUFACTURER"
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U906"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "footprint": "panda-standard:SGM809B_SOT23_TX00031",
+      "library_id": "",
+      "origin": "MAINLAND_MANUFACTURER",
+      "review_source": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "review_note": "Exact ordering code,pinmap and SOT-23 TX00031 lands; semiconductor qualification and supplier acceptance remain open."
     }
   ],
   "remaining_redesigns": [],
-  "classification_note": "Exact manufacturer/MPN/footprint/library-ID identities are pinned. New or changed identities fail closed until policy review; LCSC location and a renamed Manufacturer field do not prove origin."
+  "classification_note": "Exact manufacturer/MPN/footprint/library-ID identities are pinned. New or changed identities fail closed until policy review; LCSC location and a renamed Manufacturer field do not prove origin.",
+  "power_integrity_reviewed_date": "2026-10-04"
 }

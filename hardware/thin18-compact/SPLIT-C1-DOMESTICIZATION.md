@@ -1,4 +1,14 @@
 # Split-C1 全量国产化设计记录
+
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
 2026-10-02。当前只有Core-C1／Display-C1两块PCB设计，没有实物样板。所有已装配BOM位号使用中国大陆厂家身份；这项身份审计与电气、固件、实际供料及EVT分别验证。
 
 **155个已装配系统位号全部为大陆厂家，0进口、0未知。** Core118个（116SMT、板上手焊C301、板外TH301），Display37SMT。R303、R304已移除；DNP不计入。当前实施94个位号、39组受控替换，另有C516本地输出旁路。完整身份／原厂来源和ECO见split-c1-domestic-policy.json、split-c1-domestic-eco.json、split-c1-domestic-audit.json。
@@ -91,7 +101,7 @@ SD3078公开4674／Q1公开2306未预留；C301现行H3C/C2894294目录身份已
 裸板Gerber／钻孔可以作为当前两板工程审核资料。DFM、DRC与全国产身份通过不代表整机或PCBA下单条件全部满足。电池完整最大输入54×36×5.5mm、外壳112×75×21mm仍是工程预算；未选完整国产电池包／冻结外壳。
 
 ## 复现
-python3 hardware/thin18-compact/release_split_c1.py
+python3 hardware/thin18-compact/release_split_c1.py --target split-c1
 python3 hardware/thin18-compact/audit_split_c1_domestic.py --require-complete
 
 第二条现在应通过155/155身份审计，但不会批准实际供料或EVT。当前与不可变基线重建的两板DRC/open/parity/ERC必须全0；60针逻辑／插接变换不变；焊盘和负向控制拒绝错误引脚、槽孔或SKU。生产文件绑定源哈希及ZIP CRC；生成ZIP、PDF、PNG、生产CSV和临时脚本不提交git。

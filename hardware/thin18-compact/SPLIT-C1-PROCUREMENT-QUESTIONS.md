@@ -1,4 +1,14 @@
 # Split-C1 精确供料待确认清单
+
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
 2026-10-02。一套=Core-C1+Display-C1两板，批量N未给定。此文件未发送给供方；没有回执、采购、预留或装配接收。
 
 | 位号 | 数量/套 | 精确身份 | 仍缺什么 |

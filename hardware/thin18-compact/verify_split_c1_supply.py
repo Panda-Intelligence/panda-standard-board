@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Audit the eight requested supply refs; public stock never substitutes for receipts."""
+"""Audit the nine requested supply refs; public stock never substitutes for receipts."""
 import argparse, copy, json, re
 import xml.etree.ElementTree as ET
 from _split_c1_common import ROOT
 
-EXPECTED={"U902","U905","U402","U403","U404","U405","D202","C301"}
-SIX=EXPECTED-{"D202","C301"}
+EXPECTED={"U902","U905","U402","U403","U404","U405","D202","C301","U906"}
+SMT_PENDING=EXPECTED-{"D202","C301"}
 
 def integer(v, minimum):
     return isinstance(v,int) and not isinstance(v,bool) and v>=minimum
@@ -18,8 +18,8 @@ def cad_fields():
 def audit(plan, sets=None):
     fields=cad_fields()
     manifest=json.loads((ROOT/"split-c1-smt-consignment.json").read_text())
-    if len(manifest["rows"])!=6 or {r["ref"] for r in manifest["rows"]}!=SIX:
-        raise ValueError("Wrong six-SMT consignment scope")
+    if len(manifest["rows"])!=7 or {r["ref"] for r in manifest["rows"]}!=SMT_PENDING:
+        raise ValueError("Wrong seven-SMT consignment scope")
     seen=set()
     count=sets if sets is not None else plan.get("kit_quantity")
     if count is not None and not integer(count,1):
@@ -41,10 +41,10 @@ def audit(plan, sets=None):
             for k,name in [("Manufacturer","manufacturer"),("MPN","mpn"),("Footprint","footprint"),("LCSC","catalog_code")]:
                 if (f.get(k) or None)!=(row.get(name) or None):
                     raise ValueError("Supply/CAD identity mismatch: "+ref+"/"+k)
-            if ref in SIX:
+            if ref in SMT_PENDING:
                 m=next(x for x in manifest["rows"] if x["ref"]==ref)
                 if any(m[k]!=row[k] for k in ["manufacturer","mpn","footprint"]):
-                    raise ValueError("Stale six-SMT manifest identity")
+                    raise ValueError("Stale seven-SMT manifest identity")
         gaps=[]
         if count is None:gaps.append("KIT_QUANTITY_MISSING")
         receipt=row.get("supply_receipt")
@@ -69,8 +69,8 @@ def audit(plan, sets=None):
             gaps.append("EXACT_C_CODE_NOT_APPLIED_TO_CAD")
         states.append({"group":row["group"],"refs":refs,"required_units_excluding_attrition":required,
                        "assembly_route":row["assembly_route"],"supply_closed":not gaps,"gaps":gaps})
-    if seen!=EXPECTED or len(plan["rows"])!=5:raise ValueError("Expected five exact groups/eight refs")
-    return {"scope":"Only eight requested Core-C1 refs; not full PCBA approval","kit_quantity":count,
+    if seen!=EXPECTED or len(plan["rows"])!=6:raise ValueError("Expected six exact groups/nine refs")
+    return {"scope":"Only nine requested Core-C1 refs; not full PCBA approval","kit_quantity":count,
             "groups":states,"requested_supply_closed":all(x["supply_closed"] for x in states),
             "assembly_order_released":False,"physical_evt_passed":False}
 
@@ -83,7 +83,7 @@ def controls(plan):
                             lot_reference="SYNTHETIC",packing_accepted=True,usable_quantity=7,additional_quantity=2)
     state=lambda p:next(x for x in audit(p,5)["groups"] if x["group"]=="D202")
     assert state(base)["supply_closed"],"Valid isolated receipt fixture should close D202 only"
-    assert not audit(base,5)["requested_supply_closed"],"One receipt cannot close the other seven refs"
+    assert not audit(base,5)["requested_supply_closed"],"One receipt cannot close the other eight refs"
     cases=[("mpn","wrong"),("catalog_code","C48260"),("route","CUSTOMER_POST_ASSEMBLY"),
            ("acceptance_reference",None),("inventory_reference",None),("usable_quantity",6),
            ("usable_quantity",True),("additional_quantity",None),("packing_accepted",False)]

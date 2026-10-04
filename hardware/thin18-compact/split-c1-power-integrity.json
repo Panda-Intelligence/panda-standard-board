@@ -1,0 +1,132 @@
+{
+  "schema": "panda-split-c1-power-integrity-v1",
+  "eco": "SPLIT-C1-POWER-INTEGRITY-01",
+  "baseline_commit": "6906a246b1658386278c13912e77bfe833c1d8ea",
+  "scope": "Existing main-branch Core-C1 96x68 / Display-C1 45x36; no Thin7 CAD",
+  "pg": {
+    "ref": "U906",
+    "manufacturer": "SGMICRO",
+    "mpn": "SGM809B-TXN3LG/TR",
+    "library_id": null,
+    "footprint": "panda-standard:SGM809B_SOT23_TX00031",
+    "pin_nets": {
+      "1": "GND",
+      "2": "PG_3V3_MAIN",
+      "3": "3V3_AON"
+    },
+    "threshold_nominal_v": 3.08,
+    "threshold_full_temperature_v": [
+      2.966,
+      3.181
+    ],
+    "recovery_delay_full_temperature_ms": [
+      120,
+      400
+    ],
+    "iq_max_nA": 590,
+    "purpose": "Informational AON supply status to XL9535 P14 input and TP16; not wired to MCU reset",
+    "limitations": [
+      "Not an overvoltage or regulator-current indicator",
+      "Minimum falling threshold does not guarantee reset before MCU 3.0V minimum",
+      "Output validity below device minimum supply is not asserted",
+      "P14 must remain input: push-pull output contention must be prevented"
+    ],
+    "source": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+    "source_revision": "October 2024 Rev.A.2",
+    "source_pages": [
+      2,
+      3,
+      4,
+      8,
+      10
+    ]
+  },
+  "psel": {
+    "ref": "U901",
+    "mpn": "SGM41513YTQF24G/TR",
+    "pin": "2",
+    "net": "SGM41513_PSEL",
+    "upper_resistor": {
+      "ref": "R204",
+      "ohms": 1200,
+      "tolerance_fraction": 0.01,
+      "pin_nets": {
+        "1": "SGM41513_PSEL",
+        "2": "SGM41513_REGN"
+      }
+    },
+    "lower_resistor": {
+      "ref": "R201",
+      "ohms": 5600,
+      "tolerance_fraction": 0.01,
+      "pin_nets": {
+        "1": "SGM41513_PSEL",
+        "2": "GND"
+      }
+    },
+    "bias_source": "Internal REGN powers before input-source detection; independent of downstream AON boot",
+    "regn_screen_v": [
+      4.45,
+      5.4
+    ],
+    "logic_vih_v": 0.9,
+    "pin_absolute_max_v": 6.0,
+    "calculated_psel_v": [
+      3.650693,
+      4.463635
+    ],
+    "calculated_divider_current_max_mA": 0.802139,
+    "leakage_screen_assumption_A": 1e-06,
+    "leakage_qualification_note": "Datasheet leakage is characterized at1.8V; +/-1uA at divider voltage is a sensitivity assumption, not a guaranteed specification. Dynamic ramps and all operating corners require measurement.",
+    "reset_selection_nominal_mA": 500,
+    "not_hard_current_ceiling": true,
+    "firmware": "Read back IINDPM after reset/watchdog/source change. Do not raise limits without qualified USB/pack/copper policy. Keep OTG disabled. USB enumeration/suspend compliance is a separate open requirement.",
+    "source": "https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf",
+    "source_revision": "April 2025 Rev.C.1",
+    "source_pages": [
+      3,
+      5,
+      11,
+      20,
+      21
+    ]
+  },
+  "bypass": {
+    "ref": "C204",
+    "manufacturer": "FH (Fenghua Advanced)",
+    "mpn": "0603B334K500NT",
+    "library_id": "C188679",
+    "nominal_F": 3.3e-07,
+    "pin_nets": {
+      "1": "3V3_AON",
+      "2": "GND"
+    },
+    "pcb_xy_mm": [
+      16.5,
+      16.0
+    ],
+    "pcb_angle_deg": 180
+  },
+  "existing_refs_repurposed": [
+    "R201",
+    "R204",
+    "C204"
+  ],
+  "obsolete_nets_absent": [
+    "BQ_ILIM",
+    "BQ_ILIM_RC"
+  ],
+  "existing_footprints_changed": [
+    "C204",
+    "R201",
+    "R204",
+    "U901"
+  ],
+  "all_other_footprints_unchanged": true,
+  "board_outlines_and_rules_unchanged": true,
+  "display_pcb_unchanged": true,
+  "functional_migration_status": "PG source and pre-AON PSEL topology implemented; physical and firmware qualification remain open",
+  "assembly_order_ready": false,
+  "physical_evt_passed": false,
+  "manufacturing_release": false
+}

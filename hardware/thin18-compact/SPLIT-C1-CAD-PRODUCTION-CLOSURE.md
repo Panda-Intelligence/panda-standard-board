@@ -1,5 +1,15 @@
 # Split-C1 CAD and Manufacturing-Data Closure
 
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
+
 Date: 2026-10-01
 Baseline: 60de713, branch hw/thin18-compact-evt.
 Final architecture: Core-C1 + Display-C1. C4D-12..20 intermediate snapshots remain in Git history.
@@ -61,7 +71,7 @@ Authoritative connector sources:
 Run this from the repository root using Python 3.10+ and KiCad 10.0.5:
 
 ```sh
-python3 hardware/thin18-compact/release_split_c1.py
+python3 hardware/thin18-compact/release_split_c1.py --target split-c1
 ```
 
 The command rebuilds both candidates into temporary directories, compares native

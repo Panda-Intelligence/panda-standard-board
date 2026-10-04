@@ -44,7 +44,9 @@ if domestic['manufacturing_release'] is not False or domestic['assembly_order_re
     raise SystemExit('Domestic audit incorrectly releases manufacturing/order')
 if not domestic['applied_replacement_identities_verified'] or not domestic['manufacturer_only_relabel_rejected']:
     raise SystemExit('Domestic identity guards did not run')
-engineering_files={'mechanical_audit':mechanical_path,'mechanical_inputs':mechanical_inputs,
+engineering_files={'power_integrity_contract':ROOT/'split-c1-power-integrity.json',
+                   'power_integrity_verification':ROOT/'split-c1-power-integrity-verification.json',
+                   'mechanical_audit':mechanical_path,'mechanical_inputs':mechanical_inputs,
                    'sourcing_evidence':sourcing_evidence,'cad_validation':validation_path,
                    'domestic_audit':domestic_path,'domestic_policy':ROOT/'split-c1-domestic-policy.json',
                    'domestic_eco':ROOT/'split-c1-domestic-eco.json',
