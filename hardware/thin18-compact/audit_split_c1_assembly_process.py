@@ -5,6 +5,7 @@ Uses KiCad's saved copper polygons, not bounding-box overlap or library labels.
 No CAD/plot/clearance edits; no inference of accepted CAM, stencil or assembly.
 """
 import csv
+import hashlib
 import io
 import json
 import math
@@ -48,6 +49,23 @@ def hole_overlap(center, diameter, polygons):
     return {'classification': 'center_in_land' if distance < 1e-9 else
             'hole_crosses_land_edge' if gap <= 0 else 'within_polygon_render_tolerance',
             'nominal_hole_to_land_gap_mm': round(gap, 6)}
+
+
+def polygon_identity(polygons):
+    """Stable shape identity; old pads lacking stored UUIDs get random load UUIDs."""
+    rings = []
+    for points in polygons:
+        ring = tuple(tuple(p) for p in points)
+        if ring and ring[0] == ring[-1]:
+            ring = ring[:-1]
+        require(len(ring) >= 3, 'Missing pad identity geometry')
+        candidates = []
+        for direction in [ring, tuple(reversed(ring))]:
+            start = min(range(len(direction)), key=lambda i: direction[i])
+            candidates.append(direction[start:] + direction[:start])
+        rings.append(min(candidates))
+    require(rings, 'Missing pad polygons')
+    return hashlib.sha256(json.dumps(sorted(rings),separators=(',',':')).encode()).hexdigest()
 
 
 def inspect_board(path):
@@ -110,7 +128,7 @@ def inspect_board(path):
                         continue
                     require(entry['net'] == str(pad.GetNetname()), 'Different-net via overlaps an SMT land')
                     hits.append({'via_uuid': entry['uuid'], 'ref': ref, 'pad': pad.GetNumber(),
-                                 'pad_uuid': str(pad.m_Uuid.AsString()), 'side': side, 'net': entry['net'],
+                                 'pad_shape_sha256': polygon_identity(polygons), 'side': side, 'net': entry['net'],
                                  'center_mm': entry['center_mm'], 'drill_mm': entry['drill_mm'],
                                  'via_copper_diameter_mm': entry['front_copper_diameter_mm' if side == 'F.Cu' else 'back_copper_diameter_mm'],
                                  'native_pad_has_paste_layer': pad.IsOnLayer(paste), **overlap})
@@ -148,7 +166,7 @@ def verify_fresh(report):
         require(len(vias) == len(result['via_inventory']) == result['via_count'], 'Duplicate/missing via inventory')
         hits = result['land_overlap_contacts']
         require(result['land_overlap_hole_count'] == len({h['via_uuid'] for h in hits}), 'Wrong unique hole count')
-        require(len({(h['via_uuid'],h['pad_uuid'],h['side']) for h in hits}) == len(hits), 'Duplicate via/land contact')
+        require(len({(h['via_uuid'],h['ref'],h['pad'],h['pad_shape_sha256'],h['side']) for h in hits}) == len(hits), 'Duplicate via/land contact')
         for hit in hits:
             require(hit['via_uuid'] in vias, 'In-pad hole absent from via inventory')
             via = vias[hit['via_uuid']]

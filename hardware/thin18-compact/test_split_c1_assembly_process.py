@@ -10,6 +10,14 @@ SQUARE = [[-1.,-1.],[1.,-1.],[1.,1.],[-1.,1.]]
 
 
 class GeometryTests(unittest.TestCase):
+    def test_polygon_identity_ignores_vertex_start_and_winding(self):
+        expected=audit.polygon_identity([SQUARE])
+        self.assertEqual(expected,audit.polygon_identity([SQUARE[2:]+SQUARE[:2]]))
+        self.assertEqual(expected,audit.polygon_identity([list(reversed(SQUARE))]))
+    def test_polygon_identity_tracks_shape_not_runtime_uuid(self):
+        shifted=[[x+5,y] for x,y in SQUARE]
+        self.assertNotEqual(audit.polygon_identity([SQUARE]),audit.polygon_identity([shifted]))
+        self.assertEqual(audit.polygon_identity([SQUARE,shifted]),audit.polygon_identity([shifted,SQUARE]))
     def test_inside_and_boundary(self):
         for point in [[0,0],[1,0],[-1,-1]]:
             self.assertEqual(audit.point_to_polygon(point,SQUARE),0)
@@ -59,7 +67,7 @@ class ReportTests(unittest.TestCase):
                 'land_overlap_contacts':[],'required_via_treatment':'NO_IN_PAD_FILL_REQUIRED_BY_THIS_SCREEN',
                 'cam_accepted':False,'stencil_accepted':False,'assembly_process_qualified':False}
         self.via={'uuid':'v1','center_mm':[1.,2.],'net':'GND','drill_mm':.2}
-        self.hit={'via_uuid':'v1','pad_uuid':'p1','side':'F.Cu','center_mm':[1.,2.],'net':'GND','drill_mm':.2,
+        self.hit={'via_uuid':'v1','pad_shape_sha256':'p1','side':'F.Cu','center_mm':[1.,2.],'net':'GND','drill_mm':.2,
                   'ref':'U1','pad':'1','via_copper_diameter_mm':.4,'classification':'center_in_land'}
         self.core=self.report['boards']['Core-C1'];self.core.update(via_inventory=[self.via],via_count=1,
             land_overlap_contacts=[self.hit],land_overlap_hole_count=1,required_via_treatment='EPOXY_FILLED_AND_CAPPED')
