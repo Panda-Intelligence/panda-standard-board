@@ -48,7 +48,7 @@ bool BoardControl::update(std::uint8_t a, std::uint8_t r, std::uint8_t mask,
 
 bool BoardControl::quiesce_expander() noexcept {
     // First release P14 (including an MCU-only restart with retained XL state).
-    // External/internal pull-downs also deassert HWEN/PWM while Port1 is input.
+    // P15 remains unused/input. PWM falls low while Port1 is input.
     bool ok = write_checked(kExpander, 0x07, 0xFF);
     const bool out0 = write_checked(kExpander, 0x02, kQuiescent0);
     const bool out1 = write_checked(kExpander, 0x03, kQuiescent1);
@@ -61,21 +61,31 @@ bool BoardControl::quiesce_expander() noexcept {
     return ok && out0 && out1;
 }
 
+bool BoardControl::permit(bool high) noexcept {
+    const bool written = bus_.set_hardware_permit(high);
+    bool actual = true;
+    const bool sampled = bus_.read_hardware_permit(actual);
+    diagnostics_.hardware_inhibit_confirmed = sampled && !actual;
+    if (!written || !sampled) { io_error_ = Result::BusError; return false; }
+    if (actual != high) { io_error_ = Result::ReadbackMismatch; return false; }
+    return true;
+}
+
 bool BoardControl::light_off() noexcept {
-    // Only reduce outputs; never trust a cached ON state after a bus fault.
-    bool ok = update(kExpander, 0x03, kFrontlightPwm, 0);
-    ok = update(kExpander, 0x03, kFrontlightEnable, 0) && ok;
+    // First disable through native GPIO, even if every I2C transfer now fails.
+    const bool direct = permit(false);
+    const bool pwm = update(kExpander, 0x03, kFrontlightPwm, 0);
     output1_ = 0;
-    light_ = ok ? LightState::Off : LightState::Unknown;
-    return ok;
+    light_ = diagnostics_.hardware_inhibit_confirmed ? LightState::Off : LightState::Unknown;
+    return direct && pwm;
 }
 
 Result BoardControl::fail(Result reason) noexcept {
     initialized_ = false;
     diagnostics_.fault = reason;
-    // Best effort, not a hardware interlock. Attempt independent shutdown paths
+    // GPIO hardware permit is first; attempt all remaining shutdown paths
     // even if a preceding path failed. Do not silently clear the original fault.
-    const bool light_ok = light_off();
+    light_off();
     const bool gpio_ok = quiesce_expander();
     bool charger_ok = false;
     if (charger_identified_) {
@@ -85,7 +95,7 @@ Result BoardControl::fail(Result reason) noexcept {
         charger_ok = off && zero && limit;
     }
     diagnostics_.shutdown_registers_confirmed = gpio_ok && charger_ok;
-    light_ = (light_ok || gpio_ok) ? LightState::Off : LightState::Unknown;
+    light_ = diagnostics_.hardware_inhibit_confirmed ? LightState::Off : LightState::Unknown;
     return reason;
 }
 
@@ -111,6 +121,10 @@ bool BoardControl::capture_faults(bool allow_detection) noexcept {
 }
 
 bool BoardControl::guard(bool require_pg) noexcept {
+    bool armed = true;
+    if (!bus_.read_hardware_permit(armed)) { io_error_ = Result::BusError; return false; }
+    const bool expected = light_ == LightState::On || light_ == LightState::Preparing;
+    if (armed != expected) { io_error_ = Result::ReadbackMismatch; return false; }
     if (bus_.frequency_hz() == 0 || bus_.frequency_hz() > kBusMaxHz) {
         io_error_ = Result::BusConfiguration;
         return false;
@@ -170,6 +184,7 @@ Result BoardControl::begin() noexcept {
     light_ = LightState::Unknown;
     diagnostics_ = {};
     io_error_ = Result::Ok;
+    if (!permit(false)) { diagnostics_.fault = io_error_; return io_error_; }
     if (bus_.frequency_hz() == 0 || bus_.frequency_hz() > kBusMaxHz) {
         diagnostics_.fault = Result::BusConfiguration;
         return diagnostics_.fault; // do not touch an unconfigured shared bus
@@ -228,7 +243,7 @@ Result BoardControl::poll() noexcept {
         elapsed = static_cast<std::uint32_t>(bus_.now_ms() - prepare_started_);
         if (elapsed > kFrontlightStartDeadlineMs) return fail(Result::StartupTimeout);
         // No writes to frontlight MTP (0xFF); PWM is last, after all readbacks.
-        output1_ = static_cast<std::uint8_t>(kFrontlightEnable | kFrontlightPwm);
+        output1_ = kFrontlightPwm;
         if (!write_checked(kExpander, 0x03, output1_)) return fail(io_error_);
         light_ = LightState::On;
         diagnostics_.shutdown_registers_confirmed = false;
@@ -262,8 +277,8 @@ Result BoardControl::set_frontlight(std::uint16_t current) noexcept {
     if (current == 0) return Result::Ok;
     if (hiz_) return Result::InvalidArgument; // explicit new source grant first
     light_code_ = static_cast<std::uint8_t>(current - 59);
-    output1_ = kFrontlightEnable;
-    if (!write_checked(kExpander, 0x03, output1_)) return fail(io_error_);
+    output1_ = 0;
+    if (!write_checked(kExpander, 0x03, output1_) || !permit(true)) return fail(io_error_);
     prepare_started_ = bus_.now_ms();
     light_ = LightState::Preparing;
     diagnostics_.shutdown_registers_confirmed = false;

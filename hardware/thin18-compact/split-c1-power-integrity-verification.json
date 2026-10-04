@@ -2,11 +2,11 @@
   "schema": "panda-split-c1-power-integrity-verification-v1",
   "native_source": {
     "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-    "sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
+    "sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
   },
   "netlist": {
     "path": "hardware/thin18-compact/core-c1-96x68-split/verification/netlist.xml",
-    "sha256": "3aacc175711267c2bdc26388d11c85c00853b6cb0248a54d1ae162aa60685f76"
+    "sha256": "6e620188e8c1b464e4eb1e2e260cbe09f87fd6fce14a4125890283ae8e8b125f"
   },
   "contract": {
     "path": "hardware/thin18-compact/split-c1-power-integrity.json",

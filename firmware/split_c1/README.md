@@ -8,7 +8,7 @@ voltage, timing or leakage measurement has been performed by the host tests.
 
 ## Implemented behavior
 
-`BoardControl::begin()` quiesces the XL9535 outputs, keeping P14 input-only, then
+`BoardControl::begin()` first drives native GPIO2 LOW, then quiesces the XL9535 outputs, keeping P14 and P15 input-only, then
 checks the SGM41513 part-ID class at **7-bit address 0x1A**. It disables charge and
 OTG, sets nominal IINDPM100mA, sets ICHG0, enables the40s charger watchdog and charge
 safety timer, selects6.5V input OVP, and disables high-voltage current-pulse control.
@@ -17,7 +17,7 @@ diagnostics during explicit startup; new watchdog/fault events cause a latched
 fault. No API enables battery charging, OTG, RTC charging or higher USB voltage.
 
 The GPIO masks are derived and checked against the actual schematic and PCB:
-Port0 directions `D0`, Port1 directions `1F`; quiescent latches `20` and `00`.
+Port0 directions `D0`, Port1 directions `3F`; quiescent latches `00` and `00`. P05 is active-high CHG_REQUEST and stays LOW. P15 is unused; HWEN is no longer an expander output.
 Output latches are verified before enabling their output directions. U906's
 push-pull PG output drives P14, never the MCU reset input. Switching SD/touch/EPD/
 audio rails on is deliberately outside this initial control core; they stay off.
@@ -77,24 +77,29 @@ That may cut system power on a batteryless board. Software100/500mA settings and
 HIZ are not proof of USB enumeration, inrush, suspend-current or reset compliance.
 The pre-AON PSEL divider remains a nominal reset selection, not a hard current cap.
 
-## Important unresolved hardware boundaries
+## Hardware-finish compatibility and boundaries
 
-**R607 presently pulls active-low nCE to GND while XL9535 starts with inputs.**
-SGM41513 defaults CHG_CONFIG to1, so charging before MCU initialization is not
-excluded. This library inhibits charging after successful register operations;
-it cannot change the pre-firmware state. A separate reviewed hardware inhibit
-ECO or a suitably controlled batteryless/current-limited commissioning fixture
-is required before use with an unqualified battery. Do not infer safety from
-ICHG0: trickle/precharge and the nCE/reset behavior require separate checks.
+Implement the two additional RegisterBus callbacks with **native GPIO2 only**:
+`set_hardware_permit(bool)` and `read_hardware_permit(bool&)`. They must never
+call I2C. Set the LOW output latch before enabling output direction; disable
+GPIO hold and unintended pulls. Readback samples the MCU pad before R931, not
+the downstream TP19 analog voltage. Older adapters intentionally cannot compile
+without implementing the direct path.
 
-**A permanently failed I2C bus can leave the frontlight enabled.** The tests
-explicitly model that case: attempted shutdown returns an error and
-`LightState::Unknown`, with `shutdown_registers_confirmed=false`, while the
-simulated output remains on. This is not an independent watchdog/interlock.
-CPU lockup, XL power loss, charger default recovery and a frontlight reset between
-readback and PWM assertion require physical/hardware analysis. Polling cannot
-eliminate the interval before fault detection. Register confirmation is not an
-output-current measurement, and Off/On states describe commanded logic only.
+The hardware now pulls nCE to pre-AON REGN, with two series MOS permissions.
+P05 request and direct permit both defaultLOW; the bench controller never enables
+P05. This fixes the old default-low nCE topology. Actual startup/ramp, temperature,
+partial-power and charging behavior still need prototype measurement.
+
+On I2C loss, native GPIO2 is driven LOW before attempted bus cleanup, so the
+inhibit does not depend on a responsive expander. The host model now demonstrates
+that path and separately tests simultaneous GPIO+I2C failure as UNKNOWN. A stuck
+HIGH GPIO is not reported as confirmed shutdown. Diagnostics distinguish direct
+inhibit readback from shutdown-register confirmation. None are current measurements.
+
+A CPU frozen with GPIO2 retainedHIGH is not independently detected by this design:
+use TP19 FORCE-LOW access or power removal. There is no external autonomous
+watchdog. See ../../hardware/thin18-compact/SPLIT-C1-HARDWARE-FINISH.md.
 
 ## Reproduce tests and native binding checks
 

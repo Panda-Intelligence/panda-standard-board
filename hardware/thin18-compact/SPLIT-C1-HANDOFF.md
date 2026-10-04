@@ -1,108 +1,80 @@
-# Split-C1 current handoff
+# Split-C1 current hardware handoff
 
-## Correct project and worktree
+## Authoritative continuation
 
-Continue from `/Users/isaac/workspace/AI/panda-standard-board-main-ic`, branch
-`hw/split-c1-main-ic-audit`, based on remote main `6906a246`.
-The user explicitly selected the already split, routed **Core-C1 + Display-C1**
-main baseline. Do not resume Thin7/portrait-R2; its 9-airwire checkpoint is not
-this board. All other worktrees, including the original root's packaging/, are
-left alone.
+Worktree: `/Users/isaac/workspace/AI/panda-standard-board-main-ic`.
+Branch: `hw/split-c1-main-ic-audit`. Base remote main: `6906a246`.
+The user wants the already routed two-board main-branch design finished for
+prototype fabrication. Do NOT restart Thin7/portrait-R2 or expand unrelated
+firmware. Other worktrees and the original packaging/ directory are untouched.
 
 Native authorities under `hardware/thin18-compact/`:
 
-```text
+```
 core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/
 display-c1-45x36-production-bom/
 ```
 
-Core stays 96x68mm, four copper layers; Display stays45x36mm, two layers; both
-0.8mm. Main's ESP32-S3-WROOM-1U-N16R8 module and HCTL60-pin mating pair stay.
-The incomplete 7mm enclosure redesign is separate from this bench prototype.
+Core96x68mm/4 layers, Display45x36mm/2 layers, both0.8mm. Keep the main-branch
+ESP32-S3-WROOM-1U-N16R8 and HCTL60-pin interconnect. Split-C1 does not claim the
+separate uncompleted7mm enclosure target.
 
-## Executable control follow-up — 2026-10-04
+## Hardware-finish checkpoint
 
-The `firmware/split_c1/` C++17 module now implements bench-control sequencing,
-charger inhibit/watchdog/source policy, PG supervision and frontlight readback.
-Read its README before integration. Native PCB/schematic/lib/rules are unchanged
-from electrical checkpoint `afd63c6`; no unrouted candidate was adopted.
+Read `SPLIT-C1-HARDWARE-FINISH.md` and `split-c1-hardware-finish.json`.
+The two known static hardware issues are now implemented in schematic and PCB:
+REGN-derived default-OFF nCE plus two series MOS permissions, and a native
+GPIO2/R931 frontlight/charge inhibit that does not pass through I2C. TP19 is a
+manual FORCE-LOW access point. New exact parts Q907/Q908/R930-R933 reuse reviewed
+mainland identities and catalog codes. No existing component position, board
+outline, rule or Display native design is changed.
 
-18 host test groups pass with address/undefined sanitizers,346 per-transfer fault
-cases and86 current settings.16 deliberately wrong native/control bindings are
-rejected. `test_split_c1_control.py` and `verify_split_c1_control.py` are required
-steps of the existing release pipeline. Their source-bound reports and explicit
-limitations are included in generated engineering/prototype packages.
+PG/PSEL changes from `afd63c6` remain intact. Hardware finish builds on the
+`3f350ed` baseline. The isolated candidate and fresh immutable-history rebuild
+passed native DRC/open/parity/ERC0/0/0/0 with identical canonical CAD before
+adoption. The source-hash checked adoption record and frozen copper delta are
+`split-c1-hardware-finish-adoption.json` and `split-c1-hardware-finish-layout.json`.
+Use the current generated full validation below as the source of truth.
 
-Do not confuse host tests with firmware flashing: no ESP-IDF transport or Panda
-OS integration has run, and no physical board was accessed. Correct7-bit addresses
-are charger0x1A, XL9535 0x20, frontlight0x36 and QMI8658A0x6A with native SA0 high.
-Shared-bus policy remains100kHz for SD3078. The control core leaves all switched
-peripheral rails and battery charging disabled; full device drivers remain open.
+Expected population:162 mainland system refs (Core125,Display37), with
+Core123SMT plus C301 manual/TH301 offboard and Display37SMT.17 board-level
+IC/module positions remain; Q907/Q908 are additional discrete MOSFETs.
+Seven unmapped/unaccepted SMT refs remain:U402-U405,U902,U905,U906. New finish
+parts do not add unresolved SKUs. No quote, order or assembly receipt is fabricated.
 
-**Newly explicit hardware gate:** R607100k pulls nCE to GND. With XL9535 reset
-inputs, the charger's default CHG_CONFIG=1 does not establish inhibition before
-the MCU runs. Review an independent default-off charging ECO/commissioning
-fixture before connecting an unqualified battery. Persistent I2C failure can also
-retain frontlight outputs; software must return UNKNOWN, not a fabricated OFF.
-Neither issue was silently marked fixed by writing a driver. The immediate next
-hardware task is default-off charging/independent fault shutdown review on this
-same Split-C1 board, with deterministic replay and0/0/0/0 acceptance if changed.
+## Reproduce the prototype package
 
-## Current electrical change
-
-Read `SPLIT-C1-POWER-INTEGRITY.md` and `split-c1-power-integrity.json`.
-U906 SGM809B-TXN3LG/TR supplies real monitored AON status to PG_3V3_MAIN.
-R2041.2k/R2015.6k now bias PSEL from the charger's pre-AON REGN output. C204330nF
-is reused and relocated as U906 bypass. No existing power IC, connector or host
-module is moved. Only C204 moves; U906 is new. Display native files, existing
-unrelated copper, board outlines and project rules are unchanged.
-
-The isolated edited candidate passed DRC/open/parity/ERC0/0/0/0. A fresh rebuild
-from immutable Git history reproduced the same canonical native CAD and passed
-0/0/0/0. Adoption checks source hashes and records exact changed native files in
-`split-c1-power-integrity-adoption.json`. The current saved source must still
-pass the full release command below; its generated evidence is authoritative.
-
-Expected populated totals after this additive ECO:156 mainland-manufacturer
-system refs (Core119,Display37);17 board-level IC refs (Core14,Display3).
-Core117SMT plusC301/TH301 manual-or-offboard;Display37SMT. The exact domestic
-identity audit must be regenerated, never edited to manufacture a passing count.
-
-## Reproduction and evidence
-
-```sh
+```
 python3 hardware/thin18-compact/release_split_c1.py --target split-c1
 python3 hardware/thin18-compact/verify_split_c1_supply.py --negative-controls
 ```
 
-The pipeline requires explicit design selection, both current/rebuilt native
-checks, independent power pin/variant checks,22 power tests plus host-control tests, exact identity and
-BOM/CPL checks,60-pin interface, mechanical screen and CRC/hash-bound outputs.
-Thin7 audit cannot export Split-C1 data, even if its own audit someday passes.
+The pipeline checks current/rebuilt native CAD, both electrical ECO contracts,
+original-maker MOS/supervisor lands,21 invalid hardware-contract cases,60-pin
+mapping, host-controller compatibility, exact BOM/CPL, mechanical XY, native
+rules, separate PTH/NPTH drills and ZIP CRC/hash evidence. The generated output:
+`production/Panda-Split-C1-JLC-Prototype.zip`.
+Read `production/jlc-prototype-orderpack/prototype-status.json` for actual
+bare-board DFM versus supply status. Stale ZIPs from before hardware finish must
+not be submitted. Generated outputs and transient trials stay ignored.
 
-Read `split-c1-validation.json`, `split-c1-power-integrity-verification.json`,
-`split-c1-domestic-audit.json`, `split-c1-interface.json` and
-`production/jlc-prototype-orderpack/prototype-status.json` after generation.
-The reusable package is `production/Panda-Split-C1-JLC-Prototype.zip`; it is
-local generated output, not a manufacturing release or purchase authorization.
-Transient candidates/backups are under repo-root `.work/split-c1-power-eco/`.
+## Important compatibility and physical boundaries
 
-## Next functional and supply work
+P05 is now active-high CHG_REQUEST (defaultLOW), not old active-low BQ_CE.
+P15 is NC/input, P14 remains PG/input, P16 remains PWM. GPIO2 is the independent
+permit and must initialize LOW with hold disabled. The portable controller
+received only the necessary binding/polarity update and direct GPIO callbacks;
+old adapters intentionally cannot compile without implementing those callbacks.
+No ESP firmware was flashed or claimed physically qualified.
 
-Seven exact SMT refs remain unaccepted/unmapped:U902,U905,U402-U405,U906.
-The last one is a newly added domestic supervisor, not an imported exception.
-Do not omit it or assign a similar part's code. `split-c1-smt-consignment.json`
-and `split-c1-supply-plan.json` retain real-receipt requirements. Historical
-public stock observations keep their original dates and are not reservations.
+GPIO2 LOW directly removes frontlight EN and charger permission. This does not
+make the circuit an autonomous external watchdog. CPU/GPIO stuckHIGH still
+requires TP19 clamped to GND or power removed. A simultaneous failure of I2C and
+the native GPIO path must remain UNKNOWN in software, not a fabricated OFF.
 
-PG is status only, not MCU reset, overvoltage protection or regulator-current
-reporting. XL9535P14 must remain input; its firmware behavior is not yet proven.
-A REGN-derived PSEL removes dependence on downstream AON startup, but does not
-prove all analog ramps or a hard500mA ceiling. Integrate/verify reset-watchdog
-IINDPM policy,5Vsink/noOTG,USB enumeration/suspend,charger/NTC,regulator,gauge,
-RTC and frontlight sequencing before declaring a functional prototype complete.
-
-Physical PG/REGN/PSEL/current traces, thermal/charging, real-board EVT, actual
-supply, assembly acceptance and battery/enclosure qualification remain open.
-Mainland manufacturer identity does not establish Flash/PSRAM origin inside the
-ESP module or all ICs inside externally supplied display/touch modules.
+Before battery charging, prototype tests must measure REGN/nCE startup,
+source-change/reset/Hi-Z states, hot/cold margins, limits and NTC behavior. USB,
+SI/PI/RF, thermal/magnetics, RTC retention, actual panel/battery/enclosure and
+assembly/supplier acceptance remain physical qualification, not native CAD
+connectivity. `manufacturing_release=false`; do not confuse this with the ability
+to produce checked bare-board prototype Gerber/drill data.

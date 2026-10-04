@@ -13,8 +13,8 @@ from verify_split_c1_power_integrity import parse_netlist, check
 HEADER = REPO/'firmware/split_c1/board_control.hpp'
 EXPECTED_BINDINGS = {
     'kExpander':0x20, 'kCharger':0x1A, 'kFrontlight':0x36, 'kImu':0x6A,
-    'kDirection0':0xD0, 'kDirection1':0x1F, 'kQuiescent0':0x20, 'kQuiescent1':0,
-    'kPowerGoodMask':0x10, 'kFrontlightEnable':0x20, 'kFrontlightPwm':0x40,
+    'kDirection0':0xD0, 'kDirection1':0x3F, 'kQuiescent0':0, 'kQuiescent1':0,
+    'kPowerGoodMask':0x10, 'kHardwarePermitGpio':2, 'kFrontlightPwm':0x40,
     'kFrontlightMode':1, 'kFrontlightVoltage':0xA1, 'kFrontlightFrequency':0x2B,
     'kBusMaxHz':100000, 'kTransferTimeoutMs':10, 'kServiceDeadlineMs':1000,
     'kFrontlightSettleMs':10, 'kFrontlightStartDeadlineMs':100,
@@ -23,17 +23,17 @@ EXPECTED_BINDINGS = {
 # A copied vendor-compatible symbol name is not evidence of its supply identity.
 EXPECTED_PINS = {
     'U601': {'1':'EXP_INT','2':'GND','3':'GND','4':'EN_3V3_SD','5':'EN_3V3_TOUCH',
-             '6':'EN_3V3_EPD_LOGIC','7':'EN_VSYS_AUDIO','8':'FUEL_GPOUT','9':'BQ_CE',
+             '6':'EN_3V3_EPD_LOGIC','7':'EN_VSYS_AUDIO','8':'FUEL_GPOUT','9':'CHG_REQUEST',
              '10':'BQ_INT','11':'BQ_STAT','12':'GND','13':'BQ_PG','14':'KEY_FN',
-             '15':'IMU_INT1','16':'SD_CD','17':'PG_3V3_MAIN','18':'FL_HWEN','19':'FL_PWM',
+             '15':'IMU_INT1','16':'SD_CD','17':'PG_3V3_MAIN','18':'unconnected-(U601-P15-Pad18)','19':'FL_PWM',
              '20':'TOUCH_RST','21':'GND','22':'I2C_SCL','23':'I2C_SDA','24':'3V3_AON'},
-    'U901': {'2':'SGM41513_PSEL','5':'I2C_SCL','6':'I2C_SDA','9':'BQ_CE','22':'SGM41513_REGN'},
+    'U901': {'2':'SGM41513_PSEL','5':'I2C_SCL','6':'I2C_SDA','9':'CHG_nCE','22':'SGM41513_REGN'},
     'U905': {'1':'I2C_SDA','2':'I2C_SCL','5':'GND','19':'FL_HWEN','20':'FL_PWM'},
     'U503': {'1':'3V3_AON','12':'3V3_AON','13':'I2C_SCL','14':'I2C_SDA'},
     'U906': {'1':'GND','2':'PG_3V3_MAIN','3':'3V3_AON'},
-    'U501': {'8':'I2C_SDA','22':'I2C_SCL'},
+    'U501': {'8':'I2C_SDA','22':'I2C_SCL','38':'HW_ARM_GPIO'},
     'U302': {'1':'I2C_SCL','8':'I2C_SDA'},
-    'R607': {'1':'BQ_CE','2':'GND'},
+    'R607': {'1':'CHG_REQUEST','2':'GND'},
     'R601': {'1':'FL_HWEN','2':'GND'},
     'R922': {'1':'FL_PWM','2':'GND'},
     'R604': {'1':'EN_3V3_SD','2':'GND'},
@@ -62,10 +62,10 @@ def verify_logic(bindings, fields, pins):
     port0 = [pins[('U601',str(i))] for i in range(4,12)]
     port1 = [pins[('U601',str(i))] for i in range(13,21)]
     controlled = {'EN_3V3_SD','EN_3V3_TOUCH','EN_3V3_EPD_LOGIC','EN_VSYS_AUDIO',
-                  'BQ_CE','FL_HWEN','FL_PWM','TOUCH_RST'}
+                  'CHG_REQUEST','FL_PWM','TOUCH_RST'}
     for index, port in enumerate([port0,port1]):
         direction = sum(1<<bit for bit,net in enumerate(port) if net not in controlled)
-        reset_latch = sum(1<<bit for bit,net in enumerate(port) if net=='BQ_CE')
+        reset_latch = 0  # all active-high load/charge requests reset LOW
         check(bindings['kDirection'+str(index)]==direction, 'GPIO direction derived from actual nets differs')
         check(bindings['kQuiescent'+str(index)]==reset_latch, 'Active-low charge-enable reset differs')
     check(port1[4]=='PG_3V3_MAIN' and bindings['kDirection1']&0x10, 'P14 must be input')
@@ -78,7 +78,7 @@ def verify_logic(bindings, fields, pins):
 def negative_controls(bindings, fields, pins):
     cases = []
     for key,value in [('kCharger',0x6B),('kImu',0x6B),('kExpander',0x21),
-                      ('kDirection1',0x0F),('kQuiescent0',0),('kBusMaxHz',400000),
+                      ('kDirection1',0x0F),('kQuiescent0',0x20),('kBusMaxHz',400000),
                       ('kFrontlightVoltage',0xE9),('kFrontlightFrequency',0x24)]:
         bad=bindings.copy();bad[key]=value;cases.append((bad,fields,pins))
     for key,value in [(('U601','17'),'FL_HWEN'),(('U503','1'),'GND'),
@@ -149,12 +149,11 @@ def main(argv=None):
             'checked_native_component_refs':sorted(EXPECTED_PINS),'host_tests_passed':True,
             'host_test_groups':host['test_groups'],'single_transfer_fault_cases':host['single_transfer_fault_cases'],
             'incorrect_binding_cases_rejected':controls,'pre_firmware_charging_inhibit_proven':False,
-            'open_hardware_findings':[{'id':'R607_PRE_FIRMWARE_CHARGING',
-              'netlist_evidence':sorted([list(n) for n in nets['BQ_CE']]),
-              'bias':'R607 100k to GND; XL9535 reset directions are inputs',
-              'effect':'Software inhibit only exists after firmware runs. Autonomous charging before MCU initialization or after XL/charger resets is not excluded.',
-              'status':'OPEN; review a hardware inhibit ECO or a batteryless/current-limited commissioning fixture before connecting an unqualified cell'},
-             {'id':'PERSISTENT_BUS_LOSS','status':'OPEN','effect':'XL9535 outputs may retain frontlight ON when every shutdown transaction fails; software reports UNKNOWN, not physically OFF.'}],
+            'open_hardware_findings':[{'id':'PHYSICAL_INHIBIT_QUALIFICATION','status':'NOT_RUN',
+              'effect':'Default-off two-MOS topology and independent native-GPIO shutdown are implemented and checked. Analog ramp/temperature/transient tests need real prototypes.'},
+             {'id':'SIMULTANEOUS_CPU_GPIO_FAILURE','status':'LIMITATION',
+              'effect':'Direct GPIO avoids I2C dependence but is not an autonomous watchdog. A CPU retained-high fault requires TP19 clamp or power removal.'}],
+            'hardware_default_off_topology_implemented':True,'non_i2c_shutdown_path_implemented':True,
             'target_firmware_integration_verified':False,'physical_evt_passed':False,'manufacturing_release':False}
     verify_fresh(report)
     output.write_text(json.dumps(report,indent=2)+'\n')

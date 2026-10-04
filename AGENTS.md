@@ -31,3 +31,10 @@ Keep these limitations in engineering handoffs and generated manufacturing data.
 Generated .work trials, production ZIPs/Gerbers/BOMs and native temporary outputs
 stay untracked. Commit reproducible source, exact contracts, tests and concise
 verification evidence. Never place synthetic supplier receipts into real data.
+
+The hardware-finish checkpoint is documented in SPLIT-C1-HARDWARE-FINISH.md.
+P05 is now active-high CHG_REQUEST, P15 is unused/input, and native GPIO2 through
+R931 provides the direct FL_HWEN/charger permit. Never reintroduce the old
+active-low P05 policy or expander-driven HWEN. TP19 can be grounded manually;
+there is no claimed autonomous watchdog. Replay `_split_c1_hardware_finish_eco.py`
+after the prior power ECO and require its independent pin/land/identity checks.

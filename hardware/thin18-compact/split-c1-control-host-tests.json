@@ -3,15 +3,15 @@
   "inputs": {
     "firmware/split_c1/board_control.hpp": {
       "path": "firmware/split_c1/board_control.hpp",
-      "sha256": "753263abaff55ee2cc29c15abe9ddaf6be798349f1bda26b161364390382d01b"
+      "sha256": "b88c05eeb08a9521b83e369985361ff3ab48c7feec315c0360ad845a191ff971"
     },
     "firmware/split_c1/board_control.cpp": {
       "path": "firmware/split_c1/board_control.cpp",
-      "sha256": "e7f7a5c24cf221d6061f4858b15549e622f7c18be102cb5a86a07faa19655feb"
+      "sha256": "36217b865281392cf26a249de6a22a47da58ca66fcd10e8f8382650fc16c5057"
     },
     "firmware/split_c1/tests/board_control_test.cpp": {
       "path": "firmware/split_c1/tests/board_control_test.cpp",
-      "sha256": "40eecb3e66de36c935705c8a6e9ec2c9e6fc16a8ae7db208689f100a8ec561fc"
+      "sha256": "8307809ba1aae3b641c5deb32111a488c865623e3593b727e9a32018155b705b"
     },
     "hardware/thin18-compact/test_split_c1_control.py": {
       "path": "hardware/thin18-compact/test_split_c1_control.py",
@@ -30,8 +30,8 @@
     "-fsanitize=address,undefined",
     "-fno-omit-frame-pointer"
   ],
-  "test_groups": 18,
-  "single_transfer_fault_cases": 346,
+  "test_groups": 21,
+  "single_transfer_fault_cases": 334,
   "brightness_values_tested": 86,
   "passed": true,
   "physical_hardware_tested": false,

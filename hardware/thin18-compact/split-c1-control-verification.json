@@ -4,15 +4,15 @@
   "inputs": {
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
+      "sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
     },
     "firmware/split_c1/board_control.hpp": {
       "path": "firmware/split_c1/board_control.hpp",
-      "sha256": "753263abaff55ee2cc29c15abe9ddaf6be798349f1bda26b161364390382d01b"
+      "sha256": "b88c05eeb08a9521b83e369985361ff3ab48c7feec315c0360ad845a191ff971"
     },
     "hardware/thin18-compact/verify_split_c1_control.py": {
       "path": "hardware/thin18-compact/verify_split_c1_control.py",
-      "sha256": "b963dc5d8fed914c319d11695c5175e6cab0c661db6fd2f67cfe97ab0e2e4dba"
+      "sha256": "c455a773a931443cb44401fe67032742a9a16118584495d0ec59621224337721"
     },
     "hardware/thin18-compact/test_split_c1_control.py": {
       "path": "hardware/thin18-compact/test_split_c1_control.py",
@@ -20,19 +20,19 @@
     },
     "hardware/thin18-compact/split-c1-control-contract.json": {
       "path": "hardware/thin18-compact/split-c1-control-contract.json",
-      "sha256": "a6e668161912067e7dbf388add11a6c56730aaba38c2ad1684d6888f8010b050"
+      "sha256": "442b68872cc0bcfac91a47b7138b4f6f487521fb46322eb5121b99556c6ad43a"
     },
     "firmware/split_c1/README.md": {
       "path": "firmware/split_c1/README.md",
-      "sha256": "57a5a8ebd1a2124d084bb940a7368dfc4069f8c82c4f400f64dcf0df3f549f82"
+      "sha256": "f11007bcc83d14fa17e2890c21d60893d6fee51e20e8726bdaa86017608e19d7"
     },
     "firmware/split_c1/board_control.cpp": {
       "path": "firmware/split_c1/board_control.cpp",
-      "sha256": "e7f7a5c24cf221d6061f4858b15549e622f7c18be102cb5a86a07faa19655feb"
+      "sha256": "36217b865281392cf26a249de6a22a47da58ca66fcd10e8f8382650fc16c5057"
     },
     "firmware/split_c1/tests/board_control_test.cpp": {
       "path": "firmware/split_c1/tests/board_control_test.cpp",
-      "sha256": "40eecb3e66de36c935705c8a6e9ec2c9e6fc16a8ae7db208689f100a8ec561fc"
+      "sha256": "8307809ba1aae3b641c5deb32111a488c865623e3593b727e9a32018155b705b"
     },
     "hardware/thin18-compact/SPLIT-C1-RTC-FIRMWARE.md": {
       "path": "hardware/thin18-compact/SPLIT-C1-RTC-FIRMWARE.md",
@@ -40,11 +40,11 @@
     },
     "hardware/thin18-compact/core-c1-96x68-split/frontlight-firmware-contract.json": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/frontlight-firmware-contract.json",
-      "sha256": "7a998b8ccd81f7b9d16b3c878e34d018106adc15349a69ead4fd9b6fce836dda"
+      "sha256": "4a2eef66a48bef7d5aa7e4de4c7d9013300ad2acbd34645a9d5acdd3d1bfd5d9"
     },
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
-      "sha256": "1d4d319cbac590f86a0c29ad91de5a75a72ca3f91e220f95c63f81db12e4cd93"
+      "sha256": "47823398576ef3906d987db13aa0f18fb12c02f10d78c9f266f40f8a980a9dd4"
     },
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch",
@@ -60,7 +60,7 @@
     },
     "host_tests": {
       "path": "hardware/thin18-compact/split-c1-control-host-tests.json",
-      "sha256": "51e9c503c6c0ba29ba33a487d650a6b2a0f6753a2a98ea06f752195d79194767"
+      "sha256": "91795b0cf070b6c381fab369d654e3c9b7892625665c36e6ae2e87f3eae97b21"
     }
   },
   "native_bindings_verified": true,
@@ -71,7 +71,7 @@
       "EN_3V3_EPD_LOGIC",
       "EN_VSYS_AUDIO",
       "FUEL_GPOUT",
-      "BQ_CE",
+      "CHG_REQUEST",
       "BQ_INT",
       "BQ_STAT"
     ],
@@ -81,7 +81,7 @@
       "IMU_INT1",
       "SD_CD",
       "PG_3V3_MAIN",
-      "FL_HWEN",
+      "unconnected-(U601-P15-Pad18)",
       "FL_PWM",
       "TOUCH_RST"
     ],
@@ -96,11 +96,11 @@
     "kFrontlight": 54,
     "kImu": 106,
     "kDirection0": 208,
-    "kDirection1": 31,
-    "kQuiescent0": 32,
+    "kDirection1": 63,
+    "kQuiescent0": 0,
     "kQuiescent1": 0,
     "kPowerGoodMask": 16,
-    "kFrontlightEnable": 32,
+    "kHardwarePermitGpio": 2,
     "kFrontlightPwm": 64,
     "kFrontlightMode": 1,
     "kFrontlightVoltage": 161,
@@ -128,37 +128,24 @@
     "U906"
   ],
   "host_tests_passed": true,
-  "host_test_groups": 18,
-  "single_transfer_fault_cases": 346,
+  "host_test_groups": 21,
+  "single_transfer_fault_cases": 334,
   "incorrect_binding_cases_rejected": 16,
   "pre_firmware_charging_inhibit_proven": false,
   "open_hardware_findings": [
     {
-      "id": "R607_PRE_FIRMWARE_CHARGING",
-      "netlist_evidence": [
-        [
-          "R607",
-          "1"
-        ],
-        [
-          "U601",
-          "9"
-        ],
-        [
-          "U901",
-          "9"
-        ]
-      ],
-      "bias": "R607 100k to GND; XL9535 reset directions are inputs",
-      "effect": "Software inhibit only exists after firmware runs. Autonomous charging before MCU initialization or after XL/charger resets is not excluded.",
-      "status": "OPEN; review a hardware inhibit ECO or a batteryless/current-limited commissioning fixture before connecting an unqualified cell"
+      "id": "PHYSICAL_INHIBIT_QUALIFICATION",
+      "status": "NOT_RUN",
+      "effect": "Default-off two-MOS topology and independent native-GPIO shutdown are implemented and checked. Analog ramp/temperature/transient tests need real prototypes."
     },
     {
-      "id": "PERSISTENT_BUS_LOSS",
-      "status": "OPEN",
-      "effect": "XL9535 outputs may retain frontlight ON when every shutdown transaction fails; software reports UNKNOWN, not physically OFF."
+      "id": "SIMULTANEOUS_CPU_GPIO_FAILURE",
+      "status": "LIMITATION",
+      "effect": "Direct GPIO avoids I2C dependence but is not an autonomous watchdog. A CPU retained-high fault requires TP19 clamp or power removal."
     }
   ],
+  "hardware_default_off_topology_implemented": true,
+  "non_i2c_shutdown_path_implemented": true,
   "target_firmware_integration_verified": false,
   "physical_evt_passed": false,
   "manufacturing_release": false

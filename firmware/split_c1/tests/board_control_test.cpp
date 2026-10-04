@@ -17,6 +17,19 @@ struct FakeBus final : RegisterBus {
     std::uint32_t time = 0, hz = 100000, delay_ms = 0;
     std::size_t fail_at = 0, count = 0;
     bool persistent = false, failed_write_applies = false, pg = true;
+    bool permit_level = false, permit_failed = false, permit_stuck_high = false;
+    bool set_hardware_permit(bool high) noexcept override {
+        if (permit_failed) return false;
+        if (!permit_stuck_high) {
+            if (permit_level && !high) reset_light();
+            permit_level = high;
+        }
+        return true;
+    }
+    bool read_hardware_permit(bool& high) noexcept override {
+        if (permit_failed) return false;
+        high = permit_level; return true;
+    }
     bool protocol_violation = false, unsafe_light_rise = false;
     int ignore_address = -1, ignore_reg = -1;
     std::uint8_t fault_history = 0, fault_current = 0, flags = 0x80;
@@ -38,7 +51,7 @@ struct FakeBus final : RegisterBus {
     bool drive(std::uint8_t bit) const {
         return !(reg[kExpander][7] & bit) && (reg[kExpander][3] & bit);
     }
-    bool light_on() const { return drive(0x20) && drive(0x40); }
+    bool light_on() const { return permit_level && drive(0x40); }
     bool failed() const { return fail_at && (count == fail_at || (persistent && count >= fail_at)); }
     bool known(std::uint8_t a) const { return a==kExpander || a==kCharger || a==kFrontlight || a==kImu; }
     std::uint32_t frequency_hz() const noexcept override { return hz; }
@@ -46,7 +59,7 @@ struct FakeBus final : RegisterBus {
     bool read8(std::uint8_t a, std::uint8_t r, std::uint8_t& value, std::uint32_t timeout) noexcept override {
         ++count; time += delay_ms;
         if (!known(a) || timeout != 10) protocol_violation = true;
-        const bool ok = !failed() && known(a) && (a != kFrontlight || drive(0x20));
+        const bool ok = !failed() && known(a) && (a != kFrontlight || permit_level);
         if (ok) {
             value = reg[a][r];
             if (a==kExpander && r==1) {
@@ -64,7 +77,7 @@ struct FakeBus final : RegisterBus {
         if (!known(a) || timeout != 10 || a==kImu || r==0xFF ||
             (a==kExpander && r==7 && !(value & 0x10)) ||
             (a==kCharger && r==1 && (value & 0x30))) protocol_violation=true;
-        const bool on_before=light_on(), enabled_before=drive(0x20);
+        const bool on_before=light_on(), enabled_before=permit_level;
         const bool ok=!failed() && known(a) && (a != kFrontlight || enabled_before);
         if ((ok || (failed_write_applies && known(a))) && !(ignore_address==a && ignore_reg==r)) {
             reg[a][r]=value;
@@ -72,7 +85,7 @@ struct FakeBus final : RegisterBus {
                 reg[a][r] &= 0xBF;
                 fault_current &= 0x7F;
             }
-            if (enabled_before && !drive(0x20)) reset_light();
+            if (enabled_before && !permit_level) reset_light();
         }
         if (!on_before && light_on()) {
             const bool configured=(reg[kFrontlight][0]&3)==1 &&
@@ -88,8 +101,8 @@ struct FakeBus final : RegisterBus {
 void init(FakeBus& bus, BoardControl& control) {
     CHECK(control.begin()==Result::Ok);
     CHECK(control.initialized()); CHECK(!bus.light_on());
-    CHECK(bus.reg[kExpander][6]==0xD0 && bus.reg[kExpander][7]==0x1F);
-    CHECK(bus.reg[kExpander][2]==0x20 && bus.reg[kExpander][3]==0);
+    CHECK(bus.reg[kExpander][6]==0xD0 && bus.reg[kExpander][7]==0x3F);
+    CHECK(bus.reg[kExpander][2]==0 && bus.reg[kExpander][3]==0);
     CHECK((bus.reg[kCharger][1]&0x30)==0 && (bus.reg[kCharger][2]&0x3F)==0);
 }
 void illuminate(FakeBus& bus, BoardControl& control, std::uint16_t current=145) {
@@ -113,10 +126,10 @@ void latch_before_direction() {
     FakeBus b; BoardControl c(b); init(b,c);
     bool latch0=false,latch1=false;
     for (const auto& o:b.operations) if (o.write && o.address==kExpander) {
-        if(o.reg==2 && o.value==0x20) latch0=true;
+        if(o.reg==2 && o.value==0) latch0=true;
         if(o.reg==3 && o.value==0) latch1=true;
         if(o.reg==6 && o.value==0xD0) CHECK(latch0);
-        if(o.reg==7 && o.value==0x1F) CHECK(latch1);
+        if(o.reg==7 && o.value==0x3F) CHECK(latch1);
         if(o.reg==7) CHECK(o.value&0x10);
     }
 }
@@ -286,13 +299,32 @@ void all_single_transfer_failures() {
         }
     }
 }
-void permanent_bus_loss_is_not_reported_as_off() {
+void permanent_bus_loss_uses_direct_shutdown() {
     FakeBus b; BoardControl c(b);init(b,c);illuminate(b,c);
     b.fail_at=b.count+1;b.persistent=true;
     CHECK(c.poll()==Result::BusError);
-    CHECK(c.light_state()==LightState::Unknown);
+    CHECK(c.light_state()==LightState::Off);
+    CHECK(c.diagnostics().hardware_inhibit_confirmed);
     CHECK(!c.diagnostics().shutdown_registers_confirmed);
-    CHECK(b.light_on()); // explicit physical limitation, not hidden by mock
+    CHECK(!b.light_on() && !b.permit_level);
+}
+
+void loss_of_both_control_paths_is_unknown() {
+    FakeBus b; BoardControl c(b);init(b,c);illuminate(b,c);
+    b.fail_at=b.count+1;b.persistent=true;b.permit_failed=true;
+    CHECK(c.poll()==Result::BusError);
+    CHECK(c.light_state()==LightState::Unknown && b.light_on());
+    CHECK(!c.diagnostics().hardware_inhibit_confirmed);
+}
+void stuck_high_gpio_is_not_claimed_safe() {
+    FakeBus b;b.permit_stuck_high=true;b.permit_level=true;BoardControl c(b);
+    CHECK(c.begin()==Result::ReadbackMismatch);
+    CHECK(!c.initialized() && !c.diagnostics().hardware_inhibit_confirmed);
+}
+void charging_request_stays_low_when_lighting() {
+    FakeBus b;BoardControl c(b);init(b,c);illuminate(b,c);
+    CHECK((b.reg[kExpander][2]&0x20)==0);
+    CHECK((b.reg[kExpander][7]&0x30)==0x30); // PG and unused P15 remain inputs
 }
 
 int main() {
@@ -308,7 +340,10 @@ int main() {
         {"pg_and_bus_limits",pg_loss_and_fast_bus_fail_closed},{"read_only_imu",read_only_imu_probe},
         {"unrelated_bits",preserve_unrelated_register_bits},{"ignored_writes",ignored_writes_do_not_enable_light},
         {"slow_transfers",slow_transfer_deadlines},{"single_transfer_faults",all_single_transfer_failures},
-        {"permanent_bus_loss",permanent_bus_loss_is_not_reported_as_off}
+        {"permanent_bus_loss",permanent_bus_loss_uses_direct_shutdown},
+        {"both_control_paths_lost",loss_of_both_control_paths_is_unknown},
+        {"stuck_high_gpio",stuck_high_gpio_is_not_claimed_safe},
+        {"charging_request_low",charging_request_stays_low_when_lighting}
     };
     for(const auto& test:tests) {
         try {test.second();std::cout<<"PASS "<<test.first<<'\n';}

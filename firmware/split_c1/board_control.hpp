@@ -10,11 +10,11 @@ inline constexpr std::uint8_t kCharger = 0x1A;
 inline constexpr std::uint8_t kFrontlight = 0x36;
 inline constexpr std::uint8_t kImu = 0x6A;
 inline constexpr std::uint8_t kDirection0 = 0xD0;
-inline constexpr std::uint8_t kDirection1 = 0x1F;
-inline constexpr std::uint8_t kQuiescent0 = 0x20;
+inline constexpr std::uint8_t kDirection1 = 0x3F;
+inline constexpr std::uint8_t kQuiescent0 = 0x00;
 inline constexpr std::uint8_t kQuiescent1 = 0x00;
 inline constexpr std::uint8_t kPowerGoodMask = 0x10;
-inline constexpr std::uint8_t kFrontlightEnable = 0x20;
+inline constexpr std::uint8_t kHardwarePermitGpio = 2;
 inline constexpr std::uint8_t kFrontlightPwm = 0x40;
 inline constexpr std::uint8_t kFrontlightMode = 0x01;
 inline constexpr std::uint8_t kFrontlightVoltage = 0xA1;
@@ -40,6 +40,11 @@ public:
                         std::uint32_t timeout_ms) noexcept = 0;
     virtual std::uint32_t frequency_hz() const noexcept = 0;
     virtual std::uint32_t now_ms() const noexcept = 0;
+    // MUST use native GPIO2, never an I2C expander. Set the output latch before
+    // direction, disable pulls/hold at startup, and read the actual GPIO pad.
+    // Pad readback is before R931, not an analog measurement of TP19.
+    virtual bool set_hardware_permit(bool high) noexcept = 0;
+    virtual bool read_hardware_permit(bool& high) noexcept = 0;
 };
 
 enum class Result : std::uint8_t {
@@ -57,13 +62,14 @@ struct Diagnostics {
     std::uint8_t charger_current = 0;
     std::uint8_t charger_flags = 0;
     bool shutdown_registers_confirmed = false;
+    bool hardware_inhibit_confirmed = false;
 };
 
 class BoardControl final {
 public:
     explicit BoardControl(RegisterBus& bus) noexcept : bus_(bus) {}
     // Explicit recovery only. All switched rails/frontlight/charging remain OFF.
-    // Not proof of safe power-up before the MCU runs: R607 currently pulls nCE LOW.
+    // Hardware-finish board: both request and native GPIO permit default LOW.
     Result begin() noexcept;
     // Call at least every kServiceDeadlineMs. Missing service is detected only
     // when execution resumes; this is NOT an independent hardware watchdog.
@@ -105,6 +111,7 @@ private:
     bool check_light() noexcept;
     bool feed_watchdog() noexcept;
     bool light_off() noexcept;
+    bool permit(bool high) noexcept;
     Result ready() noexcept;
     Result fail(Result reason) noexcept;
 };

@@ -7,11 +7,11 @@
     "kFrontlight": 54,
     "kImu": 106,
     "kDirection0": 208,
-    "kDirection1": 31,
-    "kQuiescent0": 32,
+    "kDirection1": 63,
+    "kQuiescent0": 0,
     "kQuiescent1": 0,
     "kPowerGoodMask": 16,
-    "kFrontlightEnable": 32,
+    "kHardwarePermitGpio": 2,
     "kFrontlightPwm": 64,
     "kFrontlightMode": 1,
     "kFrontlightVoltage": 161,
@@ -32,7 +32,7 @@
       "6": "EN_3V3_EPD_LOGIC",
       "7": "EN_VSYS_AUDIO",
       "8": "FUEL_GPOUT",
-      "9": "BQ_CE",
+      "9": "CHG_REQUEST",
       "10": "BQ_INT",
       "11": "BQ_STAT",
       "12": "GND",
@@ -41,7 +41,7 @@
       "15": "IMU_INT1",
       "16": "SD_CD",
       "17": "PG_3V3_MAIN",
-      "18": "FL_HWEN",
+      "18": "unconnected-(U601-P15-Pad18)",
       "19": "FL_PWM",
       "20": "TOUCH_RST",
       "21": "GND",
@@ -53,7 +53,7 @@
       "2": "SGM41513_PSEL",
       "5": "I2C_SCL",
       "6": "I2C_SDA",
-      "9": "BQ_CE",
+      "9": "CHG_nCE",
       "22": "SGM41513_REGN"
     },
     "U905": {
@@ -76,14 +76,15 @@
     },
     "U501": {
       "8": "I2C_SDA",
-      "22": "I2C_SCL"
+      "22": "I2C_SCL",
+      "38": "HW_ARM_GPIO"
     },
     "U302": {
       "1": "I2C_SCL",
       "8": "I2C_SDA"
     },
     "R607": {
-      "1": "BQ_CE",
+      "1": "CHG_REQUEST",
       "2": "GND"
     },
     "R601": {
@@ -167,15 +168,13 @@
   "findings": [
     {
       "id": "PRE_FIRMWARE_NCE",
-      "status": "OPEN",
-      "ref": "R607",
-      "value": "100k pulldown",
-      "reason": "XL9535 reset inputs plus SGM41513 default charge enable do not prove charging inhibition before MCU startup"
+      "status": "HARDWARE_TOPOLOGY_IMPLEMENTED",
+      "reason": "REGN pullup and two default-low series MOS permissions are present. Actual ramps, resets and temperature are prototype measurements."
     },
     {
-      "id": "PERSISTENT_BUS_LOSS",
-      "status": "OPEN",
-      "reason": "No independent frontlight shutdown when XL9535 bus is permanently inaccessible"
+      "id": "PERSISTENT_I2C_LOSS",
+      "status": "DIRECT_GPIO_PATH_IMPLEMENTED",
+      "reason": "Native GPIO2 shutdown does not use I2C. CPU/GPIO stuck high requires manual TP19 clamp or power removal."
     }
   ],
   "sources": [
@@ -237,5 +236,13 @@
   ],
   "target_firmware_integration_verified": false,
   "physical_evt_passed": false,
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "hardware_finish": "GPIO2/R931 drives FL_HWEN directly; P15 is NC/input. P05 CHG_REQUEST is active-high, reset-low, and still inhibited by second series MOS unless GPIO2 permit is high. Native topology is not a physical qualification.",
+  "required_native_gpio_adapter": {
+    "gpio": 2,
+    "set": "LOW latch before output direction; disable GPIO hold and unintended pulls",
+    "read": "Read MCU GPIO2 pad before R931; not a simulated value or I2C transaction",
+    "simultaneous_failure": "Report UNKNOWN if direct GPIO and I2C both fail",
+    "target_tested": false
+  }
 }

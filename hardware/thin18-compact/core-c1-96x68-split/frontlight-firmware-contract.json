@@ -15,8 +15,10 @@
     "drive FL_PWM=1"
   ],
   "shutdown_sequence": [
-    "drive FL_PWM=0",
-    "drive FL_HWEN=0"
+    "drive GPIO2=0 immediately without I2C",
+    "best-effort clear XL9535 P16 PWM"
   ],
-  "default_register_hazard": "REG0x01 resets to 20mA and REG0x02 resets to 36V; PWM must stay low until reprogrammed"
+  "default_register_hazard": "REG0x01 resets to 20mA and REG0x02 resets to 36V; PWM must stay low until reprogrammed",
+  "hardware_enable_source": "ESP32-S3 GPIO2 through R931; no longer XL9535 P15",
+  "charging_request": "P05 CHG_REQUEST must remain0 unless the battery/charging configuration is separately qualified"
 }

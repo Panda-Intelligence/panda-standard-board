@@ -84,5 +84,5 @@ Third-party component models, symbols, footprints, manufacturer names and tradem
 XL9535/SGM41513/SGM37601 sequencing and a read-only QMI8658A identity probe.
 Host tests and native pin/address binding checks run in the explicit Split-C1
 export pipeline. This is not product-firmware integration or physical EVT.
-The existing nCE pulldown and loss-of-I2C shutdown limitations remain open;
-read the control README before powering an assembled prototype with a battery.
+The [hardware-finish ECO](hardware/thin18-compact/SPLIT-C1-HARDWARE-FINISH.md) adds default-off charge authorization and a native GPIO2 shutdown path.
+Read the updated control binding before using any older firmware. Physical EVT and accepted assembly supply remain separate gates.
