@@ -21,6 +21,7 @@ def release_steps(target):
     steps = [
         ("validate_split_c1.py", [], False),
         ("test_split_c1_fabrication.py", [], False),
+        ("test_split_c1_assembly_process.py", [], False),
         ("verify_split_c1_power_integrity.py", [], False),
         ("verify_split_c1_hardware_finish.py", [], False),
         ("verify_split_c1_cap_drill.py", [], False),
@@ -29,6 +30,7 @@ def release_steps(target):
         ("verify_split_c1_control.py", [], False),
         ("verify_split_c1_supply.py", [], False),
         ("audit_split_c1_mechanical.py", [], True),
+        ("audit_split_c1_assembly_process.py", [], True),
     ]
     for board, candidate, output, width, height in [
         ("Core-C1", "core-c1-96x68-split", "core-c1-96x68", 96, 68),
