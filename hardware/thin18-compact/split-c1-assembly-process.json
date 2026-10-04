@@ -3,7 +3,7 @@
   "inputs": {
     "auditor": {
       "path": "hardware/thin18-compact/audit_split_c1_assembly_process.py",
-      "sha256": "004fd5ea57ac80f7813ee54aa1fa5818739986fea9523287d969511881fc0a25"
+      "sha256": "0a4843e587718e682c28c9f88d22acb59682d5b79a70f3648d961e7b223821ee"
     },
     "fabrication_contract": {
       "path": "hardware/thin18-compact/split-c1-fabrication-contract.json",
@@ -3017,7 +3017,7 @@
           "via_uuid": "d2d35a96-1f60-45ba-beca-4458a1f598b6",
           "ref": "C402",
           "pad": "1",
-          "pad_uuid": "7e781c38-cee7-4749-a2a5-7fc52129d882",
+          "pad_shape_sha256": "94118cdc131988e769dfaae0e55fc8bc2076b4d4bbc90e545b645705079ed04a",
           "side": "F.Cu",
           "net": "3V3_AON_SRC",
           "center_mm": [
@@ -3034,7 +3034,7 @@
           "via_uuid": "37f9da5b-00bc-5580-bdfe-dd6588e4af7f",
           "ref": "C502",
           "pad": "1",
-          "pad_uuid": "e00065f6-193a-4e3f-9fe0-d814a5e12da9",
+          "pad_shape_sha256": "dfdef4e8ceb7db4e5f99617d51c11b3f1c5c33556ac32b6da0aecd3e89f38ed6",
           "side": "F.Cu",
           "net": "3V3_AON",
           "center_mm": [
@@ -3051,7 +3051,7 @@
           "via_uuid": "59c028da-fa64-45d0-bca3-1647e7c2c6d9",
           "ref": "C516",
           "pad": "1",
-          "pad_uuid": "4132e9ac-631b-574a-a8dd-72ec6eb1b1df",
+          "pad_shape_sha256": "74d4c30b097b469b6739839b680b80d3d07f3a919add4a29c6588fb2a2592b18",
           "side": "B.Cu",
           "net": "3V3_TOUCH_SW",
           "center_mm": [
@@ -3068,7 +3068,7 @@
           "via_uuid": "fe11a0da-f805-5a30-9e8d-617f8c51174b",
           "ref": "J501",
           "pad": "1",
-          "pad_uuid": "0b25d69e-63f5-4c44-a7f0-b99de42d0a2a",
+          "pad_shape_sha256": "cb394645a841cec8162d2915d5d8a6433bfe9a4b23f923e87f00afbb2bdc17b9",
           "side": "F.Cu",
           "net": "SDMMC_D2_CARD",
           "center_mm": [
@@ -3085,7 +3085,7 @@
           "via_uuid": "51e18fc1-2624-5a53-8f73-254656e36da7",
           "ref": "J501",
           "pad": "3",
-          "pad_uuid": "474f1a4c-39c8-4af8-baf6-da4005f43dae",
+          "pad_shape_sha256": "03517a165b14e89ff895e29f9e13d4c3584f4fc8d269aeaa8990a59e2a1da147",
           "side": "F.Cu",
           "net": "SDMMC_CMD_CARD",
           "center_mm": [
@@ -3102,7 +3102,7 @@
           "via_uuid": "8c8c1e71-becf-54a3-acdd-8570de47b685",
           "ref": "Q907",
           "pad": "2",
-          "pad_uuid": "3c035432-3a2a-58d8-87cc-9e0eb707ef6a",
+          "pad_shape_sha256": "ea0a2ffb1a286496ab22d5e0d916603182731176af35b1580359d5c1b640ed56",
           "side": "F.Cu",
           "net": "CHG_nCE",
           "center_mm": [
@@ -3119,7 +3119,7 @@
           "via_uuid": "13c1170e-ebce-5b62-bfae-3a196f1f755c",
           "ref": "Q908",
           "pad": "1",
-          "pad_uuid": "e34fd68f-9b83-5da0-a02a-16eca8dd4eb6",
+          "pad_shape_sha256": "be7f41f23c0eed81bda6b4dab81e7c2556b6585cc1266a7711e410c60456ecb9",
           "side": "F.Cu",
           "net": "FL_HWEN",
           "center_mm": [
@@ -3136,7 +3136,7 @@
           "via_uuid": "13389c49-533f-5a9a-ad28-f914d49281d9",
           "ref": "R931",
           "pad": "1",
-          "pad_uuid": "a344f531-ade8-5b18-be92-debe0f0ff87a",
+          "pad_shape_sha256": "5b9794f9e7693c7f60ad1d49583ea61d60a83082eb28bf2a5265217d937454cf",
           "side": "F.Cu",
           "net": "HW_ARM_GPIO",
           "center_mm": [
@@ -3153,7 +3153,7 @@
           "via_uuid": "88cfd6c2-92b8-56c9-aa8a-00cb5ffde7e1",
           "ref": "U302",
           "pad": "7",
-          "pad_uuid": "7f2318f0-0bce-55f3-a527-aabc52465b17",
+          "pad_shape_sha256": "dcc37de704c4ff89a5f1bba20bd9d1c68eb5d9de0a5a6ebf8982f0de86fd0d04",
           "side": "F.Cu",
           "net": "EXP_INT",
           "center_mm": [
@@ -3170,7 +3170,7 @@
           "via_uuid": "aa5d83e0-d807-5229-9396-ce80f7184ba4",
           "ref": "U501",
           "pad": "38",
-          "pad_uuid": "4c6add75-14e1-41c3-8036-a754a7020052",
+          "pad_shape_sha256": "2c74605bf321c7dd11c4554fa7960c65f169c8da660d34955a7c5ebdf68213fb",
           "side": "F.Cu",
           "net": "HW_ARM_GPIO",
           "center_mm": [
@@ -3187,7 +3187,7 @@
           "via_uuid": "85521820-09f3-5f8d-996f-61f2abe51d5c",
           "ref": "U901",
           "pad": "2",
-          "pad_uuid": "bbeaec00-5ef8-4752-90d9-bde5d4c57af6",
+          "pad_shape_sha256": "5ff82bad779582e3f0b33d7731d100ac40993003614065793a0919d583b68d58",
           "side": "F.Cu",
           "net": "SGM41513_PSEL",
           "center_mm": [
@@ -3204,7 +3204,7 @@
           "via_uuid": "bf295870-8b91-425f-b468-2e7cd901d303",
           "ref": "U901",
           "pad": "22",
-          "pad_uuid": "3a5bee2d-2bdb-43f7-afe2-1c9fb2c08442",
+          "pad_shape_sha256": "8f8dec7779ba2c1566902b3baf7de5fd3b573fc6f4b01ae6235c74d94fa8b17d",
           "side": "F.Cu",
           "net": "SGM41513_REGN",
           "center_mm": [
@@ -3221,7 +3221,7 @@
           "via_uuid": "53a89606-2820-4918-9cf6-109dba35ef36",
           "ref": "U901",
           "pad": "7",
-          "pad_uuid": "c5ae8cc2-b367-44ee-a742-aea8bd818d94",
+          "pad_shape_sha256": "3d95d2f2b55f5fd5f5245f3c565d2c2fb960b657a0e319b32bfa06252b1d392a",
           "side": "F.Cu",
           "net": "BQ_INT",
           "center_mm": [

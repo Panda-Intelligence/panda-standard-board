@@ -124,7 +124,7 @@ voids/blind vias, records nominal geometry and the1um polygon tolerance, and
 separately lists0.22/0.23mm WLCSP and small rectangular SMT lands for ENIG/stencil
 review. It does not certify solder paste apertures, fabricated tolerances or yield.
 
-`audit_split_c1_assembly_process.py` plus29 synthetic tests are required by the
+`audit_split_c1_assembly_process.py` plus31 synthetic tests are required by the
 existing release command. `split-c1-assembly-process.json` records source hashes,
 via UUIDs and the measured list. The generated packet includes
 `ASSEMBLY-PROCESS.md`, `assembly-process.json` and per-board `VIA-IN-PAD.csv`.
@@ -135,3 +135,8 @@ select ordinary open vias for Core when submitting the Gerbers.
 All162 exact mainland identities and the seven supplier-acceptance gaps remain
 unchanged. Actual fill/cap quote, CAM acceptance, stencil approval, assembly and
 physical EVT are not closed by generating this record.
+
+SMT-pad identifiers in process reports use canonical copper-shape hashes, not
+KiCad runtime-generated UUIDs for legacy pads without stored IDs. Consecutive
+fresh native loads must produce byte-identical process reports. No pad or via
+is edited to normalize the report. Via UUIDs remain the stored native IDs.
