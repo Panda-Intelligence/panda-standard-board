@@ -10,7 +10,7 @@
         "FH (Fenghua Advanced)",
         "FH (Guangdong Fenghua Advanced Tech)"
       ],
-      "company": "\u5e7f\u4e1c\u98ce\u534e\u9ad8\u65b0\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东风华高新科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.fhcomp.com/"
@@ -20,7 +20,7 @@
       "aliases": [
         "SGMICRO"
       ],
-      "company": "\u5723\u90a6\u5fae\u7535\u5b50\uff08\u5317\u4eac\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "圣邦微电子（北京）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.sg-micro.com/cnsales-office"
@@ -30,7 +30,7 @@
       "aliases": [
         "FOJAN"
       ],
-      "company": "\u5b89\u5fbd\u7701\u5bcc\u6377\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "安徽省富捷电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.fojan.cn/"
@@ -40,7 +40,7 @@
       "aliases": [
         "HCTL"
       ],
-      "company": "\u6df1\u5733\u5e02\u534e\u707f\u5929\u7984\u7535\u5b50\u6709\u9650\u516c\u53f8",
+      "company": "深圳市华灿天禄电子有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.hctldz.com/about-us/"
@@ -50,7 +50,7 @@
       "aliases": [
         "XINLUDA"
       ],
-      "company": "\u82af\u8def\u8fbe\u4fe1\u606f\u6280\u672f\uff08\u53a6\u95e8\uff09\u6709\u9650\u516c\u53f8",
+      "company": "芯路达信息技术（厦门）有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.xinluda.com/en/About-Us/"
@@ -60,7 +60,7 @@
       "aliases": [
         "CCTC"
       ],
-      "company": "\u6f6e\u5dde\u4e09\u73af\uff08\u96c6\u56e2\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "潮州三环（集团）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.cctc.cc/about.html"
@@ -70,7 +70,7 @@
       "aliases": [
         "QST (Shanghai QST)"
       ],
-      "company": "\u4e0a\u6d77\u77fd\u777f\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "上海矽睿科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.qstcorp.com/intro/"
@@ -80,7 +80,7 @@
       "aliases": [
         "Cellwise"
       ],
-      "company": "\u5e7f\u4e1c\u8d5b\u5fae\u5fae\u7535\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东赛微微电子股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://static.sse.com.cn/stock/disclosure/announcement/c/202203/000962_20220316_N2XP.pdf"
@@ -91,7 +91,7 @@
         "CJ",
         "JSCJ"
       ],
-      "company": "\u6c5f\u82cf\u957f\u6676\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "江苏长晶科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.jscj-elec.com/"
@@ -101,7 +101,7 @@
       "aliases": [
         "Shenzhen Nsiway Tech"
       ],
-      "company": "\u6df1\u5733\u5e02\u7eb3\u82af\u5a01\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "深圳市纳芯威科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.nsiway.com.cn/list_40/138.html"
@@ -111,7 +111,7 @@
       "aliases": [
         "Espressif"
       ],
-      "company": "\u4e50\u946b\u4fe1\u606f\u79d1\u6280\uff08\u4e0a\u6d77\uff09\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "乐鑫信息科技（上海）股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.espressif.com/en/company/about-espressif"
@@ -121,7 +121,7 @@
       "aliases": [
         "Sunlord"
       ],
-      "company": "\u6df1\u5733\u987a\u7edc\u7535\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "深圳顺络电子股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.sunlordinc.com/"
@@ -131,7 +131,7 @@
       "aliases": [
         "HRE"
       ],
-      "company": "\u6c5f\u82cf\u82af\u58f0\u5fae\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8 / Jiangsu Holy Ram Electronics Technology Limited",
+      "company": "江苏芯声微电子科技有限公司 / Jiangsu Holy Ram Electronics Technology Limited",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.kes.org/eng/search/company_view.asp?admission=2026&user_no=6801",
@@ -142,7 +142,7 @@
       "aliases": [
         "Wuxi I-core Elec"
       ],
-      "company": "\u65e0\u9521\u4e2d\u5fae\u7231\u82af\u7535\u5b50\u6709\u9650\u516c\u53f8",
+      "company": "无锡中微爱芯电子有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.i-coreic.com/about-us"
@@ -152,7 +152,7 @@
       "aliases": [
         "Nanjing Shiheng Elec"
       ],
-      "company": "\u5357\u4eac\u65f6\u6052\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "南京时恒电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.shiheng.com.cn/products/mf55xl.html"
@@ -162,7 +162,7 @@
       "aliases": [
         "XKB Connection"
       ],
-      "company": "\u5e7f\u4e1c\u661f\u5764\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "广东星坤科技股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.helloxkb.com/home/search/tzzgl.html",
@@ -174,7 +174,7 @@
       "aliases": [
         "MUP"
       ],
-      "company": "\u6df1\u5733\u5e02\u5fb7\u6d77\u5a01\u5b9e\u4e1a\u6709\u9650\u516c\u53f8 / Shenzhen MUP Industrial Co., Ltd.",
+      "company": "深圳市德海威实业有限公司 / Shenzhen MUP Industrial Co., Ltd.",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.mupconnector.com/about/summary/"
@@ -184,7 +184,7 @@
       "aliases": [
         "LRC"
       ],
-      "company": "\u4e50\u5c71\u65e0\u7ebf\u7535\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+      "company": "乐山无线电股份有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.lrc.cn/about/connect.html"
@@ -194,7 +194,7 @@
       "aliases": [
         "XUNPU"
       ],
-      "company": "\u4e1c\u839e\u5e02\u8baf\u666e\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "company": "东莞市讯普电子科技有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.xunpu.com.cn/",
@@ -205,7 +205,7 @@
       "aliases": [
         "JSMSEMI"
       ],
-      "company": "\u6df1\u5733\u5e02\u6770\u76db\u5fae\u534a\u5bfc\u4f53\u6709\u9650\u516c\u53f8",
+      "company": "深圳市杰盛微半导体有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.jsmsemi.com/about/1.html"
@@ -215,7 +215,7 @@
       "aliases": [
         "WAVE"
       ],
-      "company": "\u6df1\u5733\u5e02\u5174\u5a01\u5e06\u7535\u5b50\u6280\u672f\u6709\u9650\u516c\u53f8",
+      "company": "深圳市兴威帆电子技术有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.whwave.com.cn/SD3078"
@@ -225,7 +225,7 @@
       "aliases": [
         "KAMCAP"
       ],
-      "company": "\u9526\u5dde\u51ef\u7f8e\u80fd\u6e90\u6709\u9650\u516c\u53f8",
+      "company": "锦州凯美能源有限公司",
       "origin": "MAINLAND_MANUFACTURER",
       "source_urls": [
         "https://www.kamcappower.com/"
@@ -1144,10 +1144,11 @@
       "manufacturer": "SGMICRO",
       "mpn": "SGM809B-TXN3LG/TR",
       "footprint": "panda-standard:SGM809B_SOT23_TX00031",
-      "library_id": "",
+      "library_id": "C699619",
       "origin": "MAINLAND_MANUFACTURER",
       "review_source": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
-      "review_note": "Exact ordering code,pinmap and SOT-23 TX00031 lands; semiconductor qualification and supplier acceptance remain open."
+      "review_note": "Exact ordering code,pinmap and SOT-23 TX00031 lands; semiconductor qualification and supplier acceptance remain open.",
+      "catalog_review_url": "https://jlcpcb.com/partdetail/SGMICRO-SGM809B_TXN3LGTR/C699619"
     },
     {
       "board": "Core-C1",

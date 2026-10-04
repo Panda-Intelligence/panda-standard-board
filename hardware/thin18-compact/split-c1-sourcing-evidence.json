@@ -33,7 +33,7 @@
       "manufacturer": "MUP",
       "mpn": "U20405-01",
       "library_id": "C20624794",
-      "catalog_manufacturer": "MUP(\u5fb7\u6d77\u5a01)",
+      "catalog_manufacturer": "MUP(德海威)",
       "catalog_mpn": "U20405-01",
       "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
@@ -854,15 +854,6 @@
         "stock_reserved": false,
         "quotation_confirmed": false
       }
-    },
-    {
-      "board": "Core-C1",
-      "refs": [
-        "U906"
-      ],
-      "mpn": "SGM809B-TXN3LG/TR",
-      "source_url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
-      "next_action": "Confirm exact 3.08V push-pull SOT-23 version, authorized supply and assembler code/acceptance. Do not substitute SGM803B/open-drain or SGM810B/active-high. No stock or catalog code asserted."
     }
   ],
   "manual": [
@@ -1206,6 +1197,25 @@
       "library_id": "C140215",
       "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
       "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U906"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "library_id": "C699619",
+      "catalog_manufacturer": "SGMICRO",
+      "catalog_mpn": "SGM809B-TXN3LG/TR",
+      "catalog_package": "SOT-23",
+      "source_url": "https://jlcpcb.com/partdetail/SGMICRO-SGM809B_TXN3LGTR/C699619",
+      "identity_verified": true,
+      "checked_date": "2026-10-04",
+      "source_sha256": "43f1e409bb362aa349de0fcd66ce24222e43b7e8d4abd36a03a4cc7cc4adea96",
+      "stock_reserved": false,
+      "assembly_order_confirmed": false,
+      "identity_note": "Official JLC catalog matches exact SGMICRO MPN and SOT-23 variant. Catalog identity only; no current stock, allocation, order or acceptance asserted."
     }
   ]
 }

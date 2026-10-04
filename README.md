@@ -1,3 +1,12 @@
+# Current development entry
+
+Use `develop` in `/Users/isaac/workspace/AI/panda-standard-board` for the current
+Split-C1 two-board prototype. Start with
+[the handoff](hardware/thin18-compact/SPLIT-C1-HANDOFF.md).
+Generated manufacturing data and full-product rendering outputs are local/external,
+not Git assets. Reusable rendering source is under `tools/render/`; its22mm
+prototype enclosure does not meet or replace the separate7mm product target.
+
 # Panda Standard Board
 
 Open hardware design sources and engineering documentation for the **Panda Standard Board**, maintained by Panda Intelligence.

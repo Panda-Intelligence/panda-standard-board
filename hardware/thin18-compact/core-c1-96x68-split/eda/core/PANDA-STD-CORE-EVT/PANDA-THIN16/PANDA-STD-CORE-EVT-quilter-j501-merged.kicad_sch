@@ -480,7 +480,7 @@
 (property "Description" "SGMICRO 3.08V AON status monitor; push-pull active-low nRESET drives PG_3V3_MAIN. Pin1GND/2nRESET/3VCC. Not a hard MCU reset or guaranteed 3.0V brownout protector. Supply, timing, temperature and board EVT remain unqualified." (at 99.06 149.86 0) (hide yes) (effects (font (size 1.0 1.0))))
 (property "Manufacturer" "SGMICRO" (at 99.06 149.86 0) (hide yes) (effects (font (size 1.0 1.0))))
 (property "MPN" "SGM809B-TXN3LG/TR" (at 99.06 149.86 0) (hide yes) (effects (font (size 1.0 1.0))))
-(property "LCSC" "" (at 99.06 149.86 0) (hide yes) (effects (font (size 1.0 1.0))))
+(property "LCSC" "C699619" (at 99.06 149.86 0) (hide yes) (effects (font (size 1.0 1.0))))
 (pin "1" (uuid "69a4a6f7-b4bd-503f-b565-0a90d9a47b5b"))
 (pin "2" (uuid "f81b8d12-d82e-5916-85d5-5c9c8fc66ac0"))
 (pin "3" (uuid "38653adb-89c0-542a-a101-782d17f3f2fd"))

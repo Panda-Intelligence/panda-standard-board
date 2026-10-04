@@ -1,9 +1,44 @@
+# Current develop checkpoint
+
+The canonical checkout is `/Users/isaac/workspace/AI/panda-standard-board`.
+Six additional worktrees were fully archived and byte-verified outside Git before
+removal. `develop` inherits all reviewed main hardware/code, not the R2-only
+checkpoint or the media-only branch. Existing untracked `packaging/` is untouched.
+
+Verification: full release pipeline exits0 in the canonical checkout and in a
+source-only validation copy with no generated reports. Current and rebuilt
+Core/Display DRC/open/parity/ERC remain0/0/0/0. The new via-replay tests12/12
+and nominal enclosure tests10/10 pass. This is not physical EVT or CAM acceptance.
+
+Nine SMT-land vias are now escaped using the guarded source plan
+`split-c1-via-escape-layout.json` and `_split_c1_via_escape_eco.py`, replayed after
+the C301 drill ECO. No component pose, pad, drill size, annulus, layer stack or
+rule changed. Full current/rebuilt native gates remain mandatory. Four in-pad
+holes remain (C516.1, J501.3, Q907.2, U901.22) and still REQUIRE fill/planarize/cap;
+the reduction from13 is not permission to choose open or tented vias.
+
+U906 is now exactly mapped to JLC C699619, synchronized across CAD, replay,
+policy and independent part checks. Six positions/three part groups remain
+unmapped; no supplier receipt or stock allocation is invented. Read the rewritten
+`SPLIT-C1-SUPPLY-REQUEST.md` and generate the current RFQ with
+`prepare_split_c1_rfq.py`, which does not send or order anything.
+
+The full-product renderer under `tools/render/` includes prototype front/rear
+shells, nominal screen, gasket, side keys, native USB/microSD interfaces, current
+PCBs, retainer and an unselected pack envelope. Its22mm prototype is NOT the7mm
+product. Read `split-c1-prototype-enclosure.json`; physical fit, FPC routing,
+battery procurement, tolerances, actuation, RF/audio and thermal acceptance remain
+open. Rendered images, videos, STL/Blender models and RFQ packets stay outside Git.
+
+The historical notes below describe earlier checkpoints; current source-bound
+reports and the above checkpoint supersede old counts and directories.
+
 # Split-C1 current hardware handoff
 
 ## Authoritative continuation
 
-Worktree: `/Users/isaac/workspace/AI/panda-standard-board-main-ic`.
-Authoritative branch: `main`. Hardware closure is merged through PR #16
+Worktree: `/Users/isaac/workspace/AI/panda-standard-board`.
+Authoritative integration branch: `develop` (based on merged main `be0ef37`). Hardware closure is merged through PR #16
 (`ebacff2`), and C301 drilling/fabrication closure through PR #17 (`d77a33c`).
 Start new work from current remote main, not an old unmerged experiment.
 The user wants the already routed two-board main-branch design finished for

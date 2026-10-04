@@ -38,3 +38,36 @@ R931 provides the direct FL_HWEN/charger permit. Never reintroduce the old
 active-low P05 policy or expander-driven HWEN. TP19 can be grounded manually;
 there is no claimed autonomous watchdog. Replay `_split_c1_hardware_finish_eco.py`
 after the prior power ECO and require its independent pin/land/identity checks.
+
+## Generated-output Git policy — user instruction 2026-10-04
+
+Do NOT commit or push generated or intermediate render deliverables without
+explicit user authorization for those artifacts. Rendering, viewing, or delivering
+a result is not permission to put it in Git. This includes rendered PNG/JPEG,
+MP4/GIF, frame sequences, generated Blender/GLB exports, preview galleries,
+render manifests/checksums, and disposable scripts stored with those outputs.
+
+Keep render output under ignored `/.work/` or `/visualization/`, or another
+user-designated delivery location. Never use a source-code repository as a file
+transfer workaround. Reusable rendering source belongs in a reviewed source
+location separately from generated assets. Native PCB/schematic libraries and
+required source contracts remain versioned according to the existing CAD policy.
+
+Inspect the exact staged paths and diff before any commit; do not broadly stage
+an output directory or force-add ignored render files. Preserve local deliverables
+when removing them from tracking. Do not rewrite pushed history, delete remote
+branches, or force-push as a cleanup shortcut without explicit authorization.
+
+## Canonical checkout and integration branch
+
+Continue the validated Split-C1 in `/Users/isaac/workspace/AI/panda-standard-board`
+on `develop`. This branch starts from merged main `be0ef37`, not the discarded
+Thin7/R2 or media-only branch. Worktree cleanup archives stay outside this repo.
+Keep the existing untracked `packaging/` untouched. Reusable renderer code may
+be reviewed as source; output goes to an external delivery directory or `.work`.
+
+Fresh verification JSON, native interface measurements and release-candidate reports
+are generated outputs and explicitly ignored. Run the release pipeline to recreate
+them; do not force-add them. Source replay plans, precise BOM/part contracts, tests
+and handoffs remain versioned. Keep any actual supplier receipts separately from
+synthetic tests, and never mark them received based on a public catalog page.

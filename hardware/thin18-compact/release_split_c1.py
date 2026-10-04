@@ -22,6 +22,7 @@ def release_steps(target):
         ("validate_split_c1.py", [], False),
         ("test_split_c1_fabrication.py", [], False),
         ("test_split_c1_assembly_process.py", [], False),
+        ("test_split_c1_via_escape.py", [], False),
         ("verify_split_c1_power_integrity.py", [], False),
         ("verify_split_c1_hardware_finish.py", [], False),
         ("verify_split_c1_cap_drill.py", [], False),

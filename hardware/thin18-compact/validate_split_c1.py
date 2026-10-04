@@ -65,6 +65,8 @@ def main():
     if (ROOT/'SPLIT-C1-ENCLOSURE-STUDY.scad').read_text()!=openscad_study(mechanical_inputs):
         raise ValueError('Stale side-battery OpenSCAD study')
     source_paths = [ROOT / name for name in [
+        "prepare_split_c1_rfq.py", "split-c1-prototype-enclosure.json",
+        "_split_c1_via_escape_eco.py", "split-c1-via-escape-layout.json", "test_split_c1_via_escape.py",
         "audit_split_c1_assembly_process.py", "test_split_c1_assembly_process.py", "build_split_c1_process_entry.py",
         "_split_c1_cap_drill_eco.py", "verify_split_c1_cap_drill.py", "SPLIT-C1-CAP-DRILL.md", "split-c1-cap-drill-adoption.json",
         "_split_c1_fabrication.py", "split-c1-fabrication-contract.json", "build_split_c1_order_entry.py", "test_split_c1_fabrication.py", "verify_split_c1_fabrication.py",

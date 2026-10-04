@@ -1,7 +1,7 @@
 {
   "schema": "panda-split-c1-seven-smt-consignment-v2",
   "date": "2026-10-02",
-  "scope": "One set = Core-C1 + Display-C1;7 SMT positions/4 exact procurement groups",
+  "scope": "Seven tracked supplier-acceptance positions / four procurement groups; six positions still need catalog mapping. U906 exact C699619 mapping is verified, but no supply receipt exists.",
   "kit_quantity": null,
   "rows": [
     {
@@ -242,17 +242,17 @@
         "2": "PG_3V3_MAIN",
         "3": "3V3_AON"
       },
-      "jlc_library_id": null,
+      "jlc_library_id": "C699619",
       "jlc_acceptance_receipt": null,
       "usable_my_parts_quantity": null,
-      "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
+      "status": "EXACT_CATALOG_ID_VERIFIED_SUPPLY_ACCEPTANCE_MISSING",
       "do_not_omit": true,
       "substitution_approved": false,
       "packing": {
-        "msl": null,
+        "msl": 1,
         "units_per_factory_reel": null,
         "actual_lot_and_cut_tape_acceptance": null,
-        "qualification": "Confirm exact SOT-23 lot/reel/floor life with supplier and assembler; no receipt exists."
+        "qualification": "MSL1 from exact official catalog; actual lot/packing acceptance unverified."
       },
       "supplier_route": "SGMICRO or manufacturer-authorized distributor; exact-package acceptance required",
       "supply_plan_group": "U906"
