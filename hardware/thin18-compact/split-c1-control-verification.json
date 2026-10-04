@@ -4,7 +4,7 @@
   "inputs": {
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
+      "sha256": "1081f55a0f4632edc252ac007c010ce7fc79b664f5cb2f52a8f762848f8a9174"
     },
     "firmware/split_c1/board_control.hpp": {
       "path": "firmware/split_c1/board_control.hpp",
@@ -52,7 +52,7 @@
     },
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch",
-      "sha256": "64a6e99686ff93eba495e12d0f49fed97da0495bb59ec3fd78ad52e4ca845aa6"
+      "sha256": "91f7211a9501a536bb9c7798c909d8df5a7477524621469248d9801831256fca"
     },
     "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch",

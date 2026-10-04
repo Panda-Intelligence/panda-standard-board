@@ -47,7 +47,9 @@ if not domestic['applied_replacement_identities_verified'] or not domestic['manu
 from verify_split_c1_control import verify_fresh as verify_control_fresh
 control_path=ROOT/'split-c1-control-verification.json'
 control=json.loads(control_path.read_text());verify_control_fresh(control)
-engineering_files={'hardware_finish_contract':ROOT/'split-c1-hardware-finish.json',
+engineering_files={'cap_drill_review':ROOT/'SPLIT-C1-CAP-DRILL.md',
+                   'cap_drill_verification':ROOT/'split-c1-cap-drill-verification.json',
+                   'hardware_finish_contract':ROOT/'split-c1-hardware-finish.json',
                    'hardware_finish_verification':ROOT/'split-c1-hardware-finish-verification.json',
                    'hardware_finish_notes':ROOT/'SPLIT-C1-HARDWARE-FINISH.md','control_contract':ROOT/'split-c1-control-contract.json',
                    'control_verification':control_path,

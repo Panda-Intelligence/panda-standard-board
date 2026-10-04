@@ -79,7 +79,7 @@
         "height": 6.5
       },
       "nominal_lead_pitch_mm": 20,
-      "land_basis": "Derived engineering20mm pitch,platedslots1.8x1.4/lands2.4x2.0; negative mark to pad2GND, opposite positive to pad1; drawing has polarity symbols but no PCB numbering",
+      "land_basis": "Current engineering20mm pitch,round PTH1.9mm/round lands2.3mm; see SPLIT-C1-CAP-DRILL.md for tolerance screen; negative mark to pad2GND, opposite positive to pad1; drawing has polarity symbols but no PCB numbering",
       "stock_observed": null,
       "stock_reserved": false,
       "lead_pitch_tolerance_mm": 0.5,

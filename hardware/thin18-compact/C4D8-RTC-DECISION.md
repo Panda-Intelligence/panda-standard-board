@@ -1,3 +1,7 @@
+> Current manufacturing ECO: C301 keeps the exact H3C part and20mm pitch but now
+> uses1.9mm round PTHs/2.3mm lands. Older slot dimensions below are superseded by
+> SPLIT-C1-CAP-DRILL.md and the fresh native/manufacturing checks.
+
 # Split-C1 国产 RTC 与 24 小时备援设计
 2026-10-02。当前只有 Core-C1、Display-C1 两板设计，没有真实样板。U302、C301 已实施国产原型 ECO；24 小时断开 USB／主电池后仍保持有效时间的要求不变。整机阅读续航是另一项指标。
 

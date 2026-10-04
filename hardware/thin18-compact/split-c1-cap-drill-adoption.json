@@ -1,0 +1,33 @@
+{
+  "schema": "panda-split-c1-cap-drill-adoption-v1",
+  "source_commit": "ebacff2badfdbdb01dc6815e03ba49afa9cc88a2",
+  "changed_files": [
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/lib/panda-standard.pretty/KAMCAP_SE5R5_D105VYH3C.kicad_mod",
+      "before_sha256": "ad5937b485188bafb218397ad20e657dc6b60bcb3c9ec5379c8c6151f21f38a6",
+      "after_sha256": "dc8bbc35e5d26195264f88b07ad3b513e03193192748f7d3b9292e44e6fdb1dc"
+    },
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch",
+      "before_sha256": "64a6e99686ff93eba495e12d0f49fed97da0495bb59ec3fd78ad52e4ca845aa6",
+      "after_sha256": "91f7211a9501a536bb9c7798c909d8df5a7477524621469248d9801831256fca"
+    },
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "before_sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448",
+      "after_sha256": "1081f55a0f4632edc252ac007c010ce7fc79b664f5cb2f52a8f762848f8a9174"
+    }
+  ],
+  "all_track_via_objects_unchanged": true,
+  "all_other_footprints_unchanged": true,
+  "rules_unchanged": true,
+  "canonical_rebuild_matches": true,
+  "native_candidate_checks": {
+    "drc": 0,
+    "open": 0,
+    "parity": 0,
+    "erc": 0
+  },
+  "physical_fit_verified": false,
+  "manufacturing_release": false
+}

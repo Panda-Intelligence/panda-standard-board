@@ -2,19 +2,16 @@
   "schema": "panda-split-c1-power-integrity-verification-v1",
   "native_source": {
     "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-    "sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
+    "sha256": "1081f55a0f4632edc252ac007c010ce7fc79b664f5cb2f52a8f762848f8a9174"
   },
-  "netlist": {
-    "path": "hardware/thin18-compact/core-c1-96x68-split/verification/netlist.xml",
-    "sha256": "6e620188e8c1b464e4eb1e2e260cbe09f87fd6fce14a4125890283ae8e8b125f"
-  },
+  "netlist_semantic_sha256": "21496c4eee90420987930d0685628b5ec603fe40573a6f6467528083f728f322",
   "contract": {
     "path": "hardware/thin18-compact/split-c1-power-integrity.json",
     "sha256": "d4c6adcc8bd4ff0893fea0d1c538cb45b5ba7499965eaba7251fa4893b9619fb"
   },
   "checker": {
     "path": "hardware/thin18-compact/verify_split_c1_power_integrity.py",
-    "sha256": "a9c7f26c7323c3d27eb0fade1c6d675f159dd84f99114e52cad8a701de388a9f"
+    "sha256": "5485a56f4e19eba582c5c708bb5d2d63cf5eb446b180072b390ad2fb36f9bf4b"
   },
   "functional_pin_contract_passed": true,
   "original_maker_supervisor_lands_passed": true,

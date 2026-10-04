@@ -86,3 +86,13 @@ Host tests and native pin/address binding checks run in the explicit Split-C1
 export pipeline. This is not product-firmware integration or physical EVT.
 The [hardware-finish ECO](hardware/thin18-compact/SPLIT-C1-HARDWARE-FINISH.md) adds default-off charge authorization and a native GPIO2 shutdown path.
 Read the updated control binding before using any older firmware. Physical EVT and accepted assembly supply remain separate gates.
+
+## Current fabrication entry
+
+The combined review package contains a generated `START-HERE.md`; use its
+separate Core/Display Gerber paths and source hashes. The
+[fabrication handoff](hardware/thin18-compact/JLC-PROTOTYPE-HANDOFF.md) now matches
+the native four-layer35um Core copper construction and ENIG/green-mask selection.
+C301 now has checked1.9mm round PTHs instead of short slots; the actual stackup
+and assembly process still need CAM acceptance.
+Native DRC/DFM success is not automatic fabrication/PCBA order approval.

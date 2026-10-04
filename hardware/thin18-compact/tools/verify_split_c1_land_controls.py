@@ -25,7 +25,7 @@ cases=[
  ('backup previous center causes pad1 interference',change(core,'C301','(at 59.4 43.5)','(at 58.9 43.5)'),display),
  ('backup obsolete19mm pitch',change(core,'C301','(at -10 0)','(at -9.5 0)'),display),
  ('backup legacy C-code',change(core,'C301','(property \"LCSC\" \"C2894294\"','(property \"LCSC\" \"C118887\"'),display),
- ('backup undersize lead slot',change(core,'C301','(drill oval 1.8 1.4)','(drill oval 1.4 1.0)'),display),
+ ('backup obsolete short slot',change(core,'C301','(drill 1.9)','(drill oval 1.8 1.4)'),display),
  ('microSD wrong row height',change(core,'J501','(size 0.6 1.6)','(size 0.6 1.5)'),display),
  ('microSD swapped supply/command',change(core,'J501','(net "3V3_SD")','(net "SDMMC_CMD_CARD")'),display),
  ('microSD reversed entry',change(core,'J501','(at 81.75 17.315 90)','(at 81.75 17.315 -90)'),display),

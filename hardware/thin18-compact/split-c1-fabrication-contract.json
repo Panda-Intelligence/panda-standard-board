@@ -1,0 +1,81 @@
+{
+  "schema": "panda-split-c1-fabrication-contract-v1",
+  "design_target": "split-c1",
+  "purpose": "Two separate bench-prototype PCBs; not Thin7 or a qualified product",
+  "boards": {
+    "Core-C1": {
+      "dimensions_mm": [
+        96.0,
+        68.0
+      ],
+      "layers": [
+        "F.Cu",
+        "In1.Cu",
+        "In2.Cu",
+        "B.Cu"
+      ],
+      "nominal_board_thickness_mm": 0.8,
+      "copper_thickness_mm": [
+        0.035,
+        0.035,
+        0.035,
+        0.035
+      ],
+      "copper_basis": "Preserve the actual native Core stackup; four nominal 35um layers. Do not silently substitute default 0.5oz inner copper.",
+      "finish": "Nickel, Gold",
+      "soldermask": "Green"
+    },
+    "Display-C1": {
+      "dimensions_mm": [
+        45.0,
+        36.0
+      ],
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "nominal_board_thickness_mm": 0.8,
+      "copper_thickness_mm": [
+        0.035,
+        0.035
+      ],
+      "copper_basis": "Explicit 1oz outer-layer fabrication selection, consistent with the KiCad export. Native Display has no explicit construction stackup.",
+      "finish": "Nickel, Gold",
+      "soldermask": "Green"
+    }
+  },
+  "panelization": "Separate single-board jobs. No combined Core/Display panel has been qualified; single-board CPL must not be reused as panel coordinates.",
+  "impedance": {
+    "order_recipe_approved": false,
+    "si_qualification_passed": false,
+    "policy": "Preserve native copper and construction intent. The old KiCad dielectric_constraints flag is not an approved impedance order; omit the unsupported Gerber-job declaration. Fabricator stackup and any controlled-impedance targets require engineering agreement. No trace-width modification is authorized."
+  },
+  "cam_confirmations": [
+    "Core: explicitly quote nominal 1oz on BOTH inner layers; default 0.5oz is not the current CAD stackup.",
+    "Confirm the 0.8mm thickness tolerance, actual dielectric build and ENIG/green-mask selection for each board.",
+    "Core C301 now uses two1.9mm round PTHs with2.3mm lands at20mm pitch. Preserve the circular holes; do not revert to the obsolete1.8x1.4mm short slots. Verify actual part insertion/solder fill at first assembly.",
+    "Preserve separate plated/nonplated drill files, USB shell slots, fine-pitch lands and test points; do not scale or mirror copper.",
+    "WLCSP assembly, via-in-pad treatment, stencil apertures, panel rails and CPL bottom rotations require the assembly shop's acceptance."
+  ],
+  "sources_checked_on": "2026-10-04",
+  "sources": [
+    {
+      "url": "https://jlcpcb.com/capabilities/pcb-capabilities",
+      "locator": "Finished inner copper; drilling/plated slots; BGA and PCB thickness tables",
+      "use": "Inner1oz is listed but not default. Short oval slots require specific CAM review; a zero KiCad DRC count does not approve every process."
+    },
+    {
+      "url": "https://www.ucamco.com/en/gerber",
+      "locator": "Gerber format overview",
+      "use": "Gerber job transfers fabrication characteristics, unlike layer geometry alone."
+    },
+    {
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf",
+      "locator": "KAMCAP exact SE-5R5-D105VYH3C,2020.6,p4 dimensioned drawing",
+      "use": "20+/-0.5mm pitch,1.0+/-0.1mm lead width,0.20+/-0.05mm thickness used in round-hole fit screen."
+    }
+  ],
+  "cam_accepted": false,
+  "assembly_order_ready": false,
+  "manufacturing_release": false
+}

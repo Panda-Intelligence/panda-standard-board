@@ -78,3 +78,27 @@ SI/PI/RF, thermal/magnetics, RTC retention, actual panel/battery/enclosure and
 assembly/supplier acceptance remain physical qualification, not native CAD
 connectivity. `manufacturing_release=false`; do not confuse this with the ability
 to produce checked bare-board prototype Gerber/drill data.
+
+## Main merge and fabrication entry audit
+
+PR #16 merged the three hardware/control checkpoints into main at `ebacff2`.
+The manufacturing entry is now generated from per-board manifests. See
+`JLC-PROTOTYPE-HANDOFF.md` and `split-c1-fabrication-contract.json`; do not
+reuse old manually maintained counts or the old inner0.5oz order text.
+Core native copper construction is nominal35um on all four copper layers.
+The exporter corrects only Gerber-job/file metadata (revision, nominal size,
+finish/color and unsupported impedance declaration). It leaves native CAD,
+drawing/aperture commands and drill coordinates unchanged and verifies them.
+
+C301's obsolete short slots are now replaced with1.9mm round plated holes and
+2.3mm lands at the same20mm pitch. All existing tracks/vias and other footprints
+remain unchanged. See SPLIT-C1-CAP-DRILL.md and its independent verifier; native
+current and immutable-baseline replay must remain0/0/0/0. Actual CAM/assembly
+acceptance remains distinct from the completed geometry correction. Reports now distinguish native_rule_dfm_passed
+from cam_accepted/automatic_fabrication_order_ready. No approval is invented.
+
+`production/jlc-prototype-orderpack/START-HERE.md` is generated, not copied
+from historical prose. `verify_split_c1_fabrication.py` rechecks layer functions,
+plated/nonplated drills, per-board source identities and every package checksum.
+The power verification hashes the semantic netlist rather than its changing
+export timestamp; power-pin/variant validation has not been relaxed.
