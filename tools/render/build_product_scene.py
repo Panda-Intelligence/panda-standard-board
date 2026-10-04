@@ -294,7 +294,7 @@ def pose(e,az=-58,el=25,annotations=True):
  assembly['Display-C1'].location=base[assembly['Display-C1']]+Vector((0,0,-15*e*S))
  target=Vector((0,0,4*e))*S;a=math.radians(az);b=math.radians(el);radius=.4
  cam.location=target+Vector((radius*math.cos(a)*math.cos(b),radius*math.sin(a)*math.cos(b),radius*math.sin(b)));look(cam,target)
- camdata.ortho_scale=(215+163*e)*S;cam.location+=cam.rotation_euler.to_quaternion()@Vector(((-55 if annotations else 0)*e*S,0,0))
+ camdata.ortho_scale=(215+163*e)*S;cam.location+=cam.rotation_euler.to_quaternion()@Vector((-55*e*S,0,0))
  hud(header,.04,.95);hud(subtitle,.042,.90);hud(footer,.04,.035);hud(chapter,.04,.075)
  for aa,bb,key,y in labels:aa.hide_render=bb.hide_render=not annotations;hud(aa,.04,y);hud(bb,.041,y-.032)
  bpy.context.view_layer.update()
@@ -311,7 +311,14 @@ for frame in range(1,481):
  scene.frame_set(frame);pose(e,az,el,show)
  for obj in animated:obj.keyframe_insert(data_path='location',frame=frame);obj.keyframe_insert(data_path='hide_render',frame=frame)
  cam.keyframe_insert(data_path='rotation_euler',frame=frame);camdata.keyframe_insert(data_path='ortho_scale',frame=frame)
-report={'source_commit':D['commit'],'native_boards':{n:{k:v for k,v in b.items() if k!='components'} for n,b in D['boards'].items()},'native_component_inventory':inventories,'enclosure_contract_sha256':hashlib.sha256((REPO/'hardware/thin18-compact/split-c1-prototype-enclosure.json').read_bytes()).hexdigest(),'nominal_screen':SCREEN,'fixture_mesh_checks':mesh_checks,'core_support_refs':supports,'screen_nominal_model':True,'battery_is_unselected_envelope':True,'fpc_routing_verified':False,'native_cad_modified':False,'physical_fit_verified':False,'manufacturing_release':False}
+camera_steps=[];previous=None
+for frame in range(1,481):
+ scene.frame_set(frame);position=cam.location.copy()
+ if previous is not None:camera_steps.append((position-previous).length/S)
+ previous=position
+if max(camera_steps)>30:raise ValueError('Unexpected camera jump at a label transition')
+if any(font.packed_file is not None for font in bpy.data.fonts):raise ValueError('Do not embed system fonts')
+report={'source_commit':D['commit'],'native_boards':{n:{k:v for k,v in b.items() if k!='components'} for n,b in D['boards'].items()},'native_component_inventory':inventories,'enclosure_contract_sha256':hashlib.sha256((REPO/'hardware/thin18-compact/split-c1-prototype-enclosure.json').read_bytes()).hexdigest(),'nominal_screen':SCREEN,'max_adjacent_camera_step_mm':max(camera_steps),'fixture_mesh_checks':mesh_checks,'core_support_refs':supports,'screen_nominal_model':True,'battery_is_unselected_envelope':True,'fpc_routing_verified':False,'native_cad_modified':False,'physical_fit_verified':False,'manufacturing_release':False}
 (OUT/'render-provenance.json').write_text(json.dumps(report,indent=2)+'\n')
 scene.frame_set(190);bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'Panda-Split-C1-Full-Product.blend'),compress=True)
 if MODE in ['preview','stills']:
