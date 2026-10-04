@@ -1,7 +1,7 @@
 {
   "schema": "panda-split-c1-requested-supply-v1",
   "observed_date": "2026-10-02",
-  "scope": "Eight requested Core-C1 refs, five exact procurement groups; one set includes both Core-C1 and Display-C1",
+  "scope": "Nine requested Core-C1 refs, six exact procurement groups; one set includes both boards",
   "kit_quantity": null,
   "submission_performed": false,
   "stock_reserved": false,
@@ -216,9 +216,38 @@
       "restriction_source": "https://jlcpcb.com/help/article/consignment-part-terms-conditions",
       "restriction_scope": "Published JLCPCB consignment terms dated2026-09-09 exclude ultracapacitors. Domestic service exceptions are unverified; default is independent post-PCBA assembly, no shipment to SMT warehouse.",
       "supply_receipt": null
+    },
+    {
+      "group": "U906",
+      "board": "Core-C1",
+      "refs": [
+        "U906"
+      ],
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "footprint": "panda-standard:SGM809B_SOT23_TX00031",
+      "catalog_code": null,
+      "quantity_per_two_board_set": 1,
+      "assembly_route": "JLC_SMT",
+      "manufacturer_product_url": "https://www.sg-micro.com/product/SGM809B",
+      "primary_datasheet": {
+        "url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+        "revision": "October2024RevA.2"
+      },
+      "package": "SOT-23 TX00031.001",
+      "packing": {
+        "msl": null,
+        "units_per_factory_reel": null,
+        "actual_lot_and_cut_tape_acceptance": null,
+        "qualification": "Confirm exact SOT-23 lot/reel/floor life with supplier and assembler; no receipt exists."
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; exact-package acceptance required",
+      "public_supply_observation": null,
+      "engineering_confirmation_required": "Exact 3.08V threshold and push-pull active-low variant; real lot/packing evidence",
+      "supply_receipt": null
     }
   ],
-  "quantity_rule": "N sets need N U902,N U905,4N switches,N D202,N C301; accepted assembly attrition/leader/trailer and independent spare caps are additional, not guessed",
+  "quantity_rule": "N sets need N U902,N U905,N U906,4N switches,N D202,N C301; accepted attrition and tape requirements are additional, not guessed",
   "receipt_template": {
     "manufacturer": null,
     "mpn": null,
@@ -233,5 +262,6 @@
     "packing_accepted": false,
     "engineering_confirmation_reference": null
   },
-  "limitations": "This closes only requested supply when backed by real receipts. Remaining assembly parts/TH301 stock and full order/assembly acceptance are separately required; never infer assembly ready or EVT passed."
+  "limitations": "This closes only requested supply when backed by real receipts. Remaining assembly parts/TH301 stock and full order/assembly acceptance are separately required; never infer assembly ready or EVT passed.",
+  "power_integrity_update_date": "2026-10-04"
 }

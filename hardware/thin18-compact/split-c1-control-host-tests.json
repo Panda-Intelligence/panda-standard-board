@@ -1,0 +1,41 @@
+{
+  "schema": "panda-split-c1-control-host-tests-v1",
+  "inputs": {
+    "firmware/split_c1/board_control.hpp": {
+      "path": "firmware/split_c1/board_control.hpp",
+      "sha256": "b88c05eeb08a9521b83e369985361ff3ab48c7feec315c0360ad845a191ff971"
+    },
+    "firmware/split_c1/board_control.cpp": {
+      "path": "firmware/split_c1/board_control.cpp",
+      "sha256": "36217b865281392cf26a249de6a22a47da58ca66fcd10e8f8382650fc16c5057"
+    },
+    "firmware/split_c1/tests/board_control_test.cpp": {
+      "path": "firmware/split_c1/tests/board_control_test.cpp",
+      "sha256": "8307809ba1aae3b641c5deb32111a488c865623e3593b727e9a32018155b705b"
+    },
+    "hardware/thin18-compact/test_split_c1_control.py": {
+      "path": "hardware/thin18-compact/test_split_c1_control.py",
+      "sha256": "e750d8a45fa4a6986f58ddea667c26851e290008b394c2eb3a6b1cfd5ca8c825"
+    }
+  },
+  "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "flags": [
+    "-std=c++17",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pedantic",
+    "-g",
+    "-O1",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer"
+  ],
+  "test_groups": 21,
+  "single_transfer_fault_cases": 334,
+  "brightness_values_tested": 86,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "compiled_and_executed": true,
+  "target_firmware_integration_verified": false,
+  "manufacturing_release": false
+}

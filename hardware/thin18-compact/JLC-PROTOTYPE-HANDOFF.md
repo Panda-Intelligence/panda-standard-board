@@ -1,4 +1,30 @@
+> **Current hardware-finish checkpoint (2026-10-04):** use the freshly regenerated
+> Split-C1 package, not an older ZIP. Default-off charger authorization and direct
+> GPIO2 shutdown are implemented. Population is now **162 mainland system refs**
+> (Core125/123SMT + C301/TH301; Display37/37SMT). New Q907/Q908/R930-R933 reuse
+> reviewed exact catalog identities; the same7 older SMT supply gaps remain.
+> Read [hardware finish](SPLIT-C1-HARDWARE-FINISH.md) for TP19 FORCE-LOW access and
+> incompatible old firmware. Earlier156-ref and missing-hardware-gate descriptions
+> below are historical; real source-bound generated audits override old counts.
+
+> 2026-10-04 control follow-up: native CAD is unchanged from the PG/PSEL ECO.
+> The package includes host-tested control logic evidence, NOT a flashed product
+> firmware. R607 still pulls nCE low before MCU initialization, so autonomous
+> charging is not excluded; do not connect an unqualified cell based on CAD-clean
+> status. A permanently failed I2C bus can leave frontlight outputs enabled.
+> Read CONTROL-FIRMWARE-README.md and split-c1-control-verification.json.
+
 # Thin7 thickness gate — current PCB must be redesigned
+
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
 
 User requires about 7 mm whole-device thickness. The routed Split-C1 CAD
 and earlier 21 mm study do not meet it. Read thin7/THIN7-REDESIGN.md before

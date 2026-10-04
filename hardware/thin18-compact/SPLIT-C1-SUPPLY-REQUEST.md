@@ -1,4 +1,23 @@
+> **Current hardware-finish checkpoint (2026-10-04):** use the freshly regenerated
+> Split-C1 package, not an older ZIP. Default-off charger authorization and direct
+> GPIO2 shutdown are implemented. Population is now **162 mainland system refs**
+> (Core125/123SMT + C301/TH301; Display37/37SMT). New Q907/Q908/R930-R933 reuse
+> reviewed exact catalog identities; the same7 older SMT supply gaps remain.
+> Read [hardware finish](SPLIT-C1-HARDWARE-FINISH.md) for TP19 FORCE-LOW access and
+> incompatible old firmware. Earlier156-ref and missing-hardware-gate descriptions
+> below are historical; real source-bound generated audits override old counts.
+
 # Split-C1 精确采购／客供申请资料
+
+> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
+> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
+> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
+> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
+> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
+> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
+> regenerated audits and the handoff for the current source. No actual stock,
+> assembly acceptance or physical EVT result is asserted.
+
 2026-10-02。未发送、未申请、未采购、未预留、未发货。单套包括Core-C1+Display-C1；本次缺口在Core，批量N仍未指定。此文件可用于人工审核后填入供方／嘉立创表单；公开渠道不是接收回执。
 
 | 位号 | 精确订货型号 | C码 | 数量／套 | 当前可核实渠道 |

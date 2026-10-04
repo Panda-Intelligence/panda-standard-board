@@ -110,6 +110,8 @@ def main():
             raise ValueError("Stale CAD validation "+label)
     from audit_split_c1_domestic import verify_fresh
     domestic=json.loads((ROOT/'split-c1-domestic-audit.json').read_text());verify_fresh(domestic)
+    from verify_split_c1_control import verify_fresh as verify_control_fresh
+    control=json.loads((ROOT/'split-c1-control-verification.json').read_text());verify_control_fresh(control)
     core=ROOT/BOARDS[0][1]/BOARDS[0][3]
     text=core.read_text()
     cap=verify_land(text,"C301",(2.4,2.0),10)
@@ -204,7 +206,8 @@ def main():
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
                          assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact current H3C20mm drawing/C2894294, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
-    for name in ["split-c1-domestic-audit.json","split-c1-domestic-policy.json",
+    for name in ["SPLIT-C1-HARDWARE-FINISH.md", "split-c1-hardware-finish.json", "split-c1-hardware-finish-verification.json", "split-c1-power-integrity.json","split-c1-power-integrity-verification.json",
+                 "SPLIT-C1-POWER-INTEGRITY.md","split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
                  "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
                  "SPLIT-C1-ENCLOSURE-STUDY.scad","split-c1-jlc-catalog-observation.json",
@@ -215,6 +218,13 @@ def main():
         shutil.copy2(ROOT/name,out/name)
     shutil.copy2(ROOT/"split-c1-sourcing-evidence.json",out/"sourcing-evidence.json")
     shutil.copy2(ROOT/"split-c1-mechanical-audit.json",out/"mechanical-audit.json")
+    for name in ["split-c1-control-contract.json", "split-c1-control-host-tests.json", "split-c1-control-verification.json"]:
+        shutil.copy2(ROOT/name,out/name)
+    shutil.copy2(REPO/"firmware/split_c1/README.md",out/"CONTROL-FIRMWARE-README.md")
+    report["host_control_tested"]=True
+    report["target_firmware_integration_verified"]=False
+    report["pre_firmware_charging_inhibit_proven"]=False
+    report["control_open_hardware_findings"]=control["open_hardware_findings"]
     (out/"prototype-status.json").write_text(json.dumps(report,indent=2)+"\n")
     (out/"SHA256SUMS").write_text("".join(sha(p)+"  "+str(p.relative_to(out))+"\n" for p in sorted(out.rglob("*")) if p.is_file() and p.name!="SHA256SUMS"))
     archive=ROOT/"production/Panda-Split-C1-JLC-Prototype.zip"

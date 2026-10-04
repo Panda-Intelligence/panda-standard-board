@@ -1,0 +1,31 @@
+{
+  "schema": "panda-split-c1-hardware-finish-adoption-v1",
+  "base_checkpoint": "3f350ed",
+  "source_hash_check_passed": true,
+  "native_candidate_and_rebuild_zero": true,
+  "changed_native_files": [
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/lib/panda-standard.kicad_sym",
+      "before_sha256": "484793fafa9ba92fcdcd71b826220b24e76c50248c5e6ac8b87c9b7946a115ca",
+      "after_sha256": "e5bfd88201b20343253e9c1a8a174930bc6994122c9b246ba823749b5f8b1fdd"
+    },
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/lib/panda-standard.pretty/JSM_NX3008NBK_SOT23.kicad_mod",
+      "before_sha256": null,
+      "after_sha256": "099d9234aeac4decd5818b96ecbaa1e21b3ea626e4b2368e8c0200772bad1937"
+    },
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
+      "before_sha256": "1d4d319cbac590f86a0c29ad91de5a75a72ca3f91e220f95c63f81db12e4cd93",
+      "after_sha256": "47823398576ef3906d987db13aa0f18fb12c02f10d78c9f266f40f8a980a9dd4"
+    },
+    {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "before_sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24",
+      "after_sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
+    }
+  ],
+  "backup": ".work/hardware-final/authoritative-before-adoption",
+  "manufacturing_release": false,
+  "post_adoption_normalization": "Whitespace-only end-of-line cleanup; rebuilt and native checks rerun before package generation."
+}

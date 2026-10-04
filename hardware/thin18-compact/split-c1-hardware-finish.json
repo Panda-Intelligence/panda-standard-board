@@ -1,0 +1,220 @@
+{
+  "schema": "panda-split-c1-hardware-finish-v1",
+  "base_checkpoint": "3f350ed",
+  "design_target": "split-c1",
+  "new_fields": {
+    "Q907": {
+      "Value": "NX3008NBK,215-JSM",
+      "Footprint": "panda-standard:JSM_NX3008NBK_SOT23",
+      "Manufacturer": "JSMSEMI",
+      "MPN": "NX3008NBK,215-JSM",
+      "LCSC": "C53113911",
+      "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "Description": "JSM 1G/2D/3S NMOS in low-current two-permission charger inhibit; not the battery power path."
+    },
+    "Q908": {
+      "Value": "NX3008NBK,215-JSM",
+      "Footprint": "panda-standard:JSM_NX3008NBK_SOT23",
+      "Manufacturer": "JSMSEMI",
+      "MPN": "NX3008NBK,215-JSM",
+      "LCSC": "C53113911",
+      "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "Description": "JSM 1G/2D/3S NMOS in low-current two-permission charger inhibit; not the battery power path."
+    },
+    "R930": {
+      "Value": "100k / nCE default OFF",
+      "Footprint": "Resistor_SMD:R_0402_1005Metric",
+      "Manufacturer": "FH (Fenghua Advanced)",
+      "MPN": "RC-02K1003FT",
+      "LCSC": "C140219",
+      "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT",
+      "Description": "nCE pullup to pre-AON REGN; Q907 and Q908 must both conduct to authorize charging."
+    },
+    "R931": {
+      "Value": "1.2k / hardware permit",
+      "Footprint": "panda-standard:R204_ILIM_RC_0603_SEED",
+      "Manufacturer": "FH (Fenghua Advanced)",
+      "MPN": "RS-03K1201FT",
+      "LCSC": "C118396",
+      "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT",
+      "Description": "Series GPIO2 resistor limits manual clamp current. Low permit inhibits frontlight and charging without I2C."
+    },
+    "R932": {
+      "Value": "10k / gate default LOW",
+      "Footprint": "Resistor_SMD:R_0402_1005Metric",
+      "Manufacturer": "FH (Fenghua Advanced)",
+      "MPN": "RC-02K1002FT",
+      "LCSC": "C140215",
+      "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "Description": "Strong default-low gate bias, using the already reviewed FH10k exact part."
+    },
+    "R933": {
+      "Value": "10k / gate default LOW",
+      "Footprint": "Resistor_SMD:R_0402_1005Metric",
+      "Manufacturer": "FH (Fenghua Advanced)",
+      "MPN": "RC-02K1002FT",
+      "LCSC": "C140215",
+      "Datasheet": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "Description": "Strong default-low gate bias, using the already reviewed FH10k exact part."
+    },
+    "TP19": {
+      "Value": "HW_ARM / FORCE LOW",
+      "Footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "Manufacturer": null,
+      "MPN": null,
+      "LCSC": null,
+      "Datasheet": "",
+      "Description": "Copper-only test access. Pull low to inhibit frontlight and charging. R931 limits GPIO contention; never inject voltage."
+    }
+  },
+  "pin_nets": {
+    "Q907": {
+      "1": "CHG_REQUEST",
+      "2": "CHG_nCE",
+      "3": "CHG_RETURN"
+    },
+    "Q908": {
+      "1": "FL_HWEN",
+      "2": "CHG_RETURN",
+      "3": "GND"
+    },
+    "R930": {
+      "1": "CHG_nCE",
+      "2": "SGM41513_REGN"
+    },
+    "R931": {
+      "1": "HW_ARM_GPIO",
+      "2": "FL_HWEN"
+    },
+    "R932": {
+      "1": "CHG_REQUEST",
+      "2": "GND"
+    },
+    "R933": {
+      "1": "FL_HWEN",
+      "2": "GND"
+    },
+    "TP19": {
+      "1": "FL_HWEN"
+    }
+  },
+  "poses": {
+    "Q907": [
+      [
+        53.25,
+        8.25
+      ],
+      180
+    ],
+    "Q908": [
+      [
+        52.75,
+        11.75
+      ],
+      90
+    ],
+    "R930": [
+      [
+        51.75,
+        5.25
+      ],
+      90
+    ],
+    "R932": [
+      [
+        51.0,
+        9.0
+      ],
+      90
+    ],
+    "R933": [
+      [
+        55.25,
+        11.25
+      ],
+      90
+    ],
+    "R931": [
+      [
+        73.5,
+        66.0
+      ],
+      0
+    ],
+    "TP19": [
+      [
+        58.0,
+        17.0
+      ],
+      0
+    ]
+  },
+  "electrical_intent": {
+    "charger": "REGN/R930 pull nCE high. Q907 and Q908 series sink requires both CHG_REQUEST and direct GPIO2-derived permit. No battery power-path changes.",
+    "frontlight": "GPIO2 through R931 drives EN independent of I2C. XL9535 P15 is NC, P16 remains PWM. TP19 may be grounded manually; never inject voltage.",
+    "reset": "External 10k || 100k pulldowns keep both gates low when MCU/XL pins are high impedance. Firmware must not retain GPIO2 HIGH through reset/sleep."
+  },
+  "static_screens": {
+    "regn_max_V": 5.4,
+    "nce_absolute_max_V": 6.0,
+    "nce_pullup_ohm": 100000,
+    "nce_sink_current_at_regn_max_uA": 54.0,
+    "parallel_gate_pulldown_nominal_ohm": 9090.909091,
+    "gate_leakage_screen_uA": 10.0,
+    "gate_low_with_10uA_V": 0.091819,
+    "manual_clamp_current_3p6V_1pct_R931_mA": 3.030303,
+    "on_state_note": "2.5V gate RdsON specification is only at its stated conditions. Low-current turn-on, cold/hot leakage and rail-ramp behavior require prototype measurements; no worst-case analog certification from topology alone."
+  },
+  "sources": [
+    {
+      "url": "https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf",
+      "revision": "April2025 C.1",
+      "pages": [
+        3,
+        5,
+        11,
+        20,
+        21,
+        23
+      ],
+      "basis": "nCE active low, REGN before buck startup, input/logic limits"
+    },
+    {
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "revision": "JSM V1.0",
+      "pages": [
+        1,
+        2,
+        5
+      ],
+      "basis": "Exact C53113911 manufacturer PDF;1G2D3S;0.8x0.6 lands,1.9/2.02mm pitch;gate leakage maximum10uA at stated test condition"
+    },
+    {
+      "url": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "revision": "v1.8",
+      "pages": [
+        12,
+        14
+      ],
+      "basis": "module pad38=GPIO2; not reserved octal-PSRAM pads35-37"
+    },
+    {
+      "url": "https://www.sg-micro.com/rect/assets/6e743e52-53c6-452c-9493-15d39787a1ad/SGM37601.pdf",
+      "revision": "June2026 A.2",
+      "pages": [
+        4,
+        5
+      ],
+      "basis": "20-pin EN19, active-high, low directly shuts down driver"
+    }
+  ],
+  "independent_autonomous_watchdog": false,
+  "known_open_pcb_design_findings": [],
+  "physical_evt_passed": false,
+  "assembly_order_ready": false,
+  "manufacturing_release": false,
+  "boundaries": [
+    "Direct GPIO shutdown survives I2C loss only when MCU GPIO servicing remains available; stuck-high CPU requires manual TP19 clamp or power removal, not an invented external watchdog.",
+    "This stage does not grant battery, charging/current, USB, RTC retention, RF, mechanical or assembly qualification."
+  ]
+}

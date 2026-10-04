@@ -1,0 +1,38 @@
+{
+  "schema": "panda-split-c1-power-integrity-layout-v1",
+  "eco": "SPLIT-C1-POWER-INTEGRITY-01",
+  "source_copper_sha256": "e20961e73fabef16f1ea982d9c8605b8512088e0b3c7bd3e46cdfaa50d95029b",
+  "routed_copper_sha256": "d38ef835aaef5ca89b794e0e97c3a38323aeac19fc69813f1540800e87010cb5",
+  "removed_copper": {},
+  "modified_copper": {},
+  "added_copper": {
+    "46aa02f7-40d4-5a4f-b230-94d54f75f6e5": "(segment (start 46.45 8.7) (end 46.45 9.1) (width 0.15) (layer \"F.Cu\") (net \"SGM41513_PSEL\") (uuid \"46aa02f7-40d4-5a4f-b230-94d54f75f6e5\"))",
+    "772dd7f2-7488-5437-8b2a-1a9155f6eaec": "(segment (start 46.45 9.1) (end 46.65 4.75) (width 0.15) (layer \"B.Cu\") (net \"SGM41513_PSEL\") (uuid \"772dd7f2-7488-5437-8b2a-1a9155f6eaec\"))",
+    "ff34285a-bde6-5862-807c-238ebfcc8813": "(segment (start 46.65 4.75) (end 47.25 4.15) (width 0.15) (layer \"B.Cu\") (net \"SGM41513_PSEL\") (uuid \"ff34285a-bde6-5862-807c-238ebfcc8813\"))",
+    "e2b531e4-d4f9-5ab5-96ea-73f27ae56fd9": "(segment (start 47.25 4.15) (end 46.65 3.6) (width 0.15) (layer \"F.Cu\") (net \"SGM41513_PSEL\") (uuid \"e2b531e4-d4f9-5ab5-96ea-73f27ae56fd9\"))",
+    "e51191a0-a1ed-5418-acdf-5458e8a71b98": "(segment (start 46.25 1.75) (end 44.7 2.6) (width 0.15) (layer \"F.Cu\") (net \"SGM41513_REGN\") (uuid \"e51191a0-a1ed-5418-acdf-5458e8a71b98\"))",
+    "c436c5dc-a02f-5fe5-b673-c46fa66c58d5": "(segment (start 44.7 2.6) (end 44.8 5.8) (width 0.15) (layer \"B.Cu\") (net \"SGM41513_REGN\") (uuid \"c436c5dc-a02f-5fe5-b673-c46fa66c58d5\"))",
+    "618e98bc-a881-557a-8511-c118f47159e9": "(segment (start 44.8 5.8) (end 45.3 6.85) (width 0.15) (layer \"B.Cu\") (net \"SGM41513_REGN\") (uuid \"618e98bc-a881-557a-8511-c118f47159e9\"))",
+    "7898532c-792e-58bf-9b27-14df64882eb1": "(segment (start 18.145 18.75) (end 19.6 20.6) (width 0.15) (layer \"F.Cu\") (net \"3V3_AON\") (uuid \"7898532c-792e-58bf-9b27-14df64882eb1\"))",
+    "0d721499-7308-5faf-a5ac-711151db99be": "(segment (start 19.6 20.6) (end 20.6 20.75) (width 0.15) (layer \"F.Cu\") (net \"3V3_AON\") (uuid \"0d721499-7308-5faf-a5ac-711151db99be\"))",
+    "8d093034-fee3-569d-8aac-dbfba1091bf4": "(segment (start 20.6 20.75) (end 22.05 21.65) (width 0.15) (layer \"F.Cu\") (net \"3V3_AON\") (uuid \"8d093034-fee3-569d-8aac-dbfba1091bf4\"))",
+    "a36166b3-d24b-55fd-b381-94d4573170db": "(segment (start 17.25 16.0) (end 17.25 15.4) (width 0.15) (layer \"F.Cu\") (net \"3V3_AON\") (uuid \"a36166b3-d24b-55fd-b381-94d4573170db\"))",
+    "551b3b79-293e-5028-abee-fb18131c4b82": "(segment (start 15.855 19.7) (end 13.05 18.2) (width 0.15) (layer \"F.Cu\") (net \"PG_3V3_MAIN\") (uuid \"551b3b79-293e-5028-abee-fb18131c4b82\"))",
+    "abe6a990-12a4-5cd1-b8cc-950f6324cdf6": "(segment (start 13.05 18.2) (end 12.1 18.55) (width 0.15) (layer \"F.Cu\") (net \"PG_3V3_MAIN\") (uuid \"abe6a990-12a4-5cd1-b8cc-950f6324cdf6\"))",
+    "d1a1ebbb-4e63-53f5-a499-f869e36f47d7": "(segment (start 12.1 18.55) (end 11.95 18.7) (width 0.15) (layer \"F.Cu\") (net \"PG_3V3_MAIN\") (uuid \"d1a1ebbb-4e63-53f5-a499-f869e36f47d7\"))",
+    "b3b8d1c2-7093-5c5b-8fa2-4ef8cd555e95": "(segment (start 11.95 18.7) (end 14.25 12.2) (width 0.15) (layer \"B.Cu\") (net \"PG_3V3_MAIN\") (uuid \"b3b8d1c2-7093-5c5b-8fa2-4ef8cd555e95\"))",
+    "a0664666-b349-5e93-ba2e-eb0986e6966a": "(segment (start 15.75 16.0) (end 15.75 17.4) (width 0.15) (layer \"F.Cu\") (net \"GND\") (uuid \"a0664666-b349-5e93-ba2e-eb0986e6966a\"))",
+    "4235f703-3665-5203-a87c-5d12fbc801a9": "(segment (start 15.855 17.8) (end 15.85 17.8) (width 0.15) (layer \"F.Cu\") (net \"GND\") (uuid \"4235f703-3665-5203-a87c-5d12fbc801a9\"))",
+    "85521820-09f3-5f8d-996f-61f2abe51d5c": "(via (at 46.45 9.1) (size 0.45) (drill 0.25) (layers \"F.Cu\" \"B.Cu\") (net \"SGM41513_PSEL\") (uuid \"85521820-09f3-5f8d-996f-61f2abe51d5c\"))",
+    "126c6808-02f3-5288-bcf7-ba51cb54b458": "(via (at 47.25 4.15) (size 0.45) (drill 0.25) (layers \"F.Cu\" \"B.Cu\") (net \"SGM41513_PSEL\") (uuid \"126c6808-02f3-5288-bcf7-ba51cb54b458\"))",
+    "cdf2745f-3c9f-5971-b879-01eb52097171": "(via (at 44.7 2.6) (size 0.45) (drill 0.25) (layers \"F.Cu\" \"B.Cu\") (net \"SGM41513_REGN\") (uuid \"cdf2745f-3c9f-5971-b879-01eb52097171\"))",
+    "d3243c1e-a7a1-54ae-99ed-d96557d1ba4e": "(via (at 11.95 18.7) (size 0.45) (drill 0.25) (layers \"F.Cu\" \"B.Cu\") (net \"PG_3V3_MAIN\") (uuid \"d3243c1e-a7a1-54ae-99ed-d96557d1ba4e\"))"
+  },
+  "new_signal_layers": [
+    "F.Cu",
+    "B.Cu"
+  ],
+  "added_segments": 17,
+  "added_vias": 4,
+  "manufacturing_release": false
+}

@@ -44,7 +44,18 @@ if domestic['manufacturing_release'] is not False or domestic['assembly_order_re
     raise SystemExit('Domestic audit incorrectly releases manufacturing/order')
 if not domestic['applied_replacement_identities_verified'] or not domestic['manufacturer_only_relabel_rejected']:
     raise SystemExit('Domestic identity guards did not run')
-engineering_files={'mechanical_audit':mechanical_path,'mechanical_inputs':mechanical_inputs,
+from verify_split_c1_control import verify_fresh as verify_control_fresh
+control_path=ROOT/'split-c1-control-verification.json'
+control=json.loads(control_path.read_text());verify_control_fresh(control)
+engineering_files={'hardware_finish_contract':ROOT/'split-c1-hardware-finish.json',
+                   'hardware_finish_verification':ROOT/'split-c1-hardware-finish-verification.json',
+                   'hardware_finish_notes':ROOT/'SPLIT-C1-HARDWARE-FINISH.md','control_contract':ROOT/'split-c1-control-contract.json',
+                   'control_verification':control_path,
+                   'control_host_tests':ROOT/'split-c1-control-host-tests.json',
+                   'control_integration_notes':REPO/'firmware/split_c1/README.md',
+                   'power_integrity_contract':ROOT/'split-c1-power-integrity.json',
+                   'power_integrity_verification':ROOT/'split-c1-power-integrity-verification.json',
+                   'mechanical_audit':mechanical_path,'mechanical_inputs':mechanical_inputs,
                    'sourcing_evidence':sourcing_evidence,'cad_validation':validation_path,
                    'domestic_audit':domestic_path,'domestic_policy':ROOT/'split-c1-domestic-policy.json',
                    'domestic_eco':ROOT/'split-c1-domestic-eco.json',
@@ -114,6 +125,8 @@ release={"schema":"panda-split-c1-release-v1","architecture":"Core-C1 + Display-
     "cad_manufacturing_data_complete":True,"manufacturing_release":False,
     "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
     "domestic_audit":entry(domestic_path),"assembly_order_ready":False,
+    "control_verification":entry(control_path), "target_firmware_integration_verified":False,
+    "pre_firmware_charging_inhibit_proven":False,
     "interface_contract":entry(interface),"boards":boards,
     "mechanical_audit":entry(mechanical_path),"mechanical_inputs":entry(mechanical_inputs),
     "sourcing_evidence":entry(sourcing_evidence),"cad_validation":entry(validation_path),

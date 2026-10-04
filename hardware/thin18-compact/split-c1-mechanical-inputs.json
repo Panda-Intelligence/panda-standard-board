@@ -366,6 +366,39 @@
       "source_locator": "Rev4.4 p22:SOP8 208mil maximum1.9mm",
       "checked_on": "2026-10-02",
       "height_basis": "Primary body maximum, separate0.2mm mounting allowance; physical mating/case remain NOT_RUN"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "U906",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "height_nominal_mm": 1.12,
+      "height_maximum_mm": 1.12,
+      "source_url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "source_locator": "RevA.2 p10 TX00031.001 max package height",
+      "checked_on": "2026-10-04",
+      "height_basis": "1.12mm is published package maximum, not nominal or a qualified mounted height; retain solder/warp allowances"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "Q907",
+      "mpn": "NX3008NBK,215-JSM",
+      "height_nominal_mm": 1.15,
+      "height_maximum_mm": 1.15,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "source_locator": "JSM V1.0 p5 package A maximum1.15mm",
+      "height_basis": "Body maximum from original drawing; actual solder/mount tolerance still requires assembly review",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "Q908",
+      "mpn": "NX3008NBK,215-JSM",
+      "height_nominal_mm": 1.15,
+      "height_maximum_mm": 1.15,
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "source_locator": "JSM V1.0 p5 package A maximum1.15mm",
+      "height_basis": "Body maximum from original drawing; actual solder/mount tolerance still requires assembly review",
+      "checked_on": "2026-10-04"
     }
   ],
   "connector_layout_changes": {
@@ -388,7 +421,7 @@
   },
   "rtc_backup_requirement": {
     "minimum_retention_hours": 24,
-    "confirmed_by": "User: 保持24小时就行了",
+    "confirmed_by": "User: \u4fdd\u630124\u5c0f\u65f6\u5c31\u884c\u4e86",
     "confirmed_on": "2026-10-02",
     "scope": "RTC keeps valid time after USB and main battery are disconnected; independent of reading runtime",
     "event_input_required": false,
@@ -465,5 +498,6 @@
     "mechanical_authority": "thin7/thin7-mechanical-contract.json",
     "keep_two_pcbs": true,
     "native_design_currently_meets_target": false
-  }
+  },
+  "current_work_scope": "Split-C1 bench prototype on unchanged main-branch board outline; Thin7 remains a separate uncompleted mechanical target"
 }

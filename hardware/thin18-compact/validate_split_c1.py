@@ -54,12 +54,20 @@ def main():
                     "rebuild_geometry_and_properties_equal": True,
                     "rebuild_comparison_note": "Schematic object UUIDs ignored; PCB segment/via order canonicalized with UUIDs retained."}
             record["files"][board] = {"native_checks": {"current": counts(current), "fresh_rebuild": counts(rebuilt)}}
+    from verify_split_c1_power_integrity import inspect as inspect_power
+    power=inspect_power(ROOT/'core-c1-96x68-split',ROOT/'core-c1-96x68-split/verification/netlist.xml')
+    record['functional_power_contract_passed']=power['functional_pin_contract_passed']
+    from verify_split_c1_hardware_finish import inspect as inspect_hardware
+    finish=inspect_hardware(ROOT/'core-c1-96x68-split',ROOT/'core-c1-96x68-split/verification/netlist.xml')
+    record['hardware_default_off_and_direct_shutdown_passed']=finish['default_off_topology_passed'] and finish['non_i2c_shutdown_path_present']
     from _split_c1_enclosure_study import openscad_study
     mechanical_inputs=json.loads((ROOT/'split-c1-mechanical-inputs.json').read_text())
     if (ROOT/'SPLIT-C1-ENCLOSURE-STUDY.scad').read_text()!=openscad_study(mechanical_inputs):
         raise ValueError('Stale side-battery OpenSCAD study')
     source_paths = [ROOT / name for name in [
-        "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "_split_c1_panel_eco.py", "_split_c1_microsd_eco.py", "_split_c1_mos_eco.py", "split-c1-mos-layout.json", "_split_c1_rtc_eco.py", "split-c1-rtc-layout.json", "split-c1-microsd-layout.json", "split-c1-candidate-review.json", "SPLIT-C1-PROCUREMENT-QUESTIONS.md", "_split_c1_esd_eco.py", "_split_c1_battery_eco.py", "_split_c1_land_guards.py", "_split_c1_enclosure_study.py", "SPLIT-C1-ENCLOSURE-STUDY.scad", "SPLIT-C1-PACK-INPUTS.md", "split-c1-jlc-catalog-observation.json", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
+        "_split_c1_hardware_finish_eco.py", "verify_split_c1_hardware_finish.py", "split-c1-hardware-finish.json", "split-c1-hardware-finish-layout.json", "split-c1-hardware-finish-adoption.json", "SPLIT-C1-HARDWARE-FINISH.md",
+        "test_split_c1_control.py", "verify_split_c1_control.py", "split-c1-control-contract.json",
+        "_split_c1_power_integrity_eco.py", "split-c1-power-integrity-layout.json", "split-c1-power-integrity.json", "SPLIT-C1-POWER-INTEGRITY.md", "SPLIT-C1-HANDOFF.md", "split-c1-power-integrity-adoption.json", "verify_split_c1_power_integrity.py", "test_split_c1_power_integrity.py", "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "_split_c1_panel_eco.py", "_split_c1_microsd_eco.py", "_split_c1_mos_eco.py", "split-c1-mos-layout.json", "_split_c1_rtc_eco.py", "split-c1-rtc-layout.json", "split-c1-microsd-layout.json", "split-c1-candidate-review.json", "SPLIT-C1-PROCUREMENT-QUESTIONS.md", "_split_c1_esd_eco.py", "_split_c1_battery_eco.py", "_split_c1_land_guards.py", "_split_c1_enclosure_study.py", "SPLIT-C1-ENCLOSURE-STUDY.scad", "SPLIT-C1-PACK-INPUTS.md", "split-c1-jlc-catalog-observation.json", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
         "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
         "split-c1-domestic-policy.json", "SPLIT-C1-DOMESTICIZATION.md", "C4D8-RTC-DECISION.md", "SPLIT-C1-RTC-FIRMWARE.md", "split-c1-smt-consignment.json", "split-c1-supply-plan.json", "verify_split_c1_supply.py", "SPLIT-C1-SUPPLY-REQUEST.md", "export_production.py",
@@ -73,6 +81,8 @@ def main():
         source_paths.extend(p for p in (ROOT / candidate).rglob("*") if p.is_file()
                             and (p.suffix in {".kicad_mod", ".kicad_sym", ".kicad_pro", ".kicad_dru"}
                                  or p.name in {"fp-lib-table", "sym-lib-table"}))
+    source_paths.extend(p for p in (REPO/"firmware/split_c1").rglob("*")
+                        if p.is_file() and p.suffix in {".hpp", ".cpp", ".md"})
     for path in sorted(source_paths):
         record["files"].setdefault(str(path.relative_to(REPO)), {"sha256": sha(path)})
     evidence = json.loads((ROOT / "split-c1-sourcing-evidence.json").read_text())
@@ -81,7 +91,7 @@ def main():
         tree = ET.parse(ROOT / candidate / "verification/netlist.xml")
         components = {c.get("ref"): {f.get("name"): f.text or "" for f in c.findall("fields/field")}
                       for c in tree.findall("components/comp")}
-        for row in evidence["entries"]:
+        for row in evidence["entries"]+evidence.get("additive_entries",[]):
             if row["board"] != board:
                 continue
             for ref in row["refs"]:

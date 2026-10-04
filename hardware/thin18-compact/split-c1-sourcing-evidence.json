@@ -33,7 +33,7 @@
       "manufacturer": "MUP",
       "mpn": "U20405-01",
       "library_id": "C20624794",
-      "catalog_manufacturer": "MUP(德海威)",
+      "catalog_manufacturer": "MUP(\u5fb7\u6d77\u5a01)",
       "catalog_mpn": "U20405-01",
       "source_url": "https://item.szlcsc.com/22027027.html",
       "identity_verified": true,
@@ -854,6 +854,15 @@
         "stock_reserved": false,
         "quotation_confirmed": false
       }
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "U906"
+      ],
+      "mpn": "SGM809B-TXN3LG/TR",
+      "source_url": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "next_action": "Confirm exact 3.08V push-pull SOT-23 version, authorized supply and assembler code/acceptance. Do not substitute SGM803B/open-drain or SGM810B/active-high. No stock or catalog code asserted."
     }
   ],
   "manual": [
@@ -1130,5 +1139,73 @@
     ],
     "status": "PREPARATION_ONLY_NO_SUBMISSION",
     "note": "A distributor catalog entry alone does not make a part immediately consignable. Do not ship stock with blank/unapproved JLC code. Quote and destination/import costs require order-time confirmation. Published2026-09-09 terms exclude ultracapacitors: C301 follows independent post-PCBA procurement/assembly, not consignment. Same-part JLC/pre-order stock cannot be added to consigned/global-source stock to claim sufficient quantity; use the accepted source pool."
-  }
+  },
+  "additive_entries": [
+    {
+      "board": "Core-C1",
+      "refs": [
+        "Q907"
+      ],
+      "manufacturer": "JSMSEMI",
+      "mpn": "NX3008NBK,215-JSM",
+      "library_id": "C53113911",
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "Q908"
+      ],
+      "manufacturer": "JSMSEMI",
+      "mpn": "NX3008NBK,215-JSM",
+      "library_id": "C53113911",
+      "source_url": "https://atta.szlcsc.com/upload/public/pdf/source/20251224/924281F171127EE15B457A61AD43416B.pdf",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R930"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1003FT",
+      "library_id": "C140219",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R931"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RS-03K1201FT",
+      "library_id": "C118396",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R932"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1002FT",
+      "library_id": "C140215",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    },
+    {
+      "board": "Core-C1",
+      "refs": [
+        "R933"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K1002FT",
+      "library_id": "C140215",
+      "source_url": "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1002FT",
+      "basis": "Hardware-finish additive part; exact existing reviewed MPN/catalog identity reused, new topology independently checked. No stock reservation or assembly acceptance."
+    }
+  ]
 }

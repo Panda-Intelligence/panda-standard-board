@@ -1,0 +1,43 @@
+{
+  "schema": "panda-split-c1-power-adoption-v1",
+  "adopted_at_utc": "2026-10-04T02:16:58.127866+00:00",
+  "source_base_commit": "6906a246b1658386278c13912e77bfe833c1d8ea",
+  "source_hash_concurrency_check_passed": true,
+  "native_candidate_drc_open_parity_erc": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "fresh_immutable_baseline_rebuild_matches": true,
+  "removed_copper_count": 9,
+  "renamed_net_copper_count": 2,
+  "added_copper_count": 21,
+  "only_reviewed_aon_tail_and_legacy_rc_copper_removed": true,
+  "all_other_existing_copper_unchanged": true,
+  "outline_project_and_rules_unchanged": true,
+  "display_native_unchanged": true,
+  "changes": [
+    {
+      "path": "core-c1-96x68-split/lib/panda-standard.kicad_sym",
+      "before_sha256": "e2fd02b5205f2e8d3c7bebd50df6150934d92e8e0624884d4b7df94a081a4043",
+      "after_sha256": "484793fafa9ba92fcdcd71b826220b24e76c50248c5e6ac8b87c9b7946a115ca"
+    },
+    {
+      "path": "core-c1-96x68-split/lib/panda-standard.pretty/SGM809B_SOT23_TX00031.kicad_mod",
+      "before_sha256": null,
+      "after_sha256": "dfef28540b2356b5d5afa6712a0b900c71ab1257883fa6aa9a8ceb3cb5bbd292"
+    },
+    {
+      "path": "core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
+      "before_sha256": "158dade7b4256870217fdce71759009da607fcde76448d79441ffe3ad6c3148f",
+      "after_sha256": "1d4d319cbac590f86a0c29ad91de5a75a72ca3f91e220f95c63f81db12e4cd93"
+    },
+    {
+      "path": "core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "before_sha256": "35b83b11b4384b7af4f8cf99c31cc71d039b5a81b0a6ca7dadfa1b9e54c1cd33",
+      "after_sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
+    }
+  ],
+  "manufacturing_release": false
+}

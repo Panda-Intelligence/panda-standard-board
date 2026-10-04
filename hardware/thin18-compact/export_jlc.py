@@ -37,7 +37,7 @@ procurement={}
 if evidence_path.exists() and manifest_path.exists():
     board_id=json.loads(manifest_path.read_text()).get('board_id')
     registry=json.loads(evidence_path.read_text())
-    reviewed={ref:item for item in registry['entries'] if item['board']==board_id
+    reviewed={ref:item for item in registry['entries']+registry.get('additive_entries',[]) if item['board']==board_id
               for ref in item['refs']}
     procurement={ref:item for item in registry.get('procurement_followup',[]) if item['board']==board_id
                  for ref in item['refs']}

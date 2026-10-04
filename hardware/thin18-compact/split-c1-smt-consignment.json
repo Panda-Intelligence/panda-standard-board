@@ -1,7 +1,7 @@
 {
-  "schema": "panda-split-c1-six-smt-consignment-v1",
+  "schema": "panda-split-c1-seven-smt-consignment-v2",
   "date": "2026-10-02",
-  "scope": "One set = Core-C1 + Display-C1;6 SMT positions/3 exact procurement groups",
+  "scope": "One set = Core-C1 + Display-C1;7 SMT positions/4 exact procurement groups",
   "kit_quantity": null,
   "rows": [
     {
@@ -229,12 +229,40 @@
       },
       "supplier_route": "Sekorm manufacturer-authorized distributor -> approved JLC consignment after exact C-code assignment",
       "supply_plan_group": "U402-U405"
+    },
+    {
+      "board": "Core-C1",
+      "ref": "U906",
+      "quantity_per_two_board_set": 1,
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM809B-TXN3LG/TR",
+      "footprint": "panda-standard:SGM809B_SOT23_TX00031",
+      "required_pin_nets": {
+        "1": "GND",
+        "2": "PG_3V3_MAIN",
+        "3": "3V3_AON"
+      },
+      "jlc_library_id": null,
+      "jlc_acceptance_receipt": null,
+      "usable_my_parts_quantity": null,
+      "status": "EXACT_ID_OR_CONSIGNMENT_ACCEPTANCE_MISSING",
+      "do_not_omit": true,
+      "substitution_approved": false,
+      "packing": {
+        "msl": null,
+        "units_per_factory_reel": null,
+        "actual_lot_and_cut_tape_acceptance": null,
+        "qualification": "Confirm exact SOT-23 lot/reel/floor life with supplier and assembler; no receipt exists."
+      },
+      "supplier_route": "SGMICRO or manufacturer-authorized distributor; exact-package acceptance required",
+      "supply_plan_group": "U906"
     }
   ],
-  "quantity_formula": "N sets: U902=N,U905=N,SGM2578SD=4N; assembly attrition and tape leader/trailer additional per accepted factory rules",
+  "quantity_formula": "N sets: U902=N,U905=N,U906=N,SGM2578SD=4N; actual assembly attrition and tape requirements additional",
   "submission_performed": false,
   "parts_shipped": false,
   "stock_reserved": false,
   "assembly_request_ready": false,
-  "instructions": "Get each exact package/MPN accepted and JLC C-code assigned; never ship with unapproved blank code. Verify lot/MSL/floor life/tape/reel and sufficient received My Parts stock, then bind to exact six CAD refs. No lookalike C-code, non-A regulator,24pin LED driver or disabled-only RCB substitute. C301 is not part of this six-SMT consignment: procure independently and hand-solder after PCBA return; published JLCPCB terms exclude ultracapacitors. See split-c1-supply-plan.json and SPLIT-C1-SUPPLY-REQUEST.md."
+  "instructions": "Get each exact package/MPN accepted and JLC C-code assigned; never ship with unapproved blank code. Verify lot/MSL/floor life/tape/reel and sufficient received My Parts stock, then bind to exact seven CAD refs. No lookalike C-code, non-A regulator,24pin LED driver or disabled-only RCB substitute. C301 is not part of this seven-SMT consignment: procure independently and hand-solder after PCBA return; published JLCPCB terms exclude ultracapacitors. See split-c1-supply-plan.json and SPLIT-C1-SUPPLY-REQUEST.md.",
+  "power_integrity_update_date": "2026-10-04"
 }
