@@ -91,6 +91,8 @@ rows=list(csv.DictReader((mfg/"bom.csv").open(encoding="utf-8-sig",newline="")))
 missing=[{"refs":r["Refs"],"field":field} for r in rows
     for field in ["Manufacturer","MPN"] if not r.get(field,"").strip()]
 if missing: blocked("production BOM unresolved",missing=missing)
+from _split_c1_fabrication import prepare as prepare_fabrication, validate_archive, load_contract
+fab_files=prepare_fabrication(ger,verify,pcb,a.board_id,dims,copper)
 zip_path=mfg/"gerber-drill.zip"
 with zipfile.ZipFile(zip_path,"w",zipfile.ZIP_DEFLATED) as z:
     for p in sorted(ger.iterdir()):
@@ -102,9 +104,11 @@ if len([n for n in names if not n.endswith((".drl",".txt",".gbrjob"))]) != len(c
     blocked("Gerber layer count mismatch",files=names)
 if not any(n.endswith("-PTH.drl") for n in names) or not any(n.endswith("-NPTH.drl") for n in names):
     blocked("separate plated/nonplated drill files missing",files=names)
+validate_archive(zip_path,load_contract()["boards"][a.board_id],a.board_id,sha(pcb))
 files={"pcb":pcb,"schematic":sch,"bom":mfg/"bom.csv","cpl":mfg/"cpl.csv",
     "gerber_zip":zip_path,"drc":verify/"drc.json","erc":verify/"erc.json",
     "netlist":verify/"netlist.xml"}
+files.update(fab_files)
 for child in sorted(sch.parent.glob("*.kicad_sch")):
     if child != sch: files["schematic_child_"+child.stem]=child
 for ext in [".kicad_pro",".kicad_dru"]:

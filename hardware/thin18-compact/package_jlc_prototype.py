@@ -114,7 +114,7 @@ def main():
     control=json.loads((ROOT/'split-c1-control-verification.json').read_text());verify_control_fresh(control)
     core=ROOT/BOARDS[0][1]/BOARDS[0][3]
     text=core.read_text()
-    cap=verify_land(text,"C301",(2.4,2.0),10)
+    cap=verify_land(text,"C301",(2.3,2.3),10)
     capnets={re.match(r'\(pad\s+"(\d+)"',p).group(1): re.search(r'\(net\s+"([^"]+)"',p).group(1) for _,_,p in blocks(cap,r"\(pad\s")}
     if capnets!={"1":"RTC_VBACKUP","2":"GND"} or '(fp_text user "+"' not in cap: raise ValueError("EDLC polarity missing or reversed")
     verify_land(text,"L401",(1.5,2.5),1.85)
@@ -127,7 +127,7 @@ def main():
     out=ROOT/"production/jlc-prototype-orderpack"
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
-    shutil.copy2(ROOT/"JLC-PROTOTYPE-HANDOFF.md",out/"START-HERE.md")
+    # START-HERE.md is generated from the checked manifests at the end, not copied from historical prose.
     registry=json.loads((ROOT/"split-c1-sourcing-evidence.json").read_text())
     from verify_split_c1_supply import audit as audit_supply
     supply=audit_supply(json.loads((ROOT/"split-c1-supply-plan.json").read_text()))
@@ -204,9 +204,9 @@ def main():
                          assembly_order_released=False,assembly_request_ready=False,
                          all_domestic_bom_complete=domestic["all_domestic_bom_complete"],
                          foreign_refs=domestic["boards"][board]["foreign_refs"],
-                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact current H3C20mm drawing/C2894294, plated slots, positive terminal, <=0.5mm trimmed rear leads"])
+                         assembly_acceptance_required=["Exact stock/My Parts confirmation","Standard double-sided assembly, ENIG, carrier panel/rails/fiducials","CPL bottom rotation and all polarized pin-1 orientations in JLC preview","C301 independently procured and customer hand-soldered after PCBA return; no JLC ultracap consignment. Exact current H3C20mm drawing/C2894294, 1.9mm round plated holes, positive terminal, <=0.5mm trimmed rear leads"])
             report["boards"][board]=state
-    for name in ["SPLIT-C1-HARDWARE-FINISH.md", "split-c1-hardware-finish.json", "split-c1-hardware-finish-verification.json", "split-c1-power-integrity.json","split-c1-power-integrity-verification.json",
+    for name in ["SPLIT-C1-CAP-DRILL.md", "split-c1-cap-drill-verification.json", "SPLIT-C1-HARDWARE-FINISH.md", "split-c1-hardware-finish.json", "split-c1-hardware-finish-verification.json", "split-c1-power-integrity.json","split-c1-power-integrity-verification.json",
                  "SPLIT-C1-POWER-INTEGRITY.md","split-c1-domestic-audit.json","split-c1-domestic-policy.json",
                  "split-c1-domestic-eco.json","SPLIT-C1-DOMESTICIZATION.md",
                  "C4D8-RTC-DECISION.md","SPLIT-C1-PACK-INPUTS.md",
@@ -225,6 +225,8 @@ def main():
     report["target_firmware_integration_verified"]=False
     report["pre_firmware_charging_inhibit_proven"]=False
     report["control_open_hardware_findings"]=control["open_hardware_findings"]
+    from build_split_c1_order_entry import write_entry
+    report=write_entry(out,report)
     (out/"prototype-status.json").write_text(json.dumps(report,indent=2)+"\n")
     (out/"SHA256SUMS").write_text("".join(sha(p)+"  "+str(p.relative_to(out))+"\n" for p in sorted(out.rglob("*")) if p.is_file() and p.name!="SHA256SUMS"))
     archive=ROOT/"production/Panda-Split-C1-JLC-Prototype.zip"
@@ -234,7 +236,8 @@ def main():
     with zipfile.ZipFile(archive) as z:
         if z.testzip(): raise ValueError("Orderpack CRC error")
     print(json.dumps({"archive":str(archive.relative_to(REPO)),"sha256":sha(archive),
-          "standard_fabrication_ready":{b:s["standard_fabrication_ready"] for b,s in report["boards"].items()},
+          "native_rule_dfm_passed":{b:s["native_rule_dfm_passed"] for b,s in report["boards"].items()},
+          "cam_acceptance_required":True,"automatic_fabrication_order_ready":False,
           "ready_for_cam_review":True,"assembly_request_ready":False,
           "all_domestic_bom_complete":domestic["all_domestic_bom_complete"],
           "remaining_foreign_refs":domestic["foreign_ref_count"],"assembly_order_released":False},indent=2))

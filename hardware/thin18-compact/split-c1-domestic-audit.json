@@ -13,7 +13,7 @@
     },
     "Core-C1/pcb": {
       "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
-      "sha256": "836b3efedb438529f2a439dfe31dee65cfc17d02f935245185573f4dfcb7e448"
+      "sha256": "1081f55a0f4632edc252ac007c010ce7fc79b664f5cb2f52a8f762848f8a9174"
     },
     "Core-C1/bom": {
       "path": "hardware/thin18-compact/production/core-c1-96x68/manufacturing/bom.csv",

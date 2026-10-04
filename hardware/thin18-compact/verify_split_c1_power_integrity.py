@@ -5,6 +5,7 @@ A matching schematic/PCB can share an incorrect circuit, so these functional
 contracts are separate from native parity. No physical pass is inferred.
 """
 import argparse
+import hashlib
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -109,7 +110,7 @@ def inspect(candidate, netlist):
         check(xy=={'1':(-1.145,-.95),'2':(-1.145,.95),'3':(1.145,0)}[n] and size==(.76,.76),
               'Supervisor original-maker land/pin mismatch')
     return {'schema':'panda-split-c1-power-integrity-verification-v1',
-            'native_source':repo_entry(pcb),'netlist':repo_entry(Path(netlist)),
+            'native_source':repo_entry(pcb),'netlist_semantic_sha256':hashlib.sha256(json.dumps({'fields':fields,'pins':sorted([list(key)+[net] for key,net in pins.items()])},sort_keys=True,separators=(',',':')).encode()).hexdigest(),
             'contract':repo_entry(ROOT/'split-c1-power-integrity.json'),
             'checker':repo_entry(Path(__file__)),
             'functional_pin_contract_passed':True,'original_maker_supervisor_lands_passed':True,

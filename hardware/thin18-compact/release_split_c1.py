@@ -20,8 +20,10 @@ def release_steps(target):
         raise ValueError("An explicit supported design target is required")
     steps = [
         ("validate_split_c1.py", [], False),
+        ("test_split_c1_fabrication.py", [], False),
         ("verify_split_c1_power_integrity.py", [], False),
         ("verify_split_c1_hardware_finish.py", [], False),
+        ("verify_split_c1_cap_drill.py", [], False),
         ("test_split_c1_power_integrity.py", [], False),
         ("test_split_c1_control.py", [], False),
         ("verify_split_c1_control.py", [], False),
@@ -41,7 +43,8 @@ def release_steps(target):
                   ("export_jlc.py", ["--production", ROOT / "production" / output], False)]
     steps += [("audit_split_c1_domestic.py", ["--require-complete"], False),
               ("freeze_split_c1_release.py", [], False),
-              ("package_jlc_prototype.py", [], False)]
+              ("package_jlc_prototype.py", [], False),
+              ("verify_split_c1_fabrication.py", [], False)]
     return steps
 
 
