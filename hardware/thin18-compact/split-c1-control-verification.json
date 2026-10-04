@@ -1,0 +1,165 @@
+{
+  "schema": "panda-split-c1-control-verification-v1",
+  "design_target": "split-c1",
+  "inputs": {
+    "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_pcb",
+      "sha256": "4037fe779ee447f8a9d636a00b6c26afc1b8b490bd74bc4094b25790deedda24"
+    },
+    "firmware/split_c1/board_control.hpp": {
+      "path": "firmware/split_c1/board_control.hpp",
+      "sha256": "753263abaff55ee2cc29c15abe9ddaf6be798349f1bda26b161364390382d01b"
+    },
+    "hardware/thin18-compact/verify_split_c1_control.py": {
+      "path": "hardware/thin18-compact/verify_split_c1_control.py",
+      "sha256": "b963dc5d8fed914c319d11695c5175e6cab0c661db6fd2f67cfe97ab0e2e4dba"
+    },
+    "hardware/thin18-compact/test_split_c1_control.py": {
+      "path": "hardware/thin18-compact/test_split_c1_control.py",
+      "sha256": "e750d8a45fa4a6986f58ddea667c26851e290008b394c2eb3a6b1cfd5ca8c825"
+    },
+    "hardware/thin18-compact/split-c1-control-contract.json": {
+      "path": "hardware/thin18-compact/split-c1-control-contract.json",
+      "sha256": "a6e668161912067e7dbf388add11a6c56730aaba38c2ad1684d6888f8010b050"
+    },
+    "firmware/split_c1/README.md": {
+      "path": "firmware/split_c1/README.md",
+      "sha256": "57a5a8ebd1a2124d084bb940a7368dfc4069f8c82c4f400f64dcf0df3f549f82"
+    },
+    "firmware/split_c1/board_control.cpp": {
+      "path": "firmware/split_c1/board_control.cpp",
+      "sha256": "e7f7a5c24cf221d6061f4858b15549e622f7c18be102cb5a86a07faa19655feb"
+    },
+    "firmware/split_c1/tests/board_control_test.cpp": {
+      "path": "firmware/split_c1/tests/board_control_test.cpp",
+      "sha256": "40eecb3e66de36c935705c8a6e9ec2c9e6fc16a8ae7db208689f100a8ec561fc"
+    },
+    "hardware/thin18-compact/SPLIT-C1-RTC-FIRMWARE.md": {
+      "path": "hardware/thin18-compact/SPLIT-C1-RTC-FIRMWARE.md",
+      "sha256": "a6992bb7e782688b3db7cd5c6be88decc331133064c324e83d19d904ac6861e9"
+    },
+    "hardware/thin18-compact/core-c1-96x68-split/frontlight-firmware-contract.json": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/frontlight-firmware-contract.json",
+      "sha256": "7a998b8ccd81f7b9d16b3c878e34d018106adc15349a69ead4fd9b6fce836dda"
+    },
+    "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/PANDA-STD-CORE-EVT-quilter-j501-merged.kicad_sch",
+      "sha256": "1d4d319cbac590f86a0c29ad91de5a75a72ca3f91e220f95c63f81db12e4cd93"
+    },
+    "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/display-integrated.kicad_sch",
+      "sha256": "d2a6f1134ba90e234188a068cac8b67ecf663810ec991e18cc8fd09d19d0c3e1"
+    },
+    "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/evt-interfaces.kicad_sch",
+      "sha256": "64a6e99686ff93eba495e12d0f49fed97da0495bb59ec3fd78ad52e4ca845aa6"
+    },
+    "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch": {
+      "path": "hardware/thin18-compact/core-c1-96x68-split/eda/core/PANDA-STD-CORE-EVT/PANDA-THIN16/usb-interface.kicad_sch",
+      "sha256": "7910d3489fd56d31a7a76e8f4ff175fc42131cda86af2a825436f5327bc7e05d"
+    },
+    "host_tests": {
+      "path": "hardware/thin18-compact/split-c1-control-host-tests.json",
+      "sha256": "51e9c503c6c0ba29ba33a487d650a6b2a0f6753a2a98ea06f752195d79194767"
+    }
+  },
+  "native_bindings_verified": true,
+  "derived_control": {
+    "port0_nets": [
+      "EN_3V3_SD",
+      "EN_3V3_TOUCH",
+      "EN_3V3_EPD_LOGIC",
+      "EN_VSYS_AUDIO",
+      "FUEL_GPOUT",
+      "BQ_CE",
+      "BQ_INT",
+      "BQ_STAT"
+    ],
+    "port1_nets": [
+      "BQ_PG",
+      "KEY_FN",
+      "IMU_INT1",
+      "SD_CD",
+      "PG_3V3_MAIN",
+      "FL_HWEN",
+      "FL_PWM",
+      "TOUCH_RST"
+    ],
+    "pg_input_bit": 4,
+    "host_scl_gpio": 14,
+    "host_sda_gpio": 15,
+    "shared_bus_max_hz": 100000
+  },
+  "compiled_header_bindings": {
+    "kExpander": 32,
+    "kCharger": 26,
+    "kFrontlight": 54,
+    "kImu": 106,
+    "kDirection0": 208,
+    "kDirection1": 31,
+    "kQuiescent0": 32,
+    "kQuiescent1": 0,
+    "kPowerGoodMask": 16,
+    "kFrontlightEnable": 32,
+    "kFrontlightPwm": 64,
+    "kFrontlightMode": 1,
+    "kFrontlightVoltage": 161,
+    "kFrontlightFrequency": 43,
+    "kBusMaxHz": 100000,
+    "kTransferTimeoutMs": 10,
+    "kServiceDeadlineMs": 1000,
+    "kFrontlightSettleMs": 10,
+    "kFrontlightStartDeadlineMs": 100
+  },
+  "checked_native_component_refs": [
+    "R507",
+    "R601",
+    "R604",
+    "R605",
+    "R606",
+    "R607",
+    "R922",
+    "U302",
+    "U501",
+    "U503",
+    "U601",
+    "U901",
+    "U905",
+    "U906"
+  ],
+  "host_tests_passed": true,
+  "host_test_groups": 18,
+  "single_transfer_fault_cases": 346,
+  "incorrect_binding_cases_rejected": 16,
+  "pre_firmware_charging_inhibit_proven": false,
+  "open_hardware_findings": [
+    {
+      "id": "R607_PRE_FIRMWARE_CHARGING",
+      "netlist_evidence": [
+        [
+          "R607",
+          "1"
+        ],
+        [
+          "U601",
+          "9"
+        ],
+        [
+          "U901",
+          "9"
+        ]
+      ],
+      "bias": "R607 100k to GND; XL9535 reset directions are inputs",
+      "effect": "Software inhibit only exists after firmware runs. Autonomous charging before MCU initialization or after XL/charger resets is not excluded.",
+      "status": "OPEN; review a hardware inhibit ECO or a batteryless/current-limited commissioning fixture before connecting an unqualified cell"
+    },
+    {
+      "id": "PERSISTENT_BUS_LOSS",
+      "status": "OPEN",
+      "effect": "XL9535 outputs may retain frontlight ON when every shutdown transaction fails; software reports UNKNOWN, not physically OFF."
+    }
+  ],
+  "target_firmware_integration_verified": false,
+  "physical_evt_passed": false,
+  "manufacturing_release": false
+}

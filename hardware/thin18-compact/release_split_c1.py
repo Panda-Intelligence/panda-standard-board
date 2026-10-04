@@ -22,6 +22,8 @@ def release_steps(target):
         ("validate_split_c1.py", [], False),
         ("verify_split_c1_power_integrity.py", [], False),
         ("test_split_c1_power_integrity.py", [], False),
+        ("test_split_c1_control.py", [], False),
+        ("verify_split_c1_control.py", [], False),
         ("verify_split_c1_supply.py", [], False),
         ("audit_split_c1_mechanical.py", [], True),
     ]

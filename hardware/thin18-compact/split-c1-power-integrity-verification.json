@@ -6,7 +6,7 @@
   },
   "netlist": {
     "path": "hardware/thin18-compact/core-c1-96x68-split/verification/netlist.xml",
-    "sha256": "74a097688e33ae14da27febc909a0b40767db43a9debedf78dfc8ee198ce8a4e"
+    "sha256": "3aacc175711267c2bdc26388d11c85c00853b6cb0248a54d1ae162aa60685f76"
   },
   "contract": {
     "path": "hardware/thin18-compact/split-c1-power-integrity.json",

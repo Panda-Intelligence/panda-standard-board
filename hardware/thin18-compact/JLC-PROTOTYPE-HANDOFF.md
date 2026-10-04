@@ -1,3 +1,10 @@
+> 2026-10-04 control follow-up: native CAD is unchanged from the PG/PSEL ECO.
+> The package includes host-tested control logic evidence, NOT a flashed product
+> firmware. R607 still pulls nCE low before MCU initialization, so autonomous
+> charging is not excluded; do not connect an unqualified cell based on CAD-clean
+> status. A permanently failed I2C bus can leave frontlight outputs enabled.
+> Read CONTROL-FIRMWARE-README.md and split-c1-control-verification.json.
+
 # Thin7 thickness gate — current PCB must be redesigned
 
 > Current Split-C1 power-integrity ECO: the saved main-derived board now adds

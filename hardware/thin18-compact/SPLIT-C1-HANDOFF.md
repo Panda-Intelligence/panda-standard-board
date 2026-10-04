@@ -20,6 +20,34 @@ Core stays 96x68mm, four copper layers; Display stays45x36mm, two layers; both
 0.8mm. Main's ESP32-S3-WROOM-1U-N16R8 module and HCTL60-pin mating pair stay.
 The incomplete 7mm enclosure redesign is separate from this bench prototype.
 
+## Executable control follow-up — 2026-10-04
+
+The `firmware/split_c1/` C++17 module now implements bench-control sequencing,
+charger inhibit/watchdog/source policy, PG supervision and frontlight readback.
+Read its README before integration. Native PCB/schematic/lib/rules are unchanged
+from electrical checkpoint `afd63c6`; no unrouted candidate was adopted.
+
+18 host test groups pass with address/undefined sanitizers,346 per-transfer fault
+cases and86 current settings.16 deliberately wrong native/control bindings are
+rejected. `test_split_c1_control.py` and `verify_split_c1_control.py` are required
+steps of the existing release pipeline. Their source-bound reports and explicit
+limitations are included in generated engineering/prototype packages.
+
+Do not confuse host tests with firmware flashing: no ESP-IDF transport or Panda
+OS integration has run, and no physical board was accessed. Correct7-bit addresses
+are charger0x1A, XL9535 0x20, frontlight0x36 and QMI8658A0x6A with native SA0 high.
+Shared-bus policy remains100kHz for SD3078. The control core leaves all switched
+peripheral rails and battery charging disabled; full device drivers remain open.
+
+**Newly explicit hardware gate:** R607100k pulls nCE to GND. With XL9535 reset
+inputs, the charger's default CHG_CONFIG=1 does not establish inhibition before
+the MCU runs. Review an independent default-off charging ECO/commissioning
+fixture before connecting an unqualified battery. Persistent I2C failure can also
+retain frontlight outputs; software must return UNKNOWN, not a fabricated OFF.
+Neither issue was silently marked fixed by writing a driver. The immediate next
+hardware task is default-off charging/independent fault shutdown review on this
+same Split-C1 board, with deterministic replay and0/0/0/0 acceptance if changed.
+
 ## Current electrical change
 
 Read `SPLIT-C1-POWER-INTEGRITY.md` and `split-c1-power-integrity.json`.
@@ -48,7 +76,7 @@ python3 hardware/thin18-compact/verify_split_c1_supply.py --negative-controls
 ```
 
 The pipeline requires explicit design selection, both current/rebuilt native
-checks, independent power pin/variant checks,22 unit tests, exact identity and
+checks, independent power pin/variant checks,22 power tests plus host-control tests, exact identity and
 BOM/CPL checks,60-pin interface, mechanical screen and CRC/hash-bound outputs.
 Thin7 audit cannot export Split-C1 data, even if its own audit someday passes.
 

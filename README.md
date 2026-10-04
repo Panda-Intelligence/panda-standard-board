@@ -77,3 +77,12 @@ Hardware design sources: **CERN-OHL-S-2.0**.
 Documentation: **CC BY-SA 4.0**, unless otherwise noted.
 
 Third-party component models, symbols, footprints, manufacturer names and trademarks retain their respective rights and licensing terms.
+
+## Split-C1 executable control follow-up
+
+[Portable bench-control core](firmware/split_c1/README.md) implements tested
+XL9535/SGM41513/SGM37601 sequencing and a read-only QMI8658A identity probe.
+Host tests and native pin/address binding checks run in the explicit Split-C1
+export pipeline. This is not product-firmware integration or physical EVT.
+The existing nCE pulldown and loss-of-I2C shutdown limitations remain open;
+read the control README before powering an assembled prototype with a battery.

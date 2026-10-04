@@ -1,0 +1,241 @@
+{
+  "schema": "panda-split-c1-control-contract-v1",
+  "design_target": "split-c1",
+  "bindings": {
+    "kExpander": 32,
+    "kCharger": 26,
+    "kFrontlight": 54,
+    "kImu": 106,
+    "kDirection0": 208,
+    "kDirection1": 31,
+    "kQuiescent0": 32,
+    "kQuiescent1": 0,
+    "kPowerGoodMask": 16,
+    "kFrontlightEnable": 32,
+    "kFrontlightPwm": 64,
+    "kFrontlightMode": 1,
+    "kFrontlightVoltage": 161,
+    "kFrontlightFrequency": 43,
+    "kBusMaxHz": 100000,
+    "kTransferTimeoutMs": 10,
+    "kServiceDeadlineMs": 1000,
+    "kFrontlightSettleMs": 10,
+    "kFrontlightStartDeadlineMs": 100
+  },
+  "expected_native_pin_nets": {
+    "U601": {
+      "1": "EXP_INT",
+      "2": "GND",
+      "3": "GND",
+      "4": "EN_3V3_SD",
+      "5": "EN_3V3_TOUCH",
+      "6": "EN_3V3_EPD_LOGIC",
+      "7": "EN_VSYS_AUDIO",
+      "8": "FUEL_GPOUT",
+      "9": "BQ_CE",
+      "10": "BQ_INT",
+      "11": "BQ_STAT",
+      "12": "GND",
+      "13": "BQ_PG",
+      "14": "KEY_FN",
+      "15": "IMU_INT1",
+      "16": "SD_CD",
+      "17": "PG_3V3_MAIN",
+      "18": "FL_HWEN",
+      "19": "FL_PWM",
+      "20": "TOUCH_RST",
+      "21": "GND",
+      "22": "I2C_SCL",
+      "23": "I2C_SDA",
+      "24": "3V3_AON"
+    },
+    "U901": {
+      "2": "SGM41513_PSEL",
+      "5": "I2C_SCL",
+      "6": "I2C_SDA",
+      "9": "BQ_CE",
+      "22": "SGM41513_REGN"
+    },
+    "U905": {
+      "1": "I2C_SDA",
+      "2": "I2C_SCL",
+      "5": "GND",
+      "19": "FL_HWEN",
+      "20": "FL_PWM"
+    },
+    "U503": {
+      "1": "3V3_AON",
+      "12": "3V3_AON",
+      "13": "I2C_SCL",
+      "14": "I2C_SDA"
+    },
+    "U906": {
+      "1": "GND",
+      "2": "PG_3V3_MAIN",
+      "3": "3V3_AON"
+    },
+    "U501": {
+      "8": "I2C_SDA",
+      "22": "I2C_SCL"
+    },
+    "U302": {
+      "1": "I2C_SCL",
+      "8": "I2C_SDA"
+    },
+    "R607": {
+      "1": "BQ_CE",
+      "2": "GND"
+    },
+    "R601": {
+      "1": "FL_HWEN",
+      "2": "GND"
+    },
+    "R922": {
+      "1": "FL_PWM",
+      "2": "GND"
+    },
+    "R604": {
+      "1": "EN_3V3_SD",
+      "2": "GND"
+    },
+    "R605": {
+      "1": "EN_3V3_TOUCH",
+      "2": "GND"
+    },
+    "R606": {
+      "1": "EN_3V3_EPD_LOGIC",
+      "2": "GND"
+    },
+    "R507": {
+      "1": "EN_VSYS_AUDIO",
+      "2": "GND"
+    }
+  },
+  "exact_control_mpns": {
+    "U601": "XL9535",
+    "U901": "SGM41513YTQF24G/TR",
+    "U905": "SGM37601YTRL20G/TR",
+    "U503": "QMI8658A",
+    "U906": "SGM809B-TXN3LG/TR",
+    "U501": "ESP32-S3-WROOM-1U-N16R8",
+    "U302": "SD3078",
+    "R607": "RC-02K1003FT"
+  },
+  "charger": {
+    "address_7bit": 26,
+    "read_only_identity_register": 11,
+    "identity_mask": 124,
+    "identity_expected": 0,
+    "charge_enable_api_present": false,
+    "otg_enable_api_present": false,
+    "nominal_input_limit_codes": {
+      "100mA": 0,
+      "500mA_after_external_qualification": 4
+    },
+    "startup_charge_config": 0,
+    "startup_fast_charge_current_code": 0,
+    "watchdog_seconds": 40,
+    "fault_reads": "REG09 history then REG09 current; preserve both; read REG0E flags",
+    "input_overvoltage_setting_nominal_V": 6.5,
+    "independent_current_or_charge_interlock": false,
+    "input_detection_event": "REG0E bit7 revokes previous permission; explicit begin then new external grant required"
+  },
+  "frontlight": {
+    "active_mode": "shared DC dimming",
+    "accepted_current_tenths_mA": [
+      0,
+      60,
+      145
+    ],
+    "accepted_current_range_rule": "0 or integer60..145 inclusive",
+    "nonzero_current_code": "current_tenths_mA - 59",
+    "voltage_register": 161,
+    "frequency_mask": 47,
+    "zero_current_behavior": "PWM low then HWEN low",
+    "nonvolatile_MTP_writes_allowed": false,
+    "sequence": "HWEN1/PWM0, settle, program/readback all settings, recheck GPIO/PG, PWM1 last",
+    "physical_LED_current_guaranteed": false
+  },
+  "required_adapter": {
+    "target": "ESP32-S3, not yet integrated",
+    "scl_gpio": 14,
+    "sda_gpio": 15,
+    "single_owner_required": true,
+    "bounded_timeout_required": true,
+    "physical_bus_used_by_tests": false
+  },
+  "findings": [
+    {
+      "id": "PRE_FIRMWARE_NCE",
+      "status": "OPEN",
+      "ref": "R607",
+      "value": "100k pulldown",
+      "reason": "XL9535 reset inputs plus SGM41513 default charge enable do not prove charging inhibition before MCU startup"
+    },
+    {
+      "id": "PERSISTENT_BUS_LOSS",
+      "status": "OPEN",
+      "reason": "No independent frontlight shutdown when XL9535 bus is permanently inaccessible"
+    }
+  ],
+  "sources": [
+    {
+      "maker": "SGMICRO",
+      "part": "SGM41513",
+      "revision": "April2025 C.1",
+      "pages": [
+        5,
+        23,
+        30,
+        32,
+        37,
+        38,
+        39,
+        41,
+        44,
+        45,
+        46
+      ],
+      "url": "https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf"
+    },
+    {
+      "maker": "SGMICRO",
+      "part": "SGM37601",
+      "revision": "June2026 A.2",
+      "pages": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "url": "https://www.sg-micro.com/product/SGM37601"
+    },
+    {
+      "maker": "XINLUDA",
+      "part": "XL9535",
+      "revision": "2.3",
+      "pages": [
+        12,
+        13,
+        14,
+        19
+      ],
+      "url": "https://xinluda.com/en/content/viewpdf/aid-578.html",
+      "primary_document_mirror": "https://wiki.lilygo.cc/datasheet/XL9535.pdf"
+    },
+    {
+      "maker": "QST",
+      "part": "QMI8658A",
+      "revision": "13-52-25 RevA",
+      "pages": [
+        11,
+        29,
+        83
+      ],
+      "primary_document_mirror": "https://files.waveshare.com/upload/5/5f/QMI8658A_Datasheet_Rev_A.pdf"
+    }
+  ],
+  "target_firmware_integration_verified": false,
+  "physical_evt_passed": false,
+  "manufacturing_release": false
+}

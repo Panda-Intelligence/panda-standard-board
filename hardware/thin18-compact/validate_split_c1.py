@@ -62,6 +62,7 @@ def main():
     if (ROOT/'SPLIT-C1-ENCLOSURE-STUDY.scad').read_text()!=openscad_study(mechanical_inputs):
         raise ValueError('Stale side-battery OpenSCAD study')
     source_paths = [ROOT / name for name in [
+        "test_split_c1_control.py", "verify_split_c1_control.py", "split-c1-control-contract.json",
         "_split_c1_power_integrity_eco.py", "split-c1-power-integrity-layout.json", "split-c1-power-integrity.json", "SPLIT-C1-POWER-INTEGRITY.md", "SPLIT-C1-HANDOFF.md", "split-c1-power-integrity-adoption.json", "verify_split_c1_power_integrity.py", "test_split_c1_power_integrity.py", "_split_c1_common.py", "_split_c1_sourcing.py", "_split_c1_prototype_eco.py", "_split_c1_domestic_eco.py", "_split_c1_usb_eco.py", "_split_c1_switch_eco.py", "_split_c1_vbus_eco.py", "_split_c1_panel_eco.py", "_split_c1_microsd_eco.py", "_split_c1_mos_eco.py", "split-c1-mos-layout.json", "_split_c1_rtc_eco.py", "split-c1-rtc-layout.json", "split-c1-microsd-layout.json", "split-c1-candidate-review.json", "SPLIT-C1-PROCUREMENT-QUESTIONS.md", "_split_c1_esd_eco.py", "_split_c1_battery_eco.py", "_split_c1_land_guards.py", "_split_c1_enclosure_study.py", "SPLIT-C1-ENCLOSURE-STUDY.scad", "SPLIT-C1-PACK-INPUTS.md", "split-c1-jlc-catalog-observation.json", "split-c1-domestic-eco.json", "_core_c1_pcb_patch.py",
         "build_core_c1_split.py", "build_display_c1_production.py", "validate_split_c1.py",
         "verify_split_c1.py", "audit_split_c1_mechanical.py", "audit_split_c1_domestic.py",
@@ -76,6 +77,8 @@ def main():
         source_paths.extend(p for p in (ROOT / candidate).rglob("*") if p.is_file()
                             and (p.suffix in {".kicad_mod", ".kicad_sym", ".kicad_pro", ".kicad_dru"}
                                  or p.name in {"fp-lib-table", "sym-lib-table"}))
+    source_paths.extend(p for p in (REPO/"firmware/split_c1").rglob("*")
+                        if p.is_file() and p.suffix in {".hpp", ".cpp", ".md"})
     for path in sorted(source_paths):
         record["files"].setdefault(str(path.relative_to(REPO)), {"sha256": sha(path)})
     evidence = json.loads((ROOT / "split-c1-sourcing-evidence.json").read_text())
