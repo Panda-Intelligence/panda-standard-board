@@ -1,0 +1,38 @@
+{
+  "schema": "panda-seven-mm-layout-v1",
+  "status": "RELAYOUT_REQUIRED_NOT_ROUTED",
+  "source_develop_commit": "662f5f43e1ef9443ac315cced3c5e22238228761",
+  "supersedes": "The 22mm prototype and its fabrication/render handoff are not the requested product.",
+  "coordinate_system": "Portrait front view: X right, Y down; origin upper-left; Z from rear exterior towards screen; all mm. Port datums are external opening centers, NOT KiCad footprint origins.",
+  "case": {"width_mm": 75.0, "height_mm": 112.0, "nominal_thickness_mm": 6.8, "positive_tolerance_budget_mm": 0.2, "maximum_finished_thickness_mm": 7.0},
+  "panel": {"mpn": "GDEQ0426T82-FT01C", "body_xyxy_mm": [6.315, 2.0, 68.685, 107.33], "thickness_budget_mm": 2.2, "source_nominal_thickness_mm": 1.98, "maximum_tolerance_verified": false, "fpc_pose_verified": false},
+  "boards": {
+    "Core": {"layers": 4, "thickness_nominal_mm": 0.8, "thickness_maximum_budget_mm": 0.88, "rear_z_mm": 0.75, "component_side": "front", "maximum_mounted_component_height_mm": 2.4, "regions_xyxy_mm": [[55, 2, 73, 66], [40, 66, 73, 101], [2, 101, 73, 110]], "outline_xy_mm": [[55,2],[73,2],[73,110],[2,110],[2,101],[40,101],[40,66],[55,66]]},
+    "Display": {"layers": 2, "thickness_nominal_mm": 0.8, "thickness_maximum_budget_mm": 0.88, "rear_z_mm": 0.75, "component_side": "front", "maximum_mounted_component_height_mm": 2.4, "regions_xyxy_mm": [[2,66,38,99]], "outline_xy_mm": [[2,66],[38,66],[38,99],[2,99]]}
+  },
+  "board_architecture": "Two separate coplanar PCBs, not a vertically stacked board pair; these regions allocate placement space, not a populated native layout.",
+  "interconnect": {"contacts": 60, "type": "low-profile flexible link", "maximum_closed_height_budget_mm": 1.1, "exact_parts_selected": false, "all_60_pin_mapping_verified": false},
+  "battery": {"body_xyxy_mm": [2,2,53,64], "maximum_complete_pack_thickness_budget_mm": 2.8, "swelling_allowance_mm": 0.5, "capacity_target_mah": 1100, "minimum_capacity_target_mah": 900, "selected_mpn": null, "maximum_pack_and_swelling_verified": false, "note": "Complete protected pack including PCM, tabs and lead exit. These are procurement constraints, not proof a suitable 2.8mm pack exists. Do not silently reduce capacity or remove protection."},
+  "ports": {
+    "J201": {"function": "USB-C", "edge": "bottom", "placement_class": "center", "opening_center_xy_mm": [37.5,112], "outward_xy": [0,1], "opening_width_budget_mm": 10, "opening_height_budget_mm": 4, "external_access_depth_budget_mm": 15, "mounting": "reviewed mid-mount footprint required if body overlaps panel", "exact_replacement_selected": false},
+    "J501": {"function": "microSD", "edge": "right", "placement_class": "near_corner", "opening_center_xy_mm": [75,96], "outward_xy": [1,0], "opening_width_budget_mm": 16, "opening_height_budget_mm": 2.5, "external_access_depth_budget_mm": 20, "candidate_mpn": "TF-122-CCP9", "card_retention_and_service_clearance_verified": false}
+  },
+  "port_center_tolerance_mm": 0.5,
+  "port_corner_distance_maximum_mm": 20,
+  "port_end_corner_keepout_mm": 3,
+  "z_sections_maximum_budgets_mm": {
+    "electronics": {"rear_wall":0.6,"insulation":0.15,"pcb":0.88,"mounted_component":2.4,"component_clearance":0.25,"panel_adhesive":0.15,"panel":2.2,"front_recess":0.15,"assembly_reserve":0.1},
+    "battery": {"rear_wall":0.6,"insulation":0.15,"complete_pack":2.8,"swelling":0.5,"pack_clearance":0.2,"panel_adhesive":0.15,"panel":2.2,"front_recess":0.15,"assembly_reserve":0.1}
+  },
+  "required_ecos": {
+    "C301": "Replace the 6.5mm-high RTC backup capacitor with a reviewed thin backup assembly; preserve isolated >=24h time retention. Cell chemistry and any charging path must be reviewed together.",
+    "U501": "The 3.2mm WROOM-1U cannot satisfy this 2.4mm mounted-height allocation. Evaluate ESP32-S3R8 plus domestic 16MB Flash, crystal and RF network; preserve 8MB PSRAM, GPIO2 inhibit, functionality and antenna clearance. No unverified new MPN is released.",
+    "J301_J302_J502": "Replace tall wire housings with reviewed low-profile mainland parts or a qualified solder harness with strain relief.",
+    "J601_J1": "Replace the stacked connector arrangement with a low-profile flexible link; preserve signal and power/ground mappings and review SI/current capability.",
+    "J201": "Relocate to bottom center; independently qualify exact mid-mount package, PCB cutout, shell anchoring, CC/ESD wiring and plug clearance.",
+    "J501": "Relocate to the right lower corner; reroute the complete SD bus, retain pullups/series parts, review card insertion/ejection and edge strength."
+  },
+  "preserve": {"two_pcbs": true, "mainland_bom": true, "flash_mb":16, "psram_mb":8, "rtc_isolated_retention_hours":24, "frontlight_touch_audio_imu_microsd":true, "default_off_charge_and_direct_inhibit":true},
+  "evidence": {"native_relayout_implemented":false,"native_drc_erc_parity_passed":false,"supplier_maximum_envelopes_verified":false,"fpc_harness_and_port_access_verified":false,"mechanical_tolerance_stack_verified":false,"cam_and_smt_accepted":false,"manufacturing_release":false},
+  "sources": ["hardware/thin18-compact/split-c1-mechanical-inputs.json", "https://www.espressif.com/en/module/esp32-s3-wroom-1u-en", "https://www.good-display.com/companyfile/1997.html", "https://mupconn.com/product/usbc/3368.html"]
+}

@@ -1,3 +1,14 @@
+# Current product correction: do not render the rejected22mm model
+
+The user requires a <=7mm whole-device relayout. Read
+`hardware/thin18-compact/SEVEN-MM-RELAYOUT.md`. The old instructions below are
+historical:the renderer now rejects22mm or a7mm label without a native design.
+Do not disable the guard or scale old solids. New footprint placement is available
+through `prepare_seven_mm_placement.py`,not a qualified full-product renderer.
+All generated outputs remain outside Git.
+
+## Historical22mm study instructions (not current product)
+
 # Full-product Split-C1 rendering
 
 Use the canonical checkout on `develop`. Run the hardware release pipeline first;

@@ -1,3 +1,29 @@
+# CURRENT OVERRIDE: <=7mm native product relayout
+
+The user explicitly rejected the22mm prototype and asked for PCB relayout.
+Finished whole-device thickness MUST be <=7mm, including positive tolerances.
+USB-C is allocated to bottom center and microSD to the right side near the lower
+corner. Read `hardware/thin18-compact/SEVEN-MM-RELAYOUT.md` and
+`seven_mm_layout.json`. They supersede older text freezing the existing outline,
+WROOM module, stacked connector or treating7mm as merely optional.
+
+The latest develop is the electrical/BOM donor; preserve the proven functionality,
+all-mainland identity policy,16MB Flash/8MB PSRAM,>=24h isolated RTC and direct
+shutdown. Do not merge the old R2/media branches or claim its work is verified here.
+New native candidates must stay in ignored/external output; only reviewed source,
+contracts, tests and reusable builders belong in Git. No renders/models/reports/ZIPs.
+
+The source allocation and initial footprint packing are NOT finished native
+routing, supplier maximum-envelope qualification, or fabrication approval. The
+old product-render/RFQ/release entry points are deliberately blocked. Do not remove
+that stop based on a budget calculation, old DRC, or scaled visuals. New parts,
+footprints, pin maps, current/returned-path routing, mechanical tolerance and full
+native rebuild checks must precede release. Keep the old routed CAD reversible.
+MacBook canonical checkout remains `/Users/isaac/workspace/AI/panda-standard-board`;
+any Mac-mini cache clone is temporary validation, not another long-lived worktree.
+
+# Earlier guidance (current override above governs product geometry)
+
 # Panda Standard Board continuation
 
 The user's current task is **the already split, routed main-branch Split-C1**

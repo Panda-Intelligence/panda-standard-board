@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate explicitly selected engineering data; never mix Split-C1 and Thin7.
 
-Split-C1 is the populated, routed two-board baseline. Thin7 is a separate
-mechanical redesign, not a prerequisite for a Split-C1 bench prototype.
+Split-C1 remains an electrical donor, not a compliant 7mm product. The user
+requires a native relayout; old product exports are intentionally blocked.
 Neither target grants physical qualification or authorizes an assembly order.
 """
 import argparse
@@ -10,6 +10,7 @@ import json
 import subprocess
 import sys
 from _split_c1_common import ROOT, kicad_python
+from seven_mm_layout import block_obsolete_product_export
 
 
 def release_steps(target):
@@ -53,6 +54,8 @@ def release_steps(target):
 
 def execute(target, runner=None):
     """Stop on any failed check. Thin7 can never export the Split-C1 boards."""
+    if target == "split-c1":
+        block_obsolete_product_export()
     if runner is None:
         def runner(script, arguments, native):
             subprocess.run([kicad_python() if native else sys.executable,
@@ -70,12 +73,15 @@ def main(argv=None):
     parser.add_argument("--plan", action="store_true", help="Print selected steps without modifying files")
     args = parser.parse_args(argv)
     if args.plan:
-        print(json.dumps({"design_target": args.target, "manufacturing_release": False,
+        print(json.dumps({"design_target": args.target, "product_relayout_required": True, "manufacturing_release": False,
                           "steps": [{"script": script, "arguments": list(map(str, arguments)),
                                      "native_python": native}
                                     for script, arguments, native in release_steps(args.target)]}, indent=2))
         return 0
-    execute(args.target)
+    try:
+        execute(args.target)
+    except ValueError as error:
+        print(str(error));return 2
     return 0
 
 

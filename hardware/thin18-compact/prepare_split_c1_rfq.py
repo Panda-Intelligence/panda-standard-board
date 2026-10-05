@@ -5,9 +5,11 @@ from pathlib import Path
 from _split_c1_common import ROOT,REPO,sha
 from verify_split_c1_fabrication import verify
 from verify_split_c1_supply import audit
+from seven_mm_layout import block_obsolete_product_export
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--sets',type=int);a=p.parse_args()
+    block_obsolete_product_export()
     out=a.output.resolve()
     if out.is_relative_to(REPO) and not out.is_relative_to(REPO/'.work'):raise ValueError('RFQ output must stay outside Git source')
     if out.exists():raise ValueError('Refusing to replace an existing RFQ packet')
@@ -37,4 +39,7 @@ def main():
     (out/'SHA256SUMS').write_text(''.join(sha(f)+'  '+f.name+'\n' for f in sorted(out.iterdir()) if f.is_file()))
     print(json.dumps({'output':str(out),**record},indent=2))
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except ValueError as error:
+        print(str(error));raise SystemExit(2)

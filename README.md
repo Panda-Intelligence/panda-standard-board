@@ -1,3 +1,9 @@
+> **Current product requirement:<=7mm overall thickness and port-first native
+> relayout.** The22mm prototype is rejected. Start with
+> [the current relayout handoff](hardware/thin18-compact/SEVEN-MM-RELAYOUT.md).
+> The old routed Split-C1 remains an electrical donor;it is not the new product.
+> Old product render/RFQ/export entry points are blocked pending verified relayout.
+
 # Current development entry
 
 Use `develop` in `/Users/isaac/workspace/AI/panda-standard-board` for the current

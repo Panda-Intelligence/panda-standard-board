@@ -1,3 +1,13 @@
+# Product requirement correction: native relayout now required
+
+The user rejected the22mm prototype. Refer to SEVEN-MM-RELAYOUT.md and
+seven_mm_layout.json: whole device <=7mm, USB-C bottom-center and microSD at the
+right lower corner. The old completed-layout/native0/0/0/0 claims below apply ONLY
+to the historical Split-C1 electrical donor, not to the new PCB geometry.
+Product export and RFQ are blocked until an independently reviewed new native
+layout and mechanical proof replace the old target. No existing pack may be ordered
+as the7mm product. Generated candidates and all visual output stay outside Git.
+
 # Current develop checkpoint
 
 The canonical checkout is `/Users/isaac/workspace/AI/panda-standard-board`.
