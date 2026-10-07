@@ -73,8 +73,8 @@ def validate_plan(plan):
     require(c['maximum_finished_thickness_mm'] <= 7, 'Finished thickness exceeds user maximum')
     require(c['nominal_thickness_mm'] + c['positive_tolerance_budget_mm'] <= 7+1e-9, 'No space for positive tolerance')
     require(set(plan['boards']) == {'Core','Display'}, 'Exactly two boards required')
-    outlines = {'Core': [[55,2],[73,2],[73,110],[2,110],[2,101],[40,101],[40,66],[55,66]],
-                'Display': [[2,66],[38,66],[38,99],[2,99]]}
+    outlines = {'Core': [[55, 2], [73, 2], [73, 111], [42.12, 111], [42.12, 105.45], [32.88, 105.45], [32.88, 111], [2, 111], [2, 101], [40, 101], [40, 64.8], [55, 64.8]],
+                'Display': [[2,64.8],[38,64.8],[38,100.5],[2,100.5]]}
     occupied = []
     for name, board in plan['boards'].items():
         require(board['outline_xy_mm'] == outlines[name], 'Unreviewed outline differs from allocation')
@@ -92,7 +92,16 @@ def validate_plan(plan):
     require([br[2]-br[0],br[3]-br[1]] == [51,62], 'Battery XY silently changed')
     require(b['capacity_target_mah'] == 1100 and b['minimum_capacity_target_mah'] == 900, 'Do not trade away capacity without approval')
     require(b['maximum_complete_pack_thickness_budget_mm'] == 2.8 and b['swelling_allowance_mm'] == .5, 'Unreviewed battery thickness/swelling')
-    require(plan['interconnect']['contacts'] == 60, 'Interface contacts removed')
+    cell=b['selected_cell'];require(cell['model']=='275060' and cell['manufacturer']=='Shenzhen Koosay Energy Technology Co., Ltd.', 'Unreviewed main-cell identity')
+    require(cell['capacity_mah']==1100 and cell['nominal_cell_xyz_mm']==[50,60,2.7], 'Main-cell nominal envelope/capacity changed')
+    require(b['protection']['mpn']=='XB7608A' and b['protection']['jlc_code']=='C669688' and b['protection']['location']=='Core PCB', 'Main-cell protection contract changed')
+    require(b['protection']['cell_negative_net']=='BAT_CELL_N' and b['protection']['pack_negative_net']=='GND', 'Battery protection polarity/net contract changed')
+    inter=plan['interconnect']
+    require(inter['contacts'] == 60, 'Interface contacts removed')
+    require(inter['exact_parts_selected'] is True, 'Interconnect exact connector selection missing')
+    require([(x['mpn'],x['lcsc'],x['contacts']) for x in inter['connectors']] == [('X05A10L40G','C21261162',40),('X05A10L20G','C2880915',20)], 'Unreviewed FFC connector identity')
+    require(all(x['pitch_mm']==.5 and x['height_mm']==1.0 and x['contact_type']=='bottom' for x in inter['connectors']), 'FFC physical family changed')
+    require(inter['cable']['conductors']==[40,20] and inter['cable']['pitch_mm']==.5 and inter['cable']['thickness_mm']==.3, 'FFC cable construction changed')
     require(plan['panel']['mpn'] == 'GDEQ0426T82-FT01C', 'Panel changed')
     panel = rectangle(plan['panel']['body_xyxy_mm'])
     require(abs(panel[2]-panel[0]-62.37) < 1e-8 and abs(panel[3]-panel[1]-105.33) < 1e-8, 'Panel was scaled')
@@ -152,6 +161,8 @@ class Tests(unittest.TestCase):
     def test_battery_over_board(self):self.bad(['battery','body_xyxy_mm'],[22,2,73,64])
     def test_battery_capacity(self):self.bad(['battery','minimum_capacity_target_mah'],500)
     def test_battery_thickness(self):self.bad(['battery','maximum_complete_pack_thickness_budget_mm'],5.5)
+    def test_wrong_cell(self):self.bad(['battery','selected_cell','model'],'275059')
+    def test_missing_protection(self):self.bad(['battery','protection','mpn'],'')
     def test_no_swelling(self):self.bad(['z_sections_maximum_budgets_mm','battery','swelling'],0)
     def test_no_assembly_tolerance(self):self.bad(['z_sections_maximum_budgets_mm','electronics','assembly_reserve'],0)
     def test_panel_scaled(self):self.bad(['panel','body_xyxy_mm'],[6,2,60,100])

@@ -1,3 +1,32 @@
+# 2026-10-07 continuation checkpoint
+
+The current source includes the low-profile electrical builder, 40P+20P FFC
+mapping, explicit primary-cell RTC review requirements, native outline/port
+checks, and verified Display routing replay. The earlier first-placement figures
+below are historical; do not revert to those candidates.
+
+Fresh native checks on the saved best Core candidate: DRC 0, open 4, parity 0,
+ERC 0; Display: 0/0/0/0. The four Core opens are two GND islands, EPD_D0 and USB_DM.
+The isolated continuation copy is `.work/seven-mm-final-four-20261007/candidate/`;
+it was copied from `weighted4-trial/best-native.kicad_pcb`, not the interrupted
+trial's working file. That baseline Core SHA-256 is
+`b52d8a71630f79c50597d56efb15ce7ea43dacd7ee1886fceca9dea274785429`.
+Pending Core copper is not labeled native-clean or included in manufacturing
+export. Original donor PCB/schematic files remain unchanged.
+
+The Core outline now includes the USB recess and a 64.8mm connector shelf.
+Independent native copper-to-board containment rejects the previous J601 MP land
+outside the board; nominal port faces remain bottom-center USB and lower-right SD.
+Passing native geometry is not supplier-envelope, 7mm-stack, SI/PI/RF or safety
+qualification. RTC diode orientation is NOT proof of negligible reverse charging.
+No manufacturing release or order is authorized.
+
+Validation before this checkpoint: 34 source-layout cases, 21 routing-evidence
+cases and 8 native-port cases pass. Source plans/builders/contracts/tests belong
+in Git; generated candidates, reports, DSN/SES, media and packaging stay out.
+
+## Earlier initial-allocation handoff (superseded where noted above)
+
 # Current product: whole-device thickness <=7mm
 
 The22mm prototype is rejected. Develop662f5f4 remains the electrical/BOM donor,
