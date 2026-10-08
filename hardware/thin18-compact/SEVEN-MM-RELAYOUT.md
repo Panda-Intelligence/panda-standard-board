@@ -1,3 +1,48 @@
+# 2026-10-08 electrical-connectivity checkpoint — NOT an order release
+
+Core and Display now both rebuild with native DRC/open/parity/ERC **0/0/0/0**.
+The earlier two/four airwire counts below are historical. The current reviewed
+source is `seven_mm_core_routing.json` plus the existing Display route plan;
+run `build_seven_mm_candidate.py --output /new/ignored-or-external/directory`.
+The checked copy is `.work/seven-mm-release-close-20261008/rebuilt-thermal-final/`.
+
+Display SPI clock EPD_D0 moved from unused-after-ECO GPIO38/package43 to the
+previously unused GPIO21/package27. All60 FFC positions and every other MCU net
+are preserved. USB clamp D201 is now at(30.5,102.75),90deg, near bottom USB.
+`seven_mm_host_gpio.json`, `verify_seven_mm_host_gpio.py` and
+`firmware/seven_mm/board_pins.h` define/check the new mapping; existing target
+firmware must be integrated and tested before use. GPIO2 inhibit, GPIO19/20 USB,
+strapping pins,16MB Flash and the reserved8MB PSRAM interface were not reassigned.
+
+Native ground vias within exposed pads: **U501=9, U901=5**. These are real
+through-vias connected to In1 GND,not edited counts. Local UART/I2C/control
+reroutes preserve the full netlist. No design rule or exclusion was relaxed.
+The rebuild has3874 Core segments/443 vias. Both exact source plans are bound to
+native schematic/project/custom-rule/library evidence and refreshed zone filling.
+
+Checks:34 allocation tests,21 route-evidence tests,8 port tests,12 prototype-review
+negative controls; GPIO/interconnect/RTC checks reject9/3/5 invalid cases. Native
+copper containment and nominal connector direction checks pass on the rebuilt copy.
+The allocation JSON's qualification flags are NOT a substitute for those actual
+native reports and must not be used alone to infer an order release.
+
+**Still not ready to order:** the connected baseline needs power-path, switching
+loop, crystal/Flash, USB differential and SD timing/impedance review, exact supply,
+and mechanical maximum-envelope closure. `audit_seven_mm_prototype.py` reports
+these openly and returns2. Wider isolated segments alone cannot clear the audit.
+The original22mm/Split-C1 orderpack and obsolete visual model remain blocked.
+
+An isolated electrical-quality floorplan is at
+`.work/seven-mm-release-close-20261008/quality-work/`. It contains shorter critical
+circuits, paired USB, single-surface SD and wider power routes, but is NOT complete
+and is NOT the source baseline. Its75x116mm mechanical exploration adds bottom
+space while keeping the7mm maximum; it is not a qualified enclosure or a routed
+replacement. Never confuse its partial native file with the fully connected copy.
+Generated candidate CAD, temporary JSON/reports, media and router grids stay ignored;
+only reviewed source plans, contracts, tests and this handoff are committed.
+
+## Earlier checkpoint (superseded by the section above)
+
 # 2026-10-07 continuation checkpoint
 
 The current source includes the low-profile electrical builder, 40P+20P FFC

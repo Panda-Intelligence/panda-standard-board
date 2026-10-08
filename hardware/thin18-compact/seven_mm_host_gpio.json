@@ -1,0 +1,83 @@
+{
+  "schema": "panda-seven-mm-host-gpio-v1",
+  "mcu": {
+    "ref": "U501",
+    "manufacturer": "Espressif",
+    "mpn": "ESP32-S3R8"
+  },
+  "display_clock": {
+    "core_net": "EPD_D0",
+    "display_net": "HOST_SCLK",
+    "core_connector_ref": "J601",
+    "core_connector_pin": "1",
+    "old_gpio": 38,
+    "old_physical_pin": "43",
+    "new_gpio": 21,
+    "new_physical_pin": "27",
+    "new_gpio_was_unused": true,
+    "old_pin_must_be_unconnected": true,
+    "gpio_matrix_required": true,
+    "firmware_macro": "PANDA7_DISPLAY_SCLK_GPIO",
+    "firmware_gpio_required": 21
+  },
+  "preserved_mcu_pins": {
+    "7": "HW_ARM_GPIO",
+    "25": "USB_DM_MCU",
+    "26": "USB_DP_MCU",
+    "29": "VDD_SPI",
+    "30": "SPIHD_SOC",
+    "31": "SPIWP_SOC",
+    "32": "SPICS0_SOC",
+    "33": "SPICLK_SOC",
+    "34": "SPIQ_SOC",
+    "35": "SPID_SOC"
+  },
+  "octal_psram_reserved_physical_pins": [
+    "38",
+    "39",
+    "40",
+    "41",
+    "42"
+  ],
+  "strap_physical_pins_unchanged": [
+    "5",
+    "8",
+    "51",
+    "52"
+  ],
+  "ffc_logical_positions_preserved": 60,
+  "usb_clamp_pose": {
+    "ref": "D201",
+    "x_mm": 30.5,
+    "y_mm": 102.75,
+    "angle_deg": 90
+  },
+  "sources": [
+    {
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf",
+      "version": "2.2",
+      "pages": [
+        15,
+        17
+      ],
+      "supports": "Physical27 is GPIO21;physical43 is GPIO38; GPIO21 is in the3.3V RTC supply domain."
+    },
+    {
+      "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/spi_master.html",
+      "section": "GPIO Matrix and IO_MUX",
+      "supports": "General-purpose SPI signals can be routed to other available GPIOs. Existing GPIO38 was also not SPI2's native IO-MUX SCLK."
+    },
+    {
+      "url": "https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32s3/api-reference/peripherals/gpio.html",
+      "section": "GPIO Summary",
+      "supports": "GPIO21 is not a strapping pin and is not an octal-PSRAM-reserved GPIO."
+    }
+  ],
+  "limitations": {
+    "firmware_integrated_on_target": false,
+    "clock_waveform_measured": false,
+    "signal_integrity_qualified": false,
+    "manufacturing_release": false
+  },
+  "unchanged_mcu_pin_net_sha256": "2f8689ae73b6b2e7af0ad99bf1d3b5a043df58b6505fa70a18a389a03472b76c"
+}

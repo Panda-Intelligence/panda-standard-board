@@ -268,6 +268,13 @@ def build(out):
                 _,x,y,angle,r=best;f.SetPosition(MM(x,y));f.SetOrientationDegrees(angle);occupied.append(r);placed.append(ref)
             else:pending.append(ref)
         for i,ref in enumerate(pending):refs[ref].SetPosition(MM(112+i%4*23,12+i//4*23));refs[ref].SetOrientationDegrees(0)
+        # Apply the reviewed USB clamp move AFTER deterministic legacy packing
+        # so no other component shifts. Only D201 changes pose; its exact part,
+        # pad functions and all nets are retained. This brings the clamp close
+        # to the bottom-centre USB receptacle rather than the old mid-side site.
+        if name=='Core':
+            clamp=refs['D201'];clamp.SetOrientationDegrees(90)
+            clamp.SetPosition(MM(30.5,102.75));clamp.SetLocked(True)
         # Core In1 is a continuous GND reference plane. The polygon follows the
         # actual concave/USB-notched outline; KiCad fill applies native edge/pad
         # clearances. This is not a signal-routing layer.
@@ -288,13 +295,17 @@ def build(out):
         if name=='Display':
             route_plan=ROOT/'seven_mm_display_routing.json'
             report['boards'][name]['routing_replay']=apply_routing(pcb,route_plan,'Display') if route_plan.exists() else {'pending':True,'reason':'Current exact 40P+20P interconnect placement requires a fresh native-clean Display routing plan.'}
+        if name=='Core':
+            route_plan=ROOT/'seven_mm_core_routing.json'
+            report['boards'][name]['routing_replay']=apply_routing(pcb,route_plan,'Core') if route_plan.exists() else {'pending':True,'reason':'Core routing is not yet frozen from a fully native-verified predecessor.'}
         report['boards'][name].update(pcb_sha256=sha(pcb),placed_refs=sorted(placed),review_refs=sorted(pending),placement_optimized=False)
         # Native saving a fresh BOARD writes default project settings; restore
         # the source rule file AFTER save, never accidentally relax or replace it.
         (out/(name+'.kicad_pro')).write_bytes(source.with_suffix('.kicad_pro').read_bytes())
         run(['sch','erc','--severity-all','--format','json','--output',out/(name+'-erc.json'),out/(name+'.kicad_sch')],out/(name+'-erc.log'))
-        run(['pcb','drc','--severity-all','--schematic-parity','--format','json','--output',out/(name+'-drc.json'),pcb],out/(name+'-drc.log'))
+        run(['pcb','drc','--refill-zones','--save-board','--severity-all','--schematic-parity','--format','json','--output',out/(name+'-drc.json'),pcb],out/(name+'-drc.log'))
         drc=json.loads((out/(name+'-drc.json')).read_text());erc=json.loads((out/(name+'-erc.json')).read_text())
+        report['boards'][name]['pcb_sha256']=sha(pcb)
         report['boards'][name]['native_counts']={'drc':len(drc['violations']),'open':len(drc['unconnected_items']),'parity':len(drc.get('schematic_parity',[])),'erc':sum(len(s.get('violations',[])) for s in erc['sheets'])}
         print(name,report['boards'][name]['native_counts'],'placed',len(placed),'review',pending,flush=True)
     assert all(sha(p)==hashes[n] for n,p in sourcepaths.items()),'Donor CAD changed'

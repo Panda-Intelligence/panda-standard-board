@@ -32,6 +32,13 @@ def bare_host(module_nets):
     # NC on the bare chip preserves every currently functional pin/net.
     for pin,net in list(nets.items()):
         if net in {'EPD_CKH','EPD_CKV','EPD_STH','EPD_STV','EPD_D6','EPD_D7'}:nets[pin]=''
+    # Seven-mm GPIO ECO: route the logical display SPI clock through unused
+    # GPIO21 (physical27), not the trapped GPIO38 (physical43). GPIO21 is a
+    # non-strapping RTC-domain IO, not reserved for the R8 octal PSRAM. Both
+    # old/new choices use the GPIO matrix. All60 FFC functions stay unchanged.
+    # ESP32-S3 datasheet v2.2 pp15/17; ESP-IDF SPI-master GPIO-matrix section.
+    assert nets['43']=='EPD_D0' and not nets['27'], 'Unexpected clock donor/allocation'
+    nets['27']=nets['43'];nets['43']=''
     assert nets['7']=='HW_ARM_GPIO' and nets['25']=='USB_DM_MCU' and nets['26']=='USB_DP_MCU'
     assert not any(nets[str(GPIO_PIN[g])] for g in range(33,38))
     return nets,pins
