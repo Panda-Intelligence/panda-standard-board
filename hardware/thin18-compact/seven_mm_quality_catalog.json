@@ -1,0 +1,55 @@
+{
+  "schema": "panda-seven-mm-exact-catalog-v1",
+  "checked_on": "2026-10-10",
+  "identity_only": true,
+  "stock_reserved": false,
+  "supplier_acceptance": false,
+  "entries": [
+    {
+      "refs": [
+        "U501"
+      ],
+      "manufacturer": "Espressif",
+      "mpn": "ESP32-S3R8",
+      "code": "C2913194",
+      "package": "QFN-56(7x7)",
+      "source_url": "https://jlcpcb.com/partdetail/EspressifSystems-ESP32S3R8/C2913194"
+    },
+    {
+      "refs": [
+        "C520",
+        "C522",
+        "C523",
+        "C524",
+        "C526"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402B104K250NT",
+      "code": "C56392",
+      "package": "0402",
+      "source_url": "https://jlcpcb.com/partdetail/0402B104K250NT/C56392"
+    },
+    {
+      "refs": [
+        "C521",
+        "C527"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402B105K100NT",
+      "code": "C1526",
+      "package": "0402",
+      "source_url": "https://jlcpcb.com/partdetail/1878-0402B105K100NT/C1526"
+    },
+    {
+      "refs": [
+        "C528",
+        "C529"
+      ],
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402CG180J500NT",
+      "code": "C1549",
+      "package": "0402",
+      "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549"
+    }
+  ]
+}

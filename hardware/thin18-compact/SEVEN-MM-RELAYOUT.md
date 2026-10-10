@@ -1,3 +1,16 @@
+# 2026-10-10 quality checkpoint C
+
+Both boards are electrically connected and reproducibly native-clean. The older
+2/4-airwire checkpoint descriptions below are historical, not the current result.
+Read [SEVEN-MM-QUALITY-C.md](SEVEN-MM-QUALITY-C.md) before choosing the candidate.
+The reviewed quality C source includes USB/SD path closure, a wide battery return,
+141 widened AON track segments and ten exact catalog mappings. It also explicitly
+records that the inherited116mm quality-study floorplan has NOT replaced the112mm
+product requirement. Nominal0.8mm JLC board now uses0.9mm worst-case thickness.
+No product manufacturing approval follows from all-zero native routing checks.
+
+## Earlier checkpoints
+
 # 2026-10-08 electrical-connectivity checkpoint — NOT an order release
 
 Core and Display now both rebuild with native DRC/open/parity/ERC **0/0/0/0**.

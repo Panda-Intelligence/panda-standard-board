@@ -28,7 +28,7 @@
     "Core": {
       "layers": 4,
       "thickness_nominal_mm": 0.8,
-      "thickness_maximum_budget_mm": 0.88,
+      "thickness_maximum_budget_mm": 0.9,
       "rear_z_mm": 0.75,
       "component_side": "front",
       "maximum_mounted_component_height_mm": 2.4,
@@ -113,7 +113,7 @@
     "Display": {
       "layers": 2,
       "thickness_nominal_mm": 0.8,
-      "thickness_maximum_budget_mm": 0.88,
+      "thickness_maximum_budget_mm": 0.9,
       "rear_z_mm": 0.75,
       "component_side": "front",
       "maximum_mounted_component_height_mm": 2.4,
@@ -274,7 +274,7 @@
     "electronics": {
       "rear_wall": 0.6,
       "insulation": 0.15,
-      "pcb": 0.88,
+      "pcb": 0.9,
       "mounted_component": 2.4,
       "component_clearance": 0.25,
       "panel_adhesive": 0.15,
@@ -325,5 +325,15 @@
     "https://www.espressif.com/en/module/esp32-s3-wroom-1u-en",
     "https://www.good-display.com/companyfile/1997.html",
     "https://mupconn.com/product/usbc/3368.html"
-  ]
+  ],
+  "pcb_thickness_basis": {
+    "fabricator": "JLCPCB",
+    "nominal_mm": 0.8,
+    "published_tolerance_mm": 0.1,
+    "maximum_budget_mm": 0.9,
+    "source_url": "https://jlcpcb.com/capabilities/pcb-capabilities",
+    "checked_on": "2026-10-10",
+    "order_specific_stackup_accepted": false,
+    "note": "Boards below1.0mm use +/-0.1mm,not +/-10%. The corrected0.90mm maximum is included in the electronics budget; supplier stack and complete product fit remain unqualified."
+  }
 }

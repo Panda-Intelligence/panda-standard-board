@@ -73,6 +73,8 @@ def validate_plan(plan):
     require(c['maximum_finished_thickness_mm'] <= 7, 'Finished thickness exceeds user maximum')
     require(c['nominal_thickness_mm'] + c['positive_tolerance_budget_mm'] <= 7+1e-9, 'No space for positive tolerance')
     require(set(plan['boards']) == {'Core','Display'}, 'Exactly two boards required')
+    basis=plan['pcb_thickness_basis']
+    require(basis['nominal_mm']==.8 and basis['published_tolerance_mm']==.1 and basis['maximum_budget_mm']==.9, 'Unreviewed JLCPCB thickness tolerance')
     outlines = {'Core': [[55, 2], [73, 2], [73, 111], [42.12, 111], [42.12, 105.45], [32.88, 105.45], [32.88, 111], [2, 111], [2, 101], [40, 101], [40, 64.8], [55, 64.8]],
                 'Display': [[2,64.8],[38,64.8],[38,100.5],[2,100.5]]}
     occupied = []
@@ -80,7 +82,7 @@ def validate_plan(plan):
         require(board['outline_xy_mm'] == outlines[name], 'Unreviewed outline differs from allocation')
         require(board['layers'] == (4 if name == 'Core' else 2), 'Wrong layer count')
         require(board['rear_z_mm'] == .75 and board['component_side'] == 'front', 'Stacked/back-loaded board violates allocation')
-        require(board['thickness_nominal_mm'] == .8 and board['thickness_maximum_budget_mm'] == .88, 'PCB budget changed')
+        require(board['thickness_nominal_mm'] == .8 and board['thickness_maximum_budget_mm'] == .9, 'PCB budget changed')
         require(0 < board['maximum_mounted_component_height_mm'] <= 2.4, 'Component height exceeds allocation')
         for value in board['regions_xyxy_mm']:
             r = rectangle(value)
@@ -114,7 +116,7 @@ def validate_plan(plan):
         section_totals[name] = round(total, 6)
     require(set(section_totals) == {'electronics','battery'}, 'Missing thickness section')
     es = plan['z_sections_maximum_budgets_mm']['electronics'];bs = plan['z_sections_maximum_budgets_mm']['battery']
-    require(es['mounted_component'] == 2.4 and es['pcb'] == .88 and bs['complete_pack'] == 2.8 and bs['swelling'] == .5,
+    require(es['mounted_component'] == 2.4 and es['pcb'] == .9 and bs['complete_pack'] == 2.8 and bs['swelling'] == .5,
             'Section/component budgets diverged')
     require(all(s['panel'] == 2.2 and s['assembly_reserve'] >= .1 for s in [es,bs]), 'Panel or tolerance reserve omitted')
     require(plan['status'] == 'RELAYOUT_REQUIRED_NOT_ROUTED', 'Allocation must not claim native completion')
@@ -174,6 +176,9 @@ class Tests(unittest.TestCase):
     def test_missing_service(self):self.bad(['ports','J201','external_access_depth_budget_mm'],0)
     def test_corner_collision(self):self.bad(['ports','J501','opening_width_budget_mm'],30)
     def test_pin_count(self):self.bad(['interconnect','contacts'],30)
+    def test_too_optimistic_board_thickness(self):self.bad(['boards','Core','thickness_maximum_budget_mm'],.88)
+    def test_wrong_submillimetre_tolerance(self):self.bad(['pcb_thickness_basis','published_tolerance_mm'],.08)
+    def test_actual_electronics_budget(self):self.assertEqual(validate_plan(self.plan)['maximum_section_budgets_mm']['electronics'],6.9)
     def test_false_native_pass(self):self.bad(['evidence','native_relayout_implemented'],True)
     def test_false_completion(self):self.bad(['status'],'READY')
     def test_empty_evidence(self):self.bad(['evidence'],{})
