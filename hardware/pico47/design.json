@@ -1,0 +1,685 @@
+{
+  "schema": "panda-pico47-redesign-v1",
+  "revision": "E0",
+  "status": "ELECTRICAL_REDESIGN_NOT_FOR_FABRICATION",
+  "donor_commit": "0fe35d7",
+  "donor_product_source_sha256": "bd8c8f37383eb927574dbf09f8fe17ed1f996da5029a6881ae877095ed12a10f",
+  "donor_sourcing_sha256": "a159898a46fbe4227ee96f0b3f247e6328042ed1206b7a2249dc4c8a4637977e",
+  "user_requirement": {
+    "display": "Same as Read Pico, not the old4.26inch SPI panel",
+    "battery": "Same actual Read Pico replaceable2050mAh LCO battery pack; equal capacity alone is not exact identity",
+    "whole_device_maximum_mm": 7.0,
+    "two_boards": true,
+    "mainland_components": true,
+    "keep_touch_frontlight_audio_imu_microsd_rtc": true,
+    "ports": "USB-C bottom centre;microSD right edge near lower corner"
+  },
+  "panel": {
+    "family": "E0470A01",
+    "portrait_pixels": [
+      684,
+      1216
+    ],
+    "scan_pixels": [
+      1216,
+      684
+    ],
+    "diagonal_inch": 4.7,
+    "nominal_ppi_by_marketed_diagonal": 296.84564703236646,
+    "data_width": 16,
+    "connector_contacts": 40,
+    "connector_pitch_mm": 0.5,
+    "interface": "RAW_PARALLEL_NOT_SPI",
+    "source_family_pinmap": {
+      "1": "P47_VGL",
+      "2": "",
+      "3": "P47_VGH",
+      "4": "",
+      "5": "3V3_EPD_LOGIC",
+      "6": "P47_MODE",
+      "7": "P47_CKV",
+      "8": "P47_SPV",
+      "9": "GND",
+      "10": "P47_VCOM",
+      "11": "3V3_EPD_LOGIC",
+      "12": "GND",
+      "13": "P47_XCL",
+      "14": "P47_D0",
+      "15": "P47_D1",
+      "16": "P47_D2",
+      "17": "P47_D3",
+      "18": "P47_D4",
+      "19": "P47_D5",
+      "20": "P47_D6",
+      "21": "P47_D7",
+      "22": "GND",
+      "23": "P47_D8",
+      "24": "P47_D9",
+      "25": "P47_D10",
+      "26": "P47_D11",
+      "27": "P47_D12",
+      "28": "P47_D13",
+      "29": "P47_D14",
+      "30": "P47_D15",
+      "31": "P47_XSTL",
+      "32": "P47_XLE",
+      "33": "P47_XOE",
+      "34": "3V3_EPD_LOGIC",
+      "35": "",
+      "36": "P47_VPOS",
+      "37": "",
+      "38": "P47_VNEG",
+      "39": "",
+      "40": "P47_BORDER_REVIEW"
+    },
+    "selected_full_module_mpn": null,
+    "pico_full_suffix_verified": false,
+    "reference_mirror_mpn": "E0470A01-AF-S",
+    "reference_drawing_outline_mm": [
+      62.0,
+      113.45,
+      0.79
+    ],
+    "reference_bare_glass_is_not_touch_frontlight_stack": true,
+    "assembly_max_xyz_mm": null,
+    "border_drive_accepted": false,
+    "individual_vcom_calibration_required": true,
+    "waveform_qualification": false
+  },
+  "battery": {
+    "capacity_mah": 2050,
+    "chemistry": "LCO",
+    "replaceable_pack_required": true,
+    "exact_pico_pack_required": true,
+    "pico_battery_vendor": null,
+    "pico_battery_mpn": null,
+    "pico_pack_xyz_mm": null,
+    "nominal_voltage_v": null,
+    "charge_termination_v": null,
+    "protection_topology": null,
+    "ntc_connector_pinout": null,
+    "capacity_does_not_prove_same_pack": true,
+    "charge_enable_allowed": false,
+    "old_1100mah_cell_rejected_for_new_revision": true,
+    "old_board_protector_not_assumed_compatible": true
+  },
+  "gpio": {
+    "0": {
+      "package_pin": 5,
+      "net": "GPIO0"
+    },
+    "1": {
+      "package_pin": 6,
+      "net": "KEY_POWER_MCU"
+    },
+    "2": {
+      "package_pin": 7,
+      "net": "HW_ARM_GPIO"
+    },
+    "3": {
+      "package_pin": 8,
+      "net": "P47_D8_SRC"
+    },
+    "4": {
+      "package_pin": 9,
+      "net": "EXP_INT"
+    },
+    "5": {
+      "package_pin": 10,
+      "net": "P47_MUX0"
+    },
+    "6": {
+      "package_pin": 11,
+      "net": "P47_MUX1"
+    },
+    "7": {
+      "package_pin": 12,
+      "net": "P47_MUX2"
+    },
+    "8": {
+      "package_pin": 13,
+      "net": "P47_MUX3"
+    },
+    "9": {
+      "package_pin": 14,
+      "net": "P47_MUX4"
+    },
+    "10": {
+      "package_pin": 15,
+      "net": "P47_MUX5"
+    },
+    "11": {
+      "package_pin": 16,
+      "net": "I2S_BCLK"
+    },
+    "12": {
+      "package_pin": 17,
+      "net": "I2S_LRCLK"
+    },
+    "13": {
+      "package_pin": 18,
+      "net": "I2S_DIN"
+    },
+    "14": {
+      "package_pin": 19,
+      "net": "P47_D9_SRC"
+    },
+    "15": {
+      "package_pin": 21,
+      "net": "I2C_SDA"
+    },
+    "16": {
+      "package_pin": 22,
+      "net": "I2C_SCL"
+    },
+    "17": {
+      "package_pin": 23,
+      "net": "P47_D10_SRC"
+    },
+    "18": {
+      "package_pin": 24,
+      "net": "P47_D11_SRC"
+    },
+    "19": {
+      "package_pin": 25,
+      "net": "USB_DM_MCU"
+    },
+    "20": {
+      "package_pin": 26,
+      "net": "USB_DP_MCU"
+    },
+    "21": {
+      "package_pin": 27,
+      "net": "P47_D12_SRC"
+    },
+    "38": {
+      "package_pin": 43,
+      "net": "P47_D13_SRC"
+    },
+    "39": {
+      "package_pin": 44,
+      "net": "P47_D14_SRC"
+    },
+    "40": {
+      "package_pin": 45,
+      "net": "P47_D15_SRC"
+    },
+    "41": {
+      "package_pin": 47,
+      "net": "P47_XCL_SRC"
+    },
+    "42": {
+      "package_pin": 48,
+      "net": "P47_XLE_SRC"
+    },
+    "43": {
+      "package_pin": 49,
+      "net": "P47_MUX6"
+    },
+    "44": {
+      "package_pin": 50,
+      "net": "P47_MUX7"
+    },
+    "45": {
+      "package_pin": 51,
+      "net": "P47_XSTL_SRC"
+    },
+    "46": {
+      "package_pin": 52,
+      "net": "P47_BUS_SELECT"
+    },
+    "47": {
+      "package_pin": 37,
+      "net": "P47_SPV_SRC"
+    },
+    "48": {
+      "package_pin": 36,
+      "net": "P47_CKV_SRC"
+    }
+  },
+  "mux": {
+    "manufacturer": "SGMICRO",
+    "mpn": "SGM330A-YTS/TR",
+    "lcsc": "C700205",
+    "package": "TSSOP-16",
+    "parts": [
+      "U710",
+      "U711"
+    ],
+    "logic_supply_v": 3.3,
+    "select_gpio": 46,
+    "disable_signal": "P47_BUS_OE_N",
+    "disable_expander": "U601.P15/pin18",
+    "reset_select": 0,
+    "reset_oe_n": 0,
+    "channels": [
+      {
+        "channel": 0,
+        "gpio": 5,
+        "package_pin": 10,
+        "common_net": "P47_MUX0",
+        "select_0_net": "SDMMC_D1",
+        "select_1_net": "P47_D0_SRC"
+      },
+      {
+        "channel": 1,
+        "gpio": 6,
+        "package_pin": 11,
+        "common_net": "P47_MUX1",
+        "select_0_net": "SDMMC_D0",
+        "select_1_net": "P47_D1_SRC"
+      },
+      {
+        "channel": 2,
+        "gpio": 7,
+        "package_pin": 12,
+        "common_net": "P47_MUX2",
+        "select_0_net": "SDMMC_CLK",
+        "select_1_net": "P47_D2_SRC"
+      },
+      {
+        "channel": 3,
+        "gpio": 8,
+        "package_pin": 13,
+        "common_net": "P47_MUX3",
+        "select_0_net": "SDMMC_CMD",
+        "select_1_net": "P47_D3_SRC"
+      },
+      {
+        "channel": 4,
+        "gpio": 9,
+        "package_pin": 14,
+        "common_net": "P47_MUX4",
+        "select_0_net": "SDMMC_D3",
+        "select_1_net": "P47_D4_SRC"
+      },
+      {
+        "channel": 5,
+        "gpio": 10,
+        "package_pin": 15,
+        "common_net": "P47_MUX5",
+        "select_0_net": "SDMMC_D2",
+        "select_1_net": "P47_D5_SRC"
+      },
+      {
+        "channel": 6,
+        "gpio": 43,
+        "package_pin": 49,
+        "common_net": "P47_MUX6",
+        "select_0_net": "UART0_TX",
+        "select_1_net": "P47_D6_SRC"
+      },
+      {
+        "channel": 7,
+        "gpio": 44,
+        "package_pin": 50,
+        "common_net": "P47_MUX7",
+        "select_0_net": "UART0_RX",
+        "select_1_net": "P47_D7_SRC"
+      }
+    ],
+    "source_terminal_pins": [
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        6,
+        7
+      ],
+      [
+        11,
+        10,
+        9
+      ],
+      [
+        14,
+        13,
+        12
+      ]
+    ],
+    "disables_all_before_select": true,
+    "sd_uart_and_refresh_mutually_exclusive": true,
+    "audio_gpio_independent": true,
+    "analog_bandwidth_is_not_digital_timing_proof": true,
+    "break_before_make_hardware_guaranteed": false,
+    "electrical_timing_qualified": false
+  },
+  "interconnect": {
+    "40": {
+      "1": "P47_D0",
+      "2": "GND",
+      "3": "P47_D1",
+      "4": "GND",
+      "5": "P47_D2",
+      "6": "GND",
+      "7": "P47_D3",
+      "8": "GND",
+      "9": "P47_D4",
+      "10": "GND",
+      "11": "P47_D5",
+      "12": "GND",
+      "13": "P47_D6",
+      "14": "GND",
+      "15": "P47_D7",
+      "16": "GND",
+      "17": "P47_D8",
+      "18": "GND",
+      "19": "P47_D9",
+      "20": "GND",
+      "21": "P47_D10",
+      "22": "GND",
+      "23": "P47_D11",
+      "24": "GND",
+      "25": "P47_D12",
+      "26": "GND",
+      "27": "P47_D13",
+      "28": "GND",
+      "29": "P47_D14",
+      "30": "GND",
+      "31": "P47_D15",
+      "32": "GND",
+      "33": "P47_XCL",
+      "34": "GND",
+      "35": "P47_XLE",
+      "36": "GND",
+      "37": "P47_XSTL",
+      "38": "GND",
+      "39": "P47_CKV",
+      "40": "P47_SPV"
+    },
+    "20": {
+      "1": "VSYS_RAW",
+      "2": "VSYS_RAW",
+      "3": "GND",
+      "4": "GND",
+      "5": "3V3_AON",
+      "6": "3V3_AON",
+      "7": "GND",
+      "8": "GND",
+      "9": "3V3_EPD_LOGIC",
+      "10": "3V3_EPD_LOGIC",
+      "11": "GND",
+      "12": "GND",
+      "13": "I2C_SCL",
+      "14": "I2C_SDA",
+      "15": "EXP_INT",
+      "16": "HW_ARM_GPIO",
+      "17": "P47_PGOOD",
+      "18": "GND",
+      "19": "GND",
+      "20": "GND"
+    },
+    "display_contact_numbering": "Display p=N+1-Core p, opposite facing same-side-contact FFC",
+    "new_pinout_incompatible_with_D": true
+  },
+  "pmic": {
+    "manufacturer": "Silergy",
+    "mpn": "SY7636ARMC",
+    "package": "QFN-48-6x6",
+    "exposed_pad_ground_forbidden": true,
+    "exposed_pad_external_connection": "ISOLATED;internally negative rail;manufacturer clarification required before any via/plane tie",
+    "vgh_target_v": 22,
+    "vgh_panel_allowed_v": [
+      21,
+      23
+    ],
+    "vgl_target_v": -20,
+    "source_rails_v": [
+      15,
+      -15
+    ],
+    "reference_default_vgh_25v_prohibited": true,
+    "footprint_land_mm": {
+      "ep": [
+        4.4,
+        4.4
+      ],
+      "perimeter": [
+        0.8,
+        0.2
+      ],
+      "pitch": 0.4,
+      "total_land_span": 6.7
+    },
+    "manufacturer_current_revision_accepted": false,
+    "power_network_qualified": false,
+    "direct_enable": {
+      "source_gpio": 2,
+      "source_net": "HW_ARM_GPIO",
+      "series_resistor_ref": "R813",
+      "series_ohm": 1000,
+      "pmic_enable_net": "P47_HV_EN",
+      "enable_pulldown_ohm": 100000,
+      "expander_p00_role": "INPUT_ONLY_MONITOR",
+      "rail_on_control": "I2C operation bit7 after logic power, VCOM configuration and timing validation",
+      "low_gpio_action": "Physical EN low independent of I2C or expander",
+      "cpu_frozen_high_detected": false
+    }
+  },
+  "physical_study": {
+    "case_trial_xyz_mm": [
+      75,
+      132,
+      6.8
+    ],
+    "maximum_thickness_requirement_mm": 7.0,
+    "trial_is_not_approved_mechanical_envelope": true,
+    "battery_fit_proven": false,
+    "frontlight_stack_fit_proven": false,
+    "board_thickness_mm": 0.8,
+    "Core_outline": [
+      [
+        55,
+        2
+      ],
+      [
+        73,
+        2
+      ],
+      [
+        73,
+        131
+      ],
+      [
+        42.12,
+        131
+      ],
+      [
+        42.12,
+        125.45
+      ],
+      [
+        32.88,
+        125.45
+      ],
+      [
+        32.88,
+        131
+      ],
+      [
+        2,
+        131
+      ],
+      [
+        2,
+        121
+      ],
+      [
+        40,
+        121
+      ],
+      [
+        40,
+        84.8
+      ],
+      [
+        55,
+        84.8
+      ]
+    ],
+    "Core_regions": [
+      [
+        55,
+        2,
+        73,
+        121
+      ],
+      [
+        40,
+        84.8,
+        73,
+        121
+      ],
+      [
+        2,
+        121,
+        73,
+        131
+      ]
+    ],
+    "Display_outline": [
+      [
+        2,
+        84.8
+      ],
+      [
+        38,
+        84.8
+      ],
+      [
+        38,
+        120.5
+      ],
+      [
+        2,
+        120.5
+      ]
+    ],
+    "Display_regions": [
+      [
+        2,
+        84.8,
+        38,
+        120.5
+      ]
+    ],
+    "battery_area_not_frozen": "No capacity claim based on the empty layout area;replace with actual Pico pack envelope before placement freeze",
+    "usb_pose": [
+      37.5,
+      125.2,
+      0
+    ],
+    "microsd_pose": [
+      60.8,
+      116,
+      90
+    ],
+    "native_routing_complete": false
+  },
+  "evidence": {
+    "pico_specs": "https://dot.mindreset.tech/docs/read_0",
+    "pico_code": "https://github.com/MindReset/read_pico_firmware/blob/6a247cc94420b85c650b32a6b2c063a360070eee/components/epdiy/src/displays.c",
+    "panel_pin_table_url": "https://raw.githubusercontent.com/exomind-team/openepd-47/main/materials/vendor/display/E0470A01-AF-S-specification.pdf",
+    "panel_pdf_sha256": "70e457f990c3f04f20e6bad19b65bd8dbd096676258b3a974a642172f756f27f",
+    "pmic_product": "https://www.silergy.com/zh/productsview/sy7636armc",
+    "pmic_reference_pdf_sha256": "ed0cedb9f076cc215a4aa6da60b9adaf2345c6c8fdcfbc707b271660a6dcdd5e",
+    "pmic_reference_revision": "0.9B/2020;NOT latest supplier approval",
+    "gpio_datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf",
+    "gpio_pdf_sha256": "2d5a7cb7fd559d8d972bd88db32669c0196d23f22d7afaafb0f63d099b589a3f",
+    "mux_datasheet": "https://www.sg-micro.com/rect/assets/7d4de883-c52b-4322-b0a1-24add89dc52c/SGM330A.pdf"
+  },
+  "manufacturing_release": false,
+  "orders_submitted": false,
+  "stage": "E0.1 supply and direct-inhibit correction; mechanical study only",
+  "power_stage": {
+    "inductors": {
+      "refs": [
+        "L801",
+        "L802"
+      ],
+      "manufacturer": "Sunlord",
+      "mpn": "MWSA0618S-4R7MT",
+      "catalog_code": "C408421",
+      "inductance_uh": 4.7,
+      "tolerance_percent": 20,
+      "dcr_max_mohm": 62,
+      "height_max_mm": 1.8,
+      "body_max_xy_mm": [
+        7.3,
+        6.8
+      ],
+      "pads": [
+        [
+          "1",
+          -3.025,
+          0,
+          2.35,
+          3.5
+        ],
+        [
+          "2",
+          3.025,
+          0,
+          2.35,
+          3.5
+        ]
+      ],
+      "source_current_columns": {
+        "heading": [
+          "Max.",
+          "Typ."
+        ],
+        "saturation_A": [
+          4.0,
+          5.0
+        ],
+        "heat_rating_A": [
+          3.5,
+          4.0
+        ]
+      },
+      "max_column_is_not_asserted_minimum_guarantee": true,
+      "hot_short_circuit_margin_qualified": false,
+      "source_url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf",
+      "source_sha256": "20c2dbc43149c070a45df90718705b99cf8fb95880cf818fa17a2185c1ef93d3",
+      "source_pages": [
+        3,
+        10
+      ]
+    },
+    "rectifier_current_qualified": false,
+    "rectifier_candidate_under_review": "MDD SS34F/C60396 SMAF; primary complete land/height/surge details still required before adoption",
+    "ground_via_mm": {
+      "diameter": 0.65,
+      "drill": 0.3,
+      "clearance": 0.25
+    },
+    "qfn_ground_pad_zone_connection": "Solid on pins8/32/41/48 for short switch-return; EP49 explicitly excluded. Not a global DRC relaxation.",
+    "display_solid_ground_pads": {
+      "C806": [
+        "2"
+      ],
+      "C817": [
+        "2"
+      ],
+      "R802": [
+        "2"
+      ],
+      "R808": [
+        "2"
+      ],
+      "R809": [
+        "2"
+      ],
+      "J1": [
+        "5",
+        "13",
+        "23"
+      ]
+    },
+    "solid_ground_rationale": "Explicit direct copper connection for selected decoupling/divider/pulldown and FFC return pads. This forms real plane connections rather than allowing starved thermals. Native clearance and minimum-spoke rules remain unchanged; stencil/reflow heat balance is still a manufacturing review gate."
+  }
+}

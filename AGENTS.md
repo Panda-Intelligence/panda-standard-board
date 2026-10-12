@@ -1,3 +1,21 @@
+# CURRENT USER OVERRIDE: Read-Pico-class display and battery — 2026-10-12
+
+Continue `hardware/pico47/README.md` and `hardware/pico47/design.json` on develop.
+The user confirmed the same Pico 4.7-inch 1216x684 ~297PPI E0470A01 family AND
+same actual replaceable2050mAh LCO pack. The old4.26-inch SPI/1100mAh ProductD is
+now only a reversible donor/regression; do not resume it as the requested product.
+Keep two PCBs, <=7mm finished maximum, touch/frontlight/audio/IMU/SD/RTC,
+mainland manufacturer identities and GPIO2 direct inhibit. The132mm trial envelope
+is NOT an approved enclosure. Exact Pico pack dimensions/MPN/connector/NTC/CV and
+full screen stack remain unknown, not inferred from capacity or bare glass.
+E0 is still unrouted/partly routed and NOT FOR FABRICATION OR PANEL/BATTERY POWER.
+Never reuse ProductD zero-DRC evidence as E0 acceptance. Preserve live pad groups
+when pruning; the native pad-cluster guard must not be bypassed. Router completion
+and fewer airwires after deleting orphans are not manufacturing qualification.
+Generated CAD, SES/DSN, evidence, renders and reports stay ignored/external, not Git.
+Keep the existing untracked packaging/ untouched. Use the handoff's named current
+candidate rather than newest mtime; do not delete it as disposable work.
+
 # Current sourcing continuation — 2026-10-12
 
 For procurement/BOM work read `hardware/thin18-compact/SEVEN-MM-SOURCING.md`.
