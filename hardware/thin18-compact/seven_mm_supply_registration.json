@@ -1,0 +1,297 @@
+{
+  "schema": "panda-seven-mm-registration-technical-v1",
+  "source_sourcing_sha256": "a159898a46fbe4227ee96f0b3f247e6328042ed1206b7a2249dc4c8a4637977e",
+  "scope": "Technical registration preparation for all7 remaining SMT refs and mandatory post-SMT BT301; not quotes, shipments or registrations.",
+  "board_quantities": {
+    "Core": null,
+    "Display": null
+  },
+  "supplier_inquiries_sent": false,
+  "orders_submitted": false,
+  "manufacturing_release": false,
+  "request_lines": [
+    {
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM2578SDYG/TR",
+      "package": "WLCSP-0.9x0.9-4B-D",
+      "source_url": "https://www.sg-micro.com/product/SGM2578SD",
+      "qty_per_core": 4,
+      "moisture_sensitivity_level": 1,
+      "pitch_mm": 0.5,
+      "assembly_stage": "SMT",
+      "catalog_code": null,
+      "registration_id": null,
+      "account_warehouse_address": null,
+      "submitted": false,
+      "received": false,
+      "accepted": false,
+      "native_footprints": [
+        "U402_Core",
+        "U403_Core",
+        "U404_Core",
+        "U405_Core"
+      ],
+      "datasheet": "https://www.sg-micro.com/product/SGM2578SD",
+      "manufacturer_msl_source": "https://www.sg-micro.com/product/SGM2578SD",
+      "application": "Power-domain load switch with QOD and reverse-current protection",
+      "required_supplier_reply": [
+        "Exact ordering suffix and original manufacturer",
+        "Orderable part/lot labels and traceable invoice",
+        "Sample MOQ, packaging/cut-tape feasibility, lead time and actual quote",
+        "Current manufacturer drawing and orientation/tape packaging",
+        "Package MSL/label/floor-life and original dry-pack requirements",
+        "Actual country of origin and unit weight; do not infer from manufacturer location"
+      ]
+    },
+    {
+      "refs": [
+        "U902"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "package": "WLCSP-1.46x2.3-15B",
+      "source_url": "https://www.sg-micro.com/product/SGM62125",
+      "qty_per_core": 1,
+      "moisture_sensitivity_level": 1,
+      "pitch_mm": 0.4,
+      "assembly_stage": "SMT",
+      "catalog_code": null,
+      "registration_id": null,
+      "account_warehouse_address": null,
+      "submitted": false,
+      "received": false,
+      "accepted": false,
+      "native_footprints": [
+        "U902_Core"
+      ],
+      "datasheet": "https://www.sg-micro.com/product/SGM62125",
+      "manufacturer_msl_source": "https://www.sg-micro.com/product/SGM62125",
+      "application": "Main3V3 buck-boost regulator, exact A default-output variant",
+      "required_supplier_reply": [
+        "Exact ordering suffix and original manufacturer",
+        "Orderable part/lot labels and traceable invoice",
+        "Sample MOQ, packaging/cut-tape feasibility, lead time and actual quote",
+        "Current manufacturer drawing and orientation/tape packaging",
+        "Package MSL/label/floor-life and original dry-pack requirements",
+        "Actual country of origin and unit weight; do not infer from manufacturer location"
+      ]
+    },
+    {
+      "refs": [
+        "U905"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM37601YTRL20G/TR",
+      "package": "TQFN-3.5x3.5-20L",
+      "source_url": "https://www.sg-micro.com/product/SGM37601",
+      "qty_per_core": 1,
+      "moisture_sensitivity_level": 2,
+      "pitch_mm": 0.5,
+      "assembly_stage": "SMT",
+      "catalog_code": null,
+      "registration_id": null,
+      "account_warehouse_address": null,
+      "submitted": false,
+      "received": false,
+      "accepted": false,
+      "native_footprints": [
+        "U905_Core"
+      ],
+      "datasheet": "https://www.sg-micro.com/product/SGM37601",
+      "manufacturer_msl_source": "https://www.sg-micro.com/product/SGM37601",
+      "application": "Six-channel I2C backlight driver, twenty-pin TQFN with exposed pad",
+      "required_supplier_reply": [
+        "Exact ordering suffix and original manufacturer",
+        "Orderable part/lot labels and traceable invoice",
+        "Sample MOQ, packaging/cut-tape feasibility, lead time and actual quote",
+        "Current manufacturer drawing and orientation/tape packaging",
+        "Package MSL/label/floor-life and original dry-pack requirements",
+        "Actual country of origin and unit weight; do not infer from manufacturer location"
+      ]
+    },
+    {
+      "refs": [
+        "J201"
+      ],
+      "board": "Core",
+      "manufacturer": "MUP",
+      "mpn": "U22401-17",
+      "package": "U22401-17 / 16-pin mid-mount for 0.80mm PCB",
+      "source_url": "https://www.mupconnector.com/product/usbc/3412.html",
+      "qty_per_core": 1,
+      "moisture_sensitivity_level": null,
+      "pitch_mm": null,
+      "assembly_stage": "SMT",
+      "catalog_code": null,
+      "registration_id": null,
+      "account_warehouse_address": null,
+      "submitted": false,
+      "received": false,
+      "accepted": false,
+      "native_footprints": [
+        "J201_Core"
+      ],
+      "datasheet": "https://www.mupconnector.com/product/usbc/3412.html",
+      "manufacturer_msl_source": "https://www.mupconnector.com/product/usbc/3412.html",
+      "application": "Sixteen-contact mid-mount USB2.0 receptacle for0.8mm PCB",
+      "required_supplier_reply": [
+        "Exact ordering suffix and original manufacturer",
+        "Orderable part/lot labels and traceable invoice",
+        "Sample MOQ, packaging/cut-tape feasibility, lead time and actual quote",
+        "Current manufacturer drawing and orientation/tape packaging",
+        "Package MSL/label/floor-life and original dry-pack requirements",
+        "Actual country of origin and unit weight; do not infer from manufacturer location"
+      ]
+    }
+  ],
+  "rtc_assembly_request": {
+    "ref": "BT301",
+    "board": "Core",
+    "manufacturer": "Yichang Power Glory Technology Co., Ltd.",
+    "cell_mpn": "CR1216",
+    "factory_assembly_part_number": null,
+    "internal_request_id": "PANDA7-RTC-CR1216-LEAD-REQUEST-A",
+    "internal_id_is_not_a_vendor_sku": true,
+    "assembly_stage": "POST_SMT_MANUAL",
+    "supplier_contact": "dqq@szlijia.com",
+    "source_url": "https://www.omnergybattery.com/product/cr1216-coin-button-cell-battery-for-remote-controls",
+    "nominal_cell_voltage_v": 3,
+    "nominal_cell_capacity_mah": 25,
+    "native_center_xy_mm": [
+      63.5,
+      56.4
+    ],
+    "native_courtyard_xyxy_mm": [
+      56.825,
+      49.725,
+      70.175,
+      63.075
+    ],
+    "positive_native_pad": {
+      "number": "1",
+      "net": "RTC_CELL_P",
+      "xy_mm": [
+        58.5,
+        56.4
+      ],
+      "size_mm": [
+        2,
+        2
+      ]
+    },
+    "negative_native_pad": {
+      "number": "2",
+      "net": "GND",
+      "xy_mm": [
+        68.5,
+        56.4
+      ],
+      "size_mm": [
+        2,
+        2
+      ]
+    },
+    "installed_height_budget_above_pcb_mm": 2.4,
+    "budget_is_not_supplier_maximum": true,
+    "supplier_complete_envelope_mm": null,
+    "existing_pads_lie_under_cell_body": true,
+    "assembly_constraint": "Supplier must propose factory-attached insulated flexible leads/tabs and an assembly sequence compatible with pads under the nominal cell. Do not interpret this request as approval to solder a bare cell, trap uninsulated tabs against PCB copper or reflow the battery.",
+    "reflow_allowed": false,
+    "bare_cell_direct_solder_allowed": false,
+    "drawing_accepted": false,
+    "polarity_and_insulation_inspected": false,
+    "reverse_charge_and_retention_qualified": false
+  },
+  "catalog_recheck": {
+    "method": "Anonymous browser rendered search plus successful public API response and positive control; no account login or order action",
+    "checked_on": "2026-10-12",
+    "positive_control": {
+      "keyword": "C74301",
+      "matched_mpn": "SDCL1005C24NJTDF",
+      "matched_code": "C74301"
+    },
+    "search_url_template": "https://jlcpcb.com/parts/componentSearch?searchTxt={keyword}",
+    "public_search_endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2",
+    "evidence_sha256": "aa11e5bfc47a20d472af3b4de343727beba304d9296de024ee583b0d38871353",
+    "interpretation": "No exact public match observed for the selected three SGM series or U22401-17 in this successful search. Not proof of discontinued parts, stock unavailable everywhere, or that JLC cannot register them. Query failures/access-denied responses never count as no-match evidence.",
+    "lcsc_search": "ACCESS_DENIED_INCLUDING_POSITIVE_CONTROL; no absence conclusion",
+    "keywords_checked": [
+      "C74301",
+      "SGM2578SD",
+      "SGM62125",
+      "SGM37601",
+      "U22401"
+    ],
+    "raw_response_and_html_committed": false
+  },
+  "rejected_or_unapproved_catalog_candidates": [
+    {
+      "requested_mpn": "U22401-17",
+      "candidate_mpn": "U22401-23",
+      "jlc_code": "C49325733",
+      "decision": "REJECTED_FOR_CURRENT_GEOMETRY",
+      "reason": "Manufacturer specifies1.60mm mid-mount and CH-0.02, versus0.80mm and CH0.78 required. Similar XY dimensions do not preserve mounting/Z.",
+      "manufacturer_url": "https://www.mupconnector.com/product/usbc/3414.html",
+      "catalog_url": "https://jlcpcb.com/partdetail/MUP-U2240123/C49325733",
+      "required_mid_mount_mm": 0.8,
+      "candidate_mid_mount_mm": 1.6
+    },
+    {
+      "requested_mpn": "U22401-17",
+      "candidate_mpn": "MUP-U22401-38",
+      "jlc_code": "C56127182",
+      "decision": "NOT_APPROVED_REPLACEMENT",
+      "reason": "Manufacturer says0.80mm/LCP/gold-flash, not original NYLON/Au3u. Exact current drawing/plating durability and JLC supply acceptance not established. Do not map to -17.",
+      "manufacturer_url": "https://www.mupconnector.com/product/usbc/3424.html"
+    },
+    {
+      "requested_mpn": "U22401-17",
+      "candidate_mpn": "MUP-U22401-05",
+      "jlc_code": "C9900262011",
+      "decision": "NOT_APPROVED_REPLACEMENT",
+      "reason": "Public record is JLCPCB Assembly/Standard Only/high difficulty and different -05 LCP suffix. Candidate code is not original -17 identity or account acceptance.",
+      "catalog_url": "https://jlcpcb.com/partdetail/JLCPCBAssembly-MUP_U2240105/C9900262011",
+      "manufacturer_url": "https://www.mupconnector.com/product/usbc/2980.html"
+    },
+    {
+      "requested_mpn": "U22401-17",
+      "candidate_mpn": "MUP-U22401",
+      "jlc_code": "C5128294",
+      "decision": "INSUFFICIENT_EXACT_IDENTITY",
+      "reason": "Generic unsuffixed model cannot establish exact material/plating/mount variant.",
+      "catalog_url": "https://jlcpcb.com/partdetail/MUP-MUPU22401/C5128294"
+    }
+  ],
+  "jlc_policy_url": "https://jlcpcb.com/help/article/how-to-consign-parts-to-jlcpcb-from-mainland-china",
+  "real_account_fields_required": [
+    "JLC account and End Consignee",
+    "Core/Display placement quantities",
+    "JLC-confirmed attrition quantities",
+    "Assigned exact part/registration codes",
+    "Account-specific receiving instructions and package labels",
+    "Actual purchase invoice, currency/unit price and provenance",
+    "Tracking number when shipped",
+    "In Warehouse record and usable quantity before scheduling assembly"
+  ],
+  "warehouse_state_order": [
+    "Reviewing",
+    "Awaiting Confirmation",
+    "Awaiting Payment",
+    "Shipped",
+    "Received",
+    "Checked",
+    "In Warehouse",
+    "Cancelled"
+  ],
+  "warehouse_state_note": "These are external JLC statuses, not a mandatory linear transition model. Received or Checked is NOT sufficient for inventory availability. Mainland Awaiting Payment is not treated as a payment authorization.",
+  "approval_flags_are_not_proof": "Even a plausible C-code or signed text is not authenticated by this software. External supporting documents and deliberate human review are required; no sample/test evidence may be treated as real."
+}

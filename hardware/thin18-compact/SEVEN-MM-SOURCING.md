@@ -1,3 +1,10 @@
+# Supplier-registration continuation
+
+Read [SEVEN-MM-SUPPLY-REGISTRATION.md](SEVEN-MM-SUPPLY-REGISTRATION.md) for the
+new successful browser search/positive control, explicit USB-variant rejections,
+source-bound four-row registration and BT301 factory-assembly request. This does
+not change12 mapped/7 pending/1 mandatory post-SMT or create actual receipts.
+
 # Product D sourcing checkpoint — 2026-10-12
 
 ## Actual result, not a declaration that all supply is accepted
