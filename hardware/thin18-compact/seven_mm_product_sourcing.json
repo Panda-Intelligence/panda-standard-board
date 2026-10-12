@@ -1,0 +1,399 @@
+{
+  "schema": "panda-seven-mm-product-sourcing-v1",
+  "source_revision": "D",
+  "source_commit": "1bfd25f",
+  "checked_on": "2026-10-12",
+  "product_source_sha256": "bd8c8f37383eb927574dbf09f8fe17ed1f996da5029a6881ae877095ed12a10f",
+  "scope_original_refs": [
+    "BT301",
+    "C530",
+    "C531",
+    "J201",
+    "L506",
+    "L507",
+    "L508",
+    "R540",
+    "R541",
+    "R542",
+    "R543",
+    "R544",
+    "R545",
+    "U402",
+    "U403",
+    "U404",
+    "U405",
+    "U902",
+    "U905",
+    "Y501"
+  ],
+  "catalog": [
+    {
+      "refs": [
+        "L506"
+      ],
+      "board": "Core",
+      "old_mpn": "SDCL1005C24NJTDF",
+      "manufacturer": "Sunlord",
+      "mpn": "SDCL1005C24NJTDF",
+      "lcsc": "C74301",
+      "package": "0402",
+      "electrical_spec": {
+        "inductance_nh": 24,
+        "tolerance_percent": 5
+      },
+      "change_kind": "EXACT_CODE",
+      "source_url": "https://jlcpcb.com/partdetail/SDCL1005C24NJTDF/C74301",
+      "source_page_sha256": "4ab670a214b65db92443d6dd856105b2c3d25a561eaa387ca68d96636abfc378",
+      "datasheet": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310301641_Sunlord-SDCL1005C24NJTDF_C74301.pdf",
+      "compatibility": "Original exact manufacturer, MPN and 0402 land remain unchanged.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": false
+    },
+    {
+      "refs": [
+        "L507"
+      ],
+      "board": "Core",
+      "old_mpn": "SDCL1608C2N0STDF",
+      "manufacturer": "Sunlord",
+      "mpn": "SDCL1608C2N0STDF",
+      "lcsc": "C370234",
+      "package": "0603",
+      "electrical_spec": {
+        "inductance_nh": 2,
+        "rated_current_a": 0.9,
+        "dcr_max_ohm": 0.2
+      },
+      "change_kind": "EXACT_CODE",
+      "source_url": "https://jlcpcb.com/partdetail/SDCL1608C2N0STDF/C370234",
+      "source_page_sha256": "43ecf538a6fedacd12b395a8bfa2cae360c1b383e83f3b32bdd1101e1957d8e4",
+      "datasheet": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310301641_Sunlord-SDCL1608C2N0STDF_C370234.pdf",
+      "compatibility": "Original exact MPN and 0603 land remain unchanged. Do not substitute the 0402 RF matching part.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": false
+    },
+    {
+      "refs": [
+        "L508"
+      ],
+      "board": "Core",
+      "old_mpn": "SDCL1005C2N0STDF",
+      "manufacturer": "Sunlord",
+      "mpn": "SDCL1005C2N0STDF",
+      "lcsc": "C43365",
+      "package": "0402",
+      "electrical_spec": {
+        "inductance_nh": 2,
+        "tolerance_nh": 0.3,
+        "rated_current_a": 0.3,
+        "dcr_max_ohm": 0.2
+      },
+      "change_kind": "EXACT_CODE",
+      "source_url": "https://jlcpcb.com/partdetail/SDCL1005C2N0STDF/C43365",
+      "source_page_sha256": "6ead31363a957b5b0b5191130bbe502f01306acf3b87474aa864f40215925fff",
+      "datasheet": "https://www.lcsc.com/datasheet/lcsc_datasheet_2310301641_Sunlord-SDCL1005C2N0STDF_C43365.pdf",
+      "compatibility": "Original exact MPN and 0402 land remain unchanged.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": false
+    },
+    {
+      "refs": [
+        "C530",
+        "C531"
+      ],
+      "board": "Core",
+      "old_mpn": "0402CG0R8C500NT",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0402CG0R8C500NT",
+      "lcsc": "C40459",
+      "package": "0402",
+      "electrical_spec": {
+        "capacitance_pf": 0.8,
+        "tolerance_pf": 0.25,
+        "voltage_v": 50,
+        "dielectric": "C0G"
+      },
+      "change_kind": "EXACT_CODE",
+      "source_url": "https://jlcpcb.com/partdetail/0402CG0R8C500NT/C40459",
+      "source_page_sha256": "1f285cfe4e74fe98a29ac6fa2721c93aff047a2ac8d9cb56796de4d4507ab62f",
+      "datasheet": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_FH--Guangdong-Fenghua-Advanced-Tech-0402CG0R8C500NT_C40459.pdf",
+      "compatibility": "Original exact value/tolerance/voltage remain unchanged; no RF retuning is claimed.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": false
+    },
+    {
+      "refs": [
+        "R540",
+        "R541",
+        "R542",
+        "R543",
+        "R544",
+        "R545"
+      ],
+      "board": "Core",
+      "old_mpn": "RC-02K0000FT",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02000FT",
+      "lcsc": "C140225",
+      "package": "0402",
+      "electrical_spec": {
+        "resistance_ohm": 0,
+        "catalog_power_w": 0.0625,
+        "catalog_voltage_v": 50
+      },
+      "change_kind": "REVIEWED_MPN_REPLACEMENT",
+      "source_url": "https://jlcpcb.com/partdetail/RC-02000FT/C140225",
+      "source_page_sha256": "63f49fb7364c136a24ce4414652c855b3e22066db46c0983bb2a00c9611667c3",
+      "datasheet": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FH--Guangdong-Fenghua-Advanced-Tech-RC-02000FT_C140225.pdf",
+      "compatibility": "The original RC-02K0000FT ordering string was not verified. Explicitly replace it with catalogued FH RC-02000FT; same 0-ohm jumper function and 0402 land. It is NOT a code for the old string. A catalogue percentage tolerance does not imply zero contact resistance.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": false
+    },
+    {
+      "refs": [
+        "Y501"
+      ],
+      "board": "Core",
+      "old_mpn": "X322540MOB4SI",
+      "manufacturer": "YXC (Yangxing)",
+      "mpn": "XL2EL89COI-111YLC-40M",
+      "lcsc": "C18214314",
+      "package": "SMD3225-4P",
+      "electrical_spec": {
+        "frequency_mhz": 40,
+        "load_capacitance_pf": 12,
+        "frequency_tolerance_ppm": 10,
+        "temperature_stability_ppm": 20,
+        "esr_max_ohm": 40,
+        "temperature_min_c": -40,
+        "temperature_max_c": 85,
+        "body_nominal_mm": [
+          3.2,
+          2.5,
+          0.7
+        ],
+        "body_maximum_mm": [
+          3.3,
+          2.6,
+          0.8
+        ],
+        "land_size_mm": [
+          1.4,
+          1.2
+        ],
+        "land_centers_mm": [
+          [
+            -1.1,
+            0.85
+          ],
+          [
+            1.1,
+            0.85
+          ],
+          [
+            1.1,
+            -0.85
+          ],
+          [
+            -1.1,
+            -0.85
+          ]
+        ],
+        "ground_pins": [
+          "2",
+          "4"
+        ],
+        "signal_pins": [
+          "1",
+          "3"
+        ]
+      },
+      "change_kind": "REVIEWED_MPN_REPLACEMENT",
+      "source_url": "https://jlcpcb.com/partdetail/XL2EL89COI-111YLC-40M/C18214314",
+      "source_page_sha256": "4535ee7f91308e462403bdafcaf7323b757e96a7569f312372fa0bb0f16d2fe8",
+      "datasheet": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2403291505_YXC-Crystal-Oscillators-XL2EL89COI-111YLC-40M_C18214314.pdf",
+      "compatibility": "Explicit same-family replacement, not a claimed alias. Manufacturer YSX321SL drawing matches the actual 1.4x1.2mm pads and 1/3 signal,2/4 ground mapping. The old and new selections both specify 40MHz,12pF,+/-10ppm,+/-20ppm,-40..85C. C528/C529 remain 18pF. C9010/15pF is prohibited. Crystal startup/drive/frequency testing remains an EVT gate.",
+      "route": "JLC_CATALOG",
+      "assembly_stage": "SMT",
+      "catalog_identity_verified": true,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "drawing_reviewed": true
+    }
+  ],
+  "pending_registration": [
+    {
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM2578SDYG/TR",
+      "lcsc": "",
+      "package": "WLCSP-0.9x0.9-4B-D",
+      "route": "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT",
+      "assembly_stage": "SMT",
+      "source_url": "https://www.sg-micro.com/product/SGM2578SD",
+      "supplier_channel": "SGMICRO authorized distributor / Sekorm",
+      "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+      "contact": "sales_china@sg-micro.com; Sekorm 400-830-1766",
+      "requirements": "Require SGM2578SDYG/TR, not SGM2578SYG/TR. SD QOD, reverse-current protection and exact four-ball map are required.",
+      "catalog_identity_verified": false,
+      "manufacturer_identity_verified": true,
+      "jlc_registration_required": true,
+      "jlc_custom_code_assigned": false,
+      "quote_received": false,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "submission_state": "PREPARED_NOT_SUBMITTED",
+      "supplier_record": "https://www.sekorm.com/product/578179499.html"
+    },
+    {
+      "refs": [
+        "U902"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "lcsc": "",
+      "package": "WLCSP-1.46x2.3-15B",
+      "route": "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT",
+      "assembly_stage": "SMT",
+      "source_url": "https://www.sg-micro.com/product/SGM62125",
+      "supplier_channel": "SGMICRO authorized distributor / Sekorm",
+      "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+      "contact": "sales_china@sg-micro.com; Sekorm 400-830-1766",
+      "requirements": "Require A suffix; B/C/D variants have different default outputs. Preserve I2C and exact fifteen-ball map.",
+      "catalog_identity_verified": false,
+      "manufacturer_identity_verified": true,
+      "jlc_registration_required": true,
+      "jlc_custom_code_assigned": false,
+      "quote_received": false,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "submission_state": "PREPARED_NOT_SUBMITTED",
+      "supplier_record": "https://www.sg-micro.com/product/SGM62125"
+    },
+    {
+      "refs": [
+        "U905"
+      ],
+      "board": "Core",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM37601YTRL20G/TR",
+      "lcsc": "",
+      "package": "TQFN-3.5x3.5-20L",
+      "route": "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT",
+      "assembly_stage": "SMT",
+      "source_url": "https://www.sg-micro.com/product/SGM37601",
+      "supplier_channel": "SGMICRO authorized distributor / Sekorm",
+      "authorization_source": "https://www.sg-micro.com/authorized-distributors",
+      "contact": "sales_china@sg-micro.com; Sekorm 400-830-1766",
+      "requirements": "Require YTRL20G/TR twenty-pin package, not YTWY24G/TR. No footprint or LED-driver policy change.",
+      "catalog_identity_verified": false,
+      "manufacturer_identity_verified": true,
+      "jlc_registration_required": true,
+      "jlc_custom_code_assigned": false,
+      "quote_received": false,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "submission_state": "PREPARED_NOT_SUBMITTED",
+      "supplier_record": "https://www.sg-micro.com/product/SGM37601"
+    },
+    {
+      "refs": [
+        "J201"
+      ],
+      "board": "Core",
+      "manufacturer": "MUP",
+      "mpn": "U22401-17",
+      "lcsc": "",
+      "package": "U22401-17 / 16-pin mid-mount for 0.80mm PCB",
+      "route": "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT",
+      "assembly_stage": "SMT",
+      "source_url": "https://www.mupconnector.com/product/usbc/3412.html",
+      "supplier_channel": "MUP original manufacturer",
+      "authorization_source": "https://www.mupconnector.com/",
+      "contact": "sales@mupconnector.com; +86-755-29673656",
+      "requirements": "Require exact U22401-17 material/plating and reviewed mounting drawing. Do not substitute top-mount or another U22401 suffix. Board notch and solder stake slots must remain matched.",
+      "catalog_identity_verified": false,
+      "manufacturer_identity_verified": true,
+      "jlc_registration_required": true,
+      "jlc_custom_code_assigned": false,
+      "quote_received": false,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "submission_state": "PREPARED_NOT_SUBMITTED",
+      "supplier_record": "https://www.mupconnector.com/product/usbc/3412.html"
+    }
+  ],
+  "manual_post_assembly": [
+    {
+      "refs": [
+        "BT301"
+      ],
+      "board": "Core",
+      "manufacturer": "Yichang Power Glory Technology Co., Ltd.",
+      "mpn": "CR1216",
+      "lcsc": "",
+      "package": "Factory-insulated CR1216 lead/tab assembly; not bare-cell SMT",
+      "route": "FACTORY_TABBED_POST_SMT",
+      "assembly_stage": "POST_SMT_MANUAL",
+      "source_url": "https://www.omnergybattery.com/product/cr1216-coin-button-cell-battery-for-remote-controls",
+      "required_in_system_bom": true,
+      "reflow_allowed": false,
+      "direct_solder_to_cell_allowed": false,
+      "cell_nominal_voltage_v": 3,
+      "cell_nominal_capacity_mah": 25,
+      "cell_maximum_bare_body_mm": [
+        12.5,
+        1.6
+      ],
+      "bare_cell_code_is_not_assembly_code": true,
+      "assembly_drawing_accepted": false,
+      "stock_reserved": false,
+      "order_supply_accepted": false,
+      "requirements": "Manufacturer-produced insulated lead/tab assembly; identify positive lead to RTC_CELL_P and negative to GND. Drawing must define complete assembly height, insulation, strain relief and lead lengths against actual PCB. Cell safety and reverse-leakage/retention gates remain open. Never remove BT301 from the system BOM or silently mark DNP."
+    }
+  ],
+  "summary": {
+    "original_missing_references": 20,
+    "new_jlc_catalog_mapped_references": 12,
+    "pending_jlc_registration_references": 7,
+    "manual_post_assembly_references": 1
+  },
+  "supply_acceptance_complete": false,
+  "manufacturing_release": false,
+  "search_limitations": "The JLC componentSearch SSR page returned 0 for positive controls C74301/C56392 and exact known MPNs. Its empty result is NOT used as evidence that a part does not exist. Only exact part-detail records support assigned C-codes. Unresolved C-codes are NOT guessed.",
+  "consignment_policy_url": "https://jlcpcb.com/help/article/how-to-consign-parts-to-jlcpcb-from-mainland-china",
+  "global_sourcing_policy_url": "https://jlcpcb.com/help/article/how-to-use-jlcpcb-global-sourcing-parts-service",
+  "crystal_sources": [
+    "https://www.oneyac.net/product/30804506.html",
+    "https://www.lcsc.com/product-detail/C18214314.html",
+    "https://uploadcdn.oneyac.com/attachments/files/brand_pdf/yxc/1A/A8/YXC-YSX321SL.pdf"
+  ],
+  "orders_submitted": false
+}

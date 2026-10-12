@@ -1,3 +1,12 @@
+# Current sourcing continuation — 2026-10-12
+
+For procurement/BOM work read `hardware/thin18-compact/SEVEN-MM-SOURCING.md`.
+The default `build_seven_mm_product.py` includes the20-reference sourcing overlay;
+`--routing-only` is only the immutable pre-sourcing regression checkpoint. Do not
+edit old donor/model strings globally or lose source-bound routing. Keep required
+pending7 SMT parts and manualBT301 visible; blankcodes/unsignedRFQs are not receipt.
+Generated sourcing requests,BOM CSV,evidence HTML/PDF and native outputs stay outsideGit.
+
 # CURRENT OVERRIDE: <=7mm native product relayout
 
 The user explicitly rejected the22mm prototype and asked for PCB relayout.

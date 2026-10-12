@@ -11,7 +11,9 @@ from _split_c1_common import ROOT,REPO
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--routing-only',action='store_true',help='Reproduce the immutable pre-sourcing D checkpoint for regression; not the current procurement BOM')
+    a=p.parse_args()
     out=a.output.resolve()
     if out.exists():raise ValueError('Choose a fresh output, never overwrite saved CAD')
     if out.is_relative_to(REPO) and not out.is_relative_to(REPO/'.work'):raise ValueError('Generated candidate must stay ignored/external')
@@ -30,5 +32,8 @@ def main():
     # geometry using the companion checker; no synthetic all-zero flags here.
     result={'revision':'D','native':{k:v['counts'] for k,v in native['native'].items()},'native_outline_and_nominal_port_pose_passed':True,'quality_gpio_matches_C':gpio['native_schematic_pcb_gpio_parity'],'path_check_command':'verify_seven_mm_product_paths.py <fresh native geometry>','whole_device_maximum_height_qualified':False,'assembly_order_ready':False,'manufacturing_release':False}
     (out/'PRODUCT-D-REBUILD.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+    if not a.routing_only:
+        from seven_mm_sourcing import apply as apply_sourcing
+        apply_sourcing(out)
     return 0
 if __name__=='__main__':raise SystemExit(main())

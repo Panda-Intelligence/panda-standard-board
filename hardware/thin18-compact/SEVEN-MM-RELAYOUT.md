@@ -1,3 +1,13 @@
+# 2026-10-12 sourcing update — current procurement entry
+
+Read [SEVEN-MM-SOURCING.md](SEVEN-MM-SOURCING.md). The default Product-D builder
+now includes the verified sourcing metadata overlay:12 of the original20 refs
+mapped to exact JLC codes,7 still requiring actual SMT consignment registration,
+and BT301 retained as mandatory post-SMT assembly. Catalog identity is not stock
+or acceptance. Two explicit MPN corrections preserve original values/lands.
+Native two-board routing remains0/0/0/0; no geometry or rule relaxation. Historical
+routing-only checkpoints below do not contain the current procurement metadata.
+
 # Current product D — 2026-10-12
 
 Start with [SEVEN-MM-PRODUCT-D.md](SEVEN-MM-PRODUCT-D.md). Revision D restores
