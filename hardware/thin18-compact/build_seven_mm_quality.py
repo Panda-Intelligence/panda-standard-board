@@ -24,8 +24,9 @@ sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def require(ok,message):
     if not ok:raise ValueError(message)
 
-def verify_plan(plan):
-    require(plan.get('schema')=='panda-seven-mm-quality-source-v1' and plan.get('revision')=='C','Wrong quality source')
+def verify_plan(plan, expected_revision="C"):
+    require(expected_revision in {"C","D"}, "Unsupported reviewed revision")
+    require(plan.get('schema')=='panda-seven-mm-quality-source-v1' and plan.get('revision')==expected_revision,'Wrong quality source')
     require(plan.get('native_rules_relaxed') is False and plan.get('manufacturing_release') is False,'Unexpected release/rule declaration')
     require(plan.get('native_rule_changes')==EXPECTED_RULE_CHANGES,'Unreviewed rule delta')
     require(plan['native_checked_counts']=={'drc':0,'open':0,'parity':0,'erc':0},'Source did not have clean native checks')
@@ -54,8 +55,8 @@ def netlist(candidate,board):
     fields={c.get('ref'):{f.get('name'):f.text or '' for f in c.findall('fields/field')} for c in tree.findall('components/comp')}
     return nets,fields
 
-def apply(candidate,source=SOURCE):
-    candidate=Path(candidate).resolve();plan=json.loads(Path(source).read_text());verify_plan(plan)
+def apply(candidate,source=SOURCE,expected_revision="C"):
+    candidate=Path(candidate).resolve();plan=json.loads(Path(source).read_text());verify_plan(plan,expected_revision)
     require(candidate.is_dir(),'Build the routed donor first')
     require(not candidate.is_relative_to(REPO) or candidate.is_relative_to(REPO/'.work'),'Output must be ignored/external')
     pcb=candidate/'Core.kicad_pcb';before=pcb.read_bytes()
@@ -106,9 +107,9 @@ def apply(candidate,source=SOURCE):
     text=pcb.read_text();end=text.rfind(')');pcb.write_text(text[:end]+'\n'+'\n'.join(plan['copper_items']+plan['zones'])+'\n'+text[end:])
     # The authority is a current native calculation, not source_checked_counts.
     evidence={name:verify_native_clean(candidate/(name+'.kicad_pcb')) for name in ['Core','Display']}
-    result={'schema':'panda-seven-mm-quality-rebuild-v1','revision':'C','source_sha256':sha(source),'native':evidence,'source_inventory_preserved':True,'native_rules_relaxed':False,'native_rule_changes':plan['native_rule_changes'],'quality_routing_reproduced':True,'manufacturing_release':False}
+    result={'schema':'panda-seven-mm-quality-rebuild-v1','revision':expected_revision,'source_sha256':sha(source),'native':evidence,'source_inventory_preserved':True,'native_rules_relaxed':False,'native_rule_changes':plan['native_rule_changes'],'quality_routing_reproduced':True,'manufacturing_release':False}
     (candidate/'QUALITY-REBUILD.json').write_text(json.dumps(result,indent=2)+'\n')
-    print(json.dumps({'revision':'C','native':{k:v['counts'] for k,v in evidence.items()},'manufacturing_release':False},indent=2))
+    print(json.dumps({'revision':expected_revision,'native':{k:v['counts'] for k,v in evidence.items()},'manufacturing_release':False},indent=2))
     return result
 
 def main():

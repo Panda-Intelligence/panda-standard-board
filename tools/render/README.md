@@ -1,3 +1,16 @@
+# Current native seven-mm assembly study
+
+Use `export_seven_mm_scene.py --candidate <rebuild> --output <external>/scene-input`
+with KiCad Python, then Blender with `build_seven_mm_scene.py --source
+<external>/scene-input --output <external>/render --mode all`.
+The exporter requires fresh native all-zero checks; the source metadata binds
+both native CAD and GLB hashes. The renderer uses the actual112mm PCB set,not the
+old22mm/116mm models. It explicitly marks package proxies and supplier/mechanical
+gates as unqualified. Native products/media stay outside Git. See
+`hardware/thin18-compact/SEVEN-MM-PRODUCT-D.md` for hardware scope and open gates.
+
+## Earlier renderer guidance (historical)
+
 # Current product correction: do not render the rejected22mm model
 
 The user requires a <=7mm whole-device relayout. Read

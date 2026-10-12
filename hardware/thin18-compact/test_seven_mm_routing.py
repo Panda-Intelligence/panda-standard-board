@@ -31,6 +31,15 @@ class Counts(unittest.TestCase):
         with self.assertRaises(ValueError):checked_counts(self.d,{'sheets':[{}]})
 
 class Parsing(unittest.TestCase):
+    def test_compact_track(self):
+        item='(segment(start 1 2)(end 3 4)(width .15)(uuid "a"))'
+        self.assertEqual(sexpr_blocks('(kicad_pcb '+item+')','(segment'),[item])
+    def test_compact_via_does_not_match_prefix(self):
+        item='(via(at 1 2)(size .4)(drill .2)(uuid "b"))'
+        text='(kicad_pcb(via_size .4)(vias not_allowed)'+item+')'
+        self.assertEqual(sexpr_blocks(text,'(via'),[item])
+    def test_compact_expression_in_string_is_not_copper(self):
+        self.assertEqual(sexpr_blocks('(descr "(via(at 1 2))")','(via'),[])
     def test_exact_atoms(self):
         s='(kicad_pcb (via_size 1) (vias not_allowed) (via (at 1 2)))'
         self.assertEqual(sexpr_blocks(s,'(via'),['(via (at 1 2))'])

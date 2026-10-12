@@ -1,3 +1,13 @@
+# Current product D — 2026-10-12
+
+Start with [SEVEN-MM-PRODUCT-D.md](SEVEN-MM-PRODUCT-D.md). Revision D restores
+112mm native product geometry and the bottom-center USB datum, checks BOTH USB
+orientations, and shortens the RF bulk supply path. Core/Display reproduce with
+DRC/open/parity/ERC0/0/0/0. The full-device Blender assembly is an explicitly
+unqualified mechanical study, not permission to order or proof of<=7mm worst-case.
+
+## Earlier quality and connectivity checkpoints (historical)
+
 # 2026-10-10 quality checkpoint C
 
 Both boards are electrically connected and reproducibly native-clean. The older

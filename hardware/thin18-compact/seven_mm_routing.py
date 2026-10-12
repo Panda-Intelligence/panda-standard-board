@@ -37,7 +37,7 @@ def sexpr_blocks(text,token):
             pos+=1;continue
         if char=='"':quoted=True;pos+=1;continue
         end_atom=pos+len(token)
-        if text.startswith(token,pos) and end_atom<len(text) and (text[end_atom].isspace() or text[end_atom]==')'):
+        if text.startswith(token,pos) and end_atom<len(text) and (text[end_atom].isspace() or text[end_atom] in '()'):
             end=balanced(text,pos);out.append(text[pos:end]);pos=end
         else:pos+=1
     return out
