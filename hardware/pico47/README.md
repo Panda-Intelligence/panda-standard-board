@@ -1,3 +1,12 @@
+# Current continuation: E0.2 ordered routing checkpoint
+
+Read [E02-HANDOFF.md](E02-HANDOFF.md) first. The current external candidate is
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261012/engineering-candidate/`.
+Latest native checks: Core48 open/26 warnings, Display21 open/5 warnings; errors,
+parity and ERC are0. This remains NOT FOR FABRICATION. Rebuild with the explicit
+`--routing-checkpoint` option to preserve the validated partial routing.
+The E0.1 section below is historical design background, not the current route.
+
 # Panda47 E0 — parallel-display redesign checkpoint
 
 Date: 2026-10-12. Status: **INCOMPLETE ENGINEERING DESIGN — DO NOT ORDER OR POWER**.
@@ -126,7 +135,7 @@ remain outside Git. The existing unrelated `packaging/` is untouched.
 - Sunlord original series drawing, pp3/10: https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf
 - KiCad connectivity clusters: https://docs.kicad.org/doxygen/connectivity__data_8cpp_source.html
 
-## Current continuation candidate and native results
+## Historical E0.1 candidate and native results — superseded by E02-HANDOFF
 
 Canonical external review candidate:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e0-20261012/engineering-candidate/`.

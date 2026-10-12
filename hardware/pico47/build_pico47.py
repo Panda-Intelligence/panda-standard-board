@@ -71,6 +71,8 @@ def create(out,donor):
     plan=json.loads(CONTRACT.read_text())
     from pico47_contract import validate
     validate(plan)
+    from pico47_placement import load_layout, add_mcu_ground_vias, route_ordered_data_necks, add_display_ground_return, LAYOUT
+    ordered_layout=load_layout()
     require(plan['revision']=='E0' and plan['manufacturing_release'] is False,'Wrong redesign contract')
     require(plan['donor_sourcing_sha256']==sha(SOURCING),'Wrong sourced predecessor')
     require(plan['donor_product_source_sha256']==sha(LEGACY/'seven_mm_product_source.json'),'Wrong routing predecessor')
@@ -237,6 +239,9 @@ def create(out,donor):
                 if name=='Display' and pad.GetNumber() in plan['power_stage']['display_solid_ground_pads'].get(ref,[]):
                     require(p['nets'][pad.GetNumber()]=='GND','Solid plane connection must be actual GND')
                     pad.SetLocalZoneConnection(P.ZONE_CONNECTION_FULL)
+                if name=='Core' and pad.GetNumber() in ordered_layout['core_solid_ground_pads'].get(ref,[]):
+                    require(p['nets'][pad.GetNumber()]=='GND','Only actual ground pads get plane connections')
+                    pad.SetLocalZoneConnection(P.ZONE_CONNECTION_FULL)
                 if name=='Core' and ref=='C515' and pad.GetNumber()=='2':
                     pad.SetLocalZoneConnection(P.ZONE_CONNECTION_FULL)
             p['footprint']='Panda47:'+ref+'_'+name
@@ -255,7 +260,7 @@ def create(out,donor):
     (out/'Panda7.kicad_sym').write_text('(kicad_symbol_lib(version 20241209)(generator "kicad_symbol_editor")'+''.join(unique.values())+')\n')
     (out/'sym-lib-table').write_text('(sym_lib_table (version 7) (lib (name "Panda7")(type "KiCad")(uri "${KIPRJMOD}/Panda7.kicad_sym")(options "")(descr "E0 exact net intent;not fabrication release")))\n')
     (out/'fp-lib-table').write_text('(fp_lib_table (version 7) (lib (name "Panda47")(type "KiCad")(uri "${KIPRJMOD}/Panda47.pretty")(options "")(descr "E0 native local lands")))\n')
-    report={'revision':'E0','source_contract_sha256':sha(CONTRACT),'donor':proof,'boards':{},'manufacturing_release':False,
+    report={'revision':'E0.2','source_ordered_layout_sha256':sha(LAYOUT),'source_contract_sha256':sha(CONTRACT),'donor':proof,'boards':{},'manufacturing_release':False,
       'exact_pico_battery_verified':False,'panel_full_stack_verified':False,'routing_complete':False,'charge_enable_allowed':False,
       'open_engineering_gates':['Exact Pico battery MPN/pack envelope/connector/NTC/CV and protection','Exact panel full suffix,touch and frontlight stack/contact face','BORDER bias and per-panel VCOM','PMIC current-revision EP/NC clarification','Power inductors/diodes/startup saturation and complete passives sourcing','3.3V mux timing and safe SD/UART/display handover','Physical placement/routing/SI/EMI/thermal','Whole-device<=7mm maximum and cell swelling fit','CAM/SMT and supplier acceptance']}
     for name in ['Core','Display']:
@@ -282,6 +287,10 @@ def create(out,donor):
                 f.SetPosition(MM(x,yy));f.SetOrientationDegrees(p['source_angle']);f.SetLocked(True)
                 occupied.append(bbox(f));placed.add(ref)
             occupied.append([32.88,125.45,42.12,131])
+            for ref,(x,y,angle) in ordered_layout['core_poses'].items():
+                require(ref in newly_added['Core'],'Do not move donor functions through new-part placement')
+                f=fps[name][ref];f.SetPosition(MM(x,y));f.SetOrientationDegrees(angle);f.SetLocked(True)
+                occupied.append(bbox(f));new_boxes.append(bbox(f));placed.add(ref)
             target={'U710':(48,96),'U711':(48,112),'C710':(50,94),'C711':(50,110)}
         else:
             fixed={'J1':(35,96.2,90),'J4':(35,114.2,90),'J820':(17.5,116,0),'U810':(15.5,96,0),'U811':(8,108,90)}
@@ -334,12 +343,15 @@ def create(out,donor):
                 carried[str(clone.m_Uuid.AsString())]={'donor_uuid':str(t.m_Uuid.AsString()),'net':n,'y_translation_mm':20 if ay>=64.8 else 0}
         # Dedicated internal reference plane. No GND thermal via is placed under
         # the SY7636A exposed pad. Outer-layer power stage remains to be routed.
+        ordered_data_links=route_ordered_data_necks(b,ordered_layout) if name=='Core' else []
         for layer in [P.F_Cu,P.In1_Cu,P.B_Cu]:
             zone=P.ZONE(b);zone.SetLayer(layer);zone.SetNetCode(netobjs['GND'].GetNetCode());zone.SetLocalClearance(P.FromMM(.2));zone.SetMinThickness(P.FromMM(.15));zone.SetPadConnection(P.ZONE_CONNECTION_THERMAL);zone.SetThermalReliefGap(P.FromMM(.2));zone.SetThermalReliefSpokeWidth(P.FromMM(.25))
             chain=P.SHAPE_LINE_CHAIN()
             for x,y in outline:chain.Append(MM(x,y))
             chain.SetClosed(True);zone.AddPolygon(chain);b.Add(zone)
         from pico47_native import stitch_reference_planes
+        ep_ground_vias=add_mcu_ground_vias(b,ordered_layout) if name=='Core' else []
+        display_return_via=add_display_ground_return(b,ordered_layout) if name=='Display' else None
         stitch_report=stitch_reference_planes(b,outline)
         b.BuildConnectivity();P.ZONE_FILLER(b).Fill(b.Zones())
         title=b.GetTitleBlock();title.SetTitle('PANDA47 '+name+' / E0 UNROUTED / DO NOT ORDER OR POWER');title.SetRevision('E0')
@@ -353,7 +365,7 @@ def create(out,donor):
         (out/(name+'-CARRIED-COPPER.json')).write_text(json.dumps(carried,indent=2)+'\n')
         drc=json.loads((out/(name+'-drc.json')).read_text());erc=json.loads((out/(name+'-erc.json')).read_text())
         counts={'drc':len(drc['violations']),'open':len(drc['unconnected_items']),'parity':len(drc.get('schematic_parity',[])),'erc':sum(len(s.get('violations',[])) for s in erc['sheets'])}
-        report['boards'][name]={'counts':counts,'pending_placement':pending,'retained_copper_items':kept,'deliberately_invalidated_copper_items':dropped,'ground_stitch_vias':stitch_report,'physical_refs':len(fps[name]),'pcb_sha256':sha(pcb),'schematic_sha256':sha(out/(name+'.kicad_sch'))}
+        report['boards'][name]={'counts':counts,'pending_placement':pending,'retained_copper_items':kept,'deliberately_invalidated_copper_items':dropped,'ground_stitch_vias':stitch_report,'mcu_ep_ground_vias':ep_ground_vias,'ordered_data_links':ordered_data_links,'display_ground_return_via':display_return_via,'physical_refs':len(fps[name]),'pcb_sha256':sha(pcb),'schematic_sha256':sha(out/(name+'.kicad_sch'))}
         print(name,json.dumps(report['boards'][name]),flush=True)
     require(all(sha(p)==h for p,h in before.items()),'Donor unexpectedly changed')
     (out/'NEW-PART-REVIEW.json').write_text(json.dumps(specs,indent=2)+'\n')
@@ -365,4 +377,8 @@ def create(out,donor):
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--donor',type=Path,required=True);ap.add_argument('--output',type=Path,required=True)
+    ap.add_argument('--routing-checkpoint',type=Path,help='External, source-bound partial route to resume; never grants fabrication approval')
     a=ap.parse_args();create(a.output,a.donor)
+    if a.routing_checkpoint:
+        from pico47_checkpoint import restore
+        restore(a.output,a.routing_checkpoint,a.donor)

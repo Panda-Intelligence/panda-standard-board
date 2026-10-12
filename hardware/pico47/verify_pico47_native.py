@@ -159,6 +159,54 @@ def inspect(candidate, donor):
         for pad in [a,b]:
             require(sorted([round(P.ToMM(pad.GetSize().x),4),round(P.ToMM(pad.GetSize().y),4)])
                     == [2.35,3.5], 'Wrong large-inductor pad dimensions')
+    from pico47_placement import load_layout, LAYOUT
+    ordered=load_layout()
+    for ref,pose in ordered['core_poses'].items():
+        f=native['Core'].FindFootprintByReference(ref)
+        require(f is not None,'Missing source-placed part '+ref)
+        actual=[P.ToMM(f.GetPosition().x),P.ToMM(f.GetPosition().y),f.GetOrientationDegrees()]
+        require(all(abs(x-y)<1e-6 for x,y in zip(actual,pose)),'Source placement differs '+ref)
+    for ref,numbers in ordered['core_solid_ground_pads'].items():
+        for number in numbers:
+            for p in expect('Core',ref,number,'GND'):
+                require(p.GetLocalZoneConnection()==P.ZONE_CONNECTION_FULL,'Missing reviewed ground copper '+ref)
+    native['Core'].BuildConnectivity()
+    connectivity=native['Core'].GetConnectivity()
+    for bit in range(16):
+        a=expect('Core','R'+str(710+bit),2,'P47_D'+str(bit))[0]
+        z=expect('Core','J601',2*bit+1,'P47_D'+str(bit))[0]
+        linked={str(item.m_Uuid.AsString()) for item in connectivity.GetConnectedItems(a)}
+        require(str(z.m_Uuid.AsString()) in linked,'Ordered data neck physically open at bit '+str(bit))
+    mcu=expect('Core','U501',57,'GND')[0]
+    cx,cy=P.ToMM(mcu.GetPosition().x),P.ToMM(mcu.GetPosition().y)
+    all_vias=[v for v in native['Core'].GetTracks() if isinstance(v,P.PCB_VIA)]
+    for x,y in ordered['mcu_ep_vias']['offsets_mm']:
+        matches=[v for v in all_vias if abs(P.ToMM(v.GetPosition().x)-cx-x)<1e-6
+                 and abs(P.ToMM(v.GetPosition().y)-cy-y)<1e-6 and str(v.GetNetname())=='GND']
+        require(len(matches)==1,'Missing or duplicated MCU paddle via')
+        v=matches[0]
+        require(abs(P.ToMM(v.GetWidth(P.F_Cu))-.5)<1e-6 and abs(P.ToMM(v.GetDrill())-.25)<1e-6,
+                'Paddle via size differs from reviewed process')
+    display_return=ordered['display_ground_return_via']
+    return_pad=expect('Display','C804',2,'GND')[0]
+    q=display_return['expected_via_center_mm']
+    matches=[v for v in native['Display'].GetTracks() if isinstance(v,P.PCB_VIA)
+             and abs(P.ToMM(v.GetPosition().x)-q[0])<1e-6
+             and abs(P.ToMM(v.GetPosition().y)-q[1])<1e-6]
+    require(len(matches)==1 and str(matches[0].GetNetname())=='GND','Missing C804 ground-return via')
+    require(abs(P.ToMM(matches[0].GetWidth(P.F_Cu))-.65)<1e-6
+            and abs(P.ToMM(matches[0].GetDrill())-.30)<1e-6,'C804 drill/annulus differs')
+    def joined(board_name,ref_a,pin_a,ref_b,pin_b):
+        a=pads(board_name,ref_a,pin_a)[0];z=pads(board_name,ref_b,pin_b)[0]
+        native[board_name].BuildConnectivity()
+        linked={str(v.m_Uuid.AsString()) for v in native[board_name].GetConnectivity().GetConnectedItems(a)}
+        return str(z.m_Uuid.AsString()) in linked
+    critical_connections={
+        'Core_GPIO2_to_interconnect':joined('Core','U501',7,'J602',16),
+        'Display_interconnect_to_R813':joined('Display','J4',5,'R813',1),
+        'Display_R813_to_PMIC_EN':joined('Display','R813',2,'U810',21),
+        'Display_C804_ground_to_R812_ground':joined('Display','C804',2,'R812',2),
+    }
     # All existing Core functions not explicitly remapped must survive intact.
     changed = {'U501','J601','J602','R512','R513','U601'}
     preserved = 0
@@ -181,12 +229,12 @@ def inspect(candidate, donor):
             if ref not in changed or (ref == 'U601' and pin != '18'):
                 expect('Core',ref,pin,normal(str(oldpad.GetNetname())))
                 preserved += 1
-    result = {'source_contract_sha256':sha(CONTRACT), 'gpio_pins_checked':33,
+    result = {'source_ordered_layout_sha256':sha(LAYOUT),'ordered_data_links_physically_connected':16,'mcu_ground_paddle_vias_checked':9,'source_contract_sha256':sha(CONTRACT), 'gpio_pins_checked':33,
               'panel_contacts_checked':40, 'interboard_contacts_checked':60,
               'mux_channels_checked':8, 'unchanged_core_pad_functions_checked':preserved,
               'pmic_direct_inhibit_native_binding':True, 'pmic_negative_ep_not_grounded':True,
               'large_inductor_actual_land_geometry':True, 'no_signal_tracks_on_In1':True,
-              'native_rule_sets_unchanged':True, 'physical_routing_complete':False,
+              'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,'additional_filled_capped_ground_via_checked':True,'physical_routing_complete':False,
               'battery_pack_accepted':False, 'manufacturing_release':False,
               'native_sha256':{n:sha(candidate/(n+'.kicad_pcb')) for n in native}}
     return result

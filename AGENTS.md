@@ -1,3 +1,23 @@
+# CURRENT ROUTING CONTINUATION: Pico47 E0.2
+
+Read `hardware/pico47/E02-HANDOFF.md` first. Current external checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261012/engineering-candidate/`.
+Working ancestry: `.work/pico47-resume-20261012/integrated-current/`.
+Latest native counts: Core48 opens/26 warnings;Display21 opens/5 warnings;
+DRC errors/parity/ERC0. Do NOT label this fab-ready or reuse historical161/49.
+Use `build_pico47.py --routing-checkpoint <current-checkpoint>` to rebuild and
+resume its copper, rather than starting again from the partly unrouted base.
+Ordered Core28-part placement/16 header-side data links/9MCUground vias are now
+explicit source. C804.pad2 has an additional resin-filled/copper-capped return
+via; its process acceptance remains false. The source and native checks enforce
+both policies. GPIO2-to-FFC and DisplayFFC-to-R813 are connected, but the final
+R813-to-PMIC-EN connection is still open. Do not power the panel.
+Never delete a dangling via that is a live surface junction; preserve all native
+pad groups and actual reference-plane connectivity. No net-wide unreviewed rip-up.
+The old battery/complete panel stack/<=7mm physical and CAM/SMT gates remain open.
+Generated native boards, checkpoint manifests/reports and renders stay outsideGit.
+Keep user packaging/ and unrelated worktrees untouched.
+
 # CURRENT USER OVERRIDE: Read-Pico-class display and battery — 2026-10-12
 
 Continue `hardware/pico47/README.md` and `hardware/pico47/design.json` on develop.
