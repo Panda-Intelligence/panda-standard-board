@@ -1,24 +1,26 @@
-# Current continuation: E0.2 — 2026-10-13 r3
+# Current continuation: E0.2 r4 — all eight ground blockers closed
 
-Read [E02-R3-GROUND-CLOSURE-20261013.md](E02-R3-GROUND-CLOSURE-20261013.md).
+Read [E02-R4-ALL-GROUND-CLOSED-20261013.md](E02-R4-ALL-GROUND-CLOSED-20261013.md).
 Dated checkpoint:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r3/engineering-candidate`.
-The requested `panda47-e0-20261012/engineering-candidate` is a byte-verified copy;
-its previous r2 contents remain in the sibling pre-r3 archive.
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r4/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is its verified copy;
+previous r3 contents are preserved in the sibling pre-r4 archive.
 
-**Core38 opens/0 warnings, Display15 opens/0 warnings; DRC errors/parity/ERC0.**
-Fresh source replay and independent recapture reproduce these results and all
-previous physical pad groups. Four Core grounds and one Display mounting-land
-ground were connected. **53 native unconnected items remain; NOT FOR FABRICATION
-OR POWER.** The direct inhibit is connected, but eight listed ground pads,
-including two PMIC grounds, still need real returns. Inspect the native
-`ground_return_connectivity` report rather than assuming a solid-zone pad setting
-is a physical connection.
+**All eight named ground targets pass; Core169/169 and Display68/68 ground pads
+are reference-connected.** Fresh DRC errors/warnings/parity/ERC are zero;
+Core36 and Display9 non-ground unconnected items remain. Source rebuild and
+independent recapture reproduce this result. **NOT FOR FABRICATION OR POWER.**
+The handoff explicitly records the longer feedback detour and remaining analog,
+clock/data, exact-part, mechanical and physical qualification work.
 
-Use `build_pico47.py --routing-checkpoint <checkpoint>` and
-`capture_pico47_checkpoint.py` for source-bound non-regressing continuation.
-Native CAD, evidence and experiments remain external/ignored. The older sections
-below are historical background, not acceptance of the current device.
+Rebuild with `build_pico47.py --routing-checkpoint <checkpoint>`, then capture
+using `capture_pico47_checkpoint.py --require-complete-ground`. That additional
+gate requires complete actual ground membership and every named target, and was
+positively and negatively tested on native boards. All existing source/rule/
+geometry/library and original-pad-group guards remain unchanged.
+
+Native CAD and generated evidence remain external/ignored. The older sections
+below are historical background, not current route or manufacturing approval.
 
 # Panda47 E0 — parallel-display redesign checkpoint
 

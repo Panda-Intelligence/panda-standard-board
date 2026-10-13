@@ -6,16 +6,19 @@ finished-device maximum thickness of 7mm, including positive tolerances.
 The exact pack identity, complete panel suffix/assembly and finished tolerance
 stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
-Start with [the current dated handoff](hardware/pico47/E02-R3-GROUND-CLOSURE-20261013.md)
+Start with [the current dated handoff](hardware/pico47/E02-R4-ALL-GROUND-CLOSED-20261013.md)
 and [the Pico47 source/build guide](hardware/pico47/README.md). Source code is
 under `hardware/pico47/`; generated native CAD, evidence and candidate packages
 remain in ignored `.work/` or the external `panda-board-deliverables` directory.
 The older Split-C1 / Product-D / Thin7 designs below are electrical donors or
 historical experiments, not the current product or approval to export/order it.
 
-Current r3 native checkpoint: **Core38 opens/0 warnings; Display15 opens/0 warnings;
-DRC errors/parity/ERC0**. The direct inhibit chain is connected, but 53 unconnected
-items remain. The dated handoff binds the verified delivery and clean source replay.
+Current r4 native checkpoint: **Core36 opens; Display9 opens; DRC errors,
+warnings, parity and ERC0**. All eight named ground blockers are closed, and
+all237 ground pads reach their reference. The45 non-ground unconnected items and
+physical qualification remain unfinished. The dated handoff binds the verified
+working delivery, fresh source replay and feedback-routing review caveats.
+Use `capture_pico47_checkpoint.py --require-complete-ground` for continuation.
 
 Run source regressions without EDA or manufacturing side effects:
 
