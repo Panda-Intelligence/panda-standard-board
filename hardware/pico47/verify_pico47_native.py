@@ -237,8 +237,8 @@ def inspect(candidate, donor):
               'large_inductor_actual_land_geometry':True, 'no_signal_tracks_on_In1':True,
               'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,
               'ground_return_connectivity': {
-                  'Core': inspect_ground_returns(native['Core'], 'U501', '57'),
-                  'Display': inspect_ground_returns(native['Display'], 'C804', '2'),
+                  'Core': inspect_ground_returns(native['Core'], 'U501', '57', [('J601', '36'), ('J601', '38')]),
+                  'Display': inspect_ground_returns(native['Display'], 'C804', '2', [('J820', '9'), ('J820', '22'), ('R809', '2'), ('R810', '2'), ('U810', '32'), ('U810', '41')]),
               },
               'additional_filled_capped_ground_via_checked':True,'physical_routing_complete':False,
               'battery_pack_accepted':False, 'manufacturing_release':False,
