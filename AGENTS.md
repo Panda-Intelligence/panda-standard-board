@@ -1,28 +1,33 @@
-# CURRENT ROUTING CONTINUATION — 2026-10-13 r2
+# CURRENT ROUTING CONTINUATION — 2026-10-13 r3
 
-Read `hardware/pico47/E02-ONLINE-CLOSURE-20261013.md` first. The current dated
-accepted engineering checkpoint is:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r2/engineering-candidate`.
-The user-requested `panda47-e0-20261012/engineering-candidate` is its hash-verified
-working copy. Its prior version is retained as sibling
-`engineering-candidate-pre-r2-archive-20261013`; the E0.1 archive remains intact.
+Read `hardware/pico47/E02-R3-GROUND-CLOSURE-20261013.md` first.
+Accepted engineering checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r3/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is its verified working
+copy. The previous r2 copy is preserved in sibling
+`engineering-candidate-pre-r3-archive-20261013`; all earlier archives remain.
 
-Fresh combined native counts: Core42 opens/1 warning; Display16 opens/2 warnings;
-DRC errors/parity/ERC0. All earlier physical pad groups are preserved. A complete
-source rebuild plus independent native recapture reproduced these counts.
-The GPIO2 -> interconnect -> R813 -> U810.EN21 chain is now CONNECTED.
-This still leaves58 native unconnected items: no fabrication, charging or panel
-power permission. Exact battery/full-panel/<=7mm fit and other physical gates
-remain unqualified. Preserve four layers, no In1 signal tracks, the isolated
-negative EP, C804's specified return via, native rules and live pad groups.
+Fresh combined native counts: Core38 opens/0 warnings; Display15 opens/0 warnings;
+DRC errors/parity/ERC0. Clean source replay and independent recapture reproduce
+these counts and every prior pad group. Five actual ground returns were closed;
+53 native unconnected items remain. Zero rule violations is NOT completed routing.
+GPIO2/interconnect/R813/U810.EN21 and C804's specified ground return stay connected.
+Native ground reports still identify Core J601.36/J601.38 and Display J820.9,
+J820.22, R809.2, R810.2, U810.32/U810.41 as disconnected from reference ground.
+Solid-zone configuration alone is not proof of electrical ground continuity.
 
-Continue through a reviewed PR to main, not the old develop tip or a newer-mtime
-experiment. Source helpers have456 passing local tests across the three suites;
-this is not a GitHub Actions claim. The graph branch-pruning helper is proposal
-logic only, not an enabled native deletion pipeline. The NPTH planning helper
-accounts for copper annulus as well as drill clearance; native rules still govern.
-Generated native CAD/reports/manifests and trials stay ignored/external.
-Keep packaging/ and unrelated worktrees/processes untouched.
+Preserve four layers, no In1 signal traces, isolated negative PMIC EP, all source
+pad/part identities, native rules and live pad groups. Physical exact battery,
+full panel, <=7mm fit, supply and EVT qualifications remain false. No fabrication,
+charging or panel-power permission. Continue via a reviewed PR to main.
+
+478 distinct local source tests passed; Pico47's221 also passed under KiCad
+Python. These are local results, not GitHub Actions. The new ground-report helper
+is integrated into independent inspection; it describes actual pad groups and
+rejects missing/ambiguous evidence without loosening existing acceptance gates.
+Generated CAD/reports/manifests/experiments remain ignored/external. Preserve
+packaging/ and unrelated worktrees or processes. Never promote a failed agent
+trial or pick an experiment by newest mtime.
 
 # HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
 
