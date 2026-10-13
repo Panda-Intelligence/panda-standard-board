@@ -25,6 +25,7 @@ from prune_pico47_stubs import drc, preserves_groups, pad_components
 from _split_c1_common import kicad_python
 from import_pico47_route import run
 from verify_pico47_native import inspect
+from pico47_complete_ground_gate import require_complete_ground_returns
 
 BOARDS = ('Core', 'Display')
 BINDINGS = {'.kicad_pcb': 'pcb_sha256', '.kicad_sch': 'schematic_sha256',
@@ -159,7 +160,8 @@ def review_libraries(source, baseline):
             'baseline_sha256': old, 'source_sha256': new}
 
 
-def capture(baseline, core, display, donor, output):
+def capture(baseline, core, display, donor, output, *, require_complete_ground=False):
+    require(type(require_complete_ground) is bool, 'Ground-closure requirement must be boolean')
     baseline, core, display, donor, output = [Path(p).resolve() for p in
                                              (baseline, core, display, donor, output)]
     require(not output.exists(), 'Choose a fresh output; never overwrite a checkpoint')
@@ -222,6 +224,8 @@ def capture(baseline, core, display, donor, output):
                 'geometry_sha256': native_semantic_fingerprint(pcb),
                 **{key: sha(output / (name + suffix)) for suffix, key in BINDINGS.items()}}
         independent = inspect(output, donor)
+        ground_gate = (require_complete_ground_returns(independent['ground_return_connectivity'])
+                       if require_complete_ground else {'required': False})
         require(all(sha(p) == digest for p, digest in source_hashes.items()),
                 'An input changed during capture')
         validate_manifest(manifest)
@@ -233,10 +237,13 @@ def capture(baseline, core, display, donor, output):
         write('INDEPENDENT-CHECK.json', independent)
         write('CONTINUITY-CHECK.json', continuity)
         write('LIBRARY-CHECK.json', library_reviews)
+        if require_complete_ground:
+            write('COMPLETE-GROUND-CHECK.json', ground_gate)
         write('CURRENT-STATUS.json', {'baseline_checkpoint': str(baseline),
               'sources': {n: str(p) for n, p in sources.items()},
               'native_counts': {n: r['counts'] for n, r in manifest['boards'].items()},
               'critical_physical_connections': independent['critical_physical_connections'],
+              'complete_ground_gate': ground_gate,
               'manufacturing_release': False, 'physical_qualification_complete': False})
         (output / 'START-HERE.md').write_text(
             '# Panda47 engineering continuation\n\nNOT FOR FABRICATION OR POWER.\n\n'
@@ -262,12 +269,17 @@ def capture(baseline, core, display, donor, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pad-identities', type=Path, help=argparse.SUPPRESS)
+    parser.add_argument('--require-complete-ground', action='store_true',
+                        help='Require all native ground pads and all eight named ground targets to join reference; not a fabrication release')
     for name in ('baseline', 'core', 'display', 'donor', 'output'):
         parser.add_argument('--' + name, type=Path, required=(name == 'output'))
     args = parser.parse_args()
     if args.pad_identities:
+        if args.require_complete_ground:
+            parser.error('--require-complete-ground requires a full native capture')
         export_pad_identities(args.pad_identities, args.output)
     else:
         if not all((args.baseline, args.core, args.display, args.donor)):
             parser.error('--baseline, --core, --display and --donor are required')
-        capture(args.baseline, args.core, args.display, args.donor, args.output)
+        capture(args.baseline, args.core, args.display, args.donor, args.output,
+                require_complete_ground=args.require_complete_ground)
