@@ -1,20 +1,24 @@
-# Current continuation: E0.2 — 2026-10-13 r2
+# Current continuation: E0.2 — 2026-10-13 r3
 
-Read [E02-ONLINE-CLOSURE-20261013.md](E02-ONLINE-CLOSURE-20261013.md) first.
-Dated accepted checkpoint:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r2/engineering-candidate`.
-The requested `panda47-e0-20261012/engineering-candidate` is a verified working copy.
+Read [E02-R3-GROUND-CLOSURE-20261013.md](E02-R3-GROUND-CLOSURE-20261013.md).
+Dated checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r3/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is a byte-verified copy;
+its previous r2 contents remain in the sibling pre-r3 archive.
 
-Fresh native result: **Core42 opens/1 warning, Display16 opens/2 warnings;
-DRC errors/parity/ERC0**. Independent source replay reproduces this result and
-preserves all previous physical pad groups. R813.2 -> U810.EN21 is now connected.
-**58 native unconnected items remain; NOT FOR FABRICATION OR POWER.**
+**Core38 opens/0 warnings, Display15 opens/0 warnings; DRC errors/parity/ERC0.**
+Fresh source replay and independent recapture reproduce these results and all
+previous physical pad groups. Four Core grounds and one Display mounting-land
+ground were connected. **53 native unconnected items remain; NOT FOR FABRICATION
+OR POWER.** The direct inhibit is connected, but eight listed ground pads,
+including two PMIC grounds, still need real returns. Inspect the native
+`ground_return_connectivity` report rather than assuming a solid-zone pad setting
+is a physical connection.
 
-Resume with `build_pico47.py --routing-checkpoint <checkpoint>`. Capture new
-non-regressing evidence with `capture_pico47_checkpoint.py`. Keep all source/
-rule/library/geometry and native connectivity gates; fewer airwires alone do not
-qualify a route. The sections below are historical design background rather than
-the current saved copper or physical qualification.
+Use `build_pico47.py --routing-checkpoint <checkpoint>` and
+`capture_pico47_checkpoint.py` for source-bound non-regressing continuation.
+Native CAD, evidence and experiments remain external/ignored. The older sections
+below are historical background, not acceptance of the current device.
 
 # Panda47 E0 — parallel-display redesign checkpoint
 

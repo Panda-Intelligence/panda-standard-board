@@ -14,6 +14,7 @@ LEGACY = HERE.parent / 'thin18-compact'
 sys.path.insert(0, str(LEGACY))
 from _split_c1_common import kicad_cli
 from pico47_contract import CONTRACT, validate, GPIO_PACKAGE, PANEL_PINS
+from pico47_ground_returns import inspect_ground_returns
 
 
 def sha(path):
@@ -135,7 +136,7 @@ def inspect(candidate, donor):
     for ref, numbers in plan['power_stage']['display_solid_ground_pads'].items():
         for pin in numbers:
             for pad in expect('Display',ref,pin,'GND'):
-                require(pad.GetLocalZoneConnection() == P.ZONE_CONNECTION_FULL, 'Missing real ground plane connection')
+                require(pad.GetLocalZoneConnection() == P.ZONE_CONNECTION_FULL, 'Ground pad solid-zone mode differs from source policy')
     ep = expect('Display','U810',49,'')[0]
     require([round(P.ToMM(ep.GetSize().x),4), round(P.ToMM(ep.GetSize().y),4)] == [4.4,4.4],
             'PMIC exposed-pad geometry changed')
@@ -234,7 +235,12 @@ def inspect(candidate, donor):
               'mux_channels_checked':8, 'unchanged_core_pad_functions_checked':preserved,
               'pmic_direct_inhibit_native_binding':True, 'pmic_negative_ep_not_grounded':True,
               'large_inductor_actual_land_geometry':True, 'no_signal_tracks_on_In1':True,
-              'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,'additional_filled_capped_ground_via_checked':True,'physical_routing_complete':False,
+              'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,
+              'ground_return_connectivity': {
+                  'Core': inspect_ground_returns(native['Core'], 'U501', '57'),
+                  'Display': inspect_ground_returns(native['Display'], 'C804', '2'),
+              },
+              'additional_filled_capped_ground_via_checked':True,'physical_routing_complete':False,
               'battery_pack_accepted':False, 'manufacturing_release':False,
               'native_sha256':{n:sha(candidate/(n+'.kicad_pcb')) for n in native}}
     return result
