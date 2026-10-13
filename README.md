@@ -1,25 +1,40 @@
-> **Current product requirement:<=7mm overall thickness and port-first native
-> relayout.** The22mm prototype is rejected. Start with
-> [the current relayout handoff](hardware/thin18-compact/SEVEN-MM-RELAYOUT.md).
-> The old routed Split-C1 remains an electrical donor;it is not the new product.
-> Old product render/RFQ/export entry points are blocked pending verified relayout.
+# Current development entry — Panda47 / Pico47
 
-# Current development entry
+The current product is the **4.7-inch parallel E0470A01-family / Pico47 two-board
+engineering design**, with the same replaceable 2050mAh LCO Pico pack and a
+finished-device maximum thickness of 7mm, including positive tolerances.
+The exact pack identity, complete panel suffix/assembly and finished tolerance
+stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
-Use `develop` in `/Users/isaac/workspace/AI/panda-standard-board` for the current
-Split-C1 two-board prototype. Start with
-[the handoff](hardware/thin18-compact/SPLIT-C1-HANDOFF.md).
-Generated manufacturing data and full-product rendering outputs are local/external,
-not Git assets. Reusable rendering source is under `tools/render/`; its22mm
-prototype enclosure does not meet or replace the separate7mm product target.
+Start with [the current dated handoff](hardware/pico47/E02-20261013-HANDOFF.md)
+and [the Pico47 source/build guide](hardware/pico47/README.md). Source code is
+under `hardware/pico47/`; generated native CAD, evidence and candidate packages
+remain in ignored `.work/` or the external `panda-board-deliverables` directory.
+The older Split-C1 / Product-D / Thin7 designs below are electrical donors or
+historical experiments, not the current product or approval to export/order it.
+
+Run source regressions without EDA or manufacturing side effects:
+
+```sh
+python3 -m unittest discover -s hardware/pico47 -p 'test_*.py'
+python3 -m unittest discover -s hardware/thin18-compact -p 'test_*.py'
+```
+
+Capture a continuation with `hardware/pico47/capture_pico47_checkpoint.py` only
+after native review. It checks fresh DRC/ERC, exact rules/geometry/library
+bindings and every previous native pad group. Missing evidence, lost connections
+or increased opens/warnings reject the checkpoint. It never grants fabrication
+or physical qualification, including when native counts happen to reach zero.
+
+---
 
 # Panda Standard Board
 
 Open hardware design sources and engineering documentation for the **Panda Standard Board**, maintained by Panda Intelligence.
 
-## Active Split-C1 prototype and mainland IC continuation
+## Historical Split-C1 electrical donor
 
-The active continuation is the populated **Core-C1 96 x 68 mm / 4-layer** plus
+The historical electrical donor is the populated **Core-C1 96 x 68 mm / 4-layer** plus
 **Display-C1 45 x 36 mm / 2-layer** design already split and routed on main.
 Start with [Split-C1 handoff](hardware/thin18-compact/SPLIT-C1-HANDOFF.md) and the
 [PG/PSEL functional migration](hardware/thin18-compact/SPLIT-C1-POWER-INTEGRITY.md).
@@ -27,10 +42,10 @@ Do not replace it with Thin7/portrait-R2 experimental CAD merely because an
 experiment has a newer timestamp. Thin7 remains a separate, incomplete 7-mm
 mechanical target and is not claimed by the Split-C1 bench prototype.
 
-Generate checked prototype data explicitly:
+Inspect the historical pipeline without generating manufacturing data:
 
 ```sh
-python3 hardware/thin18-compact/release_split_c1.py --target split-c1
+python3 hardware/thin18-compact/release_split_c1.py --target split-c1 --plan
 ```
 
 Bare-board CAM/DFM, accepted PCBA supply and physical EVT are separate gates.
@@ -62,7 +77,7 @@ docs/
 LICENSES/
 ```
 
-## Opening the active two-board design
+## Opening the historical donor design
 
 The design was validated with **KiCad 10.0.5**. Open the complete project under:
 

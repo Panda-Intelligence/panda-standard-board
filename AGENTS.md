@@ -1,4 +1,22 @@
-# CURRENT ROUTING CONTINUATION: Pico47 E0.2
+# CURRENT ROUTING CONTINUATION — 2026-10-13
+
+Read `hardware/pico47/E02-20261013-HANDOFF.md` first. This dated continuation
+supersedes only the older route/count/path references below, not the electrical,
+four-layer, physical-qualification or generated-output restrictions.
+Accepted checkpoint: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013/engineering-candidate`.
+Native counts: Core46 opens/1 warning; Display21 opens/3 warnings; errors/parity/ERC0.
+All prior native pad groups are preserved. The final R813.2 -> U810.EN21 link is
+still OPEN. Manufacturing release and physical qualification remain false.
+
+The user's requested `panda47-e0-20261012/engineering-candidate` directory is a
+verified working copy of the dated candidate; original E0.1 is retained as its
+sibling `engineering-candidate-e01-archive-20261013`. Do not silently resume that
+archive, old develop, or a newer-mtime experiment. This source continuation goes
+through the user-requested PR to main; inspect refs and status before editing.
+Use `capture_pico47_checkpoint.py` to capture fresh native evidence and validate
+physical pad identities across source rebuilds. Keep packaging/ untouched.
+
+# HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
 
 Read `hardware/pico47/E02-HANDOFF.md` first. Current external checkpoint:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261012/engineering-candidate/`.

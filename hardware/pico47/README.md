@@ -1,11 +1,16 @@
-# Current continuation: E0.2 ordered routing checkpoint
+# Current continuation: E0.2 — 2026-10-13
 
-Read [E02-HANDOFF.md](E02-HANDOFF.md) first. The current external candidate is
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261012/engineering-candidate/`.
-Latest native checks: Core48 open/26 warnings, Display21 open/5 warnings; errors,
-parity and ERC are0. This remains NOT FOR FABRICATION. Rebuild with the explicit
-`--routing-checkpoint` option to preserve the validated partial routing.
-The E0.1 section below is historical design background, not the current route.
+Read [E02-20261013-HANDOFF.md](E02-20261013-HANDOFF.md) first. The dated accepted
+checkpoint is `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013/engineering-candidate`.
+Latest fresh native checks: Core46 opens/1 warning, Display21 opens/3 warnings;
+errors, parity and ERC0. **67 native unconnected items remain; NOT FOR FABRICATION
+OR POWER.** The final R813.2 -> U810.EN21 connection is still open.
+
+Rebuild with `build_pico47.py --routing-checkpoint <checkpoint>` and use
+`capture_pico47_checkpoint.py` for non-regressing native evidence. Source/build,
+physical pad connectivity and exact library/rule bindings are independently
+checked; fewer airwires alone do not qualify the board. The E0.1 and original
+E0.2 sections below are historical background, not the current route.
 
 # Panda47 E0 — parallel-display redesign checkpoint
 
