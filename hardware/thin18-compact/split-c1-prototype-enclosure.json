@@ -1,0 +1,51 @@
+{
+  "schema": "panda-split-c1-prototype-enclosure-v1",
+  "purpose": "Full-product engineering visualization and nominal-fit enclosure prototype around the existing Split-C1 boards; NOT a released 7mm product enclosure.",
+  "coordinates": "Core PCB top-view x/y millimeters; Core B.Cu plane z=0. Renderer maps x->x-48 and y->34-y.",
+  "outer_dimensions_mm": [112.0, 75.0, 22.0],
+  "outer_center_core_xy_mm": [48.0, 34.0],
+  "rear_bottom_z_mm": -10.7,
+  "front_top_z_mm": 11.3,
+  "rear_floor_thickness_mm": 1.4,
+  "wall_thickness_mm": 1.5,
+  "shell_split_z_mm": 7.9,
+  "corner_radius_mm": 4.5,
+  "panel": {
+    "mpn": "GDEQ0426T82-FT01C",
+    "nominal_body_mm": [105.33, 62.37, 1.98],
+    "thickness_budget_mm": 2.2,
+    "center_core_xy_mm": [48.0, 34.0],
+    "body_bottom_z_mm": 8.6,
+    "active_area_nominal_mm": [92.8, 55.68],
+    "window_mm": [93.4, 56.28],
+    "gasket_thickness_mm": 0.3,
+    "lip_bottom_z_mm": 10.9,
+    "pose_verified": false,
+    "fpc_bend_and_contact_side_verified": false
+  },
+  "battery_envelope": {
+    "core_xyxy_mm": [1.0, 11.0, 37.0, 65.0],
+    "nominal_maximum_pack_mm": [36.0, 54.0, 5.5],
+    "bottom_z_mm": -8.3,
+    "rear_swelling_and_insulation_allowance_mm": 1.0,
+    "selected_mpn": null,
+    "supplier_accepted": false
+  },
+  "ports": {
+    "J201": {"kind": "USB-C service aperture", "center_core_xy_mm": [39.0, 68.0], "opening_width_mm": 12.0, "opening_height_mm": 4.4, "opening_center_z_mm": 2.6, "plug_body_verified": false},
+    "J501": {"kind": "microSD service well", "socket_center_core_xy_mm": [81.75, 17.315], "opening_span_y_mm": [8.8, 25.8], "opening_height_mm": 5.0, "opening_center_z_mm": 2.3, "card_eject_travel_verified": false}
+  },
+  "buttons": [
+    {"ref": "SW201", "mpn": "TS-1186E-B-B", "center_core_xy_mm": [2.3, 6.75], "axis": "X", "cap_center_z_mm": 1.6, "rest_gap_mm": 0.25, "force_and_overtravel_verified": false},
+    {"ref": "SW202", "mpn": "TS-1186E-B-B", "center_core_xy_mm": [2.3, 13.25], "axis": "X", "cap_center_z_mm": 1.6, "rest_gap_mm": 0.25, "force_and_overtravel_verified": false}
+  ],
+  "fastener_centers_core_xy_mm": [[-3.5, 0.5], [99.5, 0.5], [-3.5, 67.5], [99.5, 67.5]],
+  "fastener_status": "Nominal M1.6 clearance/pilot representation only; screw length, threads, inserts and torque not released.",
+  "critical_nominal_checks": {"core_max_front_component_z_mm": 7.5, "display_world_xyxy_mm": [38.0, 30.0, 83.0, 66.0], "display_board_b_z_mm": -1.5, "display_board_f_z_mm": -2.3},
+  "product_target_thickness_mm": 7.0,
+  "meets_7mm_product_target": false,
+  "physical_fit_verified": false,
+  "manufacturing_release": false,
+  "excluded_qualification": ["Exact battery/PCM/harness selection", "Panel FPC contact-side, bending and tool access", "Button force, retention and overtravel", "USB plug and microSD travel tolerances", "RF antenna and speaker acoustic volume", "Material flammability, thermal behavior and drop testing"],
+  "source_basis": ["split-c1-mechanical-inputs.json", "split-c1-interface.json", "Current native PCB footprints and source hashes"]
+}

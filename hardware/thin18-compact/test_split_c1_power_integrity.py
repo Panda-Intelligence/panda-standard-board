@@ -73,8 +73,27 @@ class TargetIsolation(unittest.TestCase):
     def test_native_failure_stops_pipeline(self):
         called=[]
         def fail(s,a,n):called.append(s);raise subprocess.CalledProcessError(1,s)
-        with self.assertRaises(subprocess.CalledProcessError):release.execute('split-c1',fail)
+        # Isolate runner failure from the current product-export restriction.
+        # This mock exists only in a no-I/O unit test; production keeps its gate.
+        with patch.object(release, 'block_obsolete_product_export') as gate:
+            with self.assertRaises(subprocess.CalledProcessError):
+                release.execute('split-c1', fail)
+        gate.assert_called_once_with()
         self.assertEqual(called,['validate_split_c1.py'])
+    def test_obsolete_product_gate_precedes_all_native_or_export_steps(self):
+        called=[]
+        with self.assertRaisesRegex(ValueError, 'relayout'):
+            release.execute('split-c1', lambda s,a,n: called.append(s))
+        self.assertEqual(called, [])
+    def test_product_gate_failure_never_constructs_pipeline(self):
+        with patch.object(release, 'release_steps') as steps:
+            with self.assertRaises(ValueError):
+                release.execute('split-c1', lambda *args: self.fail('runner called'))
+        steps.assert_not_called()
+    def test_cli_returns_nonzero_for_blocked_product(self):
+        with contextlib.redirect_stdout(io.StringIO()) as output:
+            self.assertEqual(release.main(['--target', 'split-c1']), 2)
+        self.assertIn('blocked', output.getvalue())
     def test_both_dimensions_enforced(self):
         steps=[a for s,a,n in release.release_steps('split-c1') if s=='export_production.py']
         self.assertEqual(len(steps),2)

@@ -1,1 +1,23 @@
 /.work/
+
+# Generated render deliverables stay local; explicit user approval is required to track them.
+/visualization/
+
+# Local production data and rendering outputs are never source.
+/render-output/
+/artifacts/
+**/__pycache__/
+*.pyc
+.DS_Store
+
+# Recreated by the validated release pipeline; never source or hand-entered evidence.
+/hardware/thin18-compact/split-c1-assembly-process.json
+/hardware/thin18-compact/split-c1-cap-drill-verification.json
+/hardware/thin18-compact/split-c1-control-verification.json
+/hardware/thin18-compact/split-c1-domestic-audit.json
+/hardware/thin18-compact/split-c1-hardware-finish-verification.json
+/hardware/thin18-compact/split-c1-interface.json
+/hardware/thin18-compact/split-c1-mechanical-audit.json
+/hardware/thin18-compact/split-c1-power-integrity-verification.json
+/hardware/thin18-compact/split-c1-validation.json
+/hardware/thin18-compact/qualification/c4d-evt/release-candidate.json

@@ -1,3 +1,13 @@
+# 7mm product RTC override — 2026-10-06
+
+The old rechargeable-supercapacitor policy below is historical for Split-C1 and MUST NOT be used on the <=7mm product. The current 7mm candidate uses a mainland CR1216 primary cell as BT301 and a hardware BAT54WS series Schottky (D306) with **anode at RTC_CELL_P and cathode at RTC_VBACKUP**. The diode is oriented to supply SD3078 VBAT and oppose reverse current toward the primary cell. This static orientation is NOT a verified zero-charge barrier: worst-case reverse current, temperature, all alternative paths and the cell maker acceptance limit remain unqualified. The primary cell is a manual pre-welded insulated lead/tab assembly; it is never reflowed or directly soldered.
+
+For the 7mm product, SD3078 register 18H charging must remain **disabled** on every boot and after recovery. Firmware must read back the charge-enable bit as zero; it must never write the historical `0x82` charge-enable setting. Do not rely on the diode alone as proof that primary-cell charging is safe. Firmware charge-disable/readback remains mandatory and physical reverse-current qualification is still open. 24h isolated retention, diode drop/leakage over temperature, end-node >=2.3V, reverse-feed paths, actual cell lot/tabs and physical fit remain EVT gates.
+
+The exact source-bound contract is `seven_mm_rtc_contract.json`; `verify_seven_mm_rtc.py` checks native candidate topology and identity.
+
+---
+
 # SD3078 原型固件接口契约
 2026-10-02。此文件是原理图迁移契约；本仓库没有产品固件工程，驱动集成／运行测试尚未执行。依据SD3078 Rev4.4；禁止继续使用RV3028寄存器或清零时间作为普通启动行为。
 

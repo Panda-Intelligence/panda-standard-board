@@ -1,65 +1,47 @@
-> **Current hardware-finish checkpoint (2026-10-04):** use the freshly regenerated
-> Split-C1 package, not an older ZIP. Default-off charger authorization and direct
-> GPIO2 shutdown are implemented. Population is now **162 mainland system refs**
-> (Core125/123SMT + C301/TH301; Display37/37SMT). New Q907/Q908/R930-R933 reuse
-> reviewed exact catalog identities; the same7 older SMT supply gaps remain.
-> Read [hardware finish](SPLIT-C1-HARDWARE-FINISH.md) for TP19 FORCE-LOW access and
-> incompatible old firmware. Earlier156-ref and missing-hardware-gate descriptions
-> below are historical; real source-bound generated audits override old counts.
+# Split-C1 精确供料与 CAM 询价入口
 
-# Split-C1 精确采购／客供申请资料
+本轮以 `develop` 的已完成双板原生设计为准。系统 BOM 共162个位号；Core125（123SMT+C301后装+TH301板外），Display37SMT。所有厂家身份已核对为国产；这不是库存、装配接收或整机所有零件产地认证。
 
-> Current Split-C1 power-integrity ECO: the saved main-derived board now adds
-> U906 SGM809B-TXN3LG/TR, reuses R201/R204 for REGN-derived PSEL and moves C204
-> to supervisor bypass. Expected current BOM: 156 mainland refs (Core119,
-> Display37), Core117 SMT + 2 manual/offboard, Display37 SMT. Seven SMT refs
-> remain unmapped (U902,U905,U402-U405,U906). Older observations below retain
-> their dates; use [the current power contract](SPLIT-C1-POWER-INTEGRITY.md),
-> regenerated audits and the handoff for the current source. No actual stock,
-> assembly acceptance or physical EVT result is asserted.
+## 当前缺口，不再沿用旧的“七个位号都缺码”结论
 
-2026-10-02。未发送、未申请、未采购、未预留、未发货。单套包括Core-C1+Display-C1；本次缺口在Core，批量N仍未指定。此文件可用于人工审核后填入供方／嘉立创表单；公开渠道不是接收回执。
+| 位号 | 精确订货型号 | 每套数量 | 精确贴片码 | 待关闭事项 |
+|---|---|---:|---|---|
+| U402–U405 | SGMICRO SGM2578SDYG/TR | 4 | 待分配 | 精确映射、授权供料、批次和装配接收 |
+| U902 | SGMICRO SGM62125AXG/TR | 1 | 待分配 | 精确A版本/WLCSP15映射、授权供料和接收 |
+| U905 | SGMICRO SGM37601YTRL20G/TR | 1 | 待分配 | 精确20脚型号映射、MSL2包装和接收；禁止24脚代用 |
+| U906 | SGMICRO SGM809B-TXN3LG/TR | 1 | **C699619** | 映射已核实；实际库存、分配与收货尚未证明 |
+| D202 | SGMICRO SGM05HU1ALXUGY2G/TR | 1 | C55274065 | 实际供料与精确批次接收 |
+| C301 | KAMCAP SE-5R5-D105VYH3C | 1 | C2894294 | 客户独立采购、PCBA回板后手焊；不进入SMT CPL |
 
-| 位号 | 精确订货型号 | C码 | 数量／套 | 当前可核实渠道 |
-|---|---|---|---:|---|
-| U902 | SGMICRO SGM62125AXG/TR | 待分配 | 1 | 圣邦官网列Active和授权代理；公开JLC stock/buy查询均无精确结果，交期／实际供料待报价 |
-| U905 | SGMICRO SGM37601YTRL20G/TR | 待分配 | 1 | 圣邦官网20脚型号Active；公开JLC stock/buy查询均无精确结果，交期／实际供料待报价 |
-| U402–U405 | SGMICRO SGM2578SDYG/TR | 待分配 | 4 | [世强精确商品](https://www.sekorm.com/product/578179499.html)显示世强仓3940颗、品牌仓0、约3–4工作日；支持1颗起订，未预留 |
-| D202 | SGMICRO SGM05HU1ALXUGY2G/TR | C55274065 | 1 | JLC精确buy目录库存0；预订／圣邦授权渠道交期和实际入库待确认 |
-| C301 | KAMCAP SE-5R5-D105VYH3C | C2894294 | 1 | [现行精确目录](https://item.szlcsc.com/3128601.html)及原厂20mm图纸已核对并实施CAD改型；库存数量未能核实，独立供料／PCBA后装 |
+缺精确映射的是 **6个位号／3个型号组**。原先追踪的7个SMT客供位号仍需要真实接收凭证，U906不会因为查到C码就自动标为已供料。
 
-授权代理身份以[圣邦官方名单](https://www.sg-micro.com/authorized-distributors)为依据。世强商品页当日快照已核对精确SD型号、0.9×0.9-4B-D和3000／卷；搜索摘要的4000不是当前商品页3940。公开查询和网页哈希记录在split-c1-jlc-catalog-observation.json、split-c1-supply-plan.json；未能查到不表示停产或整条渠道无货。世强公开搜索接口的正对照也没有结果，未把该接口的空结果用于库存结论。
+U906的厂家、精确后缀与SOT-23封装，已与JLC官方目录核对：
+https://jlcpcb.com/partdetail/SGMICRO-SGM809B_TXN3LGTR/C699619
+原厂精确型号和MSL1见 https://www.sg-micro.com/product/SGM809B 。
+本次已将C699619同步到原理图、PCB、重建器和独立校验，不改变任何接脚、阈值或封装几何。
 
-| 位号 | 原厂包装／MSL | 料带宽W／穴距P1 | pin1料带象限 | 嘉立创仍需确认 |
-|---|---|---|---|---|
-| U902 | 3000／7英寸卷，MSL1 | 8／4mm | Q1 | WLCSP15／0.4mm pitch、实际切带／头尾、损耗、批次 |
-| U905 | 4000／13英寸卷，MSL2 | 12／8mm | Q2 | TQFN3.5×3.5-20L+EP、实际封装、密封／干燥／开封期限和切带 |
-| U402–U405 | 3000／7英寸卷，MSL1 | 8／4mm | Q1 | WLCSP0.9×0.9-4B-D／0.5mm pitch、0.22mm圆焊盘、切带／头尾／损耗 |
-| D202 | 10000／7英寸卷，MSL1 | 8／2mm | Q1 | UTDFN1×0.6-2BL、精确料源池、实际入库量及极性 |
+其余三组精确型号仍列在原厂产品页。没有精确公开C码结果，不代表停产或所有渠道无货：
+https://www.sg-micro.com/product/SGM62125
+https://www.sg-micro.com/product/SGM37601
+https://www.sg-micro.com/product/SGM2578SD
 
-以上是原厂完整卷规格；原厂整卷数量不是打样采购MOQ，料带Q1／Q2不是PCB旋转角。逐位号封装及网络见split-c1-smt-consignment.json。U902 EN与ADDR接VSYS_RAW，启动3.4V／地址0x76，固件再设3.3V；不能照ADDR低的3.0V启动写法。U905只接LED1／LED2；不能拿24脚YTWY24G/TR补货。D202 pad1阴极VBUS、pad2阳极GND。
+## CAM / 装配必须回复
 
-## IC客供接收资料
-1. 先提交三个缺码的精确MPN／厂家／封装、原厂手册及CAD封装；要求嘉立创返回精确C码、工程接收编号、工艺／载板条件。未批准前不寄料；回执新C码必须同步原理图、PCB、BOM和采购登记，重新生成并校验。
-2. D202可请求C55274065精确预订交期，或对同码明确接受授权渠道客供。不得把公开库存与客供／Global Sourcing库存相加；同料号使用接收规则允许的库存池。
-3. 向供方确认带标记的精确料号、封装、批次／日期、原厂包装、MSL密封／开封状态、MOQ／小批量切带、交期。向装配厂确认每组N／N／4N／N的贴装需求以及独立损耗、最低上机量、料带头尾；不自行填固定损耗数。
-4. U402–U405另请圣邦确认RevA.2 p9 ON高／低RCB与首页disabled概述的差异，保存明确型号与条件的文字回执。库存渠道不能关闭该工程疑点；AAD/C5151451不代用。
-5. 到货后以实际仓库／My Parts可用数量、接收编号及lot为依据，按精确BOM绑定。订单截图／公开库存／报价不能充当实际入库或全单接收。
+使用最新生成包，不使用旧13处焊盘内孔的坐标表。本轮已移出9处，当前剩余4处仍需树脂填孔、研平、盖铜；以实际 `VIA-IN-PAD.csv` 为准。不能以普通盖油代替，也不能堵住元件PTH、USB壳脚槽或C301的1.9mm引脚圆孔。
 
-| 两板套数示例 | U902 | U905 | U402–U405合计 | D202 | 独立后装C301 |
-|---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 1 | 4 | 1 | 1 |
-| 5 | 5 | 5 | 20 | 5 | 5 |
-| 10 | 10 | 10 | 40 | 10 | 10 |
+确认两板0.8mm、ENIG、绿色阻焊；Core四层铜均为名义35µm，不能默认降为内层0.5oz。确认细间距WLCSP、0.20/0.25mm过孔、钢网/EP锡膏量、底面旋转角及单板CPL坐标。供应商不得自行改线宽、镜像或缩放。
 
-此表仅贴装数示例，批量未选定；不含工厂损耗／最低上机量、头尾或后装备件。收货模板在split-c1-supply-plan.json的receipt_template；所有真实回执字段保持空。
+索取精确型号、封装、批次、原厂包装、MSL状态、切带/头尾、损耗和最低上机量；以真实入库量和接收号关闭，不用报价或公开库存替代。每套数量为U902=N、U905=N、U906=N、SGM2578SD=4N；打样套数尚未指定，不擅自下单。
 
-## C301独立供料与后装
-[JLCPCB2026-09-09客供条款第4项](https://jlcpcb.com/help/article/consignment-part-terms-conditions)排除超级电容。国内服务是否有例外未核实，默认不寄入SMT客供仓；交回SMT完成的PCBA后，由客户／独立后装工位焊接。C301仍在完整系统BOM中，未被删去，不进入SMT BOM/CPL。
+## 生成可提交的询价资料
 
-当前已明确改为SE-5R5-D105VYH3C/C2894294，并按[2020年6月原厂p4尺寸图](https://atta.szlcsc.com/upload/public/pdf/source/20210914/37A5D1176C23A52D8BA2A343DB47BCB6.pdf)重建20mm封装。1F0/+30%、5.5V、20±0.5mm脚距、扁脚最大宽1.1／厚0.25mm、本体最大直径19.2／整体高6.5mm；负极标记对应PCB pad2 GND。旧H/C118887及VYV3C垂直型不可代用。采购仍需核对现行批次、尺寸一致性和实际数量，不能把目录C码当成有货或嘉立创接收。
+先运行完整验证，再运行：
 
-独立接收须记录实物精确H3C标签／批次、可用数量、尺寸和负端标记；漏电上限、3.15→2.3V容量和寿命仍须原厂确认／首板测量。p7手焊260°C≤5秒以1.6mm板为依据，Core0.8mm的温度／时间／支撑需工艺验证，不回流；本体离板暂留0.2mm，负端pad2 GND、正端pad1+。后脚剪到Core背面下≤0.5mm并检查1.5mm板间隙。焊后≥24h RTC保持由Q14实测，当前NOT_RUN。
+```sh
+python3 hardware/thin18-compact/release_split_c1.py --target split-c1
+python3 hardware/thin18-compact/prepare_split_c1_rfq.py --output /absolute/external/output
+```
 
-## 供料核对命令
-在仓库根目录运行python3 hardware/thin18-compact/verify_split_c1_supply.py --sets 5，5只表示示例批量。加--require-requested-supply会在实际回执／精确C码缺失时退出1；不加则报告等待项，允许继续裸板原型打样准备。该核对只覆盖本次8个位号，不能代替其余供料、完整PCBA订单接收或实板EVT。
+有明确套数后可加 `--sets N`。输出包含已验证打样包、逐组精确料号、CAM和供料问题清单；仅生成资料，不发信、不预留、不下单。官方LCSC联络页 https://www.lcsc.com/service/question 列出元件询价 `quote@lcsc.com`、PCBA `pcba@lcsc.com`。由用户选定加工路线后提交并保存真实回复。
+
+C301保留20mm脚距、极性及独立后装；首板仍须确认插入、剪脚、0.8mm板手焊工艺与24小时RTC保持。完整机壳目前只提供22mm的装配验证原型，不是7mm成品，不能把渲染图或几何检查当作实物合格证明。

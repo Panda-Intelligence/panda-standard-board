@@ -314,6 +314,8 @@ from _split_c1_hardware_finish_eco import apply_hardware_finish_eco
 apply_hardware_finish_eco(DST)
 from _split_c1_cap_drill_eco import apply_cap_drill_eco
 apply_cap_drill_eco(DST)
+from _split_c1_via_escape_eco import apply_via_escape_eco
+apply_via_escape_eco(DST)
 verify=DST/'verification'; verify.mkdir(exist_ok=True)
 subprocess.run([K,'sch','erc','--format','json','--severity-all','--output',str(verify/'erc.json'),str(core/(STEM+'.kicad_sch'))],check=True)
 subprocess.run([K,'sch','export','netlist','--format','kicadxml','--output',str(verify/'netlist.xml'),str(core/(STEM+'.kicad_sch'))],check=True)

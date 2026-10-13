@@ -1,0 +1,285 @@
+{
+  "schema": "panda47-ordered-core-layout-v1",
+  "revision": "E0.2-electrical-layout",
+  "stage": "Routing candidate; case/battery/stack not qualified",
+  "core_poses": {
+    "U710": [
+      58.0,
+      82.25,
+      -90.0
+    ],
+    "U711": [
+      64.0,
+      69.5,
+      0.0
+    ],
+    "C710": [
+      50.0,
+      94.0,
+      90.0
+    ],
+    "C711": [
+      68.4,
+      69.5,
+      90.0
+    ],
+    "R710": [
+      46.45,
+      86.45,
+      180.0
+    ],
+    "R711": [
+      46.45,
+      87.45,
+      180.0
+    ],
+    "R712": [
+      46.45,
+      88.45,
+      180.0
+    ],
+    "R713": [
+      46.45,
+      89.45,
+      180.0
+    ],
+    "R714": [
+      46.45,
+      90.45,
+      180.0
+    ],
+    "R715": [
+      46.45,
+      91.45,
+      180.0
+    ],
+    "R716": [
+      46.45,
+      92.45,
+      180.0
+    ],
+    "R717": [
+      46.45,
+      93.45,
+      180.0
+    ],
+    "R718": [
+      46.45,
+      94.45,
+      180.0
+    ],
+    "R719": [
+      46.45,
+      95.45,
+      180.0
+    ],
+    "R720": [
+      46.45,
+      96.45,
+      180.0
+    ],
+    "R721": [
+      46.45,
+      97.45,
+      180.0
+    ],
+    "R722": [
+      46.45,
+      98.45,
+      180.0
+    ],
+    "R723": [
+      46.45,
+      99.45,
+      180.0
+    ],
+    "R724": [
+      46.45,
+      100.45,
+      180.0
+    ],
+    "R725": [
+      46.45,
+      101.45,
+      180.0
+    ],
+    "R726": [
+      49.99,
+      102.45,
+      180.0
+    ],
+    "R727": [
+      50.25,
+      103.45,
+      180.0
+    ],
+    "R728": [
+      50.25,
+      104.45,
+      180.0
+    ],
+    "R729": [
+      51.6,
+      108.0,
+      180.0
+    ],
+    "R730": [
+      51.6,
+      109.0,
+      180.0
+    ],
+    "R731": [
+      52.0,
+      105.75,
+      0.0
+    ],
+    "R732": [
+      52.0,
+      102.25,
+      0.0
+    ],
+    "TP712": [
+      68.0,
+      77.0,
+      0.0
+    ]
+  },
+  "core_solid_ground_pads": {
+    "C522": [
+      "2"
+    ],
+    "R606": [
+      "2"
+    ],
+    "U501": [
+      "57"
+    ],
+    "C530": [
+      "2"
+    ],
+    "J601": [
+      "10",
+      "12",
+      "14",
+      "16",
+      "18",
+      "2",
+      "20",
+      "22",
+      "24",
+      "26",
+      "28",
+      "30",
+      "32",
+      "34",
+      "36",
+      "38",
+      "4",
+      "6",
+      "8",
+      "MP"
+    ],
+    "R732": [
+      "2"
+    ],
+    "U901": [
+      "25"
+    ],
+    "C515": [
+      "2"
+    ],
+    "C711": [
+      "2"
+    ],
+    "U711": [
+      "8"
+    ],
+    "J602": [
+      "11",
+      "12",
+      "18",
+      "19",
+      "20",
+      "3",
+      "4",
+      "7",
+      "8",
+      "MP"
+    ],
+    "C524": [
+      "2"
+    ]
+  },
+  "mcu_ep_vias": {
+    "ref": "U501",
+    "pad": "57",
+    "net": "GND",
+    "diameter_mm": 0.5,
+    "drill_mm": 0.25,
+    "offsets_mm": [
+      [
+        0,
+        0
+      ],
+      [
+        -1.5,
+        1.5
+      ],
+      [
+        1.5,
+        -1.5
+      ],
+      [
+        1.5,
+        1.5
+      ],
+      [
+        -1.25,
+        -1.5
+      ],
+      [
+        -1.5,
+        0
+      ],
+      [
+        0,
+        1.5
+      ],
+      [
+        1.5,
+        0
+      ],
+      [
+        0.25,
+        -1.25
+      ]
+    ],
+    "filled_capped_process_required": true,
+    "supplier_process_accepted": false
+  },
+  "rationale": "Place display data resistor bank in logical bit order beside J601; move U711 from bottom-edge packing to the available upper Core area. Preserve circuit identities, connector pin order, every native rule and the <=7mm requirement. This is not a signal-integrity signoff.",
+  "native_routing_complete": false,
+  "manufacturing_release": false,
+  "display_ground_return_via": {
+    "ref": "C804",
+    "pad": "2",
+    "net": "GND",
+    "offset_from_pad_center_mm": [
+      -0.1,
+      -0.25
+    ],
+    "diameter_mm": 0.65,
+    "drill_mm": 0.3,
+    "expected_pad_center_mm": [
+      18.2,
+      105.0
+    ],
+    "expected_via_center_mm": [
+      18.1,
+      104.75
+    ],
+    "manufacturing_process": "RESIN_FILLED_AND_COPPER_CAPPED_VIA_IN_PAD",
+    "supplier_process_accepted": false,
+    "purpose": "Reconnect the C804/R812 ground-return island without undoing the verified HW_ARM_GPIO control routing. No clearance, spoke or hole-limit rule is relaxed."
+  }
+}

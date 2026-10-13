@@ -1,0 +1,58 @@
+{
+  "schema": "panda-seven-mm-rtc-v1",
+  "rtc": {
+    "ref": "U302",
+    "manufacturer": "WAVE",
+    "mpn": "SD3078",
+    "vbackup_pin": "5",
+    "vbackup_net": "RTC_VBACKUP",
+    "minimum_backup_voltage_v": 2.3
+  },
+  "primary_cell": {
+    "ref": "BT301",
+    "manufacturer": "Yichang Power Glory Technology Co., Ltd.",
+    "mpn": "CR1216",
+    "nominal_voltage_v": 3.0,
+    "nominal_capacity_mah": 25,
+    "maximum_body_xy_mm": [
+      12.5,
+      12.5
+    ],
+    "nominal_thickness_mm": 1.6,
+    "assembly": "MANUAL_PREWELDED_INSULATED_LEADS",
+    "reflow_allowed": false,
+    "direct_cell_soldering_allowed": false,
+    "source_url": "https://www.omnergybattery.com/product/cr1216-coin-button-cell-battery-for-remote-controls"
+  },
+  "reverse_charge_barrier": {
+    "ref": "D306",
+    "manufacturer": "Shandong Jingdao Microelectronics",
+    "mpn": "BAT54WS",
+    "lcsc": "C438012",
+    "package": "SOD-323",
+    "pin1": {
+      "function": "K",
+      "net": "RTC_VBACKUP"
+    },
+    "pin2": {
+      "function": "A",
+      "net": "RTC_CELL_P"
+    },
+    "source_url": "https://datasheet.lcsc.com/lcsc/2005292133_Shandong-Jingdao-Microelectronics-BAT54WS_C438012.pdf"
+  },
+  "firmware": {
+    "sd3078_register_18h_charge_enable_required": false,
+    "historical_0x82_write_forbidden": true,
+    "charge_enable_readback_required": true,
+    "note": "On every main-power initialization/recovery, firmware must verify SD3078 ENCH remains 0; the historical 0x82 charge-enable write is forbidden."
+  },
+  "acceptance": {
+    "isolated_retention_hours_minimum": 24,
+    "end_vbackup_voltage_v_minimum": 2.3,
+    "reverse_charge_current_physically_verified": false,
+    "hot_cold_diode_margin_verified": false,
+    "actual_cell_lot_and_tabs_verified": false,
+    "physical_evt_passed": false,
+    "manufacturing_release": false
+  }
+}

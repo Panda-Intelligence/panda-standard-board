@@ -226,7 +226,7 @@
       "manufacturer": "SGMICRO",
       "mpn": "SGM809B-TXN3LG/TR",
       "footprint": "panda-standard:SGM809B_SOT23_TX00031",
-      "catalog_code": null,
+      "catalog_code": "C699619",
       "quantity_per_two_board_set": 1,
       "assembly_route": "JLC_SMT",
       "manufacturer_product_url": "https://www.sg-micro.com/product/SGM809B",
@@ -236,13 +236,19 @@
       },
       "package": "SOT-23 TX00031.001",
       "packing": {
-        "msl": null,
+        "msl": 1,
         "units_per_factory_reel": null,
         "actual_lot_and_cut_tape_acceptance": null,
-        "qualification": "Confirm exact SOT-23 lot/reel/floor life with supplier and assembler; no receipt exists."
+        "qualification": "Official exact catalog lists MSL1. Actual lot, tape and receiving acceptance still required."
       },
       "supplier_route": "SGMICRO or manufacturer-authorized distributor; exact-package acceptance required",
-      "public_supply_observation": null,
+      "public_supply_observation": {
+        "url": "https://jlcpcb.com/partdetail/SGMICRO-SGM809B_TXN3LGTR/C699619",
+        "checked_date": "2026-10-04",
+        "exact_catalog_identity_verified": true,
+        "stock_quantity": null,
+        "stock_reserved": false
+      },
       "engineering_confirmation_required": "Exact 3.08V threshold and push-pull active-low variant; real lot/packing evidence",
       "supply_receipt": null
     }

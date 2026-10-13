@@ -111,7 +111,7 @@ def apply_structure(candidate):
     root_id=re.search(r'\(uuid\s+"([^"]+)"',text).group(1)
     x,y=99.06,149.86
     inst=f'(symbol (lib_id "panda-standard:{NAME}") (at {x} {y} 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "{uid("U906-instance")}")\n'
-    fields={'Reference':'U906','Value':MPN,'Footprint':FP,'Datasheet':DOC,'Description':DESCRIPTION,'Manufacturer':'SGMICRO','MPN':MPN,'LCSC':''}
+    fields={'Reference':'U906','Value':MPN,'Footprint':FP,'Datasheet':DOC,'Description':DESCRIPTION,'Manufacturer':'SGMICRO','MPN':MPN,'LCSC':'C699619'}
     for k,v in fields.items():
         yy=y-8 if k=='Reference' else y-6 if k=='Value' else y
         hide='' if k in ['Reference','Value'] else '(hide yes) '
@@ -161,7 +161,7 @@ def apply_native(candidate):
     f.SetFPID(P.LIB_ID('panda-standard',FP_NAME));f.SetReference('U906');f.SetValue(MPN)
     f.SetPath(P.KIID_PATH('/'+root_id+'/'+uid('U906-instance')))
     f.SetPosition(P.VECTOR2I(P.FromMM(17),P.FromMM(18.75)));f.SetLocked(True)
-    for k,v in {'Manufacturer':'SGMICRO','MPN':MPN,'LCSC':'','Datasheet':DOC,'Description':DESCRIPTION}.items():
+    for k,v in {'Manufacturer':'SGMICRO','MPN':MPN,'LCSC':'C699619','Datasheet':DOC,'Description':DESCRIPTION}.items():
         field=next((p for p in f.GetFields() if p.GetName()==k),None)
         if field is None:field=P.PCB_FIELD(f,P.FIELD_T_USER,k);f.Add(field)
         field.SetText(v);field.SetVisible(False);field.SetLayer(P.F_Fab)

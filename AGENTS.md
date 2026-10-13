@@ -1,3 +1,94 @@
+# CURRENT ROUTING CONTINUATION — 2026-10-13
+
+Read `hardware/pico47/E02-20261013-HANDOFF.md` first. This dated continuation
+supersedes only the older route/count/path references below, not the electrical,
+four-layer, physical-qualification or generated-output restrictions.
+Accepted checkpoint: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013/engineering-candidate`.
+Native counts: Core46 opens/1 warning; Display21 opens/3 warnings; errors/parity/ERC0.
+All prior native pad groups are preserved. The final R813.2 -> U810.EN21 link is
+still OPEN. Manufacturing release and physical qualification remain false.
+
+The user's requested `panda47-e0-20261012/engineering-candidate` directory is a
+verified working copy of the dated candidate; original E0.1 is retained as its
+sibling `engineering-candidate-e01-archive-20261013`. Do not silently resume that
+archive, old develop, or a newer-mtime experiment. This source continuation goes
+through the user-requested PR to main; inspect refs and status before editing.
+Use `capture_pico47_checkpoint.py` to capture fresh native evidence and validate
+physical pad identities across source rebuilds. Keep packaging/ untouched.
+
+# HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
+
+Read `hardware/pico47/E02-HANDOFF.md` first. Current external checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261012/engineering-candidate/`.
+Working ancestry: `.work/pico47-resume-20261012/integrated-current/`.
+Latest native counts: Core48 opens/26 warnings;Display21 opens/5 warnings;
+DRC errors/parity/ERC0. Do NOT label this fab-ready or reuse historical161/49.
+Use `build_pico47.py --routing-checkpoint <current-checkpoint>` to rebuild and
+resume its copper, rather than starting again from the partly unrouted base.
+Ordered Core28-part placement/16 header-side data links/9MCUground vias are now
+explicit source. C804.pad2 has an additional resin-filled/copper-capped return
+via; its process acceptance remains false. The source and native checks enforce
+both policies. GPIO2-to-FFC and DisplayFFC-to-R813 are connected, but the final
+R813-to-PMIC-EN connection is still open. Do not power the panel.
+Never delete a dangling via that is a live surface junction; preserve all native
+pad groups and actual reference-plane connectivity. No net-wide unreviewed rip-up.
+The old battery/complete panel stack/<=7mm physical and CAM/SMT gates remain open.
+Generated native boards, checkpoint manifests/reports and renders stay outsideGit.
+Keep user packaging/ and unrelated worktrees untouched.
+
+# CURRENT USER OVERRIDE: Read-Pico-class display and battery — 2026-10-12
+
+Continue `hardware/pico47/README.md` and `hardware/pico47/design.json` on develop.
+The user confirmed the same Pico 4.7-inch 1216x684 ~297PPI E0470A01 family AND
+same actual replaceable2050mAh LCO pack. The old4.26-inch SPI/1100mAh ProductD is
+now only a reversible donor/regression; do not resume it as the requested product.
+Keep two PCBs, <=7mm finished maximum, touch/frontlight/audio/IMU/SD/RTC,
+mainland manufacturer identities and GPIO2 direct inhibit. The132mm trial envelope
+is NOT an approved enclosure. Exact Pico pack dimensions/MPN/connector/NTC/CV and
+full screen stack remain unknown, not inferred from capacity or bare glass.
+E0 is still unrouted/partly routed and NOT FOR FABRICATION OR PANEL/BATTERY POWER.
+Never reuse ProductD zero-DRC evidence as E0 acceptance. Preserve live pad groups
+when pruning; the native pad-cluster guard must not be bypassed. Router completion
+and fewer airwires after deleting orphans are not manufacturing qualification.
+Generated CAD, SES/DSN, evidence, renders and reports stay ignored/external, not Git.
+Keep the existing untracked packaging/ untouched. Use the handoff's named current
+candidate rather than newest mtime; do not delete it as disposable work.
+
+# Current sourcing continuation — 2026-10-12
+
+For procurement/BOM work read `hardware/thin18-compact/SEVEN-MM-SOURCING.md`.
+The default `build_seven_mm_product.py` includes the20-reference sourcing overlay;
+`--routing-only` is only the immutable pre-sourcing regression checkpoint. Do not
+edit old donor/model strings globally or lose source-bound routing. Keep required
+pending7 SMT parts and manualBT301 visible; blankcodes/unsignedRFQs are not receipt.
+Generated sourcing requests,BOM CSV,evidence HTML/PDF and native outputs stay outsideGit.
+
+# CURRENT OVERRIDE: <=7mm native product relayout
+
+The user explicitly rejected the22mm prototype and asked for PCB relayout.
+Finished whole-device thickness MUST be <=7mm, including positive tolerances.
+USB-C is allocated to bottom center and microSD to the right side near the lower
+corner. Read `hardware/thin18-compact/SEVEN-MM-RELAYOUT.md` and
+`seven_mm_layout.json`. They supersede older text freezing the existing outline,
+WROOM module, stacked connector or treating7mm as merely optional.
+
+The latest develop is the electrical/BOM donor; preserve the proven functionality,
+all-mainland identity policy,16MB Flash/8MB PSRAM,>=24h isolated RTC and direct
+shutdown. Do not merge the old R2/media branches or claim its work is verified here.
+New native candidates must stay in ignored/external output; only reviewed source,
+contracts, tests and reusable builders belong in Git. No renders/models/reports/ZIPs.
+
+The source allocation and initial footprint packing are NOT finished native
+routing, supplier maximum-envelope qualification, or fabrication approval. The
+old product-render/RFQ/release entry points are deliberately blocked. Do not remove
+that stop based on a budget calculation, old DRC, or scaled visuals. New parts,
+footprints, pin maps, current/returned-path routing, mechanical tolerance and full
+native rebuild checks must precede release. Keep the old routed CAD reversible.
+MacBook canonical checkout remains `/Users/isaac/workspace/AI/panda-standard-board`;
+any Mac-mini cache clone is temporary validation, not another long-lived worktree.
+
+# Earlier guidance (current override above governs product geometry)
+
 # Panda Standard Board continuation
 
 The user's current task is **the already split, routed main-branch Split-C1**
@@ -38,3 +129,36 @@ R931 provides the direct FL_HWEN/charger permit. Never reintroduce the old
 active-low P05 policy or expander-driven HWEN. TP19 can be grounded manually;
 there is no claimed autonomous watchdog. Replay `_split_c1_hardware_finish_eco.py`
 after the prior power ECO and require its independent pin/land/identity checks.
+
+## Generated-output Git policy — user instruction 2026-10-04
+
+Do NOT commit or push generated or intermediate render deliverables without
+explicit user authorization for those artifacts. Rendering, viewing, or delivering
+a result is not permission to put it in Git. This includes rendered PNG/JPEG,
+MP4/GIF, frame sequences, generated Blender/GLB exports, preview galleries,
+render manifests/checksums, and disposable scripts stored with those outputs.
+
+Keep render output under ignored `/.work/` or `/visualization/`, or another
+user-designated delivery location. Never use a source-code repository as a file
+transfer workaround. Reusable rendering source belongs in a reviewed source
+location separately from generated assets. Native PCB/schematic libraries and
+required source contracts remain versioned according to the existing CAD policy.
+
+Inspect the exact staged paths and diff before any commit; do not broadly stage
+an output directory or force-add ignored render files. Preserve local deliverables
+when removing them from tracking. Do not rewrite pushed history, delete remote
+branches, or force-push as a cleanup shortcut without explicit authorization.
+
+## Canonical checkout and integration branch
+
+Continue the validated Split-C1 in `/Users/isaac/workspace/AI/panda-standard-board`
+on `develop`. This branch starts from merged main `be0ef37`, not the discarded
+Thin7/R2 or media-only branch. Worktree cleanup archives stay outside this repo.
+Keep the existing untracked `packaging/` untouched. Reusable renderer code may
+be reviewed as source; output goes to an external delivery directory or `.work`.
+
+Fresh verification JSON, native interface measurements and release-candidate reports
+are generated outputs and explicitly ignored. Run the release pipeline to recreate
+them; do not force-add them. Source replay plans, precise BOM/part contracts, tests
+and handoffs remain versioned. Keep any actual supplier receipts separately from
+synthetic tests, and never mark them received based on a public catalog page.
