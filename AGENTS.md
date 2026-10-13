@@ -1,35 +1,33 @@
-# CURRENT ROUTING CONTINUATION — 2026-10-13 r4: ALL EIGHT GROUNDS CLOSED
+# CURRENT ROUTING CONTINUATION — 2026-10-13 r5
 
-Read `hardware/pico47/E02-R4-ALL-GROUND-CLOSED-20261013.md` first.
-Canonical dated engineering checkpoint:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r4/engineering-candidate`.
-The requested `panda47-e0-20261012/engineering-candidate` is its hash-verified
-working copy. The previous r3 working contents are preserved in sibling
-`engineering-candidate-pre-r4-archive-20261013`; older archives remain intact.
+Read `hardware/pico47/E02-R5-SIGNAL-FEEDBACK-20261013.md` first.
+Canonical validated engineering checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r5/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is its verified working
+copy. Prior r4 contents are preserved in sibling
+`engineering-candidate-pre-r5-archive-20261013`; all older archives remain.
 
-ALL8 named ground targets are now physically connected to their reference:
-Core J601.36/J601.38; Display J820.9/J820.22/R809.2/R810.2/U810.32/U810.41.
-All actual ground pads connect: Core169/169 and Display68/68, one group per board.
-Fresh native counts are Core36 opens and Display9 opens; both have DRC errors,
-DRC warnings, parity and ERC0. The45 remaining non-ground unconnected items are
-not completed routing. No fabrication, charging or panel-power permission.
+Native counts: Core34 opens, Display9 opens; both DRC errors/warnings/parity/ERC0.
+All eight named grounds and all237 GND pads remain reference-connected.
+Display-logic enable U601.6 -> U404.B2 and audio bit clock U501.16 -> U904.3 are
+connected; audio data U501.18 -> U904.4 is STILL OPEN. The VGH feedback detour was
+shortened by about4.376mm, not electrically qualified.43 native unconnected items
+remain. No fabrication, battery charging or panel-power permission.
 
-Clean source rebuild and a second native capture reproduced counts, complete
-ground membership, all prior physical pad groups and the full GPIO2/EN chain.
-Use `capture_pico47_checkpoint.py --require-complete-ground` for future capture.
-The flag rejects partial/contradictory ground evidence before an accepted replay
-checkpoint is written. A real seven-ground negative capture was verified to fail.
+Fresh source rebuild/recapture with --require-complete-ground reproduced these
+counts and all previous native pad groups and enable-chain checks.519 distinct
+local source tests pass; Pico47's262 also pass under bundled KiCad Python.
+These are local results, not GitHub Actions. The source-bound native limits
+helper reads actual Core0.20mm vs Display0.50mm edge constraints; global minima
+are not effective per-net rules or process qualification. Native rules stay fixed.
 
-Preserve four layers, no In1 signal tracks, the isolated negative PMIC EP,
-C804's prescribed return via, native rules, all source parts/pads/geometry and
-all existing connected pad groups. Read the handoff's analog-routing metric
-caveat: VGH feedback has a longer detour; native connectivity is not loop/noise
-qualification. Full PCB routing and physical/product qualification remain open.
-
-507 distinct source tests passed locally; Pico47's250 also passed under KiCad
-Python. These are not GitHub Actions results. Continue via a reviewed PR to main.
-Generated native CAD/reports/manifests and trials stay external/ignored. Preserve
-packaging/ and unrelated worktrees/processes; never promote an unverified trial.
+Retain four layers/no In1 signal tracks, isolated negative PMIC EP, C804's exact
+return via, part/pad/layout identities and every existing physical connection.
+Use the complete-ground capture flag for all further accepted checkpoints.
+The `.work/pico47-r6-20261013/` directory holds resumed r5 validation and rejected
+further experiments; it is NOT a published r6 candidate. Do not promote newer-
+mtime/unread/failed plans. Keep generated CAD/evidence and trials ignored/external,
+packaging/ and unrelated worktrees untouched. Continue via reviewed PRs to main.
 
 # HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
 
