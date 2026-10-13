@@ -7,7 +7,7 @@ current capacity, physical qualification, or permission to fabricate/power a PCB
 import math
 
 
-def summarize_ground_returns(pads, groups, reference_ref, reference_pin):
+def summarize_ground_returns(pads, groups, reference_ref, reference_pin, required_targets=None):
     """Summarize complete native ground-pad evidence relative to one known pad.
 
     Preserve UUID-level identity: two connector mounting lands can have the same
@@ -68,7 +68,7 @@ def summarize_ground_returns(pads, groups, reference_ref, reference_pin):
     isolated = [sorted((inventory[uid] for uid in group), key=key)
                 for group in partition if group is not connected]
     isolated.sort(key=lambda group: key(group[0]))
-    return {
+    result = {
         'evidence': 'native_connected_pad_groups',
         'reference_pad': reference,
         'ground_pad_count': len(inventory),
@@ -81,7 +81,37 @@ def summarize_ground_returns(pads, groups, reference_ref, reference_pin):
     }
 
 
-def inspect_ground_returns(board, reference_ref, reference_pin):
+    if required_targets is not None:
+        if not isinstance(required_targets, (list, tuple)) or not required_targets:
+            raise ValueError('Required ground targets must be a nonempty sequence')
+        checked = set()
+        targets = []
+        for target in required_targets:
+            if not isinstance(target, (list, tuple)) or len(target) != 2:
+                raise ValueError('A required target needs reference and pad number')
+            if any(not isinstance(value, str) or not value for value in target):
+                raise ValueError('Invalid required ground target identity')
+            identity = tuple(target)
+            if identity in checked:
+                raise ValueError('Duplicate required ground target')
+            checked.add(identity)
+            matching = [pad for pad in inventory.values()
+                        if (pad['ref'], pad['pin']) == identity]
+            if len(matching) != 1:
+                raise ValueError('Required ground target missing or physically ambiguous')
+            pad = matching[0]
+            targets.append({**pad, 'connected_to_reference': pad['uuid'] in connected})
+        targets.sort(key=key)
+        result['required_ground_targets'] = targets
+        result['required_ground_target_count'] = len(targets)
+        result['connected_required_ground_target_count'] = sum(
+            target['connected_to_reference'] for target in targets)
+        result['all_required_ground_targets_connected'] = all(
+            target['connected_to_reference'] for target in targets)
+    return result
+
+
+def inspect_ground_returns(board, reference_ref, reference_pin, required_targets=None):
     """Read actual KiCad connectivity without changing copper or zone settings."""
     import pcbnew as P
     board.BuildConnectivity()
@@ -114,4 +144,4 @@ def inspect_ground_returns(board, reference_ref, reference_pin):
             raise ValueError('Inconsistent overlapping native ground connectivity')
         groups.append(sorted(group))
         done.update(group)
-    return summarize_ground_returns(inventory, groups, reference_ref, reference_pin)
+    return summarize_ground_returns(inventory, groups, reference_ref, reference_pin, required_targets)
