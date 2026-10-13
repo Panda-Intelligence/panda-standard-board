@@ -6,12 +6,16 @@ finished-device maximum thickness of 7mm, including positive tolerances.
 The exact pack identity, complete panel suffix/assembly and finished tolerance
 stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
-Start with [the current dated handoff](hardware/pico47/E02-20261013-HANDOFF.md)
+Start with [the current dated handoff](hardware/pico47/E02-ONLINE-CLOSURE-20261013.md)
 and [the Pico47 source/build guide](hardware/pico47/README.md). Source code is
 under `hardware/pico47/`; generated native CAD, evidence and candidate packages
 remain in ignored `.work/` or the external `panda-board-deliverables` directory.
 The older Split-C1 / Product-D / Thin7 designs below are electrical donors or
 historical experiments, not the current product or approval to export/order it.
+
+Current r2 native checkpoint: **Core42 opens/1 warning; Display16 opens/2 warnings;
+DRC errors/parity/ERC0**. The direct inhibit chain is connected, but58 unconnected
+items remain. The dated handoff binds the verified delivery and clean source replay.
 
 Run source regressions without EDA or manufacturing side effects:
 

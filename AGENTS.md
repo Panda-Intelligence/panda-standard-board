@@ -1,20 +1,28 @@
-# CURRENT ROUTING CONTINUATION — 2026-10-13
+# CURRENT ROUTING CONTINUATION — 2026-10-13 r2
 
-Read `hardware/pico47/E02-20261013-HANDOFF.md` first. This dated continuation
-supersedes only the older route/count/path references below, not the electrical,
-four-layer, physical-qualification or generated-output restrictions.
-Accepted checkpoint: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013/engineering-candidate`.
-Native counts: Core46 opens/1 warning; Display21 opens/3 warnings; errors/parity/ERC0.
-All prior native pad groups are preserved. The final R813.2 -> U810.EN21 link is
-still OPEN. Manufacturing release and physical qualification remain false.
+Read `hardware/pico47/E02-ONLINE-CLOSURE-20261013.md` first. The current dated
+accepted engineering checkpoint is:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r2/engineering-candidate`.
+The user-requested `panda47-e0-20261012/engineering-candidate` is its hash-verified
+working copy. Its prior version is retained as sibling
+`engineering-candidate-pre-r2-archive-20261013`; the E0.1 archive remains intact.
 
-The user's requested `panda47-e0-20261012/engineering-candidate` directory is a
-verified working copy of the dated candidate; original E0.1 is retained as its
-sibling `engineering-candidate-e01-archive-20261013`. Do not silently resume that
-archive, old develop, or a newer-mtime experiment. This source continuation goes
-through the user-requested PR to main; inspect refs and status before editing.
-Use `capture_pico47_checkpoint.py` to capture fresh native evidence and validate
-physical pad identities across source rebuilds. Keep packaging/ untouched.
+Fresh combined native counts: Core42 opens/1 warning; Display16 opens/2 warnings;
+DRC errors/parity/ERC0. All earlier physical pad groups are preserved. A complete
+source rebuild plus independent native recapture reproduced these counts.
+The GPIO2 -> interconnect -> R813 -> U810.EN21 chain is now CONNECTED.
+This still leaves58 native unconnected items: no fabrication, charging or panel
+power permission. Exact battery/full-panel/<=7mm fit and other physical gates
+remain unqualified. Preserve four layers, no In1 signal tracks, the isolated
+negative EP, C804's specified return via, native rules and live pad groups.
+
+Continue through a reviewed PR to main, not the old develop tip or a newer-mtime
+experiment. Source helpers have456 passing local tests across the three suites;
+this is not a GitHub Actions claim. The graph branch-pruning helper is proposal
+logic only, not an enabled native deletion pipeline. The NPTH planning helper
+accounts for copper annulus as well as drill clearance; native rules still govern.
+Generated native CAD/reports/manifests and trials stay ignored/external.
+Keep packaging/ and unrelated worktrees/processes untouched.
 
 # HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
 

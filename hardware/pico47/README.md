@@ -1,16 +1,20 @@
-# Current continuation: E0.2 — 2026-10-13
+# Current continuation: E0.2 — 2026-10-13 r2
 
-Read [E02-20261013-HANDOFF.md](E02-20261013-HANDOFF.md) first. The dated accepted
-checkpoint is `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013/engineering-candidate`.
-Latest fresh native checks: Core46 opens/1 warning, Display21 opens/3 warnings;
-errors, parity and ERC0. **67 native unconnected items remain; NOT FOR FABRICATION
-OR POWER.** The final R813.2 -> U810.EN21 connection is still open.
+Read [E02-ONLINE-CLOSURE-20261013.md](E02-ONLINE-CLOSURE-20261013.md) first.
+Dated accepted checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r2/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is a verified working copy.
 
-Rebuild with `build_pico47.py --routing-checkpoint <checkpoint>` and use
-`capture_pico47_checkpoint.py` for non-regressing native evidence. Source/build,
-physical pad connectivity and exact library/rule bindings are independently
-checked; fewer airwires alone do not qualify the board. The E0.1 and original
-E0.2 sections below are historical background, not the current route.
+Fresh native result: **Core42 opens/1 warning, Display16 opens/2 warnings;
+DRC errors/parity/ERC0**. Independent source replay reproduces this result and
+preserves all previous physical pad groups. R813.2 -> U810.EN21 is now connected.
+**58 native unconnected items remain; NOT FOR FABRICATION OR POWER.**
+
+Resume with `build_pico47.py --routing-checkpoint <checkpoint>`. Capture new
+non-regressing evidence with `capture_pico47_checkpoint.py`. Keep all source/
+rule/library/geometry and native connectivity gates; fewer airwires alone do not
+qualify a route. The sections below are historical design background rather than
+the current saved copper or physical qualification.
 
 # Panda47 E0 — parallel-display redesign checkpoint
 
