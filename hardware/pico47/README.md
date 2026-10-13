@@ -1,26 +1,26 @@
-# Current continuation: E0.2 r4 — all eight ground blockers closed
+# Current continuation: E0.2 r5 — enable/clock closure and feedback improvement
 
-Read [E02-R4-ALL-GROUND-CLOSED-20261013.md](E02-R4-ALL-GROUND-CLOSED-20261013.md).
+Read [E02-R5-SIGNAL-FEEDBACK-20261013.md](E02-R5-SIGNAL-FEEDBACK-20261013.md).
 Dated checkpoint:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r4/engineering-candidate`.
-The requested `panda47-e0-20261012/engineering-candidate` is its verified copy;
-previous r3 contents are preserved in the sibling pre-r4 archive.
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r5/engineering-candidate`.
+The requested `panda47-e0-20261012/engineering-candidate` is a verified copy;
+prior r4 contents are retained in its sibling pre-r5 archive.
 
-**All eight named ground targets pass; Core169/169 and Display68/68 ground pads
-are reference-connected.** Fresh DRC errors/warnings/parity/ERC are zero;
-Core36 and Display9 non-ground unconnected items remain. Source rebuild and
-independent recapture reproduce this result. **NOT FOR FABRICATION OR POWER.**
-The handoff explicitly records the longer feedback detour and remaining analog,
-clock/data, exact-part, mechanical and physical qualification work.
+**Core34 opens; Display9 opens; DRC errors/warnings/parity/ERC0.** All eight
+named grounds and all237 ground pads remain reference-connected. The display
+logic enable and audio bit-clock paths pass native checks; audio data is still
+open. The replaced VGH feedback detour is about4.376mm shorter. Neither that
+improvement nor zero rule violations is analog/physical qualification.
+**43 native unconnected items remain. NOT FOR FABRICATION OR POWER.**
 
-Rebuild with `build_pico47.py --routing-checkpoint <checkpoint>`, then capture
-using `capture_pico47_checkpoint.py --require-complete-ground`. That additional
-gate requires complete actual ground membership and every named target, and was
-positively and negatively tested on native boards. All existing source/rule/
-geometry/library and original-pad-group guards remain unchanged.
+Fresh source replay and complete-ground recapture reproduce all counts, old
+pad groups and the critical enable chain. Use `build_pico47.py --routing-checkpoint`
+and `capture_pico47_checkpoint.py --require-complete-ground`. Read actual bound
+native project rules rather than applying one board's planning margins to another.
+The r6-named work directory contains diagnostics, not an accepted r6 package.
 
-Native CAD and generated evidence remain external/ignored. The older sections
-below are historical background, not current route or manufacturing approval.
+Native CAD/reports/manifests stay external or ignored. The older sections below
+are historical background, not current route or manufacturing approval.
 
 # Panda47 E0 — parallel-display redesign checkpoint
 

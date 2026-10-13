@@ -208,6 +208,13 @@ def inspect(candidate, donor):
         'Display_R813_to_PMIC_EN':joined('Display','R813',2,'U810',21),
         'Display_C804_ground_to_R812_ground':joined('Display','C804',2,'R812',2),
     }
+    # Report these routes independently of total airwire counts. The remaining
+    # audio-data route must not be inferred complete from the bit-clock result.
+    core_signal_connections = {
+        'display_logic_enable_U601_6_to_U404_B2': joined('Core', 'U601', 6, 'U404', 'B2'),
+        'audio_bit_clock_U501_16_to_U904_3': joined('Core', 'U501', 16, 'U904', 3),
+        'audio_data_U501_18_to_U904_4': joined('Core', 'U501', 18, 'U904', 4),
+    }
     # All existing Core functions not explicitly remapped must survive intact.
     changed = {'U501','J601','J602','R512','R513','U601'}
     preserved = 0
@@ -236,6 +243,7 @@ def inspect(candidate, donor):
               'pmic_direct_inhibit_native_binding':True, 'pmic_negative_ep_not_grounded':True,
               'large_inductor_actual_land_geometry':True, 'no_signal_tracks_on_In1':True,
               'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,
+              'core_signal_connections': core_signal_connections,
               'ground_return_connectivity': {
                   'Core': inspect_ground_returns(native['Core'], 'U501', '57', [('J601', '36'), ('J601', '38')]),
                   'Display': inspect_ground_returns(native['Display'], 'C804', '2', [('J820', '9'), ('J820', '22'), ('R809', '2'), ('R810', '2'), ('U810', '32'), ('U810', '41')]),
