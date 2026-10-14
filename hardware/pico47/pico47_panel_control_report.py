@@ -1,4 +1,4 @@
-"""Report three exact native panel-control connections independently of airwires.
+"""Report exact native panel-control connections independently of airwires.
 
 Connected names/net labels are not proof of joined copper. These checks describe
 native pad groups only, never timing, power integrity or fabrication permission.
@@ -7,14 +7,15 @@ LINKS = {
     'P47_CKV': (('R729', '2'), ('J601', '39')),
     'P47_SPV': (('R730', '2'), ('J601', '40')),
     'P47_XLE': (('R727', '2'), ('J601', '35')),
+    'P47_XSTL': (('R728', '2'), ('J601', '37')),
 }
 
 
 def summarize_panel_controls(pads, groups):
-    """Validate a complete six-pad inventory and its native connectivity partition."""
+    """Validate the complete eight-pad inventory and native connectivity partition."""
     expected = {identity: net for net, ends in LINKS.items() for identity in ends}
     if not isinstance(pads, list) or len(pads) != len(expected):
-        raise ValueError('Panel controls require all six exact native pads')
+        raise ValueError('Panel controls require every exact native endpoint pad')
     inventory, identities = {}, {}
     for pad in pads:
         if not isinstance(pad, dict):
