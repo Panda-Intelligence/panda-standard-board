@@ -6,19 +6,20 @@ finished-device maximum thickness of 7mm, including positive tolerances.
 The exact pack identity, complete panel suffix/assembly and finished tolerance
 stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
-Start with [the current dated handoff](hardware/pico47/E02-R5-SIGNAL-FEEDBACK-20261013.md)
+Start with [the current dated handoff](hardware/pico47/E02-R7-SPV-CLOSURE-20261014.md)
 and [the Pico47 source/build guide](hardware/pico47/README.md). Source code is
 under `hardware/pico47/`; generated native CAD, evidence and candidate packages
 remain in ignored `.work/` or the external `panda-board-deliverables` directory.
 The older Split-C1 / Product-D / Thin7 designs below are electrical donors or
 historical experiments, not the current product or approval to export/order it.
 
-Current r5 native checkpoint: **Core34 opens; Display9 opens; DRC errors,
-warnings, parity and ERC0**. Display logic enable and audio bit clock are now
-connected; audio data remains open. All237 ground pads retain their reference
-connections.43 non-ground unconnected items and physical qualification remain
-unfinished. The dated handoff records the shorter feedback detour, verified
-working delivery and fresh source replay. Continue captures with
+Current r7 native checkpoint: **Core 32 opens; Display 9 opens; DRC errors,
+warnings, parity and ERC are zero**. SPV is newly connected, and CKV/XLE/XSTL
+remain connected with shorter routes. All 237 ground pads retain their reference
+connections. A native audit verifies that all 9,429 other-net track/via items
+are unchanged. **41 non-ground unconnected items remain; not for fabrication or
+power.** The dated handoff records actual source replay, delivery archives and
+engineering limits. Continue with
 `capture_pico47_checkpoint.py --require-complete-ground`.
 
 Run source regressions without EDA or manufacturing side effects:

@@ -1,33 +1,37 @@
-# CURRENT ROUTING CONTINUATION — 2026-10-13 r5
+# CURRENT ROUTING CONTINUATION — 2026-10-14 r7: SPV CONNECTED
 
-Read `hardware/pico47/E02-R5-SIGNAL-FEEDBACK-20261013.md` first.
-Canonical validated engineering checkpoint:
-`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261013-r5/engineering-candidate`.
+Read `hardware/pico47/E02-R7-SPV-CLOSURE-20261014.md` first.
+Canonical dated engineering checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261014-r7/engineering-candidate`.
 The requested `panda47-e0-20261012/engineering-candidate` is its verified working
-copy. Prior r4 contents are preserved in sibling
-`engineering-candidate-pre-r5-archive-20261013`; all older archives remain.
+copy. Previous r6 is preserved in sibling
+`engineering-candidate-pre-r7-archive-20261014`; r5 and older archives remain.
 
-Native counts: Core34 opens, Display9 opens; both DRC errors/warnings/parity/ERC0.
-All eight named grounds and all237 GND pads remain reference-connected.
-Display-logic enable U601.6 -> U404.B2 and audio bit clock U501.16 -> U904.3 are
-connected; audio data U501.18 -> U904.4 is STILL OPEN. The VGH feedback detour was
-shortened by about4.376mm, not electrically qualified.43 native unconnected items
-remain. No fabrication, battery charging or panel-power permission.
+Fresh native counts: Core 32 opens, Display 9 opens; DRC errors/warnings/parity/ERC
+are zero. All four exact connector controls CKV/SPV/XLE/XSTL are now connected.
+All 237 ground pads and eight named ground targets remain reference-connected;
+the complete GPIO2/interconnect/R813/U810.EN21 chain is retained. There are still
+41 non-ground native unconnected items. No fabrication, charging or panel power.
 
-Fresh source rebuild/recapture with --require-complete-ground reproduced these
-counts and all previous native pad groups and enable-chain checks.519 distinct
-local source tests pass; Pico47's262 also pass under bundled KiCad Python.
-These are local results, not GitHub Actions. The source-bound native limits
-helper reads actual Core0.20mm vs Display0.50mm edge constraints; global minima
-are not effective per-net rules or process qualification. Native rules stay fixed.
+The adopted solution changes only four control nets. A separate native audit
+proved all 9,429 other-net track/via items identical to r6. XLE, CKV and XSTL are
+shorter; no supply/ground copper was moved and no project rules were weakened.
+Fresh combined capture, clean source rebuild and independent complete-ground
+recapture reproduced counts, all previous pad groups and all four control states.
+539 distinct local source tests passed; Pico47's 282 also passed under KiCad
+Python. These are not GitHub Actions results.
 
-Retain four layers/no In1 signal tracks, isolated negative PMIC EP, C804's exact
-return via, part/pad/layout identities and every existing physical connection.
-Use the complete-ground capture flag for all further accepted checkpoints.
-The `.work/pico47-r6-20261013/` directory holds resumed r5 validation and rejected
-further experiments; it is NOT a published r6 candidate. Do not promote newer-
-mtime/unread/failed plans. Keep generated CAD/evidence and trials ignored/external,
-packaging/ and unrelated worktrees untouched. Continue via reviewed PRs to main.
+Continue with `capture_pico47_checkpoint.py --require-complete-ground`. Preserve
+four layers/no In1 signal tracks, isolated negative PMIC EP, C804's prescribed
+return via, source parts/pads/placement/outline and native rules. Timing/current,
+analog feedback, exact battery/full panel, <=7mm fit and physical EVT remain open.
+The standalone inspector still writes generated netlists into its candidate;
+use fresh candidate copies for those exports, not published immutable packages.
+The unintegrated evidence-wrapper draft remains ignored and is not enabled.
+
+Generated native CAD/reports/manifests/experiments stay ignored or external.
+Preserve packaging/, unrelated worktrees and local changes. Use reviewed PRs to
+main and named accepted checkpoints, never a newer-mtime failed trial.
 
 # HISTORICAL ROUTING CONTINUATION: Pico47 E0.2 — 2026-10-12
 
