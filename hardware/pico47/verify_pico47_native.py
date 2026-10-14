@@ -15,6 +15,7 @@ sys.path.insert(0, str(LEGACY))
 from _split_c1_common import kicad_cli
 from pico47_contract import CONTRACT, validate, GPIO_PACKAGE, PANEL_PINS
 from pico47_ground_returns import inspect_ground_returns
+from pico47_panel_control_report import inspect_panel_control_links
 
 
 def sha(path):
@@ -244,6 +245,7 @@ def inspect(candidate, donor):
               'large_inductor_actual_land_geometry':True, 'no_signal_tracks_on_In1':True,
               'native_rule_sets_unchanged':True, 'critical_physical_connections':critical_connections,
               'core_signal_connections': core_signal_connections,
+              'core_panel_control_connections': inspect_panel_control_links(native['Core']),
               'ground_return_connectivity': {
                   'Core': inspect_ground_returns(native['Core'], 'U501', '57', [('J601', '36'), ('J601', '38')]),
                   'Display': inspect_ground_returns(native['Display'], 'C804', '2', [('J820', '9'), ('J820', '22'), ('R809', '2'), ('R810', '2'), ('U810', '32'), ('U810', '41')]),
