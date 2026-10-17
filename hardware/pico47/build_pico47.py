@@ -323,6 +323,15 @@ def create(out,donor):
                 _,x,y,a,rr=best;f.SetPosition(MM(x,y));f.SetOrientationDegrees(a);occupied.append(rr);placed.add(ref);new_boxes.append(rr)
             else:pending.append(ref)
         for i,ref in enumerate(pending):fps[name][ref].SetPosition(MM(90+(i%5)*10,10+(i//5)*10));fps[name][ref].SetOrientationDegrees(0)
+        if name == 'Display' and 'display_r801_placement_eco' in ordered_layout:
+            from pico47_r801_placement_eco import apply_r801_eco
+            apply_r801_eco(b, ordered_layout['display_r801_placement_eco'])
+        if name == 'Display' and 'display_testpoint_placement_eco' in ordered_layout:
+            from pico47_testpoint_placement_eco import apply_testpoint_eco
+            apply_testpoint_eco(b, ordered_layout['display_testpoint_placement_eco'])
+        if name == 'Display' and 'display_vcom_testpoint_placement_eco' in ordered_layout:
+            from pico47_vcom_testpoint_eco import apply_vcom_testpoint_eco
+            apply_vcom_testpoint_eco(b, ordered_layout['display_vcom_testpoint_placement_eco'])
         # Preserve only compatible native copper. Crossing the inserted20mm band
         # or an edited endpoint is deleted, never relabelled into a connection.
         kept=0;dropped=0;carried={}
