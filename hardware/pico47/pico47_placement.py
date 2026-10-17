@@ -60,6 +60,15 @@ def validate_layout(data):
     require(extra['manufacturing_process']=='RESIN_FILLED_AND_COPPER_CAPPED_VIA_IN_PAD'
             and extra['supplier_process_accepted'] is False,
             'Unverified via-in-pad manufacture must remain an explicit gate')
+    if 'display_r801_placement_eco' in data:
+        from pico47_r801_placement_eco import validate_r801_eco
+        validate_r801_eco(data['display_r801_placement_eco'])
+    if 'display_testpoint_placement_eco' in data:
+        from pico47_testpoint_placement_eco import validate_testpoint_eco
+        validate_testpoint_eco(data['display_testpoint_placement_eco'])
+    if 'display_vcom_testpoint_placement_eco' in data:
+        from pico47_vcom_testpoint_eco import validate_vcom_testpoint_eco
+        validate_vcom_testpoint_eco(data['display_vcom_testpoint_placement_eco'])
     return True
 
 

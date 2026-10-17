@@ -281,5 +281,102 @@
     "manufacturing_process": "RESIN_FILLED_AND_COPPER_CAPPED_VIA_IN_PAD",
     "supplier_process_accepted": false,
     "purpose": "Reconnect the C804/R812 ground-return island without undoing the verified HW_ARM_GPIO control routing. No clearance, spoke or hole-limit rule is relaxed."
+  },
+  "display_r801_placement_eco": {
+    "schema": "panda47-r801-backside-placement-eco-v1",
+    "reference": "R801",
+    "previous_source_layout_sha256": "c7c293dc2b73a52bed580fd2e33abec2dd0a7e9b99b1e271312050e9c4f3d058",
+    "before": [
+      28.0,
+      98.0,
+      0.0,
+      "F.Cu"
+    ],
+    "after": [
+      28.75,
+      97.75,
+      180.0,
+      "B.Cu"
+    ],
+    "pin_nets": {
+      "1": "P47_VGH",
+      "2": "P47_VGH_FB"
+    },
+    "requires_two_sided_assembly": true,
+    "assembly_height_and_process_qualified": false,
+    "manufacturing_release": false
+  },
+  "display_testpoint_placement_eco": {
+    "schema": "panda47-native-copper-testpoint-eco-v1",
+    "previous_source_layout_sha256": "e83121eb331615a332e310205760cf759e829a318d46ef3762caa3a41a02de4e",
+    "before": {
+      "TP801": [
+        27.25,
+        110.25,
+        0.0,
+        "F.Cu"
+      ],
+      "TP803": [
+        27.25,
+        108.0,
+        0.0,
+        "F.Cu"
+      ]
+    },
+    "after": {
+      "TP801": [
+        29.45,
+        96.05,
+        180.0,
+        "B.Cu"
+      ],
+      "TP803": [
+        13.65,
+        91.85,
+        180.0,
+        "B.Cu"
+      ]
+    },
+    "pin_nets": {
+      "TP801": {
+        "1": "P47_VGH"
+      },
+      "TP803": {
+        "1": "P47_VPOS"
+      }
+    },
+    "new_copper_or_vias_required": false,
+    "requires_backside_probe_access_review": true,
+    "physical_probe_access_qualified": false,
+    "manufacturing_release": false
+  },
+  "display_vcom_testpoint_placement_eco": {
+    "schema": "panda47-vcom-testpoint-eco-v1",
+    "previous_source_layout_sha256": "e419543aa6d03fe1eb6f6170dbb72c91b62b1b761644f02d66f06d500865a35d",
+    "before": {
+      "TP805": [
+        22.75,
+        108.0,
+        0.0,
+        "F.Cu"
+      ]
+    },
+    "after": {
+      "TP805": [
+        12.5,
+        103.0,
+        180.0,
+        "B.Cu"
+      ]
+    },
+    "pin_nets": {
+      "TP805": {
+        "1": "P47_VCOM"
+      }
+    },
+    "new_copper_or_vias_required": true,
+    "requires_backside_probe_access_review": true,
+    "physical_probe_access_qualified": false,
+    "manufacturing_release": false
   }
 }
