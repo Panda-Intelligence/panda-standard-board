@@ -1,3 +1,14 @@
+# Separate Panda47 HDI6 engineering variant
+
+**This checkout is the independent branch `hw/pico47-hdi6-v1`**, not the
+existing four-layer production-source `main`. See
+[HDI6 variant README](hardware/pico47-hdi6/README.md) and
+[HDI6 routing/manufacturing gates](hardware/pico47-hdi6/NEXT-STEPS.md).
+The new version has two six-layer KiCad boards and isolated external native
+evidence. No fabrication, PCBA order, charging or panel power is authorized.
+
+---
+
 # Current development entry — Panda47 / Pico47
 
 The current product is the **4.7-inch parallel E0470A01-family / Pico47 two-board

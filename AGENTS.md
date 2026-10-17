@@ -1,3 +1,14 @@
+# HDI6 BRANCH-ONLY OVERRIDE — 2026-10-17
+
+This checkout is **hw/pico47-hdi6-v1**, the user-authorized standalone
+six-layer variant. The previous four-layer Pico47 rules/handoff below remain
+historical requirements for `main`, not a directive to downgrade this variant.
+Read `hardware/pico47-hdi6/AGENTS.md` and its `README.md` before
+editing variant sources. Six-layer native engineering candidates must preserve
+all four-layer source/pad/copper/ground/safety constraints except the reviewed
+new layer allocation. Never merge it implicitly into main or approve fabrication
+just because a six-layer DRC report is clean.
+
 # CURRENT ROUTING CONTINUATION — 2026-10-14 r7: SPV CONNECTED
 
 Read `hardware/pico47/E02-R7-SPV-CLOSURE-20261014.md` first.

@@ -1,0 +1,92 @@
+{
+  "schema": "panda47-hdi6-variant-v1",
+  "variant_id": "pico47-hdi6-v1",
+  "revision": "E0.3-HDI6",
+  "status": "engineering-study",
+  "inherits_from": "hardware/pico47",
+  "baseline": {
+    "immutable_checkpoint": "panda47-e02-20261015-r12/engineering-candidate",
+    "core_pcb_sha256": "905e62bc82ee7d6fc6b9bf48e82afaf47620200d05b255524d2488fb6f224ea7",
+    "display_pcb_sha256": "be1b7259ef76d074add6dcd5eba347274c5987a693beddb8e69308b7849083ca",
+    "source_design_sha256": "c5a5282325314d69b51eb314664eb9dbc3d6fe6425ea698fdec6b435fdc588be",
+    "source_layout_sha256": "07980f5d4a7bd8e3841313ec89168e4d88c82cc3cc468495cb2910a82908cfd1"
+  },
+  "architecture": {
+    "boards": [
+      "Core",
+      "Display"
+    ],
+    "copper_layer_count": 6,
+    "nominal_board_thickness_mm": 0.8,
+    "layer_allocation": [
+      {
+        "layer": "F.Cu",
+        "purpose": "signal and components"
+      },
+      {
+        "layer": "In1.Cu",
+        "purpose": "solid_GND_reference"
+      },
+      {
+        "layer": "In2.Cu",
+        "purpose": "existing signals and power"
+      },
+      {
+        "layer": "In3.Cu",
+        "purpose": "new_signal_routing"
+      },
+      {
+        "layer": "In4.Cu",
+        "purpose": "new_GND_reference"
+      },
+      {
+        "layer": "B.Cu",
+        "purpose": "signal and components"
+      }
+    ],
+    "reference_ground_layers": [
+      "In1.Cu",
+      "In4.Cu"
+    ],
+    "no_non_ground_tracks_on": [
+      "In1.Cu",
+      "In4.Cu"
+    ],
+    "board_stackup_factory_confirmed": false,
+    "whole_device_max_finished_height_mm": 7,
+    "thickness_with_tolerance_mechanically_verified": false
+  },
+  "manufacturing": {
+    "process_target": "six_layer_hdi",
+    "copper_finish": "ENIG_candidate_pending_factory_confirmation",
+    "original_through_via_rules_preserved": true,
+    "microvia_and_pofv_policy": "requires_explicit_buried_blind_layer_span_and_factory_approval",
+    "proposed_minimum_drill_mm": 0.15,
+    "proposed_pofv_copper_diameter_mm": 0.25,
+    "proposed_filled_copper_capped_vias_only": true,
+    "standard_via_rule_relaxation_allowed": false,
+    "factory_stackup_confirmed": false,
+    "pofv_accepted_by_factory": false,
+    "c804_filled_capped_return_accepted": false
+  },
+  "inherited_hard_constraints": [
+    "same actual Pico 4.7-inch 1216x684 panel family",
+    "same actual replaceable 2050 mAh LCO battery pack",
+    "two PCB architecture, whole-device max 7 mm finished tolerances",
+    "USB-C bottom center; microSD right-lower edge",
+    "preserve touch, front-light, audio, IMU, RTC, SD",
+    "mainland component identity policy",
+    "GPIO2 -> interconnect -> R813 -> U810.EN21 direct hardware inhibit",
+    "U810 exposed pad 49 must not connect to GND",
+    "C804 prescribed filled/capped return via",
+    "all original connected pad groups and 237 native GND pads retained"
+  ],
+  "initial_open_items": {
+    "Core": 24,
+    "Display": 4
+  },
+  "source_replay_required": true,
+  "manufacturing_release": false,
+  "physical_qualification_complete": false,
+  "orders_submitted": false
+}
