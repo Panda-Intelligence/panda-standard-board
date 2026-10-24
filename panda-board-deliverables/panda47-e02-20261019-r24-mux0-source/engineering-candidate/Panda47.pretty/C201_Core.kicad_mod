@@ -1,0 +1,127 @@
+(footprint "C201_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "C201"
+		(at 0 1.1 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a46c75b9-be2b-4543-bca1-ffce099e036b")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "47n / CBOOT"
+		(at 0 -1.1 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "01308351-72dd-44ac-8351-fb1f7b6e95e1")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f4e4406a-1428-4fc1-aff2-c836c0f044f6")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "FH 47nF 50V X7R +/-10% 0603 bootstrap capacitor from SGM41513 BTST to SW; effective capacitance and switching qualification pending."
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "45ebba18-deec-400e-a94e-66ed823b921c")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "05fd7a2d-694a-4390-92f6-4ed2e9bdfaf7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0603B473K500NT"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cca8ef03-93f5-4368-83af-1f0868565ef8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C285123"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "637c7881-d200-473f-a865-1041a106ba4e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.45 -0.7)
+		(end 1.45 0.7)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "e7d16bd8-4a69-4664-a548-1d8da8379d12")
+	)
+	(fp_rect
+		(start -0.8 0.4)
+		(end 0.8 -0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "cd36bc50-1de7-412a-ac0d-b663483447bf")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0 180)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "fa01c5c5-d127-4736-974e-0d8e9a5d97cb")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0 180)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "8152bf2f-455a-41a8-97f4-b5a47c967eee")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,424 @@
+[
+  {
+    "serial": 1,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "133b4e04-e8d8-5489-8892-0ba8dab410b4",
+      "2d4ee8dd-7fe1-5d02-8946-e83fc696d132",
+      "665db165-53be-5f2f-b2ed-a72accb24b80",
+      "7685fe54-f919-5c2e-a747-5f4008e30d0f",
+      "a47175a7-949f-56c7-99f3-44710eef615f"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 2,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "45d2cd10-0db7-53fe-a327-06b40b959b57",
+      "4aad4da9-b03f-5c6e-9e8b-0253fed3d0b6",
+      "5cbe551a-b82c-59ce-bfbd-7b7b4b80add4",
+      "76d8b8fb-b995-5764-aef2-6a04b1f97459",
+      "aceaed08-7532-5586-adab-e2f7853a99b0"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 3,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "0bfe1d4a-e9c3-581a-8813-70aa731ddfc7",
+      "474fadb4-668c-5b1e-88a0-740fb2b21f2b",
+      "6ee542cf-4854-51e1-a07f-b6ff40f18020",
+      "6f4f84a0-8e5e-59cc-a875-da4222628736",
+      "75f41e65-5275-5750-9c89-59001c1e818c"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 4,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "3a1ed503-4f9f-5cde-b0f0-e078d1cd26e6",
+      "54183ec4-31f2-59e5-956d-31b53b18b2d7",
+      "8a41fac9-3935-5676-adaa-07f2feff5145",
+      "aa7b748c-26ff-533d-9c31-1007f3d2c995",
+      "b918d2ec-9aa2-5bf8-ab52-9a76e4e9836c"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 5,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "027e7ac8-b94c-5db5-a949-a6701d83fbf1",
+      "58f008e1-084c-5ffe-abbc-ecf7e5725683",
+      "6099c442-028e-58a3-a9aa-0c354e8fb37d",
+      "829b69c2-7e77-5418-8465-ff49e94117e6"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 6,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "18f3d83a-6cf5-56b5-a14b-7c20b7a92e44",
+      "77ab4837-045a-51f9-ae5c-12faf2d36c65",
+      "7a7b1d4b-bff3-545f-90f8-503716c13294",
+      "80a96ce6-d23a-5c91-ab16-4ca2aae68f37"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 7,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "0aa03af0-d336-5db7-8a3f-4693fc5178df",
+      "8e32ca5b-fd53-5a24-8562-7136287df818",
+      "f4ef4d4a-c92e-532e-b85e-03b79f87bef4"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 8,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "1210decb-b261-58f3-acfa-2451a6d90598",
+      "c240e913-e920-5d05-8352-79ad4bcf8a41",
+      "c51a3c44-4a62-5221-87b5-1f2244e42b5f"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 9,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "36ef09cd-62c6-5bad-b76e-f6f9df73cf01",
+      "9317dd40-437c-5e8d-b29e-8e3ece430332"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 10,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "2154a719-1f7a-5fdc-a1a7-cb2946371761",
+      "c6f12aa1-3008-5ff3-a864-1c9380a59e38"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 11,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "21788567-b523-52a2-ae6f-5cb77156aeef",
+      "cae689cc-681d-5e2e-89b9-8a162781408a"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 12,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "4b18214b-db7b-59f3-b347-d70292785f77",
+      "aa3edd57-908a-5f99-bb39-c344816d5a99"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 13,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "75357126-ce2f-531b-9b9c-25d06c55a814",
+      "a92d3607-baeb-546c-a845-738616079afc"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 14,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "1c3f968d-592f-5452-88ad-cc8d5c588951",
+      "cbd1ea77-a9a2-52a0-8e8a-75154759b83d"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 15,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "0efb106c-1f79-59de-be4a-64fbed023869",
+      "d3c7fbf6-01d1-552d-a9f1-3f616dda820b"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 16,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "bf7de614-2764-5ae4-8f06-bcbb01d1cb0e",
+      "cb0b3b1e-6426-59e8-ae78-4c406dfe0cdb"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 17,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "21d73976-23b4-530d-9e4a-612c5a651110",
+      "7614fa76-7189-56e3-b415-b1d214f2d1b6"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 18,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "04238cab-28e9-5b0e-ba5d-b91ef8b3d2a2",
+      "ad8c473d-93c5-5d5d-9cbd-c8f4cc6f3455"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 19,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "24225901-8237-5a16-b4e2-64ffee39ce9c",
+      "7db89e0e-8290-5604-96b6-bb89a401029e"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 20,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "80ad6ee8-f868-50ba-90bd-1242e710b5fe",
+      "d67950ee-9ba3-55e4-bf2b-fe96c2f07123"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 21,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "1764f335-a105-5908-ac1a-299219af76b6",
+      "693b60a7-1240-557f-9ca0-489dc7dd6d36"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 22,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "d6d15b5b-ddfd-5f13-9c7a-3be8e29154e3",
+      "daecf140-a946-51f1-bb79-3f7e48be8c7a"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 23,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "05d9a594-e709-5e43-8fa7-693277f23cac",
+      "dd5be4dc-ca2e-5583-895b-2185641d7004"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 24,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "053a0937-77a6-528d-a50b-5d65c958bf82",
+      "0ca738c3-b8f5-5cb7-9d67-fed1405db05b"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 25,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "32d01c39-022c-5543-baed-11c0ed81970e",
+      "7aa5bf9c-b2a4-5459-9656-1fe50ee2648c"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 26,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "3b5bee2a-3840-559f-82eb-12b7c2ed2f3d",
+      "caee66ba-8786-5e64-b4b0-6dac032c01ae"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 27,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "589aa84f-4e45-5d50-b758-0cb09f879546",
+      "7afd715f-f900-5fe4-81f5-7303731cd60a"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 28,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "c8735c33-d884-5264-b038-4b2fe602b640",
+      "e5eb98c3-fc37-574f-9fbd-ca967d7be22d"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 29,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "5141d853-a778-5772-932c-ce2fa86d36f9",
+      "8168ee35-bf5c-5ab6-9c6d-1f5e6b675c8d"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 30,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "14993a56-d73b-50e6-98e9-0c222b01f738",
+      "795d0654-ea18-5bb0-8f02-46fdadb2db4b"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 31,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "5e91abed-a752-5e09-b882-03b292c481e8",
+      "869d83d6-b921-59dd-8ede-1e89f54da897"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 32,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "2390e3bc-2ef8-5e6b-a38d-b88997520564",
+      "43e24317-974a-57ec-a75d-07b6e61bd22c"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 35,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "68addec8-0143-500e-9ce7-ede84ab6c09d"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 36,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "fc6885b1-dcb6-534c-9bd1-3c33c447af98"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 37,
+    "action": "remove_confirmed_track_tails",
+    "uuids": [
+      "c71a230e-affb-59d3-b319-e32d2273baf0"
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  },
+  {
+    "serial": 39,
+    "action": "shorten_only_original_line_segment",
+    "uuid": "00c699a3-f866-59bb-8234-93296094c7d3",
+    "replacement_uuid": "c56fda7e-1154-4a3f-b008-1deb8bc0b69d",
+    "shortened_endpoint": "start",
+    "old_start": [
+      59.315,
+      84.1
+    ],
+    "old_end": [
+      59.315,
+      82.15
+    ],
+    "new_endpoint": [
+      59.315,
+      83.125
+    ],
+    "native_errors": 0,
+    "opens": 16,
+    "all_prior_padgroups_preserved": true
+  }
+]

@@ -1,0 +1,155 @@
+(footprint "D202_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SGMICRO SGM05HU1ALXUGY2G/TR, August2024 Rev.A. Unidirectional5.5V VRWM;1=cathode/VBUS,2=anode/GND. Primary0.25x0.50mm lands at0.65mm pitch.5V USB sink only/no PD; board ESD, leakage and exact assembly supply pending.")
+	(tags "SGMICRO VBUS unidirectional cathode-pin1 UTDFN1006")
+	(property "Reference" "D202"
+		(at 0 -1.25 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5b84067e-d3ae-4304-b811-251227b0bc31")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SGM05HU1ALXUGY2G/TR"
+		(at 0 1.25 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5c4ce9fb-bd6e-4455-a0de-4e89f1efdf7e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.sg-micro.com/rect/assets/eb558bde-b3be-44cb-ae7e-2a8337e06580/SGM05HU1AL.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c12ca169-d0de-491c-b681-3a169c02d263")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "SGMICRO SGM05HU1ALXUGY2G/TR, August2024 Rev.A. Unidirectional5.5V VRWM;1=cathode/VBUS,2=anode/GND. Primary0.25x0.50mm lands at0.65mm pitch.5V USB sink only/no PD; board ESD, leakage and exact assembly supply pending."
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "489d23ea-9a53-44d2-b6cc-4873ea60ae8f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C55274065"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7e235f04-47ee-41a0-8bf2-cb2aab928e15")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "SGMICRO"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f35a021b-044c-4e3b-880e-14b8888c99a2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "SGM05HU1ALXUGY2G/TR"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1e0a592b-026c-4168-a11b-f1f387d62bfe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center -0.8 0)
+		(end -0.69 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "485dd4b0-fa8b-489c-8d67-e48fe3803ece")
+	)
+	(fp_rect
+		(start -0.75 -0.55)
+		(end 0.75 0.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "f645898a-adff-4e93-822a-6832fcb9b71e")
+	)
+	(fp_line
+		(start -0.4 -0.3)
+		(end -0.4 0.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "8a61d56e-cbd9-4f89-b7e3-95a8d58e41fe")
+	)
+	(fp_rect
+		(start -0.525 -0.325)
+		(end 0.525 0.325)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "78b249a0-617d-4ee5-8dae-dea188414a47")
+	)
+	(pad "1" smd rect
+		(at -0.325 0)
+		(size 0.25 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "14c557d3-35eb-4a26-b9c9-4f00cde87daf")
+	)
+	(pad "2" smd rect
+		(at 0.325 0)
+		(size 0.25 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "16fbe495-8611-4c97-b7f2-6e8857e44127")
+	)
+	(embedded_fonts no)
+)

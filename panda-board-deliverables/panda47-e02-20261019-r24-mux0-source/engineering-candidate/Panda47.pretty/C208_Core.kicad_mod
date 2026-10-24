@@ -1,0 +1,128 @@
+(footprint "C208_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "BQ25628E C208 provisional CSYS 22 uF 0805 engineering envelope. Not a supplier-approved land pattern or released BOM item.")
+	(property "Reference" "C208"
+		(at 0 -1.15 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d4afca0f-b2a5-49cc-ac16-56d533c75ceb")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "22u / CSYS2"
+		(at 0 1.15 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "15bc92d5-188d-4648-95c4-ea1519d1d128")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25628e.pdf"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4e8d4065-638b-4135-b22b-4b5620cbcba8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "BQ25628E CSYS2 22 uF; two 22-uF capacitors satisfy schematic-spec 3.5, engineering envelope and MPN/DC-bias pending review"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9945bc5f-9339-48aa-b1c8-686ef3ea0e4d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ba76a689-77eb-47fc-a30d-9ab042e90a81")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0805X226M250NT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d765186d-ba17-4a45-9def-6d145150b238")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C129303"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "afdc481a-3453-45aa-aa3a-d3d9c8d791f2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.25 -0.85)
+		(end 1.25 0.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "2dd006a9-4204-40a7-940d-6fcb687afeec")
+	)
+	(fp_rect
+		(start -1 -0.625)
+		(end 1 0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "98d09275-4ca6-4433-ac30-6dd9a05bc492")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.9 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "861a6a8a-d3a6-4dfb-9ae4-b86acab58765")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.9 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "b3ac294f-1196-4eb5-93d0-b32456848196")
+	)
+	(embedded_fonts no)
+)

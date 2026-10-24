@@ -1,0 +1,255 @@
+(footprint "U405_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SGMICRO WLCSP-0.9x0.9-4B-D; max body 0.93mm; recommended land 0.22mm at 0.5mm pitch; TX00541.000")
+	(tags "SGM2578SD WLCSP QOD RCB")
+	(property "Reference" "U405"
+		(at 0 -2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fcedab5f-749d-4a71-a76e-3727222ef730")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SGM2578SDYG/TR"
+		(at 0 1.25 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5b277007-2dde-4f5a-8296-0c3c35e3c963")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.sg-micro.com/product/SGM2578SD"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bb1d5178-eb57-4da1-b280-918545b5f6fe")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "SGMICRO SGM2578SDYG/TR; active-high 2A load switch with QOD; January 2026 Rev.A.2 p9 specifies RCB with ON high/low. WLCSP 0.5mm pitch, 0.22mm lands. Leakage/rise-time/RCB qualification pending."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ded4e6e6-b897-4e4b-9363-1ad40ea4959d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "SGMICRO"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eabdb6b7-b72d-4193-aa6c-a7890c3497b8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "SGM2578SDYG/TR"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2d68c2ca-13e4-445e-b579-f99359e21683")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f4de8411-8632-412e-9227-edf209824904")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyRoute" "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b5808149-5b0c-43bf-8d40-616273458ded")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaAssemblyStage" "SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "632d5f13-7c0a-4042-9dc3-4d1ceeeecb60")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyStatus" "JLC_REGISTRATION_AND_RECEIPT_PENDING"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3977323b-61da-4996-98a0-fc5a5d0b2be2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSourceURL" "https://www.sg-micro.com/product/SGM2578SD"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a25dfc43-e717-40ba-83de-89a9f66012d3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(solder_mask_margin 0.05)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center -0.62 -0.62)
+		(end -0.52 -0.62)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e47c7044-3bde-49cc-9d3c-f10fdc4cd439")
+	)
+	(fp_rect
+		(start -0.715 -0.715)
+		(end 0.715 0.715)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0279195e-acb4-45f5-a989-b800040aa6d1")
+	)
+	(fp_line
+		(start -0.465 -0.215)
+		(end -0.215 -0.465)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dbeee26c-6006-4bb5-b23e-33cad9894c39")
+	)
+	(fp_line
+		(start -0.465 0.465)
+		(end -0.465 -0.215)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "53b86c83-b4e0-47c2-8387-b034aeab434e")
+	)
+	(fp_line
+		(start -0.215 -0.465)
+		(end 0.465 -0.465)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0b680f9c-6995-4df6-a3d8-fcd910a2ac4c")
+	)
+	(fp_line
+		(start 0.465 -0.465)
+		(end 0.465 0.465)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e6b74178-1ff5-4af3-a184-21c2239a6a8f")
+	)
+	(fp_line
+		(start 0.465 0.465)
+		(end -0.465 0.465)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "da0f6ab8-0728-4624-aebc-3bced81d91b7")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "a0df025e-14fa-4508-8e31-ef2d64ab7c02")
+		(effects
+			(font
+				(size 0.18 0.18)
+				(thickness 0.027)
+			)
+		)
+	)
+	(pad "A1" smd circle
+		(at -0.25 -0.25)
+		(size 0.22 0.22)
+		(property pad_prop_bga)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d75af09e-8268-4274-a944-630a13d2bab0")
+	)
+	(pad "A2" smd circle
+		(at 0.25 -0.25)
+		(size 0.22 0.22)
+		(property pad_prop_bga)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e5bc522f-80fe-41e7-a054-4c0cfcb5f959")
+	)
+	(pad "B1" smd circle
+		(at -0.25 0.25)
+		(size 0.22 0.22)
+		(property pad_prop_bga)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "da3e42bb-7918-4b49-96c0-e1b60a416b16")
+	)
+	(pad "B2" smd circle
+		(at 0.25 0.25)
+		(size 0.22 0.22)
+		(property pad_prop_bga)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d82b72d1-37a9-49f3-8a56-eeef363583c7")
+	)
+	(embedded_fonts no)
+)

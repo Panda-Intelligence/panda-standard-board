@@ -1,0 +1,47 @@
+{
+  "baseline_checkpoint": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261018-r23-d3-source/engineering-candidate",
+  "sources": {
+    "Core": "/Users/isaac/workspace/AI/panda-standard-board/.work/pico47-fourlayer-resume-20261017/native-r23-mux0-final-replay",
+    "Display": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261018-r23-d3-source/engineering-candidate"
+  },
+  "native_counts": {
+    "Core": {
+      "drc_errors": 0,
+      "drc_warnings": 0,
+      "open": 16,
+      "parity": 0,
+      "erc": 0
+    },
+    "Display": {
+      "drc_errors": 0,
+      "drc_warnings": 0,
+      "open": 0,
+      "parity": 0,
+      "erc": 0
+    }
+  },
+  "critical_physical_connections": {
+    "Core_GPIO2_to_interconnect": true,
+    "Display_interconnect_to_R813": true,
+    "Display_R813_to_PMIC_EN": true,
+    "Display_C804_ground_to_R812_ground": true
+  },
+  "complete_ground_gate": {
+    "required": true,
+    "complete": true,
+    "boards": {
+      "Core": {
+        "ground_pads_connected": 169,
+        "named_ground_targets_connected": 2
+      },
+      "Display": {
+        "ground_pads_connected": 68,
+        "named_ground_targets_connected": 6
+      }
+    },
+    "scope": "native_ground_connectivity_only",
+    "manufacturing_release": false
+  },
+  "manufacturing_release": false,
+  "physical_qualification_complete": false
+}

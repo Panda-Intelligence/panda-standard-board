@@ -1,0 +1,107 @@
+(footprint "TP1_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SMD pad as test Point, diameter 1.5mm")
+	(tags "test point SMD pad")
+	(property "Reference" "TP1"
+		(at 0 1.648 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "98869336-a024-43fd-aca1-60eb08e17590")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Value" "VBUS_USB"
+		(at 0 -1.75 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1e6b4425-ff12-43e7-b26c-f7be5055f703")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3a722c13-34a8-4949-a856-cb90ad0d952a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Description" "Charger-input VBUS_USB solder test pad; this does not freeze the future USB connector-side exact VBUS fixture coordinate."
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d24c6cee-3eaa-45ad-ac18-abbc38a979db")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(sheetname "/")
+	(sheetfile "PANDA-STD-CORE-EVT.kicad_sch")
+	(attr exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center 0 0)
+		(end 0 -0.95)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "B.SilkS")
+		(uuid "8d1cbdf9-1eee-4e96-9255-e6bf4a0b504a")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.25 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "B.CrtYd")
+		(uuid "1cdacbd5-dc4e-402c-931f-66f7d458974e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 1.65 180)
+		(layer "B.Fab")
+		(uuid "1247ac16-f719-4ef7-9a98-3933b7200d7e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(pad "1" smd circle
+		(at 0 0)
+		(size 1.5 1.5)
+		(layers "B.Cu" "B.Mask")
+		(uuid "b81c8b1a-d55a-47e4-92a5-e03d1ca40eec")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,36 @@
+{
+  "schema": "panda47-external-routing-checkpoint-v1",
+  "source_design_sha256": "c5a5282325314d69b51eb314664eb9dbc3d6fe6425ea698fdec6b435fdc588be",
+  "source_layout_sha256": "07980f5d4a7bd8e3841313ec89168e4d88c82cc3cc468495cb2910a82908cfd1",
+  "boards": {
+    "Core": {
+      "counts": {
+        "drc_errors": 0,
+        "drc_warnings": 0,
+        "open": 16,
+        "parity": 0,
+        "erc": 0
+      },
+      "geometry_sha256": "29227dd522f9b724e03538e07ea7f5524fef7afb5408d20e8e55606ac2807f9a",
+      "pcb_sha256": "0dcaaa46e4bddd20ddf02cf16503aba0c758f3bd85debe383d200352d06101c8",
+      "schematic_sha256": "c2692fc5c2531a9792f99239affab44896fcc75be0f22be55035f262eee432ff",
+      "project_sha256": "f95075567f5f6dc7d1a20a8cff05d58a52b83eeb852cc11838614445797280cf",
+      "rules_sha256": "a01affc71b9e782b6197b0cb53f8c569572d7d4560bebbe35f6bbd0952d3249e"
+    },
+    "Display": {
+      "counts": {
+        "drc_errors": 0,
+        "drc_warnings": 0,
+        "open": 0,
+        "parity": 0,
+        "erc": 0
+      },
+      "geometry_sha256": "35353c0c6764b0a63f0dcb37c6436345adeb700e697a03f8d81db086735a2634",
+      "pcb_sha256": "27273daadceaa9e01d8ebb8571f7a2fec7f27928b05eef3ae22a4ab3e7416409",
+      "schematic_sha256": "d98020b1e37aa5203372535103165bfd43fba3adbf97f192e3824ee185bd9234",
+      "project_sha256": "2115ce9e8a3e5513d6bbca2340c354fea7c6244afc05f23f820920c0db29c445",
+      "rules_sha256": "769c04cc9316705a7b22316c1671abc4b0afd7038c261588c018a454b668c385"
+    }
+  },
+  "manufacturing_release": false
+}

@@ -1,0 +1,336 @@
+{
+  "date": "2026-10-19",
+  "author": "Codex",
+  "source": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261018-r23-d3-source/engineering-candidate",
+  "candidate": "/Users/isaac/workspace/AI/panda-standard-board/.work/pico47-fourlayer-resume-20261017/mux0-complete-ground-capture",
+  "changed_nets": [
+    "GPIO0",
+    "I2C_SDA",
+    "KEY_POWER_MCU",
+    "P47_BUS_OE_N",
+    "P47_D3_SRC",
+    "P47_D8_SRC",
+    "P47_MUX0",
+    "P47_MUX1",
+    "P47_MUX2",
+    "P47_XSTL_SRC"
+  ],
+  "unchanged_other_copper_items": 12296,
+  "unchanged_retained_original_copper": 14474,
+  "removed_original_copper": 300,
+  "added_copper": 705,
+  "removed_original_vias": {
+    "f95b86f7-0b4d-5970-af15-01092f858779": {
+      "net": "P47_MUX2",
+      "type": "via",
+      "width": 0.5,
+      "position": [
+        57.5,
+        83.975
+      ],
+      "drill": 0.25
+    },
+    "a98af7aa-9083-59d7-a0ce-57d1e9dba762": {
+      "net": "I2C_SDA",
+      "type": "via",
+      "width": 0.5,
+      "position": [
+        58.25,
+        98.55
+      ],
+      "drill": 0.25
+    },
+    "4ba40d8e-fbb6-5653-9f41-38d56c4e8061": {
+      "net": "P47_BUS_OE_N",
+      "type": "via",
+      "width": 0.5,
+      "position": [
+        59.8,
+        84.05
+      ],
+      "drill": 0.25
+    },
+    "e9c1f295-f32e-5eb4-8b70-663d135eab29": {
+      "net": "P47_MUX1",
+      "type": "via",
+      "width": 0.5,
+      "position": [
+        57.6,
+        83.3
+      ],
+      "drill": 0.25
+    },
+    "2ff63393-a6a6-56d5-bc38-39f539ce221c": {
+      "net": "P47_D3_SRC",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.6625,
+        82.6875
+      ],
+      "drill": 0.2
+    },
+    "1850fd1e-5ae0-5dcd-bd44-a2a069c89f0d": {
+      "net": "P47_D8_SRC",
+      "type": "via",
+      "width": 0.45,
+      "position": [
+        57.4,
+        97.775
+      ],
+      "drill": 0.25
+    },
+    "b7542d84-3c88-50bf-8ba0-bde426429c8c": {
+      "net": "KEY_POWER_MCU",
+      "type": "via",
+      "width": 0.5,
+      "position": [
+        57.65,
+        97.175
+      ],
+      "drill": 0.25
+    }
+  },
+  "new_vias": {
+    "6bbcb721-4b32-5b02-b134-88b83a3a3899": {
+      "net": "I2C_SDA",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        59.68,
+        82.89
+      ],
+      "drill": 0.2,
+      "uuid": "6bbcb721-4b32-5b02-b134-88b83a3a3899"
+    },
+    "f804b5da-3a56-582f-961d-1888e0c71c2f": {
+      "net": "I2C_SDA",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        59.075,
+        87.7
+      ],
+      "drill": 0.2,
+      "uuid": "f804b5da-3a56-582f-961d-1888e0c71c2f"
+    },
+    "8fd9a6f0-0d41-5472-b1fa-882229d12f23": {
+      "net": "P47_D3_SRC",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.6625,
+        82.0875
+      ],
+      "drill": 0.2,
+      "uuid": "8fd9a6f0-0d41-5472-b1fa-882229d12f23"
+    },
+    "28a27e59-4094-506c-947b-513be8d53a38": {
+      "net": "P47_BUS_OE_N",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        59.775,
+        82.325
+      ],
+      "drill": 0.2,
+      "uuid": "28a27e59-4094-506c-947b-513be8d53a38"
+    },
+    "74e99a82-c70a-51b9-aeed-7fd5bc8bf574": {
+      "net": "P47_D8_SRC",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        58.255,
+        96.895
+      ],
+      "drill": 0.2,
+      "uuid": "74e99a82-c70a-51b9-aeed-7fd5bc8bf574"
+    },
+    "ea6a527b-14d7-5395-a30b-f824f4e19ff8": {
+      "net": "KEY_POWER_MCU",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        58.365,
+        95.83
+      ],
+      "drill": 0.2,
+      "uuid": "ea6a527b-14d7-5395-a30b-f824f4e19ff8"
+    },
+    "3bf076db-371b-532a-a550-8c295357a356": {
+      "net": "P47_MUX0",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.665,
+        80.485
+      ],
+      "drill": 0.2,
+      "uuid": "3bf076db-371b-532a-a550-8c295357a356"
+    },
+    "817c6c0c-a15d-54bd-8cdd-456f416ec2fa": {
+      "net": "P47_MUX0",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        58.255,
+        97.495
+      ],
+      "drill": 0.2,
+      "uuid": "817c6c0c-a15d-54bd-8cdd-456f416ec2fa"
+    },
+    "a878242f-3d80-5d64-a078-42e4b11cbac4": {
+      "net": "P47_MUX0",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.1125,
+        88.9125
+      ],
+      "drill": 0.2,
+      "uuid": "a878242f-3d80-5d64-a078-42e4b11cbac4"
+    },
+    "c76c1023-9423-561f-9e75-642384649b12": {
+      "net": "P47_MUX0",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        59.5125,
+        88.35
+      ],
+      "drill": 0.2,
+      "uuid": "c76c1023-9423-561f-9e75-642384649b12"
+    },
+    "9aa41849-450a-5c33-9a46-c97958b81095": {
+      "net": "P47_MUX1",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.4375,
+        83.0375
+      ],
+      "drill": 0.2,
+      "uuid": "9aa41849-450a-5c33-9a46-c97958b81095"
+    },
+    "0dec9025-0ebd-5d23-b486-54cac9e9b6b4": {
+      "net": "P47_MUX2",
+      "type": "via",
+      "width": 0.4,
+      "position": [
+        57.4375,
+        83.8875
+      ],
+      "drill": 0.2,
+      "uuid": "0dec9025-0ebd-5d23-b486-54cac9e9b6b4"
+    }
+  },
+  "rules_schematics_display_libraries_parts_pads_placement_outline_unchanged": true,
+  "no_in1_signal_tracks": true,
+  "core_sha256": "0dcaaa46e4bddd20ddf02cf16503aba0c758f3bd85debe383d200352d06101c8",
+  "display_sha256": "27273daadceaa9e01d8ebb8571f7a2fec7f27928b05eef3ae22a4ab3e7416409",
+  "intent": "/Users/isaac/workspace/AI/panda-standard-board/.work/pico47-fourlayer-resume-20261017/core-r23-mux0-clean-r24.json",
+  "net_statistics": {
+    "GPIO0": {
+      "before": {
+        "track_length_mm": 35.815233,
+        "vias": 7
+      },
+      "after": {
+        "track_length_mm": 34.532684,
+        "vias": 7
+      }
+    },
+    "I2C_SDA": {
+      "before": {
+        "track_length_mm": 230.659856,
+        "vias": 16
+      },
+      "after": {
+        "track_length_mm": 230.677331,
+        "vias": 17
+      }
+    },
+    "KEY_POWER_MCU": {
+      "before": {
+        "track_length_mm": 91.582521,
+        "vias": 10
+      },
+      "after": {
+        "track_length_mm": 90.877522,
+        "vias": 10
+      }
+    },
+    "P47_BUS_OE_N": {
+      "before": {
+        "track_length_mm": 120.607651,
+        "vias": 14
+      },
+      "after": {
+        "track_length_mm": 121.611181,
+        "vias": 14
+      }
+    },
+    "P47_D3_SRC": {
+      "before": {
+        "track_length_mm": 19.830472,
+        "vias": 3
+      },
+      "after": {
+        "track_length_mm": 20.874406,
+        "vias": 3
+      }
+    },
+    "P47_D8_SRC": {
+      "before": {
+        "track_length_mm": 27.519648,
+        "vias": 5
+      },
+      "after": {
+        "track_length_mm": 29.92963,
+        "vias": 5
+      }
+    },
+    "P47_MUX0": {
+      "before": {
+        "track_length_mm": 0.060355,
+        "vias": 0
+      },
+      "after": {
+        "track_length_mm": 21.988657,
+        "vias": 4
+      }
+    },
+    "P47_MUX1": {
+      "before": {
+        "track_length_mm": 22.877565,
+        "vias": 2
+      },
+      "after": {
+        "track_length_mm": 20.795917,
+        "vias": 2
+      }
+    },
+    "P47_MUX2": {
+      "before": {
+        "track_length_mm": 36.245765,
+        "vias": 5
+      },
+      "after": {
+        "track_length_mm": 36.391476,
+        "vias": 5
+      }
+    },
+    "P47_XSTL_SRC": {
+      "before": {
+        "track_length_mm": 20.71158,
+        "vias": 2
+      },
+      "after": {
+        "track_length_mm": 20.568763,
+        "vias": 2
+      }
+    }
+  },
+  "manufacturing_release": false
+}
