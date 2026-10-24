@@ -1,0 +1,198 @@
+(footprint "J803_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "XKB X05A10H06G A2 p2: 6-pin dual-contact back-flip, 0.5mm pitch, 0.3mm FPC. Signal lands 0.3x0.8mm, anchors 0.4x0.8mm, rows 2.5mm apart. Conservative land/body envelope, not 3D model.")
+	(tags "XKB X05A10H06G FPC 6pin 0.5mm dual-contact A2")
+	(property "Reference" "J803"
+		(at 0.65 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "78767e5b-ccc4-4bee-83a6-ddc635ab0849")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "X05A10H06G"
+		(at 0 -4.298 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "58ae6a06-c052-4fbc-9f36-c946f1675ded")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20260407/3BDDFDA54F9DA860D59B5DD75ED63F9A.pdf"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7c9018c1-519d-4609-84a7-41bb3cd4ddc3")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Description" "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1799cc01-f062-4795-b1c2-f6782997c40a")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Manufacturer" "XKB Connection"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2aed4307-fe26-4636-984d-6fbb2777d0b3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "X05A10H06G"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "100c6896-8315-4dbd-9b99-c45da2565983")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C528032"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "58b21956-1eb1-434c-96b4-fe9ddab142d6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-C4D10A-TOUCH"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "73ce58c8-987f-434f-9381-33123a7bd519")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Qualification" "Manufacturer X05A10HXX p2 A2, ECN-P-2026011502 dated2026-01-15. Pin1 is left in standard top view; the native part is rotated180deg and moved2.5mm toward -Y so existing world signal positions and exact1..6 nets are retained. Signals0.3x0.8mm at0.5pitch, anchors0.4x0.8mm at+/-2.3mm; signal/anchor rows2.5mm apart. 0.3mm dual-contact FPC,0.5A/50V,closed height1.0+/-0.1mm,6pin open actuator1.55mm. FPC entry changes to -Y; actual FT01C folded tails, latch access, screw-head clearance and maximum mounted Z are not signed off. Procurement must verify A2 dimensions; mixed older drawing revisions are not accepted. No contact net is grounded/relabelled to fake fit."
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0cc422e1-6811-4719-8f69-89ac09cfe0cf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaModuleCompatibility" "E0 TOUCH/FRONTLIGHT ASSEMBLY PINOUT AND CONTACT SIDE UNCONFIRMED;NOT VERIFIED BY OLD FT01C DRAWING"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9a4018d1-3236-4bd9-97cd-04155e3ac1e3")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -2.9 -1.9)
+		(end 2.9 2.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "3e25dbf0-51e6-4409-a781-ef4cd81790fb")
+	)
+	(fp_rect
+		(start -2.65 -1.65)
+		(end 2.65 1.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "b7a2c7dd-9cf8-4fe4-90d9-76a2fba1cf71")
+	)
+	(pad "1" smd rect
+		(at -1.25 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0d9e8cfe-b34d-4ca2-b9a6-b9fd745e1ac4")
+	)
+	(pad "2" smd rect
+		(at -0.75 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a4ba2d2d-d1a9-4f88-a046-17ca55714d6a")
+	)
+	(pad "3" smd rect
+		(at -0.25 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c19a0f41-6e64-4946-b420-96d7df3c02e9")
+	)
+	(pad "4" smd rect
+		(at 0.25 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d21ef3e0-5399-4320-bb21-849ae63ed902")
+	)
+	(pad "5" smd rect
+		(at 0.75 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dd239d87-857b-4653-bfdf-cb5e7e73d1f9")
+	)
+	(pad "6" smd rect
+		(at 1.25 -1.25)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "92cc6ca5-c12a-4760-8116-2ff4dc954ff3")
+	)
+	(pad "S1" smd rect
+		(at -2.3 1.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d81e6d89-2bfd-4585-b0b9-5e841254a952")
+	)
+	(pad "S2" smd rect
+		(at 2.3 1.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "488b82d1-7c7a-4ec6-bf6b-60746ced60d2")
+	)
+	(embedded_fonts no)
+)

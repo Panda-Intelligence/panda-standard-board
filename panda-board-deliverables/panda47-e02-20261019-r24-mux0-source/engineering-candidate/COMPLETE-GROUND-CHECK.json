@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "complete": true,
+  "boards": {
+    "Core": {
+      "ground_pads_connected": 169,
+      "named_ground_targets_connected": 2
+    },
+    "Display": {
+      "ground_pads_connected": 68,
+      "named_ground_targets_connected": 6
+    }
+  },
+  "scope": "native_ground_connectivity_only",
+  "manufacturing_release": false
+}

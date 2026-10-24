@@ -1,0 +1,205 @@
+{
+  "source_ordered_layout_sha256": "07980f5d4a7bd8e3841313ec89168e4d88c82cc3cc468495cb2910a82908cfd1",
+  "ordered_data_links_physically_connected": 16,
+  "mcu_ground_paddle_vias_checked": 9,
+  "source_contract_sha256": "c5a5282325314d69b51eb314664eb9dbc3d6fe6425ea698fdec6b435fdc588be",
+  "gpio_pins_checked": 33,
+  "panel_contacts_checked": 40,
+  "interboard_contacts_checked": 60,
+  "mux_channels_checked": 8,
+  "unchanged_core_pad_functions_checked": 518,
+  "pmic_direct_inhibit_native_binding": true,
+  "pmic_negative_ep_not_grounded": true,
+  "large_inductor_actual_land_geometry": true,
+  "no_signal_tracks_on_In1": true,
+  "native_rule_sets_unchanged": true,
+  "critical_physical_connections": {
+    "Core_GPIO2_to_interconnect": true,
+    "Display_interconnect_to_R813": true,
+    "Display_R813_to_PMIC_EN": true,
+    "Display_C804_ground_to_R812_ground": true
+  },
+  "core_signal_connections": {
+    "display_logic_enable_U601_6_to_U404_B2": true,
+    "audio_bit_clock_U501_16_to_U904_3": true,
+    "audio_data_U501_18_to_U904_4": true
+  },
+  "core_panel_control_connections": {
+    "P47_CKV": {
+      "from_pad": "R729.2",
+      "to_pad": "J601.39",
+      "connected": true,
+      "evidence": "native_connected_pad_groups",
+      "scope": "connectivity_only_not_timing_or_fabrication"
+    },
+    "P47_SPV": {
+      "from_pad": "R730.2",
+      "to_pad": "J601.40",
+      "connected": true,
+      "evidence": "native_connected_pad_groups",
+      "scope": "connectivity_only_not_timing_or_fabrication"
+    },
+    "P47_XLE": {
+      "from_pad": "R727.2",
+      "to_pad": "J601.35",
+      "connected": true,
+      "evidence": "native_connected_pad_groups",
+      "scope": "connectivity_only_not_timing_or_fabrication"
+    },
+    "P47_XSTL": {
+      "from_pad": "R728.2",
+      "to_pad": "J601.37",
+      "connected": true,
+      "evidence": "native_connected_pad_groups",
+      "scope": "connectivity_only_not_timing_or_fabrication"
+    }
+  },
+  "ground_return_connectivity": {
+    "Core": {
+      "evidence": "native_connected_pad_groups",
+      "reference_pad": {
+        "uuid": "88017fca-7fbe-4a1e-894a-a4598c40b740",
+        "ref": "U501",
+        "pin": "57",
+        "net": "GND",
+        "position_mm": [
+          62.5,
+          96.5
+        ]
+      },
+      "ground_pad_count": 169,
+      "ground_group_count": 1,
+      "reference_group_pad_count": 169,
+      "all_ground_pads_connected_to_reference": true,
+      "unconnected_ground_pad_count": 0,
+      "groups_not_connected_to_reference": [],
+      "scope": "connectivity_only_not_physical_qualification",
+      "required_ground_targets": [
+        {
+          "uuid": "7749ffa8-d5a0-4285-a05f-bf6499d1329f",
+          "ref": "J601",
+          "pin": "36",
+          "net": "GND",
+          "position_mm": [
+            44.8,
+            103.95
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "28f14766-6a4c-4101-b927-e2988f250ca3",
+          "ref": "J601",
+          "pin": "38",
+          "net": "GND",
+          "position_mm": [
+            44.8,
+            104.95
+          ],
+          "connected_to_reference": true
+        }
+      ],
+      "required_ground_target_count": 2,
+      "connected_required_ground_target_count": 2,
+      "all_required_ground_targets_connected": true
+    },
+    "Display": {
+      "evidence": "native_connected_pad_groups",
+      "reference_pad": {
+        "uuid": "72fa9581-f1ef-4053-9642-ba66972d68b8",
+        "ref": "C804",
+        "pin": "2",
+        "net": "GND",
+        "position_mm": [
+          18.2,
+          105.0
+        ]
+      },
+      "ground_pad_count": 68,
+      "ground_group_count": 1,
+      "reference_group_pad_count": 68,
+      "all_ground_pads_connected_to_reference": true,
+      "unconnected_ground_pad_count": 0,
+      "groups_not_connected_to_reference": [],
+      "scope": "connectivity_only_not_physical_qualification",
+      "required_ground_targets": [
+        {
+          "uuid": "d32100c5-0fd5-4c38-b902-a7fdfb7029a2",
+          "ref": "J820",
+          "pin": "22",
+          "net": "GND",
+          "position_mm": [
+            18.25,
+            113.7
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "371c1f34-efe7-4f74-8f5b-4bff9c0018f5",
+          "ref": "J820",
+          "pin": "9",
+          "net": "GND",
+          "position_mm": [
+            11.75,
+            113.7
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "5c47e2da-1e2d-4522-aea2-7c5daedca93a",
+          "ref": "R809",
+          "pin": "2",
+          "net": "GND",
+          "position_mm": [
+            27.76,
+            112.0
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "65822d98-2b2f-4aac-ad05-33488b75aa6d",
+          "ref": "R810",
+          "pin": "2",
+          "net": "GND",
+          "position_mm": [
+            23.26,
+            112.0
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "5eb292ea-f657-4402-b48d-2395152fdbe8",
+          "ref": "U810",
+          "pin": "32",
+          "net": "GND",
+          "position_mm": [
+            18.45,
+            95.4
+          ],
+          "connected_to_reference": true
+        },
+        {
+          "uuid": "7b440531-3006-4fa9-9fc5-53a7c7e9ba4e",
+          "ref": "U810",
+          "pin": "41",
+          "net": "GND",
+          "position_mm": [
+            16.1,
+            93.05
+          ],
+          "connected_to_reference": true
+        }
+      ],
+      "required_ground_target_count": 6,
+      "connected_required_ground_target_count": 6,
+      "all_required_ground_targets_connected": true
+    }
+  },
+  "additional_filled_capped_ground_via_checked": true,
+  "physical_routing_complete": false,
+  "battery_pack_accepted": false,
+  "manufacturing_release": false,
+  "native_sha256": {
+    "Core": "0dcaaa46e4bddd20ddf02cf16503aba0c758f3bd85debe383d200352d06101c8",
+    "Display": "27273daadceaa9e01d8ebb8571f7a2fec7f27928b05eef3ae22a4ab3e7416409"
+  }
+}

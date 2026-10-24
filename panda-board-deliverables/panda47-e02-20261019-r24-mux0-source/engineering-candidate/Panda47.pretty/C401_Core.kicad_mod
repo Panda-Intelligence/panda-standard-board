@@ -1,0 +1,116 @@
+(footprint "C401_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "C401"
+		(at 0 -1.1 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "950973d2-bc62-4f67-80ae-0b03c1f9e5f1")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "22u / VIN"
+		(at 0 1.1 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3454acaf-9ed0-4ee9-92f0-1312f4fc1a6b")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fa062d18-f74f-47d1-80be-02c899f169d8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Unpolarized capacitor"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "57deb291-ec51-469f-9cba-221e673488db")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5eb51a88-c8f5-4a52-9337-e1a3d253c690")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0603X226M100NT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3a0bd150-20f7-4a0a-a145-65b2310d5795")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C60077"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d1e7e322-93a3-4cc9-aaed-dedca5ff8027")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "3bc07820-b2b3-4289-9433-c35e539b034f")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "20c52a06-3cd7-451e-b69e-834f5309f133")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "a93f3fb7-2520-4250-83a5-6e5fe295e1e9")
+	)
+	(embedded_fonts no)
+)

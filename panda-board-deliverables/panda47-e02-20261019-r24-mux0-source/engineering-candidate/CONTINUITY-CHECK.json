@@ -1,0 +1,14 @@
+{
+  "Core": {
+    "comparison": "reference/pad/position/net/copper-layers",
+    "previous_groups": 212,
+    "current_groups": 211,
+    "all_original_pad_groups_preserved": true
+  },
+  "Display": {
+    "comparison": "reference/pad/position/net/copper-layers",
+    "previous_groups": 90,
+    "current_groups": 90,
+    "all_original_pad_groups_preserved": true
+  }
+}

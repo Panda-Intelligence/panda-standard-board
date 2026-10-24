@@ -1,0 +1,236 @@
+(footprint "J503_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Bottom-side six-pin Tag-Connect debug/recovery A-stage candidate; M0/WP4/fixture validation pending.")
+	(tags "tag connect programming header pogo pins")
+	(property "Reference" "J503"
+		(at 0 -2.7 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "224e8c19-e478-4bf0-8cf8-2bbb669f9019")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Value" "TC2030-IDC-NL / DEBUG"
+		(at 0 2.3 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "50b61cc3-5723-4963-8667-194c411b1d77")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Datasheet" "https://www.tag-connect.com/product/tc2030-idc-nl/"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "74c597af-8c44-4880-b8af-491c96b3c239")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Description" "Bottom-side six-pin debug/recovery interface; ESP-Prog target mapping: 1 CHIP_PU, 2 3V3_AON, 3 UART0_RX, 4 GND, 5 UART0_TX, 6 GPIO0; A-stage candidate, M0/WP4/fixture validation pending."
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e1758603-1465-4cfd-befd-871c1e025c77")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(attr exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.905 -1.27)
+		(end -1.905 -0.635)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "f897fd7d-a119-4aa3-9b50-8b2b8e8d9853")
+	)
+	(fp_line
+		(start -1.27 -1.27)
+		(end -1.905 -1.27)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "c8f826f9-e079-4497-9cc4-3a0d9d161104")
+	)
+	(fp_line
+		(start -3.5 -2)
+		(end -3.5 2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd")
+		(uuid "6cdd2c5a-73f7-476d-88f9-15417216aa36")
+	)
+	(fp_line
+		(start -3.5 2)
+		(end 3.5 2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd")
+		(uuid "4a49d9b4-d129-4c1c-8c88-d7fba93b6995")
+	)
+	(fp_line
+		(start 3.5 -2)
+		(end -3.5 -2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd")
+		(uuid "765f2461-fa05-4d01-9397-389ea505035f")
+	)
+	(fp_line
+		(start 3.5 2)
+		(end 3.5 -2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd")
+		(uuid "77674000-8213-4058-9d65-44bc9da53f77")
+	)
+	(fp_text user "KEEPOUT"
+		(at 0 0 0)
+		(layer "Cmts.User")
+		(uuid "230a860e-a655-422d-b0da-5d20afc30615")
+		(effects
+			(font
+				(size 0.4 0.4)
+				(thickness 0.07)
+			)
+			(justify mirror)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "B.Fab")
+		(uuid "fa0337c1-64df-46e7-8a29-4302e45f9f94")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at -2.54 0)
+		(size 0.9906 0.9906)
+		(drill 0.9906)
+		(layers "*.Cu" "*.Mask")
+		(uuid "886a50e6-b980-4e04-8a5c-f168347e70a0")
+	)
+	(pad "" np_thru_hole circle
+		(at 2.54 -1.016)
+		(size 0.9906 0.9906)
+		(drill 0.9906)
+		(layers "*.Cu" "*.Mask")
+		(uuid "dc0f4895-035e-4a33-8da4-1d1b5d09a67f")
+	)
+	(pad "" np_thru_hole circle
+		(at 2.54 1.016)
+		(size 0.9906 0.9906)
+		(drill 0.9906)
+		(layers "*.Cu" "*.Mask")
+		(uuid "ce132dff-024a-434b-84c3-b9319a0bf9b0")
+	)
+	(pad "1" connect circle
+		(at -1.27 -0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "b081c71e-ff4d-45fa-9e8f-ea4dfc940687")
+	)
+	(pad "2" connect circle
+		(at -1.27 0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "541aa673-6fa9-4609-8aac-28bd3756547d")
+	)
+	(pad "3" connect circle
+		(at 0 -0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "4d7d671a-bf80-49ac-be79-19ae6d5a091f")
+	)
+	(pad "4" connect circle
+		(at 0 0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "a41bf6e5-e90d-4e79-af3a-d7c0b73a01da")
+	)
+	(pad "5" connect circle
+		(at 1.27 -0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "a7a3a1d2-1c65-4754-a612-b476362a16c6")
+	)
+	(pad "6" connect circle
+		(at 1.27 0.635)
+		(size 0.7874 0.7874)
+		(layers "B.Cu" "B.Mask")
+		(uuid "2b1bd07a-418c-4151-b8bd-70154c16c014")
+	)
+	(zone
+		(layer "B.Cu")
+		(uuid "7dd45518-899a-491b-875c-3533258a84ed")
+		(hatch full 0.508)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.254)
+		(keepout
+			(tracks allowed)
+			(vias not_allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints not_allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.508)
+			(thermal_bridge_width 0.508)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 1.27 0.635) (xy -1.27 0.635) (xy -1.27 -0.635) (xy 1.27 -0.635)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

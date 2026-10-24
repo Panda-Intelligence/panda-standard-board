@@ -1,0 +1,3127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/Users/isaac/workspace/AI/panda-standard-board/.work/pico47-fourlayer-resume-20261017/mux0-complete-ground-capture/Display.kicad_sch</source>
+    <date>2026-10-19T09:45:12</date>
+    <tool>Eeschema 10.0.5</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Display E0470A01 PARALLEL E0 / UNROUTED / NOT FOR FAB</title>
+        <company/>
+        <rev>P47-E0</rev>
+        <date/>
+        <source>Display.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C801">
+      <value>10u/10V/0805</value>
+      <footprint>Panda47:C801_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C801" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>84b4bc5d-0a29-5948-b036-4bb5fa01f4c5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C802">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C802_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C802" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e5affede-e57f-53f7-9506-cdc06a007197</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C803">
+      <value>10u/10V/0805</value>
+      <footprint>Panda47:C803_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C803" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>425dcd4f-0bf3-5a5b-9f08-f1bbec5a3838</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C804">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C804_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C804" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8063b456-93c0-529d-92d2-57c2a58c9d1f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C805">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C805_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C805" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7e82fac6-45eb-5f80-8630-8f276e53655b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C806">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C806_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C806" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1bf359cf-5457-5488-8db3-0da646ed6170</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C807">
+      <value>1u/50V/0805</value>
+      <footprint>Panda47:C807_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C807_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C807" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>edc64a71-15af-58f3-84e6-49a3a2f29c72</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C808">
+      <value>47n/50V/0805</value>
+      <footprint>Panda47:C808_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C808_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C808" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4ffe34d0-f143-5a54-ba68-5ef4943aef72</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C809">
+      <value>1u/50V/0805</value>
+      <footprint>Panda47:C809_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C809_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C809" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6089eeb9-657f-580d-8528-6daaf781d013</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C810">
+      <value>1u/50V/0805</value>
+      <footprint>Panda47:C810_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C810_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C810" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>531b4467-9137-59dc-bcd6-50249e90a636</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C811">
+      <value>47n/50V/0805</value>
+      <footprint>Panda47:C811_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C811_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C811" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>37959e38-2409-5c06-930e-7c94ebf6208c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C812">
+      <value>1u/50V/0805</value>
+      <footprint>Panda47:C812_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C812_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C812" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7b34cdb6-dfdd-5fe2-912f-9277158e759d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C813">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C813_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C813_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C813" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9acbf686-5c61-5c90-a865-999f030821eb</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C814">
+      <value>4.7u/25V/0805</value>
+      <footprint>Panda47:C814_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0805B475K250NT</field>
+        <field name="LCSC">C37818</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C814_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C814" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0805B475K250NT"/>
+      <property name="LCSC" value="C37818"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>49b523a0-595c-50c9-8b9a-694eceb7bfac</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C815">
+      <value>100n/25V/0402</value>
+      <footprint>Panda47:C815_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0402B104K250NT</field>
+        <field name="LCSC">C56392</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C815_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C815" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0402B104K250NT"/>
+      <property name="LCSC" value="C56392"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>86e1f231-257f-591a-b996-b42b67f549f9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C816">
+      <value>10u/10V/0805</value>
+      <footprint>Panda47:C816_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:C816_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C816" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6552beca-06c6-57a9-bce4-de62f8dfee78</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C817">
+      <value>100n/25V/0402</value>
+      <footprint>Panda47:C817_Display</footprint>
+      <description>Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">0402B104K250NT</field>
+        <field name="LCSC">C56392</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:C817_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.</field>
+      </fields>
+      <libsource lib="Panda7" part="C817" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="0402B104K250NT"/>
+      <property name="LCSC" value="C56392"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>501bab41-2b86-5f27-9e41-f3ea7f2387ef</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D801">
+      <value>MBR0530 / PEAK REVIEW</value>
+      <footprint>Panda47:D801_Display</footprint>
+      <datasheet>https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf</datasheet>
+      <description>Engineering0.5A/30V Schottky selection; surge/current-loss review pending.</description>
+      <fields>
+        <field name="Manufacturer">JSCJ</field>
+        <field name="MPN">MBR0530</field>
+        <field name="LCSC">C77336</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:D801_Display</field>
+        <field name="Datasheet">https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf</field>
+        <field name="Description">Engineering0.5A/30V Schottky selection; surge/current-loss review pending.</field>
+      </fields>
+      <libsource lib="Panda7" part="D801" description=""/>
+      <property name="Manufacturer" value="JSCJ"/>
+      <property name="MPN" value="MBR0530"/>
+      <property name="LCSC" value="C77336"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bfabe9c1-e86c-55a0-aa0a-f891da15f67b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D802">
+      <value>MBR0530 / PEAK REVIEW</value>
+      <footprint>Panda47:D802_Display</footprint>
+      <datasheet>https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf</datasheet>
+      <description>Engineering0.5A/30V Schottky selection; surge/current-loss review pending.</description>
+      <fields>
+        <field name="Manufacturer">JSCJ</field>
+        <field name="MPN">MBR0530</field>
+        <field name="LCSC">C77336</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:D802_Display</field>
+        <field name="Datasheet">https://www.jscj-elec.com/uploads/20230824/10ba8688a64e3c50c48de3718d3e3720.pdf</field>
+        <field name="Description">Engineering0.5A/30V Schottky selection; surge/current-loss review pending.</field>
+      </fields>
+      <libsource lib="Panda7" part="D802" description=""/>
+      <property name="Manufacturer" value="JSCJ"/>
+      <property name="MPN" value="MBR0530"/>
+      <property name="LCSC" value="C77336"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>81e1ca27-c6ff-5cbf-b554-c49f5ebde047</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D803">
+      <value>BAV99</value>
+      <footprint>Panda47:D803_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C68983.html</datasheet>
+      <description>Series diode pair for positive/negative charge pump; exact supplier latest diode drawing review remains open.</description>
+      <fields>
+        <field name="Manufacturer">JSCJ</field>
+        <field name="MPN">BAV99</field>
+        <field name="LCSC">C68983</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:D803_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C68983.html</field>
+        <field name="Description">Series diode pair for positive/negative charge pump; exact supplier latest diode drawing review remains open.</field>
+      </fields>
+      <libsource lib="Panda7" part="D803" description=""/>
+      <property name="Manufacturer" value="JSCJ"/>
+      <property name="MPN" value="BAV99"/>
+      <property name="LCSC" value="C68983"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b6949f6a-f6b0-58ec-b54d-3a0ede5c3199</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D804">
+      <value>BAV99</value>
+      <footprint>Panda47:D804_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C68983.html</datasheet>
+      <description>Series diode pair for positive/negative charge pump; exact supplier latest diode drawing review remains open.</description>
+      <fields>
+        <field name="Manufacturer">JSCJ</field>
+        <field name="MPN">BAV99</field>
+        <field name="LCSC">C68983</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:D804_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C68983.html</field>
+        <field name="Description">Series diode pair for positive/negative charge pump; exact supplier latest diode drawing review remains open.</field>
+      </fields>
+      <libsource lib="Panda7" part="D804" description=""/>
+      <property name="Manufacturer" value="JSCJ"/>
+      <property name="MPN" value="BAV99"/>
+      <property name="LCSC" value="C68983"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c87d83da-fc0e-5384-ae03-f02be46a14a0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J1">
+      <value>X05A10L40G / 40P FFC</value>
+      <footprint>Panda47:J1_Display</footprint>
+      <datasheet>https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</datasheet>
+      <description>E0 opposite-contact mapping; actual cable fold/length not yet qualified.</description>
+      <fields>
+        <field name="Manufacturer">XKB Connection</field>
+        <field name="MPN">X05A10L40G</field>
+        <field name="LCSC">C21261162</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:J1_Display</field>
+        <field name="Datasheet">https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</field>
+        <field name="Description">E0 opposite-contact mapping; actual cable fold/length not yet qualified.</field>
+      </fields>
+      <libsource lib="Panda7" part="J1" description=""/>
+      <property name="Manufacturer" value="XKB Connection"/>
+      <property name="MPN" value="X05A10L40G"/>
+      <property name="LCSC" value="C21261162"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7a51beb1-56e5-5c38-91ed-f518372c3ea8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+            <pin num="25"/>
+            <pin num="26"/>
+            <pin num="27"/>
+            <pin num="28"/>
+            <pin num="29"/>
+            <pin num="30"/>
+            <pin num="31"/>
+            <pin num="32"/>
+            <pin num="33"/>
+            <pin num="34"/>
+            <pin num="35"/>
+            <pin num="36"/>
+            <pin num="37"/>
+            <pin num="38"/>
+            <pin num="39"/>
+            <pin num="40"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J4">
+      <value>X05A10L20G / 20P FFC</value>
+      <footprint>Panda47:J4_Display</footprint>
+      <datasheet>https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</datasheet>
+      <description>E0 opposite-contact mapping; actual cable fold/length not yet qualified.</description>
+      <fields>
+        <field name="Manufacturer">XKB Connection</field>
+        <field name="MPN">X05A10L20G</field>
+        <field name="LCSC">C2880915</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:J4_Display</field>
+        <field name="Datasheet">https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</field>
+        <field name="Description">E0 opposite-contact mapping; actual cable fold/length not yet qualified.</field>
+      </fields>
+      <libsource lib="Panda7" part="J4" description=""/>
+      <property name="Manufacturer" value="XKB Connection"/>
+      <property name="MPN" value="X05A10L20G"/>
+      <property name="LCSC" value="C2880915"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5aaf14cc-a8ae-55a4-bcb7-f24b8ee40f77</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J820">
+      <value>X05A10L40G / E0470A01</value>
+      <footprint>Panda47:J820_Display</footprint>
+      <datasheet>https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</datasheet>
+      <description>40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</description>
+      <fields>
+        <field name="Manufacturer">XKB Connection</field>
+        <field name="MPN">X05A10L40G</field>
+        <field name="LCSC">C21261162</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:J820_Display</field>
+        <field name="Datasheet">https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</field>
+        <field name="Description">40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</field>
+      </fields>
+      <libsource lib="Panda7" part="J820" description=""/>
+      <property name="Manufacturer" value="XKB Connection"/>
+      <property name="MPN" value="X05A10L40G"/>
+      <property name="LCSC" value="C21261162"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>58a052c7-a533-5cf0-b48a-60857cc37cea</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+            <pin num="25"/>
+            <pin num="26"/>
+            <pin num="27"/>
+            <pin num="28"/>
+            <pin num="29"/>
+            <pin num="30"/>
+            <pin num="31"/>
+            <pin num="32"/>
+            <pin num="33"/>
+            <pin num="34"/>
+            <pin num="35"/>
+            <pin num="36"/>
+            <pin num="37"/>
+            <pin num="38"/>
+            <pin num="39"/>
+            <pin num="40"/>
+            <pin num="MP"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L801">
+      <value>4.7uH / MWSA0618S-4R7MT</value>
+      <footprint>Panda47:L801_Display</footprint>
+      <datasheet>https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf</datasheet>
+      <description>Manufacturer DCR62mOhm max,height1.8mm max; Isat columns Max/Typ4/5A and Irms3.5/4A. Do NOT rename a Max column as a guaranteed minimum. Startup/hot/short-circuit margin remains unqualified.</description>
+      <fields>
+        <field name="Manufacturer">Sunlord</field>
+        <field name="MPN">MWSA0618S-4R7MT</field>
+        <field name="LCSC">C408421</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:L801_Display</field>
+        <field name="Datasheet">https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf</field>
+        <field name="Description">Manufacturer DCR62mOhm max,height1.8mm max; Isat columns Max/Typ4/5A and Irms3.5/4A. Do NOT rename a Max column as a guaranteed minimum. Startup/hot/short-circuit margin remains unqualified.</field>
+      </fields>
+      <libsource lib="Panda7" part="L801" description=""/>
+      <property name="Manufacturer" value="Sunlord"/>
+      <property name="MPN" value="MWSA0618S-4R7MT"/>
+      <property name="LCSC" value="C408421"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ac720925-aebf-5120-be21-469957303c39</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L802">
+      <value>4.7uH / MWSA0618S-4R7MT</value>
+      <footprint>Panda47:L802_Display</footprint>
+      <datasheet>https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf</datasheet>
+      <description>Manufacturer DCR62mOhm max,height1.8mm max; Isat columns Max/Typ4/5A and Irms3.5/4A. Do NOT rename a Max column as a guaranteed minimum. Startup/hot/short-circuit margin remains unqualified.</description>
+      <fields>
+        <field name="Manufacturer">Sunlord</field>
+        <field name="MPN">MWSA0618S-4R7MT</field>
+        <field name="LCSC">C408421</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:L802_Display</field>
+        <field name="Datasheet">https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf</field>
+        <field name="Description">Manufacturer DCR62mOhm max,height1.8mm max; Isat columns Max/Typ4/5A and Irms3.5/4A. Do NOT rename a Max column as a guaranteed minimum. Startup/hot/short-circuit margin remains unqualified.</field>
+      </fields>
+      <libsource lib="Panda7" part="L802" description=""/>
+      <property name="Manufacturer" value="Sunlord"/>
+      <property name="MPN" value="MWSA0618S-4R7MT"/>
+      <property name="LCSC" value="C408421"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5d6caffc-b177-5848-ad1c-b8119f6733fd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R801">
+      <value>442k/0.1%</value>
+      <footprint>Panda47:R801_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R801" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>09a55ca9-5934-5efc-b96b-dc0c6d4829e0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R802">
+      <value>21k/0.1%</value>
+      <footprint>Panda47:R802_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R802" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b839cdcd-6289-57c1-97f6-1084ad520612</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R803">
+      <value>750k/0.1%</value>
+      <footprint>Panda47:R803_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R803" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2c4caf42-a88d-596d-9d8e-0be617b62f24</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R804">
+      <value>59k/0.1%</value>
+      <footprint>Panda47:R804_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R804" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d474e9ce-e970-51e8-a89a-a4d50302631f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R805">
+      <value>7.5k/1%</value>
+      <footprint>Panda47:R805_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R805" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>39dcae8f-316f-58c5-bbd1-4c57b999a833</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R806">
+      <value>36k/1%</value>
+      <footprint>Panda47:R806_Display</footprint>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:R806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R806" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>602fddaf-57b0-5d7f-8726-d0b276ea44f3</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R807">
+      <value>10k</value>
+      <footprint>Panda47:R807_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140215.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1002FT</field>
+        <field name="LCSC">C140215</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R807_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140215.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R807" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1002FT"/>
+      <property name="LCSC" value="C140215"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f5791bd7-cadd-5ef3-bf26-04d937a9b92d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R808">
+      <value>100k</value>
+      <footprint>Panda47:R808_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140219.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1003FT</field>
+        <field name="LCSC">C140219</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R808_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140219.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R808" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1003FT"/>
+      <property name="LCSC" value="C140219"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aa364f81-d535-5945-a952-3474edd6d803</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R809">
+      <value>100k</value>
+      <footprint>Panda47:R809_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140219.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1003FT</field>
+        <field name="LCSC">C140219</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R809_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140219.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R809" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1003FT"/>
+      <property name="LCSC" value="C140219"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f1dec0e9-474f-5808-993b-34b27c87a9ac</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R810">
+      <value>100k</value>
+      <footprint>Panda47:R810_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140219.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1003FT</field>
+        <field name="LCSC">C140219</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R810_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140219.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R810" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1003FT"/>
+      <property name="LCSC" value="C140219"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0bfd6458-3b48-5176-8b13-bc40f548b2b2</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R811">
+      <value>100k</value>
+      <footprint>Panda47:R811_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140219.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1003FT</field>
+        <field name="LCSC">C140219</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R811_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140219.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R811" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1003FT"/>
+      <property name="LCSC" value="C140219"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>65167bcf-c9b2-5c2f-80fb-0161b608761c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R812">
+      <value>100k</value>
+      <footprint>Panda47:R812_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140219.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1003FT</field>
+        <field name="LCSC">C140219</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R812_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140219.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R812" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1003FT"/>
+      <property name="LCSC" value="C140219"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00d3b064-b64b-58df-a656-ad375f7317b9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R813">
+      <value>1k</value>
+      <footprint>Panda47:R813_Display</footprint>
+      <datasheet>https://www.lcsc.com/product-detail/C140197.html</datasheet>
+      <description>Electrical value target; empty MPN means an actual exact domestic part is still required.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN">RC-02K1001FT</field>
+        <field name="LCSC">C140197</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:R813_Display</field>
+        <field name="Datasheet">https://www.lcsc.com/product-detail/C140197.html</field>
+        <field name="Description">Electrical value target; empty MPN means an actual exact domestic part is still required.</field>
+      </fields>
+      <libsource lib="Panda7" part="R813" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value="RC-02K1001FT"/>
+      <property name="LCSC" value="C140197"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c588d55e-4f42-52f8-8d1f-a19af86c6b27</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TH801">
+      <value>10k NTC / CURVE TO QUALIFY</value>
+      <footprint>Panda47:TH801_Display</footprint>
+      <description>Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.</description>
+      <fields>
+        <field name="Manufacturer">FH (Fenghua Advanced)</field>
+        <field name="MPN"/>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TH801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.</field>
+      </fields>
+      <libsource lib="Panda7" part="TH801" description=""/>
+      <property name="Manufacturer" value="FH (Fenghua Advanced)"/>
+      <property name="MPN" value=""/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e6264eec-ddfd-5615-9879-608fc066f495</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP801">
+      <value>P47_VGH</value>
+      <footprint>Panda47:TP801_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP801" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>95b2d95e-2885-5c59-9fe8-55e6362aa977</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP802">
+      <value>P47_VGL</value>
+      <footprint>Panda47:TP802_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP802" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27472c8b-30a0-559d-a78c-0e9384bedb4c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP803">
+      <value>P47_VPOS</value>
+      <footprint>Panda47:TP803_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP803" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d3059ed4-81f1-517f-8858-55ea7dcaa4a0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP804">
+      <value>P47_VNEG</value>
+      <footprint>Panda47:TP804_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP804" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0dfe3e9c-fd96-5a97-b1e8-9532dc3ac3ff</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP805">
+      <value>P47_VCOM</value>
+      <footprint>Panda47:TP805_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP805" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1d44124a-95df-5ff7-9aa7-b669024a41dd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP806">
+      <value>P47_BORDER_REVIEW</value>
+      <footprint>Panda47:TP806_Display</footprint>
+      <description>Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</description>
+      <fields>
+        <field name="Manufacturer">PCB fabricated terminal</field>
+        <field name="MPN">NOT_A_PURCHASED_PART</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:TP806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description">Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.</field>
+      </fields>
+      <libsource lib="Panda7" part="TP806" description=""/>
+      <property name="Manufacturer" value="PCB fabricated terminal"/>
+      <property name="MPN" value="NOT_A_PURCHASED_PART"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>22b6c583-3d25-52fe-a0dd-270c97c2b5f1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U810">
+      <value>SY7636ARMC</value>
+      <footprint>Panda47:U810_Display</footprint>
+      <datasheet>https://www.silergy.com/zh/productsview/sy7636armc</datasheet>
+      <description>Source-table exact pin map;TP/NC float. Exposed pad must NOT connect GND.2020 reference requires current manufacturer recheck; not authorized for power-on.</description>
+      <fields>
+        <field name="Manufacturer">Silergy</field>
+        <field name="MPN">SY7636ARMC</field>
+        <field name="LCSC"/>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">EXACT_SUPPLY_NOT_VERIFIED</field>
+        <field name="Footprint">Panda47:U810_Display</field>
+        <field name="Datasheet">https://www.silergy.com/zh/productsview/sy7636armc</field>
+        <field name="Description">Source-table exact pin map;TP/NC float. Exposed pad must NOT connect GND.2020 reference requires current manufacturer recheck; not authorized for power-on.</field>
+      </fields>
+      <libsource lib="Panda7" part="U810" description=""/>
+      <property name="Manufacturer" value="Silergy"/>
+      <property name="MPN" value="SY7636ARMC"/>
+      <property name="LCSC" value=""/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="EXACT_SUPPLY_NOT_VERIFIED"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2b0c7193-4105-5502-9234-eb5fa967c352</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+            <pin num="25"/>
+            <pin num="26"/>
+            <pin num="27"/>
+            <pin num="28"/>
+            <pin num="29"/>
+            <pin num="30"/>
+            <pin num="31"/>
+            <pin num="32"/>
+            <pin num="33"/>
+            <pin num="34"/>
+            <pin num="35"/>
+            <pin num="36"/>
+            <pin num="37"/>
+            <pin num="38"/>
+            <pin num="39"/>
+            <pin num="40"/>
+            <pin num="41"/>
+            <pin num="42"/>
+            <pin num="43"/>
+            <pin num="44"/>
+            <pin num="45"/>
+            <pin num="46"/>
+            <pin num="47"/>
+            <pin num="48"/>
+            <pin num="49"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U811">
+      <value>XL9535 / ADDRESS0x21</value>
+      <footprint>Panda47:U811_Display</footprint>
+      <datasheet>https://datasheet.lcsc.com/lcsc/2006030032_XINLUDA-XL9535_C561273.pdf</datasheet>
+      <description>Address A0=1,A1=A2=0. P00INPUT ONLY monitors HV_EN driven by nativeGPIO2 viaR813;P01VCOM_EN,P02MODE,P03XOE;P10PGOOD,P11HW_ARM inputs. Never drive P00. No old D control masks may be used.</description>
+      <fields>
+        <field name="Manufacturer">XINLUDA</field>
+        <field name="MPN">XL9535</field>
+        <field name="LCSC">C561273</field>
+        <field name="PandaRevision">E0</field>
+        <field name="PandaQualification">UNQUALIFIED_ELECTRICAL_CANDIDATE</field>
+        <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
+        <field name="Footprint">Panda47:U811_Display</field>
+        <field name="Datasheet">https://datasheet.lcsc.com/lcsc/2006030032_XINLUDA-XL9535_C561273.pdf</field>
+        <field name="Description">Address A0=1,A1=A2=0. P00INPUT ONLY monitors HV_EN driven by nativeGPIO2 viaR813;P01VCOM_EN,P02MODE,P03XOE;P10PGOOD,P11HW_ARM inputs. Never drive P00. No old D control masks may be used.</field>
+      </fields>
+      <libsource lib="Panda7" part="U811" description=""/>
+      <property name="Manufacturer" value="XINLUDA"/>
+      <property name="MPN" value="XL9535"/>
+      <property name="LCSC" value="C561273"/>
+      <property name="PandaRevision" value="E0"/>
+      <property name="PandaQualification" value="UNQUALIFIED_ELECTRICAL_CANDIDATE"/>
+      <property name="PandaSupplyStatus" value="CATALOG_IDENTITY_ONLY"/>
+      <property name="Sheetname" value="Display"/>
+      <property name="Sheetfile" value="Display.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>21d1faaf-3001-5355-b015-7f4006796e0f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Panda7" part="C801">
+      <fields>
+        <field name="Reference">C801</field>
+        <field name="Value">10u/10V/0805</field>
+        <field name="Footprint">Panda47:C801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C802">
+      <fields>
+        <field name="Reference">C802</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C803">
+      <fields>
+        <field name="Reference">C803</field>
+        <field name="Value">10u/10V/0805</field>
+        <field name="Footprint">Panda47:C803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C804">
+      <fields>
+        <field name="Reference">C804</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C805">
+      <fields>
+        <field name="Reference">C805</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C806">
+      <fields>
+        <field name="Reference">C806</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C807">
+      <fields>
+        <field name="Reference">C807</field>
+        <field name="Value">1u/50V/0805</field>
+        <field name="Footprint">Panda47:C807_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C808">
+      <fields>
+        <field name="Reference">C808</field>
+        <field name="Value">47n/50V/0805</field>
+        <field name="Footprint">Panda47:C808_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C809">
+      <fields>
+        <field name="Reference">C809</field>
+        <field name="Value">1u/50V/0805</field>
+        <field name="Footprint">Panda47:C809_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C810">
+      <fields>
+        <field name="Reference">C810</field>
+        <field name="Value">1u/50V/0805</field>
+        <field name="Footprint">Panda47:C810_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C811">
+      <fields>
+        <field name="Reference">C811</field>
+        <field name="Value">47n/50V/0805</field>
+        <field name="Footprint">Panda47:C811_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C812">
+      <fields>
+        <field name="Reference">C812</field>
+        <field name="Value">1u/50V/0805</field>
+        <field name="Footprint">Panda47:C812_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C813">
+      <fields>
+        <field name="Reference">C813</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C813_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C814">
+      <fields>
+        <field name="Reference">C814</field>
+        <field name="Value">4.7u/25V/0805</field>
+        <field name="Footprint">Panda47:C814_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C815">
+      <fields>
+        <field name="Reference">C815</field>
+        <field name="Value">100n/25V/0402</field>
+        <field name="Footprint">Panda47:C815_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C816">
+      <fields>
+        <field name="Reference">C816</field>
+        <field name="Value">10u/10V/0805</field>
+        <field name="Footprint">Panda47:C816_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="C817">
+      <fields>
+        <field name="Reference">C817</field>
+        <field name="Value">100n/25V/0402</field>
+        <field name="Footprint">Panda47:C817_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="D801">
+      <fields>
+        <field name="Reference">D801</field>
+        <field name="Value">MBR0530 / PEAK REVIEW</field>
+        <field name="Footprint">Panda47:D801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="D802">
+      <fields>
+        <field name="Reference">D802</field>
+        <field name="Value">MBR0530 / PEAK REVIEW</field>
+        <field name="Footprint">Panda47:D802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="D803">
+      <fields>
+        <field name="Reference">D803</field>
+        <field name="Value">BAV99</field>
+        <field name="Footprint">Panda47:D803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="K2" type="passive"/>
+        <pin num="3" name="K1_A2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="D804">
+      <fields>
+        <field name="Reference">D804</field>
+        <field name="Value">BAV99</field>
+        <field name="Footprint">Panda47:D804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="K2" type="passive"/>
+        <pin num="3" name="K1_A2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="J1">
+      <fields>
+        <field name="Reference">J1</field>
+        <field name="Value">X05A10L40G / 40P FFC</field>
+        <field name="Footprint">Panda47:J1_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+        <pin num="17" name="17" type="passive"/>
+        <pin num="18" name="18" type="passive"/>
+        <pin num="19" name="19" type="passive"/>
+        <pin num="20" name="20" type="passive"/>
+        <pin num="21" name="21" type="passive"/>
+        <pin num="22" name="22" type="passive"/>
+        <pin num="23" name="23" type="passive"/>
+        <pin num="24" name="24" type="passive"/>
+        <pin num="25" name="25" type="passive"/>
+        <pin num="26" name="26" type="passive"/>
+        <pin num="27" name="27" type="passive"/>
+        <pin num="28" name="28" type="passive"/>
+        <pin num="29" name="29" type="passive"/>
+        <pin num="30" name="30" type="passive"/>
+        <pin num="31" name="31" type="passive"/>
+        <pin num="32" name="32" type="passive"/>
+        <pin num="33" name="33" type="passive"/>
+        <pin num="34" name="34" type="passive"/>
+        <pin num="35" name="35" type="passive"/>
+        <pin num="36" name="36" type="passive"/>
+        <pin num="37" name="37" type="passive"/>
+        <pin num="38" name="38" type="passive"/>
+        <pin num="39" name="39" type="passive"/>
+        <pin num="40" name="40" type="passive"/>
+        <pin num="MP" name="MP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="J4">
+      <fields>
+        <field name="Reference">J4</field>
+        <field name="Value">X05A10L20G / 20P FFC</field>
+        <field name="Footprint">Panda47:J4_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+        <pin num="17" name="17" type="passive"/>
+        <pin num="18" name="18" type="passive"/>
+        <pin num="19" name="19" type="passive"/>
+        <pin num="20" name="20" type="passive"/>
+        <pin num="MP" name="MP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="J820">
+      <fields>
+        <field name="Reference">J820</field>
+        <field name="Value">X05A10L40G / E0470A01</field>
+        <field name="Footprint">Panda47:J820_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+        <pin num="17" name="17" type="passive"/>
+        <pin num="18" name="18" type="passive"/>
+        <pin num="19" name="19" type="passive"/>
+        <pin num="20" name="20" type="passive"/>
+        <pin num="21" name="21" type="passive"/>
+        <pin num="22" name="22" type="passive"/>
+        <pin num="23" name="23" type="passive"/>
+        <pin num="24" name="24" type="passive"/>
+        <pin num="25" name="25" type="passive"/>
+        <pin num="26" name="26" type="passive"/>
+        <pin num="27" name="27" type="passive"/>
+        <pin num="28" name="28" type="passive"/>
+        <pin num="29" name="29" type="passive"/>
+        <pin num="30" name="30" type="passive"/>
+        <pin num="31" name="31" type="passive"/>
+        <pin num="32" name="32" type="passive"/>
+        <pin num="33" name="33" type="passive"/>
+        <pin num="34" name="34" type="passive"/>
+        <pin num="35" name="35" type="passive"/>
+        <pin num="36" name="36" type="passive"/>
+        <pin num="37" name="37" type="passive"/>
+        <pin num="38" name="38" type="passive"/>
+        <pin num="39" name="39" type="passive"/>
+        <pin num="40" name="40" type="passive"/>
+        <pin num="MP" name="MP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="L801">
+      <fields>
+        <field name="Reference">L801</field>
+        <field name="Value">4.7uH / MWSA0618S-4R7MT</field>
+        <field name="Footprint">Panda47:L801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="L802">
+      <fields>
+        <field name="Reference">L802</field>
+        <field name="Value">4.7uH / MWSA0618S-4R7MT</field>
+        <field name="Footprint">Panda47:L802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R801">
+      <fields>
+        <field name="Reference">R801</field>
+        <field name="Value">442k/0.1%</field>
+        <field name="Footprint">Panda47:R801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R802">
+      <fields>
+        <field name="Reference">R802</field>
+        <field name="Value">21k/0.1%</field>
+        <field name="Footprint">Panda47:R802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R803">
+      <fields>
+        <field name="Reference">R803</field>
+        <field name="Value">750k/0.1%</field>
+        <field name="Footprint">Panda47:R803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R804">
+      <fields>
+        <field name="Reference">R804</field>
+        <field name="Value">59k/0.1%</field>
+        <field name="Footprint">Panda47:R804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R805">
+      <fields>
+        <field name="Reference">R805</field>
+        <field name="Value">7.5k/1%</field>
+        <field name="Footprint">Panda47:R805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R806">
+      <fields>
+        <field name="Reference">R806</field>
+        <field name="Value">36k/1%</field>
+        <field name="Footprint">Panda47:R806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R807">
+      <fields>
+        <field name="Reference">R807</field>
+        <field name="Value">10k</field>
+        <field name="Footprint">Panda47:R807_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R808">
+      <fields>
+        <field name="Reference">R808</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Panda47:R808_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R809">
+      <fields>
+        <field name="Reference">R809</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Panda47:R809_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R810">
+      <fields>
+        <field name="Reference">R810</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Panda47:R810_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R811">
+      <fields>
+        <field name="Reference">R811</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Panda47:R811_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R812">
+      <fields>
+        <field name="Reference">R812</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Panda47:R812_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="R813">
+      <fields>
+        <field name="Reference">R813</field>
+        <field name="Value">1k</field>
+        <field name="Footprint">Panda47:R813_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TH801">
+      <fields>
+        <field name="Reference">TH801</field>
+        <field name="Value">10k NTC / CURVE TO QUALIFY</field>
+        <field name="Footprint">Panda47:TH801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP801">
+      <fields>
+        <field name="Reference">TP801</field>
+        <field name="Value">P47_VGH</field>
+        <field name="Footprint">Panda47:TP801_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP802">
+      <fields>
+        <field name="Reference">TP802</field>
+        <field name="Value">P47_VGL</field>
+        <field name="Footprint">Panda47:TP802_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP803">
+      <fields>
+        <field name="Reference">TP803</field>
+        <field name="Value">P47_VPOS</field>
+        <field name="Footprint">Panda47:TP803_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP804">
+      <fields>
+        <field name="Reference">TP804</field>
+        <field name="Value">P47_VNEG</field>
+        <field name="Footprint">Panda47:TP804_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP805">
+      <fields>
+        <field name="Reference">TP805</field>
+        <field name="Value">P47_VCOM</field>
+        <field name="Footprint">Panda47:TP805_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="TP806">
+      <fields>
+        <field name="Reference">TP806</field>
+        <field name="Value">P47_BORDER_REVIEW</field>
+        <field name="Footprint">Panda47:TP806_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="U810">
+      <fields>
+        <field name="Reference">U810</field>
+        <field name="Value">SY7636ARMC</field>
+        <field name="Footprint">Panda47:U810_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="VREF" type="power_out"/>
+        <pin num="2" name="NC" type="no_connect"/>
+        <pin num="3" name="VNEG" type="power_out"/>
+        <pin num="4" name="VNEG_IN" type="power_in"/>
+        <pin num="5" name="NC" type="no_connect"/>
+        <pin num="6" name="NC" type="no_connect"/>
+        <pin num="7" name="VCC" type="power_out"/>
+        <pin num="8" name="AGND1" type="power_in"/>
+        <pin num="9" name="NC" type="no_connect"/>
+        <pin num="10" name="VIN" type="power_in"/>
+        <pin num="11" name="NC" type="no_connect"/>
+        <pin num="12" name="VCOM_EN" type="input"/>
+        <pin num="13" name="TP_FLOAT" type="no_connect"/>
+        <pin num="14" name="NC" type="no_connect"/>
+        <pin num="15" name="VCOM" type="power_out"/>
+        <pin num="16" name="NC" type="no_connect"/>
+        <pin num="17" name="SCL" type="input"/>
+        <pin num="18" name="SDA" type="bidirectional"/>
+        <pin num="19" name="NC" type="no_connect"/>
+        <pin num="20" name="NC" type="no_connect"/>
+        <pin num="21" name="EN" type="input"/>
+        <pin num="22" name="NC" type="no_connect"/>
+        <pin num="23" name="PGOOD" type="open_collector"/>
+        <pin num="24" name="VN_IN" type="power_in"/>
+        <pin num="25" name="VN_LX" type="output"/>
+        <pin num="26" name="VN" type="power_out"/>
+        <pin num="27" name="NC" type="no_connect"/>
+        <pin num="28" name="VEE_DRV" type="output"/>
+        <pin num="29" name="NC" type="no_connect"/>
+        <pin num="30" name="VEE_D" type="output"/>
+        <pin num="31" name="VEE_FB" type="input"/>
+        <pin num="32" name="PGND2" type="power_in"/>
+        <pin num="33" name="VDDH_FB" type="input"/>
+        <pin num="34" name="VDDH_D" type="output"/>
+        <pin num="35" name="VDDH_DIS" type="input"/>
+        <pin num="36" name="VDDH_DRV" type="output"/>
+        <pin num="37" name="NC" type="no_connect"/>
+        <pin num="38" name="TP_FLOAT" type="no_connect"/>
+        <pin num="39" name="TP_FLOAT" type="no_connect"/>
+        <pin num="40" name="VP_LX" type="output"/>
+        <pin num="41" name="PGND1" type="power_in"/>
+        <pin num="42" name="VP" type="power_out"/>
+        <pin num="43" name="NC" type="no_connect"/>
+        <pin num="44" name="VPOS" type="power_out"/>
+        <pin num="45" name="NC" type="no_connect"/>
+        <pin num="46" name="NC" type="no_connect"/>
+        <pin num="47" name="TS" type="input"/>
+        <pin num="48" name="AGND2" type="power_in"/>
+        <pin num="49" name="EP_NEGATIVE_ISOLATED" type="no_connect"/>
+      </pins>
+    </libpart>
+    <libpart lib="Panda7" part="U811">
+      <fields>
+        <field name="Reference">U811</field>
+        <field name="Value">XL9535 / ADDRESS0x21</field>
+        <field name="Footprint">Panda47:U811_Display</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="~{INT}" type="open_collector"/>
+        <pin num="2" name="A1" type="input"/>
+        <pin num="3" name="A2" type="input"/>
+        <pin num="4" name="P00_ENABLE_MONITOR" type="input"/>
+        <pin num="5" name="P01" type="bidirectional"/>
+        <pin num="6" name="P02" type="bidirectional"/>
+        <pin num="7" name="P03" type="bidirectional"/>
+        <pin num="8" name="P04" type="bidirectional"/>
+        <pin num="9" name="P05" type="bidirectional"/>
+        <pin num="10" name="P06" type="bidirectional"/>
+        <pin num="11" name="P07" type="bidirectional"/>
+        <pin num="12" name="GND" type="power_in"/>
+        <pin num="13" name="P10" type="bidirectional"/>
+        <pin num="14" name="P11" type="bidirectional"/>
+        <pin num="15" name="P12" type="bidirectional"/>
+        <pin num="16" name="P13" type="bidirectional"/>
+        <pin num="17" name="P14" type="bidirectional"/>
+        <pin num="18" name="P15" type="bidirectional"/>
+        <pin num="19" name="P16" type="bidirectional"/>
+        <pin num="20" name="P17" type="bidirectional"/>
+        <pin num="21" name="A0" type="input"/>
+        <pin num="22" name="SCL" type="input"/>
+        <pin num="23" name="SDA" type="bidirectional"/>
+        <pin num="24" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Panda7">
+      <uri>${KIPRJMOD}/Panda7.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="3V3_AON" class="Default">
+      <node ref="C817" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J4" pin="15" pinfunction="15_15" pintype="passive"/>
+      <node ref="J4" pin="16" pinfunction="16_16" pintype="passive"/>
+      <node ref="R807" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U811" pin="21" pinfunction="A0_21" pintype="input"/>
+      <node ref="U811" pin="24" pinfunction="VCC_24" pintype="power_in"/>
+    </net>
+    <net code="2" name="3V3_EPD_LOGIC" class="Default">
+      <node ref="J4" pin="11" pinfunction="11_11" pintype="passive"/>
+      <node ref="J4" pin="12" pinfunction="12_12" pintype="passive"/>
+      <node ref="J820" pin="11" pinfunction="11_11" pintype="passive"/>
+      <node ref="J820" pin="34" pinfunction="34_34" pintype="passive"/>
+      <node ref="J820" pin="5" pinfunction="5_5" pintype="passive"/>
+    </net>
+    <net code="3" name="EXP_INT" class="Default">
+      <node ref="J4" pin="6" pinfunction="6_6" pintype="passive"/>
+      <node ref="U811" pin="1" pinfunction="~{INT}_1" pintype="open_collector"/>
+    </net>
+    <net code="4" name="GND" class="Default">
+      <node ref="C801" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C802" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C803" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C804" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C805" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C806" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C807" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C809" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C810" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C812" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C813" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C814" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C815" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C816" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C817" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J1" pin="11" pinfunction="11_11" pintype="passive"/>
+      <node ref="J1" pin="13" pinfunction="13_13" pintype="passive"/>
+      <node ref="J1" pin="15" pinfunction="15_15" pintype="passive"/>
+      <node ref="J1" pin="17" pinfunction="17_17" pintype="passive"/>
+      <node ref="J1" pin="19" pinfunction="19_19" pintype="passive"/>
+      <node ref="J1" pin="21" pinfunction="21_21" pintype="passive"/>
+      <node ref="J1" pin="23" pinfunction="23_23" pintype="passive"/>
+      <node ref="J1" pin="25" pinfunction="25_25" pintype="passive"/>
+      <node ref="J1" pin="27" pinfunction="27_27" pintype="passive"/>
+      <node ref="J1" pin="29" pinfunction="29_29" pintype="passive"/>
+      <node ref="J1" pin="3" pinfunction="3_3" pintype="passive"/>
+      <node ref="J1" pin="31" pinfunction="31_31" pintype="passive"/>
+      <node ref="J1" pin="33" pinfunction="33_33" pintype="passive"/>
+      <node ref="J1" pin="35" pinfunction="35_35" pintype="passive"/>
+      <node ref="J1" pin="37" pinfunction="37_37" pintype="passive"/>
+      <node ref="J1" pin="39" pinfunction="39_39" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="5_5" pintype="passive"/>
+      <node ref="J1" pin="7" pinfunction="7_7" pintype="passive"/>
+      <node ref="J1" pin="9" pinfunction="9_9" pintype="passive"/>
+      <node ref="J1" pin="MP" pinfunction="MP_MP" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J4" pin="10" pinfunction="10_10" pintype="passive"/>
+      <node ref="J4" pin="13" pinfunction="13_13" pintype="passive"/>
+      <node ref="J4" pin="14" pinfunction="14_14" pintype="passive"/>
+      <node ref="J4" pin="17" pinfunction="17_17" pintype="passive"/>
+      <node ref="J4" pin="18" pinfunction="18_18" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J4" pin="3" pinfunction="3_3" pintype="passive"/>
+      <node ref="J4" pin="9" pinfunction="9_9" pintype="passive"/>
+      <node ref="J4" pin="MP" pinfunction="MP_MP" pintype="passive"/>
+      <node ref="J820" pin="12" pinfunction="12_12" pintype="passive"/>
+      <node ref="J820" pin="22" pinfunction="22_22" pintype="passive"/>
+      <node ref="J820" pin="9" pinfunction="9_9" pintype="passive"/>
+      <node ref="J820" pin="MP" pinfunction="MP_MP" pintype="passive"/>
+      <node ref="L802" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R802" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R806" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R808" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R809" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R810" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R811" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R812" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="TH801" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U810" pin="32" pinfunction="PGND2_32" pintype="power_in"/>
+      <node ref="U810" pin="41" pinfunction="PGND1_41" pintype="power_in"/>
+      <node ref="U810" pin="48" pinfunction="AGND2_48" pintype="power_in"/>
+      <node ref="U810" pin="8" pinfunction="AGND1_8" pintype="power_in"/>
+      <node ref="U811" pin="12" pinfunction="GND_12" pintype="power_in"/>
+      <node ref="U811" pin="2" pinfunction="A1_2" pintype="input"/>
+      <node ref="U811" pin="3" pinfunction="A2_3" pintype="input"/>
+    </net>
+    <net code="5" name="HW_ARM_GPIO" class="Default">
+      <node ref="J4" pin="5" pinfunction="5_5" pintype="passive"/>
+      <node ref="R813" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U811" pin="14" pinfunction="P11_14" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="I2C_SCL" class="Default">
+      <node ref="J4" pin="8" pinfunction="8_8" pintype="passive"/>
+      <node ref="U810" pin="17" pinfunction="SCL_17" pintype="input"/>
+      <node ref="U811" pin="22" pinfunction="SCL_22" pintype="input"/>
+    </net>
+    <net code="7" name="I2C_SDA" class="Default">
+      <node ref="J4" pin="7" pinfunction="7_7" pintype="passive"/>
+      <node ref="U810" pin="18" pinfunction="SDA_18" pintype="bidirectional"/>
+      <node ref="U811" pin="23" pinfunction="SDA_23" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="P47_BORDER_REVIEW" class="Default">
+      <node ref="J820" pin="40" pinfunction="40_40" pintype="passive"/>
+      <node ref="TP806" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="9" name="P47_CKV" class="Default">
+      <node ref="J1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J820" pin="7" pinfunction="7_7" pintype="passive"/>
+    </net>
+    <net code="10" name="P47_D0" class="Default">
+      <node ref="J1" pin="40" pinfunction="40_40" pintype="passive"/>
+      <node ref="J820" pin="14" pinfunction="14_14" pintype="passive"/>
+    </net>
+    <net code="11" name="P47_D1" class="Default">
+      <node ref="J1" pin="38" pinfunction="38_38" pintype="passive"/>
+      <node ref="J820" pin="15" pinfunction="15_15" pintype="passive"/>
+    </net>
+    <net code="12" name="P47_D2" class="Default">
+      <node ref="J1" pin="36" pinfunction="36_36" pintype="passive"/>
+      <node ref="J820" pin="16" pinfunction="16_16" pintype="passive"/>
+    </net>
+    <net code="13" name="P47_D3" class="Default">
+      <node ref="J1" pin="34" pinfunction="34_34" pintype="passive"/>
+      <node ref="J820" pin="17" pinfunction="17_17" pintype="passive"/>
+    </net>
+    <net code="14" name="P47_D4" class="Default">
+      <node ref="J1" pin="32" pinfunction="32_32" pintype="passive"/>
+      <node ref="J820" pin="18" pinfunction="18_18" pintype="passive"/>
+    </net>
+    <net code="15" name="P47_D5" class="Default">
+      <node ref="J1" pin="30" pinfunction="30_30" pintype="passive"/>
+      <node ref="J820" pin="19" pinfunction="19_19" pintype="passive"/>
+    </net>
+    <net code="16" name="P47_D6" class="Default">
+      <node ref="J1" pin="28" pinfunction="28_28" pintype="passive"/>
+      <node ref="J820" pin="20" pinfunction="20_20" pintype="passive"/>
+    </net>
+    <net code="17" name="P47_D7" class="Default">
+      <node ref="J1" pin="26" pinfunction="26_26" pintype="passive"/>
+      <node ref="J820" pin="21" pinfunction="21_21" pintype="passive"/>
+    </net>
+    <net code="18" name="P47_D8" class="Default">
+      <node ref="J1" pin="24" pinfunction="24_24" pintype="passive"/>
+      <node ref="J820" pin="23" pinfunction="23_23" pintype="passive"/>
+    </net>
+    <net code="19" name="P47_D9" class="Default">
+      <node ref="J1" pin="22" pinfunction="22_22" pintype="passive"/>
+      <node ref="J820" pin="24" pinfunction="24_24" pintype="passive"/>
+    </net>
+    <net code="20" name="P47_D10" class="Default">
+      <node ref="J1" pin="20" pinfunction="20_20" pintype="passive"/>
+      <node ref="J820" pin="25" pinfunction="25_25" pintype="passive"/>
+    </net>
+    <net code="21" name="P47_D11" class="Default">
+      <node ref="J1" pin="18" pinfunction="18_18" pintype="passive"/>
+      <node ref="J820" pin="26" pinfunction="26_26" pintype="passive"/>
+    </net>
+    <net code="22" name="P47_D12" class="Default">
+      <node ref="J1" pin="16" pinfunction="16_16" pintype="passive"/>
+      <node ref="J820" pin="27" pinfunction="27_27" pintype="passive"/>
+    </net>
+    <net code="23" name="P47_D13" class="Default">
+      <node ref="J1" pin="14" pinfunction="14_14" pintype="passive"/>
+      <node ref="J820" pin="28" pinfunction="28_28" pintype="passive"/>
+    </net>
+    <net code="24" name="P47_D14" class="Default">
+      <node ref="J1" pin="12" pinfunction="12_12" pintype="passive"/>
+      <node ref="J820" pin="29" pinfunction="29_29" pintype="passive"/>
+    </net>
+    <net code="25" name="P47_D15" class="Default">
+      <node ref="J1" pin="10" pinfunction="10_10" pintype="passive"/>
+      <node ref="J820" pin="30" pinfunction="30_30" pintype="passive"/>
+    </net>
+    <net code="26" name="P47_HV_EN" class="Default">
+      <node ref="R808" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R813" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U810" pin="21" pinfunction="EN_21" pintype="input"/>
+      <node ref="U811" pin="4" pinfunction="P00_ENABLE_MONITOR_4" pintype="input"/>
+    </net>
+    <net code="27" name="P47_MODE" class="Default">
+      <node ref="J820" pin="6" pinfunction="6_6" pintype="passive"/>
+      <node ref="R810" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U811" pin="6" pinfunction="P02_6" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="P47_PGOOD" class="Default">
+      <node ref="J4" pin="4" pinfunction="4_4" pintype="passive"/>
+      <node ref="R807" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="23" pinfunction="PGOOD_23" pintype="open_collector"/>
+      <node ref="U811" pin="13" pinfunction="P10_13" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="P47_PUMP_NEG" class="Default">
+      <node ref="C811" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D804" pin="3" pinfunction="K1_A2_3" pintype="passive"/>
+    </net>
+    <net code="30" name="P47_PUMP_POS" class="Default">
+      <node ref="C808" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D803" pin="3" pinfunction="K1_A2_3" pintype="passive"/>
+    </net>
+    <net code="31" name="P47_SPV" class="Default">
+      <node ref="J1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J820" pin="8" pinfunction="8_8" pintype="passive"/>
+    </net>
+    <net code="32" name="P47_TS" class="Default">
+      <node ref="R805" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R806" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TH801" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="47" pinfunction="TS_47" pintype="input"/>
+    </net>
+    <net code="33" name="P47_VCC" class="Default">
+      <node ref="C814" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="7" pinfunction="VCC_7" pintype="power_out"/>
+    </net>
+    <net code="34" name="P47_VCOM" class="Default">
+      <node ref="C813" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J820" pin="10" pinfunction="10_10" pintype="passive"/>
+      <node ref="TP805" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="15" pinfunction="VCOM_15" pintype="power_out"/>
+    </net>
+    <net code="35" name="P47_VCOM_EN" class="Default">
+      <node ref="R809" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="12" pinfunction="VCOM_EN_12" pintype="input"/>
+      <node ref="U811" pin="5" pinfunction="P01_5" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="P47_VEE_BASE" class="Default">
+      <node ref="C810" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D804" pin="2" pinfunction="K2_2" pintype="passive"/>
+      <node ref="U810" pin="30" pinfunction="VEE_D_30" pintype="output"/>
+    </net>
+    <net code="37" name="P47_VEE_DRV" class="Default">
+      <node ref="C811" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U810" pin="28" pinfunction="VEE_DRV_28" pintype="output"/>
+    </net>
+    <net code="38" name="P47_VEE_FB" class="Default">
+      <node ref="R803" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R804" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="31" pinfunction="VEE_FB_31" pintype="input"/>
+    </net>
+    <net code="39" name="P47_VGH" class="Default">
+      <node ref="C809" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D803" pin="2" pinfunction="K2_2" pintype="passive"/>
+      <node ref="J820" pin="3" pinfunction="3_3" pintype="passive"/>
+      <node ref="R801" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP801" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="35" pinfunction="VDDH_DIS_35" pintype="input"/>
+    </net>
+    <net code="40" name="P47_VGH_BASE" class="Default">
+      <node ref="C807" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D803" pin="1" pinfunction="A1_1" pintype="passive"/>
+      <node ref="U810" pin="34" pinfunction="VDDH_D_34" pintype="output"/>
+    </net>
+    <net code="41" name="P47_VGH_DRV" class="Default">
+      <node ref="C808" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U810" pin="36" pinfunction="VDDH_DRV_36" pintype="output"/>
+    </net>
+    <net code="42" name="P47_VGH_FB" class="Default">
+      <node ref="R801" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R802" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="33" pinfunction="VDDH_FB_33" pintype="input"/>
+    </net>
+    <net code="43" name="P47_VGL" class="Default">
+      <node ref="C812" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D804" pin="1" pinfunction="A1_1" pintype="passive"/>
+      <node ref="J820" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R803" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R812" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP802" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="44" name="P47_VN" class="Default">
+      <node ref="C804" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D802" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="U810" pin="26" pinfunction="VN_26" pintype="power_out"/>
+      <node ref="U810" pin="4" pinfunction="VNEG_IN_4" pintype="power_in"/>
+    </net>
+    <net code="45" name="P47_VNEG" class="Default">
+      <node ref="C806" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J820" pin="38" pinfunction="38_38" pintype="passive"/>
+      <node ref="TP804" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="3" pinfunction="VNEG_3" pintype="power_out"/>
+    </net>
+    <net code="46" name="P47_VN_LX" class="Default">
+      <node ref="D802" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="L802" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="25" pinfunction="VN_LX_25" pintype="output"/>
+    </net>
+    <net code="47" name="P47_VP" class="Default">
+      <node ref="C802" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D801" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="U810" pin="42" pinfunction="VP_42" pintype="power_out"/>
+    </net>
+    <net code="48" name="P47_VPOS" class="Default">
+      <node ref="C805" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J820" pin="36" pinfunction="36_36" pintype="passive"/>
+      <node ref="TP803" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="44" pinfunction="VPOS_44" pintype="power_out"/>
+    </net>
+    <net code="49" name="P47_VP_LX" class="Default">
+      <node ref="D801" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="L801" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U810" pin="40" pinfunction="VP_LX_40" pintype="output"/>
+    </net>
+    <net code="50" name="P47_VREF" class="Default">
+      <node ref="C815" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R804" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R805" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="1" pinfunction="VREF_1" pintype="power_out"/>
+    </net>
+    <net code="51" name="P47_XCL" class="Default">
+      <node ref="J1" pin="8" pinfunction="8_8" pintype="passive"/>
+      <node ref="J820" pin="13" pinfunction="13_13" pintype="passive"/>
+    </net>
+    <net code="52" name="P47_XLE" class="Default">
+      <node ref="J1" pin="6" pinfunction="6_6" pintype="passive"/>
+      <node ref="J820" pin="32" pinfunction="32_32" pintype="passive"/>
+    </net>
+    <net code="53" name="P47_XOE" class="Default">
+      <node ref="J820" pin="33" pinfunction="33_33" pintype="passive"/>
+      <node ref="R811" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U811" pin="7" pinfunction="P03_7" pintype="bidirectional"/>
+    </net>
+    <net code="54" name="P47_XSTL" class="Default">
+      <node ref="J1" pin="4" pinfunction="4_4" pintype="passive"/>
+      <node ref="J820" pin="31" pinfunction="31_31" pintype="passive"/>
+    </net>
+    <net code="55" name="VSYS_RAW" class="Default">
+      <node ref="C801" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C803" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C816" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J4" pin="19" pinfunction="19_19" pintype="passive"/>
+      <node ref="J4" pin="20" pinfunction="20_20" pintype="passive"/>
+      <node ref="L801" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U810" pin="10" pinfunction="VIN_10" pintype="power_in"/>
+      <node ref="U810" pin="24" pinfunction="VN_IN_24" pintype="power_in"/>
+    </net>
+    <net code="56" name="unconnected-(J820-Pad2)" class="Default">
+      <node ref="J820" pin="2" pinfunction="2_2" pintype="passive+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(J820-Pad4)" class="Default">
+      <node ref="J820" pin="4" pinfunction="4_4" pintype="passive+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(J820-Pad35)" class="Default">
+      <node ref="J820" pin="35" pinfunction="35_35" pintype="passive+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(J820-Pad37)" class="Default">
+      <node ref="J820" pin="37" pinfunction="37_37" pintype="passive+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(J820-Pad39)" class="Default">
+      <node ref="J820" pin="39" pinfunction="39_39" pintype="passive+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(U810-EP_NEGATIVE_ISOLATED-Pad49)" class="Default">
+      <node ref="U810" pin="49" pinfunction="EP_NEGATIVE_ISOLATED_49" pintype="no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(U810-NC-Pad2)" class="Default">
+      <node ref="U810" pin="2" pinfunction="NC_2" pintype="no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(U810-NC-Pad5)" class="Default">
+      <node ref="U810" pin="5" pinfunction="NC_5" pintype="no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(U810-NC-Pad6)" class="Default">
+      <node ref="U810" pin="6" pinfunction="NC_6" pintype="no_connect"/>
+    </net>
+    <net code="65" name="unconnected-(U810-NC-Pad9)" class="Default">
+      <node ref="U810" pin="9" pinfunction="NC_9" pintype="no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(U810-NC-Pad11)" class="Default">
+      <node ref="U810" pin="11" pinfunction="NC_11" pintype="no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(U810-NC-Pad14)" class="Default">
+      <node ref="U810" pin="14" pinfunction="NC_14" pintype="no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(U810-NC-Pad16)" class="Default">
+      <node ref="U810" pin="16" pinfunction="NC_16" pintype="no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(U810-NC-Pad19)" class="Default">
+      <node ref="U810" pin="19" pinfunction="NC_19" pintype="no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(U810-NC-Pad20)" class="Default">
+      <node ref="U810" pin="20" pinfunction="NC_20" pintype="no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(U810-NC-Pad22)" class="Default">
+      <node ref="U810" pin="22" pinfunction="NC_22" pintype="no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(U810-NC-Pad27)" class="Default">
+      <node ref="U810" pin="27" pinfunction="NC_27" pintype="no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(U810-NC-Pad29)" class="Default">
+      <node ref="U810" pin="29" pinfunction="NC_29" pintype="no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(U810-NC-Pad37)" class="Default">
+      <node ref="U810" pin="37" pinfunction="NC_37" pintype="no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(U810-NC-Pad43)" class="Default">
+      <node ref="U810" pin="43" pinfunction="NC_43" pintype="no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(U810-NC-Pad45)" class="Default">
+      <node ref="U810" pin="45" pinfunction="NC_45" pintype="no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(U810-NC-Pad46)" class="Default">
+      <node ref="U810" pin="46" pinfunction="NC_46" pintype="no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(U810-TP_FLOAT-Pad13)" class="Default">
+      <node ref="U810" pin="13" pinfunction="TP_FLOAT_13" pintype="no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(U810-TP_FLOAT-Pad38)" class="Default">
+      <node ref="U810" pin="38" pinfunction="TP_FLOAT_38" pintype="no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(U810-TP_FLOAT-Pad39)" class="Default">
+      <node ref="U810" pin="39" pinfunction="TP_FLOAT_39" pintype="no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(U811-P04-Pad8)" class="Default">
+      <node ref="U811" pin="8" pinfunction="P04_8" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(U811-P05-Pad9)" class="Default">
+      <node ref="U811" pin="9" pinfunction="P05_9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(U811-P06-Pad10)" class="Default">
+      <node ref="U811" pin="10" pinfunction="P06_10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="84" name="unconnected-(U811-P07-Pad11)" class="Default">
+      <node ref="U811" pin="11" pinfunction="P07_11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="85" name="unconnected-(U811-P12-Pad15)" class="Default">
+      <node ref="U811" pin="15" pinfunction="P12_15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="86" name="unconnected-(U811-P13-Pad16)" class="Default">
+      <node ref="U811" pin="16" pinfunction="P13_16" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="87" name="unconnected-(U811-P14-Pad17)" class="Default">
+      <node ref="U811" pin="17" pinfunction="P14_17" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="88" name="unconnected-(U811-P15-Pad18)" class="Default">
+      <node ref="U811" pin="18" pinfunction="P15_18" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="89" name="unconnected-(U811-P16-Pad19)" class="Default">
+      <node ref="U811" pin="19" pinfunction="P16_19" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="90" name="unconnected-(U811-P17-Pad20)" class="Default">
+      <node ref="U811" pin="20" pinfunction="P17_20" pintype="bidirectional+no_connect"/>
+    </net>
+  </nets>
+</export>
