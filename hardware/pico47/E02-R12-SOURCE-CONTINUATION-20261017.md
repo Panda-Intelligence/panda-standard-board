@@ -1,5 +1,10 @@
 # Pico47 E0.2 r12 — source-bound engineering continuation
 
+Routing continuation: [r24-mux0-source](E02-R24-MUX0-SOURCE-CLOSURE-20261019.md) is now the
+verified four-layer r12 descendant: Core 16 / Display 0 opens, with Core MUX0 joined.
+Use its named checkpoint for further routing; this document retains r12 history.
+The previous [r23-d3-source](E02-R23-D3-SOURCE-CLOSURE-20261018.md) remains preserved.
+
 2026-10-17. **NOT FOR FABRICATION OR PANEL/BATTERY POWER.**
 
 ## Reproducible four-layer engineering candidate
