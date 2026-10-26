@@ -1,0 +1,103 @@
+# Pico47 E0.2 r25 — Core 4-layer routing handoff (2026-10-26)
+
+Status: **NOT routed to completion, NOT for fabrication.** Best legal router state is
+77/81 connections on the current geometry (E26). No checkpoint has been captured and
+the published r24 package is unchanged.
+
+## Starting point
+
+- r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
+  ignored working directory `.work/pico47-r25-20261025/base-r24`.
+- All generated geometry, router states, KiCad trial boards, DRC reports and renders stay
+  in `.work/pico47-r25-20261025/` (ignored). Only the tools in `r25_router/` are source.
+
+## Approach
+
+The 16 r24 opens could not be closed in place, so the dense MCU/mux region was ripped
+and rerouted with a custom grid router (`r25_router/`):
+
+- 0.025 mm grid over the whole Core board; signal layers F.Cu / In2.Cu / B.Cu only.
+  In1.Cu stays the solid GND plane with no signal tracks.
+- Project rules are mirrored exactly and not relaxed:
+  - track 0.15 mm, clearance 0.15 mm;
+  - via 0.4/0.2 mm;
+  - hole clearance 0.25 mm, hole-to-hole 0.25 mm;
+  - board edge 0.2 mm.
+
+  `exact_check.py` re-verifies new copper with shapely, and KiCad DRC is authoritative.
+- PathFinder negotiation, then minimum-vertex-cover legalisation (CP-SAT), then
+  transactional polish. `runs/loop.sh` repeats this cycle.
+- Pin-swap groups solved by Hungarian assignment, within the swap ECO the user approved:
+  - **A**: mux S1 pins → R710–R717.
+  - **B**: direct GPIOs → R719–R725, codec and R726/R727/R729/R730.
+  - **C**: SD S0 pins → R517–R522.
+  - **D**: mux commons → U501 GPIO5–10.
+  - **Fixed**: UART on GPIO43/44, GPIO3 strap, GPIO45 = XSTL strap.
+
+## Geometry ECOs applied in the working copy (user-approved, not yet in source)
+
+1. **Pin swap** of the GPIO matrix and the mux channels. The new GPIO/mux pin map
+   **must be confirmed by the user** before the schematic, `design.json`, the contract,
+   `verify_pico47_native.py`, the tests and the firmware pin table are changed.
+2. **Passive moves (E6)**:
+   - C525, L507, C710, R513, R512, R510, R528 (`runs/moves-E6.json`);
+   - C523 and C501 (`runs/moves-e24.json`).
+3. **C501 22 µF 0805 → 0603** (user-approved). Kept at 22 µF.
+   - The replacement mainland manufacturer part number is **not chosen yet**; a catalog
+     code must not be invented.
+   - The footprint, schematic and BOM change is still pending.
+   - Approval also covers C525 0805 → 0603, but C525 currently keeps its 0805 land.
+4. **3V3_AON bottom trunk under U501 removed.** It is replaced by:
+   - an 18 mm, 0.35 mm In2 bridge along y≈109.9 (under the microSD area) to the right
+     trunk end at C501/R511;
+   - a 1.7 mm B.Cu link from U501.20/C523 to the left 3V3 network.
+
+   The RF supply path to L507 is now longer: about 40 mm, estimated 17 mV drop at
+   300 mA. This needs electrical review.
+5. **Fixed GND escapes for pour-isolated pins** (KiCad trial findings):
+   - J601.34: via at (44.225, 102.95), placed left of the FFC so the D11 lane stays open;
+   - J503.4: via at (51.975, 98.215);
+   - forced thermal spokes for U710.8 and C523.2;
+   - five bare GND stitching vias removed from the U710/U711 corridor
+     (`make_e15.py`).
+6. KiCad trials show mid-segment T junctions are not recognised as connected.
+   `kicad_split_tees.py` splits them and is part of `runs/trial.sh`.
+
+## Results
+
+| State | Geometry | Legal connections | Notes |
+|---|---|---|---|
+| `best-e9b-77` | E9b | 77/81 | Older geometry; J503.4 and J601.34 GND isolated in the KiCad trial |
+| `route-e14-l0` | E12 | 75/81 | KiCad trial: 0 DRC errors, GND one cluster, 8 signal opens |
+| `route-e26-l` | E26 | 77/81 | Current geometry. Pending: BS:U501.18 (D11_SRC), DS:U711.9 (MUX6), P47_XSTL_SRC, UART0_RX |
+
+The bottleneck is the U501 (QFN56, 0.4 mm pitch) escape region. U501 has no spare
+GPIO: pins 28 and 38–42 are reserved for octal PSRAM. Hypothetical runs that removed
+C523/C501 and the bottom 3V3 trunk dropped the negotiated conflicts from 10 to 3–6,
+which motivated ECOs 3–4.
+
+## Remaining before any fabrication claim
+
+- Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by
+  hand in KiCad from a `runs/trial.sh` board.
+- Bring the pin swap and the C501 (and later C525) 0603 change into the schematic, the
+  library and `design.json`, then run:
+  - DRC, unconnected, parity and ERC, all zero;
+  - `capture_pico47_checkpoint.py --require-complete-ground`;
+  - the independent pin checks.
+- Unchanged open items: timing/current, analog feedback, exact battery and full panel stack,
+  ≤7 mm fit, C804 via process acceptance, CAM/SMT and physical EVT. No panel or battery
+  power.
+
+## Running the tools
+
+```sh
+export R25_WORK=$PWD/.work/pico47-r25-20261025   # holds tools/, runs/, geom-*.json, base-r24/
+export R25_PY=/path/to/python                      # numpy, shapely, scipy, ortools, pillow
+cc -O2 -shared -o $R25_WORK/tools/libastar3.dylib hardware/pico47/r25_router/astar.c
+runs/loop.sh geom-E26.json runs/spec-e26.json runs/route-e26-l.json e26a 12
+runs/trial.sh geom-E26.json runs/spec-e26.json runs/loop-e26a-best.json e26a
+```
+
+`R25_WORK` must contain `tools/`, which is a copy of `r25_router/*.py` plus the
+compiled `libastar3.dylib`. KiCad scripts run under KiCad 10.0.7 Python.

@@ -1,0 +1,4 @@
+[{"ref": "C523", "pad": "1", "width": 0.25, "kind": "net", "layers": ["F.Cu"]},
+ {"ref": "C523", "pad": "2", "width": 0.25, "kind": "via"},
+ {"ref": "C501", "pad": "1", "width": 0.35, "kind": "net", "layers": ["F.Cu", "In2.Cu", "B.Cu"]},
+ {"ref": "C501", "pad": "2", "width": 0.35, "kind": "via"}]
