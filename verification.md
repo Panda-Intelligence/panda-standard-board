@@ -1152,3 +1152,5 @@ D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Nat
 
 2026-10-27 Codex：R25 E26 继续布线与审计发现 mux 通道网名混淆，已修正路由器并通过两项回归；模型与原生几何比较测试五项通过。隔离原生研究板在完整 0603 试验封装下仍有 8 处开路、27 个 DRC warnings 和 37 项原理图差异；Core 地连通 167/169，Display 68/68。R731 局部地修复通过隔离检查，C530 仍孤立，均未作为正式候选采用。完整试验脚本端到端验证及四层闭合仍待完成；记录见 `.codex/20261027-r25-continuation.md`。
 2026-10-27 Codex：E26 经过 legalize/polish 达到 79/81 合法模型，剩 UART0_RX 与 SDMMC_CMD；P47_MUX2 单独重布保持 79/81。`trial-codex79mux2` 的模型/Native 几何通过，KiCad 10.0.5 DRC errors0，warnings24，parity38；完整地 Core167/169。R731 单独地孔 `(52.66,105.15)` 试验提升 Core 到168/169且无 DRC error，C530.2仍孤立。目标仍未达到四层闭合或可打样，详见 `.codex/20261027-r25-79-partial.md`。
+
+2026-10-27 Codex：在保持 R25 79/81 工作源隔离的前提下，继续执行局部 ECO 负证据。R732 向右 0.5 mm 后 `P47_BUS_OE_N` 单网即无路径；向上/下 0.5 mm 虽可单网连通，但与 UART0_RX、P47_D6 的三网 surgery 仍有冲突。R518 左/右 0.5 mm 的 `SDMMC_CMD`+`SDMMC_CMD_CARD` 双网搜索均失败；R716 右移 0.5 mm 的 UART/D6/BUS/卡侧四网仍有三个冲突。尝试把 CS 端 `U711.2↔U711.14` 交换到 R521/R518 后，CS 两网可在局部避让下连通，但冲突链转移到 BS:U501.36、DS:U711.4 以及既有 BS:U501.24/SD 路径，扩展 surgery 未闭合。保留的原始 warm-negotiation 续算最低 19 个冲突，B/C swap 变体同样未达合法状态。以上均为 `.work/r25-resume-codex-20261027` 实验，不是正式候选；未修改正式 PCB、原理图、引脚契约或制造输出，Core14 仍未测量。
