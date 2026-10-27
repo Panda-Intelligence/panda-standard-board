@@ -1198,4 +1198,9 @@ experimental and are not a checkpoint. A connector-area experiment moved J601
 escape. Combining that move with the 0.30 mm J503.4/U710.8/R731.2 searches
 yielded 11 added GND objects, zero independent geometry conflicts, and no In1.Cu
 signal tracks. The moved connector rips local panel copper, so full signal
-reroute and Native validation are still required.
+reroute and Native validation are still required. With J601 at x=43.75 mm, the
+low-memory local signal pass also restored all 21 non-GND J601 pads to their
+matching R7xx pads in the explicit copper graph (P47_D0..D15,
+P47_XCL/XLE/XSTL/CKV/SPV). Relative to the original 165/169-ground trial this
+produces 62 new copper/via objects in total, with the same zero conflict and
+In1-GND-only result. This is still below the Native acceptance bar.

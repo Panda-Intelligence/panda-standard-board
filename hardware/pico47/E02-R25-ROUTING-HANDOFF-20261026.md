@@ -173,6 +173,12 @@ geometry-only candidate has 11 added GND objects and zero checked conflicts. It
 also rips local panel signal copper, so it remains experimental until all
 affected nets are rerouted and Native-verified.
 
+At x=43.75 mm, the same J601 experiment also reconnects all 21 non-GND
+connector pads to their matching R7xx pads in the explicit geometry graph. The
+combined candidate contains 62 new copper/via objects, passes the independent
+0.15 mm conflict audit, and keeps In1.Cu GND-only. It still needs Native
+materialisation, zone refill, DRC, complete-ground and parity checks.
+
 ## Remaining before any fabrication claim
 
 - Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by
