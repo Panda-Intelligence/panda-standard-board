@@ -1209,3 +1209,8 @@ centroid as the footprint origin. The corrected footprint origin is x=41.60523
 mm for the x=43.75 mm pad-group target; that board is staged under
 `trial-j601-right125-native2`. Native DRC and complete-ground were not rerun
 because free disk was about 1.99 GiB, below the 2 GiB gate.
+When the corrected `native2` board did run, Core DRC reported 131 violations,
+41 unconnected items and one schematic-parity item; complete-ground remained
+165/169 (Display 68/68). The remaining ground gaps were J503.4, U710.8,
+J601.4 and J601.30. A follow-up 0.15 mm geometry-only escape was found for the
+two J601 pads, but Native re-materialization is waiting for disk space.

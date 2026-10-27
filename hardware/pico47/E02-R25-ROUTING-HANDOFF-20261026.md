@@ -176,6 +176,11 @@ was rejected because it passed the geometry centroid as the footprint origin;
 the corrected origin is x=41.60523 mm for the x=43.75 mm pad-group target. The
 corrected board is staged in `trial-j601-right125-native2`, awaiting the 2 GiB
 Native disk gate.
+The corrected `native2` run reduced Core to 131 DRC violations and 41
+unconnected items with one parity item, but complete-ground stayed 165/169
+(Display 68/68). Its four missing Core ground pads were J503.4, U710.8, J601.4
+and J601.30. Two additional 0.15 mm J601 ground escapes are now present in the
+geometry candidate; they await another Native refill after the disk gate clears.
 
 At x=43.75 mm, the same J601 experiment also reconnects all 21 non-GND
 connector pads to their matching R7xx pads in the explicit geometry graph. The
