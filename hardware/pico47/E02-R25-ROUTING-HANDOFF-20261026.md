@@ -186,7 +186,11 @@ At x=43.75 mm, the same J601 experiment also reconnects all 21 non-GND
 connector pads to their matching R7xx pads in the explicit geometry graph. The
 combined candidate contains 62 new copper/via objects, passes the independent
 0.15 mm conflict audit, and keeps In1.Cu GND-only. It still needs Native
-materialisation, zone refill, DRC, complete-ground and parity checks.
+materialisation, zone refill, DRC, complete-ground and parity checks. Native4
+reached Core 169/169 ground with direct main-GND bridges but added 12 real
+clearance/hole errors, so it was rejected. A selective-layer native5 variant
+reported 132 violations and 38 unconnected items with one parity item; CKV
+remains open and the variant is not accepted.
 
 ## Remaining before any fabrication claim
 

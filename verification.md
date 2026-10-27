@@ -1214,3 +1214,7 @@ When the corrected `native2` board did run, Core DRC reported 131 violations,
 165/169 (Display 68/68). The remaining ground gaps were J503.4, U710.8,
 J601.4 and J601.30. A follow-up 0.15 mm geometry-only escape was found for the
 two J601 pads, but Native re-materialization is waiting for disk space.
+Native4 with direct main-GND bridges reached complete Core ground 169/169, but
+introduced 12 real clearance/hole errors (328 total violations), so it was
+rejected. The selective-layer native5 candidate reported 132 violations, 38
+unconnected items and one parity item; it remains rejected with CKV still open.
