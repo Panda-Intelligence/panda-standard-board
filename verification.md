@@ -1186,3 +1186,11 @@ was materialised or adopted. `runs/trial.sh` now uses the current R25 design
 contract by default. Local Pico47 suite: 354/354 passed under the geometry
 environment; shell syntax, Python compilation and diff checks passed. Product
 Core14, full Native capture/replay and manufacturing gates remain open.
+2026-10-28 R25 local GND continuation: the width-aware geometry router produced
+new 0.30 mm GND candidates for J503.4 (0.65 mm, two 0.40/0.20 vias) and U710.8
+(0.86 mm, one via) from the 165/169-ground trial. An independent exact geometry
+audit found zero new-copper conflicts against existing tracks, vias, pads and
+holes. R731.2 had a legal 0.15 mm candidate but no 0.30 mm path; J601.12 had no
+path in either local search. Native zone refill/DRC was intentionally not run
+because free disk was about 1.2 GiB, below the 2 GiB Native gate. These remain
+experimental and are not a checkpoint.

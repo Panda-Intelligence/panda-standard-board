@@ -162,6 +162,12 @@ contract (override with `R25_DESIGN`) instead of the stale R24 map. This is a
 workflow correctness fix; it does not relax any four-layer, In1-GND, clearance,
 ground, parity, or manufacturing gate.
 
+A follow-up width-aware local power search found a zero-conflict geometry-only
+candidate for J503.4 and U710.8 at 0.30 mm copper. It could not find J601.12,
+and the wider R731.2 search was blocked; the earlier 0.15 mm R731.2 candidate
+remains experimental. Native refill and DRC are still required after disk space
+recovers, so these local copper candidates are not adopted.
+
 ## Remaining before any fabrication claim
 
 - Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by
