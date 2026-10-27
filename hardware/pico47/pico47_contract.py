@@ -21,15 +21,33 @@ PANEL_PINS = [
 
 EXPECTED_NETS = {
     0: 'GPIO0', 1: 'KEY_POWER_MCU', 2: 'HW_ARM_GPIO', 3: 'P47_D8_SRC',
-    4: 'EXP_INT', 5: 'P47_MUX0', 6: 'P47_MUX1', 7: 'P47_MUX2',
-    8: 'P47_MUX3', 9: 'P47_MUX4', 10: 'P47_MUX5', 11: 'I2S_BCLK',
-    12: 'I2S_LRCLK', 13: 'I2S_DIN', 14: 'P47_D9_SRC', 15: 'I2C_SDA',
-    16: 'I2C_SCL', 17: 'P47_D10_SRC', 18: 'P47_D11_SRC', 19: 'USB_DM_MCU',
-    20: 'USB_DP_MCU', 21: 'P47_D12_SRC', 38: 'P47_D13_SRC', 39: 'P47_D14_SRC',
-    40: 'P47_D15_SRC', 41: 'P47_XCL_SRC', 42: 'P47_XLE_SRC', 43: 'P47_MUX6',
-    44: 'P47_MUX7', 45: 'P47_XSTL_SRC', 46: 'P47_BUS_SELECT',
-    47: 'P47_SPV_SRC', 48: 'P47_CKV_SRC',
+    4: 'EXP_INT', 5: 'P47_MUX6', 6: 'P47_MUX7', 7: 'P47_MUX4',
+    8: 'P47_MUX0', 9: 'P47_MUX1', 10: 'P47_MUX2', 11: 'P47_D13_SRC',
+    12: 'P47_CKV_SRC', 13: 'P47_XLE_SRC', 14: 'P47_XCL_SRC', 15: 'I2C_SDA',
+    16: 'I2C_SCL', 17: 'I2S_DIN', 18: 'I2S_LRCLK', 19: 'USB_DM_MCU',
+    20: 'USB_DP_MCU', 21: 'I2S_BCLK', 38: 'P47_D10_SRC', 39: 'P47_D11_SRC',
+    40: 'P47_D15_SRC', 41: 'P47_D9_SRC', 42: 'P47_D14_SRC', 43: 'P47_MUX5',
+    44: 'P47_MUX3', 45: 'P47_XSTL_SRC', 46: 'P47_BUS_SELECT',
+    47: 'P47_D12_SRC', 48: 'P47_SPV_SRC',
 }
+EXPECTED_MUX_CHANNELS = [
+    {'channel': 0, 'gpio': 8, 'package_pin': 13, 'common_net': 'P47_MUX0',
+     'select_0_net': 'SDMMC_D0', 'select_1_net': 'P47_D0_SRC'},
+    {'channel': 1, 'gpio': 9, 'package_pin': 14, 'common_net': 'P47_MUX1',
+     'select_0_net': 'SDMMC_D1', 'select_1_net': 'P47_D2_SRC'},
+    {'channel': 2, 'gpio': 43, 'package_pin': 49, 'common_net': 'P47_MUX5',
+     'select_0_net': 'UART0_TX', 'select_1_net': 'P47_D3_SRC'},
+    {'channel': 3, 'gpio': 44, 'package_pin': 50, 'common_net': 'P47_MUX3',
+     'select_0_net': 'UART0_RX', 'select_1_net': 'P47_D1_SRC'},
+    {'channel': 4, 'gpio': 7, 'package_pin': 12, 'common_net': 'P47_MUX4',
+     'select_0_net': 'SDMMC_CLK', 'select_1_net': 'P47_D5_SRC'},
+    {'channel': 5, 'gpio': 10, 'package_pin': 15, 'common_net': 'P47_MUX2',
+     'select_0_net': 'SDMMC_D3', 'select_1_net': 'P47_D6_SRC'},
+    {'channel': 6, 'gpio': 5, 'package_pin': 10, 'common_net': 'P47_MUX6',
+     'select_0_net': 'SDMMC_CMD', 'select_1_net': 'P47_D4_SRC'},
+    {'channel': 7, 'gpio': 6, 'package_pin': 11, 'common_net': 'P47_MUX7',
+     'select_0_net': 'SDMMC_D2', 'select_1_net': 'P47_D7_SRC'},
+]
 EXPECTED_INTER40 = {str(i+1): ('P47_D' + str(i//2) if i % 2 == 0 else 'GND')
                     for i in range(32)}
 EXPECTED_INTER40.update({str(k): v for k, v in {
@@ -96,13 +114,11 @@ def validate(p):
             and mux['select_gpio'] == 46, 'Wrong mux')
     require(mux['source_terminal_pins'] ==
             [[2, 3, 4], [5, 6, 7], [11, 10, 9], [14, 13, 12]], 'Wrong mux pads')
-    refs = ['SDMMC_D1', 'SDMMC_D0', 'SDMMC_CLK', 'SDMMC_CMD', 'SDMMC_D3',
-            'SDMMC_D2', 'UART0_TX', 'UART0_RX']
+    refs = ['SDMMC_D0', 'SDMMC_D1', 'UART0_TX', 'UART0_RX', 'SDMMC_CLK',
+            'SDMMC_D3', 'SDMMC_CMD', 'SDMMC_D2']
     require(len(mux['channels']) == 8, 'Missing mux channel')
-    for i, (c, g, n) in enumerate(zip(mux['channels'], [5, 6, 7, 8, 9, 10, 43, 44], refs)):
-        require(c == {'channel': i, 'gpio': g, 'package_pin': GPIO_PACKAGE[g],
-                      'common_net': 'P47_MUX' + str(i), 'select_0_net': n,
-                      'select_1_net': 'P47_D' + str(i) + '_SRC'}, 'Wrong mux channel')
+    for c, expected in zip(mux['channels'], EXPECTED_MUX_CHANNELS):
+        require(c == expected, 'Wrong mux channel')
     require(mux['reset_select'] == 0 and mux['reset_oe_n'] == 0
             and mux['disable_signal'] == 'P47_BUS_OE_N'
             and mux['disable_expander'] == 'U601.P15/pin18', 'Wrong mux reset')

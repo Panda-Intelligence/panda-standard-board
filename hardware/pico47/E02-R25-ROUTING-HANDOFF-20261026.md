@@ -36,9 +36,23 @@ and rerouted with a custom grid router (`r25_router/`):
 
 ## Geometry ECOs applied in the working copy (user-approved, not yet in source)
 
-1. **Pin swap** of the GPIO matrix and the mux channels. The new GPIO/mux pin map
-   **must be confirmed by the user** before the schematic, `design.json`, the contract,
-   `verify_pico47_native.py`, the tests and the firmware pin table are changed.
+1. **Pin swap** of the GPIO matrix and the mux channels. The user authorized the
+   electrical pin map on 2026-10-28. It is now recorded in `design.json`,
+   `pico47_contract.py` and the contract tests. The authorization does not waive
+   Native DRC, complete-ground, schematic parity, timing or firmware verification.
+   The approved map keeps the physical UART terminals on GPIO43/GPIO44 and uses
+   the following channel pairs in the moved U710/U711 region:
+
+   | mux common | MCU GPIO | SD/UART select | panel select |
+   |---|---:|---|---|
+   | P47_MUX0 | 8 | SDMMC_D0 | P47_D0_SRC |
+   | P47_MUX1 | 9 | SDMMC_D1 | P47_D2_SRC |
+   | P47_MUX5 | 43 | UART0_TX | P47_D3_SRC |
+   | P47_MUX3 | 44 | UART0_RX | P47_D1_SRC |
+   | P47_MUX4 | 7 | SDMMC_CLK | P47_D5_SRC |
+   | P47_MUX2 | 10 | SDMMC_D3 | P47_D6_SRC |
+   | P47_MUX6 | 5 | SDMMC_CMD | P47_D4_SRC |
+   | P47_MUX7 | 6 | SDMMC_D2 | P47_D7_SRC |
 2. **Passive moves (E6)**:
    - C525, L507, C710, R513, R512, R510, R528 (`runs/moves-E6.json`);
    - C523 and C501 (`runs/moves-e24.json`).
@@ -94,8 +108,33 @@ and board-edge/courtyard/keepout failures. It is rejected.
 
 The stable working baseline remains the previously verified 79/81 geometry with
 `UART0_RX` and the SD command-side endpoint unresolved. No relayout candidate has
-been adopted, no schematic or firmware pin contract has been changed, and no
-fabrication or Core14 claim is made.
+been adopted as a fabrication checkpoint. The source pin contract now records the
+user-authorized R25 electrical permutation, while the formal r24 source and all
+generated R25 CAD remain separate and reversible. No fabrication or Core14 claim is
+made.
+
+The latest moved U710/U711/J503 Native trial (`.work/r25-resume-codex-20261027/
+trial-relayout-wide-j503left-power2`) has 7 unconnected items, 7 error-level DRC
+violations, 249 warnings and 37 schematic-parity items. Its failures are retained
+as engineering evidence, not accepted output. The next repair must carry the J503
+keepout with the moved connector, restore J503.4/R732.2 GND returns, clear the
+U711 GND-via and TP712 courtyard conflicts, and re-run the full Native gate.
+
+## 2026-10-28 locked-assignment continuation
+
+The approved assignment was locked during a fresh legalisation against the moved
+J503 holes. The best saved router state is **79/81**, with only `CHIP_PU` and
+`P47_MUX2` pending. A surgery pass rerouted `AS:U710.6` around the J503 NPTH and
+removed the previous D2 hole-clearance violation without changing the approved
+pin map.
+
+The isolated Native materialisation of that state reports 25 unconnected items,
+0 DRC errors, 59 dangling-track warnings, 11 dangling-via warnings and one
+remaining C501 manufacturer parity warning after the approved schematic labels
+are applied. A trial-only mechanical cleanup removes three redundant GND vias and
+the overlapping TP712 courtyard; its independent complete-ground check still has
+five GND clusters, including `U710.8`, `J503.4` and `R731.2`, so it is not adopted.
+This is a useful routing experiment, not a checkpoint or fabrication candidate.
 
 ## Remaining before any fabrication claim
 

@@ -1,7 +1,7 @@
 """Mutation tests of real source intent. No supplier receipt or physical test is implied."""
 import json
 import unittest
-from pico47_contract import CONTRACT, validate, mux_target, GPIO_PACKAGE, PANEL_PINS
+from pico47_contract import CONTRACT, validate, mux_target, GPIO_PACKAGE, PANEL_PINS, EXPECTED_MUX_CHANNELS
 
 
 def fixture():
@@ -21,6 +21,14 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(len(PANEL_PINS), 40)
         self.assertEqual(PANEL_PINS[13:21], ['P47_D'+str(i) for i in range(8)])
         self.assertEqual(PANEL_PINS[22:30], ['P47_D'+str(i) for i in range(8,16)])
+
+    def test_r25_authorized_mux_pin_map(self):
+        plan = fixture()
+        self.assertEqual(plan['mux']['channels'], EXPECTED_MUX_CHANNELS)
+        self.assertEqual(plan['gpio']['5']['net'], 'P47_MUX6')
+        self.assertEqual(plan['gpio']['44']['net'], 'P47_MUX3')
+        self.assertTrue(plan['mux']['r25_routing_eco']['four_layer'])
+        self.assertEqual(plan['mux']['r25_routing_eco']['ground_plane_layer'], 'In1.Cu')
 
     def test_mux_truth_table(self):
         for channel in range(8):

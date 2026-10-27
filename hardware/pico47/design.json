@@ -126,43 +126,43 @@
     },
     "5": {
       "package_pin": 10,
-      "net": "P47_MUX0"
+      "net": "P47_MUX6"
     },
     "6": {
       "package_pin": 11,
-      "net": "P47_MUX1"
+      "net": "P47_MUX7"
     },
     "7": {
       "package_pin": 12,
-      "net": "P47_MUX2"
+      "net": "P47_MUX4"
     },
     "8": {
       "package_pin": 13,
-      "net": "P47_MUX3"
+      "net": "P47_MUX0"
     },
     "9": {
       "package_pin": 14,
-      "net": "P47_MUX4"
+      "net": "P47_MUX1"
     },
     "10": {
       "package_pin": 15,
-      "net": "P47_MUX5"
+      "net": "P47_MUX2"
     },
     "11": {
       "package_pin": 16,
-      "net": "I2S_BCLK"
+      "net": "P47_D13_SRC"
     },
     "12": {
       "package_pin": 17,
-      "net": "I2S_LRCLK"
+      "net": "P47_CKV_SRC"
     },
     "13": {
       "package_pin": 18,
-      "net": "I2S_DIN"
+      "net": "P47_XLE_SRC"
     },
     "14": {
       "package_pin": 19,
-      "net": "P47_D9_SRC"
+      "net": "P47_XCL_SRC"
     },
     "15": {
       "package_pin": 21,
@@ -174,11 +174,11 @@
     },
     "17": {
       "package_pin": 23,
-      "net": "P47_D10_SRC"
+      "net": "I2S_DIN"
     },
     "18": {
       "package_pin": 24,
-      "net": "P47_D11_SRC"
+      "net": "I2S_LRCLK"
     },
     "19": {
       "package_pin": 25,
@@ -190,15 +190,15 @@
     },
     "21": {
       "package_pin": 27,
-      "net": "P47_D12_SRC"
+      "net": "I2S_BCLK"
     },
     "38": {
       "package_pin": 43,
-      "net": "P47_D13_SRC"
+      "net": "P47_D10_SRC"
     },
     "39": {
       "package_pin": 44,
-      "net": "P47_D14_SRC"
+      "net": "P47_D11_SRC"
     },
     "40": {
       "package_pin": 45,
@@ -206,19 +206,19 @@
     },
     "41": {
       "package_pin": 47,
-      "net": "P47_XCL_SRC"
+      "net": "P47_D9_SRC"
     },
     "42": {
       "package_pin": 48,
-      "net": "P47_XLE_SRC"
+      "net": "P47_D14_SRC"
     },
     "43": {
       "package_pin": 49,
-      "net": "P47_MUX6"
+      "net": "P47_MUX5"
     },
     "44": {
       "package_pin": 50,
-      "net": "P47_MUX7"
+      "net": "P47_MUX3"
     },
     "45": {
       "package_pin": 51,
@@ -230,11 +230,11 @@
     },
     "47": {
       "package_pin": 37,
-      "net": "P47_SPV_SRC"
+      "net": "P47_D12_SRC"
     },
     "48": {
       "package_pin": 36,
-      "net": "P47_CKV_SRC"
+      "net": "P47_SPV_SRC"
     }
   },
   "mux": {
@@ -255,66 +255,66 @@
     "channels": [
       {
         "channel": 0,
-        "gpio": 5,
-        "package_pin": 10,
+        "gpio": 8,
+        "package_pin": 13,
         "common_net": "P47_MUX0",
-        "select_0_net": "SDMMC_D1",
+        "select_0_net": "SDMMC_D0",
         "select_1_net": "P47_D0_SRC"
       },
       {
         "channel": 1,
-        "gpio": 6,
-        "package_pin": 11,
+        "gpio": 9,
+        "package_pin": 14,
         "common_net": "P47_MUX1",
-        "select_0_net": "SDMMC_D0",
-        "select_1_net": "P47_D1_SRC"
-      },
-      {
-        "channel": 2,
-        "gpio": 7,
-        "package_pin": 12,
-        "common_net": "P47_MUX2",
-        "select_0_net": "SDMMC_CLK",
+        "select_0_net": "SDMMC_D1",
         "select_1_net": "P47_D2_SRC"
       },
       {
-        "channel": 3,
-        "gpio": 8,
-        "package_pin": 13,
-        "common_net": "P47_MUX3",
-        "select_0_net": "SDMMC_CMD",
+        "channel": 2,
+        "gpio": 43,
+        "package_pin": 49,
+        "common_net": "P47_MUX5",
+        "select_0_net": "UART0_TX",
         "select_1_net": "P47_D3_SRC"
       },
       {
+        "channel": 3,
+        "gpio": 44,
+        "package_pin": 50,
+        "common_net": "P47_MUX3",
+        "select_0_net": "UART0_RX",
+        "select_1_net": "P47_D1_SRC"
+      },
+      {
         "channel": 4,
-        "gpio": 9,
-        "package_pin": 14,
+        "gpio": 7,
+        "package_pin": 12,
         "common_net": "P47_MUX4",
-        "select_0_net": "SDMMC_D3",
-        "select_1_net": "P47_D4_SRC"
+        "select_0_net": "SDMMC_CLK",
+        "select_1_net": "P47_D5_SRC"
       },
       {
         "channel": 5,
         "gpio": 10,
         "package_pin": 15,
-        "common_net": "P47_MUX5",
-        "select_0_net": "SDMMC_D2",
-        "select_1_net": "P47_D5_SRC"
-      },
-      {
-        "channel": 6,
-        "gpio": 43,
-        "package_pin": 49,
-        "common_net": "P47_MUX6",
-        "select_0_net": "UART0_TX",
+        "common_net": "P47_MUX2",
+        "select_0_net": "SDMMC_D3",
         "select_1_net": "P47_D6_SRC"
       },
       {
+        "channel": 6,
+        "gpio": 5,
+        "package_pin": 10,
+        "common_net": "P47_MUX6",
+        "select_0_net": "SDMMC_CMD",
+        "select_1_net": "P47_D4_SRC"
+      },
+      {
         "channel": 7,
-        "gpio": 44,
-        "package_pin": 50,
+        "gpio": 6,
+        "package_pin": 11,
         "common_net": "P47_MUX7",
-        "select_0_net": "UART0_RX",
+        "select_0_net": "SDMMC_D2",
         "select_1_net": "P47_D7_SRC"
       }
     ],
@@ -340,6 +340,17 @@
         12
       ]
     ],
+    "r25_routing_eco": {
+      "status": "USER_AUTHORIZED_ELECTRICAL_PIN_MAP_UNVERIFIED_LAYOUT",
+      "authorized_date": "2026-10-28",
+      "four_layer": true,
+      "signal_layers": ["F.Cu", "In2.Cu", "B.Cu"],
+      "ground_plane_layer": "In1.Cu",
+      "placement_region_changes_allowed": ["U710", "U711", "J503"],
+      "board_edge_and_connector_constraints_adjustable": true,
+      "native_routing_complete": false,
+      "manufacturing_release": false
+    },
     "disables_all_before_select": true,
     "sd_uart_and_refresh_mutually_exclusive": true,
     "audio_gpio_independent": true,
