@@ -1232,3 +1232,9 @@ Adding the isolated CKV escape and rechecking as native10 reduced Core opens
 from 40 to 39 while preserving ground 169/169, Display 68/68, zero
 error-level DRC and one parity item. The remaining 39 opens span broader
 baseline/local-route breaks and still require a full router pass.
+
+2026-10-28T03:57:09+08:00 Codex：将已在隔离 R25 工作环境验证过的 router 控制能力回写受追踪源：`router2.py` 支持 spec 的 `max_expand`，`router5.py` 支持 `layer_cost`、限定 `reassign_groups`，并在 surgery 冲突时打印实际冲突网；默认行为保持不变。R25 回归测试与完整 Pico47 本地测试共 356 项（352 pass、4 skip）通过。
+
+同日资源清理：旧 `seven-mm-*` 生成目录 27 项先归档为 `.work/archive-seven-mm-intermediates-20261028.tar.gz`（成员数复核 27），再移除原目录；另移除已过期且不在 R25 依赖链的旧 Pico47 生成缓存和旧 PNS SDK/console adapter 缓存。R25 当前工作目录、R24 四层试验树、Native10 证据、归档和正式交付物未删。
+
+R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径；用户批准的 `geom-relayout-wide-power6` 8 轮将冲突降至 13，但 legalize 仅得 73/81，故全部拒绝。没有新的 Native 候选、没有 Core14、没有正式 PCB/原理图/制造输出变化；项目仍不可宣称可打样。

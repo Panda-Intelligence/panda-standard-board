@@ -17,6 +17,9 @@ g = json.load(open(sys.argv[1]))
 spec = json.load(open(sys.argv[2]))
 design = json.load(open(sys.argv[3]))
 out = sys.argv[4]
+R.SEARCH_MAX_EXPAND = int(spec.get('max_expand', getattr(R, 'SEARCH_MAX_EXPAND', 60_000_000)))
+if 'layer_cost' in spec:
+    R.LCOST[:] = [int(x) for x in spec['layer_cost']]
 t0 = time.time()
 pad = {(p['ref'], p['num']): p for p in g['pads']}
 gp_pin = {int(k): str(v['package_pin']) for k, v in design['gpio'].items()}
@@ -606,6 +609,12 @@ def surgery(src_state, order, keepouts):
         hit = int((cT[nodes] > 0).sum()) + (int((cV[vc] > 0).sum()) if len(vc) else 0)
         print(f'surgery {n}: {"clean" if hit == 0 else f"{hit} conflict cells"}', flush=True)
         if hit:
+            new_occ = R.occupancy(tr, vi)
+            conflict_nets = [m for m, o in occs.items()
+                             if np.intersect1d(new_occ[0], o[0]).size
+                             or np.intersect1d(new_occ[1], o[1]).size]
+            print(f'surgery {n}: conflict nets {sorted(conflict_nets)}', flush=True)
+        if hit:
             if not spec.get('best_effort'):
                 return False
             continue                      # best effort: leave this net pending
@@ -684,7 +693,10 @@ if spec.get('warm_from'):
 
 for it in range(spec.get('iterations', 150)):
     if (not spec.get('warm_from') or spec.get('warm_reassign')) and it % spec.get('reassign_every', 4) == 0 and (it > 0 or not spec.get('warm_from')):
+        allowed_reassign = set(spec.get('reassign_groups', groups))
         for gname in groups:
+            if gname not in allowed_reassign:
+                continue
             S, K = sources[gname], sinks[gname]
             M = np.full((len(S), len(K)), 1e9)
             for i, s in enumerate(S):

@@ -26,6 +26,7 @@ SPOKE_BOX = None                    # set by prepare(): area where new routing m
 FORCE_SPOKES = set()                # (ref, pad) GND pads that need spokes even though they have GND copper (KiCad flagged)
 VIA_COST = 500 * 40
 BEND_COST = 150                     # per 45-degree change of direction (0.3 of a grid step)
+SEARCH_MAX_EXPAND = 60_000_000       # 每次 A* 搜索的默认展开上限，可由实验 spec 缩小
 TARGET = ['P47_D1_SRC', 'SDMMC_CLK', 'P47_MUX3', 'P47_MUX5', 'P47_D10_SRC', 'P47_D11_SRC', 'P47_D14_SRC',
           'P47_XLE_SRC', 'SDMMC_D2', 'SDMMC_D1', 'SDMMC_D0', 'UART0_RX', 'UART0_TX', 'P47_D0_SRC',
           'P47_D7_SRC', 'P47_D6_SRC']
@@ -44,8 +45,10 @@ WINDOW_MARGIN = 8.0                 # mm around the terminals' bounding box befo
 REGION = box(X0 - 1, Y0 - 1, X1 + 1, Y1 + 1)
 
 
-def search(blk, vblk, extra, vextra, starts, goal, goal_nodes, gx, gy, gr, outbuf, lc, max_expand=60_000_000):
+def search(blk, vblk, extra, vextra, starts, goal, goal_nodes, gx, gy, gr, outbuf, lc, max_expand=None):
     """A* inside a window around starts+goals (fast path), retrying on the whole board when it fails."""
+    if max_expand is None:
+        max_expand = SEARCH_MAX_EXPAND
     cells = np.concatenate([np.asarray(starts, np.int64) % NLAYER, np.asarray(goal_nodes, np.int64) % NLAYER])
     xs, ys = cells % NX, cells // NX
     m = int(WINDOW_MARGIN / PITCH)
@@ -477,6 +480,8 @@ def main():
     g = json.load(open(sys.argv[1]))
     spec = json.load(open(sys.argv[2]))
     out = sys.argv[3]
+    global SEARCH_MAX_EXPAND
+    SEARCH_MAX_EXPAND = int(spec.get('max_expand', SEARCH_MAX_EXPAND))
     t0 = time.time()
     c = prepare(g, spec)
     nets = c.nets
