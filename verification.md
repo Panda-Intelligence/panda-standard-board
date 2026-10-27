@@ -1203,4 +1203,9 @@ low-memory local signal pass also restored all 21 non-GND J601 pads to their
 matching R7xx pads in the explicit copper graph (P47_D0..D15,
 P47_XCL/XLE/XSTL/CKV/SPV). Relative to the original 165/169-ground trial this
 produces 62 new copper/via objects in total, with the same zero conflict and
-In1-GND-only result. This is still below the Native acceptance bar.
+In1-GND-only result. This is still below the Native acceptance bar. The first
+isolated Native materialization was rejected because it passed the geometry
+centroid as the footprint origin. The corrected footprint origin is x=41.60523
+mm for the x=43.75 mm pad-group target; that board is staged under
+`trial-j601-right125-native2`. Native DRC and complete-ground were not rerun
+because free disk was about 1.99 GiB, below the 2 GiB gate.

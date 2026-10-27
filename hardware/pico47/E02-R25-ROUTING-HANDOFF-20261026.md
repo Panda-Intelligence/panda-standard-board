@@ -171,7 +171,11 @@ toward the board interior with the same -90° orientation made J601.12 routable
 at 0.15 mm; combined with the 0.30 mm J503.4/U710.8/R731.2 escapes, the
 geometry-only candidate has 11 added GND objects and zero checked conflicts. It
 also rips local panel signal copper, so it remains experimental until all
-affected nets are rerouted and Native-verified.
+affected nets are rerouted and Native-verified. The first Native materialization
+was rejected because it passed the geometry centroid as the footprint origin;
+the corrected origin is x=41.60523 mm for the x=43.75 mm pad-group target. The
+corrected board is staged in `trial-j601-right125-native2`, awaiting the 2 GiB
+Native disk gate.
 
 At x=43.75 mm, the same J601 experiment also reconnects all 21 non-GND
 connector pads to their matching R7xx pads in the explicit geometry graph. The
