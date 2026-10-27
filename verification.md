@@ -1166,3 +1166,4 @@ D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Nat
 2026-10-27T19:40:00+08:00 Codex：对 `U710.14` UART 源与六个 SD select 源逐对交换并在真实 0.15/0.25 mm 几何上重布，6/6 组合均无双网合法路径；未改 pin contract、schematic 或 firmware。
 2026-10-27T20:00:00+08:00 Codex：对稳定 R25 79/81 Core 做独立 FreeRouting/Specctra 交叉验证；锁铜 DSN 载入后发现 1775 个不可修复的预存固定铜违规、249 个未布项，自动布线未产生有效进展，SES 仅保留为负证据，未导入 KiCad、未替换稳定源。
 2026-10-27T20:20:00+08:00 Codex：对稳定几何完成 14 组 UART/单阻挡网 pair sweep 与 8 组三网 sweep；没有任何组合同时形成 `UART0_RX` 合法路径，未生成可采用铜，稳定 79/81 未变。
+2026-10-27T20:40:00+08:00 Codex：继续测试 UART RX 与 TX/邻近 mux select 源焊盘交换（含 UART TX、D5、BUS_OE、D1、MUX1、MUX4、MUX6），所有真实双网组合均未形成无冲突路径；未改变正式电气映射。
