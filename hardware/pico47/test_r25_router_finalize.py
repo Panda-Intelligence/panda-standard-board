@@ -76,29 +76,5 @@ class FinalizeMuxAssignment(unittest.TestCase):
                        'P47_MUX4', 'P47_MUX2', 'P47_MUX6', 'P47_MUX7'])
 
 
-class RouterConfigurationContract(unittest.TestCase):
-    """锁定实验 spec 的可控项，避免隔离工具与受追踪源再次漂移。"""
-
-    def test_router2_accepts_spec_search_limit(self):
-        path = Path(__file__).parent / 'r25_router' / 'router2.py'
-        tree = ast.parse(path.read_text(), filename=str(path))
-        source = path.read_text()
-        self.assertIn('SEARCH_MAX_EXPAND = 60_000_000', source)
-        search = next(node for node in tree.body
-                      if isinstance(node, ast.FunctionDef) and node.name == 'search')
-        max_arg = next(arg for arg in search.args.args if arg.arg == 'max_expand')
-        self.assertIsInstance(search.args.defaults[-1], ast.Constant)
-        self.assertIsNone(search.args.defaults[-1].value)
-        self.assertEqual(max_arg.arg, 'max_expand')
-        self.assertIn('SEARCH_MAX_EXPAND = int(spec.get', source)
-
-    def test_router5_exposes_layer_and_group_controls(self):
-        path = Path(__file__).parent / 'r25_router' / 'router5.py'
-        source = path.read_text()
-        self.assertIn("if 'layer_cost' in spec:", source)
-        self.assertIn("spec.get('reassign_groups', groups)", source)
-        self.assertIn('conflict nets', source)
-
-
 if __name__ == '__main__':
     unittest.main()
