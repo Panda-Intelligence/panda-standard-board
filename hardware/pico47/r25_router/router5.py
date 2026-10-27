@@ -426,21 +426,17 @@ def diagnose(src_state):
 
 def finalize(src_state, out_geom):
     """Write the final geometry with real net names: kept copper + routed copper, pads renamed."""
-    st = json.load(open(src_state))
+    with open(src_state) as state_file:
+        st = json.load(state_file)
     real = {}
-    tri_of = {}
-    for i, (ref, tri) in enumerate(CH):
-        for role, pin in zip(('S0', 'S1', 'C'), tri):
-            tri_of[(ref, str(pin))] = (i, role)
-    sd_net = {('R517', '1'): 'SDMMC_CLK', ('R518', '1'): 'SDMMC_CMD', ('R519', '1'): 'SDMMC_D0',
-              ('R520', '1'): 'SDMMC_D1', ('R521', '1'): 'SDMMC_D2', ('R522', '1'): 'SDMMC_D3'}
     for gname in groups:
         for src_key, snk_key in st['assign'][gname]:
             src_key, snk_key = tuple(src_key), tuple(snk_key)
             if gname in 'ABC':
                 net = orig_net[f'{gname}K:{snk_key[0]}.{snk_key[1]}']
             else:
-                net = 'P47_MUX' + str(tri_of[src_key][0])
+                # 沿用已交换通道的实际公共端网络，避免与固定 UART 通道重名。
+                net = orig_net[f'{gname}S:{src_key[0]}.{src_key[1]}']
             real[f'{gname}S:{src_key[0]}.{src_key[1]}'] = net
             real[f'{gname}K:{snk_key[0]}.{snk_key[1]}'] = net
     gf = json.loads(json.dumps(g))
@@ -466,11 +462,13 @@ def finalize(src_state, out_geom):
             gf['tracks'].append(dict(x1=x1, y1=y1, x2=x2, y2=y2, w=R.W, layer=ly, net=net, uuid=f'route-{k}')); k += 1
         for x, y in rr['vias']:
             gf['vias'].append(dict(x=x, y=y, d=R.VIA_D, drill=R.VIA_DR, net=net, uuid=f'route-{k}')); k += 1
-    json.dump(gf, open(out_geom, 'w'))
+    with open(out_geom, 'w') as geometry_file:
+        json.dump(gf, geometry_file)
     pend = [real.get(n, n) for n in st.get('pending', [])]
     print(f'finalized {len(st["committed"])} routed nets, {k} new copper items; pending {pend}', flush=True)
-    json.dump(dict(pin_nets={f'{p["ref"]}.{p["num"]}': p['net'] for p in gf['pads'] if p['ref'] in ('U501', 'U710', 'U711')},
-                   pending=pend, pseudo_to_real=real), open(out_geom.replace('.json', '-pins.json'), 'w'), indent=1)
+    with open(out_geom.replace('.json', '-pins.json'), 'w') as pins_file:
+        json.dump(dict(pin_nets={f'{p["ref"]}.{p["num"]}': p['net'] for p in gf['pads'] if p['ref'] in ('U501', 'U710', 'U711')},
+                       pending=pend, pseudo_to_real=real), pins_file, indent=1)
 
 
 def region(src_state):

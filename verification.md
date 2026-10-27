@@ -1149,3 +1149,6 @@ endpoint guide 入口exit201，未進入路由；原因是衍生intent缺少目�
 B.Cu alternate-window 续作同样通过实际 endpoint/Native/RAM 检查但无新物理 Cu；四姿态终态全部保留，D15/XSTL 原群仍断，未进入产品 source。
 D15 B.Cu 宽窗口的只读规划在 0.15 mm 规则下 `Source blocked at requested width`，没有创建路径或修改 CAD；该负证据已归档。
 D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Native 启动前 df 仅约2.7GiB，低于3GiB门禁，未运行、未修改 CAD，等待资源恢复。
+
+2026-10-27 Codex：R25 E26 继续布线与审计发现 mux 通道网名混淆，已修正路由器并通过两项回归；模型与原生几何比较测试五项通过。隔离原生研究板在完整 0603 试验封装下仍有 8 处开路、27 个 DRC warnings 和 37 项原理图差异；Core 地连通 167/169，Display 68/68。R731 局部地修复通过隔离检查，C530 仍孤立，均未作为正式候选采用。完整试验脚本端到端验证及四层闭合仍待完成；记录见 `.codex/20261027-r25-continuation.md`。
+2026-10-27 Codex：E26 经过 legalize/polish 达到 79/81 合法模型，剩 UART0_RX 与 SDMMC_CMD；P47_MUX2 单独重布保持 79/81。`trial-codex79mux2` 的模型/Native 几何通过，KiCad 10.0.5 DRC errors0，warnings24，parity38；完整地 Core167/169。R731 单独地孔 `(52.66,105.15)` 试验提升 Core 到168/169且无 DRC error，C530.2仍孤立。目标仍未达到四层闭合或可打样，详见 `.codex/20261027-r25-79-partial.md`。
