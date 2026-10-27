@@ -1228,3 +1228,7 @@ The corrected x=44.5 native9 trial reached Core/Display complete ground
 still had 40 unconnected items, 82 dangling-track and 24 dangling-via warnings;
 199 library warnings were caused by the deliberately removed duplicate local
 footprint library. This is the best mechanical/ground trial, not a release.
+Adding the isolated CKV escape and rechecking as native10 reduced Core opens
+from 40 to 39 while preserving ground 169/169, Display 68/68, zero
+error-level DRC and one parity item. The remaining 39 opens span broader
+baseline/local-route breaks and still require a full router pass.
