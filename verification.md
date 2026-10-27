@@ -1158,3 +1158,5 @@ D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Nat
 2026-10-27 Codex：按当前 E26 实际焊盘/物理 mux 顺序运行 SD-only pin-swap 搜索，当前六路 SD 映射交叉代价为 132，推荐映射降至119：U710.2→D3、U710.5→D2、U711.2→D1、U711.5→CMD、U711.11→D0、U711.14→CLK；UART 通道保持不动。该映射的六网整体 surgery 与固定 GPIO/SD 铜仍无法无冲突完成，固定 assignment warm 续算最低21个冲突，故未采用。C530 下移0.5mm并联重布 LNA_IN、UART、D6、BUS-OE 仍保留3个核心冲突；U710 下移0.5mm的14网局部重布产生13–14个冲突；U710.14 与 U711.14/U711.11 的 UART source 交换双网均无路径。所有结果保留在 `.work/r25-resume-codex-20261027`，正式 CAD 与原理图未改。
 
 2026-10-27T17:20:00+08:00 Codex：从空状态重跑 R25 legalize 仅得到 65/85；终态 pending 为 20 条模型路径，未覆盖稳定 79/81 几何，也未写入正式 PCB。结果保留在 `.work/r25-resume-codex-20261027/runs/route-c-custom-legalize.json`，不能作为候选或制造依据。按用户授权及时清理中间产物：删除 `.work` 下 Python `__pycache__`/`.pyc`、`.swp`、`.tmp` 和 `.DS_Store`，未删除任何 R25/R24 试验、路由证据、用户目录或 ZIP；可用空间复核约 12 GiB。Core14、完整 Native DRC/ERC/重建/捕获和制造资格仍未完成。
+
+2026-10-27T18:22:41+08:00 Codex：R518 移至隔离 G 姿态 `(57.0,108.0)` 后，真实局部/全局路由扫描未能同时闭合 `SDMMC_CMD` 与 `UART0_RX`；旧 router5 B 扩展组产生重复 sink，短暂 83/85 状态物化时出现 `BK:R719.1` 伪网名，已明确作废，不作为候选。随后在真实网名几何上对20网做 negotiation，20/20均可生成但稳定冲突约15组，未收敛。稳定可用状态仍为原 79/81，正式 PCB/原理图未改；所有负证据保留在 `.work/r25-resume-codex-20261027`，Core14与制造资格仍未完成。
