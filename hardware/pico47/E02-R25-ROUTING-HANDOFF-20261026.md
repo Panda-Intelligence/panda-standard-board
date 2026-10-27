@@ -76,6 +76,27 @@ GPIO: pins 28 and 38–42 are reserved for octal PSRAM. Hypothetical runs that r
 C523/C501 and the bottom 3V3 trunk dropped the negotiated conflicts from 10 to 3–6,
 which motivated ECOs 3–4.
 
+## 2026-10-27 authorized large relayout study
+
+The user authorized changing the placement region of U710, U711 and J503, moving
+connectors, and adjusting the board-edge mechanical envelope while retaining four
+layers and keeping In1.Cu as the GND plane. The study therefore tested a large
+left/up MCU/mux relocation, a moved J503, a rotated R518, and several J501 poses.
+The formal r24 source and all generated R25 CAD remain unchanged.
+
+The best complete router state on the first relayout reached 81/81 only while the
+old J503 rule-area keepout was still at its old position. After moving that keepout
+with J503, the verified legal state was 80/81 (`BS:U501.43` pending); transactional
+polish tried budgets 2 through 512 and rolled back every attempt. The related J501
+position study produced a 79/81 state with `exact_check.py` at 0 issues, but its
+fresh Native trial still had 23 unconnected items, 62 error-level DRC violations, 38 parity items
+and board-edge/courtyard/keepout failures. It is rejected.
+
+The stable working baseline remains the previously verified 79/81 geometry with
+`UART0_RX` and the SD command-side endpoint unresolved. No relayout candidate has
+been adopted, no schematic or firmware pin contract has been changed, and no
+fabrication or Core14 claim is made.
+
 ## Remaining before any fabrication claim
 
 - Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by

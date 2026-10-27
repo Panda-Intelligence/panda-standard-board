@@ -1167,3 +1167,5 @@ D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Nat
 2026-10-27T20:00:00+08:00 Codex：对稳定 R25 79/81 Core 做独立 FreeRouting/Specctra 交叉验证；锁铜 DSN 载入后发现 1775 个不可修复的预存固定铜违规、249 个未布项，自动布线未产生有效进展，SES 仅保留为负证据，未导入 KiCad、未替换稳定源。
 2026-10-27T20:20:00+08:00 Codex：对稳定几何完成 14 组 UART/单阻挡网 pair sweep 与 8 组三网 sweep；没有任何组合同时形成 `UART0_RX` 合法路径，未生成可采用铜，稳定 79/81 未变。
 2026-10-27T20:40:00+08:00 Codex：继续测试 UART RX 与 TX/邻近 mux select 源焊盘交换（含 UART TX、D5、BUS_OE、D1、MUX1、MUX4、MUX6），所有真实双网组合均未形成无冲突路径；未改变正式电气映射。
+
+2026-10-27T22:40:00+08:00 Codex：按用户授权测试 U710/U711/J503 大重排、连接器位置和板边调整，保持四层并禁止 In1 signal。首个大重排路由器状态一度达到81/81，但发现 J503 的 rule-area 禁布区仍停在旧位置；将该真实机械约束随器件移动后重新合法化，最佳合法状态为80/81，唯一待连 `BS:U501.43`，polish budget2/4/8/16/32/64/128/256/512全部事务回滚。J501 D 姿态的真实Native物化几何比较0差异、`exact_check.py` 0 issues，但KiCad Native仍报23 unconnected、62条error-level DRC violations、38 parity items，含J503 keepout、短路、板边、courtyard及thermal错误，拒绝采用。J501 E 姿态的路由器最佳为80/81，精确检查仍有2处与固定 `SDMMC_CMD` 铜线的间距问题。所有结果保存在 `.work/r25-resume-codex-20261027`，正式R24/R25源、原理图、pin contract、firmware与制造输出未改；Core14未量，不能宣称可打样。
