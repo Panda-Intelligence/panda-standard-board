@@ -33,14 +33,16 @@ groups = {
     'B': ([('U501', gp_pin[x]) for x in (14, 17, 18, 21, 38, 39, 40)], [('R' + str(710 + b), '1') for b in range(9, 16)]),
 }
 if spec.get('group_b_ext'):
-    # GPIO-matrix functions that may also trade pins with the direct display bits (strapping GPIO45 excluded)
+    # GPIO-matrix functions that may also trade pins with the direct display bits (strapping GPIO45 excluded).
+    # The B group has fourteen physical endpoints; derive the sink set explicitly so
+    # E26's current pad nets cannot add duplicate sinks (the same display net can be
+    # visible on more than one GPIO source after the approved pin permutation).
     ext_gpio = (11, 12, 13, 41, 42, 47, 48)
-    ext_sinks = []
-    for gpx in ext_gpio:
-        net = u501_net_by_gpio = None
-        net = next(p['net'] for p in g['pads'] if p['ref'] == 'U501' and p['num'] == gp_pin[gpx])
-        ext_sinks.append(next((p['ref'], p['num']) for p in g['pads'] if p['net'] == net and p['ref'] != 'U501'))
-    groups['B'] = (groups['B'][0] + [('U501', gp_pin[x]) for x in ext_gpio], groups['B'][1] + ext_sinks)
+    b_sinks = [('R' + str(710 + b), '1') for b in range(9, 16)]
+    b_sinks += [('R726', '1'), ('R727', '1'), ('R729', '1'), ('R730', '1'),
+                ('U904', '2'), ('U904', '3'), ('U904', '4')]
+    b_sources = [('U501', gp_pin[x]) for x in (14, 17, 18, 21, 38, 39, 40) + ext_gpio]
+    groups['B'] = (b_sources, b_sinks)
 groups.update({
     'C': ([(CH[i][0], str(CH[i][1][0])) for i in sd_ch], [('R517', '1'), ('R518', '1'), ('R519', '1'), ('R520', '1'), ('R521', '1'), ('R522', '1')]),
     'D': ([(CH[i][0], str(CH[i][1][2])) for i in sd_ch], [('U501', gp_pin[x]) for x in (5, 6, 7, 8, 9, 10)]),
