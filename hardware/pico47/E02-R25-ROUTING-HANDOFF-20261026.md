@@ -166,7 +166,12 @@ A follow-up width-aware local power search found a zero-conflict geometry-only
 candidate for J503.4 and U710.8 at 0.30 mm copper. It could not find J601.12,
 and the wider R731.2 search was blocked; the earlier 0.15 mm R731.2 candidate
 remains experimental. Native refill and DRC are still required after disk space
-recovers, so these local copper candidates are not adopted.
+recovers, so these local copper candidates are not adopted. Moving J601 1.0 mm
+toward the board interior with the same -90° orientation made J601.12 routable
+at 0.15 mm; combined with the 0.30 mm J503.4/U710.8/R731.2 escapes, the
+geometry-only candidate has 11 added GND objects and zero checked conflicts. It
+also rips local panel signal copper, so it remains experimental until all
+affected nets are rerouted and Native-verified.
 
 ## Remaining before any fabrication claim
 

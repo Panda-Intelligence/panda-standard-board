@@ -1193,4 +1193,9 @@ audit found zero new-copper conflicts against existing tracks, vias, pads and
 holes. R731.2 had a legal 0.15 mm candidate but no 0.30 mm path; J601.12 had no
 path in either local search. Native zone refill/DRC was intentionally not run
 because free disk was about 1.2 GiB, below the 2 GiB Native gate. These remain
-experimental and are not a checkpoint.
+experimental and are not a checkpoint. A connector-area experiment moved J601
+1.0 mm right with the same -90° rotation and produced a 0.15 mm J601.12 GND
+escape. Combining that move with the 0.30 mm J503.4/U710.8/R731.2 searches
+yielded 11 added GND objects, zero independent geometry conflicts, and no In1.Cu
+signal tracks. The moved connector rips local panel copper, so full signal
+reroute and Native validation are still required.
