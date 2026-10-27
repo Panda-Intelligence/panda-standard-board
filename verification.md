@@ -1218,3 +1218,8 @@ Native4 with direct main-GND bridges reached complete Core ground 169/169, but
 introduced 12 real clearance/hole errors (328 total violations), so it was
 rejected. The selective-layer native5 candidate reported 132 violations, 38
 unconnected items and one parity item; it remains rejected with CKV still open.
+Corrected x=44.0/x=44.25 Native runs (native7/native8) kept 128 violations,
+41 unconnected items and one parity item; the six remaining errors are the
+J601 XLE/XSTL/CKV pads against fixed GND vias. A further x=44.5 geometry
+candidate passes the independent zero-conflict audit, but has not been
+materialized under the current disk gate.
