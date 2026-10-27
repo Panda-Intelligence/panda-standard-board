@@ -191,6 +191,10 @@ reached Core 169/169 ground with direct main-GND bridges but added 12 real
 clearance/hole errors, so it was rejected. A selective-layer native5 variant
 reported 132 violations and 38 unconnected items with one parity item; CKV
 remains open and the variant is not accepted.
+Corrected x=44.5 native9 reached complete ground (Core 169/169, Display 68/68)
+and no error-level DRC violations, but retained 40 opens, 82 dangling-track
+and 24 dangling-via warnings plus one parity item. Its 199 library warnings
+come from the isolated duplicate-library cleanup; it is not a release board.
 Corrected x=44.0/x=44.25 Native runs remained at 128 violations, 41 opens and
 one parity item, with six errors limited to J601 XLE/XSTL/CKV versus fixed GND
 vias. An x=44.5 geometry-only candidate passes the 0-conflict audit and awaits

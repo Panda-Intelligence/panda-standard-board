@@ -1223,3 +1223,8 @@ Corrected x=44.0/x=44.25 Native runs (native7/native8) kept 128 violations,
 J601 XLE/XSTL/CKV pads against fixed GND vias. A further x=44.5 geometry
 candidate passes the independent zero-conflict audit, but has not been
 materialized under the current disk gate.
+The corrected x=44.5 native9 trial reached Core/Display complete ground
+169/169 and 68/68 with no error-level DRC violations and one parity item. It
+still had 40 unconnected items, 82 dangling-track and 24 dangling-via warnings;
+199 library warnings were caused by the deliberately removed duplicate local
+footprint library. This is the best mechanical/ground trial, not a release.
