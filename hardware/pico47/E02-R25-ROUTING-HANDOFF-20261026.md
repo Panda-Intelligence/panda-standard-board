@@ -136,6 +136,32 @@ the overlapping TP712 courtyard; its independent complete-ground check still has
 five GND clusters, including `U710.8`, `J503.4` and `R731.2`, so it is not adopted.
 This is a useful routing experiment, not a checkpoint or fabrication candidate.
 
+## 2026-10-28 mechanical-relayout tool and negotiation continuation
+
+The user additionally confirmed that U710/U711/J503 may move within a revised
+connector/board-edge mechanical region. A reusable geometry-only tool is now
+tracked as `r25_router/relayout_components.py`. It requires an explicit
+`old_rot` for every moved footprint, can carry an explicit board outline, moves
+rule areas with the selected footprint, preserves pad UUIDs/net names, removes
+only local signal copper, rejects non-GND In1.Cu tracks, and checks moved-pad
+clearance before writing a candidate. This prevents the earlier temporary scan
+from applying an absolute angle as a second rotation.
+
+The corrected wide-left posture reproduces the previously studied coordinates
+(U710 49/74, U711 68/80, J503 43.2822/80 and the y=60 left board-edge step).
+With the current approved R25 design contract, fresh negotiation reached 81/81
+endpoint paths in each early iteration but retained 32 conflicted nets at the
+best saved iteration; the five-iteration run ended at 80/81 with 24 conflicts.
+No state passed the legal-copper gate, so no Native board was materialised or
+adopted. The experiment and logs remain under
+`.work/r25-resume-codex-20261027/`; formal r24 and the R25 delivery directory
+remain untouched.
+
+`runs/trial.sh` now defaults to the current `hardware/pico47/design.json`
+contract (override with `R25_DESIGN`) instead of the stale R24 map. This is a
+workflow correctness fix; it does not relax any four-layer, In1-GND, clearance,
+ground, parity, or manufacturing gate.
+
 ## Remaining before any fabrication claim
 
 - Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by

@@ -9,9 +9,11 @@ PY=${R25_PY:-python3}
 KPY=${KICAD_PY:-/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3}
 K=${KICAD_CLI:-/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli}
 STOCK=${KICAD_FOOTPRINTS:-/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints}
+DESIGN=${R25_DESIGN:-$SCRIPT_DIR/../../design.json}
 [[ $# == 4 ]] || { print -u2 'usage: trial.sh GEOM BASESPEC LEGAL_STATE TAG'; exit 2; }
 GEOM=$1; BASE=$2; STATE=$3; TAG=$4
 [[ $TAG =~ '^[A-Za-z0-9_-]+$' ]] || { print -u2 'invalid tag'; exit 2; }
+[[ -f $DESIGN ]] || { print -u2 "R25 design contract not found: $DESIGN"; exit 2; }
 TRIAL=trial-$TAG
 FIN=geom-$TAG-final.json
 [[ ! -e $TRIAL && ! -e $FIN && ! -e runs/spec-fin-$TAG.json ]] || { print -u2 'trial output already exists'; exit 2; }
@@ -31,7 +33,7 @@ if moves.keys() & additional.keys(): raise ValueError('duplicate move refs')
 moves.update(additional)
 with open(moves_out, 'x') as f: json.dump(moves, f)
 PY
-nice -n 15 "$PY" tools/router5.py "$GEOM" "runs/spec-fin-$TAG.json" runs/design-r24.json "runs/fin-$TAG.json" > "runs/fin-$TAG.log" 2>&1
+nice -n 15 "$PY" tools/router5.py "$GEOM" "runs/spec-fin-$TAG.json" "$DESIGN" "runs/fin-$TAG.json" > "runs/fin-$TAG.log" 2>&1
 nice -n 15 "$PY" tools/exact_check.py "$FIN" geom-r24.json > "runs/exact-$TAG.log" 2>&1
 cp -R base-r24 "$TRIAL"
 nice -n 10 "$KPY" tools/apply_final.py base-r24/Core.kicad_pcb geom-r24.json "$FIN" "runs/moves-$TAG.json" "$TRIAL/Core.kicad_pcb" > "$TRIAL/apply.log" 2>&1
