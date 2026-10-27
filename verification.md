@@ -1238,3 +1238,7 @@ baseline/local-route breaks and still require a full router pass.
 同日资源清理：旧 `seven-mm-*` 生成目录 27 项先归档为 `.work/archive-seven-mm-intermediates-20261028.tar.gz`（成员数复核 27），再移除原目录；另移除已过期且不在 R25 依赖链的旧 Pico47 生成缓存和旧 PNS SDK/console adapter 缓存。R25 当前工作目录、R24 四层试验树、Native10 证据、归档和正式交付物未删。
 
 R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径；用户批准的 `geom-relayout-wide-power6` 8 轮将冲突降至 13，但 legalize 仅得 73/81，故全部拒绝。没有新的 Native 候选、没有 Core14、没有正式 PCB/原理图/制造输出变化；项目仍不可宣称可打样。
+
+2026-10-28T04:27:00+08:00 Codex：从 Native10 机械/地完整候选开始做受限真实 Native surgery。U711 左侧四网 `P47_MUX2/P47_D6_SRC/SDMMC_D3/P47_MUX4` 首次达到4/4无冲突并物化；随后 BUS-OE、D11、XSTL、D4、PGOOD、SDMMC_D0_CARD、SDMMC_D1_CARD、D8、I2C_SDA、EN_VSYS_AUDIO、FL_PWM 逐步物化。当前保存候选 `.work/r25-resume-codex-20261027/trial-u711-sixteen-net-flpwm-native-20261028`：Core17 opens、DRC error-level0、warning275、parity1、ground169/169；Display ground68/68。所有新增网在独立几何图中与实际 pad 成单岛。`LOCAL-R25-17OPEN-CANDIDATE-20261028.json` 保存 Core/geometry SHA 与 pending 清单。
+
+仍未通过产品 gate：I2C_SCL、CHIP_PU、SD_CD、VSYS_RAW、3V3_EPD_LOGIC 残余；Core14、完整 PNS/capture/replay/ERC、制造/CAM/EVT 尚未执行。该候选是实验进展，不是 R25 checkpoint 或可打样输出。
