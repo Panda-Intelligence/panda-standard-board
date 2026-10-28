@@ -1251,3 +1251,10 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 2026-10-29 Codex：在上述 complete-ground seed 上继续做 SD card focused reroute。`SDMMC_D2_CARD`、`SDMMC_D0_CARD`、`SDMMC_CMD_CARD` 模型 islands 均找到完整路径，合并后 exact check 0 issues；Native trial 保持 DRC errors 0、complete ground 169/169 + 68/68、parity 1，Core opens 降至24。仍非 checkpoint，I2C/power/control/VSYS 及 Core14/ERC/capture/replay/CAM gates 继续开放。
 2026-10-29 Codex：继续在该 seed 上完成 `EN_VSYS_AUDIO` + `FL_PWM` 联合重布，以及 `KEY_POWER_MCU` 和 SD-card D0/CMD focused repair；各模型 exact check 0 issues。最新 Native trial `trial-flpwm-keypower-sdcard-native-20261029` 保持 DRC errors 0、complete ground Core169/169 + Display68/68、J601 targets 2/2、parity1，Core opens 降至18。`SD_CD` + `P47_BUS_SELECT` 联合单网模型在固定障碍下无路；I2C、3V3/VSYS/EPD 等仍开放，未形成 checkpoint。
 2026-10-29 Codex：最新 18-open seed 上 `I2C_SCL` + `I2C_SDA` 联合 fixed-contract 搜索也返回无路；`SD_CD`/`P47_BUS_SELECT` 搜索同样受固定障碍阻塞。磁盘可用空间降至约3.1GiB，低于 full-G 门槛，因此不再启动新的重型 routing batch；实验 CAD/日志仍保留在 `.work`，正式源未修改。
+2026-10-29/30 Codex — R25 four-layer continuation and cleanup
+
+- 清理：歷史 `.work/pico47-fourlayer-resume-20261017` 已先生成並校驗全量歸檔，再刪除展開目錄與重複證據包；全量歸檔路徑 `.work/archives/pico47-fourlayer-resume-20261017-full-20261028.tar.gz`，正式 R24/R25 當前 seed 未刪除。
+- 動態 legalize 試驗：最佳80/82；Native物化27 opens、310 violations、32 parity、Core ground167/169，違反固定 pad-net contract，拒絕。
+- contract-fixed Native seed：Core12 opens、DRC errors0、274 warnings、parity1；Display ground68/68、J601 targets2/2；C530.2仍唯一 Core GND孤島。
+- 新負證據：I2C_SDA與EXP_INT在真實 contract geometry 上單網 router2均 no-path；SD_CD正確 rip-up/re-route 後仍12 opens、DRC errors0、parity1、Core ground168/169，未採用。
+- 尚未執行/通過：Core14、完整 ERC、clean rebuild/capture/replay、0 opens/warnings/parity、CAM/SMT/EVT、製造放行。目標仍 active/incomplete。
