@@ -1276,3 +1276,11 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 - 在该改进 geometry 上新增 C530 GND via 的 exact check 发现固定 3V3_RF 与 P47_MUX4 碰撞，未物化/未采纳。
 - 在该改进 geometry 上重新执行 I2C_SDA 单网 router2（8轮、无动态重排）仍为 no-path；未生成可用 Native 候选。
 - 在同一 geometry 上执行 C530 周围 GND-only router2（8轮、188个地组件、无动态重排）仍为 no-path；未生成可用 Native 候选。
+
+2026-10-30 Codex — C530 shift578x Native evidence
+
+- 实验候选：`.work/r25-resume-codex-20261027/trial-contract-fixed-negotiation-c530-shift578x-local-four-native-20261030`。
+- Native Core：9 opens、DRC errors 0、warnings 276、parity 1；Core ground 169/169；Display ground 68/68；J601 named targets 2/2。
+- 4-layer check：geometry export 的 In1.Cu 非 GND tracks=0；signal layers 为 F.Cu/In2.Cu/B.Cu。
+- C530 center `[57.75,93.8]`、GND through-via `[57.75,93.32]`；3V3_RF 局部绕行、LNA_IN 恢复及四网局部 router2 证据均保留在 `.work`。
+- I2C_SDA 30轮 no-path；VSYS_RAW/3V3_EPD_LOGIC/R732 GND return仍未闭合。该候选不是 R25 checkpoint，不具备 fabrication-ready 资格；Core14/ERC/capture/replay/CAM/EVT 尚未完成。
