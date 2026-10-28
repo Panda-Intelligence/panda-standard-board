@@ -4,6 +4,22 @@ Status: **NOT routed to completion, NOT for fabrication.** Best legal router sta
 77/81 connections on the current geometry (E26). No checkpoint has been captured and
 the published r24 package is unchanged.
 
+## 2026-10-29 contract-fixed continuation
+
+The current R25 contract/ECO experiment is tracked separately from the older E26
+count above. R533 was moved to PCB `(51.5, 100.8)` at `180°` inside the approved
+reset-cluster allowance. The fixed `design.json` A/B/C/D assignment was then used
+with no router group reassignment. The best Native materialization has 12 Core
+opens, zero error-level DRC violations, 274 warnings, parity 1 (the existing C501
+manufacturer-field warning), Display ground 68/68 and both J601 named ground
+targets connected. C530.2 is still the only Core ground island, so this is not a
+checkpoint. Dynamic reassignment trials that reached clean DRC were rejected when
+their materialized pad nets differed from the contract.
+
+Evidence remains ignored under `.work/r25-resume-codex-20261027/`; see the dated
+Codex handoff/state files for hashes and the exact SDMMC_D2 repair audit. Core14,
+complete ERC/capture/replay and manufacturing gates remain open.
+
 ## Starting point
 
 - r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
