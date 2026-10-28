@@ -1258,3 +1258,9 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 - contract-fixed Native seed：Core12 opens、DRC errors0、274 warnings、parity1；Display ground68/68、J601 targets2/2；C530.2仍唯一 Core GND孤島。
 - 新負證據：I2C_SDA與EXP_INT在真實 contract geometry 上單網 router2均 no-path；SD_CD正確 rip-up/re-route 後仍12 opens、DRC errors0、parity1、Core ground168/169，未採用。
 - 尚未執行/通過：Core14、完整 ERC、clean rebuild/capture/replay、0 opens/warnings/parity、CAM/SMT/EVT、製造放行。目標仍 active/incomplete。
+
+2026-10-30 Codex — C530 ground detour experiment
+
+- C530.2 中心 `.4/.2` GND via trial：Native complete ground Core169/169、Display68/68、parity1，但 6 个 DRC errors（与 SDMMC_D2、P47_D12_SRC、3V3_RF 冲突），拒绝。
+- 仅重布 SDMMC_D2 与 P47_D12_SRC 后，Native 仍有 2 errors（固定 3V3_RF In2 段）、11 opens、ground169/169、parity1；几何 router2 对两网达到 0 conflict，但产品门禁未通过。
+- 结论：C530 via-in-pad 方案保持为失败证据；正式 R24/R25 source 未改，未采纳、未测 Core14。
