@@ -376,7 +376,12 @@ def prepare(g, spec):
     c = Ctx()
     t0 = time.time()
     windows = dict(spec.get('nets', {}))
-    for n in TARGET:
+    requested_targets = spec.get('target_nets')
+    if requested_targets is None:
+        requested_targets = TARGET
+    if not isinstance(requested_targets, list) or not all(isinstance(n, str) for n in requested_targets):
+        raise SystemExit('target_nets must be a list of net names')
+    for n in requested_targets:
         windows.setdefault(n, 'all')
     for n in windows:
         if n.startswith(PROTECTED_PREFIX):
