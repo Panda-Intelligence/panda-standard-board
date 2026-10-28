@@ -1268,3 +1268,9 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 
 - 将 `.work/r25-resume-codex-20261027/runs/` 全量压缩为 `.work/archives/r25-resume-runs-20261030.tar.gz`，`tar -tzf` 校验通过后删除展开副本；当前 contract-fixed seed、Native trial 与历史全量归档未动。
 - 清理后可用空间约 976 MiB，仍低于 Native/local 2 GiB 门槛；未启动新的路由计算。
+
+2026-10-30 Codex — fixed-assignment negotiation continuation
+
+- 禁用动态 group reassignment 的 router5 negotiation + deterministic legalize 达到 81/82 committed networks。
+- Native candidate `trial-contract-fixed-negotiation-legalized-native-20261030`：Core 10 opens、DRC errors 0、275 warnings、parity 1；Display ground 68/68；Core ground 168/169，唯一孤岛仍 C530.2。
+- 在该改进 geometry 上新增 C530 GND via 的 exact check 发现固定 3V3_RF 与 P47_MUX4 碰撞，未物化/未采纳。
