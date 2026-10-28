@@ -38,6 +38,11 @@ has 18 Core opens, zero DRC errors, parity 1, complete ground and the two J601
 named targets connected. `SD_CD` and `P47_BUS_SELECT` remain blocked under their
 fixed obstacles; I2C and protected power/EPD segments remain open.
 
+The fixed-contract I2C_SCL/I2C_SDA joint search also returned no path. The
+remaining ordinary SD_CD/BUS_SELECT search was similarly blocked. Disk space is
+currently about 3.1 GiB, so the full-G/routing batch gate is intentionally left
+closed until space recovers; no source PCB was changed.
+
 ## Starting point
 
 - r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
