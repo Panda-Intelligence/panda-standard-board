@@ -27,6 +27,11 @@ DRC errors 0 and parity 1, but still reports 25 unconnected items. It is the
 current experimental routing seed, not a release checkpoint; the remaining
 opens include I2C, power-enable, VSYS and SD-card segments.
 
+Using that seed, a focused SD-card reroute closed the SDMMC_D2_CARD, SDMMC_D0_CARD
+and SDMMC_CMD_CARD model islands with exact geometry 0 issues. The resulting
+Native materialization is still experimental (24 opens, DRC errors 0, parity 1,
+complete ground retained); it is not yet a checkpoint.
+
 ## Starting point
 
 - r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
