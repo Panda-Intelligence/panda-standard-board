@@ -225,22 +225,19 @@ def legalize(src_state):
         for m in list(graph[n]):
             graph.setdefault(m, set()).add(n)
     queue = deque()
-    # remove the fewest nets that leave the rest conflict-free (exact minimum vertex cover)
-    from ortools.sat.python import cp_model
-    mdl = cp_model.CpModel()
-    xv = {n: mdl.NewBoolVar(n) for n in graph}
-    for n in graph:
-        for m in graph[n]:
-            if n < m:
-                mdl.AddBoolOr([xv[n], xv[m]])
-    mdl.Minimize(sum(xv.values()))
-    sol = cp_model.CpSolver()
-    sol.parameters.max_time_in_seconds = 60
-    sol.Solve(mdl)
-    for n in graph:
-        if sol.Value(xv[n]):
-            committed.discard(n)
-            queue.append(n)
+    # 采用确定性的贪心顶点覆盖，避免大型 CP-SAT 原生库成为后台路由运行时依赖。
+    # 每次移除当前度数最高的网络，直到剩余图无边；后续 legalize 会逐项重路由。
+    cover = {n: set(edges) for n, edges in graph.items()}
+    while True:
+        candidates = [(len(edges), n) for n, edges in cover.items() if edges]
+        if not candidates:
+            break
+        _, victim = max(candidates, key=lambda item: (item[0], item[1]))
+        committed.discard(victim)
+        queue.append(victim)
+        for peer in cover.get(victim, set()):
+            cover.get(peer, set()).discard(victim)
+        cover[victim].clear()
     queue.extend(queue_stale)
     queue.extend(sorted(x for x in live if x not in res and x not in queue))      # never-routed nets of the state too
     for n in list(res):
