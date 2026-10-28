@@ -32,6 +32,12 @@ and SDMMC_CMD_CARD model islands with exact geometry 0 issues. The resulting
 Native materialization is still experimental (24 opens, DRC errors 0, parity 1,
 complete ground retained); it is not yet a checkpoint.
 
+The same seed then closed `EN_VSYS_AUDIO` and `FL_PWM`, followed by a separate
+`KEY_POWER_MCU` repair and the SD-card reroute replay. The latest Native trial
+has 18 Core opens, zero DRC errors, parity 1, complete ground and the two J601
+named targets connected. `SD_CD` and `P47_BUS_SELECT` remain blocked under their
+fixed obstacles; I2C and protected power/EPD segments remain open.
+
 ## Starting point
 
 - r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
