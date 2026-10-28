@@ -124,6 +124,27 @@ def create(out,donor):
         host['pins'][str(p)]={'name':'GPIO'+str(g)+'_RESERVED_OCTAL_PSRAM','type':'no_connect'}
         host['nets'][str(p)]=''
     host['fields']['Description']='E0 bare-chip pin map: physical36=GPIO48,37=GPIO47. All33 usableGPIO allocated. KeepGPIO33..37 reserved,GPIO2 direct inhibit,GPIO19/20USB. Incompatible with D firmware.'
+    # R25 reset ECO: keep the ESP32 EN input local and isolate the debug
+    # connector with a reviewed 1 kOhm series link. R529 is already the USB
+    # DP series part in the donor, so the new link uses the unused R533 ref.
+    for ref, pad, net in [('U501', '4', 'CHIP_PU_MCU'),
+                          ('R510', '2', 'CHIP_PU_MCU'),
+                          ('C510', '1', 'CHIP_PU_MCU'),
+                          ('TP18', '1', 'CHIP_PU_MCU'),
+                          ('J503', '1', 'CHIP_PU_DEBUG')]:
+        require(ref in core and pad in core[ref]['nets'], 'Missing CHIP_PU ECO endpoint '+ref+'.'+pad)
+        core[ref]['nets'][pad] = net
+    core['U501']['pins']['4'] = {'name': 'CHIP_PU_EN', 'type': 'input'}
+    core['R510']['value'] = '10k / CHIP_PU_MCU'
+    core['C510']['value'] = '1u / CHIP_PU_MCU'
+    core['TP18']['value'] = 'CHIP_PU_MCU'
+    core['J503']['value'] = 'TC2030-IDC-NL / DEBUG / CHIP_PU_DEBUG'
+    core['R510']['fields']['Description'] = 'ESP32-S3 local CHIP_PU_MCU 10k pull-up; dedicated EN input remains separate from debug connector.'
+    core['C510']['fields']['Description'] = 'ESP32-S3 local CHIP_PU_MCU 1uF reset timing capacitor to GND; exact startup timing qualification remains open.'
+    core['TP18']['fields']['Description'] = 'ESP32-S3 local CHIP_PU_MCU observation and controlled-reset solder test pad.'
+    core['J503']['fields']['Description'] = 'Bottom-side debug interface; pad1 is CHIP_PU_DEBUG and reaches MCU EN only through R533 1k series isolation.'
+    resistor('Core', 'R533', '1k', 'CHIP_PU_MCU', 'CHIP_PU_DEBUG')
+    core['R533']['value'] = '1k / CHIP_PU_DEBUG_SERIES'
     for ref,oldnet,newnet in [('R512','EPD_LE','P47_D8_SRC'),('R513','EPD_OE','P47_BUS_SELECT')]:
         require(core[ref]['nets']['1']==oldnet,'Unexpected strap predecessor')
         core[ref]['nets']['1']=newnet;core[ref]['fields']['Description']='E0 explicit10k strap pulldown for '+newnet

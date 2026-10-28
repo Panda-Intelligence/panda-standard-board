@@ -237,6 +237,64 @@
       "net": "P47_SPV_SRC"
     }
   },
+  "reset_topology": {
+    "schema": "panda47-r25-chip-pu-reset-v1",
+    "status": "USER_AUTHORIZED_ELECTRICAL_ECO_UNVERIFIED",
+    "mcu_ref": "U501",
+    "mcu_en_pad": "4",
+    "mcu_net": "CHIP_PU_MCU",
+    "active_level": "LOW",
+    "internal_reset_input": true,
+    "pullup": {
+      "ref": "R510",
+      "pad": "2",
+      "value_ohm": 10000,
+      "net": "CHIP_PU_MCU",
+      "source_net": "3V3_AON"
+    },
+    "local_reset_capacitor": {
+      "ref": "C510",
+      "pad": "1",
+      "value_uf": 1.0,
+      "net": "CHIP_PU_MCU",
+      "return_net": "GND"
+    },
+    "mcu_testpoint": {
+      "ref": "TP18",
+      "pad": "1",
+      "net": "CHIP_PU_MCU"
+    },
+    "debug_path": {
+      "connector_ref": "J503",
+      "connector_pad": "1",
+      "net": "CHIP_PU_DEBUG",
+      "series_resistor_ref": "R533",
+      "series_resistor_value_ohm": 1000,
+      "series_resistor_mpn": "RC-02K1001FT",
+      "series_resistor_lcsc": "C140197",
+      "series_resistor_mcu_pad": "1",
+      "series_resistor_debug_pad": "2",
+      "external_driver": "OPEN_DRAIN_ACTIVE_LOW",
+      "debug_reset_allowed": true
+    },
+    "cluster_relayout": {
+      "allowed_refs": ["U501", "R510", "C510", "TP18", "R533", "J503"],
+      "four_layer_only": true,
+      "signal_layers": ["F.Cu", "In2.Cu", "B.Cu"],
+      "ground_plane_layer": "In1.Cu",
+      "mechanical_envelope_review_required": true,
+      "native_ground_and_pad_group_gate_required": true
+    },
+    "firmware_mapping": {
+      "logical_signal": "mcu_reset_n",
+      "firmware_gpio": null,
+      "mcu_en_is_not_general_gpio": true,
+      "external_debug_reset_is_active_low": true,
+      "implementation_status": "PENDING_EXACT_FIRMWARE_SOURCE_AND_BOOT_VALIDATION"
+    },
+    "manufacturing_release": false,
+    "physical_qualification_complete": false
+  },
   "mux": {
     "manufacturer": "SGMICRO",
     "mpn": "SGM330A-YTS/TR",

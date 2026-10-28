@@ -1,0 +1,34 @@
+{
+  "schema": "panda47-r25-firmware-reset-mapping-v1",
+  "revision": "E0-R25",
+  "status": "CONTRACT_ONLY_PENDING_EXACT_FIRMWARE_SOURCE",
+  "logical_signal": "mcu_reset_n",
+  "mcu": {
+    "ref": "U501",
+    "en_pad": 4,
+    "net": "CHIP_PU_MCU",
+    "active_level": "LOW",
+    "is_general_gpio": false,
+    "boot_and_reset_behavior": "ESP32 EN input; external open-drain assertion is allowed"
+  },
+  "debug": {
+    "connector_ref": "J503",
+    "connector_pad": 1,
+    "net": "CHIP_PU_DEBUG",
+    "series_resistor_ref": "R533",
+    "series_resistor_ohm": 1000,
+    "driver": "OPEN_DRAIN_ACTIVE_LOW",
+    "firmware_gpio": null
+  },
+  "firmware_actions": {
+    "assert_reset": "drive the board reset control low only through the approved hardware/debug path",
+    "release_reset": "release the open-drain control and allow R510 to pull CHIP_PU_MCU high",
+    "sleep_policy": "do not claim GPIO retention on U501 EN; exact firmware boot/sleep implementation remains pending"
+  },
+  "qualification": {
+    "exact_firmware_source_verified": false,
+    "boot_reset_scope_verified": false,
+    "manufacturing_release": false,
+    "physical_qualification_complete": false
+  }
+}

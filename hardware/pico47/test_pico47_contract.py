@@ -30,6 +30,19 @@ class ContractTests(unittest.TestCase):
         self.assertTrue(plan['mux']['r25_routing_eco']['four_layer'])
         self.assertEqual(plan['mux']['r25_routing_eco']['ground_plane_layer'], 'In1.Cu')
 
+    def test_r25_chip_pu_reset_topology(self):
+        reset = fixture()['reset_topology']
+        self.assertEqual(reset['mcu_net'], 'CHIP_PU_MCU')
+        self.assertEqual(reset['pullup']['ref'], 'R510')
+        self.assertEqual(reset['local_reset_capacitor']['ref'], 'C510')
+        self.assertEqual(reset['debug_path']['connector_ref'], 'J503')
+        self.assertEqual(reset['debug_path']['series_resistor_ref'], 'R533')
+        self.assertEqual(reset['debug_path']['series_resistor_lcsc'], 'C140197')
+        self.assertTrue(reset['cluster_relayout']['four_layer_only'])
+        self.assertEqual(reset['cluster_relayout']['ground_plane_layer'], 'In1.Cu')
+        self.assertIn('J503', reset['cluster_relayout']['allowed_refs'])
+        self.assertIsNone(reset['firmware_mapping']['firmware_gpio'])
+
     def test_mux_truth_table(self):
         for channel in range(8):
             self.assertEqual(mux_target(False, False, channel), 'SD_OR_UART')
@@ -72,6 +85,12 @@ MUTATIONS = [
     (['battery','charge_termination_v'], 4.2), (['battery','charge_enable_allowed'], True),
     (['gpio','47','package_pin'], 36), (['gpio','48','package_pin'], 37),
     (['gpio','2','net'], 'I2C_PERMIT'), (['gpio','14','net'], 'SOME_OTHER_NET'),
+    (['reset_topology','mcu_net'], 'GPIO4'),
+    (['reset_topology','pullup','value_ohm'], 1000),
+    (['reset_topology','debug_path','series_resistor_ref'], 'R529'),
+    (['reset_topology','debug_path','series_resistor_lcsc'], 'UNKNOWN'),
+    (['reset_topology','cluster_relayout','ground_plane_layer'], 'In2.Cu'),
+    (['reset_topology','firmware_mapping','mcu_en_is_not_general_gpio'], False),
     (['mux','source_terminal_pins',0], [4,3,2]),
     (['mux','channels',0,'select_0_net'], 'SDMMC_CLK'),
     (['mux','disables_all_before_select'], False),

@@ -204,6 +204,43 @@ one parity item, with six errors limited to J601 XLE/XSTL/CKV versus fixed GND
 vias. An x=44.5 geometry-only candidate passes the 0-conflict audit and awaits
 Native materialization when disk space is sufficient.
 
+## 2026-10-28 approved CHIP_PU electrical ECO and cluster-relayout continuation
+
+The user approved both a real CHIP_PU topology ECO and an overall U501/reset-cluster
+relayout while retaining the four-layer stack. The source contract now records a
+dedicated `CHIP_PU_MCU` net at U501.4, R510.2, C510.1 and TP18.1, with the existing
+10 kOhm pull-up and 1 uF local reset capacitor. J503.1 is now `CHIP_PU_DEBUG` and
+reaches the MCU node only through a new 1 kOhm R533 series link
+(RC-02K1001FT/C140197). R529 was not repurposed: the native audit confirms it is
+already the USB_DP series resistor. `hardware/pico47/firmware_reset_mapping.json`
+records the active-low open-drain debug semantics; it deliberately does not invent
+a firmware GPIO implementation.
+
+The deterministic helper `r25_router/chip_pu_reset_eco.py` rewrites the five
+schematic labels, adds the R533 symbol/metadata, creates the two PCB nets, removes
+only old CHIP_PU copper, and accepts an explicit approved cluster pose. Its pure
+parser tests pass, and KiCad netlist export independently reports exactly:
+
+```text
+CHIP_PU_MCU: U501.4, R510.2, C510.1, TP18.1, R533.1
+CHIP_PU_DEBUG: J503.1, R533.2
+```
+
+Fresh ignored Native materialisations are retained under
+`.work/r25-resume-codex-20261027/`. The no-relayout ECO board is four-layer and
+In1 signal-free, but after removing the old shared copper it reports 18 open
+items, 31 error-level DRC violations and the pre-existing C501 parity item. A
+J503 move to (52,92) and a J503+TP18 trial move to (52,92)/(56.5,58) each removed
+local copper as intended; the constrained two-net A* router still returned NO PATH
+because the unchanged U501/RF/MCU escape field is densely occupied. These are
+rejected experiments, not checkpoints. Core14, capture/replay, complete product
+ERC and manufacturing gates remain unrun; no R25 CAD is adopted or fabrication
+qualified.
+
+The source test/contract gates pass, but routing acceptance remains pending. The
+R25 working branch may carry the reusable contract/helper/documentation changes;
+generated CAD and route states remain ignored.
+
 ## Remaining before any fabrication claim
 
 - Close the last 4 connections (automatic routing was stopped at the user's request; restart loops from `route-e26-l`), or finish by
