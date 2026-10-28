@@ -1243,3 +1243,5 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 
 仍未通过产品 gate：I2C_SCL、CHIP_PU、SD_CD、VSYS_RAW、3V3_EPD_LOGIC 残余；Core14、完整 PNS/capture/replay/ERC、制造/CAM/EVT 尚未执行。该候选是实验进展，不是 R25 checkpoint 或可打样输出。
 2026-10-28 Codex：用户批准 CHIP_PU 真实电气 ECO 与 U501/reset cluster 重排。源契约、builder、firmware reset mapping 与 deterministic helper 已更新；R533 1k（RC-02K1001FT/C140197）隔离 J503 debug reset，R529 保持 USB_DP。新 schematic netlist 独立确认两段复位网络；生成 Native 试验均保留在 `.work/r25-resume-codex-20261027/`。局部 J503/TP18 重排仍无两网 A* 路径，未进入 checkpoint；Core14、完整 ERC/capture/replay、制造/CAM/EVT 未执行，manufacturing_release 仍 false。
+
+2026-10-28 Codex：R25 passive-relayout full negotiation 物化前审查。finalize 生成82个路由网络/1973项新增铜，但初始状态有8个冲突网；确定性 legalize（移除已挂起的 CP-SAT runtime 依赖）保留最佳79/82，待处理 `CHIP_PU_DEBUG`、`CHIP_PU_MCU`、`P47_MUX0`。独立 Native refill/DRC 对该 partial trial 报 Core 17 error-level violations、27 unconnected、32 schematic parity，故拒绝采用；既有17-open seed仍是较佳实验源（Core error0、warning275、parity1、ground169/169；Display ground68/68）。没有保存正式PCB、没有Core14、capture/replay/ERC或制造放行。受追踪工具修复已提交并推送：`07b162b`、`ef916d0`；本地 contract 57/57、router-finalize 2/2、relayout 4 skipped 回归通过。
