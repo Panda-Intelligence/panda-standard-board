@@ -20,6 +20,13 @@ Evidence remains ignored under `.work/r25-resume-codex-20261027/`; see the dated
 Codex handoff/state files for hashes and the exact SDMMC_D2 repair audit. Core14,
 complete ERC/capture/replay and manufacturing gates remain open.
 
+The latest fixed-contract topology keeps a real C530.2-to-main-GND bridge while
+jointly rerouting the dense XSTL/D8/SDMMC_D2 corridor. Its Native materialization
+passes complete ground (Core 169/169, Display 68/68, J601 targets 2/2), Native
+DRC errors 0 and parity 1, but still reports 25 unconnected items. It is the
+current experimental routing seed, not a release checkpoint; the remaining
+opens include I2C, power-enable, VSYS and SD-card segments.
+
 ## Starting point
 
 - r24 engineering candidate (Core 16 unconnected, Display 0), copied unchanged to the
