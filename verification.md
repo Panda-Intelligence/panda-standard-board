@@ -1264,3 +1264,7 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 - C530.2 中心 `.4/.2` GND via trial：Native complete ground Core169/169、Display68/68、parity1，但 6 个 DRC errors（与 SDMMC_D2、P47_D12_SRC、3V3_RF 冲突），拒绝。
 - 仅重布 SDMMC_D2 与 P47_D12_SRC 后，Native 仍有 2 errors（固定 3V3_RF In2 段）、11 opens、ground169/169、parity1；几何 router2 对两网达到 0 conflict，但产品门禁未通过。
 - 结论：C530 via-in-pad 方案保持为失败证据；正式 R24/R25 source 未改，未采纳、未测 Core14。
+2026-10-30 Codex — R25 runs archive cleanup
+
+- 将 `.work/r25-resume-codex-20261027/runs/` 全量压缩为 `.work/archives/r25-resume-runs-20261030.tar.gz`，`tar -tzf` 校验通过后删除展开副本；当前 contract-fixed seed、Native trial 与历史全量归档未动。
+- 清理后可用空间约 976 MiB，仍低于 Native/local 2 GiB 门槛；未启动新的路由计算。
