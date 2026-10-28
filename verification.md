@@ -1284,3 +1284,10 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 - 4-layer check：geometry export 的 In1.Cu 非 GND tracks=0；signal layers 为 F.Cu/In2.Cu/B.Cu。
 - C530 center `[57.75,93.8]`、GND through-via `[57.75,93.32]`；3V3_RF 局部绕行、LNA_IN 恢复及四网局部 router2 证据均保留在 `.work`。
 - I2C_SDA 30轮 no-path；VSYS_RAW/3V3_EPD_LOGIC/R732 GND return仍未闭合。该候选不是 R25 checkpoint，不具备 fabrication-ready 资格；Core14/ERC/capture/replay/CAM/EVT 尚未完成。
+
+2026-10-30 Codex — R732 orphan-copper cleanup
+
+- 在 9-open Native 候选上确认 R732 附近 19 段 B.Cu GND track 组成无 pad/via 的孤立组件。
+- 仅移除该明确 orphan 组件后，Native Core 为 8 opens、DRC errors 0、warnings 274、parity 1；Core ground 169/169、Display ground 68/68、J601 targets 2/2 保持通过。
+- 当前候选：`.work/r25-resume-codex-20261027/trial-contract-fixed-negotiation-c530-shift578x-local-four-r732-clean-native2-20261030`。
+- 剩余 opens：I2C_SDA 2、VSYS_RAW 3、3V3_EPD_LOGIC 3；仍未测 Core14/ERC/capture/replay/CAM/EVT，不得视为制造放行。
