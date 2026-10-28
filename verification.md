@@ -1275,3 +1275,4 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
 - Native candidate `trial-contract-fixed-negotiation-legalized-native-20261030`：Core 10 opens、DRC errors 0、275 warnings、parity 1；Display ground 68/68；Core ground 168/169，唯一孤岛仍 C530.2。
 - 在该改进 geometry 上新增 C530 GND via 的 exact check 发现固定 3V3_RF 与 P47_MUX4 碰撞，未物化/未采纳。
 - 在该改进 geometry 上重新执行 I2C_SDA 单网 router2（8轮、无动态重排）仍为 no-path；未生成可用 Native 候选。
+- 在同一 geometry 上执行 C530 周围 GND-only router2（8轮、188个地组件、无动态重排）仍为 no-path；未生成可用 Native 候选。
