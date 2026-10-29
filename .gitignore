@@ -10,6 +10,10 @@
 *.pyc
 .DS_Store
 
+# R25 生成的候选板、试验日志与压缩包留在本地，不作为源代码提交。
+/pico47-r25-20261025/
+/pico47-r25-20261025.zip
+
 # Recreated by the validated release pipeline; never source or hand-entered evidence.
 /hardware/thin18-compact/split-c1-assembly-process.json
 /hardware/thin18-compact/split-c1-cap-drill-verification.json

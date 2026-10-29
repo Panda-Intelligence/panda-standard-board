@@ -1149,3 +1149,156 @@ endpoint guide 入口exit201，未進入路由；原因是衍生intent缺少目�
 B.Cu alternate-window 续作同样通过实际 endpoint/Native/RAM 检查但无新物理 Cu；四姿态终态全部保留，D15/XSTL 原群仍断，未进入产品 source。
 D15 B.Cu 宽窗口的只读规划在 0.15 mm 规则下 `Source blocked at requested width`，没有创建路径或修改 CAD；该负证据已归档。
 D15 B source-window 已覆盖真实 B.Cu 两组源段并绑定实际端点；Native 启动前 df 仅约2.7GiB，低于3GiB门禁，未运行、未修改 CAD，等待资源恢复。
+
+2026-10-27 Codex：R25 E26 继续布线与审计发现 mux 通道网名混淆，已修正路由器并通过两项回归；模型与原生几何比较测试五项通过。隔离原生研究板在完整 0603 试验封装下仍有 8 处开路、27 个 DRC warnings 和 37 项原理图差异；Core 地连通 167/169，Display 68/68。R731 局部地修复通过隔离检查，C530 仍孤立，均未作为正式候选采用。完整试验脚本端到端验证及四层闭合仍待完成；记录见 `.codex/20261027-r25-continuation.md`。
+2026-10-27 Codex：E26 经过 legalize/polish 达到 79/81 合法模型，剩 UART0_RX 与 SDMMC_CMD；P47_MUX2 单独重布保持 79/81。`trial-codex79mux2` 的模型/Native 几何通过，KiCad 10.0.5 DRC errors0，warnings24，parity38；完整地 Core167/169。R731 单独地孔 `(52.66,105.15)` 试验提升 Core 到168/169且无 DRC error，C530.2仍孤立。目标仍未达到四层闭合或可打样，详见 `.codex/20261027-r25-79-partial.md`。
+
+2026-10-27 Codex：在保持 R25 79/81 工作源隔离的前提下，继续执行局部 ECO 负证据。R732 向右 0.5 mm 后 `P47_BUS_OE_N` 单网即无路径；向上/下 0.5 mm 虽可单网连通，但与 UART0_RX、P47_D6 的三网 surgery 仍有冲突。R518 左/右 0.5 mm 的 `SDMMC_CMD`+`SDMMC_CMD_CARD` 双网搜索均失败；R716 右移 0.5 mm 的 UART/D6/BUS/卡侧四网仍有三个冲突。尝试把 CS 端 `U711.2↔U711.14` 交换到 R521/R518 后，CS 两网可在局部避让下连通，但冲突链转移到 BS:U501.36、DS:U711.4 以及既有 BS:U501.24/SD 路径，扩展 surgery 未闭合。保留的原始 warm-negotiation 续算最低 19 个冲突，B/C swap 变体同样未达合法状态。以上均为 `.work/r25-resume-codex-20261027` 实验，不是正式候选；未修改正式 PCB、原理图、引脚契约或制造输出，Core14 仍未测量。
+
+2026-10-27 Codex：按当前 E26 实际焊盘/物理 mux 顺序运行 SD-only pin-swap 搜索，当前六路 SD 映射交叉代价为 132，推荐映射降至119：U710.2→D3、U710.5→D2、U711.2→D1、U711.5→CMD、U711.11→D0、U711.14→CLK；UART 通道保持不动。该映射的六网整体 surgery 与固定 GPIO/SD 铜仍无法无冲突完成，固定 assignment warm 续算最低21个冲突，故未采用。C530 下移0.5mm并联重布 LNA_IN、UART、D6、BUS-OE 仍保留3个核心冲突；U710 下移0.5mm的14网局部重布产生13–14个冲突；U710.14 与 U711.14/U711.11 的 UART source 交换双网均无路径。所有结果保留在 `.work/r25-resume-codex-20261027`，正式 CAD 与原理图未改。
+
+2026-10-27T17:20:00+08:00 Codex：从空状态重跑 R25 legalize 仅得到 65/85；终态 pending 为 20 条模型路径，未覆盖稳定 79/81 几何，也未写入正式 PCB。结果保留在 `.work/r25-resume-codex-20261027/runs/route-c-custom-legalize.json`，不能作为候选或制造依据。按用户授权及时清理中间产物：删除 `.work` 下 Python `__pycache__`/`.pyc`、`.swp`、`.tmp` 和 `.DS_Store`，未删除任何 R25/R24 试验、路由证据、用户目录或 ZIP；可用空间复核约 12 GiB。Core14、完整 Native DRC/ERC/重建/捕获和制造资格仍未完成。
+
+2026-10-27T18:22:41+08:00 Codex：R518 移至隔离 G 姿态 `(57.0,108.0)` 后，真实局部/全局路由扫描未能同时闭合 `SDMMC_CMD` 与 `UART0_RX`；旧 router5 B 扩展组产生重复 sink，短暂 83/85 状态物化时出现 `BK:R719.1` 伪网名，已明确作废，不作为候选。随后在真实网名几何上对20网做 negotiation，20/20均可生成但稳定冲突约15组，未收敛。稳定可用状态仍为原 79/81，正式 PCB/原理图未改；所有负证据保留在 `.work/r25-resume-codex-20261027`，Core14与制造资格仍未完成。
+2026-10-27T18:45:00+08:00 Codex：修正 `router5.py` 的 B 扩展组 sink 生成逻辑，改为明确的 14 个唯一物理端点，避免 E26 当前网名重复造成伪网。修复版在原稳定几何上真实回归为 79/81，`UART0_RX` 与 `SDMMC_CMD` 仍未闭合，polish 全部安全回滚；无正式 PCB、原理图或制造输出变化。
+2026-10-27T19:00:00+08:00 Codex：修复版对稳定 79/81 状态做 10 组受限随机 surgery，多个顺序可暂时同时生成两条待连网，但均在相邻 GPIO/控制网恢复阶段发生冲突，未形成 81/81；稳定源不变，失败结果全部保留在 `.work/r25-resume-codex-20261027`。
+2026-10-27T19:20:00+08:00 Codex：在真实 R518-G 几何上联合扫描 R732 五个位置，四网协商 (`SDMMC_CMD`、卡侧 CMD、`UART0_RX`、`P47_BUS_OE_N`) 均未闭合；最佳姿态只能得到3/4并在 UART/BUS 铜上冲突。未修改正式源，结果留存于 `.work/r25-resume-codex-20261027/r518-scan-20261027`。
+2026-10-27T19:40:00+08:00 Codex：对 `U710.14` UART 源与六个 SD select 源逐对交换并在真实 0.15/0.25 mm 几何上重布，6/6 组合均无双网合法路径；未改 pin contract、schematic 或 firmware。
+2026-10-27T20:00:00+08:00 Codex：对稳定 R25 79/81 Core 做独立 FreeRouting/Specctra 交叉验证；锁铜 DSN 载入后发现 1775 个不可修复的预存固定铜违规、249 个未布项，自动布线未产生有效进展，SES 仅保留为负证据，未导入 KiCad、未替换稳定源。
+2026-10-27T20:20:00+08:00 Codex：对稳定几何完成 14 组 UART/单阻挡网 pair sweep 与 8 组三网 sweep；没有任何组合同时形成 `UART0_RX` 合法路径，未生成可采用铜，稳定 79/81 未变。
+2026-10-27T20:40:00+08:00 Codex：继续测试 UART RX 与 TX/邻近 mux select 源焊盘交换（含 UART TX、D5、BUS_OE、D1、MUX1、MUX4、MUX6），所有真实双网组合均未形成无冲突路径；未改变正式电气映射。
+
+2026-10-27T22:40:00+08:00 Codex：按用户授权测试 U710/U711/J503 大重排、连接器位置和板边调整，保持四层并禁止 In1 signal。首个大重排路由器状态一度达到81/81，但发现 J503 的 rule-area 禁布区仍停在旧位置；将该真实机械约束随器件移动后重新合法化，最佳合法状态为80/81，唯一待连 `BS:U501.43`，polish budget2/4/8/16/32/64/128/256/512全部事务回滚。J501 D 姿态的真实Native物化几何比较0差异、`exact_check.py` 0 issues，但KiCad Native仍报23 unconnected、62条error-level DRC violations、38 parity items，含J503 keepout、短路、板边、courtyard及thermal错误，拒绝采用。J501 E 姿态的路由器最佳为80/81，精确检查仍有2处与固定 `SDMMC_CMD` 铜线的间距问题。所有结果保存在 `.work/r25-resume-codex-20261027`，正式R24/R25源、原理图、pin contract、firmware与制造输出未改；Core14未量，不能宣称可打样。
+
+2026-10-28T00:20:00+08:00 Codex：用户明确批准 R25 电气 pin permutation，并允许 U710/U711/J503 区域、板边与连接器机械约束调整。已将 E26 物理通道映射写入 `hardware/pico47/design.json`、`pico47_contract.py` 与契约测试，仍保持四层、In1.Cu 仅作 GND 平面。最新移动器件 Native 试验读取结果为 7 个开路、7 个错误级 DRC、249 个警告、37 个 parity；J503.4/R732.2 地回流、J503 keepout、U711 GND via 和 TP712 courtyard 尚未修复，未采纳为 checkpoint、未量 Core14、不可宣称可打样。
+
+2026-10-28T01:10:00+08:00 Codex：锁定用户批准的 pin assignment 后，以当前 J503 NPTH/机械位置重新 legalize，最佳保存状态为 79/81，pending `CHIP_PU` 与 `P47_MUX2`。对 `AS:U710.6` 做一次受限 surgery 后，D2 In2 轨迹不再穿过 J503 NPTH。隔离 Native 物化（approved assignment）为 25 个 unconnected、0 个 DRC errors、59 个 dangling-track warnings、11 个 dangling-via warnings、1 个 C501 manufacturer parity warning；试验性移除三处冗余 GND via 与 TP712 courtyard 后，完整地仍有 5 个 GND clusters（含 U710.8、J503.4、R731.2），因此不采纳、不量 Core14、不打样。正式 R24 未变，R25 目录/ZIP 未纳入 Git。
+2026-10-28T01:35:00+08:00 Codex：复核较早保留的 `trial-relayout-wide-power6`，其 U501/U710/U711 实际焊盘网名与 approved assignment 一致；套用 approved schematic labels 后 Native 为 7 个开路（全部为 GND/zone 连接项）、0 DRC errors、1 个 C501 manufacturer parity。该候选优于新物化的 79/81 路由状态，但完整 Core GND 仍为 163/169，故仍是实验，不是 checkpoint；Core14 与打样资格继续未完成。
+2026-10-28T02:05:00+08:00 Codex：左移 1 mm 的 J503 trial 在撤销自身局部 keepout并加入 J503.4 direct via 后，Native DRC 仍为 0 errors，approved pin map parity 保持仅 C501 manufacturer 字段 1 项；Core GND 从 163/169 提升到 165/169。剩余未连地 pad 为 J503.4、J601.12、R731.2、U710.8，且仍有 25 个 Native unconnected items，未采纳为 checkpoint，Core14/打样 gate 继续未完成。
+2026-10-28 R25 mechanical-relayout continuation: added the guarded
+`hardware/pico47/r25_router/relayout_components.py` tool for user-approved
+U710/U711/J503 and board-edge/connector experiments. The tool requires explicit
+old/new rotations, carries the explicit outline, preserves pad identities,
+rejects non-GND In1.Cu tracks and moved-pad clearance violations. Corrected
+wide-left negotiation produced 81/81 paths but 32 conflicts at the best saved
+iteration and 80/81 with 24 conflicts after five iterations; no legal candidate
+was materialised or adopted. `runs/trial.sh` now uses the current R25 design
+contract by default. Local Pico47 suite: 354/354 passed under the geometry
+environment; shell syntax, Python compilation and diff checks passed. Product
+Core14, full Native capture/replay and manufacturing gates remain open.
+2026-10-28 R25 local GND continuation: the width-aware geometry router produced
+new 0.30 mm GND candidates for J503.4 (0.65 mm, two 0.40/0.20 vias) and U710.8
+(0.86 mm, one via) from the 165/169-ground trial. An independent exact geometry
+audit found zero new-copper conflicts against existing tracks, vias, pads and
+holes. R731.2 had a legal 0.15 mm candidate but no 0.30 mm path; J601.12 had no
+path in either local search. Native zone refill/DRC was intentionally not run
+because free disk was about 1.2 GiB, below the 2 GiB Native gate. These remain
+experimental and are not a checkpoint. A connector-area experiment moved J601
+1.0 mm right with the same -90° rotation and produced a 0.15 mm J601.12 GND
+escape. Combining that move with the 0.30 mm J503.4/U710.8/R731.2 searches
+yielded 11 added GND objects, zero independent geometry conflicts, and no In1.Cu
+signal tracks. The moved connector rips local panel copper, so full signal
+reroute and Native validation are still required. With J601 at x=43.75 mm, the
+low-memory local signal pass also restored all 21 non-GND J601 pads to their
+matching R7xx pads in the explicit copper graph (P47_D0..D15,
+P47_XCL/XLE/XSTL/CKV/SPV). Relative to the original 165/169-ground trial this
+produces 62 new copper/via objects in total, with the same zero conflict and
+In1-GND-only result. This is still below the Native acceptance bar. The first
+isolated Native materialization was rejected because it passed the geometry
+centroid as the footprint origin. The corrected footprint origin is x=41.60523
+mm for the x=43.75 mm pad-group target; that board is staged under
+`trial-j601-right125-native2`. Native DRC and complete-ground were not rerun
+because free disk was about 1.99 GiB, below the 2 GiB gate.
+When the corrected `native2` board did run, Core DRC reported 131 violations,
+41 unconnected items and one schematic-parity item; complete-ground remained
+165/169 (Display 68/68). The remaining ground gaps were J503.4, U710.8,
+J601.4 and J601.30. A follow-up 0.15 mm geometry-only escape was found for the
+two J601 pads, but Native re-materialization is waiting for disk space.
+Native4 with direct main-GND bridges reached complete Core ground 169/169, but
+introduced 12 real clearance/hole errors (328 total violations), so it was
+rejected. The selective-layer native5 candidate reported 132 violations, 38
+unconnected items and one parity item; it remains rejected with CKV still open.
+Corrected x=44.0/x=44.25 Native runs (native7/native8) kept 128 violations,
+41 unconnected items and one parity item; the six remaining errors are the
+J601 XLE/XSTL/CKV pads against fixed GND vias. A further x=44.5 geometry
+candidate passes the independent zero-conflict audit, but has not been
+materialized under the current disk gate.
+The corrected x=44.5 native9 trial reached Core/Display complete ground
+169/169 and 68/68 with no error-level DRC violations and one parity item. It
+still had 40 unconnected items, 82 dangling-track and 24 dangling-via warnings;
+199 library warnings were caused by the deliberately removed duplicate local
+footprint library. This is the best mechanical/ground trial, not a release.
+Adding the isolated CKV escape and rechecking as native10 reduced Core opens
+from 40 to 39 while preserving ground 169/169, Display 68/68, zero
+error-level DRC and one parity item. The remaining 39 opens span broader
+baseline/local-route breaks and still require a full router pass.
+
+2026-10-28T03:57:09+08:00 Codex：将已在隔离 R25 工作环境验证过的 router 控制能力回写受追踪源：`router2.py` 支持 spec 的 `max_expand`，`router5.py` 支持 `layer_cost`、限定 `reassign_groups`，并在 surgery 冲突时打印实际冲突网；默认行为保持不变。R25 回归测试与完整 Pico47 本地测试共 356 项（352 pass、4 skip）通过。
+
+同日资源清理：旧 `seven-mm-*` 生成目录 27 项先归档为 `.work/archive-seven-mm-intermediates-20261028.tar.gz`（成员数复核 27），再移除原目录；另移除已过期且不在 R25 依赖链的旧 Pico47 生成缓存和旧 PNS SDK/console adapter 缓存。R25 当前工作目录、R24 四层试验树、Native10 证据、归档和正式交付物未删。
+
+R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径；用户批准的 `geom-relayout-wide-power6` 8 轮将冲突降至 13，但 legalize 仅得 73/81，故全部拒绝。没有新的 Native 候选、没有 Core14、没有正式 PCB/原理图/制造输出变化；项目仍不可宣称可打样。
+
+2026-10-28T04:27:00+08:00 Codex：从 Native10 机械/地完整候选开始做受限真实 Native surgery。U711 左侧四网 `P47_MUX2/P47_D6_SRC/SDMMC_D3/P47_MUX4` 首次达到4/4无冲突并物化；随后 BUS-OE、D11、XSTL、D4、PGOOD、SDMMC_D0_CARD、SDMMC_D1_CARD、D8、I2C_SDA、EN_VSYS_AUDIO、FL_PWM 逐步物化。当前保存候选 `.work/r25-resume-codex-20261027/trial-u711-sixteen-net-flpwm-native-20261028`：Core17 opens、DRC error-level0、warning275、parity1、ground169/169；Display ground68/68。所有新增网在独立几何图中与实际 pad 成单岛。`LOCAL-R25-17OPEN-CANDIDATE-20261028.json` 保存 Core/geometry SHA 与 pending 清单。
+
+仍未通过产品 gate：I2C_SCL、CHIP_PU、SD_CD、VSYS_RAW、3V3_EPD_LOGIC 残余；Core14、完整 PNS/capture/replay/ERC、制造/CAM/EVT 尚未执行。该候选是实验进展，不是 R25 checkpoint 或可打样输出。
+2026-10-28 Codex：用户批准 CHIP_PU 真实电气 ECO 与 U501/reset cluster 重排。源契约、builder、firmware reset mapping 与 deterministic helper 已更新；R533 1k（RC-02K1001FT/C140197）隔离 J503 debug reset，R529 保持 USB_DP。新 schematic netlist 独立确认两段复位网络；生成 Native 试验均保留在 `.work/r25-resume-codex-20261027/`。局部 J503/TP18 重排仍无两网 A* 路径，未进入 checkpoint；Core14、完整 ERC/capture/replay、制造/CAM/EVT 未执行，manufacturing_release 仍 false。
+
+2026-10-28 Codex：R25 passive-relayout full negotiation 物化前审查。finalize 生成82个路由网络/1973项新增铜，但初始状态有8个冲突网；确定性 legalize（移除已挂起的 CP-SAT runtime 依赖）保留最佳79/82，待处理 `CHIP_PU_DEBUG`、`CHIP_PU_MCU`、`P47_MUX0`。独立 Native refill/DRC 对该 partial trial 报 Core 17 error-level violations、27 unconnected、32 schematic parity，故拒绝采用；既有17-open seed仍是较佳实验源（Core error0、warning275、parity1、ground169/169；Display ground68/68）。没有保存正式PCB、没有Core14、capture/replay/ERC或制造放行。受追踪工具修复已提交并推送：`07b162b`、`ef916d0`；本地 contract 57/57、router-finalize 2/2、relayout 4 skipped 回归通过。
+2026-10-29 Codex：R25 contract-fixed continuation verified locally. Native trial with approved R533 relocation `(51.5,100.8,180°)` and fixed `design.json` assignment has Core 12 opens, 0 DRC errors, 274 warnings and parity 1; Display ground 68/68 and J601 named ground targets 2/2. C530.2 is the sole disconnected Core ground pad. A local SDMMC_D2 exact repair returned 0 issues; contract-fixed C530 via/trace search and single-net P47_XSTL_SRC reroute remain blocked. Dynamic group reassignment evidence is rejected because materialized pad nets diverge from the contract. No R25 checkpoint, Core14, ERC/capture/replay or fabrication release.
+
+2026-10-29 Codex：保留固定 pin contract 的 C530 GND bridge 联合重布实验。C530.2 通过两段 0.15 mm F.Cu GND bridge 接入主地，并共同重布 XSTL/D8/SDMMC_D2 corridor；exact check 0 issues。Native materialization 通过 complete-ground（Core 169/169、Display 68/68、J601 targets 2/2）、DRC errors 0、parity 1，但仍有 25 opens，故继续保留为实验 seed，不是 checkpoint。
+2026-10-29 Codex：在上述 complete-ground seed 上继续做 SD card focused reroute。`SDMMC_D2_CARD`、`SDMMC_D0_CARD`、`SDMMC_CMD_CARD` 模型 islands 均找到完整路径，合并后 exact check 0 issues；Native trial 保持 DRC errors 0、complete ground 169/169 + 68/68、parity 1，Core opens 降至24。仍非 checkpoint，I2C/power/control/VSYS 及 Core14/ERC/capture/replay/CAM gates 继续开放。
+2026-10-29 Codex：继续在该 seed 上完成 `EN_VSYS_AUDIO` + `FL_PWM` 联合重布，以及 `KEY_POWER_MCU` 和 SD-card D0/CMD focused repair；各模型 exact check 0 issues。最新 Native trial `trial-flpwm-keypower-sdcard-native-20261029` 保持 DRC errors 0、complete ground Core169/169 + Display68/68、J601 targets 2/2、parity1，Core opens 降至18。`SD_CD` + `P47_BUS_SELECT` 联合单网模型在固定障碍下无路；I2C、3V3/VSYS/EPD 等仍开放，未形成 checkpoint。
+2026-10-29 Codex：最新 18-open seed 上 `I2C_SCL` + `I2C_SDA` 联合 fixed-contract 搜索也返回无路；`SD_CD`/`P47_BUS_SELECT` 搜索同样受固定障碍阻塞。磁盘可用空间降至约3.1GiB，低于 full-G 门槛，因此不再启动新的重型 routing batch；实验 CAD/日志仍保留在 `.work`，正式源未修改。
+2026-10-29/30 Codex — R25 four-layer continuation and cleanup
+
+- 清理：歷史 `.work/pico47-fourlayer-resume-20261017` 已先生成並校驗全量歸檔，再刪除展開目錄與重複證據包；全量歸檔路徑 `.work/archives/pico47-fourlayer-resume-20261017-full-20261028.tar.gz`，正式 R24/R25 當前 seed 未刪除。
+- 動態 legalize 試驗：最佳80/82；Native物化27 opens、310 violations、32 parity、Core ground167/169，違反固定 pad-net contract，拒絕。
+- contract-fixed Native seed：Core12 opens、DRC errors0、274 warnings、parity1；Display ground68/68、J601 targets2/2；C530.2仍唯一 Core GND孤島。
+- 新負證據：I2C_SDA與EXP_INT在真實 contract geometry 上單網 router2均 no-path；SD_CD正確 rip-up/re-route 後仍12 opens、DRC errors0、parity1、Core ground168/169，未採用。
+- 尚未執行/通過：Core14、完整 ERC、clean rebuild/capture/replay、0 opens/warnings/parity、CAM/SMT/EVT、製造放行。目標仍 active/incomplete。
+
+2026-10-30 Codex — C530 ground detour experiment
+
+- C530.2 中心 `.4/.2` GND via trial：Native complete ground Core169/169、Display68/68、parity1，但 6 个 DRC errors（与 SDMMC_D2、P47_D12_SRC、3V3_RF 冲突），拒绝。
+- 仅重布 SDMMC_D2 与 P47_D12_SRC 后，Native 仍有 2 errors（固定 3V3_RF In2 段）、11 opens、ground169/169、parity1；几何 router2 对两网达到 0 conflict，但产品门禁未通过。
+- 结论：C530 via-in-pad 方案保持为失败证据；正式 R24/R25 source 未改，未采纳、未测 Core14。
+2026-10-30 Codex — R25 runs archive cleanup
+
+- 将 `.work/r25-resume-codex-20261027/runs/` 全量压缩为 `.work/archives/r25-resume-runs-20261030.tar.gz`，`tar -tzf` 校验通过后删除展开副本；当前 contract-fixed seed、Native trial 与历史全量归档未动。
+- 清理后可用空间约 976 MiB，仍低于 Native/local 2 GiB 门槛；未启动新的路由计算。
+
+2026-10-30 Codex — fixed-assignment negotiation continuation
+
+- 禁用动态 group reassignment 的 router5 negotiation + deterministic legalize 达到 81/82 committed networks。
+- Native candidate `trial-contract-fixed-negotiation-legalized-native-20261030`：Core 10 opens、DRC errors 0、275 warnings、parity 1；Display ground 68/68；Core ground 168/169，唯一孤岛仍 C530.2。
+- 在该改进 geometry 上新增 C530 GND via 的 exact check 发现固定 3V3_RF 与 P47_MUX4 碰撞，未物化/未采纳。
+- 在该改进 geometry 上重新执行 I2C_SDA 单网 router2（8轮、无动态重排）仍为 no-path；未生成可用 Native 候选。
+- 在同一 geometry 上执行 C530 周围 GND-only router2（8轮、188个地组件、无动态重排）仍为 no-path；未生成可用 Native 候选。
+
+2026-10-30 Codex — C530 shift578x Native evidence
+
+- 实验候选：`.work/r25-resume-codex-20261027/trial-contract-fixed-negotiation-c530-shift578x-local-four-native-20261030`。
+- Native Core：9 opens、DRC errors 0、warnings 276、parity 1；Core ground 169/169；Display ground 68/68；J601 named targets 2/2。
+- 4-layer check：geometry export 的 In1.Cu 非 GND tracks=0；signal layers 为 F.Cu/In2.Cu/B.Cu。
+- C530 center `[57.75,93.8]`、GND through-via `[57.75,93.32]`；3V3_RF 局部绕行、LNA_IN 恢复及四网局部 router2 证据均保留在 `.work`。
+- I2C_SDA 30轮 no-path；VSYS_RAW/3V3_EPD_LOGIC/R732 GND return仍未闭合。该候选不是 R25 checkpoint，不具备 fabrication-ready 资格；Core14/ERC/capture/replay/CAM/EVT 尚未完成。
+
+2026-10-30 Codex — R732 orphan-copper cleanup
+
+- 在 9-open Native 候选上确认 R732 附近 19 段 B.Cu GND track 组成无 pad/via 的孤立组件。
+- 仅移除该明确 orphan 组件后，Native Core 为 8 opens、DRC errors 0、warnings 274、parity 1；Core ground 169/169、Display ground 68/68、J601 targets 2/2 保持通过。
+- 当前候选：`.work/r25-resume-codex-20261027/trial-contract-fixed-negotiation-c530-shift578x-local-four-r732-clean-native2-20261030`。
+- 剩余 opens：I2C_SDA 2、VSYS_RAW 3、3V3_EPD_LOGIC 3；仍未测 Core14/ERC/capture/replay/CAM/EVT，不得视为制造放行。
+
+2026-10-29 Antigravity — R25 四层 PCB Layout 0-open / 0-DRC-error 闭合与清理验证
+
+- 在 2-open 固定契约 Native 候选（`trial-vsys-f-astar-3v3-bridge-via-46125-epd-long-native-20261031`，已闭合 `VSYS_RAW` 与 `3V3_EPD_LOGIC`，仅剩 `I2C_SDA` 两处开路）基础上，完成 10 网局部 PathFinder 协商并对 `P47_SPV_SRC` 在 `y=109.825..109.175` 的 `B.Cu` 垂直段做 `25 µm` 东移（`x=60.350 -> 60.375`），使 `I2C_SDA`（`U601.23`、`J602.14`、`U501.21`）及同走廊 9 网全部达到 `vbad: 0`、单连通分量（`1 component`），`exact_check.py` 为 `0 issues`。
+- 修正物化脚本以基于 `old_geom` ID 差集移除旧铜，保留 `3V3_EPD_LOGIC` 桥接过孔 `(46.125, 104.2)`；接着执行带 `BuildConnectivity()` 守卫的清理：移除 9 处 `holes_co_located` 重复过孔、消除 `I2C_SCL` 1 处 `hole_to_hole` 重叠过孔、去重共线重叠线段、清理全部 44 处 `track_dangling` 悬空线尾与全部 11 处 `via_dangling` 悬空过孔、避让 `C501`/`U711`/`TP712` 丝印、补齐本地 `Panda47.pretty` 与 `Panda7.kicad_sym` 库，并将 `Core.kicad_sch` 中 `R533`（及 `chip_pu_reset_eco.py` 默认坐标）对齐至 `2.54 mm` 原理图网格 `(571.5, 701.04)`。
+- 最终候选目录：`.work/r25-resume-codex-20261027/trial-zero-open-clean-native-20261029`；导出几何：`.work/r25-resume-codex-20261027/runs/geom-zero-open-clean-20261029.json`（SHA-256 `edb28e5f57e1c8936099db9c52528abb96ab814ab425976e8601ab894cea1cb8`）；独立审计摘要：`ZERO-OPEN-AUDIT-20261029.json`。
+- Native 实测结果：
+  - **Core** (`Core.kicad_pcb` SHA-256 `debc9b6caad8d816f677ca73c4f6dcf553e662049be8addba0e231e5207d34a1`)：`unconnected_items = 0`、`drc_errors = 0`、`drc_warnings = 0`（`drc_by_type = {}`，`track_dangling = 0`、`via_dangling = 0`、`holes_co_located = 0`、`hole_to_hole = 0`、`silk_* = 0`、`lib_footprint_* = 0`）、`schematic_parity = 1`（已知待定 `C501` 0603 `Manufacturer` 字段）、`erc_violations = 0`、完整地 `169/169`（`2/2` `J601` 命名目标）。
+  - **Display** (`Display.kicad_pcb` SHA-256 `320ed035ce0386a5568b939baf164626fbde1da2bc48d82de5e99a4a79454b0d`)：`unconnected_items = 0`、`drc_errors = 0`、`drc_warnings = 0`、`schematic_parity = 0`、`erc_violations = 0`、完整地 `68/68`（`6/6` 命名目标）。
+  - **层与契约守卫**：四层结构保持，`In1.Cu` 非 GND 信号线为 `0`，全板 82 个多焊盘非地网络均为单连通分量，四个面板控制信号（`CKV/SPV/XLE/XSTL`）、`GPIO2 -> R813 -> U810.21` 硬件直控关断链、`CHIP_PU_MCU/DEBUG` 串联隔离与音频/I2C 关键链路全部连通；本地 363 项单元测试在 geometry venv 与 KiCad Python 下全部通过。
+  - **门禁声明**：路由闭合不代表制造放行（`manufacturing_release = false`）；`C501` 0603 料号选型、精确电池包/屏幕总成堆叠、<=7mm 整机公差、CAM/SMT 与物理 EVT 门禁保持开放。

@@ -21,14 +21,54 @@ PANEL_PINS = [
 
 EXPECTED_NETS = {
     0: 'GPIO0', 1: 'KEY_POWER_MCU', 2: 'HW_ARM_GPIO', 3: 'P47_D8_SRC',
-    4: 'EXP_INT', 5: 'P47_MUX0', 6: 'P47_MUX1', 7: 'P47_MUX2',
-    8: 'P47_MUX3', 9: 'P47_MUX4', 10: 'P47_MUX5', 11: 'I2S_BCLK',
-    12: 'I2S_LRCLK', 13: 'I2S_DIN', 14: 'P47_D9_SRC', 15: 'I2C_SDA',
-    16: 'I2C_SCL', 17: 'P47_D10_SRC', 18: 'P47_D11_SRC', 19: 'USB_DM_MCU',
-    20: 'USB_DP_MCU', 21: 'P47_D12_SRC', 38: 'P47_D13_SRC', 39: 'P47_D14_SRC',
-    40: 'P47_D15_SRC', 41: 'P47_XCL_SRC', 42: 'P47_XLE_SRC', 43: 'P47_MUX6',
-    44: 'P47_MUX7', 45: 'P47_XSTL_SRC', 46: 'P47_BUS_SELECT',
-    47: 'P47_SPV_SRC', 48: 'P47_CKV_SRC',
+    4: 'EXP_INT', 5: 'P47_MUX6', 6: 'P47_MUX7', 7: 'P47_MUX4',
+    8: 'P47_MUX0', 9: 'P47_MUX1', 10: 'P47_MUX2', 11: 'P47_D13_SRC',
+    12: 'P47_CKV_SRC', 13: 'P47_XLE_SRC', 14: 'P47_XCL_SRC', 15: 'I2C_SDA',
+    16: 'I2C_SCL', 17: 'I2S_DIN', 18: 'I2S_LRCLK', 19: 'USB_DM_MCU',
+    20: 'USB_DP_MCU', 21: 'I2S_BCLK', 38: 'P47_D10_SRC', 39: 'P47_D11_SRC',
+    40: 'P47_D15_SRC', 41: 'P47_D9_SRC', 42: 'P47_D14_SRC', 43: 'P47_MUX5',
+    44: 'P47_MUX3', 45: 'P47_XSTL_SRC', 46: 'P47_BUS_SELECT',
+    47: 'P47_D12_SRC', 48: 'P47_SPV_SRC',
+}
+EXPECTED_MUX_CHANNELS = [
+    {'channel': 0, 'gpio': 8, 'package_pin': 13, 'common_net': 'P47_MUX0',
+     'select_0_net': 'SDMMC_D0', 'select_1_net': 'P47_D0_SRC'},
+    {'channel': 1, 'gpio': 9, 'package_pin': 14, 'common_net': 'P47_MUX1',
+     'select_0_net': 'SDMMC_D1', 'select_1_net': 'P47_D2_SRC'},
+    {'channel': 2, 'gpio': 43, 'package_pin': 49, 'common_net': 'P47_MUX5',
+     'select_0_net': 'UART0_TX', 'select_1_net': 'P47_D3_SRC'},
+    {'channel': 3, 'gpio': 44, 'package_pin': 50, 'common_net': 'P47_MUX3',
+     'select_0_net': 'UART0_RX', 'select_1_net': 'P47_D1_SRC'},
+    {'channel': 4, 'gpio': 7, 'package_pin': 12, 'common_net': 'P47_MUX4',
+     'select_0_net': 'SDMMC_CLK', 'select_1_net': 'P47_D5_SRC'},
+    {'channel': 5, 'gpio': 10, 'package_pin': 15, 'common_net': 'P47_MUX2',
+     'select_0_net': 'SDMMC_D3', 'select_1_net': 'P47_D6_SRC'},
+    {'channel': 6, 'gpio': 5, 'package_pin': 10, 'common_net': 'P47_MUX6',
+     'select_0_net': 'SDMMC_CMD', 'select_1_net': 'P47_D4_SRC'},
+    {'channel': 7, 'gpio': 6, 'package_pin': 11, 'common_net': 'P47_MUX7',
+     'select_0_net': 'SDMMC_D2', 'select_1_net': 'P47_D7_SRC'},
+]
+
+RESET_TOPOLOGY = {
+    'schema': 'panda47-r25-chip-pu-reset-v1',
+    'mcu_ref': 'U501',
+    'mcu_en_pad': '4',
+    'mcu_net': 'CHIP_PU_MCU',
+    'pullup_ref': 'R510',
+    'pullup_pad': '2',
+    'local_cap_ref': 'C510',
+    'local_cap_pad': '1',
+    'testpoint_ref': 'TP18',
+    'testpoint_pad': '1',
+    'debug_ref': 'J503',
+    'debug_pad': '1',
+    'series_ref': 'R533',
+    'series_value_ohm': 1000,
+    'series_mpn': 'RC-02K1001FT',
+    'series_lcsc': 'C140197',
+    'series_mcu_pad': '1',
+    'series_debug_pad': '2',
+    'debug_net': 'CHIP_PU_DEBUG',
 }
 EXPECTED_INTER40 = {str(i+1): ('P47_D' + str(i//2) if i % 2 == 0 else 'GND')
                     for i in range(32)}
@@ -91,18 +131,75 @@ def validate(p):
         require(p['gpio'][str(g)]['package_pin'] == pin, 'Wrong QFN GPIO map')
     for g, n in EXPECTED_NETS.items():
         require(p['gpio'][str(g)]['net'] == n, 'GPIO function changed without review')
+    reset = p['reset_topology']
+    require(reset['schema'] == RESET_TOPOLOGY['schema'], 'Wrong CHIP_PU ECO schema')
+    require(reset['mcu_ref'] == RESET_TOPOLOGY['mcu_ref']
+            and reset['mcu_en_pad'] == RESET_TOPOLOGY['mcu_en_pad']
+            and reset['mcu_net'] == RESET_TOPOLOGY['mcu_net'],
+            'Dedicated MCU reset input changed')
+    require(reset['active_level'] == 'LOW'
+            and reset['internal_reset_input'] is True,
+            'CHIP_PU reset semantics changed')
+    pullup = reset['pullup']
+    require(pullup['ref'] == RESET_TOPOLOGY['pullup_ref']
+            and pullup['pad'] == RESET_TOPOLOGY['pullup_pad']
+            and pullup['value_ohm'] == 10000
+            and pullup['net'] == RESET_TOPOLOGY['mcu_net']
+            and pullup['source_net'] == '3V3_AON',
+            'Local CHIP_PU pull-up changed')
+    cap = reset['local_reset_capacitor']
+    require(cap['ref'] == RESET_TOPOLOGY['local_cap_ref']
+            and cap['pad'] == RESET_TOPOLOGY['local_cap_pad']
+            and cap['value_uf'] == 1.0
+            and cap['net'] == RESET_TOPOLOGY['mcu_net']
+            and cap['return_net'] == 'GND',
+            'Local CHIP_PU capacitor changed')
+    tp = reset['mcu_testpoint']
+    require(tp['ref'] == RESET_TOPOLOGY['testpoint_ref']
+            and tp['pad'] == RESET_TOPOLOGY['testpoint_pad']
+            and tp['net'] == RESET_TOPOLOGY['mcu_net'],
+            'MCU reset testpoint moved to debug side')
+    debug = reset['debug_path']
+    require(debug['connector_ref'] == RESET_TOPOLOGY['debug_ref']
+            and debug['connector_pad'] == RESET_TOPOLOGY['debug_pad']
+            and debug['net'] == RESET_TOPOLOGY['debug_net']
+            and debug['series_resistor_ref'] == RESET_TOPOLOGY['series_ref']
+            and debug['series_resistor_value_ohm'] == RESET_TOPOLOGY['series_value_ohm']
+            and debug['series_resistor_mpn'] == RESET_TOPOLOGY['series_mpn']
+            and debug['series_resistor_lcsc'] == RESET_TOPOLOGY['series_lcsc']
+            and debug['series_resistor_mcu_pad'] == RESET_TOPOLOGY['series_mcu_pad']
+            and debug['series_resistor_debug_pad'] == RESET_TOPOLOGY['series_debug_pad']
+            and debug['external_driver'] == 'OPEN_DRAIN_ACTIVE_LOW'
+            and debug['debug_reset_allowed'] is True,
+            'Debug CHIP_PU series path changed')
+    cluster = reset['cluster_relayout']
+    require(cluster['allowed_refs'] == ['U501', 'R510', 'C510', 'TP18', 'R533', 'J503']
+            and cluster['four_layer_only'] is True
+            and cluster['signal_layers'] == ['F.Cu', 'In2.Cu', 'B.Cu']
+            and cluster['ground_plane_layer'] == 'In1.Cu'
+            and cluster['mechanical_envelope_review_required'] is True
+            and cluster['native_ground_and_pad_group_gate_required'] is True,
+            'Reset cluster relocation policy changed')
+    fw = reset['firmware_mapping']
+    require(fw['logical_signal'] == 'mcu_reset_n'
+            and fw['firmware_gpio'] is None
+            and fw['mcu_en_is_not_general_gpio'] is True
+            and fw['external_debug_reset_is_active_low'] is True
+            and fw['implementation_status'] == 'PENDING_EXACT_FIRMWARE_SOURCE_AND_BOOT_VALIDATION',
+            'Firmware reset mapping is not conservative')
+    require(reset['manufacturing_release'] is False
+            and reset['physical_qualification_complete'] is False,
+            'CHIP_PU ECO cannot authorize manufacturing')
     mux = p['mux']
     require(mux['mpn'] == 'SGM330A-YTS/TR' and mux['logic_supply_v'] == 3.3
             and mux['select_gpio'] == 46, 'Wrong mux')
     require(mux['source_terminal_pins'] ==
             [[2, 3, 4], [5, 6, 7], [11, 10, 9], [14, 13, 12]], 'Wrong mux pads')
-    refs = ['SDMMC_D1', 'SDMMC_D0', 'SDMMC_CLK', 'SDMMC_CMD', 'SDMMC_D3',
-            'SDMMC_D2', 'UART0_TX', 'UART0_RX']
+    refs = ['SDMMC_D0', 'SDMMC_D1', 'UART0_TX', 'UART0_RX', 'SDMMC_CLK',
+            'SDMMC_D3', 'SDMMC_CMD', 'SDMMC_D2']
     require(len(mux['channels']) == 8, 'Missing mux channel')
-    for i, (c, g, n) in enumerate(zip(mux['channels'], [5, 6, 7, 8, 9, 10, 43, 44], refs)):
-        require(c == {'channel': i, 'gpio': g, 'package_pin': GPIO_PACKAGE[g],
-                      'common_net': 'P47_MUX' + str(i), 'select_0_net': n,
-                      'select_1_net': 'P47_D' + str(i) + '_SRC'}, 'Wrong mux channel')
+    for c, expected in zip(mux['channels'], EXPECTED_MUX_CHANNELS):
+        require(c == expected, 'Wrong mux channel')
     require(mux['reset_select'] == 0 and mux['reset_oe_n'] == 0
             and mux['disable_signal'] == 'P47_BUS_OE_N'
             and mux['disable_expander'] == 'U601.P15/pin18', 'Wrong mux reset')

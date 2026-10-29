@@ -1,7 +1,7 @@
 """Mutation tests of real source intent. No supplier receipt or physical test is implied."""
 import json
 import unittest
-from pico47_contract import CONTRACT, validate, mux_target, GPIO_PACKAGE, PANEL_PINS
+from pico47_contract import CONTRACT, validate, mux_target, GPIO_PACKAGE, PANEL_PINS, EXPECTED_MUX_CHANNELS
 
 
 def fixture():
@@ -21,6 +21,27 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(len(PANEL_PINS), 40)
         self.assertEqual(PANEL_PINS[13:21], ['P47_D'+str(i) for i in range(8)])
         self.assertEqual(PANEL_PINS[22:30], ['P47_D'+str(i) for i in range(8,16)])
+
+    def test_r25_authorized_mux_pin_map(self):
+        plan = fixture()
+        self.assertEqual(plan['mux']['channels'], EXPECTED_MUX_CHANNELS)
+        self.assertEqual(plan['gpio']['5']['net'], 'P47_MUX6')
+        self.assertEqual(plan['gpio']['44']['net'], 'P47_MUX3')
+        self.assertTrue(plan['mux']['r25_routing_eco']['four_layer'])
+        self.assertEqual(plan['mux']['r25_routing_eco']['ground_plane_layer'], 'In1.Cu')
+
+    def test_r25_chip_pu_reset_topology(self):
+        reset = fixture()['reset_topology']
+        self.assertEqual(reset['mcu_net'], 'CHIP_PU_MCU')
+        self.assertEqual(reset['pullup']['ref'], 'R510')
+        self.assertEqual(reset['local_reset_capacitor']['ref'], 'C510')
+        self.assertEqual(reset['debug_path']['connector_ref'], 'J503')
+        self.assertEqual(reset['debug_path']['series_resistor_ref'], 'R533')
+        self.assertEqual(reset['debug_path']['series_resistor_lcsc'], 'C140197')
+        self.assertTrue(reset['cluster_relayout']['four_layer_only'])
+        self.assertEqual(reset['cluster_relayout']['ground_plane_layer'], 'In1.Cu')
+        self.assertIn('J503', reset['cluster_relayout']['allowed_refs'])
+        self.assertIsNone(reset['firmware_mapping']['firmware_gpio'])
 
     def test_mux_truth_table(self):
         for channel in range(8):
@@ -64,6 +85,12 @@ MUTATIONS = [
     (['battery','charge_termination_v'], 4.2), (['battery','charge_enable_allowed'], True),
     (['gpio','47','package_pin'], 36), (['gpio','48','package_pin'], 37),
     (['gpio','2','net'], 'I2C_PERMIT'), (['gpio','14','net'], 'SOME_OTHER_NET'),
+    (['reset_topology','mcu_net'], 'GPIO4'),
+    (['reset_topology','pullup','value_ohm'], 1000),
+    (['reset_topology','debug_path','series_resistor_ref'], 'R529'),
+    (['reset_topology','debug_path','series_resistor_lcsc'], 'UNKNOWN'),
+    (['reset_topology','cluster_relayout','ground_plane_layer'], 'In2.Cu'),
+    (['reset_topology','firmware_mapping','mcu_en_is_not_general_gpio'], False),
     (['mux','source_terminal_pins',0], [4,3,2]),
     (['mux','channels',0,'select_0_net'], 'SDMMC_CLK'),
     (['mux','disables_all_before_select'], False),
