@@ -17,9 +17,12 @@ def main(board_file, stock_library, local_library):
         raise ValueError('C501 焊盘编号不匹配')
     fields = old.GetFieldsText()
     new.SetFields(fields)
-    for key in ('Manufacturer', 'MPN', 'LCSC'):
-        new.SetField(key, '')
-    new.SetField('Description', '22uF 0603 试验封装；制造商、料号及 DC bias 待验证。')
+    for key, val in (('Manufacturer', 'FH (Fenghua Advanced)'), ('MPN', '0603X226M100NT'), ('LCSC', 'C60077')):
+        new.SetField(key, val)
+        f = new.GetFieldByName(key)
+        if f is not None:
+            f.SetVisible(False)
+    new.SetField('Description', 'FH 22uF 10V X5R +/-20% 0603 local bypass for ESP32-S3 3V3_AON; DC-bias capacitance remains physical qualification.')
     new.SetPath(old.GetPath())
     new.SetPosition(old.GetPosition())
     new.SetOrientationDegrees(old.GetOrientationDegrees())

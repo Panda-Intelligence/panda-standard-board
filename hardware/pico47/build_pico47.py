@@ -104,14 +104,19 @@ def create(out,donor):
         specs.append({'board':board,'ref':ref,'value':value,'manufacturer':maker,'mpn':mpn,'lcsc':code,'catalog_code_present':bool(code),'qualified':False})
         return parts[board][ref]
     def resistor(board,ref,value,a,b):
-        known={'1k':('RC-02K1001FT','C140197'),'22':('RC-02K22R0FT','C324769'),'10k':('RC-02K1002FT','C140215'),'100k':('RC-02K1003FT','C140219'),'0':('RC-02000FT','C140225')}
+        known={'1k':('RC-02K1001FT','C140197'),'22':('RC-02K22R0FT','C324769'),'10k':('RC-02K1002FT','C140215'),'100k':('RC-02K1003FT','C140219'),'0':('RC-02000FT','C140225'),
+               '442k/0.1%':('THC02H4423BT',''),'21k/0.1%':('THC02H2102BT',''),'750k/0.1%':('THC02H7503BT',''),'59k/0.1%':('THC02H5902BT',''),
+               '7.5k/1%':('RC-02K7501FT',''),'36k/1%':('RC-02K3602FT','')}
         mpn,code=known.get(value,('',''))
         return new(board,ref,value,('Core','R529'),{'1':a,'2':b},FH,mpn,code,
              'https://www.lcsc.com/product-detail/'+code+'.html' if code else '',note='Electrical value target; empty MPN means an actual exact domestic part is still required.')
     def capacitor(board,ref,value,a,b):
         known={'100n/25V/0402':('0402B104K250NT','C56392',('Core','C524')),
                '4.7u/25V/0805':('0805B475K250NT','C37818',('Display','C4')),
-               '1u/25V/0603':('0603B105K250NT','C59302',('Display','C1'))}
+               '1u/25V/0603':('0603B105K250NT','C59302',('Display','C1')),
+               '10u/10V/0805':('0805B106K100NT','C90544','Capacitor_SMD:C_0805_2012Metric'),
+               '1u/50V/0805':('0805B105K500NT','','Capacitor_SMD:C_0805_2012Metric'),
+               '47n/50V/0805':('0805B473K500NT','','Capacitor_SMD:C_0805_2012Metric')}
         mpn,code,land=known.get(value,('','','Capacitor_SMD:C_0805_2012Metric'))
         return new(board,ref,value,land,{'1':a,'2':b},FH,mpn,code,note='Voltage, DC bias and ripple ratings require exact datasheet selection for any blank MPN.')
     # Native GPIO remap. In the bare QFN,36 isGPIO48 and37 isGPIO47.
@@ -243,7 +248,7 @@ def create(out,donor):
       ('R805','7.5k/1%','P47_VREF','P47_TS'),('R806','36k/1%','P47_TS','GND'),
       ('R807','10k','P47_PGOOD','3V3_AON'),('R808','100k','P47_HV_EN','GND'),('R809','100k','P47_VCOM_EN','GND'),
       ('R810','100k','P47_MODE','GND'),('R811','100k','P47_XOE','GND'),('R812','100k','P47_VGL','GND')]:resistor('Display',r,v,a,b)
-    new('Display','TH801','10k NTC / CURVE TO QUALIFY','Resistor_SMD:R_0402_1005Metric',{'1':'P47_TS','2':'GND'},FH,'','',note='Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.')
+    new('Display','TH801','10k NTC / CURVE TO QUALIFY','Resistor_SMD:R_0402_1005Metric',{'1':'P47_TS','2':'GND'},FH,'CMFA103F3950HANT','',note='Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.')
     for i,n in enumerate(['VGH','VGL','VPOS','VNEG','VCOM','BORDER_REVIEW'],801):
         new('Display','TP'+str(i),'P47_'+n,'TestPoint:TestPoint_Pad_D1.0mm',{'1':'P47_'+n},'PCB fabricated terminal','NOT_A_PURCHASED_PART','',in_bom=False,note='Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.')
     # Normalize footprints and regenerate truthful native local libraries.
