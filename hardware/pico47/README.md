@@ -1,10 +1,11 @@
 # Current Continuation: E0.2 r25 — Single Unified 4-Layer PCB Architecture (2026-10-29)
 
-Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md) and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
+Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md), [MAINLAND-COMPONENT-BOM-AUDIT-20261029.md](MAINLAND-COMPONENT-BOM-AUDIT-20261029.md), and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
 Canonical dated engineering checkpoint:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`.
 
 **Single Unified 4-Layer PCB: 0 opens; DRC errors/warnings/parity/ERC are all ZERO.**
+**100% Chinese Mainland (PRC) Component Provenance**: Verified via `verify_mainland_bom_compliance.py` (`215/215` populated BOM components + `5/5` DNP passives on `Single`, `177/177` + `5/5` on `Core`, `42/42` on `Display`; `0` foreign manufacturers; `0` missing `Manufacturer` or `MPN` fields).
 Eliminated all 4 B2B connectors (`J1`, `J4`, `J601`, `J602`) and 2 FFC cables.
 Adopted Option A standard rectangular battery **Model 323576** ($35.0 \times 76.0 \times 3.2\text{ mm}$, 2050 mAh).
 Bottom Type-C USB receptacle (`J201` / `TYPE-C-31-M-12`) positioned at bottom center.

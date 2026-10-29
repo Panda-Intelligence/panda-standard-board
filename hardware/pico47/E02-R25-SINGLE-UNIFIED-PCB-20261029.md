@@ -29,6 +29,10 @@ Following customer feedback regarding space utilization, manufacturing simplicit
    - **Stackup & Color**: Standard 4-layer FR4 process, green solder mask only (`四层板仅支持绿油`).
    - **ENIG Exposed Gold Area**: Top mask opening $541.93\text{ mm}^2$, Bottom mask opening $54.56\text{ mm}^2$. Single-side ratio on bounding box = **8.49%**, strictly $< 20\%$ threshold.
    - **Anti-Split-Order Uniqueness**: Unique build identifiers and deterministic UUID-tagged `.gbrjob` and Gerber archives (`Unique Build ID: P47-SINGLE-20261029-7684F0CC`).
+6. **100% Chinese Mainland (PRC) Component Provenance**:
+   - Audited and enforced via [`verify_mainland_bom_compliance.py`](verify_mainland_bom_compliance.py) and documented in [`MAINLAND-COMPONENT-BOM-AUDIT-20261029.md`](MAINLAND-COMPONENT-BOM-AUDIT-20261029.md).
+   - **100.0% (`215/215`)** of populated BOM components and **100.0% (`5/5`)** of DNP passives on `Single` (as well as `177/177` + `5/5` on `Core` and `42/42` on `Display`) belong to 26 verified Chinese Mainland manufacturer identities (Espressif, GigaDevice, SGMICRO, Silergy, Cellwise, QST, Shenzhen Nsiway Tech, WAVE, XINLUDA, XySemi, Fenghua Advanced, CCTC, HRE, FOJAN, Sunlord, CJ/JSCJ, JSMSEMI, LRC, Shandong Jingdao, YXC, XKB Connection, XUNPU, MUP, Yichang Power Glory).
+   - **0** foreign manufacturers and **0** missing `Manufacturer` or `MPN` fields across all boards.
 
 ---
 
