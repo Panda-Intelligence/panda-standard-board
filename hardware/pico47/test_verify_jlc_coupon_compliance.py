@@ -42,6 +42,30 @@ class TestJlcCouponCompliance(unittest.TestCase):
         self.assertTrue(10.0 <= w <= 100.0 and 10.0 <= h <= 100.0)
         self.assertAlmostEqual(polygon_area(loop), 3747.716, places=2)
 
+    def test_single_closed_outline_single_unified_sub10cm(self):
+        pts = [
+            (2.0, 83.5),
+            (30.0, 83.5),
+            (30.0, 32.0),
+            (73.0, 32.0),
+            (73.0, 131.0),
+            (42.12, 131.0),
+            (42.12, 125.45),
+            (32.88, 125.45),
+            (32.88, 131.0),
+            (2.0, 131.0),
+        ]
+        segs = list(zip(pts, pts[1:] + pts[:1]))
+        loop = trace_single_closed_outline(segs)
+        xs = [p[0] for p in loop]
+        ys = [p[1] for p in loop]
+        w = max(xs) - min(xs)
+        h = max(ys) - min(ys)
+        self.assertEqual(w, 71.0)
+        self.assertEqual(h, 99.0)
+        self.assertTrue(10.0 <= w <= 100.0 and 10.0 <= h <= 100.0)
+        self.assertAlmostEqual(polygon_area(loop), 5535.716, places=2)
+
     def test_reject_disjoint_panelized_outline(self):
         segs = [
             ((0.0, 0.0), (20.0, 0.0)),

@@ -1,6 +1,11 @@
-# Pico47 E0.2 r25 — Core 4-layer routing handoff (2026-10-26, updated 2026-10-29)
+# Pico47 E0.2 r25 — 4-layer routing handoff (2026-10-26, updated 2026-10-29)
 
-Status: **4-layer PCB layout compacted within 10×10 cm (`Core`: `71.0 × 99.0 mm`, `Display`: `36.0 × 35.7 mm`) and routed to 0 opens / 0 DRC errors / 0 DRC warnings / 0 schematic parity / 0 ERC violations on both Core and Display (`panda47-e02-20261029-r25/engineering-candidate`). Satisfies all JLCPCB / JLC EDA 10×10 cm 5-piece single-board 4-layer Green ENIG (`<20%` gold area) / OSP coupon rules.** Mechanical/battery/panel-stack/C501-MPN/EVT qualification gates remain tracked as documented below.
+> [!IMPORTANT]
+> **Single Unified 4-Layer PCB Architecture (`Single.kicad_pcb`) Available**:
+> Following customer requirements on space utilization, battery standardization, and eliminating manufacturing complexity, Core and Display have been unified into a single monolithic $71.0 \times 99.0\text{ mm}$ PCB (`Single.kicad_pcb`), eliminating all 4 B2B connectors (`J1`, `J4`, `J601`, `J602`) and FFC cables, integrating Option A standard rectangular battery `323576` ($35.0 \times 76.0 \times 3.2\text{ mm}$, 2050 mAh), and achieving **100% ZERO-ERROR native verification (0 DRC violations, 0 unconnected items, 0 schematic parity issues, 0 ERC violations, 173/173 GND pads connected)**.
+> See full details in [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md).
+
+Status: **4-layer PCB layout compacted within 10×10 cm (`Single`: `71.0 × 99.0 mm`, `Core`: `71.0 × 99.0 mm`, `Display`: `36.0 × 35.7 mm`) and routed to 0 opens / 0 DRC errors / 0 DRC warnings / 0 schematic parity / 0 ERC violations (`panda47-e02-20261029-r25/engineering-candidate`). Satisfies all JLCPCB / JLC EDA 10×10 cm 5-piece single-board 4-layer Green ENIG (`<20%` gold area) / OSP coupon rules.** Mechanical/battery/panel-stack/C501-MPN/EVT qualification gates remain tracked as documented below.
 
 ## 2026-10-29 Sub-10×10 cm (`71.0 × 99.0 mm`) Compaction & JLCPCB Coupon Compliance
 
