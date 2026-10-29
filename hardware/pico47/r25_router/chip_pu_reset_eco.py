@@ -184,7 +184,7 @@ def _r533_instance(schematic: str, x: float, y: float) -> str:
     return block
 
 
-def apply_schematic(input_path: Path, output_path: Path, r533_position=(571.5, 700.0)) -> dict:
+def apply_schematic(input_path: Path, output_path: Path, r533_position=(571.5, 701.04)) -> dict:
     source = input_path.read_text()
     renamed, changed = _rename_pin_labels(source)
     lib_start = renamed.index("(lib_symbols")
