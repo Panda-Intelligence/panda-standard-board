@@ -1,4 +1,19 @@
-# Current continuation: E0.2 r7 — SPV and coordinated panel-control fanout
+# Current Continuation: E0.2 r25 — Single Unified 4-Layer PCB Architecture (2026-10-29)
+
+Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md) and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
+Canonical dated engineering checkpoint:
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`.
+
+**Single Unified 4-Layer PCB: 0 opens; DRC errors/warnings/parity/ERC are all ZERO.**
+Eliminated all 4 B2B connectors (`J1`, `J4`, `J601`, `J602`) and 2 FFC cables.
+Adopted Option A standard rectangular battery **Model 323576** ($35.0 \times 76.0 \times 3.2\text{ mm}$, 2050 mAh).
+Bottom Type-C USB receptacle (`J201` / `TYPE-C-31-M-12`) positioned at bottom center.
+Dedicated solid `In1.Cu` GND plane with strictly 0 non-GND signal tracks; all 173 GND pads connected.
+100% compliant with JLCPCB / JLC EDA free prototyping coupon requirements ($71.0 \times 99.0\text{ mm} \le 10 \times 10\text{ cm}$, single board delivery, 4-layer green solder mask, ENIG exposed gold ratio $8.49\% < 20\%$).
+
+---
+
+# Historical continuation: E0.2 r7 — SPV and coordinated panel-control fanout
 
 Read [E02-R7-SPV-CLOSURE-20261014.md](E02-R7-SPV-CLOSURE-20261014.md).
 Dated checkpoint:

@@ -207,6 +207,18 @@ def inspect_board_native(candidate_dir: Path, board_name: str) -> dict:
     }
 
 
+def get_candidate_boards(candidate_dir: Path) -> list[str]:
+    candidate_dir = Path(candidate_dir).resolve()
+    boards = []
+    if (candidate_dir / "Single.kicad_pcb").is_file():
+        boards.append("Single")
+    if (candidate_dir / "Core.kicad_pcb").is_file() and (candidate_dir / "Display.kicad_pcb").is_file():
+        boards.extend(["Core", "Display"])
+    elif not boards:
+        boards = ["Core", "Display"]
+    return boards
+
+
 def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = KCLI_DEFAULT) -> dict:
     """Export single-board JLC Gerbers, Excellon drills, .gbrjob, ZIPs, BOM_JLCPCB.csv, and CPL_JLCPCB.csv."""
     import pcbnew
@@ -215,8 +227,9 @@ def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = K
         shutil.rmtree(orderpack_dir)
     orderpack_dir.mkdir(parents=True)
 
+    boards = get_candidate_boards(candidate_dir)
     exports = {}
-    for board_name in ("Core", "Display"):
+    for board_name in boards:
         pcb_path = candidate_dir / f"{board_name}.kicad_pcb"
         bdir = orderpack_dir / board_name
         gbr_dir = bdir / "gerber"
@@ -324,39 +337,34 @@ def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = K
 
 def verify_candidate(candidate_dir: Path, orderpack_dir: Path | None = None) -> dict:
     candidate_dir = Path(candidate_dir).resolve()
-    core = inspect_board_native(candidate_dir, "Core")
-    display = inspect_board_native(candidate_dir, "Display")
+    board_names = get_candidate_boards(candidate_dir)
+    boards = {name: inspect_board_native(candidate_dir, name) for name in board_names}
+
+    req1 = all(
+        b["within_10x10cm_and_ge_1x1cm"]
+        and b["single_board_no_panelization"]
+        and b["standard_process_compliant"]
+        and b["stackup"]["four_layer_green_mask_compliant"]
+        for b in boards.values()
+    )
+    req2 = all(
+        b["stackup"]["enig_or_osp_ready"]
+        and b["enig_under_20pct_compliant"]
+        for b in boards.values()
+    )
+    pcb_shas = [b["pcb_sha256"] for b in boards.values()]
+    req3 = all(b["anti_split_order_unique_metadata"] for b in boards.values()) and (len(pcb_shas) == len(set(pcb_shas)))
+
     result = {
         "schema": "panda47-jlc-coupon-compliance-v1",
         "timestamp_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "requirements_checked": {
-            "1_complete_eda_10x10cm_5pcs_single_board_4L_green_mask": (
-                core["within_10x10cm_and_ge_1x1cm"]
-                and display["within_10x10cm_and_ge_1x1cm"]
-                and core["single_board_no_panelization"]
-                and display["single_board_no_panelization"]
-                and core["standard_process_compliant"]
-                and display["standard_process_compliant"]
-                and core["stackup"]["four_layer_green_mask_compliant"]
-                and display["stackup"]["four_layer_green_mask_compliant"]
-            ),
-            "2_pcb_smt_enig_under_20pct_or_osp_coupon": (
-                core["stackup"]["enig_or_osp_ready"]
-                and display["stackup"]["enig_or_osp_ready"]
-                and core["enig_under_20pct_compliant"]
-                and display["enig_under_20pct_compliant"]
-            ),
-            "3_anti_split_order_unique_files": (
-                core["anti_split_order_unique_metadata"]
-                and display["anti_split_order_unique_metadata"]
-                and core["pcb_sha256"] != display["pcb_sha256"]
-            ),
+            "1_complete_eda_10x10cm_5pcs_single_board_4L_green_mask": req1,
+            "2_pcb_smt_enig_under_20pct_or_osp_coupon": req2,
+            "3_anti_split_order_unique_files": req3,
         },
-        "boards": {
-            "Core": core,
-            "Display": display,
-        },
-        "all_passed": core["all_jlc_coupon_checks_passed"] and display["all_jlc_coupon_checks_passed"],
+        "boards": boards,
+        "all_passed": all(b["all_jlc_coupon_checks_passed"] for b in boards.values()) and req1 and req2 and req3,
     }
     if orderpack_dir is not None:
         result["orderpack"] = export_jlc_orderpack(candidate_dir, Path(orderpack_dir).resolve())
