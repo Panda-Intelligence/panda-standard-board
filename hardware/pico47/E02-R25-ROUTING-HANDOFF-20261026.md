@@ -1,22 +1,22 @@
 # Pico47 E0.2 r25 — Core 4-layer routing handoff (2026-10-26, updated 2026-10-29)
 
-Status: **4-layer PCB layout routed to 0 opens / 0 DRC errors on both Core and Display (`trial-zero-open-clean-native-20261029`). NOT for fabrication or panel/battery power.** Published r24 package remains unchanged; mechanical/battery/panel-stack/C501-MPN/CAM/EVT gates remain open.
+Status: **4-layer PCB layout routed to 0 opens / 0 DRC errors / 0 DRC warnings on both Core and Display (`trial-zero-open-clean-native-20261029`). NOT for fabrication or panel/battery power.** Published r24 package remains unchanged; mechanical/battery/panel-stack/C501-MPN/CAM/EVT gates remain open.
 
 ## 2026-10-29 zero-open 4-layer routing closure (`trial-zero-open-clean-native-20261029`)
 
 Starting from the 2-open fixed-contract Native candidate (`trial-vsys-f-astar-3v3-bridge-via-46125-epd-long-native-20261031`, where `VSYS_RAW` and `3V3_EPD_LOGIC` were already closed and only `I2C_SDA`'s two islands remained open), a 10-net local PathFinder negotiation + `25 µm` `B.Cu` jog on `P47_SPV_SRC` (`x = 60.350 -> 60.375` along `y = 109.825..109.175`) closed `I2C_SDA` (`U601.23` and `J602.14` to `U501.21`) with `vbad: 0` across all 10 nets and `exact_check.py = 0 issues`.
 
-Materializing the delta while preserving the `3V3_EPD_LOGIC` bridge via `(46.125, 104.2)` and running a connectivity-guarded cleanup of duplicate vias, dangling track stubs, local footprint/symbol libraries (`Panda47.pretty`, `Panda7.kicad_sym`), and schematic `R533` 2.54 mm grid alignment (`y = 700.0 -> 701.04`) produced the verified zero-open candidate:
+Materializing the delta while preserving the `3V3_EPD_LOGIC` bridge via `(46.125, 104.2)` and running a connectivity-guarded cleanup of duplicate vias, dangling track/via stubs, silkscreen overlaps (`C501` ref text and `U711` top silk line around `TP712`), local footprint/symbol libraries (`Panda47.pretty`, `Panda7.kicad_sym`), and schematic `R533` 2.54 mm grid alignment (`y = 700.0 -> 701.04`) produced the verified zero-open / zero-DRC-warning candidate:
 
 - **Candidate directory**: `.work/r25-resume-codex-20261027/trial-zero-open-clean-native-20261029`
-- **Exported geometry**: `.work/r25-resume-codex-20261027/runs/geom-zero-open-clean-20261029.json` (`sha256: 7ef4be4e511bf31ddad20bb58b3ae396eb4efe7bd814df84324f1bb92a9c0074`)
+- **Exported geometry**: `.work/r25-resume-codex-20261027/runs/geom-zero-open-clean-20261029.json` (`sha256: edb28e5f57e1c8936099db9c52528abb96ab814ab425976e8601ab894cea1cb8`)
 - **Audit summary**: `.work/r25-resume-codex-20261027/trial-zero-open-clean-native-20261029/ZERO-OPEN-AUDIT-20261029.json`
-- **Core (`Core.kicad_pcb` `sha256: da18e39797d452224d8037c205166946988b7953e310d9b79b052a0e5124e28c`)**:
+- **Core (`Core.kicad_pcb` `sha256: debc9b6caad8d816f677ca73c4f6dcf553e662049be8addba0e231e5207d34a1`)**:
   - `unconnected_items`: **0**
   - `drc_errors`: **0**
-  - `drc_warnings`: **5** (`3` `via_dangling` on `GND` plane stitch/return vias, `1` `silk_overlap`, `1` `silk_over_copper`; `track_dangling = 0`, `holes_co_located = 0`, `hole_to_hole = 0`, `lib_footprint_issues = 0`, `lib_footprint_mismatch = 0`)
-  - `schematic_parity`: **1** (the known pending `C501` 0603 `Manufacturer` field)
-  - `erc_violations` (`Core.kicad_sch` `sha256: bc2b3f1cc44278f59d6da2c2bfb1feaf05144173dfe895d64c9f72438f4d0d83`): **0**
+  - `drc_warnings`: **0** (`drc_by_type: {}`; `track_dangling = 0`, `via_dangling = 0`, `holes_co_located = 0`, `hole_to_hole = 0`, `silk_overlap = 0`, `silk_over_copper = 0`, `lib_footprint_issues = 0`, `lib_footprint_mismatch = 0`)
+  - `schematic_parity`: **1** (the intentional pending `C501` 0603 `Manufacturer` field)
+  - `erc_violations` (`Core.kicad_sch` `sha256: 2081d70faa1c636179d09cdaad9fa7d356f4b24e68497d0503baa3fc51dfcda4`): **0**
   - `ground_pads`: **169/169** (`1` reference group, **2/2** `J601` named ground targets)
 - **Display (`Display.kicad_pcb` `sha256: 320ed035ce0386a5568b939baf164626fbde1da2bc48d82de5e99a4a79454b0d`)**:
   - `unconnected_items`: **0**
