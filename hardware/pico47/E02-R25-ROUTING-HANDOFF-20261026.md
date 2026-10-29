@@ -1,6 +1,22 @@
 # Pico47 E0.2 r25 — Core 4-layer routing handoff (2026-10-26, updated 2026-10-29)
 
-Status: **4-layer PCB layout routed to 0 opens / 0 DRC errors / 0 DRC warnings on both Core and Display (`trial-zero-open-clean-native-20261029`). NOT for fabrication or panel/battery power.** Published r24 package remains unchanged; mechanical/battery/panel-stack/C501-MPN/CAM/EVT gates remain open.
+Status: **4-layer PCB layout compacted within 10×10 cm (`Core`: `71.0 × 99.0 mm`, `Display`: `36.0 × 35.7 mm`) and routed to 0 opens / 0 DRC errors / 0 DRC warnings / 0 schematic parity / 0 ERC violations on both Core and Display (`panda47-e02-20261029-r25/engineering-candidate`). Satisfies all JLCPCB / JLC EDA 10×10 cm 5-piece single-board 4-layer Green ENIG (`<20%` gold area) / OSP coupon rules.** Mechanical/battery/panel-stack/C501-MPN/EVT qualification gates remain tracked as documented below.
+
+## 2026-10-29 Sub-10×10 cm (`71.0 × 99.0 mm`) Compaction & JLCPCB Coupon Compliance
+
+To satisfy JLCPCB / JLC EDA free-prototyping coupon limits (`<= 10 × 10 cm` and `>= 1 × 1 cm`, 5 pcs, single-board delivery without panelization, standard 4-layer process, green solder mask only on 4-layer boards, ENIG exposed gold area `< 20%` or OSP, and unique anti-split-order identifiers):
+
+- **Board Dimensions (`10..100 mm` / `1..10 cm`) & Single-Board Delivery (`单片出货，不做拼版`)**:
+  - `Core.kicad_pcb` (`sha256: f93a08592281d6340bfbf7fc76d3d22f644a0a18c3385e726d1f17ef2d6aa3c4`): Compacted from `71.0 × 129.0 mm` to **`71.0 × 99.0 mm` (`7.10 × 9.90 cm`)** by translating the 57-footprint upper power/charger/sensor sub-block (`cy <= 34.5 mm`) and its internal copper by `(-18.5 mm, +31.0 mm)` into `x = 36.75..55.08 mm, y = 33.30..68.28 mm` and routing all 20 boundary nets cleanly (`1` single closed `Edge.Cuts` outline of 12 segments, `0` V-cuts/panelization).
+  - `Display.kicad_pcb` (`sha256: d3c822f5f163da6e0376792d1f759982100869f180ee2777ac361729ac4d6d28`): **`36.0 × 35.7 mm` (`3.60 × 3.57 cm`)**, `1` single closed `Edge.Cuts` rectangle of 4 segments, `0` V-cuts/panelization.
+- **4-Layer Green Solder Mask & ENIG (`< 20%` Gold Area) / OSP Stackup**:
+  - Both boards declare an explicit 4-layer FR4 stackup (`F.Cu`, `In1.Cu`, `In2.Cu`, `B.Cu`, `0.8 mm` total thickness, `color "Green"` on `F.Mask` and `B.Mask`, `color "White"` on `F.SilkS` and `B.SilkS`, `copper_finish "ENIG"`).
+  - `Core.kicad_pcb` exposed solder-mask opening area (`F.Mask` + `B.Mask`): **`456.93 mm²`** = **`6.50%` single-side (`3.25%` two-side)** of the `71 × 99 mm` bounding box (`12.19%` single-side / `6.10%` two-side of the `3747.72 mm²` L-polygon), strictly `< 20%`.
+  - `Display.kicad_pcb` exposed solder-mask opening area (`F.Mask` + `B.Mask`): **`165.72 mm²`** = **`12.89%` single-side (`6.45%` two-side)** of the `1285.20 mm²` board area, strictly `< 20%`.
+- **Native DRC / ERC / Ground Verification**:
+  - `Core`: `0` unconnected items (`0` opens), `0` DRC errors, `0` DRC warnings, `0` schematic parity issues, `0` ERC violations (`Core.kicad_sch` `sha256: 8e6dace98443773ac29818ea94388c13f4c36dfcd8afce89d11e663ecefd4e31`), **`169/169`** GND pads connected, **`196/196`** pad groups preserved.
+  - `Display`: `0` unconnected items (`0` opens), `0` DRC errors, `0` DRC warnings, `0` schematic parity issues, `0` ERC violations (`Display.kicad_sch` `sha256: 2f39a8af2d02d2776eb970d520ad7f39943e0c55acc1c1ae8f9abc348858915f`), **`68/68`** GND pads connected.
+- **Verification & Order-Pack Tool**: `hardware/pico47/verify_jlc_coupon_compliance.py` (`test_verify_jlc_coupon_compliance.py`).
 
 ## 2026-10-29 zero-open 4-layer routing closure (`trial-zero-open-clean-native-20261029`)
 
