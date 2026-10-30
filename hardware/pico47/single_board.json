@@ -356,8 +356,8 @@
     ]
   ],
   "via_in_pad": {
-    "process": "STANDARD_4L_TENTED_THERMAL_VIAS",
-    "supplier_process_accepted": true,
+    "process": "FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT",
+    "supplier_process_accepted": false,
     "targets": [
       {
         "ref": "U501",
@@ -386,6 +386,50 @@
       37.0,
       80.0
     ],
+    "battery_assembly_envelopes_mm": {
+      "BATTERY_PACK": [
+        2.0,
+        4.0,
+        37.0,
+        77.2
+      ],
+      "BATTERY_SEAL": [
+        1.6,
+        5.0,
+        37.4,
+        76.8
+      ],
+      "BATTERY_TABS": [
+        10.5,
+        76.8,
+        28.5,
+        78.0
+      ],
+      "BATTERY_PCM": [
+        4.5,
+        77.6,
+        34.5,
+        80.0
+      ],
+      "BATTERY_WIRE_RED": [
+        11.5,
+        80.0,
+        13.0,
+        83.0
+      ],
+      "BATTERY_WIRE_BLK": [
+        26.0,
+        80.0,
+        27.5,
+        83.0
+      ],
+      "BATTERY_WIRE_NTC": [
+        18.5,
+        80.0,
+        20.0,
+        83.0
+      ]
+    },
     "upper_left_pcb_step_min_x_mm": 38.0,
     "upper_left_pcb_step_max_y_mm": 83.5,
     "overlap_area_mm2": 0.0

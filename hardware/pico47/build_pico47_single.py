@@ -170,6 +170,10 @@ def inspect_single(candidate, spec):
                                  or y >= bay['upper_left_pcb_step_max_y_mm'] - 1e-3
                                  for x, y in edge_pts),
                 'PCB outline encroaches on 323576 battery bay')
+        for part_name, (bx1, by1, bx2, by2) in bay.get('battery_assembly_envelopes_mm', {}).items():
+            require(bx2 <= bay['upper_left_pcb_step_min_x_mm'] + 1e-3
+                    and by2 <= bay['upper_left_pcb_step_max_y_mm'] + 1e-3,
+                    f'Battery assembly sub-part {part_name} overlaps PCB step')
     supplies, manual = [], []
     for ref, fp in sorted(fps.items()):
         if fp.IsDNP() or fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM:
@@ -234,11 +238,11 @@ def build(source, output, spec_path=SPEC):
     (orderpack/'MANUFACTURING-REQUIREMENTS.md').write_text(
         '# Single 制造工艺要求\n\n2026-10-30，R26。\n\n'
         '四层、0.8 mm 标称、绿油、ENIG；详细层叠以 Single-job.gbrjob 为准。\n'
-        '左上板阶已收窄至 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)，与 323576 (35x76x3.2 mm) 电池实现 0.0 mm² 重叠。\n'
-        'C804.2 接地回流过孔已移至焊盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)，无盘中孔；U501.57 的 9 个 0.50/0.25 mm 散热过孔见 REQUIRED-VIA-IN-PAD.csv，采用标准四层盖油/塞油散热过孔工艺 (STANDARD_4L_TENTED_THERMAL_VIAS)。\n'
+        '左上板阶已收窄至 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)，与 323576 (35x76x3.2 mm) 电池全组件（电芯、封边、极耳、保护板及引线）实现 0.0 mm² 重叠。\n'
+        'C804.2 接地回流过孔已移至焊盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)，无盘中孔；U501.57 的 9 个 0.50/0.25 mm 散热过孔位于阻焊开窗及钢网开口内（见 REQUIRED-VIA-IN-PAD.csv），需树脂塞孔+电镀盖帽 (FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT) 或板厂 CAM 确认的等效工艺，确认前 supplier_process_accepted = false。\n'
         '214 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 21 个需客供/建档的物料，不能空贴。\n'
         'BT301 必须使用工厂绝缘引脚/焊片组件，SMT 后安装（见 REQUIRED-POST-SMT.csv）；不得回流或直接焊裸电池。\n'
-        'J201 为 MUP U22401-17 沉板式 USB-C 母座；制造与通电前需确认实际电池包接口及完整屏幕模组规格。\n')
+        'J201 为 MUP U22401-17 沉板式 USB-C 母座；上述工艺、供料及实际电池包/完整屏幕模组规格确认前，manufacturing_release 保持为 false。\n')
     manifest = {'schema':'panda47-single-rebuild-v1', 'revision':spec['revision'],
                 'source_spec_sha256':sha(spec_path), 'source_design_sha256':sha(CONTRACT),
                 'input_sha256':spec['input_sha256'], 'counts':counts,
