@@ -185,6 +185,27 @@ def inspect_single(candidate, spec):
             require(bx2 <= bay['upper_left_pcb_step_min_x_mm'] + 1e-3
                     and by2 <= bay['upper_left_pcb_step_max_y_mm'] + 1e-3,
                     f'Battery assembly sub-part {part_name} overlaps PCB step')
+    ur_bay = spec.get('upper_right_support_bay')
+    if ur_bay:
+        require(ur_bay.get('study_only_not_supplier_qualified') is True,
+                'Upper-right support bay must be marked study_only_not_supplier_qualified')
+        ur_xy = ur_bay.get('envelopes_xy_mm', {})
+        ur_z = ur_bay.get('envelopes_z_mm', {})
+        for part_name in ('UPPER_RIGHT_RIB_GRID', 'UPPER_RIGHT_PORON_PAD', 'SPEAKER_BOX_1511', 'FPC_ANTENNA_2G4'):
+            require(part_name in ur_xy and part_name in ur_z,
+                    f'Missing Option 1 upper-right support component {part_name}')
+            ux1, uy1, ux2, uy2 = ur_xy[part_name]
+            uz1, uz2 = ur_z[part_name]
+            require(ux1 >= ur_bay['battery_right_edge_max_x_mm'] + 1e-3,
+                    f'{part_name} overlaps 323576 battery assembly')
+            require(uy2 <= ur_bay['pcb_top_edge_min_y_mm'] - 1e-3,
+                    f'{part_name} overlaps Single.kicad_pcb top edge')
+            require(ux2 <= 73.9 - 1e-3 and uy1 >= 1.1 + 1e-3,
+                    f'{part_name} encroaches on rear shell perimeter wall')
+            require(uz1 >= 0.55 - 1e-3 and uz2 <= ur_bay['coplanar_support_top_z_mm'] + 1e-3,
+                    f'{part_name} exceeds Z support envelope')
+        require(abs(ur_z['UPPER_RIGHT_PORON_PAD'][1] - ur_bay['coplanar_support_top_z_mm']) < 1e-3,
+                'UPPER_RIGHT_PORON_PAD top must be coplanar with 3.95mm battery top surface')
     supplies, manual = [], []
     for ref, fp in sorted(fps.items()):
         if fp.IsDNP() or fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM:

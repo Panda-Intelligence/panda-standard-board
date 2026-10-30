@@ -98,6 +98,30 @@ class SingleInputTests(unittest.TestCase):
                 ew, eh = expected_wh[name]
                 self.assertAlmostEqual(bx2 - bx1, ew, places=3)
                 self.assertAlmostEqual(by2 - by1, eh, places=3)
+        ur_bay = spec['upper_right_support_bay']
+        self.assertTrue(ur_bay['study_only_not_supplier_qualified'])
+        self.assertEqual(ur_bay['option'], 'option_1_structural_grid_poron_speaker_antenna')
+        self.assertEqual(ur_bay['pcb_overlap_area_mm2'], 0.0)
+        self.assertEqual(ur_bay['battery_overlap_area_mm2'], 0.0)
+        self.assertAlmostEqual(ur_bay['coplanar_support_top_z_mm'], 3.95, places=3)
+        ur_xy = ur_bay['envelopes_xy_mm']
+        ur_z = ur_bay['envelopes_z_mm']
+        self.assertEqual(
+            set(ur_xy),
+            {'UPPER_RIGHT_RIB_GRID', 'UPPER_RIGHT_PORON_PAD', 'SPEAKER_BOX_1511', 'FPC_ANTENNA_2G4'},
+        )
+        for name, (ux1, uy1, ux2, uy2) in ur_xy.items():
+            with self.subTest(ur_part=name):
+                self.assertGreaterEqual(ux1, ur_bay['battery_right_edge_max_x_mm'] + 1.0)
+                self.assertLessEqual(uy2, ur_bay['pcb_top_edge_min_y_mm'] - 0.8)
+                self.assertLessEqual(ux2, 73.9)
+                self.assertGreaterEqual(uy1, 1.1)
+                uz1, uz2 = ur_z[name]
+                self.assertGreaterEqual(uz1, 0.55)
+                self.assertLessEqual(uz2, ur_bay['coplanar_support_top_z_mm'])
+        self.assertAlmostEqual(ur_z['UPPER_RIGHT_PORON_PAD'][1], 3.95, places=3)
+        self.assertAlmostEqual(ur_xy['SPEAKER_BOX_1511'][2] - ur_xy['SPEAKER_BOX_1511'][0], 15.0, places=3)
+        self.assertAlmostEqual(ur_xy['SPEAKER_BOX_1511'][3] - ur_xy['SPEAKER_BOX_1511'][1], 11.0, places=3)
 
     def test_apply_single_r26_x38_eco_replays_full_delta_without_crash(self):
         try:

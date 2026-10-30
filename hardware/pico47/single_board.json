@@ -441,6 +441,65 @@
     "upper_left_pcb_step_max_y_mm": 83.5,
     "overlap_area_mm2": 0.0
   },
+  "upper_right_support_bay": {
+    "option": "option_1_structural_grid_poron_speaker_antenna",
+    "study_only_not_supplier_qualified": true,
+    "cavity_bbox_mm": [
+      38.0,
+      2.0,
+      73.0,
+      32.0
+    ],
+    "pcb_top_edge_min_y_mm": 32.0,
+    "battery_right_edge_max_x_mm": 37.5,
+    "coplanar_support_top_z_mm": 3.95,
+    "envelopes_xy_mm": {
+      "UPPER_RIGHT_RIB_GRID": [
+        38.5,
+        2.5,
+        72.5,
+        31.2
+      ],
+      "UPPER_RIGHT_PORON_PAD": [
+        39.0,
+        3.0,
+        72.0,
+        31.0
+      ],
+      "SPEAKER_BOX_1511": [
+        55.5,
+        17.5,
+        70.5,
+        28.5
+      ],
+      "FPC_ANTENNA_2G4": [
+        41.0,
+        4.5,
+        65.0,
+        11.5
+      ]
+    },
+    "envelopes_z_mm": {
+      "UPPER_RIGHT_RIB_GRID": [
+        0.55,
+        3.65
+      ],
+      "UPPER_RIGHT_PORON_PAD": [
+        3.65,
+        3.95
+      ],
+      "SPEAKER_BOX_1511": [
+        0.75,
+        3.65
+      ],
+      "FPC_ANTENNA_2G4": [
+        3.65,
+        3.85
+      ]
+    },
+    "pcb_overlap_area_mm2": 0.0,
+    "battery_overlap_area_mm2": 0.0
+  },
   "manual_assembly_refs": [
     "BT301"
   ],
