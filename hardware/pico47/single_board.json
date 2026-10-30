@@ -3,6 +3,9 @@
   "date": "2026-10-30",
   "author": "Codex",
   "revision": "R26",
+  "version_directory": "hardware/pico47/v0.1.1",
+  "baseline_version_directory": "hardware/pico47/v0.1.0",
+  "baseline_r25_pcb_sha256": "d14c33f47803453b3f37ecc84f8f5e0d45b33a5ec7150cf18db58259949df6f8",
   "input_checkpoint": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate",
   "input_sha256": {
     "Single.kicad_pcb": "31fa221d8a02a7cb00e9bd00a5d6f7907e60b56903269f803973590a1ed2f7b9",

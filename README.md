@@ -8,8 +8,12 @@ stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
 Start with [the current Single Unified PCB handoff](hardware/pico47/E02-R25-SINGLE-UNIFIED-PCB-20261029.md)
 and [the Panda Standard source/build guide](hardware/pico47/README.md). Source code is
-under `hardware/pico47/`; generated native CAD, evidence and candidate packages
-remain in ignored `.work/` or the external `panda-board-deliverables` directory.
+under `hardware/pico47/`; each finished single-board release (`Single.kicad_pcb` and its
+native KiCad project/libraries) is committed under its version-named directory:
+- [`hardware/pico47/v0.1.0/`](hardware/pico47/v0.1.0/) (`R25` full-rectangle 4-layer baseline)
+- [`hardware/pico47/v0.1.1/`](hardware/pico47/v0.1.1/) (`R26` L-step 4-layer board with `X = 38.0 mm` battery bay clearance & Option 1 upper-right support bay)
+Temporary generated rebuild reports and manufacturing archives remain in ignored `.work/`
+or the external `panda-board-deliverables` directory.
 The older Split-C1 / Product-D / Thin7 designs below are electrical donors or
 historical experiments, not the current product or approval to export/order it.
 

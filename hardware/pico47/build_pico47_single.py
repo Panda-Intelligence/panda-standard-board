@@ -292,7 +292,10 @@ if __name__ == '__main__':
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
-    default = json.loads(SPEC.read_text())['input_checkpoint']
+    spec_data = json.loads(SPEC.read_text())
+    default = Path(spec_data['input_checkpoint'])
+    if not default.exists() and 'version_directory' in spec_data:
+        default = REPO / spec_data['version_directory']
     result = build(args.source or default, args.output)
     print(json.dumps({'counts':result['counts'], 'ground_pads':result['inspection']['ground']['ground_pad_count'],
                       'pending_supply':len(result['inspection']['pending_supply']),

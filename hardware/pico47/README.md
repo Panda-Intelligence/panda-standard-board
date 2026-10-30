@@ -1,7 +1,10 @@
 # Current Continuation: E0.2 r26 (v0.1.1) — Single Unified 4-Layer PCB Engineering Checkpoint (2026-10-30)
 
 Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md), [MAINLAND-COMPONENT-BOM-AUDIT-20261029.md](MAINLAND-COMPONENT-BOM-AUDIT-20261029.md), and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
-Canonical dated engineering checkpoint:
+Versioned in-repository native KiCad release directories:
+- [`hardware/pico47/v0.1.1/`](v0.1.1/) (`v0.1.1` / `R26` current release — `Single.kicad_pcb` SHA-256 `31fa221d8a02a7cb00e9bd00a5d6f7907e60b56903269f803973590a1ed2f7b9`)
+- [`hardware/pico47/v0.1.0/`](v0.1.0/) (`v0.1.0` / `R25` baseline release — `Single.kicad_pcb` SHA-256 `d14c33f47803453b3f37ecc84f8f5e0d45b33a5ec7150cf18db58259949df6f8`)
+Canonical external engineering checkpoint:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`.
 
 **Single Unified 4-Layer PCB (`Single.kicad_pcb`): 0 opens; DRC errors/warnings/parity/ERC are all ZERO (`manufacturing_release = false` until supplier CAM/supply/stack confirmation).**

@@ -55,6 +55,13 @@ class SingleInputTests(unittest.TestCase):
 
     def test_real_single_source_has_all_required_native_files(self):
         spec = json.loads(SPEC.read_text())
+        repo_root = SPEC.resolve().parent.parent.parent
+        v011_dir = repo_root / spec['version_directory']
+        v010_dir = repo_root / spec['baseline_version_directory']
+        verify_inputs(v011_dir, spec)
+        v010_spec = {'input_sha256': dict(spec['input_sha256'])}
+        v010_spec['input_sha256']['Single.kicad_pcb'] = spec['baseline_r25_pcb_sha256']
+        verify_inputs(v010_dir, v010_spec)
         self.assertEqual(spec['required_ground_pad_count'], 173)
         self.assertFalse(spec['via_in_pad']['supplier_process_accepted'])
         self.assertEqual(
@@ -149,9 +156,9 @@ class SingleInputTests(unittest.TestCase):
                 verify_input_sha256(bad, delta)
 
         spec = json.loads(SPEC.read_text())
-        src_pcb = Path(spec['input_checkpoint']) / 'Single.kicad_pcb'
-        if not src_pcb.is_file():
-            self.skipTest('Single.kicad_pcb checkpoint not present')
+        repo_root = SPEC.resolve().parent.parent.parent
+        src_pcb = repo_root / spec['version_directory'] / 'Single.kicad_pcb'
+        self.assertTrue(src_pcb.is_file())
         self.assertEqual(verify_input_sha256(src_pcb, delta), delta['target_r26_sha256'])
 
         board = pcbnew.LoadBoard(str(src_pcb))
@@ -183,16 +190,16 @@ class SingleInputTests(unittest.TestCase):
         self.assertAlmostEqual(pcbnew.ToMM(c503.GetPosition().x), 56.28, places=3)
         self.assertAlmostEqual(pcbnew.ToMM(c503.GetPosition().y), 64.00, places=3)
 
-        # Also test strict_uuid_check=True on the preserved R25 baseline board if present
-        r25_pcb = SPEC.resolve().parent.parent.parent / '.work/single_pcb_clean/Single.kicad_pcb'
-        if r25_pcb.is_file():
-            self.assertEqual(verify_input_sha256(r25_pcb, delta), delta['baseline_r25_sha256'])
-            r25_board = pcbnew.LoadBoard(str(r25_pcb))
-            apply_single_r26_eco(r25_board, delta, strict_uuid_check=True)
-            with tempfile.TemporaryDirectory() as d:
-                out_r26 = Path(d) / 'ReplayedFromR25.kicad_pcb'
-                pcbnew.SaveBoard(str(out_r26), r25_board)
-                self.assertTrue(out_r26.is_file())
+        # Also test strict_uuid_check=True on the preserved R25 (v0.1.0) baseline board in repo
+        r25_pcb = repo_root / spec['baseline_version_directory'] / 'Single.kicad_pcb'
+        self.assertTrue(r25_pcb.is_file())
+        self.assertEqual(verify_input_sha256(r25_pcb, delta), delta['baseline_r25_sha256'])
+        r25_board = pcbnew.LoadBoard(str(r25_pcb))
+        apply_single_r26_eco(r25_board, delta, strict_uuid_check=True)
+        with tempfile.TemporaryDirectory() as d:
+            out_r26 = Path(d) / 'ReplayedFromR25.kicad_pcb'
+            pcbnew.SaveBoard(str(out_r26), r25_board)
+            self.assertTrue(out_r26.is_file())
 
         with tempfile.TemporaryDirectory() as d:
             out_pcb = Path(d) / 'Replayed.kicad_pcb'
