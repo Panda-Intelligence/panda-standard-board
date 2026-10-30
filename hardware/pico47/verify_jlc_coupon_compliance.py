@@ -155,6 +155,17 @@ def inspect_board_native(candidate_dir: Path, board_name: str) -> dict:
     min_via_drill_mm = min((round(to_mm(v.GetDrill()), 4) for v in vias), default=0.0)
     non_through_vias = sum(1 for v in vias if v.GetViaType() != pcbnew.VIATYPE_THROUGH)
 
+    thermal_ep_vias = 0
+    c804_vip = 0
+    for fp in b.GetFootprints():
+        ref = fp.GetReference()
+        for pad in fp.Pads():
+            pnum = pad.GetNumber()
+            if ref == "U501" and pnum == "57":
+                thermal_ep_vias = sum(1 for v in vias if pad.HitTest(v.GetPosition(), False))
+            elif ref == "C804" and pnum == "2":
+                c804_vip = sum(1 for v in vias if pad.HitTest(v.GetPosition(), False))
+
     size_ok = (10.0 <= width_mm <= 100.0) and (10.0 <= height_mm <= 100.0)
     process_ok = (
         b.GetCopperLayerCount() == 4
@@ -162,6 +173,7 @@ def inspect_board_native(candidate_dir: Path, board_name: str) -> dict:
         and min_via_drill_mm >= 0.15
         and min_via_dia_mm >= 0.25
         and non_through_vias == 0
+        and (c804_vip == 0 if board_name == "Single" else True)
     )
     enig_ok = enig_ratio_single_side_poly_pct < 20.0 and enig_ratio_single_side_bbox_pct < 20.0
     anti_split_ok = bool(stackup["revision"]) and ("Unique Build ID:" in stackup["unique_build_comment"])
@@ -184,6 +196,8 @@ def inspect_board_native(candidate_dir: Path, board_name: str) -> dict:
         "min_via_diameter_mm": min_via_dia_mm,
         "min_via_drill_mm": min_via_drill_mm,
         "blind_or_buried_vias": non_through_vias,
+        "thermal_ep_via_count": thermal_ep_vias,
+        "c804_via_in_pad_count": c804_vip,
         "standard_process_compliant": process_ok,
         "stackup": stackup,
         "f_mask_opening_area_mm2": round(f_mask_area, 2),

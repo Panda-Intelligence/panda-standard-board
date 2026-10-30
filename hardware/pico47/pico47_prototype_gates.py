@@ -58,8 +58,9 @@ def assess_prototype_stages(native_counts, review_facts):
     Counts must be actual nonnegative integers, not truthy strings or booleans.
     Native `open` counts are independent of DRC rule-error counts.
     """
-    if not isinstance(native_counts, dict) or set(native_counts) != {'Core', 'Display'}:
-        raise ValueError('Both exact native board reports are required')
+    if (not isinstance(native_counts, dict)
+            or set(native_counts) not in ({'Single'}, {'Core', 'Display'})):
+        raise ValueError('Exact Single or historical Core/Display reports are required')
     if not isinstance(review_facts, dict) or set(review_facts) - REVIEW_FACTS:
         raise ValueError('Unknown or malformed prototype review facts')
     if any(value is not None and type(value) is not bool for value in review_facts.values()):

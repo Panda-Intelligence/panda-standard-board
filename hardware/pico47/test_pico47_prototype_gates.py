@@ -14,6 +14,14 @@ def accepted_facts():
 
 
 class PrototypeStageGates(unittest.TestCase):
+    def test_current_single_native_and_stage_blockers(self):
+        native = {'Single': clean_native()['Core']}
+        result = assess_prototype_stages(native, {})
+        self.assertFalse(result['stages']['bare_pcb_sample']['requirements_met'])
+        native['Single']['open'] = 1
+        result = assess_prototype_stages(native, accepted_facts())
+        self.assertEqual(result['stages']['bare_pcb_sample']['blockers'][0]['id'], 'Single.open')
+
     def test_zero_rule_errors_do_not_hide_unconnected_items(self):
         native = clean_native(); native['Core']['open'] = 1
         result = assess_prototype_stages(native, accepted_facts())

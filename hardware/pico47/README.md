@@ -1,16 +1,15 @@
-# Current Continuation: E0.2 r25 — Single Unified 4-Layer PCB Architecture (2026-10-29)
+# Current Continuation: E0.2 r26 (v0.1.1) — Single Unified 4-Layer PCB Sample-Readiness Closure (2026-10-30)
 
 Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md), [MAINLAND-COMPONENT-BOM-AUDIT-20261029.md](MAINLAND-COMPONENT-BOM-AUDIT-20261029.md), and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
 Canonical dated engineering checkpoint:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`.
 
-**Single Unified 4-Layer PCB: 0 opens; DRC errors/warnings/parity/ERC are all ZERO.**
-**100% Chinese Mainland (PRC) Component Provenance**: Verified via `verify_mainland_bom_compliance.py` (`215/215` populated BOM components + `5/5` DNP passives on `Single`, `177/177` + `5/5` on `Core`, `42/42` on `Display`; `0` foreign manufacturers; `0` missing `Manufacturer` or `MPN` fields).
-Eliminated all 4 B2B connectors (`J1`, `J4`, `J601`, `J602`) and 2 FFC cables.
-Adopted Option A standard rectangular battery **Model 323576** ($35.0 \times 76.0 \times 3.2\text{ mm}$, 2050 mAh).
-Bottom Type-C USB receptacle (`J201` / `TYPE-C-31-M-12`) positioned at bottom center.
-Dedicated solid `In1.Cu` GND plane with strictly 0 non-GND signal tracks; all 173 GND pads connected.
-100% compliant with JLCPCB / JLC EDA free prototyping coupon requirements ($71.0 \times 99.0\text{ mm} \le 10 \times 10\text{ cm}$, single board delivery, 4-layer green solder mask, ENIG exposed gold ratio $8.49\% < 20\%$).
+**Single Unified 4-Layer PCB (`Single.kicad_pcb`): 0 opens; DRC errors/warnings/parity/ERC are all ZERO.**
+- **Zero Mechanical Interference with Rectangular Battery**: Upper-left PCB step narrowed from $X = 30.0\text{ mm}$ to **$X = 38.0\text{ mm}$** ($Y = 32.0..83.5\text{ mm}$), providing **$0.0\text{ mm}^2$ XY overlap** ($1.0\text{ mm}$ X clearance, $3.5\text{ mm}$ Y clearance) with the standard rectangular **Model 323576** battery ($35.0 \times 76.0 \times 3.2\text{ mm}$, 2050 mAh at $X = 2.0..37.0\text{ mm}, Y = 4.0..80.0\text{ mm}$).
+- **Via-in-Pad Closure**: `C804.2` ground return via moved outside the pad to an external dog-bone location at **`(17.40, 104.80)`** ($0.45/0.20\text{ mm}$ via connected by a $0.30\text{ mm}$ `F.Cu` trace to `C804.2` at `(18.20, 105.00)`), eliminating `C804.2` via-in-pad; `U501.57`'s 9 thermal vias ($0.50/0.25\text{ mm}$) are explicitly specified as `STANDARD_4L_TENTED_THERMAL_VIAS` in `single_board.json` and `REQUIRED-VIA-IN-PAD.csv`.
+- **100% Chinese Mainland (PRC) Component Provenance & Consignment Manifest**: Verified via `verify_mainland_bom_compliance.py` (`215/215` populated BOM components + `5/5` DNP passives on `Single`, `177/177` + `5/5` on `Core`, `42/42` on `Display`; `0` foreign manufacturers; `0` missing `Manufacturer` or `MPN` fields). Bottom Type-C USB receptacle (`J201` / **`MUP U22401-17`**) positioned at bottom center. `PENDING-SUPPLY.csv` (21 consignment/registration SMT parts) and `REQUIRED-POST-SMT.csv` (`BT301` post-SMT assembly) are exported alongside `BOM_JLCPCB_Single.csv` and `CPL_JLCPCB_Single.csv`.
+- **Single-Board Checkpoint & Rebuild**: Verified end-to-end via `build_pico47_single.py` and `single_board.json`. Dedicated solid `In1.Cu` GND plane with strictly 0 non-GND signal tracks; all 173 GND pads connected.
+- **JLCPCB / JLC EDA 4-Layer Standard Process & Coupon Compliance**: $71.0 \times 99.0\text{ mm} \le 10 \times 10\text{ cm}$, single board delivery, 4-layer green solder mask, ENIG exposed gold ratio $8.49\% < 20\%$, 0 `C804.2` via-in-pad.
 
 ---
 

@@ -72,7 +72,8 @@ def mutation_test(path, value):
 MUTATIONS = [
     (['manufacturing_release'], True), (['orders_submitted'], True),
     (['user_requirement','whole_device_maximum_mm'], 7.3),
-    (['user_requirement','two_boards'], False),
+    (['user_requirement','two_boards'], True),
+    (['architecture','board_names'], ['Core','Display']),
     (['user_requirement','keep_touch_frontlight_audio_imu_microsd_rtc'], False),
     (['panel','diagonal_inch'], 4.26), (['panel','portrait_pixels'], [480,800]),
     (['panel','interface'], 'SPI'), (['panel','data_width'], 8),

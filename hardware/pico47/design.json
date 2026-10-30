@@ -9,7 +9,7 @@
     "display": "Same as Read Pico, not the old4.26inch SPI panel",
     "battery": "Same actual Read Pico replaceable2050mAh LCO battery pack; equal capacity alone is not exact identity",
     "whole_device_maximum_mm": 7.0,
-    "two_boards": true,
+    "two_boards": false,
     "mainland_components": true,
     "keep_touch_frontlight_audio_imu_microsd_rtc": true,
     "ports": "USB-C bottom centre;microSD right edge near lower corner"
@@ -278,9 +278,20 @@
       "debug_reset_allowed": true
     },
     "cluster_relayout": {
-      "allowed_refs": ["U501", "R510", "C510", "TP18", "R533", "J503"],
+      "allowed_refs": [
+        "U501",
+        "R510",
+        "C510",
+        "TP18",
+        "R533",
+        "J503"
+      ],
       "four_layer_only": true,
-      "signal_layers": ["F.Cu", "In2.Cu", "B.Cu"],
+      "signal_layers": [
+        "F.Cu",
+        "In2.Cu",
+        "B.Cu"
+      ],
       "ground_plane_layer": "In1.Cu",
       "mechanical_envelope_review_required": true,
       "native_ground_and_pad_group_gate_required": true
@@ -402,9 +413,17 @@
       "status": "USER_AUTHORIZED_ELECTRICAL_PIN_MAP_UNVERIFIED_LAYOUT",
       "authorized_date": "2026-10-28",
       "four_layer": true,
-      "signal_layers": ["F.Cu", "In2.Cu", "B.Cu"],
+      "signal_layers": [
+        "F.Cu",
+        "In2.Cu",
+        "B.Cu"
+      ],
       "ground_plane_layer": "In1.Cu",
-      "placement_region_changes_allowed": ["U710", "U711", "J503"],
+      "placement_region_changes_allowed": [
+        "U710",
+        "U711",
+        "J503"
+      ],
       "board_edge_and_connector_constraints_adjustable": true,
       "native_routing_complete": false,
       "manufacturing_release": false
@@ -662,7 +681,7 @@
   },
   "manufacturing_release": false,
   "orders_submitted": false,
-  "stage": "E0.1 supply and direct-inhibit correction; mechanical study only",
+  "stage": "R26 single-board sample-readiness correction; supplier and mechanical qualification open",
   "power_stage": {
     "inductors": {
       "refs": [
@@ -750,5 +769,74 @@
       ]
     },
     "solid_ground_rationale": "Explicit direct copper connection for selected decoupling/divider/pulldown and FFC return pads. This forms real plane connections rather than allowing starved thermals. Native clearance and minimum-spoke rules remain unchanged; stencil/reflow heat balance is still a manufacturing review gate."
+  },
+  "architecture": {
+    "current": "single_unified_4layer",
+    "board_names": [
+      "Single"
+    ],
+    "historical_board_names": [
+      "Core",
+      "Display"
+    ],
+    "removed_connectors": [
+      "J1",
+      "J4",
+      "J601",
+      "J602"
+    ],
+    "source_inputs": "single_board.json",
+    "nominal_width_preference_mm": 75.0,
+    "maximum_finished_thickness_mm": 7.0,
+    "Single_outline": [
+      [
+        38.0,
+        32.0
+      ],
+      [
+        73.0,
+        32.0
+      ],
+      [
+        73.0,
+        131.0
+      ],
+      [
+        42.12,
+        131.0
+      ],
+      [
+        42.12,
+        125.45
+      ],
+      [
+        32.88,
+        125.45
+      ],
+      [
+        32.88,
+        131.0
+      ],
+      [
+        2.0,
+        131.0
+      ],
+      [
+        2.0,
+        83.5
+      ],
+      [
+        38.0,
+        83.5
+      ]
+    ],
+    "study_battery_model": "323576",
+    "study_battery_bay_mm": [
+      2.0,
+      4.0,
+      37.0,
+      80.0
+    ],
+    "single_battery_pcb_overlap_mm2": 0.0
   }
 }
