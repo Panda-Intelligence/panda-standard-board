@@ -65,6 +65,7 @@ class SingleInputTests(unittest.TestCase):
         self.assertEqual(sum(x['count'] for x in spec['via_in_pad']['targets']), 9)
         self.assertEqual(len(spec['via_in_pad']['external_dogbone_vias']), 1)
         bay = spec['battery_bay_clearance']
+        self.assertTrue(bay['study_only_not_supplier_qualified'])
         self.assertEqual(bay['overlap_area_mm2'], 0.0)
         envelopes = bay['battery_assembly_envelopes_mm']
         self.assertEqual(
@@ -79,10 +80,24 @@ class SingleInputTests(unittest.TestCase):
                 'BATTERY_WIRE_NTC',
             },
         )
+        expected_wh = {
+            'BATTERY_PACK': (35.0, 76.0),
+            'BATTERY_SEAL': (35.8, 74.0),
+            'BATTERY_TABS': (18.0, 1.6),
+            'BATTERY_PCM': (30.0, 3.8),
+            'BATTERY_WIRE_RED': (3.7, 1.5),
+            'BATTERY_WIRE_BLK': (3.7, 1.5),
+            'BATTERY_WIRE_NTC': (3.7, 1.5),
+        }
         for name, (bx1, by1, bx2, by2) in envelopes.items():
             with self.subTest(part=name):
+                self.assertGreaterEqual(bx1, 1.1)
+                self.assertGreaterEqual(by1, 1.1)
                 self.assertLessEqual(bx2, bay['upper_left_pcb_step_min_x_mm'])
                 self.assertLessEqual(by2, bay['upper_left_pcb_step_max_y_mm'])
+                ew, eh = expected_wh[name]
+                self.assertAlmostEqual(bx2 - bx1, ew, places=3)
+                self.assertAlmostEqual(by2 - by1, eh, places=3)
 
     def test_apply_single_r26_x38_eco_replays_full_delta_without_crash(self):
         try:
@@ -90,7 +105,11 @@ class SingleInputTests(unittest.TestCase):
             import pcbnew
         except ImportError:
             self.skipTest('pcbnew not available in non-KiCad Python')
-        from r25_router.apply_single_r26_x38_eco import DELTA_PATH, apply_single_r26_eco
+        from r25_router.apply_single_r26_x38_eco import (
+            DELTA_PATH,
+            apply_single_r26_eco,
+            verify_input_sha256,
+        )
 
         delta = json.loads(DELTA_PATH.read_text())
         self.assertEqual(len(delta['footprint_moves_mm']), 51)
@@ -99,10 +118,17 @@ class SingleInputTests(unittest.TestCase):
         self.assertEqual(len(delta['added_tracks']), 657)
         self.assertEqual(len(delta['added_vias']), 106)
 
+        with tempfile.TemporaryDirectory() as d:
+            bad = Path(d) / 'bad.kicad_pcb'
+            bad.write_text('not a valid r25 or r26 pcb')
+            with self.assertRaisesRegex(ValueError, 'does not match baseline R25'):
+                verify_input_sha256(bad, delta)
+
         spec = json.loads(SPEC.read_text())
         src_pcb = Path(spec['input_checkpoint']) / 'Single.kicad_pcb'
         if not src_pcb.is_file():
             self.skipTest('Single.kicad_pcb checkpoint not present')
+        self.assertEqual(verify_input_sha256(src_pcb, delta), delta['target_r26_sha256'])
 
         board = pcbnew.LoadBoard(str(src_pcb))
         for ref, (dx, dy) in delta['footprint_moves_mm'].items():
@@ -114,7 +140,17 @@ class SingleInputTests(unittest.TestCase):
         u901 = board.FindFootprintByReference('U901')
         self.assertAlmostEqual(pcbnew.ToMM(u901.GetPosition().x), 36.50, places=3)
 
-        apply_single_r26_eco(board, delta)
+        # Strict UUID check must reject synthetic board missing R25 removed UUIDs
+        with self.assertRaisesRegex(ValueError, 'Missing .* expected R25'):
+            apply_single_r26_eco(board, delta, strict_uuid_check=True)
+
+        # Replay footprint moves and outline on synthetic board with strict_uuid_check=False
+        board = pcbnew.LoadBoard(str(src_pcb))
+        for ref, (dx, dy) in delta['footprint_moves_mm'].items():
+            fp = board.FindFootprintByReference(ref)
+            fp.Move(pcbnew.VECTOR2I(pcbnew.FromMM(-dx), pcbnew.FromMM(-dy)))
+        apply_single_r26_eco(board, delta, strict_uuid_check=False)
+        u901 = board.FindFootprintByReference('U901')
         self.assertAlmostEqual(pcbnew.ToMM(u901.GetPosition().x), 43.25, places=3)
         self.assertAlmostEqual(pcbnew.ToMM(u901.GetPosition().y), 52.00, places=3)
         bt301 = board.FindFootprintByReference('BT301')
@@ -122,6 +158,17 @@ class SingleInputTests(unittest.TestCase):
         c503 = board.FindFootprintByReference('C503')
         self.assertAlmostEqual(pcbnew.ToMM(c503.GetPosition().x), 56.28, places=3)
         self.assertAlmostEqual(pcbnew.ToMM(c503.GetPosition().y), 64.00, places=3)
+
+        # Also test strict_uuid_check=True on the preserved R25 baseline board if present
+        r25_pcb = SPEC.resolve().parent.parent.parent / '.work/single_pcb_clean/Single.kicad_pcb'
+        if r25_pcb.is_file():
+            self.assertEqual(verify_input_sha256(r25_pcb, delta), delta['baseline_r25_sha256'])
+            r25_board = pcbnew.LoadBoard(str(r25_pcb))
+            apply_single_r26_eco(r25_board, delta, strict_uuid_check=True)
+            with tempfile.TemporaryDirectory() as d:
+                out_r26 = Path(d) / 'ReplayedFromR25.kicad_pcb'
+                pcbnew.SaveBoard(str(out_r26), r25_board)
+                self.assertTrue(out_r26.is_file())
 
         with tempfile.TemporaryDirectory() as d:
             out_pcb = Path(d) / 'Replayed.kicad_pcb'

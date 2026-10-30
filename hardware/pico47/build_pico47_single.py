@@ -161,6 +161,8 @@ def inspect_single(candidate, spec):
                         'diameter_mm':target['diameter_mm'], 'drill_mm':target['drill_mm']})
     bay = spec.get('battery_bay_clearance')
     if bay:
+        require(bay.get('study_only_not_supplier_qualified') is True,
+                'Battery study envelope must not claim supplier qualification without exact Pico pack drawing')
         edge_pts = []
         for d in board.GetDrawings():
             if d.GetLayer() == P.Edge_Cuts:
@@ -170,7 +172,16 @@ def inspect_single(candidate, spec):
                                  or y >= bay['upper_left_pcb_step_max_y_mm'] - 1e-3
                                  for x, y in edge_pts),
                 'PCB outline encroaches on 323576 battery bay')
-        for part_name, (bx1, by1, bx2, by2) in bay.get('battery_assembly_envelopes_mm', {}).items():
+        envs = bay.get('battery_assembly_envelopes_mm', {})
+        pack = envs.get('BATTERY_PACK')
+        pcm = envs.get('BATTERY_PCM')
+        require(pack and abs((pack[2] - pack[0]) - 35.0) < 1e-3 and abs((pack[3] - pack[1]) - 76.0) < 1e-3,
+                'BATTERY_PACK must preserve full 35.0 x 76.0 mm 323576 body dimensions')
+        require(pcm and abs((pcm[2] - pcm[0]) - 30.0) < 1e-3 and abs((pcm[3] - pcm[1]) - 3.8) < 1e-3,
+                'BATTERY_PCM must preserve full 30.0 x 3.8 mm protection board dimensions')
+        for part_name, (bx1, by1, bx2, by2) in envs.items():
+            require(bx1 >= 1.1 and by1 >= 1.1,
+                    f'Battery assembly sub-part {part_name} encroaches on housing perimeter wall')
             require(bx2 <= bay['upper_left_pcb_step_min_x_mm'] + 1e-3
                     and by2 <= bay['upper_left_pcb_step_max_y_mm'] + 1e-3,
                     f'Battery assembly sub-part {part_name} overlaps PCB step')
