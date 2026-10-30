@@ -1,0 +1,255 @@
+(footprint "R611_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
+	(tags "resistor")
+	(property "Reference" "R611"
+		(at 0 -1.17 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ec4efb23-6b33-45c2-b605-8c46cfac61ba")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "100k / KEY_FN_PU"
+		(at 0 1.17 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7cde6469-6ffd-4e3a-8c27-9afaf5b81e9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RC-02K1003FT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "397ca11e-4936-41c2-8a7a-2d43ba00c35f")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Future active-low Fn-key input pullup into TCA P11; switch/mechanics remain M0-blocked."
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bfb8b780-9eb8-43b2-8771-5406b9c74c13")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "65ddd566-d04e-4125-adb4-a5aedd006d58")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7dad2738-8091-46d5-9f35-38f880cd651e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "RC-02K1003FT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b59d469d-06bb-4cf6-a401-c14abf82959d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C140219"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d87299f4-15d2-479b-b321-9969dcce541a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Tolerance" "1%"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bcd8b907-b860-4cb2-9214-cc7cd5823ae3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Power_Rating" "62.5mW"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dbd9d3f5-31fe-40a1-957a-7e4784c0dc6a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Voltage_Rating" "50V"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "50baed84-f9df-4e10-a5db-6b355b75cdb2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-DOM-01"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fe005824-ef05-4e01-aa7e-1389e59ffa8d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Source_URL" "https://www.lcsc.com/product-detail/C25741.html"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "18450df0-0026-4cfa-9f5a-3c9d90d22684")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Qualification" "Sourcing selected; load/pulse/assembly qualification open"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "98d5ce38-fc1c-4e76-b148-949c33a23eaa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.153641 -0.38)
+		(end 0.153641 -0.38)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "16bedb6a-e1bd-481b-8ec9-42ea69fbb5ee")
+	)
+	(fp_line
+		(start -0.153641 0.38)
+		(end 0.153641 0.38)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4bca7752-02a5-43d8-9a8f-ca41efd5aed7")
+	)
+	(fp_rect
+		(start -0.93 -0.47)
+		(end 0.93 0.47)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "a8648b39-57c4-46f7-aeb8-7f712725e8dc")
+	)
+	(fp_rect
+		(start -0.525 -0.27)
+		(end 0.525 0.27)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "aa3aebe3-5e67-46ee-8a38-9dbe2a48c17c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(uuid "4ebd9891-368e-4cc2-b076-95b1470b1cf4")
+		(effects
+			(font
+				(size 0.26 0.26)
+				(thickness 0.04)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -0.51 0)
+		(size 0.54 0.64)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "d70fdf78-dd3a-493b-b1f1-ad8f61283e6c")
+	)
+	(pad "2" smd roundrect
+		(at 0.51 0)
+		(size 0.54 0.64)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "224f06ba-1c59-4198-bb56-c491c3f47af7")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

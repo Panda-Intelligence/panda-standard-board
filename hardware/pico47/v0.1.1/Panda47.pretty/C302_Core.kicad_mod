@@ -1,0 +1,207 @@
+(footprint "C302_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
+	(tags "capacitor")
+	(property "Reference" "C302"
+		(at 0 -1.16 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "16a0011e-d75c-487f-8c32-b611d03afb4d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "100n / RTC VDD"
+		(at 0 1.16 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "52618a46-bca9-4df2-8709-a59bd624abc6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.whwave.com.cn/filedownload/3045413"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dbc68ebc-fc07-44e7-a9af-351b11a970d7")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "FH100nF/25V X7R local SD3078 VDD bypass."
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8e6414d8-534f-4ce4-87a7-256194cc3b29")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "560a414e-ac66-4cd8-921c-6ea53c81b274")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9b0bfdf8-3f70-4995-bb0b-f038f1695e15")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0402B104K250NT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d5b15923-b03a-444f-97a7-1183cb4a51dc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C56392"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f3a4c915-fd0a-43f5-904c-a5bc6c69f259")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-C4-FH-PASSIVE"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "616e75c5-c1d3-4acf-8fb9-390a8c4823d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Qualification" "100nF ±10% 25V X7R 0402; same footprint; physical assembly/DC-bias qualification open"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5029395e-c5cf-401b-9a25-d59790e7d9f3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.107836 -0.36)
+		(end 0.107836 -0.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c27a79d4-d157-41ca-b236-3262eef1f4cf")
+	)
+	(fp_line
+		(start -0.107836 0.36)
+		(end 0.107836 0.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d5c507d8-b1b3-4d09-8e5c-deb53fe4d838")
+	)
+	(fp_rect
+		(start -0.91 -0.46)
+		(end 0.91 0.46)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "6c1c82b2-ccba-4fa5-b6af-840effa89c33")
+	)
+	(fp_rect
+		(start -0.5 -0.25)
+		(end 0.5 0.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "b1572b4f-c4e7-45b6-a555-019d9d937ba4")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(uuid "801aab7f-8eef-4084-bb43-7ec4795f4353")
+		(effects
+			(font
+				(size 0.25 0.25)
+				(thickness 0.04)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -0.48 0)
+		(size 0.56 0.62)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "85aa073d-4c0f-470c-9363-d02498abe3aa")
+	)
+	(pad "2" smd roundrect
+		(at 0.48 0)
+		(size 0.56 0.62)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "8b0b2dbd-75a2-4998-9d1d-631d4d4cc219")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

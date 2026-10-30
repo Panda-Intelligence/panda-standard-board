@@ -1,0 +1,212 @@
+(footprint "J501_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "XUNPU TF-122-CCP9 RevA;8 SD contacts,CD closes to grounded shell on insertion.0.5A,-40..85C,5000 cycles,height2.00mm max. Component-side lands:signals/CD0.60x1.60,left-front1.20x1.80,right-front1.60x1.50,rear1.20x2.20;two1.00mm NPTH,8.00mm pitch. Datum connector center X/signal-land bottom Y;entry local+Y. Engineering9=CD,10 andSH=grounded shell,not additional numbered vendor contacts. Contact order preserved; card travel/ESD/insertion EVT remains NOT_RUN.")
+	(tags "XUNPU microSD detect local+Y")
+	(property "Reference" "J501"
+		(at 0 -7.18 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "31233fb7-88c3-4962-ad29-b2d6186ab04f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "TF-122-CCP9 / microSD"
+		(at 0 7.39 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "67cc333c-60fd-4e11-af5a-4ec2d839cf26")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20240813/A78F94B574A12E0EF5650C3B7EED35AF.pdf"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1b646fd3-7ac9-4b89-959c-ddd59c91c3b1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "XUNPU TF-122-CCP9 RevA;8 SD contacts,CD closes to grounded shell on insertion.0.5A,-40..85C,5000 cycles,height2.00mm max. Component-side lands:signals/CD0.60x1.60,left-front1.20x1.80,right-front1.60x1.50,rear1.20x2.20;two1.00mm NPTH,8.00mm pitch. Datum connector center X/signal-land bottom Y;entry local+Y. Engineering9=CD,10 andSH=grounded shell,not additional numbered vendor contacts. Contact order preserved; card travel/ESD/insertion EVT remains NOT_RUN."
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "da35fb20-78dd-485b-b68d-910ded0f194e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C41347844"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "292a7c3b-bd51-48ee-bb75-fcbf3671a7e0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "XUNPU"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4e62b19c-9784-4136-bb44-25ac81a70742")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "TF-122-CCP9"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "787f0771-63a5-4094-98e5-f930412d31f1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -8.63 -2)
+		(end 8.67 14.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "7e6e7b1c-833a-44cd-b39a-f54562b5ff3c")
+	)
+	(fp_rect
+		(start -7.375 -0.55)
+		(end 7.375 13.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "17957d46-9999-4ad6-ba18-c7a963cdec44")
+	)
+	(pad "" np_thru_hole circle
+		(at -4.93 10.2)
+		(size 1 1)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(uuid "7ef7f68b-75c8-4f89-ba79-9d9b066f39d7")
+	)
+	(pad "" np_thru_hole circle
+		(at 3.07 10.2)
+		(size 1 1)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(uuid "fd5020b2-04f3-4c9d-86b2-65b70cd8abbe")
+	)
+	(pad "1" smd rect
+		(at 2.27 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "af741443-8215-4f6d-9845-7154413ed48a")
+	)
+	(pad "2" smd rect
+		(at 1.17 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1289582d-5172-402a-ae73-971ea295b2fd")
+	)
+	(pad "3" smd rect
+		(at 0.07 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ede65fa2-a87e-4840-8c0f-0633df930bd9")
+	)
+	(pad "4" smd rect
+		(at -1.03 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "98d989ec-78b9-4118-ba7c-27cbf9211fa7")
+	)
+	(pad "5" smd rect
+		(at -2.13 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ce8eddab-5a65-4727-93a3-104cc67db74c")
+	)
+	(pad "6" smd rect
+		(at -3.23 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d4c32bc0-5f5f-47f2-a179-6fd03c9187ec")
+	)
+	(pad "7" smd rect
+		(at -4.33 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "02f8592a-d270-494b-b207-43587f30ece4")
+	)
+	(pad "8" smd rect
+		(at -5.43 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dfcb62bc-5c1d-4329-8184-060b3d1c9a3e")
+	)
+	(pad "9" smd rect
+		(at -6.53 -0.8)
+		(size 0.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f50c9ba2-e3a9-47f0-b044-234123b8e953")
+	)
+	(pad "10" smd rect
+		(at -7.73 0.5)
+		(size 1.2 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c47e8187-ec4e-48c1-a84a-933bcb40251d")
+	)
+	(pad "SH" smd rect
+		(at -7.73 9.8)
+		(size 1.2 2.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1d088456-8f39-40d8-aab6-a4dad5b354a1")
+	)
+	(pad "SH" smd rect
+		(at 6.87 0.25)
+		(size 1.6 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6df39ab3-d841-43c6-b827-9a2f0c643e48")
+	)
+	(pad "SH" smd rect
+		(at 7.77 9.8)
+		(size 1.2 2.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "30a8dc20-2a04-4a94-880e-29d3c26f6890")
+	)
+	(embedded_fonts no)
+)
