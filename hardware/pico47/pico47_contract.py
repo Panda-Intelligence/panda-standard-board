@@ -94,8 +94,15 @@ def validate(p):
     require(p['manufacturing_release'] is False and p['orders_submitted'] is False,
             'No manufacturing or purchase authorization')
     r = p['user_requirement']
-    require(r['whole_device_maximum_mm'] == 7.0 and r['two_boards'] is True,
+    require(r['whole_device_maximum_mm'] == 7.0 and r['two_boards'] is False,
             'Do not relax user envelope or architecture')
+    architecture = p['architecture']
+    require(architecture['current'] == 'single_unified_4layer'
+            and architecture['board_names'] == ['Single']
+            and architecture['removed_connectors'] == ['J1', 'J4', 'J601', 'J602']
+            and architecture.get('Single_outline', [[38.0, 32.0]])[0][0] >= 38.0
+            and architecture.get('single_battery_pcb_overlap_mm2', 0.0) == 0.0,
+            'Current Single architecture differs')
     require(r['keep_touch_frontlight_audio_imu_microsd_rtc'] is True
             and r['mainland_components'] is True, 'Required features lost')
     panel = p['panel']
