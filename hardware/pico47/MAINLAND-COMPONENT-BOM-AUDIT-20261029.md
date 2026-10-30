@@ -1,8 +1,8 @@
-# Pico47 E0.2-R25 Chinese Mainland Component Provenance Audit (2026-10-29)
+# Panda Standard E0.2-R25 Chinese Mainland Component Provenance Audit (2026-10-29)
 
 ## 1. Executive Summary
 
-All electronic components across the Pico47 E0.2-R25 candidate boards (`Single`, `Core`, and `Display` in `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`) have been audited and verified via [`verify_mainland_bom_compliance.py`](file:///Users/isaac/workspace/AI/panda-standard-board/hardware/pico47/verify_mainland_bom_compliance.py) and [`test_verify_mainland_bom_compliance.py`](file:///Users/isaac/workspace/AI/panda-standard-board/hardware/pico47/test_verify_mainland_bom_compliance.py).
+All electronic components across the Panda Standard E0.2-R25 candidate boards (`Single`, `Core`, and `Display` in `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`) have been audited and verified via [`verify_mainland_bom_compliance.py`](file:///Users/isaac/workspace/AI/panda-standard-board/hardware/pico47/verify_mainland_bom_compliance.py) and [`test_verify_mainland_bom_compliance.py`](file:///Users/isaac/workspace/AI/panda-standard-board/hardware/pico47/test_verify_mainland_bom_compliance.py).
 
 | Metric | `Single` Unified 4L PCB (`71.0 × 99.0 mm`) | `Core` 4L PCB (`71.0 × 99.0 mm`) | `Display` 4L PCB (`36.0 × 35.7 mm`) |
 | :--- | :---: | :---: | :---: |

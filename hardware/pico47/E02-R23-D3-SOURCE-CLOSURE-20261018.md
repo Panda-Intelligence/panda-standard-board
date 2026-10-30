@@ -1,4 +1,4 @@
-# Pico47 E0.2 r23-d3-source — D3 四层布线闭合
+# Panda Standard E0.2 r23-d3-source — D3 四层布线闭合
 
 2026-10-18，执行者：Codex。**Core 仍有 17 个原生未连接项，不可制造或面板/电池上电。**
 

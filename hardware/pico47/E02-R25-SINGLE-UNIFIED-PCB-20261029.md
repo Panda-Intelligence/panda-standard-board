@@ -1,8 +1,8 @@
-# Pico47 E0.2 r25 — Single Unified 4-Layer PCB Architecture & JLCPCB Free Coupon Qualification (2026-10-29)
+# Panda Standard E0.2 r25/r26 — Single Unified 4-Layer PCB Architecture & JLCPCB Free Coupon Qualification (2026-10-29)
 
 ## Executive Summary
 
-Following customer feedback regarding space utilization, manufacturing simplicity, and battery standardization, the Pico47 hardware architecture has been transitioned from a dual-board split (Core + Display with 4 board-to-board connectors and 2 FFC cables) into a **Single Unified 4-Layer PCB architecture (`Single.kicad_pcb`)**.
+Following customer feedback regarding space utilization, manufacturing simplicity, and battery standardization, the Panda Standard hardware architecture has been transitioned from a dual-board split (Core + Display with 4 board-to-board connectors and 2 FFC cables) into a **Single Unified 4-Layer PCB architecture (`Single.kicad_pcb`)**.
 
 ### Key Architectural Achievements:
 1. **100% Zero-Defect Native Verification**:

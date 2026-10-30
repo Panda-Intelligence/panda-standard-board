@@ -1,4 +1,4 @@
-# Pico47 E0.2 r4 work in progress — seven of eight ground returns verified
+# Panda Standard E0.2 r4 work in progress — seven of eight ground returns verified
 
 2026-10-13. **One of the eight requested ground returns remains open.**
 This is a source/test/continuation integration, not a newly published complete
@@ -124,11 +124,11 @@ gates are unchanged.
 
 Fresh Mac regression runs on 2026-10-13 at 10:05 UTC passed:
 
-- Pico47: 233 tests, including 12 new required-target regression tests.
+- Panda Standard: 233 tests, including 12 new required-target regression tests.
 - Historical donor: 238 tests.
 - Geometry tools: 19 tests.
 - **490 distinct source tests total.**
-- Pico47 233 also passed under bundled KiCad Python; this repeated runtime is not
+- Panda Standard 233 also passed under bundled KiCad Python; this repeated runtime is not
   added to the 490 total.
 - `git diff --check` passed for the tested local source changes.
 

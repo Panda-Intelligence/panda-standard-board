@@ -1,4 +1,4 @@
-# Pico47 E0.2 r14-audio-enable — 四层布线续作
+# Panda Standard E0.2 r14-audio-enable — 四层布线续作
 
 2026-10-17 续作更新：当前具名检查点为
 [r15-fl-pwm](E02-R15-FL-PWM-CLOSURE-20261017.md)，Core22/Display3。

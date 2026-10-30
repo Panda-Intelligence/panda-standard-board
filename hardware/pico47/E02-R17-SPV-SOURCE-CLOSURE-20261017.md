@@ -1,4 +1,4 @@
-# Pico47 E0.2 r17-spv-source — 四层布线续作
+# Panda Standard E0.2 r17-spv-source — 四层布线续作
 
 2026-10-17，执行者：Codex。**尚23个原生未连接项，不可制造或面板/电池上电。**
 

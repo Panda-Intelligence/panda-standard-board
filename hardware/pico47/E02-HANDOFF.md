@@ -2,7 +2,7 @@
 
 This supersedes the E0.1 current-candidate pointer. **Not for fabrication or power-on.**
 It retains the user-confirmed 4.7-inch E0470A01-family 1216x684 parallel display and
-same actual replaceable2050mAh Pico pack requirement. The precise pack and complete
+same actual replaceable2050mAh battery pack requirement. The precise pack and complete
 touch/frontlight module are still unverified; the132mm layout envelope remains a
 study, not a finished product or proof of the required <=7mm maximum thickness.
 
@@ -98,7 +98,7 @@ The fresh test output is `.work/pico47-resume-20261012/rebuild-resumed/`.
 
 ## Tests and remaining engineering work
 
-103 Pico47 source/continuity/placement/checkpoint tests pass:49 electrical-contract,
+103 Panda Standard source/continuity/placement/checkpoint tests pass:49 electrical-contract,
 9 pad-group guards,29 placement/process mutations and16 checkpoint mutations.
 71 unchanged donor sourcing/routing regression tests also pass. These are software
 checks of design intent and workflow safeguards, not physical performance tests.
@@ -111,7 +111,7 @@ Power-current loops, rectifier/inductor startup and fault margins, signal timing
 source-series damping, and mux handover remain unqualified. The interrupted wide
 routing experiments and negotiated router outputs are not approved substitutes.
 
-Exact Pico pack MPN/max dimensions/connector/polarity/NTC/CV/protection, full panel
+Exact battery pack MPN/max dimensions/connector/polarity/NTC/CV/protection, full panel
 suffix and touch/frontlight stack, final mechanical fit and <=7mm tolerance,
 filled/capped processing, exact supply and JLC CAM/SMT acceptance remain separate
 open gates. No vendor enquiry, purchase, shipment, fabricated receipt or sample

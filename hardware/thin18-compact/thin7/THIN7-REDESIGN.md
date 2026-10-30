@@ -52,7 +52,7 @@ assembled dimensions are absent. Do not silently substitute it or assume a
 | Native item | Required change |
 |---|---|
 | C301 SE-5R5-D105VYH3C | 6.5 mm body + 0.2 mm mounting allowance cannot fit. Qualify a thin RTC backup assembly ≤2.4 mm mounted and its charge/isolation circuit. |
-| U501 WROOM-1U-N16R8 | Replace the 3.2 mm module with bare ESP32-S3R8, domestic 16 MB flash, 40 MHz crystal, RF matching and antenna. Recheck package maximum, all GPIOs, RF/SI and firmware. PICO N8 is only 8 MB flash and is not an equivalent replacement. |
+| U501 WROOM-1U-N16R8 | Replace the 3.2 mm module with bare ESP32-S3R8, domestic 16 MB flash, 40 MHz crystal, RF matching and antenna. Recheck package maximum, all GPIOs, RF/SI and firmware. An 8 MB SiP N8 variant is only 8 MB flash and is not an equivalent replacement. |
 | J301 / J302 / J502 | Replace 5.5 / 3.2 / 3.2 mm wire housings with qualified low-profile mainland parts or supplier-terminated solder harnesses with retention. |
 | J601 / J1 | Replace 1.5 mm stacked interconnect with qualified flexible connection; preserve every native contact, current capacity, grounds and signal integrity. |
 | J201 / J501 | USB must use the bottom bezel outside the panel projection or a qualified mid-mount package. Verify USB plug and card access, travel and case openings. |

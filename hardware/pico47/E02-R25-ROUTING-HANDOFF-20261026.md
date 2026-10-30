@@ -1,4 +1,4 @@
-# Pico47 E0.2 r25 — 4-layer routing handoff (2026-10-26, updated 2026-10-29)
+# Panda Standard E0.2 r25 — 4-layer routing handoff (2026-10-26, updated 2026-10-29)
 
 > [!IMPORTANT]
 > **Single Unified 4-Layer PCB Architecture (`Single.kicad_pcb`) Available**:

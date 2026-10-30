@@ -1,4 +1,4 @@
-# Pico47 r6 CKV — recovered and independently replayed, 2026-10-14
+# Panda Standard r6 CKV — recovered and independently replayed, 2026-10-14
 
 **Verified engineering candidate. NOT FOR FABRICATION OR POWER.**
 The previously unread source-replay result has now been retrieved and verified.
@@ -79,8 +79,8 @@ errors/warnings/parity/ERC. The verification script checked the full dated
 candidate manifest, input immutability, every original pad group, complete ground,
 critical connections, CKV=true/XLE=true/SPV=false and exact resulting counts.
 
-**535 distinct source tests were freshly rerun and passed:** Pico47 278, donor238,
-geometry19. The278 Pico47 cases also passed under KiCad Python and are not counted
+**535 distinct source tests were freshly rerun and passed:** Panda Standard 278, donor238,
+geometry19. The278 Panda Standard cases also passed under KiCad Python and are not counted
 twice. These are observed local/native runs, not hosted GitHub Actions results.
 
 ## Source integration now included

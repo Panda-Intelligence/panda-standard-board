@@ -1,4 +1,4 @@
-# Pico47 E0.2 r13-vcom — four-layer routing continuation
+# Panda Standard E0.2 r13-vcom — four-layer routing continuation
 
 2026-10-17 续作更新：当前具名检查点为
 [r14-audio-enable](E02-R14-AUDIO-ENABLE-CLOSURE-20261017.md)，Core23/Display3。

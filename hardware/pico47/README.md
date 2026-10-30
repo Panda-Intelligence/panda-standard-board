@@ -5,11 +5,11 @@ Canonical dated engineering checkpoint:
 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261029-r25/engineering-candidate`.
 
 **Single Unified 4-Layer PCB (`Single.kicad_pcb`): 0 opens; DRC errors/warnings/parity/ERC are all ZERO (`manufacturing_release = false` until supplier CAM/supply/stack confirmation).**
-- **Zero Mechanical Interference with Full-Size Rectangular Battery Assembly Study**: Upper-left PCB step narrowed from $X = 30.0\text{ mm}$ to **$X = 38.0\text{ mm}$** ($Y = 32.0..83.5\text{ mm}$), providing **$0.0\text{ mm}^2$ XY overlap and $0.0\text{ mm}$ Z overlap** across the full-size **Model 323576** battery assembly study (`BATTERY_PACK` full $35.0 \times 76.0 \times 3.2\text{ mm}$ at $X = 2.0..37.0, Y = 2.0..78.0\text{ mm}$; `BATTERY_SEAL` full $35.8 \times 74.0 \times 0.3\text{ mm}$ at $X = 1.6..37.4, Y = 3.0..77.0\text{ mm}$; `BATTERY_TABS` full $18.0 \times 1.6 \times 0.15\text{ mm}$ at $Y = 77.2..78.8\text{ mm}$; `BATTERY_PCM` full $30.0 \times 3.8 \times 1.3\text{ mm}$ at $X = 4.5..34.5, Y = 78.5..82.3\text{ mm}$; and lateral `BATTERY_WIRE_RED/NTC/BLK` each full $3.7 \times 1.5 \times 1.0\text{ mm}$ at $X = 33.8..37.5, Y = 78.5..83.2\text{ mm}$). `study_only_not_supplier_qualified = true` and `battery_fit_proven = false` remain in effect until the exact replaceable Pico battery supplier drawing is confirmed.
+- **Zero Mechanical Interference with Full-Size Rectangular Battery Assembly Study**: Upper-left PCB step narrowed from $X = 30.0\text{ mm}$ to **$X = 38.0\text{ mm}$** ($Y = 32.0..83.5\text{ mm}$), providing **$0.0\text{ mm}^2$ XY overlap and $0.0\text{ mm}$ Z overlap** across the full-size **Model 323576** battery assembly study (`BATTERY_PACK` full $35.0 \times 76.0 \times 3.2\text{ mm}$ at $X = 2.0..37.0, Y = 2.0..78.0\text{ mm}$; `BATTERY_SEAL` full $35.8 \times 74.0 \times 0.3\text{ mm}$ at $X = 1.6..37.4, Y = 3.0..77.0\text{ mm}$; `BATTERY_TABS` full $18.0 \times 1.6 \times 0.15\text{ mm}$ at $Y = 77.2..78.8\text{ mm}$; `BATTERY_PCM` full $30.0 \times 3.8 \times 1.3\text{ mm}$ at $X = 4.5..34.5, Y = 78.5..82.3\text{ mm}$; and lateral `BATTERY_WIRE_RED/NTC/BLK` each full $3.7 \times 1.5 \times 1.0\text{ mm}$ at $X = 33.8..37.5, Y = 78.5..83.2\text{ mm}$). `study_only_not_supplier_qualified = true` and `battery_fit_proven = false` remain in effect until the exact replaceable 2050mAh battery supplier drawing is confirmed.
 - **Option 1 Upper-Right Structural Support, Poron Cushion, `1511` Speaker & 2.4 GHz FPC Antenna Bay (`upper_right_support_bay`)**: Keeping `Single.kicad_pcb` strictly at $71.0 \times 99.0\text{ mm}$ ($\le 10 \times 10\text{ cm}$ JLCPCB 4L ENIG coupon), the upper-right $35.0 \times 30.0\text{ mm}$ cavity ($X = 38.0..73.0, Y = 2.0..32.0\text{ mm}$) houses a rear-shell cross-rib honeycomb support grid + $Y = 31.2\text{ mm}$ anti-cantilever ledge (`UPPER_RIGHT_RIB_GRID`, $X = 38.5..72.5, Y = 2.5..31.2, Z = 0.55..3.65\text{ mm}$), a $0.30\text{ mm}$ Poron/EVA screen support pad (`UPPER_RIGHT_PORON_PAD`, $X = 39.0..72.0, Y = 3.0..31.0, Z = 3.65..3.95\text{ mm}$, coplanar with the $Z = 3.95\text{ mm}$ battery top surface), a standard $15.0 \times 11.0 \times 2.90\text{ mm}$ sealed micro-speaker box (`SPEAKER_BOX_1511`, $X = 55.5..70.5, Y = 17.5..28.5, Z = 0.75..3.65\text{ mm}$, wired to `J502` `SPK_P/N`), and a $24.0 \times 7.0 \times 0.20\text{ mm}$ 2.4 GHz Wi-Fi/BLE FPC antenna (`FPC_ANTENNA_2G4`, $X = 41.0..65.0, Y = 4.5..11.5, Z = 3.65..3.85\text{ mm}$, wired to `J507` `RF_ANT`) with **$0.0\text{ mm}^2$ XY overlap** against both `Single.kicad_pcb` ($Y \ge 32.0\text{ mm}$) and the `323576` battery assembly ($X \le 37.5\text{ mm}$).
 - **Via-in-Pad & Thermal Via Process Accounting**: `C804.2` ground return via moved outside the pad to an external dog-bone location at **`(17.40, 104.80)`** ($0.45/0.20\text{ mm}$ via connected by a $0.30\text{ mm}$ `F.Cu` trace to `C804.2` at `(18.20, 105.00)`), eliminating `C804.2` via-in-pad; `U501.57`'s 9 thermal vias ($0.50/0.25\text{ mm}$) lie inside the exposed-pad solder-mask opening and stencil apertures (`REQUIRED-VIA-IN-PAD.csv`), so `single_board.json` retains `process = "FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT"` and `supplier_process_accepted = false` until factory CAM acceptance.
 - **100% Chinese Mainland (PRC) Component Provenance & Consignment Manifest**: Verified via `verify_mainland_bom_compliance.py` (`215/215` populated BOM components + `5/5` DNP passives on `Single`, `177/177` + `5/5` on `Core`, `42/42` on `Display`; `0` foreign manufacturers; `0` missing `Manufacturer` or `MPN` fields). Bottom Type-C USB receptacle (`J201` / **`MUP U22401-17`**) positioned at bottom center. `PENDING-SUPPLY.csv` (21 consignment/registration SMT parts) and `REQUIRED-POST-SMT.csv` (`BT301` post-SMT assembly) are exported alongside `BOM_JLCPCB_Single.csv` and `CPL_JLCPCB_Single.csv`.
-- **Single-Board Checkpoint, SHA-256-Bound R25 $\rightarrow$ R26 Replay & Pre-Release Gates**: Verified end-to-end via `build_pico47_single.py`, `single_board.json`, and `r25_router/apply_single_r26_x38_eco.py` (which enforces baseline/target SHA-256 and UUID completeness, replays all 51 footprint moves, 27 boundary nets, the $X = 38.0\text{ mm}$ step outline, and the `C804.2` dog-bone via from R25 to R26, and verifies native DRC). Dedicated solid `In1.Cu` GND plane with strictly 0 non-GND signal tracks; all 173 GND pads connected. `manufacturing_release` remains `false` until the 21 pending SMT parts, `BT301` post-SMT assembly, `U501.57` via-in-pad CAM confirmation, and exact Pico battery/screen supplier drawings are confirmed.
+- **Single-Board Checkpoint, SHA-256-Bound R25 $\rightarrow$ R26 Replay & Pre-Release Gates**: Verified end-to-end via `build_pico47_single.py`, `single_board.json`, and `r25_router/apply_single_r26_x38_eco.py` (which enforces baseline/target SHA-256 and UUID completeness, replays all 51 footprint moves, 27 boundary nets, the $X = 38.0\text{ mm}$ step outline, and the `C804.2` dog-bone via from R25 to R26, and verifies native DRC). Dedicated solid `In1.Cu` GND plane with strictly 0 non-GND signal tracks; all 173 GND pads connected. `manufacturing_release` remains `false` until the 21 pending SMT parts, `BT301` post-SMT assembly, `U501.57` via-in-pad CAM confirmation, and exact 2050mAh battery/screen supplier drawings are confirmed.
 
 ---
 
@@ -42,10 +42,10 @@ are historical background, not the current route or manufacturing approval.
 Date: 2026-10-12. Status: **INCOMPLETE ENGINEERING DESIGN — DO NOT ORDER OR POWER**.
 
 This is the user-authorized successor to Product D, not a relabelled SPI board.
-The confirmed target is the Read Pico E0470A01 family: 4.7 inch, 1216 × 684,
-approximately 297 PPI, raw 16-bit parallel display, plus the same actual replaceable
+The confirmed target is the Panda Standard 4.7-inch E0470A01 family: 4.7 inch, 1216 × 684,
+approximately 297 PPI, raw 16-bit parallel display, plus a replaceable
 2050 mAh LCO battery pack. The old 4.26-inch SPI module and 1100 mAh cell are not
-accepted substitutes. Matching mAh alone does not identify the Pico battery.
+accepted substitutes. Matching mAh alone does not identify the battery pack.
 
 ## Non-negotiable requirements and current limitations
 
@@ -59,10 +59,10 @@ layout study, NOT a frozen enclosure or proof of battery/frontlight fit. Both
 engineering PCB candidates currently use four copper layers and 0.8 mm nominal
 board thickness. In1 is reserved for the GND reference, not signal routing.
 
-The public Pico specification does not establish the battery manufacturer/MPN,
+The public reference specification does not establish the battery manufacturer/MPN,
 complete maximum dimensions, protection topology, connector polarity, NTC or
 charge termination voltage. These remain null in the source contract. Do not
-invent them or treat the legacy two-pad bench landing as the Pico connector.
+invent them or treat the legacy two-pad bench landing as the production battery connector.
 Charging is not authorized. The exact full panel suffix, touch/frontlight stack,
 BORDER behaviour, folded FPC/contact side and per-panel VCOM remain unqualified.
 
@@ -155,9 +155,8 @@ remain outside Git. The existing unrelated `packaging/` is untouched.
 
 ## Primary references
 
-- Read Pico specification: https://dot.mindreset.tech/docs/read_0
-- Official panel-family declaration: https://github.com/MindReset/read_pico_firmware/blob/6a247cc94420b85c650b32a6b2c063a360070eee/components/epdiy/src/displays.c
-- E0470A01-AF-S manufacturer specification mirror (not proof of the Pico full suffix): https://raw.githubusercontent.com/exomind-team/openepd-47/main/materials/vendor/display/E0470A01-AF-S-specification.pdf
+- Reference 4.7-inch hardware specification: https://dot.mindreset.tech/docs/read_0
+- E0470A01-AF-S manufacturer specification mirror (not proof of the full panel suffix): https://raw.githubusercontent.com/exomind-team/openepd-47/main/materials/vendor/display/E0470A01-AF-S-specification.pdf
 - Espressif package pins: https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf
 - GPIO API: https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-reference/peripherals/gpio.html
 - SGM330A primary datasheet: https://www.sg-micro.com/rect/assets/7d4de883-c52b-4322-b0a1-24add89dc52c/SGM330A.pdf
@@ -189,6 +188,6 @@ A native guard restored trials that would split live connections.
 
 Next work: complete the new GPIO/mux/FFC routes and remaining Display nets,
 then validate full path timing, power loops, thermal/ripple margins and bus handover.
-In parallel obtain exact Pico pack and complete panel assembly drawings before
+In parallel obtain exact battery pack and complete panel assembly drawings before
 freezing final geometry. No battery procurement or manufacturer acceptance was
 created by these source changes. Manufacturing release remains false.

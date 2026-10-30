@@ -1,4 +1,4 @@
-# Pico47 E0.2 r3 — verified ground closures and zero-warning continuation
+# Panda Standard E0.2 r3 — verified ground closures and zero-warning continuation
 
 2026-10-13. **53 native unconnected items remain. NOT FOR FABRICATION OR POWER.**
 This supersedes the current-candidate pointers in `E02-ONLINE-CLOSURE-20261013.md`,
@@ -98,8 +98,8 @@ capacity and return quality still require separate engineering/physical review.
 
 ## Tests and evidence
 
-**478 distinct local source tests passed:** Pico47 221, donor 238, geometry 19.
-Pico47's 221 tests also passed under bundled KiCad Python. The 22 new ground
+**478 distinct local source tests passed:** Panda Standard 221, donor 238, geometry 19.
+Panda Standard's 221 tests also passed under bundled KiCad Python. The 22 new ground
 report cases cover physical-vs-logical connectivity, solid-mode false positives,
 duplicate connector pad numbers, stable ordering, input immutability and malformed
 or incomplete native evidence. These are fresh local results, not GitHub CI.

@@ -1,4 +1,4 @@
-# Pico47 E0.2 r24-mux0-source — MUX0 四层布线闭合
+# Panda Standard E0.2 r24-mux0-source — MUX0 四层布线闭合
 
 2026-10-19，执行者：Codex。**Core 仍有 16 个原生未连接项，不可制造、充电或给面板/电池上电。**
 

@@ -1,4 +1,4 @@
-# Pico47 E0.2 r7 — SPV closure and coordinated panel-control fanout
+# Panda Standard E0.2 r7 — SPV closure and coordinated panel-control fanout
 
 2026-10-14. **SPV IS CONNECTED; 41 OTHER NATIVE UNCONNECTED ITEMS REMAIN.**
 **NOT FOR FABRICATION, CHARGING OR PANEL POWER.** This supersedes the current
@@ -103,8 +103,8 @@ Four added tests in `test_pico47_xstl_continuity.py` independently specify the
 literal pad mapping, prove that broken XSTL stays false when SPV is true, reject
 a wrong net on J601.37, and reject old six-pad evidence that omits XSTL.
 
-**539 distinct local source tests passed:** Pico47 282, historical donor 238 and
-geometry 19. The 282 Pico47 tests also passed under the bundled KiCad Python and
+**539 distinct local source tests passed:** Panda Standard 282, historical donor 238 and
+geometry 19. The 282 Panda Standard tests also passed under the bundled KiCad Python and
 are not counted twice. These are local results, not GitHub Actions evidence.
 The full native combined capture, source build and independent recapture passed
 with this expanded inspector. Every reported panel control is true after replay.

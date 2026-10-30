@@ -1,4 +1,4 @@
-# Pico47 E0.2 r5 — verified control/clock closures and shorter feedback detour
+# Panda Standard E0.2 r5 — verified control/clock closures and shorter feedback detour
 
 Engineering checkpoint date: 2026-10-13. **43 native unconnected items remain.**
 **NOT FOR FABRICATION, BATTERY CHARGING OR PANEL POWER.**
@@ -97,8 +97,8 @@ Existing source/rule/ground/negative-EP and all other independent checks are ret
 
 ## Fresh validation in this resumed session
 
-**519 distinct local source tests pass:** Pico47 262, donor238, geometry19.
-The262 Pico47 tests also pass under bundled KiCad Python and are not counted twice.
+**519 distinct local source tests pass:** Panda Standard 262, donor238, geometry19.
+The262 Panda Standard tests also pass under bundled KiCad Python and are not counted twice.
 The previous stored test logs were not substituted for these new runs.
 
 - `.work/pico47-r6-20261013/r5-fresh-source-replay/`: new build from current source.

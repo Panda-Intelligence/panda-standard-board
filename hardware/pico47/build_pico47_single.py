@@ -162,7 +162,7 @@ def inspect_single(candidate, spec):
     bay = spec.get('battery_bay_clearance')
     if bay:
         require(bay.get('study_only_not_supplier_qualified') is True,
-                'Battery study envelope must not claim supplier qualification without exact Pico pack drawing')
+                'Battery study envelope must not claim supplier qualification without exact battery pack drawing')
         edge_pts = []
         for d in board.GetDrawings():
             if d.GetLayer() == P.Edge_Cuts:

@@ -1,4 +1,4 @@
-# Pico47 E0.2 r4 — all eight named ground blockers closed
+# Panda Standard E0.2 r4 — all eight named ground blockers closed
 
 2026-10-13. **ALL EIGHT NAMED GROUND CONNECTIONS VERIFIED.**
 **45 other native unconnected items remain. NOT FOR FABRICATION OR POWER.**
@@ -113,8 +113,8 @@ A failure creates no accepted `ROUTING-CHECKPOINT.json`.
 
 Validation actually performed in this session:
 
-- **507 distinct local source tests passed:** Pico47 250, donor238, geometry19.
-  Pico47's250 also passed under bundled KiCad Python and are not counted twice.
+- **507 distinct local source tests passed:** Panda Standard 250, donor238, geometry19.
+  Panda Standard's250 also passed under bundled KiCad Python and are not counted twice.
   The 17 added tests cover full/partial native ground evidence and contradictions.
 - A real fresh capture of the prior seven-ground native candidate with the flag
   failed as expected; the rejected directory has a failure marker and no accepted

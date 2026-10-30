@@ -1,13 +1,13 @@
-# Current development entry — Panda47 / Pico47
+# Current development entry — Panda Standard (E0.2 r26 / v0.1.1)
 
-The current product is the **4.7-inch parallel E0470A01-family / Pico47 two-board
-engineering design**, with the same replaceable 2050mAh LCO Pico pack and a
+The current product is the **Panda Standard 4.7-inch parallel E0470A01-family single-board
+engineering design**, with a replaceable 2050mAh LCO battery pack (`323576`) and a
 finished-device maximum thickness of 7mm, including positive tolerances.
 The exact pack identity, complete panel suffix/assembly and finished tolerance
 stack remain unaccepted. A CAD candidate is **NOT FOR FABRICATION OR POWER**.
 
-Start with [the current dated handoff](hardware/pico47/E02-R24-MUX0-SOURCE-CLOSURE-20261019.md)
-and [the Pico47 source/build guide](hardware/pico47/README.md). Source code is
+Start with [the current Single Unified PCB handoff](hardware/pico47/E02-R25-SINGLE-UNIFIED-PCB-20261029.md)
+and [the Panda Standard source/build guide](hardware/pico47/README.md). Source code is
 under `hardware/pico47/`; generated native CAD, evidence and candidate packages
 remain in ignored `.work/` or the external `panda-board-deliverables` directory.
 The older Split-C1 / Product-D / Thin7 designs below are electrical donors or

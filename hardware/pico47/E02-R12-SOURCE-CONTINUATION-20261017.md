@@ -1,4 +1,4 @@
-# Pico47 E0.2 r12 — source-bound engineering continuation
+# Panda Standard E0.2 r12 — source-bound engineering continuation
 
 Routing continuation: [r24-mux0-source](E02-R24-MUX0-SOURCE-CLOSURE-20261019.md) is now the
 verified four-layer r12 descendant: Core 16 / Display 0 opens, with Core MUX0 joined.
@@ -42,7 +42,7 @@ The exact published r12 PCB and schematic files remain outside Git in the
 dated delivery. Generated DSN/SES, derived PCB CAD, netlists, CAM and study
 candidates must not be committed or confused with reproducible source.
 
-Pico47 source tests: 347 pass under Homebrew Python and 347 pass under
+Panda Standard source tests: 347 pass under Homebrew Python and 347 pass under
 KiCad bundled Python (re-run 2026-10-17). These are local results, not GitHub CI.
 
 ## Remaining native routing scope

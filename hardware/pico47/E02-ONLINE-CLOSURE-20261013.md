@@ -1,4 +1,4 @@
-# Pico47 E0.2 — online continuation and verified r2 checkpoint
+# Panda Standard E0.2 — online continuation and verified r2 checkpoint
 
 Date: 2026-10-13. **INCOMPLETE ENGINEERING PCB — NOT FOR FABRICATION OR POWER.**
 This supersedes the candidate/count pointers in `E02-20261013-HANDOFF.md` and
@@ -103,7 +103,7 @@ The actual cleanup used the existing source-bound native scripts and their
 rollback checks. Its geometric/native integration remains a separate review.
 
 **456 source tests were run and passed in this continuation:**
-Pico47 199, historical donor 238, signal-path geometry 19. Pico47 also passed
+Panda Standard 199, historical donor 238, signal-path geometry 19. Panda Standard also passed
 under the bundled KiCad Python. The 34 added cases comprise 14 NPTH-clearance
 cases and 20 branch-topology cases, including 500 deterministic randomized
 anchor-connectivity graphs. These are local results, not GitHub-hosted CI.

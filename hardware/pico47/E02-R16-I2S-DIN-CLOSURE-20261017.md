@@ -1,4 +1,4 @@
-# Pico47 E0.2 r16-i2s-din — 四层布线续作
+# Panda Standard E0.2 r16-i2s-din — 四层布线续作
 
 后续已接纳 [r17-spv-source](E02-R17-SPV-SOURCE-CLOSURE-20261017.md)：Core20/Display3。
 本文件保留r16历史证据，后续从r17具名检查点继续。

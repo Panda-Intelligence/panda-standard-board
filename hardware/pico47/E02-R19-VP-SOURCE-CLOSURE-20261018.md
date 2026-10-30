@@ -1,4 +1,4 @@
-# Pico47 E0.2 r19-vp-source — 四层布线续作
+# Panda Standard E0.2 r19-vp-source — 四层布线续作
 
 2026-10-18，执行者：Codex。**仍有 21 个原生未连接项，不可制造或面板/电池上电。**
 

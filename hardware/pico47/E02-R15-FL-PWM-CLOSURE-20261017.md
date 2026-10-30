@@ -1,4 +1,4 @@
-# Pico47 E0.2 r15-fl-pwm — 四层布线续作
+# Panda Standard E0.2 r15-fl-pwm — 四层布线续作
 
 后续已接纳 [r16-i2s-din](E02-R16-I2S-DIN-CLOSURE-20261017.md)：Core21/Display3。
 本文件保留 r15 的历史验收证据，后续从 r16 具名检查点继续。
