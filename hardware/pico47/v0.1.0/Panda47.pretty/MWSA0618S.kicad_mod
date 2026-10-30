@@ -1,0 +1,8 @@
+(footprint "MWSA0618S" (version 20241229) (generator "pcbnew") (layer "F.Cu") (descr "Sunlord MWSA0618S manufacturer p3 lands I2.35,J3.7,H3.5mm. Maximum body7.3x6.8mm,height1.8mm. Current table p10 preserved; hot fault qualification remains open.") (attr smd)
+(property "Reference" "REF**" (at 0 -4.4 0) (layer "F.Fab") (hide yes) (effects (font (size .6 .6) (thickness .1))))
+(property "Value" "MWSA0618S" (at 0 4.4 0) (layer "F.Fab") (hide yes) (effects (font (size .6 .6) (thickness .1))))
+(fp_rect (start -3.65 -3.4) (end 3.65 3.4) (stroke (width .1) (type solid)) (fill none) (layer "F.Fab"))
+(fp_rect (start -4.45 -3.65) (end 4.45 3.65) (stroke (width .05) (type solid)) (fill none) (layer "F.CrtYd"))
+(pad "1" smd rect (at -3.025 0) (size 2.35 3.5)  (layers "F.Cu" "F.Paste" "F.Mask"))
+(pad "2" smd rect (at 3.025 0) (size 2.35 3.5)  (layers "F.Cu" "F.Paste" "F.Mask"))
+)

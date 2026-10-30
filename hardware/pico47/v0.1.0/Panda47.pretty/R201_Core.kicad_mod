@@ -1,0 +1,116 @@
+(footprint "R201_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "R201"
+		(at 0 -1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "63ed600f-4af4-4728-985e-182119944199")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "5.6k / PSEL low leg"
+		(at 0 1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1876e428-79bc-4efe-aca2-6486f84dcebb")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K5601FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c3dcb33a-b635-43a6-9f45-f80f9ae36a71")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "FH RS-03K5601FT 5.6k 1% lower leg from SGM41513_PSEL to GND; reuses exact domestic part. Not an analog ILIM resistor."
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e4ec1ec5-dd59-4e7c-bfc7-0fed40bcf3e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "35dc47b8-a0a6-4d7f-91b3-a595151ffec1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "RS-03K5601FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "63ce0672-8329-41b9-a7fc-0aa1d938d3b3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C99891"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0283c30f-587e-4978-8941-5b0f2e3653c6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "de82831e-d519-4a1b-9fc0-ede0ca651875")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "df269909-9c1a-4f18-b0eb-ce4d2c94de6c")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "c7fc32dd-f3d9-48ab-945c-61903fd09e74")
+	)
+	(embedded_fonts no)
+)

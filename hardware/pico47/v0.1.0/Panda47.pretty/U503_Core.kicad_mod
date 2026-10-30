@@ -1,0 +1,365 @@
+(footprint "U503_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "LGA, 14 Pin (https://www.st.com/resource/en/datasheet/lsm6ds3tr-c.pdf)")
+	(tags "LGA NoLead")
+	(property "Reference" "U503"
+		(at 0 -2.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "75634791-6a4d-4e04-8676-295b40362e79")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "QMI8658A"
+		(at 0 2.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "59c35860-d1f4-47a9-86ff-e0f488fbf509")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.qstcorp.com/upload/pdf/202301/13-52-25%20QMI8658A%20Datasheet%20Rev%20A.pdf"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "534193a8-c6d2-47a2-b751-2da272be796e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "ST LSM6DSO32XTR 6-axis IMU; LGA-14L. A-stage asset only: official generic KiCad LGA candidate requires ST package and independent DFM review; I3C-safe INT1 contract remains pending."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "22721e00-e603-4d33-b4ee-9abb0672a0fb")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "package/no_lead"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "95ce4f4a-702c-413c-ab5d-1b049ecc20d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "QST (Shanghai QST)"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "41bf3881-9fd7-4b98-b54b-2e877f0cea22")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "QMI8658A"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7fd09b30-4929-45a0-bdeb-c92c8cfa4d0d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C3021082"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3e18b0f5-5460-42d5-99b8-93938f4a5cfb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-C4D4-QMI8658"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9763cbd9-7630-4b9b-bd66-83dcfa1ba47d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Qualification" "Existing QMI8658A pin/net contract; firmware, orientation, calibration and physical qualification open"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a4c3c9b4-fca3-4776-9ea6-9e0d348d522a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.61 -1.36)
+		(end -0.935 -1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "56f0b38d-b73a-4449-ba9a-67f17d1246e8")
+	)
+	(fp_line
+		(start -1.61 -1.185)
+		(end -1.61 -1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "31adfdac-aef1-4a87-961d-48d489c26bb8")
+	)
+	(fp_line
+		(start -1.61 1.36)
+		(end -1.61 1.185)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f9d9a80b-cd23-45fc-9106-141ad6117cd9")
+	)
+	(fp_line
+		(start -0.935 1.36)
+		(end -1.61 1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b5064d0c-69a6-424d-8e99-87584ad14936")
+	)
+	(fp_line
+		(start 0.935 -1.36)
+		(end 1.61 -1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a0e620f2-f2bb-4a5c-86f9-f9c93c1dfd09")
+	)
+	(fp_line
+		(start 1.61 -1.36)
+		(end 1.61 -1.185)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6a5fbd2d-aca4-499b-bf0c-73c8c6d7d1ff")
+	)
+	(fp_line
+		(start 1.61 1.185)
+		(end 1.61 1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ee21ce6d-f0cb-4027-975c-0dcb9eec9335")
+	)
+	(fp_line
+		(start 1.61 1.36)
+		(end 0.935 1.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "463c77ef-77fc-4908-b23e-991a2513ee6f")
+	)
+	(fp_poly
+		(pts
+			(xy -1.74 -0.75) (xy -2.07 -0.51) (xy -2.07 -0.99)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "8c081d66-5d8e-4e8b-bb36-6954e5e8d938")
+	)
+	(fp_rect
+		(start -1.75 -1.5)
+		(end 1.75 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "cdb1a484-0536-4e69-8a52-f8659490cc03")
+	)
+	(fp_poly
+		(pts
+			(xy -0.875 -1.25) (xy 1.5 -1.25) (xy 1.5 1.25) (xy -1.5 1.25) (xy -1.5 -0.625)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1ceca17b-e934-46f3-80af-4655c569d70c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2e7b4b85-a097-4ebc-b37d-51bce099b508")
+		(effects
+			(font
+				(size 0.75 0.75)
+				(thickness 0.11)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -1.1625 -0.75)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "4e164d9f-a4a5-442c-b963-4d6d1b57b4a7")
+	)
+	(pad "2" smd roundrect
+		(at -1.1625 -0.25)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "72b3dcbf-6a89-4fec-b3b2-e30c67d4b692")
+	)
+	(pad "3" smd roundrect
+		(at -1.1625 0.25)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "96530c76-f941-4e6b-a222-1152c5895fdf")
+	)
+	(pad "4" smd roundrect
+		(at -1.1625 0.75)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "dcb65d6d-3be6-43e0-8283-ba8666e874ea")
+	)
+	(pad "5" smd roundrect
+		(at -0.5 0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "7d7edda0-98a4-4c5a-b438-903ad5d014be")
+	)
+	(pad "6" smd roundrect
+		(at 0 0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "95af3ebe-95ee-4254-96f2-a38f6fb7cedb")
+	)
+	(pad "7" smd roundrect
+		(at 0.5 0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "b37210a1-e8c3-4f88-bf4f-9bbb12ee2275")
+	)
+	(pad "8" smd roundrect
+		(at 1.1625 0.75)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "060cfbfc-688e-44af-8b2f-bf72b753ee42")
+	)
+	(pad "9" smd roundrect
+		(at 1.1625 0.25)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "4af4cb29-3d54-493e-a9ba-afaf9e906e5d")
+	)
+	(pad "10" smd roundrect
+		(at 1.1625 -0.25)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "ce14fcd3-fc47-4d2d-958d-a965bbd32a12")
+	)
+	(pad "11" smd roundrect
+		(at 1.1625 -0.75)
+		(size 0.625 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "b630b46c-adad-4600-9ddc-52b1442cb520")
+	)
+	(pad "12" smd roundrect
+		(at 0.5 -0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "f4e096ab-c1b6-4b2b-8756-cdf68ceb4249")
+	)
+	(pad "13" smd roundrect
+		(at 0 -0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "87fcdd2b-4556-4d75-b501-65e72ad8eaf6")
+	)
+	(pad "14" smd roundrect
+		(at -0.5 -0.9125)
+		(size 0.35 0.625)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "e441709c-f668-4318-a54c-533b01dddb1b")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Package_LGA.3dshapes/LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
