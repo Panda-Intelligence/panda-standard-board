@@ -1163,6 +1163,96 @@ class PmicChargePumpStorageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'no actual copper connection'):
             inspect_pmic_charge_pump_storage(board,c)
 
+    def fixture_with_positive(self):
+        import pcbnew as P
+        board,c=self.fixture()
+        for idx,name in enumerate(['P47_VGH_BASE','P47_VGH_DRV','P47_VGH'],5):
+            board.Add(P.NETINFO_ITEM(board,name,idx))
+        u810=board.FindFootprintByReference('U810')
+        for num,net,x,y in [('34','P47_VGH_BASE',0,10),('36','P47_VGH_DRV',0,14)]:
+            p=P.PAD(u810);p.SetNumber(num);p.SetAttribute(P.PAD_ATTRIB_SMD)
+            p.SetNet(board.FindNet(net));p.SetSize(P.VECTOR2I(mm(.4),mm(.4)))
+            p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+            ls=P.LSET();ls.AddLayer(P.F_Cu);p.SetLayerSet(ls);u810.Add(p)
+        def add_part(ref,val,pins):
+            fp=P.FOOTPRINT(board);fp.SetReference(ref);fp.SetValue(val)
+            fp.SetLayer(P.F_Cu);fp.SetAttributes(P.FP_SMD)
+            for num,net,x,y in pins:
+                p=P.PAD(fp);p.SetNumber(str(num));p.SetAttribute(P.PAD_ATTRIB_SMD)
+                p.SetNet(board.FindNet(net));p.SetSize(P.VECTOR2I(mm(.4),mm(.4)))
+                p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+                ls=P.LSET();ls.AddLayer(P.F_Cu);p.SetLayerSet(ls);fp.Add(p)
+            board.Add(fp)
+        add_part('C807','1u/50V/0805',[('1','P47_VGH_BASE',4,10),('2','GND',4,2)])
+        add_part('D803','BAV99',[('1','P47_VGH_BASE',8,10),('2','P47_VGH',8,16)])
+        add_part('C808','47n/50V/0805',[('2','P47_VGH_DRV',4,14)])
+        add_part('R801','1M/0.1%',[('1','P47_VGH',4,16)])
+        def trk(net,ly,x1,y1,x2,y2):
+            t=P.PCB_TRACK(board);t.SetNet(board.FindNet(net));t.SetLayer(ly);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(mm(x1),mm(y1)));t.SetEnd(P.VECTOR2I(mm(x2),mm(y2)));board.Add(t)
+        def via(net,x,y):
+            v=P.PCB_VIA(board);v.SetNet(board.FindNet(net));v.SetViaType(P.VIATYPE_THROUGH)
+            v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+            v.SetPosition(P.VECTOR2I(mm(x),mm(y)));board.Add(v)
+        trk('P47_VGH_BASE',P.F_Cu,0,10,1,10);via('P47_VGH_BASE',1,10)
+        trk('P47_VGH_BASE',P.In2_Cu,1,10,3,10);via('P47_VGH_BASE',3,10)
+        trk('P47_VGH_BASE',P.F_Cu,3,10,4,10)
+        trk('P47_VGH_BASE',P.In2_Cu,3,10,7,10);via('P47_VGH_BASE',7,10)
+        trk('P47_VGH_BASE',P.F_Cu,7,10,8,10)
+        trk('P47_VGH_DRV',P.F_Cu,0,14,1,14);via('P47_VGH_DRV',1,14)
+        trk('P47_VGH_DRV',P.In2_Cu,1,14,3,14);via('P47_VGH_DRV',3,14)
+        trk('P47_VGH_DRV',P.F_Cu,3,14,4,14)
+        trk('P47_VGH',P.F_Cu,4,16,5,16);via('P47_VGH',5,16)
+        trk('P47_VGH',P.B_Cu,5,16,7,16);via('P47_VGH',7,16)
+        trk('P47_VGH',P.F_Cu,7,16,8,16)
+        c['positive_storage']=dict(
+            cap='C807',value='1u/50V/0805',side='F.Cu',power_pin='34',power_net='P47_VGH_BASE',
+            diode='D803',diode_pin='1',maximum_total_track_length_mm=12.0,maximum_via_count=3,
+            allowed_layers=['F.Cu','In2.Cu'],joint_driver_net='P47_VGH_DRV',driver_pin='36',
+            driver_cap='C808',driver_cap_pin='2',maximum_driver_track_length_mm=6.0,
+            maximum_driver_via_count=2,joint_vgh_net='P47_VGH',vgh_sense_ref='R801',
+            vgh_sense_pin='1',maximum_vgh_track_length_mm=8.0,maximum_vgh_via_count=3)
+        return board,c
+
+    def test_positive_charge_pump_storage_passes_and_locks_c807_inner_route(self):
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_positive();r=inspect_pmic_charge_pump_storage(board,c)
+        self.assertIn('positive_storage',r)
+        self.assertEqual(r['positive_storage']['vgh_base']['via_count'],3)
+        self.assertEqual(r['positive_storage']['vgh_base']['track_layers'],['F.Cu','In2.Cu'])
+        self.assertFalse(r['charge_pump_transient_and_ripple_qualified'])
+
+    def test_positive_storage_bottom_layer_or_excess_length_or_via_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_positive()
+        t=P.PCB_TRACK(board);t.SetNet(board.FindNet('P47_VGH_BASE'));t.SetLayer(P.B_Cu);t.SetWidth(mm(.15))
+        t.SetStart(P.VECTOR2I(mm(1),mm(10)));t.SetEnd(P.VECTOR2I(mm(2),mm(10)));board.Add(t)
+        with self.assertRaisesRegex(ValueError,'P47_VGH_BASE uses unreviewed copper layers'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_positive();c['positive_storage']['maximum_total_track_length_mm']=5.0
+        with self.assertRaisesRegex(ValueError,'P47_VGH_BASE exceeds reviewed total track length budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_positive();c['positive_storage']['maximum_via_count']=2
+        with self.assertRaisesRegex(ValueError,'P47_VGH_BASE exceeds reviewed via count budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+
+    def test_positive_storage_driver_vgh_budget_or_smd_via_clearance_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_positive();c['positive_storage']['maximum_driver_via_count']=1
+        with self.assertRaisesRegex(ValueError,'P47_VGH_DRV exceeds'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_positive();c['positive_storage']['maximum_vgh_track_length_mm']=2.0
+        with self.assertRaisesRegex(ValueError,'P47_VGH exceeds'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_positive()
+        v=P.PCB_VIA(board);v.SetNet(board.FindNet('P47_VGH_BASE'));v.SetViaType(P.VIATYPE_THROUGH)
+        v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+        v.SetPosition(P.VECTOR2I(mm(.42),mm(10)));board.Add(v)
+        with self.assertRaisesRegex(ValueError,'50um SMD pad-edge'):
+            inspect_pmic_charge_pump_storage(board,c)
+
 
 if __name__=='__main__':
     unittest.main()

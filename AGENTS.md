@@ -1,4 +1,50 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R40 SINGLE / C810 VEE_BASE & PMIC NEGATIVE RAILS
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R41 SINGLE / C807 VGH_BASE & DUAL CHARGE-PUMP STORAGE
+
+Read `hardware/pico47/E02-R41-C807-VGH-BASE-LAYOUT-20261102.md` first. Default R41
+replays directly from immutable R26 using single_r41_layout_delta.json, SHA-256
+8d4e8ad588ae5b9dcb5c68d4eb0194b6724b61a31dd25901dbfd6fc30d8912cb.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r41/engineering-candidate`.
+PCB SHA-256 64d9338d42c2d2ea2584266dc8de43b0edcb11bc44beefdb6683acc0ea85e3b7.
+
+Zero component poses changed relative to R40: all 265 part/908 pad identities,
+fields, values, nets and poses remain 100% identical to R40 (CPL 226 rows exact).
+Only `P47_VGH_BASE` (`U810.34 -> C807.1 -> D803.1`) changed; all other copper
+tracks, vias and all 16 zones from R40 remain bit-for-bit unchanged. Board totals:
+265 parts, 908 pads, 10821 tracks (-11), 1003 vias (-1), 16 zones.
+
+`P47_VGH_BASE` eliminates its obsolete pre-R37 `B.Cu` hop (`19.30/94.525 -> 20.70/93.55`),
+the east-and-back loop under `L801` (`X = 17.545 -> 22.658 -> 17.545 mm`), and 6
+non-coincident cap-overlap junctions, routing on `F.Cu + In2.Cu` only via Steiner
+junction `(19.75, 93.275)` and northern via `(19.50, 89.0896)` west of `L801`.
+Every pairwise path and whole-net metric strictly improves with zero tradeoffs:
+- `U810.34 -> C807.1`: 19.034 -> 14.311 mm planar (-24.8%), 21.329 -> 15.841 mm
+  spatial (-25.7%), 3 -> 2 vias, 0.0559 -> 0.0408 ohm (-27.0%).
+- `C807.1 -> D803.1`: 22.667 -> 22.332 mm planar, 24.197 -> 23.862 mm spatial,
+  2 vias, 0.0652 -> 0.0642 ohm.
+- `U810.34 -> D803.1`: 12.582 -> 12.285 mm planar, 14.877 -> 13.815 mm spatial,
+  3 -> 2 vias, 0.0423 -> 0.0382 ohm.
+- Whole net `P47_VGH_BASE`: 27.919 -> 24.605 mm (-3.314 mm), 33 -> 22 tracks (-11),
+  4 -> 3 vias (-1), `['B.Cu', 'F.Cu', 'In2.Cu'] -> ['F.Cu', 'In2.Cu']`.
+
+Native `inspect_pmic_charge_pump_storage` now locks both negative (`C810`,
+`P47_VEE_BASE <= 34 mm / 2 vias / F.Cu+In2.Cu`, `P47_VEE_DRV <= 10 mm / 2 vias`,
+`P47_VGL <= 53 mm / 7 vias`) and positive (`C807`, `1u/50V/0805`, `F.Cu`,
+`P47_VGH_BASE <= 25 mm / 3 vias / F.Cu+In2.Cu`, `P47_VGH_DRV <= 7 mm / 2 vias`,
+`P47_VGH <= 54.5 mm / 6 vias`) charge-pump storage networks and `>= 50 um` SMD
+pad-edge clearance for all 22 vias across the 6 nets. Two full R26->R41 replays +
+default + history R40 pass: DRC/open/parity/ERC all 0, 185 GND/52 critical links,
+7 PMIC continuous-copper ground corridors, 66 source-reviewed pose envelopes
+(0 clashes), 6 backside SMT clearances, 46 solder-joint vias, SD/USB/clock
+references and 3 clock GND stitches preserved; 466 distinct local source tests pass
+(geometry 396 pass/70 skip, KiCad 447 pass/19 skip). Keep 4 layers/no In1 signal,
+isolated negative EP49, C804 dogbone, unique C815 100nF, GPIO2 direct. Actual PMIC
+revision/noise/stability/charge-pump ripple, exact 2050mAh pack/full panel, backside
+height/positive-tolerance <=7mm, supplier CAM/supply/EVT remain open;
+manufacturing_release, supplier_process_accepted, actual_noise_and_stability_qualified
+and charge_pump_transient_and_ripple_qualified stay false. Keep one baseline and one
+active candidate; remove closed full rebuilds, retain small JSONs.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R40 SINGLE / C810 VEE_BASE & PMIC NEGATIVE RAILS
 
 Read `hardware/pico47/E02-R40-C810-VEE-BASE-LAYOUT-20261102.md` first. Default R40
 replays directly from immutable R26 using single_r40_layout_delta.json, SHA-256
