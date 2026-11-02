@@ -1453,6 +1453,8 @@ R39从不可变R26直回放，仅将L905由F12.05/123.90/180°迁至F12.05/123.6
 
 # 2026-11-02 R39预CAM文档勘误 / Codex
 
+后续源修正：背面检查报告改用reviewed_height_budget_mm/max_reviewed_height_budget_mm，并显式标记project_contract_only、supplier_maximum_height_verified=false。只读重采封存R39的B6/TP25原生几何后，与旧输出只按字段名归一化的结果完全相同。459不同本地源用例互补通过（geometry396pass/63skip、KiCad440pass/19skip，old459 IDs保持）。未修改CAD/布局/规则，不将该元数据回归声称为新的完整PCB源重建。
+
 只读核对具名R39 PCB字段与SINGLE-CHECKPOINT的21条pending_supply：原工程说明的Samsung/Yageo/Murata/TI表项、部分容值/阻值、公差、SGM与PMIC型号错误，已逐源修正；所有21条实际MPN均出现在新表，未绑定的参考代码移除，不把catalog当收货。背面检查只核源契约中的项目预算，旧max_datasheet_thickness_mm输出名不是datasheet证据；壳厚.55/挖深.45/余壁.25相互矛盾，深度/余壁方案撤回。
 
 板上元件/针网/CAD/规则与R39封存未改，无新native布局采用；本阶段只修改说明，不重复459源测试或重建。继续评估C810长电源路径，受约束试验失败整板几何即时清理，保小诊断。实际电气、pack/fullpanel、正公差7mm、CAM/供料/EVT仍待证据。

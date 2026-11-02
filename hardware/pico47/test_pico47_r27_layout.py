@@ -1023,7 +1023,12 @@ class BacksideSmtClearanceTests(unittest.TestCase):
         board,c=self.fixture();r=inspect_backside_smt_clearances(board,c)
         self.assertEqual(r['populated_count'],6)
         self.assertEqual(r['bare_testpoint_count'],3)
-        self.assertAlmostEqual(r['max_populated_thickness_mm'],.55)
+        self.assertAlmostEqual(r['max_reviewed_height_budget_mm'],.55)
+        self.assertEqual(r['height_evidence_source'],'project_contract_only')
+        self.assertFalse(r['supplier_maximum_height_verified'])
+        self.assertTrue(all('reviewed_height_budget_mm' in row and
+                            'max_datasheet_thickness_mm' not in row
+                            for row in r['populated_parts']))
         self.assertGreaterEqual(r['min_battery_bay_clearance_mm'],5.0)
         self.assertTrue(r['rear_shell_local_relief_required'])
         self.assertFalse(r['backside_height_and_assembly_qualified'])

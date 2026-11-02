@@ -429,12 +429,14 @@ def inspect_backside_smt_clearances(board, contract):
                          bbox_mm=[round(x1, 4), round(y1, 4), round(x2, 4), round(y2, 4)],
                          battery_bay_clearance_mm=round(bat_dist, 4),
                          upper_right_bay_clearance_mm=round(ur_dy, 4),
-                         max_datasheet_thickness_mm=max_z))
+                         reviewed_height_budget_mm=max_z))
     require(sorted(populated) == expected, f'Backside populated SMT inventory differs: {populated}')
     require(sorted(testpoints) == expected_tp, f'Backside bare testpoint inventory differs: {testpoints}')
     return dict(populated_count=len(rows), bare_testpoint_count=len(testpoints),
                 populated_parts=rows, bare_testpoint_refs=sorted(testpoints),
-                max_populated_thickness_mm=max(r['max_datasheet_thickness_mm'] for r in rows),
+                max_reviewed_height_budget_mm=max(r['reviewed_height_budget_mm'] for r in rows),
+                height_evidence_source='project_contract_only',
+                supplier_maximum_height_verified=False,
                 min_battery_bay_clearance_mm=min(r['battery_bay_clearance_mm'] for r in rows),
                 rear_shell_local_relief_required=True,
                 backside_height_and_assembly_qualified=False,

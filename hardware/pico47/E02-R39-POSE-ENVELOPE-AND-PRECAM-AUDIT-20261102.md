@@ -23,6 +23,8 @@ R38 在扩展至 54 件迁位源位姿筛查时，保留了 L905（`10uH / FL_BO
 
 [build_pico47_single.py](build_pico47_single.py) 新增原生 `inspect_backside_smt_clearances` 守卫，锁定背面全部 **6 颗贴装阻容**与 **25 个裸铜测点／调试焊盘**的库存，以及对既定研究包络的 CAD 净空。契约中的厚度是项目预算；检查器只核对该预算，未读取供应商尺寸文件、批次实物或壳体。历史输出键 `max_datasheet_thickness_mm` 不能作为数据手册最大尺寸的证据：
 
+后续源勘误已将输出改为 `reviewed_height_budget_mm`／`max_reviewed_height_budget_mm`，并明确 `height_evidence_source=project_contract_only`、`supplier_maximum_height_verified=false`。对封存R39只读重采证明数值和全部几何净空相同；459个不同本地源用例仍全部互补通过，未新建或采用PCB。
+
 | 位号 | 封装 / 规格 | MPN / LCSC | 坐标 `(X, Y, Rot)` | 待供应商核实的高度预算 | 距研究电池仓 `(X≤37.5, Y≤83.2)` | 距研究右上支撑区 `(X≥40.5, Y≤31.2)` |
 | --- | --- | --- | --- | ---: | ---: | ---: |
 | `C815` | 0402 `100nF 25V X7R` | `FH0402B104K250NT` / `C56392` | `(12.80, 94.00) / 0°` | `0.55 mm` | `10.300 mm` | `66.169 mm` |
