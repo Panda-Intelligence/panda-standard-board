@@ -1,4 +1,41 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R37 SINGLE / VREF TREE
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R38 SINGLE / PMIC JOINT LAYOUT
+
+Read `hardware/pico47/E02-R38-PMIC-JOINT-LAYOUT-20261102.md` first. Default R38
+replays directly from immutable R26 using single_r38_layout_delta.json, SHA-256
+df1be4c0d9857a4012b0072d7df8991c618e070cada332dec91bb00e5c492ee3.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r38/engineering-candidate`.
+PCB SHA-256 5ade9602fbc9031318ea3266147cf8f02bdeb6e8ea5ee5a1b3b647be5cf1bfe6.
+
+Only R803 F20.6/96.5/90 and R804 F21.6/95.8/90 moved; other263 parts and all265
+part/908pad identities/fields/values/nets retained. Eight explicit PMIC net scopes
+include23F GND bridge tracks,3B VN corner tracks and3In2 VEE_BASE column tracks;
+all oldGNDvias and all unreleased copper/rules/16zones/outline/stack preserved.
+Driver sourcevia19.725/96.825 and original capvia release F for .35 VN_LX branch,
+no new LXvia. WholeVREF36.769→27.098mm/4→3vias; DRV9.564→7.098mm/2vias;
+LX14.762→12.971mm/3→2vias. Diode→coil spatial length and VGL/BASE paths increase;
+preserve the documented tradeoffs. Old MCU→coil copper remains exact.
+
+R38 enables native continuous-copper PMIC shielding checks: all7 source/receiver
+corridors and their .2mm margins use actual U501.57-connected In1 ground. Keep
+.5mm projection/2um shape tolerance, no via/coil/same-layer exceptions. Two full
+R26 replays+default+historyR37/all old native groups/185GND52links/full46/actual
+SDUSBclockrefs/3clockGND pass;452 distinct local source tests pass. Native+ERC all0,
+265parts908pads10951tracks1005vias16zones,226SMT/CPL,21pending,BT301postSMT.
+45 recently reviewed poses pass; broader54-source-pose screen retains existing
+L905/R931 fallback250um-margin overlap (nominal Fab/pads clear, Fab gap .36mm).
+Actual maximum supplier envelopes and tolerance clearance remain unqualified.
+
+Keep fourlayers/noIn1signal, isolated negativeEP49, C804dogbone, uniqueC815100n
+and its four-item root/R805F branch, GPIO2direct and all bypasses. Real PMIC
+revision/noise/stability/current/SI/USB, exact2050mAhpack/fullpanel, backsideheight/
+positive-tolerance<=7mm, sourcing/full46CAM/EVT remain open. No manufacture,
+charging or panelpower. Preserve packaging/fourworktrees/all historical packages.
+User requires verified-stage commit and regular feature-branch push; reviewedPR
+before main. Generated CAD/reports/renders remain ignored/external. Keep one
+baseline and one active candidate; serial trials, remove closed full rebuilds,
+retain small deltas/logs. Never duplicate closed CAD into evidence packages.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R37 SINGLE / VREF TREE
 
 2026-11-02 Codex: also read `hardware/pico47/E02-PMIC-SHIELD-REVIEW-20261102.md`.
 The optional native PMIC ground-corridor check and nine regression cases are

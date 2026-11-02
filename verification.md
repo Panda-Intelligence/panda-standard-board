@@ -1432,3 +1432,13 @@ CKV左23.948mm段三种有界F/In2重接均未通后停止；XCL_SRC局部及全
 九个新增原生边界用例及旧443组成452different本地源用例全部互补通过：geometry396pass56native skip、KiCad433pass19geometry skip，无fail/error，所有skip被另一环境覆盖，无CI。分段相同铜的RED复现164对判定，连续铜合并后的GREEN统一为1对并仍拒绝走廊孔洞；其余覆盖孤立地层、同层/同侧噪声、通孔、电感及参数减弱。最终源默认R37完整重建全0/185GND52links及完整46工艺保持。
 
 被拒绝的联合原型虽原生DRC全0，连续铜的独立几何检查仍在6对连续铜／焊盘近邻中发现2处地铜裕量缺口；新原生源码检查也拒绝，未采用为新PCB。小诊断差异从不可变R37内存回放的铜／位姿指纹完全相同，不生成新CAD，完整试验及回归副本核验后清理。紧凑证据保存在external`panda47-e02-20261102-pmic-shield-audit`。详[PMIC源码阶段记录](hardware/pico47/E02-PMIC-SHIELD-REVIEW-20261102.md)。阶段源验证后按用户要求commit／push当前功能分支；PCB布局基线仍为R37（8dce59b），完整电气／机械／CAM／EVT未资格化，目标active。
+
+## 2026-11-02 R38 PMIC联合布局 / Codex
+
+R38从不可变R26直回放，两次显式源重建、最终默认入口及历史R37回归均为DRC错误/告警/open/parity/ERC0/0/0/0/0。三份R38独立原生审计保持全部R37旧盘组、265件908盘身份/字段/针网、其余263件位姿、185GND/52关键链、全46孔工艺、原SD/USB/时钟参考及3clock GND；七对连续源/接收铜走廊原生地覆盖通过，六新普通via的所有SMD盘边>=50um。仅八个明确网的局部铜改变；原地孔全部保留，规则/16zones/outline/stack/库SCH保持。
+
+452不同本地源用例互补通过：geometry396pass/56skip、KiCad433pass/19skip，原452 IDs全部保持，无CI。VREF36.769→27.098mm/4→3via，DRV9.564→7.098mm/2via，VN_LX14.762→12.971mm/3→2via；VGL/BASE及diode→coil路径的增长明确见hardware/pico47/E02-R38-PMIC-JOINT-LAYOUT-20261102.md。CPL226仅R803/R804两行改变，C815Bottom0°、BT301后装不入CPL、21pending和全46CSV原样保持。
+
+45最近审阅位姿包络通过；扩大54源位姿筛查保留原L905/R931的250um保守裕量重叠。名义Fab/焊盘未撞庭院、Fab间隔.36mm；实际最大供应商包络/公差待核，不声称全板装配资格。实际PMIC版本/EP、电气噪声稳定性/DCbias/功率/SI/USB、实际2050mAhpack/fullpanel、背高与正公差<=7mm、供料/full46CAM/EVT仍待，manufacturing_release=false。
+
+源delta df1be4c0d9857a4012b0072d7df8991c618e070cada332dec91bb00e5c492ee3；默认PCB5ade9602fbc9031318ea3266147cf8f02bdeb6e8ea5ee5a1b3b647be5cf1bfe6。候选../panda-board-deliverables/panda47-e02-20261102-r38/engineering-candidate；生成CAD/报告/图不进Git。原型、A/B、history全CAD副本验证后清理，仅留小JSON验收，串行使用唯一CURRENT-NATIVE，不以封存为由复制各次重建板。
