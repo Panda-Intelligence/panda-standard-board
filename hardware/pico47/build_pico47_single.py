@@ -25,9 +25,9 @@ from seven_mm_routing import native_semantic_fingerprint
 from capture_pico47_checkpoint import counts_from_reports
 from pico47_contract import CONTRACT, validate, GPIO_PACKAGE, PANEL_PINS
 from pico47_ground_returns import inspect_ground_returns
-from prune_pico47_stubs import pad_components, preserves_groups
+from prune_pico47_stubs import pad_components, preserves_groups, preserves_groups_with_additions
 from verify_mainland_bom_compliance import verify_board_mainland_compliance
-from verify_jlc_coupon_compliance import export_jlc_orderpack, inspect_board_native
+from verify_jlc_coupon_compliance import export_jlc_orderpack, inspect_board_native, inspect_solder_joint_vias
 
 
 def sha(path):
@@ -61,9 +61,68 @@ def run_cli(arguments, log):
                        stdout=stream, stderr=subprocess.STDOUT, timeout=180)
 
 
+def _inspect_switch_bypass(board, contract, groups, terminal, check_via_pad_edge, side='F.Cu'):
+    """输入与输出共用真实接点检查；新增电容另查50µm盘外孔预算。"""
+    import pcbnew as P
+    require(side in ('F.Cu','B.Cu'), 'Power bypass requires an outer assembly face')
+    face = P.F_Cu if side=='F.Cu' else P.B_Cu
+    title = terminal.capitalize() + ' bypass'
+    switch = board.FindFootprintByReference(contract['switch'])
+    cap = board.FindFootprintByReference(contract['cap'])
+    require(switch is not None and cap is not None, 'Missing load-switch ' + terminal + ' bypass')
+    require(cap.GetValue() == contract['value'] and not cap.IsDNP()
+            and cap.GetLayer() == face and cap.GetAttributes() & P.FP_SMD,
+            title + ' value or assembly differs')
+    def pin(fp, number):
+        found = [p for p in fp.Pads() if p.GetNumber() == number]
+        require(len(found) == 1, title + ' pin inventory differs')
+        return found[0]
+    power,ground = pin(switch,contract[terminal+'_pin']),pin(switch,contract['ground_pin'])
+    a,b = pin(cap,'1'),pin(cap,'2')
+    require(a.GetNetname() == power.GetNetname() == contract[terminal+'_net']
+            and b.GetNetname() == ground.GetNetname() == 'GND', title + ' pin net differs')
+    if check_via_pad_edge:
+        for via in board.GetTracks():
+            if via.GetClass() == 'PCB_VIA':
+                require(not any(p.GetEffectiveShape(face).Collide(via.GetEffectiveShape(face),50000)
+                                for p in (a,b)), title + ' violates ordinary-via pad-edge separation')
+    group_for = {u:g for g in (groups if groups is not None else pad_components(board)) for u in g}
+    for x,y in [(a,power),(b,ground)]:
+        require(y.m_Uuid.AsString() in group_for[x.m_Uuid.AsString()],
+                title + ' has no actual copper connection')
+    distance = ((a.GetPosition().x-power.GetPosition().x)**2
+                +(a.GetPosition().y-power.GetPosition().y)**2)**.5/1e6
+    require(distance <= contract['maximum_pad_distance_mm'], title + ' is outside the reviewed local placement')
+    return {'switch':contract['switch'],'cap':contract['cap'],'value':contract['value'],
+            terminal+'_net':contract[terminal+'_net'],terminal+'_pad_distance_mm':distance,
+            'both_native_connections':True,'transient_and_DC_bias_qualified':False}
+
+
+def inspect_output_bypass(board, contract, groups=None):
+    """保持既有输出去耦的真实接点、摆位及盘外孔约束。"""
+    return _inspect_switch_bypass(board,contract,groups,'output',True)
+
+
+def inspect_input_bypass(board, contract, groups=None):
+    """已有CIN保持原生规则和工艺清单；明确新增CIN沿用50µm盘外孔预算。"""
+    require(isinstance(contract.get('new_component'),bool), 'Input bypass placement policy is missing')
+    return _inspect_switch_bypass(board,contract,groups,'input',contract['new_component'])
+
+
+def inspect_power_bypass(board, contract, groups=None):
+    """核对数字IC局部电源旁路及声明装配面；原输入/输出接口仍固定正面。"""
+    require(isinstance(contract.get('new_component'),bool), 'Power bypass placement policy is missing')
+    normalized = {**contract,'switch':contract['device']}
+    result = _inspect_switch_bypass(board,normalized,groups,'power',contract['new_component'],contract['side'])
+    result['device'] = result.pop('switch')
+    result.update(side=contract['side'],backside_height_and_assembly_qualified=False)
+    return result
+
+
 def inspect_single(candidate, spec):
     """以源针序、独立原理图网表和原生物理连接组检查 Single。"""
     import pcbnew as P
+    spec = {**spec, **spec.get('layout_ecos',{}).get(spec['revision'],{}).get('inspection_overrides',{})}
     plan = json.loads(CONTRACT.read_text())
     validate(plan)
     board = P.LoadBoard(str(candidate / 'Single.kicad_pcb'))
@@ -112,9 +171,12 @@ def inspect_single(candidate, spec):
         expect('U810', pin, 'GND')
     expect('U811', 4, 'P47_HV_EN')
     groups = pad_components(board)
+    bypasses = [inspect_output_bypass(board,c,groups) for c in spec.get('output_bypasses',[])]
+    input_bypasses = [inspect_input_bypass(board,c,groups) for c in spec.get('input_bypasses',[])]
+    power_bypasses = [inspect_power_bypass(board,c,groups) for c in spec.get('power_bypasses',[])]
     group_for = {u:g for g in groups for u in g}
     links = []
-    for ref, pin, other_ref, other_pin in spec['critical_links']:
+    for ref, pin, other_ref, other_pin in spec['critical_links'] + spec.get('layout_critical_links', []):
         a, b = pads(ref, pin), pads(other_ref, other_pin)
         linked = all(str(y.m_Uuid.AsString()) in group_for[str(x.m_Uuid.AsString())]
                      for x in a for y in b)
@@ -206,6 +268,18 @@ def inspect_single(candidate, spec):
                     f'{part_name} exceeds Z support envelope')
         require(abs(ur_z['UPPER_RIGHT_PORON_PAD'][1] - ur_bay['coplanar_support_top_z_mm']) < 1e-3,
                 'UPPER_RIGHT_PORON_PAD top must be coplanar with 3.95mm battery top surface')
+    process_inventory = None
+    if 'complete_via_in_pad_inventory' in spec:
+        process_inventory = inspect_solder_joint_vias(board,spec['via_in_pad']['process'])
+        def signature(row):
+            return [row['net'],round(row['x_mm'],6),round(row['y_mm'],6),
+                    round(row['diameter_mm'],6),round(row['drill_mm'],6),row['soldered_contacts']]
+        actual_inventory = sorted([signature(row) for row in process_inventory['filled_and_capped_vias']])
+        require(actual_inventory == spec['complete_via_in_pad_inventory']['soldered_vias'],
+                'Complete solder-joint via inventory differs')
+        require(process_inventory['filled_cap_via_count'] == len(actual_inventory),
+                'Duplicate solder-joint via inventory')
+        vip = process_inventory['filled_and_capped_vias']
     supplies, manual = [], []
     for ref, fp in sorted(fps.items()):
         if fp.IsDNP() or fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM:
@@ -220,7 +294,11 @@ def inspect_single(candidate, spec):
             supplies.append(row)
     return board, groups, {'ground':ground, 'critical_links':links, 'bom':bom,
                            'geometry':geometry, 'via_in_pad':vip, 'pending_supply':supplies,
-                           'required_post_smt':manual}
+                           'required_post_smt':manual,
+                           **({'output_bypasses':bypasses} if bypasses else {}),
+                           **({'input_bypasses':input_bypasses} if input_bypasses else {}),
+                           **({'power_bypasses':power_bypasses} if power_bypasses else {}),
+                           **({'solder_joint_via_process':process_inventory} if process_inventory else {})}
 
 
 def write_csv(path, rows):
@@ -231,12 +309,14 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def build(source, output, spec_path=SPEC):
+def build(source, output, spec_path=SPEC, revision=None):
     import wx
     app = wx.GetApp() or wx.App(False)
     import pcbnew as P
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
+    revision = revision or spec['revision']
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -250,6 +330,21 @@ def build(source, output, spec_path=SPEC):
     pcb = output / 'Single.kicad_pcb'
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
+    eco_binding = None
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35'):
+        from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
+        eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
+        delta_path = HERE / eco_binding['source']
+        require(sha(delta_path) == eco_binding['sha256'], revision + ' layout source differs')
+        delta = json.loads(delta_path.read_text())
+        verify_input(pcb, delta)
+        apply_library_edits(output, delta)
+        eco_keepalive = apply_layout_eco(before, delta, output)
+        P.SaveBoard(str(pcb), before)
+        require(native_semantic_fingerprint(pcb) == delta['target_semantic_fingerprint'],
+                revision + ' replay geometry differs from the accepted native checkpoint')
+        require(copper_fingerprint(before, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
+                revision + ' replay copper or reference zones differ')
     fingerprint = native_semantic_fingerprint(pcb)
     run_cli(['pcb','drc','--refill-zones','--save-board','--severity-all','--all-track-errors',
              '--schematic-parity','--exit-code-violations','--format','json','--output',
@@ -260,22 +355,64 @@ def build(source, output, spec_path=SPEC):
                                  json.loads((output/'Single-erc.json').read_text()))
     require(not any(counts.values()), 'Single native checks are not all zero')
     require(native_semantic_fingerprint(pcb) == fingerprint, 'Native roundtrip changed intent')
-    board, groups, inspection = inspect_single(output, spec)
-    require(preserves_groups(old_groups, groups), 'Native pad groups were split')
+    board, groups, inspection = inspect_single(output, {**spec,'revision':revision})
+    additions = delta.get('added_footprints',[]) if eco_binding else []
+    added_pads = [p.m_Uuid.AsString() for s in additions
+                  for p in board.FindFootprintByReference(s['ref']).Pads() if p.GetNumber()]
+    require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
+    require(preserves_groups_with_additions(old_groups,groups,added_pads),
+            'Original native pad inventory or groups differ')
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35'):
+        from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
+        require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
+                revision + ' native roundtrip changed copper or reference zones')
+        if revision in ('R30','R31','R32','R33','R34','R35'):
+            from r25_router.apply_single_r27_layout_eco import (
+                reference_connected_ground_fills, inspect_signal_references,
+                inspect_panel_clock_references,
+            )
+            ground_fills = reference_connected_ground_fills(board)
+            inspection['signal_references'] = inspect_signal_references(
+                board, json.loads(CONTRACT.read_text()), ground_fills)
+            inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
+            if revision in ('R31','R32','R33','R34','R35'):
+                from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
+                inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
+                    board, delta['clock_ground_stitches'], ground_fills)
+        elif revision in ('R28','R29'):
+            from r25_router.apply_single_r27_layout_eco import inspect_signal_references
+            inspection['signal_references'] = inspect_signal_references(board, json.loads(CONTRACT.read_text()))
+        else:
+            inspection['usb_reference'] = inspect_usb_reference(board)
     orderpack = output / 'orderpack'
-    export_jlc_orderpack(output, orderpack)
+    export_jlc_orderpack(output, orderpack, revision=revision)
+    smt_count = sum(bool(f.GetAttributes() & P.FP_SMD) and not f.IsDNP()
+                    and not f.GetAttributes() & (P.FP_EXCLUDE_FROM_BOM | P.FP_EXCLUDE_FROM_POS_FILES)
+                    and f.GetReference() not in spec['manual_assembly_refs'] for f in board.GetFootprints())
+    bypass_notes = ''.join(f'{b["cap"]} 是 {b["switch"]} 的局部输出去耦，位置与两端真实连接已核对；'
+                          '其直流偏压、供料及实物瞬态仍待资格化。\n'
+                          for b in inspection.get('output_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 是 {b["switch"]} 的局部输入去耦，位置与两端真实连接已核对；'
+                           '其直流偏压、供料及实物瞬态仍待资格化。\n'
+                           for b in inspection.get('input_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 是 {b["device"]} 的局部电源旁路（{b["side"]}），'
+                           '位置与真实接点已核对；有效电容、瞬态及背面装配/高度仍待资格化。\n'
+                           for b in inspection.get('power_bypasses',[]))
     write_csv(orderpack/'REQUIRED-VIA-IN-PAD.csv', inspection['via_in_pad'])
     write_csv(orderpack/'PENDING-SUPPLY.csv', inspection['pending_supply'])
     write_csv(orderpack/'REQUIRED-POST-SMT.csv', inspection['required_post_smt'])
     (orderpack/'MANUFACTURING-REQUIREMENTS.md').write_text(
-        '# Single 制造工艺要求\n\n2026-10-30，R26。\n\n'
+        f'# Single 制造工艺要求\n\n{spec["date"]}，{revision}，Codex。\n\n'
         '四层、0.8 mm 标称、绿油、ENIG；详细层叠以 Single-job.gbrjob 为准。\n'
-        '左上板阶已收窄至 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)，与 323576 (35x76x3.2 mm) 电池全组件（电芯、封边、极耳、保护板及引线）实现 0.0 mm² 重叠。\n'
-        'C804.2 接地回流过孔已移至焊盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)，无盘中孔；U501.57 的 9 个 0.50/0.25 mm 散热过孔位于阻焊开窗及钢网开口内（见 REQUIRED-VIA-IN-PAD.csv），需树脂塞孔+电镀盖帽 (FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT) 或板厂 CAM 确认的等效工艺，确认前 supplier_process_accepted = false。\n'
-        '214 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 21 个需客供/建档的物料，不能空贴。\n'
+        '左上板阶为 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)。323576 (35x76x3.2 mm) 仅为历史研究包络；其二维不重叠不代表实际可更换2050mAh电池的厂商、MPN、最大包络、引线/保护板/连接器或整机含正公差≤7mm资格。实际电池与完整屏幕规格仍待确认。\n'
+        'C804.2 接地回流过孔保持盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)。U501.57 原9颗0.50/0.25mm散热孔保持。\n'
+        f'REQUIRED-VIA-IN-PAD.csv 本修订列出 {len(inspection["via_in_pad"])} 颗须处理的焊接盘过孔，需树脂塞孔+电镀盖帽 (FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT) 或板厂CAM确认的等效工艺。填孔盖帽在四层板上需明确选择并核价，不能以普通塞油/盖油替代；确认前 supplier_process_accepted = false。\n'
+        f'{smt_count} 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 {len(inspection["pending_supply"])} 个需客供/建档的物料，不能空贴。\n'
+        f'{bypass_notes}'
         'BT301 必须使用工厂绝缘引脚/焊片组件，SMT 后安装（见 REQUIRED-POST-SMT.csv）；不得回流或直接焊裸电池。\n'
         'J201 为 MUP U22401-17 沉板式 USB-C 母座；上述工艺、供料及实际电池包/完整屏幕模组规格确认前，manufacturing_release 保持为 false。\n')
-    manifest = {'schema':'panda47-single-rebuild-v1', 'revision':spec['revision'],
+    manifest = {'schema':'panda47-single-rebuild-v1', 'revision':revision,
+                'layout_eco':eco_binding,
                 'source_spec_sha256':sha(spec_path), 'source_design_sha256':sha(CONTRACT),
                 'input_sha256':spec['input_sha256'], 'counts':counts,
                 'all_original_pad_groups_preserved':True, 'geometry_sha256':fingerprint,
@@ -291,12 +428,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])
     if not default.exists() and 'version_directory' in spec_data:
         default = REPO / spec_data['version_directory']
-    result = build(args.source or default, args.output)
+    result = build(args.source or default, args.output, revision=args.revision)
     print(json.dumps({'counts':result['counts'], 'ground_pads':result['inspection']['ground']['ground_pad_count'],
                       'pending_supply':len(result['inspection']['pending_supply']),
                       'manufacturing_release':False}, indent=2))

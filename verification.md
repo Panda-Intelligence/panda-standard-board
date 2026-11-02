@@ -1302,3 +1302,103 @@ R25 路由续作：稳定 79/81 上 C 组 reassign 15 轮仍只有冲突路径�
   - **Display** (`Display.kicad_pcb` SHA-256 `320ed035ce0386a5568b939baf164626fbde1da2bc48d82de5e99a4a79454b0d`)：`unconnected_items = 0`、`drc_errors = 0`、`drc_warnings = 0`、`schematic_parity = 0`、`erc_violations = 0`、完整地 `68/68`（`6/6` 命名目标）。
   - **层与契约守卫**：四层结构保持，`In1.Cu` 非 GND 信号线为 `0`，全板 82 个多焊盘非地网络均为单连通分量，四个面板控制信号（`CKV/SPV/XLE/XSTL`）、`GPIO2 -> R813 -> U810.21` 硬件直控关断链、`CHIP_PU_MCU/DEBUG` 串联隔离与音频/I2C 关键链路全部连通；本地 363 项单元测试在 geometry venv 与 KiCad Python 下全部通过。
   - **门禁声明**：路由闭合不代表制造放行（`manufacturing_release = false`）；`C501` 0603 料号选型、精确电池包/屏幕总成堆叠、<=7mm 整机公差、CAM/SMT 与物理 EVT 门禁保持开放。
+
+
+2026-11-01，Codex：R28已接受阶段候选control31-d5-native为0errors/7warnings/16opens/parity0、31/43控制网；11498tracks/948vias原生nm/net严格一致。全部原30网检查点padgroups、SD18/六power/GND173通过；实际七几何及两空间筛查PASS；原生连接参考填充9160SD/1224USB样本零缺失。D5新增101.4mm/7via长绕行仍需优化。新增export_geom原生holes/priority两回归PASS，旧导出器两例预期失败；既有via layer五回归PASS；12原生区域55孔往返PASS。详见.codex/continuation-20261101-controls31.md与候选PARTIAL-ACCEPTANCE.json。全板43网/最终0/0/0/0/0/源freeze/两次回放未完成，不作制造或电气时序放行。
+
+
+2026-11-01，Codex后续验收：当前accepted partial推进至control32-final-native，0errors/4warnings/15opens/parity0、32/43控制网，11540tracks/954vias全铜nm/net一致。全部31网旧padgroups/SD18/power6/GND173、七几何+两空间、24poses和原生9136SD+1224USB参考样本零缺失均PASS。R716仅向左1.5mm，原地铜/特殊via/板框/规则保持。D5/D6新路径110.161/81.699mm各7via仍待优化/时序资格。完整任务未通过，详见.codex/continuation-20261101-controls32.md和候选PARTIAL-ACCEPTANCE.json。所有本轮作业已终态，不保留假活句柄。
+
+
+2026-11-01，Codex：accepted partial推进至control37-gpio0-native及control36-gpio0-root-opt2.route.geometry.json，0errors/4warnings/7opens/parity0、37/43控制。11648tracks/984vias全铜nm/net一致；全部36旧padgroups/SD18/power6/GND173/24poses、七几何+两空间及9136SD/1224USB实际参考零缺失PASS。所有非GPIO0铜与36指纹相同；原件/默认R27保持。GPIO0库存139.419mm/13孔，上拉到MCU平面137.763mm尚需优化，剩余6控制网未闭合。新通孔树真实C回归旧模型失败、新模型2例通过，加5旧router+2native export共9回归通过；实际板重算铜不变，未声称缩短。规划缓存86文件透明压缩约2.4GiB，payload/路径/mtime均核对不变。详见.codex/continuation-20261101-controls37.md及候选PARTIAL-ACCEPTANCE.json，整板/制造/物理资格仍未通过。
+
+2026-11-01，Codex：R28当前accepted partial为control37-clean-lib.geometry.json + control37-clean-v2-native，原生0errors/0warnings/7opens/parity0，仍37/43。LRCLK约缩短21mm并减少3孔；原生逐步守卫清除3死孔9死尾，U711 pin1标记下移0.2mm并同步候选本地库。全部11612track/978via nm/net一致，原37组/SD18/六power/GND173/24poses/七几何+两空间和9136SD/1224USB真实参考通过，253器件和所有板上焊盘身份/网络/姿态、全部地与特殊孔/原理图/规则保持。9 distinct源回归通过。本轮另外透明压缩自有关闭快取约2.30GiB，所有payload/路径/mtime保持；未删除CAD/源码/归档。六网与GPIO0/D5/D6质量、完整R28源码冻结/双回放及物理资格仍未完成，默认及外部R27保持、manufacturing_release=false。详情见.codex/continuation-20261101-controls37-clean.md。
+
+2026-11-01，Codex：当前R28 accepted为control37-r511-north-final.geometry.json/control37-r511-north-final-native/25poses，0errors/0warnings/7opens/parity0、37/43，11594tracks/972vias全native nm/net一致。R511保持10k且独立北移，GPIO0库存138.828→48.337mm、13→7via，上拉到MCU137.622→26.712mm、13→4via；原焊盘的C501/mux供电桥用0.35mm F铜恢复，无新电源孔。全部旧37组/身份/pad UUID/net/SD18/供电/GND173/25包络/七几何+两空间与9136SD/1224USB实际参考通过；其它部分Cu、地/特殊孔/板框/区域/规则/原理图保持。仍有六控制网七处未连接，完整源冻结/双回放/最终ERC/电气与物理门槛未完成。详情.codex/continuation-20261101-controls37-r511-north.md，默认及外部R27未切。
+
+2026-11-01，Codex：新的accepted partial为control38-data-clean.geometry.json/control38-data-clean-native/27poses，**38/43、0errors/0warnings/6opens/parity0，fresh ERC0，11534tracks/979vias**，SHA5a2555a988c2ce93b55c04e54477e9721275a9192ab25cece9f03be23c4e6c75。D7_SRC闭合，全部旧37 native组/11字面组/SD18/六power/GND173/253器件身份与884pad UUID/net/位置多边形、七几何+两空间及9136SD/1224USB真实参考零缺失均通过；四层无In1信号，全部非十网铜、地/特殊孔/电源/主USB/SD与板框/区域/规则/原理图保持。只改变R714/R716/R717姿态，R715仍原位；D4/D5/D6_SRC库存45.438/112.943/81.699mm分别降至1.314/61.575/35.849mm。D6输出避开C803/C812回流区域及新孔后恢复全部地，无新地孔；BUS_OE_N的10死轨3死孔逐步native guard清除。D6输出10via、D7输出7via及UART6via仍待质量优化；五控制网六opens、versioned R28源freeze/双完整回放/最终critical及电气/物理资格未完成。默认及外部R27不变，无提交/推送/CI/上电，manufacturing_release=false。详情.codex/continuation-20261101-controls38-data.md。
+
+# 2026-11-01 R28：40控制网的路由检查点 / Codex
+
+最新本地路由检查点为 `.work/pico47-r28-sd-layout-20261031/control40-r710-back-clean-native`；源几何和28器件姿态见 `.codex/continuation-20261101-controls40-back.md`。40/43控制、0errors/0warnings/4opens/parity0/freshERC0，11581tracks981vias；PCB SHA256 `026484de2196048690bd322f9b5cea93a25953cff078cae41643f98d4ceb61fd`。
+
+全部旧38原生焊盘组、173地、六供电、SD18/主USB、253器件884焊盘身份及其它铜保持；七几何/两空间、9136SD与1224USB真实参考样本全部通过。三处旧死尾经每步native守卫裁剪后，删除差异回源并重新从保留baseline重建。仅R710移到背面、七审阅控制网改变，原始全部地铜/特殊孔完全保留。
+
+R710背面SMT、底部净空/元件最大高度及含正公差≤7mm整机适配尚未资格化。剩CKV_SRC、XLE_SRC、XSTL_SRC共4opens；全43、R28 versioned源冻结、两次独立完整源回放和最终critical/pin/variant审计仍待。默认及外部不可变包继续为R27；制造/充电/面板上电均未放行，无提交或推送。
+
+后续修正router2同网新孔的SMD盘外间隙模型，补回ERROR_INSIDE最多2um的轮廓内缩；实际49um拒绝、51um可用的真实red/green回归及既有三组测试共10 distinct通过。原生规则和M均未变。已对上述40检查点新增/改网的34个孔独立复核，50um盘外裕量全部通过，CAD/SHA保持；细节见 `.work/pico47-r28-sd-layout-20261031/OWN-PAD-EXPORT-ERROR-REGRESSION.json`。
+
+
+2026-11-02，Codex：当前R28路由检查点已推进至 **41/43，0errors/0warnings/2opens/parity0/freshERC0**，`.work/pico47-r28-sd-layout-20261031/control41-xstl-source-quality-native`，源几何`control41-xstl-source-quality-preflight.route.geometry.json`，29poses，11614tracks985vias，PCB SHA256 `8d576e6c9c834aa8da2d6290989d3c8fb37d4de695325e2515c9b9b0862f3eec`。R728保持F移位，XSTL源已接通；全部旧41原生组/GND173/power6/SD18/USB、253parts884pads/规则/四层约束、七几何两空间及9136SD/1224USB实际reference样本零缺失均通过。XSTL源9→6via，MCU51至串阻有效空间55.691→54.139mm；平面52.104mm/6via仍待质量改善与电气时序/振铃资格。其它Cu、地/特殊孔/power/SD/USB、原理图/板框/区域/规则保持。
+
+剩CKV_SRC/XLE_SRC；四网bare+SELECT局部的42候选联合选路最多4/5，六网新首端重排预检6/6可达但冲突尚未解，均未采用。完整R28 versioned sourcefreeze/双独立完整回放/final critical pin variant、R710背面SMT/含正公差≤7mm/确切电池和完整屏幕/CAM/供料/EVT仍未完成。默认及外部不可变包继续R27，制造许可false，无提交或推送。详情`.codex/continuation-20261102-controls41-quality.md`。
+
+
+2026-11-02，Codex：新增精确圆角盘外孔源修复，实际R727圆角夹具先失败后通过；相关11个不同源测试由geometry/KiCad两环境覆盖通过，native规则/M不变。原accepted41Q保持41/43、0errors/0warnings/2opens/parity0/ERC0、SHA8d576e6c，所有本轮AON/C523/SD/电阻ECO仍为未采用试验。C523同面准备源及供电替代分别完成电源6/GND173/SD18和9136SD1224USB actual reference验证，完整6控制联合仍待恢复，不能作为整板完成或制造放行。49份关闭本任务路由输入无损透明压缩，独立hash及元数据复核一致，allocated减少104476672bytes；原CAD与检查点保留。当前工作详见`.codex/continuation-20261102-c523-working.md`及current pointer。
+
+
+2026-11-02，Codex：**R28当前完整43/43控制、DRC错误/警告/open/parity/ERC=0/0/0/0/0**；173地、20关键链、所有旧pad组/独立针序与内存变体/253parts884pads通过。版本化R26→R28完整源已冻结并启用默认；两次独立完整replay及最终默认重建全部通过，401个不同本地源测试跨geometry/KiCad环境全部覆盖通过。SD空间48.390–50.601mm、maxabsCLKskew1.195mm，七几何两空间通过；原生实际连通参考SD9104USB1224、独立float几何SD9136USB1224，均零缺失。最终工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r28/engineering-candidate`，PCB SHA`619944b984cc732597b03fbc79138c84954622956441b64cb50e9e0ec133de1e`，11623tracks995vias；376项包清单与source snapshot独立hash验证过。旧R27保持。详情`hardware/pico47/E02-R28-ROUTING-CLOSURE-20261102.md`。
+
+这是路由/原生连接/源回放验收；XSTL源52mm6孔/CKV输出9孔等时序质量、真实电源/阻抗、R710背面SMT、实际2050mAh电池/完整屏幕/含正公差≤7mm、供料/CAM/EVT仍未资格化，manufacturing_release=false。未制造/上电、无commit/push/CI。
+
+
+2026-11-02，Codex：**R29已通过原生布局与完整源回放**。XSTLdriver→series52.104→5.097mm、下拉支路5.814→1.479mm；两网库存86.052→73.777mm、有效main79.785→77.365mm。输出段变65.375mm/9孔，两网净增3孔、R731改B面，电气/装配取舍已记录。全板仍43/43，DRCerror/warning/open/parity/ERC0/0/0/0/0；173GND、20critical、全旧组、253parts884pads/原rules、SD18USBactualreference保持。DirectR26→R29源delta、2独立完整replay+default、401distinct本地源测试、exactCu/30pose/7geometry2spatial全过。
+
+当前工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r29/engineering-candidate`，PCB SHAb6924d0fb818552b4da0094b6b5771c9eeeafca02e0572b9fddbb4297ee404a9，11585track998via。377文件清单独立hash过，旧R28全376文件保持；默认R29且显式R26/R27/R28保留。详见`hardware/pico47/E02-R29-XSTL-SOURCE-QUALITY-20261102.md`。R710/R731背面SMT/maxheight、真实电池全屏/含正公差≤7mm、实际时序回流/波形/电源USB、供料CAM/EVT仍未资格化，manufacturing_release=false，无制造/上电/commit/push/CI。
+
+
+2026-11-02，Codex：**R30通过原生布局与完整源回放**。仅两颗普通signalvia微移0.168/0.177mm，所有track/clockCu/parts/poses/孔数保持，修复XSTL顶层5个In1参考采样缺口；8clock的F/In2→In11657点零缺，SD/USB9104/1224actualreference零缺。B→In2仍495/633点不在相邻地内，另列observational/unqualified，不认定实测电气失败或通过。
+
+43/43、DRCerror/warning/open/parity/ERC0/0/0/0/0，173GND20critical/旧groups/253parts884pads30poses/原rules15zone/四层In1无signal保持；2independent completeR26→R30replay+default、403distinct本地源测试及allCu/5surfacecontacts/7geometry2spatial核对通过。当前包`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r30/engineering-candidate`，PCBSHA7f867d8fa5e519a7f448fe2980533ad9e5f791c3eed59d9f018d906f94421f07，11585track998via，364packagehash/source snapshot独立核对过。oldR29全377files保持；默认R30，R26..R29历史入口保留。详见`hardware/pico47/E02-R30-CLOCK-REFERENCE-20261102.md`。
+
+实际edge/load/timing/EMI/return、电源USB、背面SMT/真实电池完整panel/含正公差≤7mm、供料CAM/EVT仍未资格化；已发text澄清实际pack/panel料号与最大包络，待回复。manufacturing_release=false，无制造上电/提交推送/CI。
+
+## 2026-11-02 R31 局部接地缝合 / Codex
+
+R31仅在R30上追加3颗GND400/200通孔，全部原11585条轨形/998旧孔、253parts/884pads/30poses、原生规则/15区定义/轮廓/四层叠层保持。两个CKV及一个XSTL换层到真实In1/B参考地孔距离3.068/2.900/2.315mm降至0.577/1.043/0.577mm。原生接触及包括同网SMD的50um盘外间距通过；孔距是几何记录，不是时序/EMI限值。
+
+两独立R26→R31完整重建加默认入口重建，43/43、DRCerrors/warnings/opens/parity/ERC全0、173GND/20critical/全部旧组与独立pinvariantBOM保持。SD9104/USB1224/F-In2clock1657实际参考零缺失；B→In2仍495/633缺口且电气资格false。407distinct本地源用例全覆盖（geometry393pass14native skip，KPY388pass19geometry skip，无未覆盖），无CI。新包333清单条目、18source当前绑定和默认candidate内部清单独立SHA通过；旧R30全364hash保持。
+
+当前工程候选panda47-e02-20261102-r31/engineering-candidate，PCB SHA919d022d3bcdd8029247e58dc10897879bf40fa1cc9a66604e77364a95fcd265。源delta SHA5004a8a2b2bd8f4de2ee3287de2e9217cd34fe77166dfba822cb5cc7d6faa688。默认R31，R26–R30历史源/检查点保留；见hardware/pico47/E02-R31-GROUND-STITCHES-20261102.md。真实电气、电池与全屏最大包络/含公差≤7mm、背面SMT、供料/CAM/EVT继续待证，manufacturing_release=false；没有制造/充电/面板上电。
+
+## 2026-11-02 R31背面参考地复核 / Codex
+
+当前CAD/source仍R31，未采用本轮换层试验。新增原生检查：B时钟633有效中心样本在更远In1实际连通地片中全部覆盖，相邻In2仍495缺口；不能把后者解释为无接地平面，也不能把前者作为SI/回流/时序合格。KiCad原生实体将495点分为138处非地铜投影内、216处距铜<.20mm、29处.20–.25mm、112处>=.25mm。名义stack及近似平行区只用于几何定位，实际driver/load/stack资格仍待证。
+
+CKV左23.948mm段三种有界F/In2重接均未通后停止；XCL_SRC局部及全网两padF/In2重接和soft两网诊断未通，均未采用。新审查包33清单SHA独立通过，原R31全333清单及18current source绑定保持；没有把上回合407源测试说成本轮重跑。125份关闭旧输入/CAD无损压缩实际减367255552B（350.24MiB），内容/属性独立复核通过，未删PCB或检查点。详见hardware/pico47/E02-R31-RETURN-REVIEW-20261102.md。完整产品电气/真实电池全屏/正公差≤7mm/backSMT/供料CAM/EVT仍未通过，manufacturing_release=false。
+
+## 2026-11-02 R32：U404输出去耦 / Codex
+
+依据SGM2578SD2026RevA2p8及原生OUT网缺电容，新增FH0402X105K100NT/C1573531uF10VX5R C532，F50.95/88.4/135；电压pad直接接旧输出trunk，2段025F GND约2.083mm返回原via，无新增via。新254parts886pads11587tracks1001vias/174GND22critical，原253parts884pads11585track1001via/字段网络位姿/规则轮廓叠层精确保持。
+
+最终440d5818源两独立R26→R32完整回放+默认入口全0/43，历史R31另回放全0；417distinct源用例全覆盖（geometry396pass21native skip/KPY398pass19geometry skip，全部跳过补齐，旧407IDs保留）。新cap真实连接/50um盘外孔/约2mm摆位、R31R26旧groups、174GND22links、SD9104USB1224/FIn2clock1657零缺，BfarIn1新633样本零缺，In2仍495obs。215SMT/CPL215排除后装BT301，21pending保持，jobrevision/GUID绑定实际PCB。
+
+当前externalpanda47-e02-20261102-r32/engineering-candidate，PCB SHA8b042c08883c47b3f6475096820b8e9e19c66e00f95e2aeede641d8220b30ee2，delta SHA440d581883452c8de9a43d436c7afc47f2b30e05b567cc83c6352bf0b2c0c570。360包条目/23current source与295内部文件hash独立通过，旧R31全333hash保持。见hardware/pico47/E02-R32-C532-BYPASS-20261102.md。实际波形/有效电容/SI/USB、真实pack/fullpanel/含公差≤7mm/backSMT/供料CAM/EVT仍待证，manufacturing_release=false，无制造/上电或CI。
+
+## 2026-11-02 R33：局部输出旁路与完整盘中孔工艺 / Codex
+
+新增C533/U402、C534/U403、C535/U405三颗FH0402X105K100NT/C157353 1µF10VX5R，OUT盘距1.201/2.545/3.562mm，旧负载端电容保留；仅加五段025F及一GND400/200通孔。原R32全部254parts886pads11587tracks1001vias/UUID字段位姿/规则区定义轮廓叠层保持，现257parts892pads11592tracks1002vias。全板原生审计确认46个焊接接点过孔须填孔盖帽：9MCU+9charger+28其它，另1bareTP8；TPG2重复覆盖不重复计数，独立stencil-only锡膏窗不遗漏，annulus-only不误作钻孔切盘。46行工艺CSV及完整签名受源契约核对，supplier_process_accepted=false。
+
+两独立完整R26→R33回放加默认入口，DRC错误/告警/未连接/一致性/ERC全部0、43/43、177GND28critical；历史R32完整回归通过。422不同本地源测试全覆盖（geometry396pass26native skip、KiCad403pass19geometry skip），旧417ID保持；34pose、四个真实OUT/GND旁路及50µm新孔盘边、旧组/旧铜形和SD9104USB1224/FIn2clock1657零缺通过。R33B633有效样本较远In1零缺，相邻In2仍495几何缺口；不代替SI/时序资格。218SMT/218CPL，后装BT301不入CPL，21pending保持。
+
+当前工程候选：`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r33/engineering-candidate`。PCB SHA-256 `c087facf0bd6b87996160b32dc51f69c58db11497bcc5d9037d9c49b4e668bc8`，源增量SHA-256 `4a28afb7bd9b7c591e910ba3a32dfe369bf38f008146d85ea494129b8105a9f4`。362包项/25源绑定/298内部文件hash独立通过，旧R32全360hash保持；会写网表的inspector仅在fresh review副本运行。恢复收尾重新核对外部包/当前源hash与422测试并集通过，未重复整套测试。说明见[R33工程记录](hardware/pico47/E02-R33-LOCAL-BYPASS-PROCESS-20261102.md)。
+
+实际DCbias/瞬态/负载时序/SI/USB、真实电池全屏/含正公差≤7mm/背面SMT及高度、供料/全板46孔CAM/EVT仍待证；公开工艺能力不是本板接受。目标仍active，manufacturing_release=false，不制造、充电或面板上电。磁盘约17GiB，本轮没有新增清理回收；无CI/提交/推送，packaging与四工作树保持。
+
+## 2026-11-02 R34：U403近端输入旁路 / Codex
+
+原生检查发现U403标称CIN C509距IN28.936mm，最近同网>=1µF C511仍20.472mm，近端C504只有100n。新增FH0402X105K100NT/C157353 1µF10VX5R C536，F42.2/67.95/0，电压盘至IN0.971mm；两段025F和一GND400/200via43.275/67.7，原C509及全部旧件保留。原R33全部257parts892pads11592tracks1002vias/UUID字段位姿/库/铜形/规则轮廓叠层精确保持；现258parts894pads11594tracks1003vias178GND36critical。
+
+两次最终完整R26→R34回放加默认入口及historyR33通过，43/43、DRC错误/告警/未连接/一致性/ERC全0。四CIN/四COUT实际连接、旧组/full46工艺签名、35pose、SD9104USB1224/FIn2clock1657零缺及三clockstitches通过；R34BfarIn1新633点零缺，相邻In2仍495几何缺口，未当SI资格。427不同本地用例全覆盖（396pass31native skip / 408pass19geometry skip），旧422IDs保持；219SMT/CPL219无后装BT301、21pending保留。原理图新label垂直对齐已修并用最终源重新回放，无CI。
+
+当前候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r34/engineering-candidate`；PCB SHA-256 `d98e436d8ee0e4b363945733060c51e65a30f65bbcc7339b970e1730b761e48f`，增量SHA-256 `d989eade7a73cf0e18f7fa888a2eed459f1ba6d446b896dffda59117db546388`。364外部包项/27当前源/299内部hash独立通过，oldR33全362项保持；inspector只在fresh review副本写网表。见[R34工程记录](hardware/pico47/E02-R34-U403-INPUT-BYPASS-20261102.md)。实际DCbias/波形/SI/USB、真pack/fullpanel/正公差≤7mm/背面SMT、供料/46孔CAM/EVT仍未资格；manufacturing_release=false、supplier_process_accepted=false，不制造/充电/面板上电。
+
+## 2026-11-02 R35：七颗数字局部旁路与背面回流 / Codex
+
+全IC原生审查及原厂资料确认MCU VDD_SPI近端100n/1u、Flash/IMU等局部旁路问题，保留所有旧cap，追加C537..543（六100n25VX7R C56392、一1u10VX5R C157353）。MCU两颗与Flash一颗为B，其余4F；只加8短025track/4GND400200via/1B实际referenceground区，原258parts894pads11594tracks1003vias/UUID字段位姿/旧库/所有旧Cu/旧zone/规则轮廓叠层保持。新265parts908pads11602tracks1007vias16zones、185GND50links/43/nativeerrorwarningopenparity/ERC全0。
+
+两独立R26→R35+default及historyR34、三fresh-review严格独立审计通过；7powercaps/4CIN4COUT/full46工艺签名、42pose/SD9104USB1224/FIn2clock1657/三clockGNDstitches保持，C537/C538真实接连U50157的B fill。新B633farIn1零缺、In2仍495几何观察。实际平面供电铜MCU11.427/12.330→1.152/1.091mm，Flash5.141→.798mm（三背面路径各一有效F-B孔段.765mm）；IMU45.035/32.810→.769/.496mm，displayExp7.580→.873mm，均非动态资格。434different本地用例全部互补通过（geometry396pass38native skip/KPY415pass19geometry skip），old427IDs保持，无CI。
+
+当前canonical`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r35/engineering-candidate`；PCB SHA`5223786c60ad3ba16d06b49eef75afafa501e227e7c0cdc7702e94af7ebb52bf`，deltaSHA`9c478c044753a4a8fb4774a9975d3b574b4983cd8b67f7d3d1232adc0cc7bf52`。377包项/29current source/306内部hash独立过，oldR34全364不变。226SMT=CPL226、3new Bottom面明确、后装BT301不入CPL、21pending/46工艺行保持。见[R35工程说明](hardware/pico47/E02-R35-DIGITAL-POWER-BYPASSES-20261102.md)。
+
+实际DCbias/波形/驱动负载/SI/USB、真实packfullpanel最大包络/含正公差≤7mm/背面SMT及三newBcap高度净空、供料/全46孔CAM/EVT仍缺证据，制造与supplierprocess接受均false，无制造/充电/面板上电。17关闭旧CAD透明压缩实际减59240448B，内容/路径/属性独立复核保持，无PCB/检查点删除；磁盘约12GiB，背景变化不当回收。

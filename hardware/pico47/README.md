@@ -1,4 +1,66 @@
-# Current Continuation: E0.2 r26 (v0.1.1) — Single Unified 4-Layer PCB Engineering Checkpoint (2026-10-30)
+# Current Continuation: E0.2 R35 — 数字电源局部旁路（2026-11-02）
+
+执行者：Codex。先读 [R35 七颗数字旁路、背面地铜与完整源回放](E02-R35-DIGITAL-POWER-BYPASSES-20261102.md)。保留全部旧器件和铜形，新增七颗局部旁路：MCU VDD_SPI的100nF／1µF、Flash的100nF在背面，IMU两电源及两XL9535的100nF在正面；只加八段0.25mm短线、四地孔及一块实际连接MCU地参考的B地铜。原258器件894焊盘／旧铜／身份／库／规则保持，现265器件908焊盘、11602走线1007孔、185地50关键链。
+
+默认R35；两独立完整R26回放、默认入口、历史R34回归及三份独立原生审计通过，43/43、原生／ERC全零，434不同本地源用例全覆盖。42位姿、七组数字旁路、四CIN／四COUT、完整46孔工艺签名及SD／USB／时钟参考保持。SMT／CPL为226件，三颗新电容为Bottom，BT301后装且不入CPL，21项待供料保留。当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r35/engineering-candidate`。新增背面电容需进入实际高度／净空与正公差≤7mm资格；实际电气、电池全屏、供料／全板CAM／EVT仍待证据，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R34 — U403近端输入旁路（2026-11-02）
+
+执行者：Codex。先读 [R34 C536、四组输入旁路与完整源回放](E02-R34-U403-INPUT-BYPASS-20261102.md)。原生检查发现U403标称输入电容C509距IN约28.936mm，最近同网至少1µF电容仍20.472mm；新增同已核SKU的C536，电压盘距IN降至0.971mm。原器件和C509均保留，只加两条0.25F短支路及一颗盘外GND孔。原R33的257器件892焊盘及全部旧铜／身份／库／规则保持，现258器件894焊盘、11594走线1003孔、178地36关键链。
+
+默认R34；两独立完整R26回放、默认入口与历史R33回归均通过，43/43、原生／ERC全零，427不同本地用例全覆盖。四组CIN与四组COUT的实际连接、35位姿、全46孔工艺签名和SD／USB／时钟参考保持。SMT／CPL为219件，BT301后装且不入CPL，21项待供SMT保留。当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r34/engineering-candidate`。实际电气、供料／全板CAM、电池全屏／含正公差≤7mm及EVT仍待资格化，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R33 — 局部旁路与全板孔工艺（2026-11-02）
+
+执行者：Codex。先读 [R33 三处旁路、完整盘中孔工艺与源回放](E02-R33-LOCAL-BYPASS-PROCESS-20261102.md)。保留原负载端电容，新增C533/C534/C535分别为U402/U403/U405的局部1µF输出旁路，加五条0.25F短支路及一颗盘外GND孔；原R32全部254器件886焊盘、旧铜与C532原生身份保持。现257器件892焊盘、11592走线1002孔、177地28关键链。
+
+两独立完整R26回放及默认入口、历史R32回放均通过；43/43、原生／ERC全零、422不同本地用例全覆盖，SD／USB／时钟参考保持。全板原生工艺检查列出46颗焊接接点过孔须填孔盖帽，裸TP8另列、重复TPG2不重复计数；21项待供SMT保持，SMT／CPL为218件且BT301后装。默认R33，当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r33/engineering-candidate`。四层板的实际工艺／供料／电气／真实电池全屏／含公差≤7mm／EVT仍待资格化，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R32 — U404输出局部去耦（2026-11-02）
+
+执行者：Codex。先读 [R32 C532补件、源回放与验证](E02-R32-C532-BYPASS-20261102.md)。补上U404输出端原来缺少的局部1µF电容C532（FH0402X105K100NT/C157353），F50.95/88.4/135°；电压焊盘直接接既有输出走线，只新增两条0.25F接地支路，无新过孔。原253器件884焊盘及全部旧走线／过孔／规则保持，现254器件886焊盘、11587走线1001孔。
+
+默认R32；两独立完整R26回放及默认重建为43/43、原生／ERC全零，174地／22关键链、全部旧组和SD／USB／时钟参考通过，417个不同本地源用例全部覆盖。历史R31入口另行完整回放通过。原理图、本地符号／封装、精确物料与制造资料同步；SMT／CPL为215件，BT301后装且不入CPL，21项待供SMT保持。当前候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r32/engineering-candidate`。真实瞬态／SI、电池与完整屏幕／含正公差≤7mm、背面SMT、供料CAM与EVT仍待证据，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R31 — 三处时钟换层接地缝合（2026-11-02）
+
+执行者：Codex。先读 [R31 三孔改动、原生接触与源回放](E02-R31-GROUND-STITCHES-20261102.md)。只新增三颗400/200μm地孔，原11,585条轨形、998旧孔、器件／焊盘／位姿／区域定义／规则保持；现1,001孔。两处CKV、一处XSTL到实际In1/B地孔距离由3.068／2.900／2.315mm降至0.577／1.043／0.577mm；这是几何改善，电气资格仍未证明。
+
+默认R31；两次独立完整回放及默认重建保持43/43、原生／完整ERC全零、173地／20关键链／旧组、SD9104／USB1224及F/In2时钟1657参考点覆盖，407个不同本地源测试覆盖通过。B相邻In2仍有495/633点缺口，背面SMT／实际电池全屏／含正公差≤7mm／供料CAM／实物电气和EVT仍待证据。当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r31/engineering-candidate`，显式R26–R30及历史包保留，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R30 — 顶层时钟局部参考地（2026-11-02）
+
+执行者：Codex。先读 [R30 两孔微移、参考范围及源回放](E02-R30-CLOCK-REFERENCE-20261102.md)。仅微移两颗普通信号孔约0.17mm，保持全部轨形／时钟铜／器件位姿／孔数，消除XSTL顶层的5个In1参考采样缺口。八时钟网的F/In2→In1共1657点零缺失；背面相邻In2的495个缺口另行报告，不当作电气资格通过。
+
+默认R30；两次独立完整回放及默认重建保持43/43、原生/完整ERC全零，173地、20关键链、全部旧组和SDUSB实际参考通过，403个不同本地源测试覆盖通过。当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r30/engineering-candidate`；R26至R29历史入口和包保持。实物、电气与制造资格仍未关闭，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R29 — XSTL源端与下拉支路质量（2026-11-02）
+
+执行者：Codex。先读 [R29 路径变化、取舍与源回放](E02-R29-XSTL-SOURCE-QUALITY-20261102.md)。XSTL 驱动至串阻52.104→5.097mm、下拉支路5.814→1.479mm；两网总铜长86.052→73.777mm，有效主路径也缩短。输出改为65.375mm/9孔，R731移至背面，这些取舍与时序／SMT资格明确保留。
+
+默认源为R29；两次独立完整回放及默认重建保持43/43、原生/完整ERC全零，173地、20关键链、全部旧组、SD18/主USB和实际参考覆盖通过。401个不同本地源测试通过。具名工程候选为 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r29/engineering-candidate`；显式R26/R27/R28历史回放和旧包保持。电气／真实电池全屏／含正公差≤7mm／背面SMT／供料CAM/EVT尚未资格化，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R28 — 43控制网与完整源回放（2026-11-02）
+
+执行者：Codex。先读 [R28 路由、源回放与资格边界](E02-R28-ROUTING-CLOSURE-20261102.md)。43/43 控制网接通；两次独立完整源重建及最终默认入口重建均为 DRC 错误／警告／未连接／一致性／ERC **0/0/0/0/0**，173 地、20 关键链、全部旧连接组和 SD／USB 实际参考覆盖通过。401 个不同本地源测试通过。
+
+默认 `build_pico47_single.py` 为 R28，输入仍是不可变 R26 `v0.1.1`；历史 R26/R27 以 `--revision` 显式重建。具名工程检查点为 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r28/engineering-candidate`，生成输出不进入 Git。XSTL 源段52mm/6孔等路由质量、真实时序／电源／阻抗、实际电池和完整屏幕、背面SMT、含正公差≤7mm及CAM/供料/EVT仍未资格化；`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R27 — 六项布局修订（2026-10-31）
+
+执行者：Codex。先读 [R27 后续电气增补](E02-R27-ELECTRICAL-ANALYSIS-20261031.md)和[R27 布局修订与重建说明](E02-R27-LAYOUT-FIXES-20261031.md)。计入有效过孔段后，D2/D3相对CLK的空间铜长差约为−4.365/−3.235 mm，新增保守空间筛查未通过，电气时序仍待验收。当前工程候选为
+`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261031-r27/engineering-candidate`，
+PCB SHA-256 `94f12df7e05603fcd802378075822178d2e1e048f031a393dc3b349b03da25a8`。
+
+VBUS 等效铜阻降至 0.109231 Ω；晶振下相关顶层数字铜迁出；两组反馈均约 2.925 mm/0 过孔；前光 SW→二极管缩至 2.192 mm；SD 六条平面有效链 46.158–46.921 mm、最大相对 CLK 平面偏差 0.763 mm；USB 主路成对走 B 层，并由原生已铺 In2 地铜覆盖。
+
+两次全新 R26→R27 源回放均得到 DRC 错误/告警/未连接/一致性/ERC **0/0/0/0/0**，173 个地焊盘、20 条关键链及全部原连接组通过。默认 `build_pico47_single.py` 构建 R27；输入仍绑定 `v0.1.1` / R26，新增精确修改数据在 `r25_router/single_r27_layout_delta.json`。`--revision R26` 保留历史回归。归档目录未覆写；当前生成 CAD 和报告在外部目录。
+
+`manufacturing_release=false`。电池/完整屏幕/≤7 mm、供料、散热孔 CAM、实物电源/时序/USB 阻抗与 EVT 的资格边界见 R27 说明，未因零 DRC 而关闭。
+
+---
+
+# Historical Continuation: E0.2 r26 (v0.1.1) — Single Unified 4-Layer PCB Engineering Checkpoint (2026-10-30)
 
 Read [E02-R25-SINGLE-UNIFIED-PCB-20261029.md](E02-R25-SINGLE-UNIFIED-PCB-20261029.md), [MAINLAND-COMPONENT-BOM-AUDIT-20261029.md](MAINLAND-COMPONENT-BOM-AUDIT-20261029.md), and [E02-R25-ROUTING-HANDOFF-20261026.md](E02-R25-ROUTING-HANDOFF-20261026.md).
 Versioned in-repository native KiCad release directories:

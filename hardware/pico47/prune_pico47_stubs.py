@@ -52,6 +52,17 @@ def preserves_groups(old,new):
     return all(g <= lookup[next(iter(g))] for g in old if g)
 
 
+def preserves_groups_with_additions(old, new, added_pads):
+    """仅允许明确新增的焊盘；原库存、原连接组仍交给严格守卫完整验证。"""
+    before = set().union(*old) if old else set()
+    after = set().union(*new) if new else set()
+    added = set(added_pads)
+    if before & added or after != before | added:
+        return False
+    projected = [frozenset(g-added) for g in new if g-added]
+    return preserves_groups(old, projected)
+
+
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
