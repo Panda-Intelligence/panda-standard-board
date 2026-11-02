@@ -931,5 +931,131 @@ class LayerResolvedPathTests(unittest.TestCase):
             layer_centers_from_job(dict(MaterialStackup=rows))
 
 
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class SourcePoseEnvelopeTests(unittest.TestCase):
+    def fixture(self):
+        import wx
+        app=wx.GetApp() or wx.App(False)
+        import pcbnew as P
+        board=P.BOARD();board.SetCopperLayerCount(4)
+        moved=[f'M{i}' for i in range(54)]
+        added=[f'A{i}' for i in range(12)]
+        for idx,ref in enumerate(moved+added+['NEIGHBOR']):
+            fp=P.FOOTPRINT(board);fp.SetReference(ref);fp.SetAttributes(P.FP_SMD)
+            x=(idx%10)*5;y=(idx//10)*5
+            pad=P.PAD(fp);pad.SetNumber('1');pad.SetAttribute(P.PAD_ATTRIB_SMD)
+            pad.SetSize(P.VECTOR2I(mm(.5),mm(.5)));pad.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+            ls=P.LSET();ls.AddLayer(P.F_Cu);pad.SetLayerSet(ls);fp.Add(pad)
+            if ref!='NEIGHBOR':
+                poly=P.PCB_SHAPE(fp,P.SHAPE_T_POLY);poly.SetLayer(P.F_CrtYd);poly.SetWidth(mm(.05))
+                pts=poly.GetPolyShape();pts.NewOutline()
+                for px,py in [(x-.4,y-.4),(x+.4,y-.4),(x+.4,y+.4),(x-.4,y+.4)]:
+                    pts.Append(mm(px),mm(py))
+                fp.Add(poly)
+            fp.SetPosition(P.VECTOR2I(mm(x),mm(y)));board.Add(fp)
+        contract=dict(fallback_margin_mm=.25,moved_refs=moved,added_refs=added)
+        return board,contract
+
+    def test_clean_66_pose_screen_passes_and_keeps_supplier_qualification_false(self):
+        from build_pico47_single import inspect_source_pose_envelopes
+        board,c=self.fixture();r=inspect_source_pose_envelopes(board,c)
+        self.assertEqual(r['clashes'],[])
+        self.assertEqual(r['checked_pose_count'],66)
+        self.assertIn('NEIGHBOR:F.Cu',r['fallback_refs'])
+        self.assertFalse(r['supplier_maximum_envelopes_and_tolerance_qualified'])
+
+    def test_fallback_250um_margin_overlap_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_source_pose_envelopes
+        board,c=self.fixture()
+        nb=board.FindFootprintByReference('NEIGHBOR')
+        next(iter(nb.Pads())).SetPosition(P.VECTOR2I(mm(.8),0))
+        with self.assertRaisesRegex(ValueError,'Source-pose envelope clashes'):
+            inspect_source_pose_envelopes(board,c)
+
+    def test_contract_cannot_weaken_fallback_margin_or_pose_count(self):
+        from build_pico47_single import inspect_source_pose_envelopes
+        board,c=self.fixture();c['fallback_margin_mm']=.1
+        with self.assertRaisesRegex(ValueError,'fallback margin differs'):
+            inspect_source_pose_envelopes(board,c)
+        board,c=self.fixture();c['moved_refs']=c['moved_refs'][:-1]
+        with self.assertRaisesRegex(ValueError,'inventory differs'):
+            inspect_source_pose_envelopes(board,c)
+
+    def test_opposite_face_part_at_same_xy_does_not_falsely_clash(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_source_pose_envelopes
+        board,c=self.fixture()
+        nb=board.FindFootprintByReference('NEIGHBOR')
+        p=next(iter(nb.Pads()));p.SetPosition(P.VECTOR2I(0,0))
+        ls=P.LSET();ls.AddLayer(P.B_Cu);p.SetLayerSet(ls)
+        self.assertEqual(inspect_source_pose_envelopes(board,c)['clashes'],[])
+
+
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class BacksideSmtClearanceTests(unittest.TestCase):
+    def fixture(self):
+        import wx
+        app=wx.GetApp() or wx.App(False)
+        import pcbnew as P
+        board=P.BOARD();board.SetCopperLayerCount(4)
+        parts=[('C537',67.55,99.65,.55,False),('C538',67.1,100.65,.55,False),
+               ('C543',68.345,94.963,.55,False),('C815',12.8,94.0,.55,False),
+               ('R710',59.308,98.967,.4,False),('R731',64.7,89.1,.4,False),
+               ('TP801',30.45,96.05,0,True),('TP803',13.65,91.85,0,True),('TP805',12.5,103.0,0,True)]
+        for ref,x,y,_,bare in parts:
+            fp=P.FOOTPRINT(board);fp.SetReference(ref);fp.SetLayer(P.B_Cu)
+            fp.SetAttributes(P.FP_SMD|(P.FP_EXCLUDE_FROM_BOM if bare else 0))
+            p=P.PAD(fp);p.SetNumber('1');p.SetAttribute(P.PAD_ATTRIB_SMD)
+            p.SetSize(P.VECTOR2I(mm(.5),mm(.5)));p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+            ls=P.LSET();ls.AddLayer(P.B_Cu);p.SetLayerSet(ls);fp.Add(p)
+            fp.SetPosition(P.VECTOR2I(mm(x),mm(y)));board.Add(fp)
+        contract=dict(expected_populated_refs=['C537','C538','C543','C815','R710','R731'],
+                      expected_bare_testpoint_refs=['TP801','TP803','TP805'],
+                      battery_bay_max_x_mm=37.5,battery_bay_max_y_mm=83.2,
+                      min_battery_bay_clearance_mm=5.0,upper_right_bay_max_y_mm=31.2,
+                      min_upper_right_bay_clearance_mm=50.0,maximum_component_thickness_mm=.6,
+                      max_thickness_mm_by_ref={'C537':.55,'C538':.55,'C543':.55,'C815':.55,'R710':.4,'R731':.4})
+        return board,contract
+
+    def test_backside_smt_parts_clear_bays_and_keep_7mm_qualification_false(self):
+        from build_pico47_single import inspect_backside_smt_clearances
+        board,c=self.fixture();r=inspect_backside_smt_clearances(board,c)
+        self.assertEqual(r['populated_count'],6)
+        self.assertEqual(r['bare_testpoint_count'],3)
+        self.assertAlmostEqual(r['max_populated_thickness_mm'],.55)
+        self.assertGreaterEqual(r['min_battery_bay_clearance_mm'],5.0)
+        self.assertTrue(r['rear_shell_local_relief_required'])
+        self.assertFalse(r['backside_height_and_assembly_qualified'])
+        self.assertFalse(r['actual_battery_full_panel_positive_tolerance_7mm_qualified'])
+
+    def test_battery_or_upper_right_bay_encroachment_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_backside_smt_clearances
+        board,c=self.fixture()
+        fp=board.FindFootprintByReference('C815')
+        next(iter(fp.Pads())).SetPosition(P.VECTOR2I(mm(12.8),mm(86.0)))
+        with self.assertRaisesRegex(ValueError,'battery bay clearance'):
+            inspect_backside_smt_clearances(board,c)
+        board,c=self.fixture()
+        fp=board.FindFootprintByReference('R731')
+        next(iter(fp.Pads())).SetPosition(P.VECTOR2I(mm(64.7),mm(75.0)))
+        with self.assertRaisesRegex(ValueError,'upper-right support bay'):
+            inspect_backside_smt_clearances(board,c)
+
+    def test_excess_backside_thickness_or_unexpected_part_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_backside_smt_clearances
+        board,c=self.fixture();c['max_thickness_mm_by_ref']['C815']=.85
+        with self.assertRaisesRegex(ValueError,'thickness budget'):
+            inspect_backside_smt_clearances(board,c)
+        board,c=self.fixture()
+        extra=P.FOOTPRINT(board);extra.SetReference('C_EXTRA');extra.SetAttributes(P.FP_SMD)
+        p=P.PAD(extra);p.SetNumber('1');p.SetAttribute(P.PAD_ATTRIB_SMD);p.SetSize(P.VECTOR2I(mm(.5),mm(.5)))
+        p.SetPosition(P.VECTOR2I(mm(50),mm(100)));ls=P.LSET();ls.AddLayer(P.B_Cu);p.SetLayerSet(ls);extra.Add(p);board.Add(extra)
+        with self.assertRaisesRegex(ValueError,'populated SMT inventory differs'):
+            inspect_backside_smt_clearances(board,c)
+
+
 if __name__=='__main__':
     unittest.main()

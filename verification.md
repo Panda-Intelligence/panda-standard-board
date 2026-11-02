@@ -1442,3 +1442,12 @@ R38从不可变R26直回放，两次显式源重建、最终默认入口及历�
 45最近审阅位姿包络通过；扩大54源位姿筛查保留原L905/R931的250um保守裕量重叠。名义Fab/焊盘未撞庭院、Fab间隔.36mm；实际最大供应商包络/公差待核，不声称全板装配资格。实际PMIC版本/EP、电气噪声稳定性/DCbias/功率/SI/USB、实际2050mAhpack/fullpanel、背高与正公差<=7mm、供料/full46CAM/EVT仍待，manufacturing_release=false。
 
 源delta df1be4c0d9857a4012b0072d7df8991c618e070cada332dec91bb00e5c492ee3；默认PCB5ade9602fbc9031318ea3266147cf8f02bdeb6e8ea5ee5a1b3b647be5cf1bfe6。候选../panda-board-deliverables/panda47-e02-20261102-r38/engineering-candidate；生成CAD/报告/图不进Git。原型、A/B、history全CAD副本验证后清理，仅留小JSON验收，串行使用唯一CURRENT-NATIVE，不以封存为由复制各次重建板。
+
+## 2026-11-02 R39 全源位姿包络闭合与CAM/供料/叠层工程预审 / Codex
+
+R39从不可变R26直回放，仅将L905由F12.05/123.90/180°迁至F12.05/123.65/180°，消除R38的L905/R931保守250µm扩张包络重叠（名义Fab间距0.360→0.610mm，L905庭院距R931扩张框+0.105mm、距D905庭院+0.460mm）。其余264件位姿、全部265件908盘身份/字段/值/针网，以及全板10951条轨、1005个孔、16个覆铜区与R38逐项完全一致（零铜改动）。构建器启用`inspect_source_pose_envelopes`（66件源位姿0冲突）与`inspect_backside_smt_clearances`（背面6颗0402贴片件最大高度0.55mm、25个裸测点/调试盘，距323576电池仓≥5.405mm、距右上支撑区≥56.605mm）。
+
+两次显式完整R26→R39源重建、最终默认入口及历史R38回归均为DRC错误/告警/open/parity/ERC 0/0/0/0/0；三份R39独立原生审计保持全部R38旧盘组、185GND/52关键链、7对PMIC连续铜参考地走廊、全46孔POFV工艺签名、SD/USB/时钟参考及3处时钟地缝合。CPL226仅L905一行改变，C815Bottom0°、BT301后装不入CPL、21pending和全46CSV原样保持。459个不同本地源用例互补全通过：geometry 396 pass/63 skip、KiCad 440 pass/19 skip，原452 IDs保持，新增7个包络与背面净空边界用例通过，无CI。
+
+源delta `7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77`；默认PCB `64f0ea2d4cfead7cd740d3622da3ff89d30e34db1aad7e6b65d25660005bc2b3`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R39工程记录](hardware/pico47/E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md)。供应商最大包络、实际PMIC版本/噪声稳定性、真实2050mAh电池/完整面板/底壳避让槽与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`。
+

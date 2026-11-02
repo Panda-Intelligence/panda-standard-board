@@ -1,4 +1,37 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R38 SINGLE / PMIC JOINT LAYOUT
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R39 SINGLE / 66-POSE ENVELOPE & PRE-CAM AUDIT
+
+Read `hardware/pico47/E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md` first.
+Default R39 replays directly from immutable R26 using single_r39_layout_delta.json,
+SHA-256 7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`.
+PCB SHA-256 64f0ea2d4cfead7cd740d3622da3ff89d30e34db1aad7e6b65d25660005bc2b3.
+
+Only L905 moved F12.05/123.90/180 -> F12.05/123.65/180 (-0.25 mm Y); all other 264
+poses, all 265 part/908 pad identities/fields/values/nets, and all 10951 tracks,
+1005 vias and 16 zones from R38 remain bit-for-bit unchanged (zero copper change).
+L905/R931 nominal Fab gap increases 0.360->0.610 mm; L905 courtyard clears R931
++250um fallback bbox by 0.105 mm and D905 courtyard by 0.460 mm. Native
+inspect_source_pose_envelopes verifies 0 clashes across all 66 source-reviewed
+poses (54 moved + 12 added). Supplier maximum envelopes remain unqualified.
+
+Native inspect_backside_smt_clearances locks the 6 populated B.Cu SMT parts
+(C537/C538/C543/C815 <=0.55mm, R710/R731 <=0.40mm) and 25 bare test/debug pads,
+confirming >=5.405mm clearance to the 323576 battery bay and >=56.605mm to the
+upper-right support bay, plus two 0.45mm rear-shell relief pockets. Full 46-via
+IPC-4761 Type VII POFV CAM matrix, 21 pending SMT consignment/registration table,
+BT301 post-SMT and EVT bench checklist are bound in the R39 engineering record.
+
+Two full R26->R39 replays + default + history R38 pass: DRC/open/parity/ERC all 0,
+185 GND/52 critical links, 7 PMIC continuous-copper ground corridors, 46 solder-joint
+vias, SD/USB/clock references and 3 clock GND stitches preserved; 459 distinct local
+source tests pass (geometry 396 pass/63 skip, KiCad 440 pass/19 skip). Keep 4 layers/
+no In1 signal, isolated negative EP49, C804 dogbone, unique C815 100nF, GPIO2 direct.
+Actual PMIC revision/noise/stability, exact 2050mAh pack/full panel, backside height/
+positive-tolerance <=7mm, supplier CAM/supply/EVT remain open; manufacturing_release,
+supplier_process_accepted and actual_noise_and_stability_qualified stay false. Keep
+one baseline and one active candidate; remove closed full rebuilds, retain small JSONs.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R38 SINGLE / PMIC JOINT LAYOUT
 
 Read `hardware/pico47/E02-R38-PMIC-JOINT-LAYOUT-20261102.md` first. Default R38
 replays directly from immutable R26 using single_r38_layout_delta.json, SHA-256

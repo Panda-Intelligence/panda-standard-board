@@ -1,4 +1,12 @@
-# Current Continuation: E0.2 R38 — PMIC联合布局（2026-11-02）
+# Current Continuation: E0.2 R39 — 全源位姿包络闭合与CAM/供料/叠层预审（2026-11-02）
+
+执行者：Codex。先读 [R39 66件源位姿包络闭合、背面净空与CAM/供料/叠层工程预审](E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md)。仅将 L905 由 F12.05/123.90/180° 微移至 F12.05/123.65/180°，消除 R38 筛查保留的 L905／R931 保守 250µm 扩张包络重叠（名义 Fab 间距 0.360→0.610mm，L905 庭院距 R931 250µm 扩张框 +0.105mm、距 D905 庭院 +0.460mm）；其余 264 件位姿、全部 265 件 908 盘身份及全板 **10951 轨 1005 孔 16 区与 R38 完全一致（零铜改动）**。
+
+默认 R39；两次独立完整 R26→R39 重建、默认入口及历史 R38 回归均通过，原生／ERC **0/0/0/0/0**。构建器启用 `inspect_source_pose_envelopes`（全部 66 件源变更器件 0 冲突）与 `inspect_backside_smt_clearances`（背面 6 颗阻容最大 0.55mm、25 个裸测点／调试盘，距电池仓 ≥5.405mm、距右上支撑区 ≥56.605mm），并保持 185 地 52 关键链、7 对 PMIC 连续铜参考地走廊、完整 46 孔 POFV 工艺签名、226 SMT/CPL、BT301 后装及 21 项待供料。459 个不同本地源用例互补全覆盖（geometry 396 pass/63 skip，KiCad 440 pass/19 skip）。
+
+工程候选为 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`，默认 PCB SHA-256 `64f0ea2d4cfead7cd740d3622da3ff89d30e34db1aad7e6b65d25660005bc2b3`，源增量 SHA-256 `7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77`。供应商最大实物包络、真实电气／噪声稳定性、实际电池全屏／底壳避让槽与正公差 ≤7mm、板厂 46 孔 CAM 确认／21 项供料建档／EVT 仍待实证，`manufacturing_release=false`。
+
+# Historical Continuation: E0.2 R38 — PMIC联合布局（2026-11-02）
 
 执行者：Codex。先读 [R38 分压、功率支路、实际地铜走廊与取舍](E02-R38-PMIC-JOINT-LAYOUT-20261102.md)。仅迁位 R803／R804，联合处理八个明确网的局部铜；其余263件位姿、全部265件908盘身份／值／字段／网表、未释放铜及原规则／区域／板框保持。VREF36.769→27.098mm／4→3孔，驱动9.564→7.098mm，VN_LX14.762→12.971mm／3→2孔，新增二极管支路为0.35F。VGL与BASE路径、二极管→电感空间长度增加，取舍明确保留。
 

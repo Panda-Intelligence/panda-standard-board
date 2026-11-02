@@ -322,6 +322,125 @@ def inspect_pmic_analog_shield(board, contract):
                 native_ground_geometry_passed=True,actual_noise_and_stability_qualified=False)
 
 
+def inspect_source_pose_envelopes(board, contract):
+    """核对全部源迁位/新增器件与全板同面器件的原生庭院及250um回退包络零重叠；不声称供应商极值公差资格。"""
+    import pcbnew as P
+    require(contract['fallback_margin_mm'] == .25, 'Source pose fallback margin differs')
+    moved = list(contract['moved_refs'])
+    added = list(contract['added_refs'])
+    checked = sorted(set(moved) | set(added))
+    require(len(moved) == 54 and len(added) == 12 and len(checked) == 66,
+            'Reviewed source pose inventory differs')
+    fps = {f.GetReference(): f for f in board.GetFootprints()}
+    require(set(checked) <= set(fps), 'Missing reviewed source-pose footprint')
+    margin_nm = round(contract['fallback_margin_mm'] * 1e6)
+    fallback_refs = []
+    envs = {}
+    for ref, fp in sorted(fps.items()):
+        fp.BuildCourtyardCaches()
+        for side, ctyd_layer, fab_layer, name in [
+            (P.F_Cu, P.F_CrtYd, P.F_Fab, 'F.Cu'),
+            (P.B_Cu, P.B_CrtYd, P.B_Fab, 'B.Cu'),
+        ]:
+            pads = [p for p in fp.Pads() if p.IsOnLayer(side)]
+            if not pads:
+                continue
+            poly = P.SHAPE_POLY_SET(fp.GetCourtyard(side))
+            if not poly.IsEmpty():
+                half = max((g.GetWidth() // 2 for g in fp.GraphicalItems()
+                            if g.GetLayer() == ctyd_layer), default=0)
+                if half:
+                    poly.Inflate(half, P.CORNER_STRATEGY_ROUND_ALL_CORNERS, 500)
+                envs[(ref, name)] = (poly, poly.BBox())
+            else:
+                fallback_refs.append(f'{ref}:{name}')
+                boxes = [p.GetEffectiveShape(side).BBox() for p in pads]
+                boxes += [g.GetBoundingBox() for g in fp.GraphicalItems() if g.GetLayer() == fab_layer]
+                x1 = min(b.GetLeft() for b in boxes) - margin_nm
+                y1 = min(b.GetTop() for b in boxes) - margin_nm
+                x2 = max(b.GetRight() for b in boxes) + margin_nm
+                y2 = max(b.GetBottom() for b in boxes) + margin_nm
+                poly = P.SHAPE_POLY_SET()
+                poly.NewOutline()
+                for x, y in [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]:
+                    poly.Append(x, y)
+                envs[(ref, name)] = (poly, poly.BBox())
+    clashes = []
+    bbox_false_positives = []
+    checked_set = set(checked)
+    items = sorted(envs.items())
+    for idx, ((r1, s1), (p1, b1)) in enumerate(items):
+        for (r2, s2), (p2, b2) in items[idx + 1:]:
+            if s1 != s2 or (r1 not in checked_set and r2 not in checked_set):
+                continue
+            if b1.Intersects(b2):
+                if p1.Collide(p2, 0):
+                    clashes.append([r1, r2])
+                else:
+                    bbox_false_positives.append([r1, r2])
+    require(not clashes, f'Source-pose envelope clashes remain: {clashes}')
+    return dict(clashes=clashes, bounding_box_false_positives=bbox_false_positives,
+                fallback_refs=fallback_refs, fallback_margin_mm=contract['fallback_margin_mm'],
+                moved_count=len(moved), added_count=len(added), checked_pose_count=len(checked),
+                supplier_maximum_envelopes_and_tolerance_qualified=False)
+
+
+def inspect_backside_smt_clearances(board, contract):
+    """核对背面6颗贴片器件与25个裸测点/调试焊盘的禁布净空与高度上限；实物背壳避空及<=7mm正公差仍待资格化。"""
+    import pcbnew as P
+    expected = sorted(contract['expected_populated_refs'])
+    expected_tp = sorted(contract['expected_bare_testpoint_refs'])
+    thickness_map = contract['max_thickness_mm_by_ref']
+    require(sorted(thickness_map) == expected, 'Backside thickness inventory differs')
+    populated, testpoints = [], []
+    rows = []
+    for fp in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
+        ref = fp.GetReference()
+        pads_b = [p for p in fp.Pads() if p.IsOnLayer(P.B_Cu) and not p.IsOnLayer(P.F_Cu)]
+        if not pads_b:
+            continue
+        is_bare = bool(fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM)
+        if is_bare:
+            testpoints.append(ref)
+            continue
+        if fp.IsDNP() or not (fp.GetAttributes() & P.FP_SMD):
+            continue
+        populated.append(ref)
+        require(ref in thickness_map, f'Backside populated SMT inventory differs: {ref}')
+        boxes = [p.GetEffectiveShape(P.B_Cu).BBox() for p in pads_b]
+        boxes += [g.GetBoundingBox() for g in fp.GraphicalItems() if g.GetLayer() == P.B_Fab]
+        x1, y1 = min(b.GetLeft() for b in boxes) / 1e6, min(b.GetTop() for b in boxes) / 1e6
+        x2, y2 = max(b.GetRight() for b in boxes) / 1e6, max(b.GetBottom() for b in boxes) / 1e6
+        bat_dx = max(0.0, x1 - contract['battery_bay_max_x_mm'])
+        bat_dy = max(0.0, y1 - contract['battery_bay_max_y_mm'])
+        bat_dist = (bat_dx ** 2 + bat_dy ** 2) ** 0.5
+        ur_dy = max(0.0, y1 - contract['upper_right_bay_max_y_mm'])
+        max_z = float(thickness_map[ref])
+        require(bat_dist >= contract['min_battery_bay_clearance_mm'],
+                f'Backside SMT {ref} encroaches on battery bay clearance')
+        require(ur_dy >= contract['min_upper_right_bay_clearance_mm'],
+                f'Backside SMT {ref} encroaches on upper-right support bay clearance')
+        require(0 < max_z <= contract['maximum_component_thickness_mm'],
+                f'Backside SMT {ref} exceeds reviewed backside component thickness budget')
+        rows.append(dict(ref=ref, value=fp.GetValue(),
+                         x_mm=round(P.ToMM(fp.GetPosition().x), 4),
+                         y_mm=round(P.ToMM(fp.GetPosition().y), 4),
+                         rot_deg=round(fp.GetOrientationDegrees(), 2),
+                         bbox_mm=[round(x1, 4), round(y1, 4), round(x2, 4), round(y2, 4)],
+                         battery_bay_clearance_mm=round(bat_dist, 4),
+                         upper_right_bay_clearance_mm=round(ur_dy, 4),
+                         max_datasheet_thickness_mm=max_z))
+    require(sorted(populated) == expected, f'Backside populated SMT inventory differs: {populated}')
+    require(sorted(testpoints) == expected_tp, f'Backside bare testpoint inventory differs: {testpoints}')
+    return dict(populated_count=len(rows), bare_testpoint_count=len(testpoints),
+                populated_parts=rows, bare_testpoint_refs=sorted(testpoints),
+                max_populated_thickness_mm=max(r['max_datasheet_thickness_mm'] for r in rows),
+                min_battery_bay_clearance_mm=min(r['battery_bay_clearance_mm'] for r in rows),
+                rear_shell_local_relief_required=True,
+                backside_height_and_assembly_qualified=False,
+                actual_battery_full_panel_positive_tolerance_7mm_qualified=False)
+
+
 def inspect_single(candidate, spec):
     """以源针序、独立原理图网表和原生物理连接组检查 Single。"""
     import pcbnew as P
@@ -498,6 +617,10 @@ def inspect_single(candidate, spec):
             supplies.append(row)
     analog_shield = (inspect_pmic_analog_shield(board,spec['pmic_analog_shield'])
                      if 'pmic_analog_shield' in spec else None)
+    pose_envelopes = (inspect_source_pose_envelopes(board,spec['source_pose_envelope_screen'])
+                      if 'source_pose_envelope_screen' in spec else None)
+    backside_clearance = (inspect_backside_smt_clearances(board,spec['backside_smt_clearance'])
+                          if 'backside_smt_clearance' in spec else None)
     return board, groups, {'ground':ground, 'critical_links':links, 'bom':bom,
                            'geometry':geometry, 'via_in_pad':vip, 'pending_supply':supplies,
                            'required_post_smt':manual,
@@ -506,7 +629,9 @@ def inspect_single(candidate, spec):
                            **({'power_bypasses':power_bypasses} if power_bypasses else {}),
                            **({'reference_filters':reference_filters} if reference_filters else {}),
                            **({'solder_joint_via_process':process_inventory} if process_inventory else {}),
-                           **({'pmic_analog_shield':analog_shield} if analog_shield else {})}
+                           **({'pmic_analog_shield':analog_shield} if analog_shield else {}),
+                           **({'source_pose_envelopes':pose_envelopes} if pose_envelopes else {}),
+                           **({'backside_smt_clearance':backside_clearance} if backside_clearance else {})}
 
 
 def write_csv(path, rows):
@@ -524,7 +649,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -539,7 +664,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -570,11 +695,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -583,7 +708,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -639,7 +764,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])
