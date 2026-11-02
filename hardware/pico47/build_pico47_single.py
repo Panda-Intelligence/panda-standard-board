@@ -359,9 +359,13 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
         require(y.m_Uuid.AsString() in group_for[x.m_Uuid.AsString()],
                 'PMIC charge-pump joint scope has no actual copper connection')
     scoped_nets = {contract['power_net'], contract['joint_driver_net'], contract['joint_vgl_net']}
+    if 'pump_net' in contract:
+        scoped_nets.add(contract['pump_net'])
     pos = contract.get('positive_storage')
     if pos:
         scoped_nets |= {pos['power_net'], pos['joint_driver_net'], pos['joint_vgh_net']}
+        if 'pump_net' in pos:
+            scoped_nets.add(pos['pump_net'])
     scoped_vias = [v for v in board.GetTracks() if v.GetClass() == 'PCB_VIA' and v.GetNetname() in scoped_nets]
     for via in scoped_vias:
         for fp in board.GetFootprints():
@@ -389,11 +393,39 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
     require(drv_stats['total_track_length_mm'] <= contract['maximum_driver_track_length_mm'] + 1e-6
             and drv_stats['via_count'] <= contract['maximum_driver_via_count'],
             'P47_VEE_DRV exceeds reviewed joint routing budget')
+    if 'driver_allowed_layers' in contract:
+        require(drv_stats['track_layers'] == sorted(contract['driver_allowed_layers']),
+                'P47_VEE_DRV uses unreviewed copper layers')
     require(vgl_stats['total_track_length_mm'] <= contract['maximum_vgl_track_length_mm'] + 1e-6
             and vgl_stats['via_count'] <= contract['maximum_vgl_via_count'],
             'P47_VGL exceeds reviewed joint routing budget')
     pad_dist_mm = ((c1.GetPosition().x - p_ic.GetPosition().x) ** 2
                    + (c1.GetPosition().y - p_ic.GetPosition().y) ** 2) ** 0.5 / 1e6
+    def check_flying_cap(spec, drv_cap_fp, diode_fp, drv_net_name):
+        require(drv_cap_fp.GetValue() == spec['flying_cap_value'] and not drv_cap_fp.IsDNP()
+                and drv_cap_fp.GetLayer() == P.F_Cu and drv_cap_fp.GetAttributes() & P.FP_SMD,
+                f'{spec["driver_cap"]} charge-pump flying capacitor value or assembly differs')
+        fc_pump = pin(drv_cap_fp, '1')
+        fc_drv = pin(drv_cap_fp, spec['driver_cap_pin'])
+        p_pump_diode = pin(diode_fp, spec['pump_diode_pin'])
+        require(fc_pump.GetNetname() == p_pump_diode.GetNetname() == spec['pump_net']
+                and fc_drv.GetNetname() == drv_net_name,
+                f'{spec["pump_net"]} flying capacitor pin net differs')
+        require(p_pump_diode.m_Uuid.AsString() in group_for[fc_pump.m_Uuid.AsString()],
+                f'{spec["driver_cap"]} flying capacitor has no actual copper connection to diode')
+        pump_stats = net_stats(spec['pump_net'])
+        require(pump_stats['total_track_length_mm'] <= spec['maximum_pump_track_length_mm'] + 1e-6,
+                f'{spec["pump_net"]} exceeds reviewed total track length budget')
+        require(pump_stats['via_count'] <= spec['maximum_pump_via_count'],
+                f'{spec["pump_net"]} exceeds reviewed via count budget')
+        require(pump_stats['track_layers'] == sorted(spec['pump_allowed_layers']),
+                f'{spec["pump_net"]} uses unreviewed copper layers')
+        pump_dist_mm = ((fc_pump.GetPosition().x - p_pump_diode.GetPosition().x) ** 2
+                        + (fc_pump.GetPosition().y - p_pump_diode.GetPosition().y) ** 2) ** 0.5 / 1e6
+        return dict(cap=spec['driver_cap'], value=spec['flying_cap_value'],
+                    driver_net=drv_net_name, pump_net=spec['pump_net'],
+                    cap_to_diode_pad_distance_mm=round(pump_dist_mm, 6),
+                    pump=pump_stats)
     def check_output_cap(spec, net_name, p_diode_out):
         out_cap = board.FindFootprintByReference(spec['output_cap'])
         require(out_cap is not None, f'Missing PMIC charge-pump output capacitor: {spec["output_cap"]}')
@@ -434,6 +466,8 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
                   all_scoped_vias_clear_smd_50um=True,
                   charge_pump_transient_and_ripple_qualified=False,
                   actual_noise_and_stability_qualified=False)
+    if 'pump_net' in contract:
+        result['flying_cap'] = check_flying_cap(contract, drv_cap, diode, contract['joint_driver_net'])
     if 'output_cap' in contract:
         result['output_cap'] = check_output_cap(contract, contract['joint_vgl_net'], p_vgl_diode)
     if pos:
@@ -475,6 +509,9 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
         require(vgh_drv_stats['total_track_length_mm'] <= pos['maximum_driver_track_length_mm'] + 1e-6
                 and vgh_drv_stats['via_count'] <= pos['maximum_driver_via_count'],
                 'P47_VGH_DRV exceeds reviewed joint routing budget')
+        if 'driver_allowed_layers' in pos:
+            require(vgh_drv_stats['track_layers'] == sorted(pos['driver_allowed_layers']),
+                    'P47_VGH_DRV uses unreviewed copper layers')
         require(vgh_stats['total_track_length_mm'] <= pos['maximum_vgh_track_length_mm'] + 1e-6
                 and vgh_stats['via_count'] <= pos['maximum_vgh_via_count'],
                 'P47_VGH exceeds reviewed joint routing budget')
@@ -484,6 +521,9 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
             cap=pos['cap'], value=pos['value'], power_net=pos['power_net'],
             pad_distance_mm=round(pos_pad_dist_mm, 6),
             vgh_base=vgh_base_stats, vgh_drv=vgh_drv_stats, vgh=vgh_stats)
+        if 'pump_net' in pos:
+            result['positive_storage']['flying_cap'] = check_flying_cap(
+                pos, pos_drv_cap, pos_diode, pos['joint_driver_net'])
         if 'output_cap' in pos:
             result['positive_storage']['output_cap'] = check_output_cap(
                 pos, pos['joint_vgh_net'], p_vgh_diode)
@@ -822,7 +862,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -837,7 +877,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -868,11 +908,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -881,7 +921,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -937,7 +977,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])

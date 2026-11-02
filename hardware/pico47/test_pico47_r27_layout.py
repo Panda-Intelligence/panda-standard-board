@@ -1303,6 +1303,76 @@ class PmicChargePumpStorageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'C809 charge-pump output capacitor value or assembly differs'):
             inspect_pmic_charge_pump_storage(board,c)
 
+    def fixture_with_flying_caps(self):
+        import pcbnew as P
+        board,c=self.fixture_with_output_caps()
+        for idx,name in enumerate(['P47_PUMP_NEG','P47_PUMP_POS'],8):
+            board.Add(P.NETINFO_ITEM(board,name,idx))
+        def add_pad(ref,num,net,x,y):
+            fp=board.FindFootprintByReference(ref)
+            p=P.PAD(fp);p.SetNumber(str(num));p.SetAttribute(P.PAD_ATTRIB_SMD)
+            p.SetNet(board.FindNet(net));p.SetSize(P.VECTOR2I(mm(.4),mm(.4)))
+            p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+            ls=P.LSET();ls.AddLayer(P.F_Cu);p.SetLayerSet(ls);fp.Add(p)
+        add_pad('C811','1','P47_PUMP_NEG',4,3)
+        add_pad('D804','3','P47_PUMP_NEG',8,3)
+        add_pad('C808','1','P47_PUMP_POS',4,13)
+        add_pad('D803','3','P47_PUMP_POS',8,13)
+        def trk(net,ly,x1,y1,x2,y2):
+            t=P.PCB_TRACK(board);t.SetNet(board.FindNet(net));t.SetLayer(ly);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(mm(x1),mm(y1)));t.SetEnd(P.VECTOR2I(mm(x2),mm(y2)));board.Add(t)
+        def via(net,x,y):
+            v=P.PCB_VIA(board);v.SetNet(board.FindNet(net));v.SetViaType(P.VIATYPE_THROUGH)
+            v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+            v.SetPosition(P.VECTOR2I(mm(x),mm(y)));board.Add(v)
+        trk('P47_PUMP_NEG',P.F_Cu,4,3,5,3);via('P47_PUMP_NEG',5,3)
+        trk('P47_PUMP_NEG',P.B_Cu,5,3,7,3);via('P47_PUMP_NEG',7,3)
+        trk('P47_PUMP_NEG',P.F_Cu,7,3,8,3)
+        trk('P47_PUMP_POS',P.F_Cu,4,13,8,13)
+        c.update(driver_allowed_layers=['B.Cu','F.Cu'],flying_cap_value='47n/50V/0805',
+                 pump_net='P47_PUMP_NEG',pump_diode_pin='3',
+                 maximum_pump_track_length_mm=6.0,maximum_pump_via_count=2,
+                 pump_allowed_layers=['B.Cu','F.Cu'])
+        c['positive_storage'].update(
+            driver_allowed_layers=['F.Cu','In2.Cu'],flying_cap_value='47n/50V/0805',
+            pump_net='P47_PUMP_POS',pump_diode_pin='3',
+            maximum_pump_track_length_mm=6.0,maximum_pump_via_count=0,
+            pump_allowed_layers=['F.Cu'])
+        return board,c
+
+    def test_flying_caps_and_pump_nets_pass_and_lock_all_eight_charge_pump_nets(self):
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_flying_caps();r=inspect_pmic_charge_pump_storage(board,c)
+        self.assertEqual(r['flying_cap']['cap'],'C811')
+        self.assertEqual(r['flying_cap']['pump_net'],'P47_PUMP_NEG')
+        self.assertEqual(r['flying_cap']['pump']['via_count'],2)
+        self.assertEqual(r['flying_cap']['pump']['track_layers'],['B.Cu','F.Cu'])
+        self.assertEqual(r['positive_storage']['flying_cap']['cap'],'C808')
+        self.assertEqual(r['positive_storage']['flying_cap']['pump_net'],'P47_PUMP_POS')
+        self.assertEqual(r['positive_storage']['flying_cap']['pump']['via_count'],0)
+        self.assertEqual(r['positive_storage']['flying_cap']['pump']['track_layers'],['F.Cu'])
+
+    def test_flying_cap_pump_layer_length_via_or_pad_clearance_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_flying_caps()
+        t=P.PCB_TRACK(board);t.SetNet(board.FindNet('P47_PUMP_POS'));t.SetLayer(P.B_Cu);t.SetWidth(mm(.15))
+        t.SetStart(P.VECTOR2I(mm(5),mm(13)));t.SetEnd(P.VECTOR2I(mm(6),mm(13)));board.Add(t)
+        with self.assertRaisesRegex(ValueError,'P47_PUMP_POS uses unreviewed copper layers'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_flying_caps();c['positive_storage']['maximum_pump_track_length_mm']=2.0
+        with self.assertRaisesRegex(ValueError,'P47_PUMP_POS exceeds reviewed total track length budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_flying_caps();c['maximum_pump_via_count']=1
+        with self.assertRaisesRegex(ValueError,'P47_PUMP_NEG exceeds reviewed via count budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_flying_caps()
+        v=P.PCB_VIA(board);v.SetNet(board.FindNet('P47_PUMP_NEG'));v.SetViaType(P.VIATYPE_THROUGH)
+        v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+        v.SetPosition(P.VECTOR2I(mm(4.42),mm(3)));board.Add(v)
+        with self.assertRaisesRegex(ValueError,'50um SMD pad-edge'):
+            inspect_pmic_charge_pump_storage(board,c)
+
 
 if __name__=='__main__':
     unittest.main()

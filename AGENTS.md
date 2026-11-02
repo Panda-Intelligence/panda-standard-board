@@ -1,4 +1,52 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R42 SINGLE / C809 VGH RECTIFIER & OUTPUT STORAGE
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R43 SINGLE / C808 & C811 CHARGE-PUMP FLYING CAPACITORS & FULL 8-NET GUARD
+
+Read `hardware/pico47/E02-R43-C808-C811-FLYING-CAP-LAYOUT-20261102.md` first. Default R43
+replays directly from immutable R26 using single_r43_layout_delta.json, SHA-256
+14d01b10f96da7e7666af7c2d0f70fc533a4817c0c2e1f59a645b8578ef369e0.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r43/engineering-candidate`.
+PCB SHA-256 92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc.
+
+Zero component poses changed relative to R42: all 265 part/908 pad identities,
+fields, values, nets and poses remain 100% identical to R42 (CPL 226 rows exact).
+Only the 3 charge-pump flying-capacitor nets (`P47_VGH_DRV`, `P47_PUMP_POS`,
+`P47_PUMP_NEG`) changed; all other copper tracks, vias and all 16 zones from R42
+remain bit-for-bit unchanged. Board totals: 265 parts, 908 pads, 10607 tracks
+(-158), 1003 vias (0), 16 zones.
+
+`P47_VGH_DRV` (`U810.36 <-> C808.2`), `P47_PUMP_POS` (`C808.1 <-> D803.3`), and
+`P47_PUMP_NEG` (`C811.1 <-> D804.3`) eliminate all 154 legacy 25 um staircase steps,
+6 non-coincident cap-overlap junctions, 2 duplicate 1.7 um segments, and 1 dangling
+35.4 um stub while keeping all 4 existing vias in place:
+- `P47_VGH_DRV` (`U810.36 <-> C808.2`): 119 -> 9 tracks (-110), 6.857 -> 6.812 mm
+  whole-net (-0.046 mm), 2 vias (`F.Cu + In2.Cu`), 0.0353 -> 0.0350 ohm, 0 stubs /
+  0 non-coincident gaps.
+- `P47_PUMP_POS` (`C808.1 <-> D803.3`): 38 -> 10 tracks (-28), 15.854 -> 15.777 mm
+  (-0.077 mm), 0 vias (`F.Cu` only), 0.0511 -> 0.0508 ohm, 0 non-coincident gaps.
+- `P47_PUMP_NEG` (`C811.1 <-> D804.3`): 27 -> 7 tracks (-20), 12.303 -> 12.164 mm
+  (-0.139 mm), 2 vias (`B.Cu + F.Cu`), widened to uniform 0.20 mm, 0.0338 -> 0.0320
+  ohm (-5.5%), 0 non-coincident gaps.
+
+Native `inspect_pmic_charge_pump_storage` now locks all 6 charge-pump capacitors
+(`C810`, `C811`, `C812`, `C807`, `C808`, `C809`), all 8 charge-pump nets
+(`P47_VEE_BASE <= 31 mm / 2 vias / F.Cu+In2.Cu`, `P47_VEE_DRV <= 7.5 mm / 2 vias / B.Cu+F.Cu`,
+`P47_PUMP_NEG <= 12.3 mm / 2 vias / B.Cu+F.Cu`, `P47_VGL <= 52 mm / 7 vias`,
+`P47_VGH_BASE <= 25 mm / 3 vias / F.Cu+In2.Cu`, `P47_VGH_DRV <= 6.9 mm / 2 vias / F.Cu+In2.Cu`,
+`P47_PUMP_POS <= 15.85 mm / 0 vias / F.Cu`, `P47_VGH <= 52 mm / 6 vias`), direct
+`F.Cu` rectifier-to-output-cap continuity on both rails, and `>= 50 um` SMD pad-edge
+clearance across all 24 vias on the 8 nets. Two full R26->R43 replays + default +
+history R42 pass: DRC/open/parity/ERC all 0, 185 GND/52 critical links, 7 PMIC
+continuous-copper ground corridors, 66 source-reviewed pose envelopes (0 clashes),
+6 backside SMT clearances, 46 solder-joint vias, SD/USB/clock references and 3 clock
+GND stitches preserved; 470 distinct local source tests pass (geometry 396 pass/74
+skip, KiCad 451 pass/19 skip). Keep 4 layers/no In1 signal, isolated negative EP49,
+C804 dogbone, unique C815 100nF, GPIO2 direct. Actual PMIC revision/noise/stability/
+charge-pump ripple, exact 2050mAh pack/full panel, backside height/positive-tolerance
+<=7mm, supplier CAM/supply/EVT remain open; manufacturing_release,
+supplier_process_accepted, actual_noise_and_stability_qualified and
+charge_pump_transient_and_ripple_qualified stay false. Keep one baseline and one
+active candidate; remove closed full rebuilds, retain small JSONs.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R42 SINGLE / C809 VGH RECTIFIER & OUTPUT STORAGE
 
 Read `hardware/pico47/E02-R42-C809-VGH-RECTIFIER-LAYOUT-20261102.md` first. Default R42
 replays directly from immutable R26 using single_r42_layout_delta.json, SHA-256
