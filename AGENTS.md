@@ -1,6 +1,11 @@
 # CURRENT ROUTING CONTINUATION — 2026-11-02 R39 SINGLE / 66-POSE ENVELOPE & PRE-CAM AUDIT
 
 Read `hardware/pico47/E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md` first.
+Use its corrected sourcing table bound to actual R39 PCB fields; the originally
+sealed prose listed wrong alternate manufacturers/MPNs/values and is superseded
+for procurement. Backside thickness numbers are project budgets, not proven
+datasheet maxima. The .55 shell/.45 pocket/.25 residual-wall proposal was
+inconsistent and withdrawn; actual shell/full-stack dimensions remain unknown.
 Default R39 replays directly from immutable R26 using single_r39_layout_delta.json,
 SHA-256 7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77.
 Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`.
@@ -15,9 +20,9 @@ inspect_source_pose_envelopes verifies 0 clashes across all 66 source-reviewed
 poses (54 moved + 12 added). Supplier maximum envelopes remain unqualified.
 
 Native inspect_backside_smt_clearances locks the 6 populated B.Cu SMT parts
-(C537/C538/C543/C815 <=0.55mm, R710/R731 <=0.40mm) and 25 bare test/debug pads,
+(height budgets C537/C538/C543/C815 <=0.55mm, R710/R731 <=0.40mm) and25 bare pads,
 confirming >=5.405mm clearance to the 323576 battery bay and >=56.605mm to the
-upper-right support bay, plus two 0.45mm rear-shell relief pockets. Full 46-via
+upper-right study support bay. Rear-shell relief is still an unaccepted proposal. Full46-via
 IPC-4761 Type VII POFV CAM matrix, 21 pending SMT consignment/registration table,
 BT301 post-SMT and EVT bench checklist are bound in the R39 engineering record.
 

@@ -6,6 +6,8 @@
 
 工程候选为 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`，默认 PCB SHA-256 `64f0ea2d4cfead7cd740d3622da3ff89d30e34db1aad7e6b65d25660005bc2b3`，源增量 SHA-256 `7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77`。供应商最大实物包络、真实电气／噪声稳定性、实际电池全屏／底壳避让槽与正公差 ≤7mm、板厂 46 孔 CAM 确认／21 项供料建档／EVT 仍待实证，`manufacturing_release=false`。
 
+2026-11-02 Codex勘误：R39说明的供料表已按实际PCB/21项pending逐项更正，撤回旧表的错误厂家、料号、容值和阻值。背面0.55/0.40mm是项目高度预算，检查器没有验证供应商极值；0.55mm底壳、0.45mm挖深、0.25mm余壁的矛盾方案已撤回。历史封存包仍保留原件，采购和机械研究以当前仓库勘误为准。
+
 # Historical Continuation: E0.2 R38 — PMIC联合布局（2026-11-02）
 
 执行者：Codex。先读 [R38 分压、功率支路、实际地铜走廊与取舍](E02-R38-PMIC-JOINT-LAYOUT-20261102.md)。仅迁位 R803／R804，联合处理八个明确网的局部铜；其余263件位姿、全部265件908盘身份／值／字段／网表、未释放铜及原规则／区域／板框保持。VREF36.769→27.098mm／4→3孔，驱动9.564→7.098mm，VN_LX14.762→12.971mm／3→2孔，新增二极管支路为0.35F。VGL与BASE路径、二极管→电感空间长度增加，取舍明确保留。

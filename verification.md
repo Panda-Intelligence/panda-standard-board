@@ -1451,3 +1451,9 @@ R39从不可变R26直回放，仅将L905由F12.05/123.90/180°迁至F12.05/123.6
 
 源delta `7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77`；默认PCB `64f0ea2d4cfead7cd740d3622da3ff89d30e34db1aad7e6b65d25660005bc2b3`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R39工程记录](hardware/pico47/E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md)。供应商最大包络、实际PMIC版本/噪声稳定性、真实2050mAh电池/完整面板/底壳避让槽与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`。
 
+# 2026-11-02 R39预CAM文档勘误 / Codex
+
+只读核对具名R39 PCB字段与SINGLE-CHECKPOINT的21条pending_supply：原工程说明的Samsung/Yageo/Murata/TI表项、部分容值/阻值、公差、SGM与PMIC型号错误，已逐源修正；所有21条实际MPN均出现在新表，未绑定的参考代码移除，不把catalog当收货。背面检查只核源契约中的项目预算，旧max_datasheet_thickness_mm输出名不是datasheet证据；壳厚.55/挖深.45/余壁.25相互矛盾，深度/余壁方案撤回。
+
+板上元件/针网/CAD/规则与R39封存未改，无新native布局采用；本阶段只修改说明，不重复459源测试或重建。继续评估C810长电源路径，受约束试验失败整板几何即时清理，保小诊断。实际电气、pack/fullpanel、正公差7mm、CAM/供料/EVT仍待证据。
+
