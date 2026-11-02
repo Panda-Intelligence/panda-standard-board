@@ -202,6 +202,126 @@ def inspect_reference_filter(board, contract, groups=None):
     return result
 
 
+def inspect_pmic_analog_shield(board, contract):
+    """只允许完整参考地夹在F噪声铜和内层VREF之间；孔、线圈与同层不豁免。"""
+    import pcbnew as P
+    from r25_router.apply_single_r27_layout_eco import reference_connected_ground_fills
+    require(contract['clearance_mm']==.5 and contract['ground_margin_mm']==.2
+            and contract['shape_tolerance_um']==2, 'PMIC analog geometry budgets differ')
+    require(board.GetCopperLayerCount()==4, 'PMIC shield requires the reviewed four layers')
+    noise, sensitive = [], []
+    def add(kind, net, layer, shape, identity):
+        row = (kind,net,layer,shape,identity)
+        if net in contract['noise_nets']:
+            noise.append(row)
+        if net in contract['sensitive_nets']:
+            sensitive.append(row)
+    for item in board.GetTracks():
+        via = item.GetClass()=='PCB_VIA'
+        if via:
+            at = item.GetPosition()
+            identity = [at.x,at.y,item.GetWidth(P.F_Cu),item.GetDrill()]
+        else:
+            a,b = item.GetStart(),item.GetEnd()
+            identity = [a.x,a.y,b.x,b.y,item.GetWidth()]
+        add('via' if via else 'track',item.GetNetname(),None if via else item.GetLayer(),
+            item.GetEffectiveShape(P.F_Cu) if via else item.GetEffectiveShape(),identity)
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            for layer in [P.F_Cu,P.In1_Cu,P.In2_Cu,P.B_Cu]:
+                if pad.IsOnLayer(layer) and pad.FlashLayer(layer):
+                    add('pad',pad.GetNetname(),layer,pad.GetEffectiveShape(layer),
+                        [fp.GetReference(),pad.GetNumber()])
+    for ref in contract['inductor_refs']:
+        fp = board.FindFootprintByReference(ref)
+        require(fp is not None, 'Missing PMIC inductor envelope: '+ref)
+        fp.BuildCourtyardCaches()
+        shape = P.SHAPE_POLY_SET(fp.GetCourtyard(P.F_Cu))
+        require(not shape.IsEmpty(), 'Missing native PMIC inductor courtyard: '+ref)
+        half = max((g.GetWidth()//2 for g in fp.GraphicalItems()
+                    if g.GetLayer()==P.F_CrtYd),default=0)
+        shape.Inflate(half,P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+        noise.append(('inductor','',None,shape,[ref]))
+    require(noise and sensitive, 'Missing PMIC noise or sensitive copper')
+    def polygon(shape):
+        result = P.SHAPE_POLY_SET()
+        shape.TransformToPolygon(result,500,P.ERROR_OUTSIDE)
+        return result
+    def inflate(shape, amount):
+        result = P.SHAPE_POLY_SET(shape)
+        result.Inflate(amount,P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+        return result
+    def hull(first, second):
+        # 整数坐标单调链；偏移、裁切及差集均复用KiCad原生多边形接口。
+        points = sorted({(s.Outline(i).CPoint(j).x,s.Outline(i).CPoint(j).y)
+                         for s in [first,second] for i in range(s.OutlineCount())
+                         for j in range(s.Outline(i).PointCount())})
+        def cross(a,b,c):
+            return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+        chains = []
+        for sequence in [points,list(reversed(points))]:
+            chain = []
+            for at in sequence:
+                while len(chain)>1 and cross(chain[-2],chain[-1],at)<=0:
+                    chain.pop()
+                chain.append(at)
+            chains.append(chain[:-1])
+        result = P.SHAPE_POLY_SET()
+        result.NewOutline()
+        for x,y in chains[0]+chains[1]:
+            result.Append(x,y)
+        return result
+    def continuous_tracks(items):
+        # 同网同层连续铜先合并，分割同一走线不能缩小必须覆盖的地铜走廊。
+        joined, result = {}, [row for row in items if row[0]!='track']
+        for kind,net,layer,shape,identity in items:
+            if kind=='track':
+                joined.setdefault((net,layer),P.SHAPE_POLY_SET()).BooleanAdd(polygon(shape))
+        for (net,layer),whole in sorted(joined.items()):
+            for index in range(whole.OutlineCount()):
+                patch=P.SHAPE_POLY_SET();patch.AddOutline(whole.Outline(index))
+                for hole in range(whole.HoleCount(index)):
+                    patch.AddHole(whole.Hole(index,hole))
+                result.append(('track',net,layer,patch,['continuous_track_patch',index]))
+        return result
+    noise, sensitive = continuous_tracks(noise), continuous_tracks(sensitive)
+    ground, rows = None, []
+    for kind,net,layer,shape,identity in sensitive:
+        for other,other_net,other_layer,other_shape,other_identity in noise:
+            if not shape.Collide(other_shape,500000):
+                continue
+            require(kind=='track' and net==contract['reference_net']
+                    and layer in [P.In2_Cu,P.B_Cu] and other in ['track','pad']
+                    and other_layer==P.F_Cu,
+                    'Unshielded PMIC sensitive copper enters the noise projection')
+            receiver, source = polygon(shape), polygon(other_shape)
+            rpart, spart = P.SHAPE_POLY_SET(receiver), P.SHAPE_POLY_SET(source)
+            rpart.BooleanIntersection(inflate(source,500000))
+            spart.BooleanIntersection(inflate(receiver,500000))
+            if rpart.Area()==0 or spart.Area()==0:
+                continue
+            if ground is None:
+                ground = P.SHAPE_POLY_SET()
+                for ly,fill in reference_connected_ground_fills(board):
+                    if ly==P.In1_Cu:
+                        ground.BooleanAdd(fill)
+                require(not ground.IsEmpty(), 'Missing reference-connected In1 PMIC shield')
+                ground = inflate(ground,2000)
+            corridor = inflate(hull(rpart,spart),200000)
+            area = corridor.Area()
+            corridor.BooleanSubtract(ground)
+            require(corridor.Area()<=100000,
+                    'PMIC source/receiver ground corridor crosses a plane gap')
+            rows.append(dict(receiver=[kind,net,board.GetLayerName(layer),identity],
+                             noise_source=[other,other_net,'F.Cu',other_identity],
+                             required_ground_area_mm2=area/1e12))
+    return dict(coupled_pairs=rows,shielded_pair_count=len(rows),
+                reference_ground='U501.57 / native-connected In1.Cu fill',
+                clearance_mm=.5,ground_margin_mm=.2,shape_tolerance_um=2,
+                interposed_ground_checked=ground is not None,
+                native_ground_geometry_passed=True,actual_noise_and_stability_qualified=False)
+
+
 def inspect_single(candidate, spec):
     """以源针序、独立原理图网表和原生物理连接组检查 Single。"""
     import pcbnew as P
@@ -376,6 +496,8 @@ def inspect_single(candidate, spec):
             manual.append(row)
         elif not row['lcsc']:
             supplies.append(row)
+    analog_shield = (inspect_pmic_analog_shield(board,spec['pmic_analog_shield'])
+                     if 'pmic_analog_shield' in spec else None)
     return board, groups, {'ground':ground, 'critical_links':links, 'bom':bom,
                            'geometry':geometry, 'via_in_pad':vip, 'pending_supply':supplies,
                            'required_post_smt':manual,
@@ -383,7 +505,8 @@ def inspect_single(candidate, spec):
                            **({'input_bypasses':input_bypasses} if input_bypasses else {}),
                            **({'power_bypasses':power_bypasses} if power_bypasses else {}),
                            **({'reference_filters':reference_filters} if reference_filters else {}),
-                           **({'solder_joint_via_process':process_inventory} if process_inventory else {})}
+                           **({'solder_joint_via_process':process_inventory} if process_inventory else {}),
+                           **({'pmic_analog_shield':analog_shield} if analog_shield else {})}
 
 
 def write_csv(path, rows):

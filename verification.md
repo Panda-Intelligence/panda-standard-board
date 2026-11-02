@@ -1424,3 +1424,11 @@ CKV左23.948mm段三种有界F/In2重接均未通后停止；XCL_SRC局部及全
 当前工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r37/engineering-candidate`；PCB SHA`df53238d1b91644d1c76f66369b0b603483c167a0864e79b14f4c5ba714fc2ea`，deltaSHA`972b1157ebeb0d7c2a706b240f82f18db1adc07806f900560201e28a5f32c421`。391包项／33current源／306纯默认内部hash独立全过，旧R36全387项保持；封存PCB只读重计265parts908pads11018tracks1004vias16zones、4层／In1非GND轨0。226SMT=CPL226、C815Bottom0°、BT301后装不入CPL、21pending／完整46CSV及签名保持。见[R37工程记录](hardware/pico47/E02-R37-VREF-TREE-20261102.md)。
 
 305份已关闭旧缓存透明压缩，allocated实际减少634007552B（604.637MiB），内容SHA／size／mtime／mode／uid／gid独立全过；不删CAD／检查点。ccache标准过期清理工具报3.6MB／41文件，UV prune因在用锁取消、不计回收；全局磁盘波动不当清理量。实际PMIC版本／参考噪声稳定性／DCbias／功率区与波形／SI／USB、真实pack全屏／背面高度净空／含正公差≤7mm、供料／全46孔CAM／EVT仍待证据。manufacturing／supplierprocess／currentPMIC接受均false，完整目标active；阶段源／测试／文档按用户要求验证后commit、普通push功能分支，不制造／充电／面板上电。
+
+## 2026-11-02 PMIC连续铜／原生地铜检查源码阶段 / Codex
+
+新增可选`inspect_pmic_analog_shield`及`inspect_single`契约接入，复用官方KiCad多边形／实际U50157参考地连接。合并同网同层连续轨后，0.5mm近邻投影内仅允许F噪声与内层VREF被实际In1地铜完整隔开；源侧／接收侧及连接凸包各200µm裕量必须有地铜，2µm数值容差固定。同层／孔／线圈不豁免，返回实际噪声稳定性资格false，原DRC规则和R37默认入口保持。
+
+九个新增原生边界用例及旧443组成452different本地源用例全部互补通过：geometry396pass56native skip、KiCad433pass19geometry skip，无fail/error，所有skip被另一环境覆盖，无CI。分段相同铜的RED复现164对判定，连续铜合并后的GREEN统一为1对并仍拒绝走廊孔洞；其余覆盖孤立地层、同层/同侧噪声、通孔、电感及参数减弱。最终源默认R37完整重建全0/185GND52links及完整46工艺保持。
+
+被拒绝的联合原型虽原生DRC全0，连续铜的独立几何检查仍在6对连续铜／焊盘近邻中发现2处地铜裕量缺口；新原生源码检查也拒绝，未采用为新PCB。小诊断差异从不可变R37内存回放的铜／位姿指纹完全相同，不生成新CAD，完整试验及回归副本核验后清理。紧凑证据保存在external`panda47-e02-20261102-pmic-shield-audit`。详[PMIC源码阶段记录](hardware/pico47/E02-PMIC-SHIELD-REVIEW-20261102.md)。阶段源验证后按用户要求commit／push当前功能分支；PCB布局基线仍为R37（8dce59b），完整电气／机械／CAM／EVT未资格化，目标active。

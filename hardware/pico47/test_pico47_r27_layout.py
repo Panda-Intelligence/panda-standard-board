@@ -554,6 +554,121 @@ class ReferenceTreeBudgetTests(unittest.TestCase):
 
 
 @unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class PmicAnalogShieldTests(unittest.TestCase):
+    def fixture(self):
+        import wx
+        app=wx.GetApp() or wx.App(False)
+        import pcbnew as P
+        board=P.BOARD();board.SetCopperLayerCount(4)
+        for index,name in enumerate(['GND','P47_VREF','P47_VEE_DRV'],1):
+            board.Add(P.NETINFO_ITEM(board,name,index))
+        fp=P.FOOTPRINT(board);fp.SetReference('U501')
+        pad=P.PAD(fp);pad.SetNumber('57');pad.SetNet(board.FindNet('GND'))
+        pad.SetSize(P.VECTOR2I(mm(.2),mm(.2)));pad.SetPosition(P.VECTOR2I(mm(-4),mm(-4)))
+        layers=P.LSET();layers.AddLayer(P.In1_Cu);pad.SetLayerSet(layers);fp.Add(pad);board.Add(fp)
+        shape=P.SHAPE_POLY_SET();shape.NewOutline()
+        for x,y in [(-5,-5),(5,-5),(5,5),(-5,5)]:shape.Append(mm(x),mm(y))
+        zone=P.ZONE(board);zone.SetNet(board.FindNet('GND'));zone.SetLayer(P.In1_Cu)
+        zone.SetFilledPolysList(P.In1_Cu,shape);board.Add(zone)
+        tracks=[]
+        for net,layer,xy in [('P47_VEE_DRV',P.F_Cu,(-1,0,1,0)),
+                             ('P47_VREF',P.In2_Cu,(0,-1,0,1))]:
+            track=P.PCB_TRACK(board);track.SetNet(board.FindNet(net));track.SetLayer(layer)
+            track.SetWidth(mm(.15));track.SetStart(P.VECTOR2I(mm(xy[0]),mm(xy[1])))
+            track.SetEnd(P.VECTOR2I(mm(xy[2]),mm(xy[3])));board.Add(track);tracks.append(track)
+        contract=dict(reference_net='P47_VREF',sensitive_nets=['P47_VREF'],
+            noise_nets=['P47_VEE_DRV'],inductor_refs=[],clearance_mm=.5,
+            ground_margin_mm=.2,shape_tolerance_um=2)
+        return board,contract,zone,shape,tracks
+
+    def test_reference_connected_plane_covers_both_sides_without_noise_qualification(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        for layer in [P.In2_Cu,P.B_Cu]:
+            board,c,_,_,tracks=self.fixture();tracks[1].SetLayer(layer)
+            result=inspect_pmic_analog_shield(board,c)
+            self.assertEqual(result['shielded_pair_count'],1)
+            self.assertTrue(result['native_ground_geometry_passed'])
+            self.assertFalse(result['actual_noise_and_stability_qualified'])
+
+    def test_a_hole_between_the_traces_is_not_hidden_by_ground_under_each_trace(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,zone,shape,_=self.fixture();hole=shape.NewHole(0)
+        for x,y in [(.38,.38),(.42,.38),(.42,.42),(.38,.42)]:shape.Append(mm(x),mm(y),0,hole)
+        zone.SetFilledPolysList(P.In1_Cu,shape)
+        with self.assertRaisesRegex(ValueError,'ground corridor crosses a plane gap'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_same_named_but_reference_disconnected_plane_cannot_shield(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,_,_,_=self.fixture()
+        next(iter(board.FindFootprintByReference('U501').Pads())).SetPosition(P.VECTOR2I(mm(-6),mm(-6)))
+        with self.assertRaisesRegex(ValueError,'reference ground|reference-connected|No filled copper'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_same_layer_sensitive_trace_never_uses_the_inner_plane_exception(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,_,_,tracks=self.fixture();tracks[1].SetLayer(P.F_Cu)
+        with self.assertRaisesRegex(ValueError,'Unshielded PMIC'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_noise_behind_the_ground_plane_is_not_treated_as_a_front_source(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,_,_,tracks=self.fixture();tracks[0].SetLayer(P.In2_Cu)
+        with self.assertRaisesRegex(ValueError,'Unshielded PMIC'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_sensitive_through_via_cannot_use_a_plane_it_crosses(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,_,_,_=self.fixture();via=P.PCB_VIA(board);via.SetNet(board.FindNet('P47_VREF'))
+        via.SetViaType(P.VIATYPE_THROUGH);via.SetLayerPair(P.F_Cu,P.B_Cu)
+        via.SetWidth(mm(.4));via.SetDrill(mm(.2));via.SetPosition(P.VECTOR2I(0,0));board.Add(via)
+        with self.assertRaisesRegex(ValueError,'Unshielded PMIC'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_native_inductor_courtyard_stays_forbidden_with_a_solid_plane(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,_,_,_=self.fixture();lib=Path(__file__).parent/'v0.1.1/Panda47.pretty'
+        fp=P.FootprintLoad(str(lib),'L802_Display');self.assertIsNotNone(fp)
+        fp.SetReference('COIL');fp.SetPosition(P.VECTOR2I(0,0));fp.SetOrientationDegrees(0);board.Add(fp)
+        c['inductor_refs']=['COIL']
+        with self.assertRaisesRegex(ValueError,'Unshielded PMIC'):
+            inspect_pmic_analog_shield(board,c)
+
+    def test_contract_edits_cannot_reduce_the_reviewed_margin(self):
+        from build_pico47_single import inspect_pmic_analog_shield
+        for key,value in [('ground_margin_mm',.1),('clearance_mm',.15),('shape_tolerance_um',20)]:
+            board,c,_,_,_=self.fixture();c[key]=value
+            with self.assertRaisesRegex(ValueError,'budgets differ'):
+                inspect_pmic_analog_shield(board,c)
+
+    def test_fragmenting_the_same_copper_cannot_change_the_shield_result(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_analog_shield
+        board,c,zone,shape,tracks=self.fixture()
+        for original in tracks:
+            net,layer=original.GetNet(),original.GetLayer()
+            a=(original.GetStart().x,original.GetStart().y)
+            b=(original.GetEnd().x,original.GetEnd().y);board.Delete(original)
+            for index in range(20):
+                segment=P.PCB_TRACK(board);segment.SetNet(net);segment.SetLayer(layer);segment.SetWidth(mm(.15))
+                segment.SetStart(P.VECTOR2I(a[0]+(b[0]-a[0])*index//20,a[1]+(b[1]-a[1])*index//20))
+                segment.SetEnd(P.VECTOR2I(a[0]+(b[0]-a[0])*(index+1)//20,a[1]+(b[1]-a[1])*(index+1)//20));board.Add(segment)
+        self.assertEqual(inspect_pmic_analog_shield(board,c)['shielded_pair_count'],1)
+        hole=shape.NewHole(0)
+        for x,y in [(.38,.38),(.42,.38),(.42,.42),(.38,.42)]:shape.Append(mm(x),mm(y),0,hole)
+        zone.SetFilledPolysList(P.In1_Cu,shape)
+        with self.assertRaisesRegex(ValueError,'ground corridor crosses a plane gap'):
+            inspect_pmic_analog_shield(board,c)
+
+
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
 class SolderJointViaTests(unittest.TestCase):
     def fixture(self,bare_only=False,also_bare=False,paste_only=False,annulus_only=False):
         import wx

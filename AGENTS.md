@@ -1,5 +1,13 @@
 # CURRENT ROUTING CONTINUATION — 2026-11-02 R37 SINGLE / VREF TREE
 
+2026-11-02 Codex: also read `hardware/pico47/E02-PMIC-SHIELD-REVIEW-20261102.md`.
+The optional native PMIC ground-corridor check and nine regression cases are
+verified source work (452 distinct local tests). Joint routing prototypes remain
+unaccepted; R37 is still the named/default PCB. Merge continuous tracks before
+checking source/receiver ground corridors. Preserve the user's bounded-storage
+policy: one baseline and one active candidate, remove rejected full copies and
+keep small replay deltas/logs; do not accumulate generated native rebuilds.
+
 Read `hardware/pico47/E02-R37-VREF-TREE-20261102.md` first. Default R37 replays
 directly from immutable R26 with single_r37_layout_delta.json SHA-256
 972b1157ebeb0d7c2a706b240f82f18db1adc07806f900560201e28a5f32c421.
