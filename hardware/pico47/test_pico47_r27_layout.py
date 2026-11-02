@@ -448,6 +448,60 @@ class PowerBypassTests(unittest.TestCase):
 
 
 @unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class ReferenceFilterTests(unittest.TestCase):
+    def fixture(self,**kwargs):
+        board,contract=PowerBypassTests.fixture(self,**kwargs)
+        contract.update(value='100n',maximum_nominal_capacitance_uf=.1)
+        board.FindFootprintByReference('COUT').SetValue('100n')
+        return board,contract
+
+    def add_parallel(self,board,dnp=False):
+        import pcbnew as P
+        fp=P.FOOTPRINT(board);fp.SetReference('CEXTRA');fp.SetAttributes(P.FP_SMD)
+        fp.SetValue('100n');fp.SetDNP(dnp)
+        for number,net in [('1','OUT'),('2','GND')]:
+            pad=P.PAD(fp);pad.SetNumber(number);pad.SetNet(board.FindNet(net));fp.Add(pad)
+        board.Add(fp)
+
+    def test_single_100n_reference_cap_retains_actual_connections_and_false_qualification(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();r=inspect_reference_filter(board,contract)
+        self.assertAlmostEqual(r['nominal_capacitance_uf'],.1)
+        self.assertEqual(r['fitted_reference_caps'],['COUT'])
+        self.assertTrue(r['both_native_connections'])
+        self.assertFalse(r['supplier_current_revision_accepted'])
+        self.assertFalse(r['transient_and_DC_bias_qualified'])
+
+    def test_extra_fitted_reference_cap_is_rejected_even_with_the_same_value(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();self.add_parallel(board)
+        with self.assertRaisesRegex(ValueError,'parallel PMIC reference'):
+            inspect_reference_filter(board,contract)
+
+    def test_larger_cap_cannot_pass_by_changing_its_contract_value(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();board.FindFootprintByReference('COUT').SetValue('1u')
+        contract['value']='1u'
+        with self.assertRaisesRegex(ValueError,'exceeds 0.1uF'):
+            inspect_reference_filter(board,contract)
+        contract['maximum_nominal_capacitance_uf']=1
+        with self.assertRaisesRegex(ValueError,'limit differs'):
+            inspect_reference_filter(board,contract)
+
+    def test_unfitted_alternative_is_not_counted_as_a_parallel_cap(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();self.add_parallel(board,dnp=True)
+        self.assertEqual(inspect_reference_filter(board,contract)['fitted_reference_caps'],['COUT'])
+
+    def test_reference_cap_still_requires_local_actual_return(self):
+        from build_pico47_single import inspect_reference_filter
+        for args in [dict(ground_connected=False),dict(distance=15)]:
+            board,contract=self.fixture(**args)
+            with self.assertRaisesRegex(ValueError,'actual copper connection|local placement'):
+                inspect_reference_filter(board,contract)
+
+
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
 class SolderJointViaTests(unittest.TestCase):
     def fixture(self,bare_only=False,also_bare=False,paste_only=False,annulus_only=False):
         import wx

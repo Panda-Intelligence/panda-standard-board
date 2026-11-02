@@ -1402,3 +1402,13 @@ CKV左23.948mm段三种有界F/In2重接均未通后停止；XCL_SRC局部及全
 当前canonical`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r35/engineering-candidate`；PCB SHA`5223786c60ad3ba16d06b49eef75afafa501e227e7c0cdc7702e94af7ebb52bf`，deltaSHA`9c478c044753a4a8fb4774a9975d3b574b4983cd8b67f7d3d1232adc0cc7bf52`。377包项/29current source/306内部hash独立过，oldR34全364不变。226SMT=CPL226、3new Bottom面明确、后装BT301不入CPL、21pending/46工艺行保持。见[R35工程说明](hardware/pico47/E02-R35-DIGITAL-POWER-BYPASSES-20261102.md)。
 
 实际DCbias/波形/驱动负载/SI/USB、真实packfullpanel最大包络/含正公差≤7mm/背面SMT及三newBcap高度净空、供料/全46孔CAM/EVT仍缺证据，制造与supplierprocess接受均false，无制造/充电/面板上电。17关闭旧CAD透明压缩实际减59240448B，内容/路径/属性独立复核保持，无PCB/检查点删除；磁盘约12GiB，背景变化不当回收。
+
+## 2026-11-02 R36：PMIC参考滤波同值迁位 / Codex
+
+原C815保持唯一100nF／FH0402B104K250NT/C56392，移B12.8/94/0；供电平面14.601→.846mm、有效孔2→1、空间15.879→1.611mm，没有增加并联电容。原参考孔的4In2接点在删除前以显式.16In2桥保留，经完整native组守卫逐步清deadleaf；仅6oldtracks1via删、2short025B+1In2bridge加。265parts908pads/IDs值字段net保持，onlyC815pose变，其余264parts及其它Cu/原SCH库/规则16区/轮廓叠层精确保持；现在11599tracks1006vias185GND52links/43/nativeerrorwarningopenparity/ERC全0。
+
+两个explicit完整R26→R36+default/historyR35、三fresh-review独立审计、43pose/7power4CIN4COUT/full46工艺签名/实际SD9104USB1224/FIn2clock1657及三GNDstitches过，B633farIn1新采0缺、近In2495obs保持。439different本地源用例全覆盖（396pass43native skip/420pass19geometry skip），old434IDs保留，新增filter边界负例不把大cap/parallel或改limit当合格；7planar2spatialsmoke过，无CI。
+
+当前工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r36/engineering-candidate`，PCB SHA`b7c149d1d8bf7ddb1d910e96ab67490a90bce4a5aac332bfa5abb5c53a7e6477`，deltaSHA`d7c0ac5a03cae4326a6f1ba5c71952c1a1cc08323c71a4a20a5627e2eeb2454e`。387包31current source306内部hash独立过，oldR35全377保持。226SMT/CPL226 C815Bottom0°，BT301后装/21pending/46CSV保持。见[R36工程记录](hardware/pico47/E02-R36-PMIC-REFERENCE-FILTER-20261102.md)。
+
+历史PMICRev0.9B镜像hash不同旧contract且非当前supplier接受，referenceguard审nominal.1uF，不当实际容差/DCbias/noise/stability资格。wholeVREF约77.746mm，R805支路16.454mm/R8042仍44.624mm；固定位置的switchF-only重接未通，原switchCu保持。实际电气/当前PMIC版本/完整packpanel/正公差≤7mm/背面高度净空/供料46孔CAM/EVT仍待证，manufacturing/supplierprocess/currentPMIC接受均false。阶段成果依用户指示验证后commitpush功能分支，不制造/充电/面板上电。

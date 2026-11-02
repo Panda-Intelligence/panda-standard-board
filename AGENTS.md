@@ -1,4 +1,37 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R35 SINGLE / DIGITAL POWER BYPASSES
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R36 SINGLE / PMIC REFERENCE FILTER
+
+Read `hardware/pico47/E02-R36-PMIC-REFERENCE-FILTER-20261102.md` first.
+DefaultR36 directR26 source single_r36_layout_delta.json SHA
+d7c0ac5a03cae4326a6f1ba5c71952c1a1cc08323c71a4a20a5627e2eeb2454e.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r36/engineering-candidate`.
+PCB SHA256 b7c149d1d8bf7ddb1d910e96ab67490a90bce4a5aac332bfa5abb5c53a7e6477.
+
+Only existingC815100n movedF8.75/92/90 toB12.8/94/0; all265parts908pads/UUIDs/
+fields/values/pinnets retained, other264poses andallotherCu/rules/libraries exact.
+VREFcap planar14.601→.846mm, effectivevias2→1, spatial15.879→1.611mm; native
+pad-distance .305mm. HistoricalSilergy0.9B limitsVREFfilter to.1uF: keep onlyC815,
+do not parallel/increase. Newguard checks unique fittedcap/nominalvalue/actual
+powerGND/face/locality/50umvia edge, notactualtolerance/noise/stability approval.
+
+6oldleaftracks+1oldVREFvia removed,2short025B+1explicit016In2bridge added. Oldvia
+9.025/93.175 carried4In2contacts; directdelete splitgroups, so preservejunction
+explicitly with fullpadguard. No live surfacejunction deleted. Now11599tracks/
+1006vias/16zones185GND52critical/all43/native+ERC0;439distincttests/twofullreplays
++default/historyR35/43poses pass. WholeVREFstill~77.746mm; R8042path44.624mm,
+R805planar16.140→16.454mm; notfullreferencetree/noise qualification. BothF-only
+switch trials failedboundedsearch; originalVP/VNswitchCu retained.
+
+Keep4layers/noIn1signal/negativeEP/C804dogbone/GPIO2direct/3clockGND/7power4CIN
+4COUT/full46process/actualSDUSBclockrefs. SMT226/CPL226 C815Bottom, BT301postSMT
+excluded,21pending. HistoricalPMICmirrorhash differs oldreference and isnotcurrent
+supplier approval. Actualelectrical/noise/DCbias/SI/USB/packfullpanel/positive-
+tolerance<=7mm/backSMT/capheight/full46CAM/EVT remainopen; no manufacture/charging/
+panelpower. Userrequires stage成果commit&push after localvalidation; sourceonly,
+featurebranch regularpush, reviewedPR beforemain, generatedCAD/reports/renders
+ignored/external. Inspectors writingnetlists onlyfreshreviewcopies; sealedpackages
+read-only. Preserve packaging/worktrees/unrelateddirty and allhistoricalcheckpoints.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R35 SINGLE / DIGITAL POWER BYPASSES
 
 Read `hardware/pico47/E02-R35-DIGITAL-POWER-BYPASSES-20261102.md` first.
 DefaultR35 directR26 replay: single_r35_layout_delta.json SHA

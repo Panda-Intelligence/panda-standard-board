@@ -1,4 +1,10 @@
-# Current Continuation: E0.2 R35 — 数字电源局部旁路（2026-11-02）
+# Current Continuation: E0.2 R36 — PMIC参考滤波电容近端摆位（2026-11-02）
+
+执行者：Codex。先读 [R36 C815同值迁位、内层接点保留与完整源回放](E02-R36-PMIC-REFERENCE-FILTER-20261102.md)。原 C815 保持单颗100nF／原料号，移到B12.8/94/0，VREF脚到电容的平面铜路由14.601降至0.846mm，有效过孔2→1。保留265器件908焊盘全部身份／值／针序，其他264器件、原理图／库／规则及全部非审阅铜保持；旧内层过孔接点经显式铜桥与完整焊盘守卫保留，没有直接删掉活接点。
+
+默认R36；两独立完整R26回放、默认入口及historyR35通过，43/43、原生／ERC全零，185地52关键链、439不同本地源用例全覆盖。43位姿、7power／4CIN／4COUT、完整46孔工艺签名和实际SD／USB／时钟参考保持。当前工程候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r36/engineering-candidate`。VREF其余长支路、PMIC开关回路、实际噪声／电气、真实电池全屏／背面高度／含正公差≤7mm、供料CAM／EVT仍待资格；`manufacturing_release=false`。阶段验证完成后按用户指示commit并push功能分支。
+
+# Historical Continuation: E0.2 R35 — 数字电源局部旁路（2026-11-02）
 
 执行者：Codex。先读 [R35 七颗数字旁路、背面地铜与完整源回放](E02-R35-DIGITAL-POWER-BYPASSES-20261102.md)。保留全部旧器件和铜形，新增七颗局部旁路：MCU VDD_SPI的100nF／1µF、Flash的100nF在背面，IMU两电源及两XL9535的100nF在正面；只加八段0.25mm短线、四地孔及一块实际连接MCU地参考的B地铜。原258器件894焊盘／旧铜／身份／库／规则保持，现265器件908焊盘、11602走线1007孔、185地50关键链。
 

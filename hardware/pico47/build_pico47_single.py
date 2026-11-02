@@ -10,6 +10,7 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -119,6 +120,31 @@ def inspect_power_bypass(board, contract, groups=None):
     return result
 
 
+def inspect_reference_filter(board, contract, groups=None):
+    """SY7636A参考脚只保留已审单颗100n滤波，拒绝大容量或额外并联。"""
+    require(contract['maximum_nominal_capacitance_uf'] == .1,
+            'PMIC reference capacitance limit differs')
+    cap = board.FindFootprintByReference(contract['cap'])
+    require(cap is not None, 'Missing PMIC reference filter')
+    value = re.match(r'^\s*([\d.]+)\s*([pnuµm])(?:f)?(?:[/\s]|$)',cap.GetValue(),re.I)
+    require(value is not None, 'Unknown PMIC reference capacitance')
+    nominal = float(value[1])*{'p':1e-6,'n':.001,'u':1,'µ':1,'m':1000}[value[2].lower()]
+    require(0 < nominal <= contract['maximum_nominal_capacitance_uf']+1e-12,
+            'PMIC reference filter exceeds 0.1uF')
+    fitted = []
+    for fp in board.GetFootprints():
+        if not fp.GetReference().startswith('C') or fp.IsDNP():
+            continue
+        nets = {p.GetNetname() for p in fp.Pads() if p.GetNumber()}
+        if nets == {contract['power_net'],'GND'}:
+            fitted.append(fp.GetReference())
+    require(fitted == [contract['cap']], 'Unexpected parallel PMIC reference filter')
+    result = inspect_power_bypass(board,contract,groups)
+    result.update(nominal_capacitance_uf=nominal,fitted_reference_caps=fitted,
+                  supplier_current_revision_accepted=False)
+    return result
+
+
 def inspect_single(candidate, spec):
     """以源针序、独立原理图网表和原生物理连接组检查 Single。"""
     import pcbnew as P
@@ -174,6 +200,7 @@ def inspect_single(candidate, spec):
     bypasses = [inspect_output_bypass(board,c,groups) for c in spec.get('output_bypasses',[])]
     input_bypasses = [inspect_input_bypass(board,c,groups) for c in spec.get('input_bypasses',[])]
     power_bypasses = [inspect_power_bypass(board,c,groups) for c in spec.get('power_bypasses',[])]
+    reference_filters = [inspect_reference_filter(board,c,groups) for c in spec.get('reference_filters',[])]
     group_for = {u:g for g in groups for u in g}
     links = []
     for ref, pin, other_ref, other_pin in spec['critical_links'] + spec.get('layout_critical_links', []):
@@ -298,6 +325,7 @@ def inspect_single(candidate, spec):
                            **({'output_bypasses':bypasses} if bypasses else {}),
                            **({'input_bypasses':input_bypasses} if input_bypasses else {}),
                            **({'power_bypasses':power_bypasses} if power_bypasses else {}),
+                           **({'reference_filters':reference_filters} if reference_filters else {}),
                            **({'solder_joint_via_process':process_inventory} if process_inventory else {})}
 
 
@@ -316,7 +344,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -331,7 +359,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -362,11 +390,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -375,7 +403,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35'):
+            if revision in ('R31','R32','R33','R34','R35','R36'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -398,6 +426,9 @@ def build(source, output, spec_path=SPEC, revision=None):
     bypass_notes += ''.join(f'{b["cap"]} 是 {b["device"]} 的局部电源旁路（{b["side"]}），'
                            '位置与真实接点已核对；有效电容、瞬态及背面装配/高度仍待资格化。\n'
                            for b in inspection.get('power_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 保持单颗100nF参考滤波并移至{b["side"]}；'
+                           '不得另并联或增大容量，当前厂商版本与实物稳定性仍待资格化。\n'
+                           for b in inspection.get('reference_filters',[]))
     write_csv(orderpack/'REQUIRED-VIA-IN-PAD.csv', inspection['via_in_pad'])
     write_csv(orderpack/'PENDING-SUPPLY.csv', inspection['pending_supply'])
     write_csv(orderpack/'REQUIRED-POST-SMT.csv', inspection['required_post_smt'])
@@ -428,7 +459,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])
