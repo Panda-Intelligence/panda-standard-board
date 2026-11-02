@@ -1,4 +1,46 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R39 SINGLE / 66-POSE ENVELOPE & PRE-CAM AUDIT
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R40 SINGLE / C810 VEE_BASE & PMIC NEGATIVE RAILS
+
+Read `hardware/pico47/E02-R40-C810-VEE-BASE-LAYOUT-20261102.md` first. Default R40
+replays directly from immutable R26 using single_r40_layout_delta.json, SHA-256
+790430afd6c354c9f7099ae12048f81d4ed418851b60dabaadb774fe5d71d8e3.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r40/engineering-candidate`.
+PCB SHA-256 c5dcfe47e8d48a2a0c5862cf8d9f9788d043c1dd5daaa390af2d8061ba380eb2.
+
+Zero component poses changed relative to R39: all 265 part/908 pad identities,
+fields, values, nets and poses remain 100% identical to R39 (CPL 226 rows exact).
+Only the 3 coupled PMIC negative-rail nets (`P47_VEE_BASE`, `P47_VEE_DRV`,
+`P47_VGL`) changed; all other copper tracks, vias and all 16 zones from R39
+remain bit-for-bit unchanged. Board totals: 265 parts, 908 pads, 10832 tracks
+(-119 redundant stub/loop segments), 1004 vias (-1), 16 zones.
+
+`P47_VEE_BASE` (`U810.30 -> C810.1`) drops from 22.623 mm planar (24.153 mm
+spatial) / 3 vias / 0.0945 ohm (with an outer-west B.Cu loop) to 7.953 mm planar
+(9.231 mm spatial) / 2 vias / 0.0493 ohm on `F.Cu + In2.Cu` only; whole net
+48.687 -> 30.266 mm (154 -> 34 tracks, 3 -> 2 vias); `C810.1 -> D804.2` stays
+20.282 mm / 0 vias. `P47_VEE_DRV` (`U810.28 -> C811.2`) takes the local pocket
+via at (20.425, 98.15), keeping 6.048 mm planar (7.578 mm spatial) / 2 vias
+(7.253 mm whole net). `P47_VGL` keeps `D804.1 -> C812.1` (5.547 mm / 0 vias) and
+`C812.1 -> J820.1` (30.552 mm / 2 vias) exact; only its 750k `R803.1` sense
+branch shifts north-east (15.856 -> 20.194 mm planar, 18.663 -> 21.724 mm
+spatial, 5 vias; whole net 47.484 -> 51.515 mm, 7 vias unchanged).
+
+Native `inspect_pmic_charge_pump_storage` locks `C810` (`1u/50V/0805`, `F.Cu`),
+the `<= 34 mm / 2 vias / F.Cu+In2.Cu` `P47_VEE_BASE` budget, joint `P47_VEE_DRV`
+and `P47_VGL` budgets, and `>= 50 um` SMD pad-edge clearance for all 11 vias on
+the three nets. Two full R26->R40 replays + default + history R39 pass:
+DRC/open/parity/ERC all 0, 185 GND/52 critical links, 7 PMIC continuous-copper
+ground corridors, 66 source-reviewed pose envelopes (0 clashes), 6 backside SMT
+clearances, 46 solder-joint vias, SD/USB/clock references and 3 clock GND
+stitches preserved; 463 distinct local source tests pass (geometry 396 pass/67
+skip, KiCad 444 pass/19 skip). Keep 4 layers/no In1 signal, isolated negative
+EP49, C804 dogbone, unique C815 100nF, GPIO2 direct. Actual PMIC revision/noise/
+stability/charge-pump ripple, exact 2050mAh pack/full panel, backside height/
+positive-tolerance <=7mm, supplier CAM/supply/EVT remain open; manufacturing_release,
+supplier_process_accepted, actual_noise_and_stability_qualified and
+charge_pump_transient_and_ripple_qualified stay false. Keep one baseline and one
+active candidate; remove closed full rebuilds, retain small JSONs.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R39 SINGLE / 66-POSE ENVELOPE & PRE-CAM AUDIT
 
 Read `hardware/pico47/E02-R39-POSE-ENVELOPE-AND-PRECAM-AUDIT-20261102.md` first.
 Use its corrected sourcing table bound to actual R39 PCB fields; the originally

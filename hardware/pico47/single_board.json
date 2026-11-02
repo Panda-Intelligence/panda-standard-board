@@ -2,12 +2,12 @@
   "schema": "panda47-single-source-v1",
   "date": "2026-11-02",
   "author": "Codex",
-  "revision": "R39",
+  "revision": "R40",
   "layout_eco": {
-    "source": "r25_router/single_r39_layout_delta.json",
-    "sha256": "7f27f458a118e80e194ba3a392c693ed362c634440f41d6e3eb1972e1b887c77",
+    "source": "r25_router/single_r40_layout_delta.json",
+    "sha256": "790430afd6c354c9f7099ae12048f81d4ed418851b60dabaadb774fe5d71d8e3",
     "baseline_revision": "R26",
-    "engineering_checkpoint": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r39/engineering-candidate",
+    "engineering_checkpoint": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r40/engineering-candidate",
     "inspection_overrides": {
       "required_ground_pad_count": 185,
       "output_bypasses": [
@@ -968,6 +968,34 @@
           "R710": 0.4,
           "R731": 0.4
         }
+      },
+      "pmic_charge_pump_storage": {
+        "device": "U810",
+        "power_pin": "30",
+        "ground_pin": "32",
+        "cap": "C810",
+        "value": "1u/50V/0805",
+        "side": "F.Cu",
+        "power_net": "P47_VEE_BASE",
+        "diode": "D804",
+        "diode_pin": "2",
+        "maximum_total_track_length_mm": 31.0,
+        "maximum_via_count": 2,
+        "allowed_layers": [
+          "F.Cu",
+          "In2.Cu"
+        ],
+        "joint_driver_net": "P47_VEE_DRV",
+        "driver_pin": "28",
+        "driver_cap": "C811",
+        "driver_cap_pin": "2",
+        "maximum_driver_track_length_mm": 7.5,
+        "maximum_driver_via_count": 2,
+        "joint_vgl_net": "P47_VGL",
+        "vgl_sense_ref": "R803",
+        "vgl_sense_pin": "1",
+        "maximum_vgl_track_length_mm": 52.0,
+        "maximum_vgl_via_count": 7
       }
     }
   },
@@ -7059,6 +7087,1002 @@
             "R710": 0.4,
             "R731": 0.4
           }
+        }
+      }
+    },
+    "R40": {
+      "source": "r25_router/single_r40_layout_delta.json",
+      "sha256": "790430afd6c354c9f7099ae12048f81d4ed418851b60dabaadb774fe5d71d8e3",
+      "baseline_revision": "R26",
+      "engineering_checkpoint": "/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r40/engineering-candidate",
+      "inspection_overrides": {
+        "required_ground_pad_count": 185,
+        "output_bypasses": [
+          {
+            "switch": "U404",
+            "cap": "C532",
+            "value": "1uF 10V X5R / U404 COUT",
+            "output_pin": "A1",
+            "ground_pin": "B1",
+            "output_net": "3V3_EPD_LOGIC_SW",
+            "maximum_pad_distance_mm": 2.5
+          },
+          {
+            "switch": "U402",
+            "cap": "C533",
+            "value": "1uF 10V X5R / U402 COUT",
+            "output_pin": "A1",
+            "ground_pin": "B1",
+            "output_net": "3V3_SD_SW",
+            "maximum_pad_distance_mm": 4
+          },
+          {
+            "switch": "U403",
+            "cap": "C534",
+            "value": "1uF 10V X5R / U403 COUT",
+            "output_pin": "A1",
+            "ground_pin": "B1",
+            "output_net": "3V3_TOUCH_SW",
+            "maximum_pad_distance_mm": 4
+          },
+          {
+            "switch": "U405",
+            "cap": "C535",
+            "value": "1uF 10V X5R / U405 COUT",
+            "output_pin": "A1",
+            "ground_pin": "B1",
+            "output_net": "VSYS_AUDIO_SW",
+            "maximum_pad_distance_mm": 4
+          }
+        ],
+        "layout_critical_links": [
+          [
+            "U501",
+            "7",
+            "R931",
+            "1"
+          ],
+          [
+            "R931",
+            "2",
+            "U905",
+            "19"
+          ],
+          [
+            "R931",
+            "2",
+            "Q908",
+            "1"
+          ],
+          [
+            "R931",
+            "2",
+            "TP19",
+            "1"
+          ],
+          [
+            "U501",
+            "7",
+            "U811",
+            "14"
+          ],
+          [
+            "R813",
+            "2",
+            "U811",
+            "4"
+          ],
+          [
+            "R931",
+            "2",
+            "R601",
+            "1"
+          ],
+          [
+            "Q907",
+            "2",
+            "U901",
+            "9"
+          ],
+          [
+            "U404",
+            "A1",
+            "C532",
+            "1"
+          ],
+          [
+            "U404",
+            "B1",
+            "C532",
+            "2"
+          ],
+          [
+            "U402",
+            "A1",
+            "C533",
+            "1"
+          ],
+          [
+            "U402",
+            "B1",
+            "C533",
+            "2"
+          ],
+          [
+            "U403",
+            "A1",
+            "C534",
+            "1"
+          ],
+          [
+            "U403",
+            "B1",
+            "C534",
+            "2"
+          ],
+          [
+            "U405",
+            "A1",
+            "C535",
+            "1"
+          ],
+          [
+            "U405",
+            "B1",
+            "C535",
+            "2"
+          ],
+          [
+            "U402",
+            "A2",
+            "C508",
+            "1"
+          ],
+          [
+            "U402",
+            "B1",
+            "C508",
+            "2"
+          ],
+          [
+            "U403",
+            "A2",
+            "C536",
+            "1"
+          ],
+          [
+            "U403",
+            "B1",
+            "C536",
+            "2"
+          ],
+          [
+            "U404",
+            "A2",
+            "C511",
+            "1"
+          ],
+          [
+            "U404",
+            "B1",
+            "C511",
+            "2"
+          ],
+          [
+            "U405",
+            "A2",
+            "C507",
+            "1"
+          ],
+          [
+            "U405",
+            "B1",
+            "C507",
+            "2"
+          ],
+          [
+            "U501",
+            "29",
+            "C537",
+            "1"
+          ],
+          [
+            "U501",
+            "57",
+            "C537",
+            "2"
+          ],
+          [
+            "U501",
+            "29",
+            "C538",
+            "1"
+          ],
+          [
+            "U501",
+            "57",
+            "C538",
+            "2"
+          ],
+          [
+            "U503",
+            "5",
+            "C539",
+            "1"
+          ],
+          [
+            "U503",
+            "6",
+            "C539",
+            "2"
+          ],
+          [
+            "U503",
+            "8",
+            "C540",
+            "1"
+          ],
+          [
+            "U503",
+            "7",
+            "C540",
+            "2"
+          ],
+          [
+            "U601",
+            "24",
+            "C541",
+            "1"
+          ],
+          [
+            "U601",
+            "12",
+            "C541",
+            "2"
+          ],
+          [
+            "U811",
+            "24",
+            "C542",
+            "1"
+          ],
+          [
+            "U811",
+            "12",
+            "C542",
+            "2"
+          ],
+          [
+            "U506",
+            "8",
+            "C543",
+            "1"
+          ],
+          [
+            "U506",
+            "4",
+            "C543",
+            "2"
+          ],
+          [
+            "U810",
+            "1",
+            "C815",
+            "1"
+          ],
+          [
+            "U810",
+            "8",
+            "C815",
+            "2"
+          ]
+        ],
+        "complete_via_in_pad_inventory": {
+          "soldered_vias": [
+            [
+              "3V3_EPD_LOGIC",
+              46.125,
+              104.2,
+              0.4,
+              0.2,
+              "R516.2:F.Cu"
+            ],
+            [
+              "3V3_RF",
+              58.7,
+              94.45,
+              0.4,
+              0.2,
+              "U501.2:F.Cu"
+            ],
+            [
+              "BAT_CONN_P",
+              56.0,
+              127.3,
+              0.6,
+              0.3,
+              "J301.1:F.Cu"
+            ],
+            [
+              "BAT_CONN_P",
+              56.0,
+              128.0,
+              0.6,
+              0.3,
+              "J301.1:F.Cu"
+            ],
+            [
+              "BAT_CONN_P",
+              69.0375,
+              44.0,
+              0.6,
+              0.3,
+              "R306.1:F.Cu"
+            ],
+            [
+              "BAT_CONN_P",
+              69.0375,
+              44.7,
+              0.6,
+              0.3,
+              "R306.1:F.Cu"
+            ],
+            [
+              "BAT_PACKP",
+              42.34641,
+              54.8,
+              0.4,
+              0.2,
+              "C206.1:F.Cu"
+            ],
+            [
+              "BAT_PACKP",
+              42.606218,
+              55.35,
+              0.4,
+              0.2,
+              "C206.1:F.Cu"
+            ],
+            [
+              "BAT_PACKP",
+              71.6125,
+              43.393782,
+              0.4,
+              0.2,
+              "R306.2:F.Cu"
+            ],
+            [
+              "BAT_PACKP",
+              71.9625,
+              44.0,
+              0.4,
+              0.2,
+              "R306.2:F.Cu"
+            ],
+            [
+              "BQ_PG",
+              43.5,
+              50.05,
+              0.4,
+              0.2,
+              "U901.3:F.Cu"
+            ],
+            [
+              "BQ_STAT",
+              43.0,
+              49.8,
+              0.4,
+              0.2,
+              "U901.4:F.Cu"
+            ],
+            [
+              "FL_C_N",
+              9.375,
+              125.825,
+              0.4,
+              0.2,
+              "U905.11:F.Cu"
+            ],
+            [
+              "FL_W_N",
+              9.4,
+              125.2,
+              0.4,
+              0.2,
+              "U905.12:F.Cu"
+            ],
+            [
+              "GND",
+              34.45,
+              124.6,
+              0.4,
+              0.2,
+              "J201.B12:F.Cu"
+            ],
+            [
+              "GND",
+              42.6,
+              51.35,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              42.6,
+              52.0,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              42.6,
+              52.65,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.25,
+              51.35,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.25,
+              52.0,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.25,
+              52.65,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.9,
+              51.35,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.9,
+              52.0,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              43.9,
+              52.65,
+              0.4,
+              0.2,
+              "U901.25:F.Cu"
+            ],
+            [
+              "GND",
+              45.8,
+              124.15,
+              0.4,
+              0.2,
+              "R207.1:F.Cu"
+            ],
+            [
+              "GND",
+              57.75,
+              93.32,
+              0.4,
+              0.2,
+              "C530.2:F.Cu"
+            ],
+            [
+              "GND",
+              61.0,
+              96.5,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              61.0,
+              98.0,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              61.25,
+              95.0,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              62.5,
+              96.5,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              62.5,
+              98.0,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              62.75,
+              95.25,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              64.0,
+              95.0,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              64.0,
+              96.5,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "GND",
+              64.0,
+              98.0,
+              0.5,
+              0.25,
+              "U501.57:F.Cu"
+            ],
+            [
+              "I2C_SCL",
+              42.5,
+              50.25,
+              0.4,
+              0.2,
+              "U901.5:F.Cu"
+            ],
+            [
+              "I2C_SCL",
+              68.775,
+              36.45,
+              0.4,
+              0.2,
+              "R301.1:F.Cu"
+            ],
+            [
+              "SPIHD_SOC",
+              67.55,
+              90.45,
+              0.4,
+              0.2,
+              "R545.1:F.Cu"
+            ],
+            [
+              "USB_CC2",
+              39.25,
+              124.6,
+              0.4,
+              0.2,
+              "J201.B5:F.Cu"
+            ],
+            [
+              "VBUS_USB",
+              44.3,
+              48.65359,
+              0.6,
+              0.3,
+              "C202.1:F.Cu"
+            ],
+            [
+              "VBUS_USB",
+              44.84641,
+              48.8,
+              0.6,
+              0.3,
+              "C202.1:F.Cu"
+            ],
+            [
+              "VDD_SPI",
+              67.575,
+              94.175,
+              0.4,
+              0.2,
+              "U506.8:F.Cu"
+            ],
+            [
+              "VDD_SPI",
+              69.72,
+              89.90359,
+              0.4,
+              0.2,
+              "C520.1:F.Cu"
+            ],
+            [
+              "VSYS_RAW",
+              43.5,
+              53.9,
+              0.4,
+              0.2,
+              "U901.16:F.Cu"
+            ],
+            [
+              "VSYS_RAW",
+              53.4,
+              52.606218,
+              0.6,
+              0.3,
+              "C207.1:F.Cu"
+            ],
+            [
+              "VSYS_RAW",
+              53.75,
+              52.0,
+              0.4,
+              0.2,
+              "C207.1:F.Cu"
+            ]
+          ]
+        },
+        "input_bypasses": [
+          {
+            "switch": "U402",
+            "cap": "C508",
+            "value": "1u / U402 VIN",
+            "input_pin": "A2",
+            "ground_pin": "B1",
+            "input_net": "3V3_AON",
+            "maximum_pad_distance_mm": 3,
+            "new_component": false
+          },
+          {
+            "switch": "U403",
+            "cap": "C536",
+            "value": "1uF 10V X5R / U403 CIN",
+            "input_pin": "A2",
+            "ground_pin": "B1",
+            "input_net": "3V3_AON",
+            "maximum_pad_distance_mm": 4,
+            "new_component": true
+          },
+          {
+            "switch": "U404",
+            "cap": "C511",
+            "value": "1u / U404 VIN",
+            "input_pin": "A2",
+            "ground_pin": "B1",
+            "input_net": "3V3_AON",
+            "maximum_pad_distance_mm": 3,
+            "new_component": false
+          },
+          {
+            "switch": "U405",
+            "cap": "C507",
+            "value": "1u / U405 VIN",
+            "input_pin": "A2",
+            "ground_pin": "B1",
+            "input_net": "VSYS_RAW",
+            "maximum_pad_distance_mm": 3,
+            "new_component": false
+          }
+        ],
+        "power_bypasses": [
+          {
+            "device": "U501",
+            "cap": "C537",
+            "value": "100nF 25V X7R / U501 VDD_SPI",
+            "power_pin": "29",
+            "ground_pin": "57",
+            "power_net": "VDD_SPI",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "B.Cu"
+          },
+          {
+            "device": "U501",
+            "cap": "C538",
+            "value": "1uF 10V X5R / U501 VDD_SPI",
+            "power_pin": "29",
+            "ground_pin": "57",
+            "power_net": "VDD_SPI",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "B.Cu"
+          },
+          {
+            "device": "U503",
+            "cap": "C539",
+            "value": "100nF 25V X7R / U503 VDD_IO",
+            "power_pin": "5",
+            "ground_pin": "6",
+            "power_net": "3V3_AON",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "F.Cu"
+          },
+          {
+            "device": "U503",
+            "cap": "C540",
+            "value": "100nF 25V X7R / U503 VDD",
+            "power_pin": "8",
+            "ground_pin": "7",
+            "power_net": "3V3_AON",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "F.Cu"
+          },
+          {
+            "device": "U601",
+            "cap": "C541",
+            "value": "100nF 25V X7R / U601 VCC",
+            "power_pin": "24",
+            "ground_pin": "12",
+            "power_net": "3V3_AON",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "F.Cu"
+          },
+          {
+            "device": "U811",
+            "cap": "C542",
+            "value": "100nF 25V X7R / U811 VCC",
+            "power_pin": "24",
+            "ground_pin": "12",
+            "power_net": "3V3_AON",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "F.Cu"
+          },
+          {
+            "device": "U506",
+            "cap": "C543",
+            "value": "100nF 25V X7R / U506 VCC",
+            "power_pin": "8",
+            "ground_pin": "4",
+            "power_net": "VDD_SPI",
+            "maximum_pad_distance_mm": 2.5,
+            "new_component": true,
+            "side": "B.Cu"
+          }
+        ],
+        "reference_filters": [
+          {
+            "device": "U810",
+            "cap": "C815",
+            "value": "100n/25V/0402",
+            "power_pin": "1",
+            "ground_pin": "8",
+            "power_net": "P47_VREF",
+            "maximum_pad_distance_mm": 1,
+            "new_component": true,
+            "side": "B.Cu",
+            "maximum_nominal_capacitance_uf": 0.1,
+            "routing_budget": {
+              "maximum_total_track_length_mm": 40,
+              "maximum_via_count": 4,
+              "noise_projection_budget_mm": 0.5,
+              "noise_nets": [
+                "P47_VP_LX",
+                "P47_VN_LX"
+              ],
+              "inductor_refs": [
+                "L801",
+                "L802"
+              ],
+              "permitted_coupled_copper": [
+                [
+                  "track",
+                  "P47_VREF",
+                  "In2.Cu",
+                  15675000,
+                  92300000,
+                  18300000,
+                  94925000,
+                  150000
+                ]
+              ]
+            }
+          }
+        ],
+        "pmic_analog_shield": {
+          "reference_net": "P47_VREF",
+          "sensitive_nets": [
+            "P47_VREF",
+            "P47_VEE_FB",
+            "P47_VGH_FB"
+          ],
+          "noise_nets": [
+            "P47_VP_LX",
+            "P47_VN_LX",
+            "P47_VGH_DRV",
+            "P47_VEE_DRV",
+            "P47_PUMP_POS",
+            "P47_PUMP_NEG"
+          ],
+          "inductor_refs": [
+            "L801",
+            "L802"
+          ],
+          "clearance_mm": 0.5,
+          "ground_margin_mm": 0.2,
+          "shape_tolerance_um": 2
+        },
+        "source_pose_envelope_screen": {
+          "fallback_margin_mm": 0.25,
+          "moved_refs": [
+            "C204",
+            "C507",
+            "C508",
+            "C512",
+            "C513",
+            "C523",
+            "C710",
+            "C711",
+            "C815",
+            "C920",
+            "C921",
+            "C922",
+            "C923",
+            "D201",
+            "D802",
+            "D803",
+            "D905",
+            "L801",
+            "L802",
+            "L905",
+            "R511",
+            "R514",
+            "R517",
+            "R518",
+            "R519",
+            "R520",
+            "R521",
+            "R522",
+            "R523",
+            "R524",
+            "R525",
+            "R526",
+            "R527",
+            "R533",
+            "R604",
+            "R613",
+            "R710",
+            "R714",
+            "R716",
+            "R717",
+            "R728",
+            "R729",
+            "R730",
+            "R731",
+            "R732",
+            "R801",
+            "R802",
+            "R803",
+            "R804",
+            "R920",
+            "TP5",
+            "TP801",
+            "U710",
+            "U711"
+          ],
+          "added_refs": [
+            "C532",
+            "C533",
+            "C534",
+            "C535",
+            "C536",
+            "C537",
+            "C538",
+            "C539",
+            "C540",
+            "C541",
+            "C542",
+            "C543"
+          ]
+        },
+        "backside_smt_clearance": {
+          "expected_populated_refs": [
+            "C537",
+            "C538",
+            "C543",
+            "C815",
+            "R710",
+            "R731"
+          ],
+          "expected_bare_testpoint_refs": [
+            "J503",
+            "TP1",
+            "TP11",
+            "TP12",
+            "TP13",
+            "TP14",
+            "TP16",
+            "TP18",
+            "TP19",
+            "TP2",
+            "TP3",
+            "TP4",
+            "TP5",
+            "TP6",
+            "TP7",
+            "TP8",
+            "TP801",
+            "TP803",
+            "TP805",
+            "TPG1",
+            "TPG2",
+            "TPG3",
+            "TPG4",
+            "TPG5",
+            "TPG6"
+          ],
+          "battery_bay_max_x_mm": 37.5,
+          "battery_bay_max_y_mm": 83.2,
+          "min_battery_bay_clearance_mm": 5.0,
+          "upper_right_bay_max_y_mm": 31.2,
+          "min_upper_right_bay_clearance_mm": 50.0,
+          "maximum_component_thickness_mm": 0.6,
+          "max_thickness_mm_by_ref": {
+            "C537": 0.55,
+            "C538": 0.55,
+            "C543": 0.55,
+            "C815": 0.55,
+            "R710": 0.4,
+            "R731": 0.4
+          }
+        },
+        "pmic_charge_pump_storage": {
+          "device": "U810",
+          "power_pin": "30",
+          "ground_pin": "32",
+          "cap": "C810",
+          "value": "1u/50V/0805",
+          "side": "F.Cu",
+          "power_net": "P47_VEE_BASE",
+          "diode": "D804",
+          "diode_pin": "2",
+          "maximum_total_track_length_mm": 31.0,
+          "maximum_via_count": 2,
+          "allowed_layers": [
+            "F.Cu",
+            "In2.Cu"
+          ],
+          "joint_driver_net": "P47_VEE_DRV",
+          "driver_pin": "28",
+          "driver_cap": "C811",
+          "driver_cap_pin": "2",
+          "maximum_driver_track_length_mm": 7.5,
+          "maximum_driver_via_count": 2,
+          "joint_vgl_net": "P47_VGL",
+          "vgl_sense_ref": "R803",
+          "vgl_sense_pin": "1",
+          "maximum_vgl_track_length_mm": 52.0,
+          "maximum_vgl_via_count": 7
         }
       }
     }

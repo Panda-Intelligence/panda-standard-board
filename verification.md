@@ -1459,3 +1459,13 @@ R39从不可变R26直回放，仅将L905由F12.05/123.90/180°迁至F12.05/123.6
 
 板上元件/针网/CAD/规则与R39封存未改，无新native布局采用；本阶段只修改说明，不重复459源测试或重建。继续评估C810长电源路径，受约束试验失败整板几何即时清理，保小诊断。实际电气、pack/fullpanel、正公差7mm、CAM/供料/EVT仍待证据。
 
+## 2026-11-02 R40 C810 (`P47_VEE_BASE`) 电荷泵储能支路收敛与 PMIC 负压三网联合闭合 / Codex
+
+R40从不可变R26直回放，相对R39保持**零器件迁位**（全部265件908盘位姿、身份、UUID、字段、值与针网100%不变，CPL 226行逐字节恒等），仅联合重布`P47_VEE_BASE`、`P47_VEE_DRV`、`P47_VGL`三项PMIC负压网络并清除死端残枝，其余全板铜轨、过孔与16个覆铜区逐项恒等。全板现为265件908盘、10832条走线（净减119条冗余线段）、1004颗过孔（净减1颗）、16个覆铜区。
+
+`P47_VEE_BASE`（`U810.30 -> C810.1`）由R39的22.623mm平面（24.153mm空间）/3孔/0.0945Ω（含`B.Cu`西侧外环）收敛至**7.953mm平面（9.231mm空间）/2孔/0.0493Ω**，仅走`F.Cu + In2.Cu`，全网48.687→30.266mm（154→34轨，3→2孔），`C810.1 -> D804.2`（20.282mm/0孔）保持不变；`P47_VEE_DRV`（`U810.28 -> C811.2`）接管`(20.425, 98.15)`口袋过孔释放`In2.Cu`西侧通道，保持6.048mm平面（7.578mm空间）/2孔（全网7.253mm）；`P47_VGL`的`D804.1 -> C812.1`（5.547mm/0孔）与`C812.1 -> J820.1`（30.552mm/2孔）主干100%不变，仅750k高阻反馈分压支路`C812.1 -> R803.1`改由东北向汇入（平面15.856→20.194mm，空间18.663→21.724mm，全网47.484→51.515mm，全网7孔不变）。构建器新增`inspect_pmic_charge_pump_storage`守卫锁定三网预算、层集合及11颗过孔对非同网SMD焊盘≥50µm边净空。
+
+两次显式完整R26→R40源重建（`r40-a`、`r40-b`）、最终默认入口及历史R39回归均为DRC错误/告警/open/parity/ERC 0/0/0/0/0；三份R40独立原生审计保持全部R39旧盘组、185GND/52关键链、7对PMIC连续铜参考地走廊、电荷泵储能支路守卫、66件源位姿0冲突、背面6件SMT净空、全46孔POFV工艺签名、SD/USB/时钟参考及3处时钟地缝合。463个不同本地源用例互补全通过：geometry 396 pass/67 skip、KiCad 444 pass/19 skip，原459 IDs保持，新增4个电荷泵储能与联合预算边界用例通过，无CI。
+
+源delta `790430afd6c354c9f7099ae12048f81d4ed418851b60dabaadb774fe5d71d8e3`；默认PCB `c5dcfe47e8d48a2a0c5862cf8d9f9788d043c1dd5daaa390af2d8061ba380eb2`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r40/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R40工程记录](hardware/pico47/E02-R40-C810-VEE-BASE-LAYOUT-20261102.md)。电荷泵瞬态与纹波、实际PMIC版本/噪声稳定性、供应商最大包络、真实2050mAh电池/完整面板/底壳避让与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`、`charge_pump_transient_and_ripple_qualified=false`。
+

@@ -1062,5 +1062,107 @@ class BacksideSmtClearanceTests(unittest.TestCase):
             inspect_backside_smt_clearances(board,c)
 
 
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class PmicChargePumpStorageTests(unittest.TestCase):
+    def fixture(self):
+        import wx
+        app=wx.GetApp() or wx.App(False)
+        import pcbnew as P
+        board=P.BOARD();board.SetCopperLayerCount(4)
+        for idx,name in enumerate(['GND','P47_VEE_BASE','P47_VEE_DRV','P47_VGL'],1):
+            board.Add(P.NETINFO_ITEM(board,name,idx))
+        def add_part(ref,val,pins):
+            fp=P.FOOTPRINT(board);fp.SetReference(ref);fp.SetValue(val)
+            fp.SetLayer(P.F_Cu);fp.SetAttributes(P.FP_SMD)
+            for num,net,x,y in pins:
+                p=P.PAD(fp);p.SetNumber(str(num));p.SetAttribute(P.PAD_ATTRIB_SMD)
+                p.SetNet(board.FindNet(net));p.SetSize(P.VECTOR2I(mm(.4),mm(.4)))
+                p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+                ls=P.LSET();ls.AddLayer(P.F_Cu);p.SetLayerSet(ls);fp.Add(p)
+            board.Add(fp)
+        add_part('U810','SY7636A',[('30','P47_VEE_BASE',0,0),('32','GND',0,2),('28','P47_VEE_DRV',0,4)])
+        add_part('C810','1u/50V/0805',[('1','P47_VEE_BASE',4,0),('2','GND',4,2)])
+        add_part('D804','BAV99',[('1','P47_VGL',8,4),('2','P47_VEE_BASE',8,0)])
+        add_part('C811','47n/50V/0805',[('2','P47_VEE_DRV',4,4)])
+        add_part('R803','750k/0.1%',[('1','P47_VGL',4,6)])
+        def trk(net,ly,x1,y1,x2,y2):
+            t=P.PCB_TRACK(board);t.SetNet(board.FindNet(net));t.SetLayer(ly);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(mm(x1),mm(y1)));t.SetEnd(P.VECTOR2I(mm(x2),mm(y2)));board.Add(t)
+            return t
+        def via(net,x,y):
+            v=P.PCB_VIA(board);v.SetNet(board.FindNet(net));v.SetViaType(P.VIATYPE_THROUGH)
+            v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+            v.SetPosition(P.VECTOR2I(mm(x),mm(y)));board.Add(v)
+            return v
+        trk('P47_VEE_BASE',P.F_Cu,0,0,1,0);via('P47_VEE_BASE',1,0)
+        trk('P47_VEE_BASE',P.In2_Cu,1,0,3,0);via('P47_VEE_BASE',3,0)
+        trk('P47_VEE_BASE',P.F_Cu,3,0,4,0);trk('P47_VEE_BASE',P.F_Cu,4,0,8,0)
+        trk('GND',P.F_Cu,0,2,4,2)
+        trk('P47_VEE_DRV',P.F_Cu,0,4,1,4);via('P47_VEE_DRV',1,4)
+        trk('P47_VEE_DRV',P.B_Cu,1,4,3,4);via('P47_VEE_DRV',3,4)
+        trk('P47_VEE_DRV',P.F_Cu,3,4,4,4)
+        trk('P47_VGL',P.F_Cu,4,6,5,6);via('P47_VGL',5,6)
+        trk('P47_VGL',P.In2_Cu,5,6,7,6);via('P47_VGL',7,6)
+        trk('P47_VGL',P.B_Cu,7,6,8,6);via('P47_VGL',8,6)
+        trk('P47_VGL',P.F_Cu,8,6,8,4)
+        contract=dict(device='U810',power_pin='30',ground_pin='32',cap='C810',value='1u/50V/0805',
+                      side='F.Cu',power_net='P47_VEE_BASE',diode='D804',diode_pin='2',
+                      maximum_total_track_length_mm=10.0,maximum_via_count=2,allowed_layers=['F.Cu','In2.Cu'],
+                      joint_driver_net='P47_VEE_DRV',driver_pin='28',driver_cap='C811',driver_cap_pin='2',
+                      maximum_driver_track_length_mm=6.0,maximum_driver_via_count=2,
+                      joint_vgl_net='P47_VGL',vgl_sense_ref='R803',vgl_sense_pin='1',
+                      maximum_vgl_track_length_mm=10.0,maximum_vgl_via_count=4)
+        return board,contract
+
+    def test_short_inner_route_passes_and_keeps_transient_qualification_false(self):
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture();r=inspect_pmic_charge_pump_storage(board,c)
+        self.assertEqual(r['vee_base']['via_count'],2)
+        self.assertEqual(r['vee_base']['track_layers'],['F.Cu','In2.Cu'])
+        self.assertTrue(r['all_scoped_vias_clear_smd_50um'])
+        self.assertFalse(r['charge_pump_transient_and_ripple_qualified'])
+        self.assertFalse(r['actual_noise_and_stability_qualified'])
+
+    def test_outer_bottom_loop_or_excess_length_or_extra_via_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture()
+        t=P.PCB_TRACK(board);t.SetNet(board.FindNet('P47_VEE_BASE'));t.SetLayer(P.B_Cu);t.SetWidth(mm(.15))
+        t.SetStart(P.VECTOR2I(mm(1),0));t.SetEnd(P.VECTOR2I(mm(2),0));board.Add(t)
+        with self.assertRaisesRegex(ValueError,'unreviewed copper layers'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture();c['maximum_total_track_length_mm']=5.0
+        with self.assertRaisesRegex(ValueError,'total track length budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture();c['maximum_via_count']=1
+        with self.assertRaisesRegex(ValueError,'via count budget'):
+            inspect_pmic_charge_pump_storage(board,c)
+
+    def test_joint_driver_or_vgl_budget_violation_is_rejected(self):
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture();c['maximum_driver_via_count']=1
+        with self.assertRaisesRegex(ValueError,'P47_VEE_DRV exceeds'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture();c['maximum_vgl_track_length_mm']=2.0
+        with self.assertRaisesRegex(ValueError,'P47_VGL exceeds'):
+            inspect_pmic_charge_pump_storage(board,c)
+
+    def test_via_within_50um_of_smd_pad_or_broken_link_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture()
+        v=P.PCB_VIA(board);v.SetNet(board.FindNet('P47_VEE_BASE'));v.SetViaType(P.VIATYPE_THROUGH)
+        v.SetLayerPair(P.F_Cu,P.B_Cu);v.SetWidth(mm(.4));v.SetDrill(mm(.2))
+        v.SetPosition(P.VECTOR2I(mm(.42),0));board.Add(v)
+        with self.assertRaisesRegex(ValueError,'50um SMD pad-edge'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture()
+        for t in list(board.GetTracks()):
+            if t.GetNetname()=='P47_VEE_DRV':
+                board.RemoveNative(t)
+        with self.assertRaisesRegex(ValueError,'no actual copper connection'):
+            inspect_pmic_charge_pump_storage(board,c)
+
+
 if __name__=='__main__':
     unittest.main()
