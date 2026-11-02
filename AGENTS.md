@@ -1,4 +1,54 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R41 SINGLE / C807 VGH_BASE & DUAL CHARGE-PUMP STORAGE
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R42 SINGLE / C809 VGH RECTIFIER & OUTPUT STORAGE
+
+Read `hardware/pico47/E02-R42-C809-VGH-RECTIFIER-LAYOUT-20261102.md` first. Default R42
+replays directly from immutable R26 using single_r42_layout_delta.json, SHA-256
+49022c5ff102464b69ddf6a31b5425038b2ba36617dfd1d6249a9692385142d3.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r42/engineering-candidate`.
+PCB SHA-256 38451516c01a7e7e2599dbb4413ca6e3378308c1106cfcc4c13c1026a60f88a0.
+
+Zero component poses changed relative to R41: all 265 part/908 pad identities,
+fields, values, nets and poses remain 100% identical to R41 (CPL 226 rows exact).
+Only `P47_VGH` (`D803.2 -> C809.1 -> U810.35 / R801.1 / J820.3 / TP801.1`) changed;
+all other copper tracks, vias and all 16 zones from R41 remain bit-for-bit unchanged.
+Board totals: 265 parts, 908 pads, 10765 tracks (-56), 1003 vias (0), 16 zones.
+
+`P47_VGH` eliminates the obsolete 2-via `0.15 mm` `B.Cu` rectifier detour
+(`D803.2 -> VIA 31.25/95.675 -> B.Cu -> VIA 30.50/91.375 -> C809.1`), the 2.57 mm
+east-and-back foldback from `C809.1 (28.00, 91.95)` to `(30.50, 91.375)`, and 65
+25 um staircase/cap-overlap segments, connecting `D803.2 -> C809.1` directly on
+`F.Cu` (`0.50 mm`, `0` vias) and placing the transition via at `(28.00, 92.80)` due
+south of `C809.1` (`100 um` pad-edge clearance). Every pairwise path and whole-net
+metric strictly improves with zero tradeoffs:
+- `D803.2 -> C809.1`: 6.949 -> 4.968 mm planar (-28.5%), 8.479 -> 4.968 mm spatial
+  (-41.4%), 2 -> 0 vias, 0.0174 -> 0.0049 ohm (-71.8%), `['B.Cu', 'F.Cu'] -> ['F.Cu']`.
+- `C809.1 -> U810.35`: 13.652 -> 12.141 mm planar (-1.511 mm), 15.182 -> 13.671 mm
+  spatial, 2 vias, 0.0175 -> 0.0167 ohm.
+- `C809.1 -> R801.1`: 12.685 -> 11.175 mm planar (-1.511 mm), 14.215 -> 12.705 mm
+  spatial, 2 vias, 0.0143 -> 0.0136 ohm.
+- `C809.1 -> J820.3`: 30.506 -> 27.287 mm planar (-3.219 mm), 32.289 -> 29.070 mm
+  spatial, 4 vias, 0.0481 -> 0.0449 ohm.
+- Whole net `P47_VGH`: 54.123 -> 51.792 mm (-2.331 mm), 204 -> 148 tracks (-56),
+  6 vias unchanged.
+
+Native `inspect_pmic_charge_pump_storage` now locks both negative (`C810` / `C812`,
+`D804.1 -> C812.1` direct `F.Cu` continuity, `P47_VEE_BASE <= 31 mm / 2 vias / F.Cu+In2.Cu`,
+`P47_VEE_DRV <= 7.5 mm / 2 vias`, `P47_VGL <= 52 mm / 7 vias`) and positive (`C807` /
+`C809`, `D803.2 -> C809.1` direct `F.Cu` continuity, `P47_VGH_BASE <= 25 mm / 3 vias / F.Cu+In2.Cu`,
+`P47_VGH_DRV <= 7 mm / 2 vias`, `P47_VGH <= 52 mm / 6 vias`) charge-pump storage networks
+and `>= 50 um` SMD pad-edge clearance for all 22 vias across the 6 nets. Two full
+R26->R42 replays + default + history R41 pass: DRC/open/parity/ERC all 0, 185 GND/52
+critical links, 7 PMIC continuous-copper ground corridors, 66 source-reviewed pose
+envelopes (0 clashes), 6 backside SMT clearances, 46 solder-joint vias, SD/USB/clock
+references and 3 clock GND stitches preserved; 468 distinct local source tests pass
+(geometry 396 pass/72 skip, KiCad 449 pass/19 skip). Keep 4 layers/no In1 signal,
+isolated negative EP49, C804 dogbone, unique C815 100nF, GPIO2 direct. Actual PMIC
+revision/noise/stability/charge-pump ripple, exact 2050mAh pack/full panel, backside
+height/positive-tolerance <=7mm, supplier CAM/supply/EVT remain open;
+manufacturing_release, supplier_process_accepted, actual_noise_and_stability_qualified
+and charge_pump_transient_and_ripple_qualified stay false. Keep one baseline and one
+active candidate; remove closed full rebuilds, retain small JSONs.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R41 SINGLE / C807 VGH_BASE & DUAL CHARGE-PUMP STORAGE
 
 Read `hardware/pico47/E02-R41-C807-VGH-BASE-LAYOUT-20261102.md` first. Default R41
 replays directly from immutable R26 using single_r41_layout_delta.json, SHA-256

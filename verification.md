@@ -1479,3 +1479,14 @@ R41从不可变R26直回放，相对R40保持**零器件迁位**（全部265件9
 两次显式完整R26→R41源重建（`r41-a`、`r41-b`）、最终默认入口及历史R40回归均为DRC错误/告警/open/parity/ERC 0/0/0/0/0；三份R41独立原生审计保持全部R40旧盘组、185GND/52关键链、7对PMIC连续铜参考地走廊、正负双侧电荷泵储能支路守卫、66件源位姿0冲突、背面6件SMT净空、全46孔POFV工艺签名、SD/USB/时钟参考及3处时钟地缝合。466个不同本地源用例互补全通过：geometry 396 pass/70 skip、KiCad 447 pass/19 skip，原463 IDs保持，新增3个正压电荷泵储能与层集合边界用例通过，无CI。
 
 源delta `8d4e8ad588ae5b9dcb5c68d4eb0194b6724b61a31dd25901dbfd6fc30d8912cb`；默认PCB `64d9338d42c2d2ea2584266dc8de43b0edcb11bc44beefdb6683acc0ea85e3b7`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r41/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R41工程记录](hardware/pico47/E02-R41-C807-VGH-BASE-LAYOUT-20261102.md)。电荷泵瞬态与纹波、实际PMIC版本/噪声稳定性、供应商最大包络、真实2050mAh电池/完整面板/底壳避让与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`、`charge_pump_transient_and_ripple_qualified=false`。
+
+
+## 2026-11-02 R42 C809 (`P47_VGH`) 正压栅极整流输出直连与储能滤波收敛 / Codex
+
+R42从不可变R26直回放，相对R41保持**零器件迁位**（全部265件908盘位姿、身份、UUID、字段、值与针网100%不变，CPL 226行逐字节恒等），且**仅改动`P47_VGH`单一网络**，其余全板铜轨、过孔与16个覆铜区逐项恒等。全板现为265件908盘、10765条走线（净减56条折返及25µm阶梯碎线段）、1003颗过孔（不变）、16个覆铜区。
+
+`P47_VGH`消除`D803.2 -> C809.1`遗留的`VIA (31.25, 95.675) -> B.Cu -> VIA (30.50, 91.375)`双过孔0.15mm底层绕行与`C809.1`东侧2.57mm往返折返，改为沿`F.Cu`连续0.50mm走线零过孔直连（`D803.2 -> C809.1`由6.949mm平面/8.479mm空间/2孔/0.0174Ω收敛至**4.968mm平面/4.968mm空间/0孔/0.0049Ω**，平面缩短28.5%、空间缩短41.4%、串联铜阻下降71.8%），并将`C809.1`换层过孔由`(30.50, 91.375)`移至焊盘正南`(28.00, 92.80)`（距`C809.1`焊盘边净空100µm），使下游路径同步单调缩短（`C809.1 -> U810.35` 13.652→12.141mm平面，`C809.1 -> R801.1` 12.685→11.175mm平面，`C809.1 -> J820.3` 30.506→27.287mm平面；`D803.2 -> TP801.1` 0.604mm/1孔保持不变；全网54.123→51.792mm，204→148轨，6孔不变）。`inspect_pmic_charge_pump_storage`守卫新增正负双侧输出储能电容（`C812`与`C809`，`1u/50V/0805`，`F.Cu`）与倍压整流二极管输出脚（`D804.1 -> C812.1`、`D803.2 -> C809.1`）的`F.Cu`同层连续铜直连并查集守卫（`rectifier_to_output_cap_front_only = true`），并将`P47_VGH`全网铜长上限由54.5mm收紧至52.0mm。
+
+两次显式完整R26→R42源重建（`r42-a`、`r42-b`）、最终默认入口及历史R41回归均为DRC错误/告警/open/parity/ERC 0/0/0/0/0；三份R42独立原生审计保持全部R41旧盘组、185GND/52关键链、7对PMIC连续铜参考地走廊、正负双侧电荷泵储能与整流直连守卫、66件源位姿0冲突、背面6件SMT净空、全46孔POFV工艺签名、SD/USB/时钟参考及3处时钟地缝合。468个不同本地源用例互补全通过：geometry 396 pass/72 skip、KiCad 449 pass/19 skip，原466 IDs保持，新增2个正负输出电容正面直连与底层绕行/错值拒绝用例通过，无CI。
+
+源delta `49022c5ff102464b69ddf6a31b5425038b2ba36617dfd1d6249a9692385142d3`；默认PCB `38451516c01a7e7e2599dbb4413ca6e3378308c1106cfcc4c13c1026a60f88a0`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r42/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R42工程记录](hardware/pico47/E02-R42-C809-VGH-RECTIFIER-LAYOUT-20261102.md)。电荷泵瞬态与纹波、实际PMIC版本/噪声稳定性、供应商最大包络、真实2050mAh电池/完整面板/底壳避让与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`、`charge_pump_transient_and_ripple_qualified=false`。

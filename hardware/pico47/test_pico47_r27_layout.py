@@ -1253,6 +1253,56 @@ class PmicChargePumpStorageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'50um SMD pad-edge'):
             inspect_pmic_charge_pump_storage(board,c)
 
+    def fixture_with_output_caps(self):
+        import pcbnew as P
+        board,c=self.fixture_with_positive()
+        def add_part(ref,val,pins):
+            fp=P.FOOTPRINT(board);fp.SetReference(ref);fp.SetValue(val)
+            fp.SetLayer(P.F_Cu);fp.SetAttributes(P.FP_SMD)
+            for num,net,x,y in pins:
+                p=P.PAD(fp);p.SetNumber(str(num));p.SetAttribute(P.PAD_ATTRIB_SMD)
+                p.SetNet(board.FindNet(net));p.SetSize(P.VECTOR2I(mm(.4),mm(.4)))
+                p.SetPosition(P.VECTOR2I(mm(x),mm(y)))
+                ls=P.LSET();ls.AddLayer(P.F_Cu);p.SetLayerSet(ls);fp.Add(p)
+            board.Add(fp)
+        add_part('C812','1u/50V/0805',[('1','P47_VGL',8,5),('2','GND',4,2)])
+        add_part('C809','1u/50V/0805',[('1','P47_VGH',7.5,16),('2','GND',4,2)])
+        c['output_cap']='C812';c['output_cap_value']='1u/50V/0805'
+        c['positive_storage']['output_cap']='C809'
+        c['positive_storage']['output_cap_value']='1u/50V/0805'
+        return board,c
+
+    def test_output_storage_caps_direct_front_copper_passes(self):
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_output_caps();r=inspect_pmic_charge_pump_storage(board,c)
+        self.assertEqual(r['output_cap']['cap'],'C812')
+        self.assertTrue(r['output_cap']['rectifier_to_output_cap_front_only'])
+        self.assertEqual(r['positive_storage']['output_cap']['cap'],'C809')
+        self.assertTrue(r['positive_storage']['output_cap']['rectifier_to_output_cap_front_only'])
+
+    def test_output_storage_cap_bottom_detour_or_bad_value_is_rejected(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_pmic_charge_pump_storage
+        board,c=self.fixture_with_output_caps()
+        for t in list(board.GetTracks()):
+            if t.GetClass()=='PCB_TRACK' and t.GetNetname()=='P47_VGH' and t.GetLayer()==P.F_Cu and t.GetEnd().x==mm(8):
+                t.SetEnd(P.VECTOR2I(mm(7.5),mm(16)))
+        v1=P.PCB_VIA(board);v1.SetNet(board.FindNet('P47_VGH'));v1.SetViaType(P.VIATYPE_THROUGH)
+        v1.SetLayerPair(P.F_Cu,P.B_Cu);v1.SetWidth(mm(.4));v1.SetDrill(mm(.2))
+        v1.SetPosition(P.VECTOR2I(mm(9),mm(16)));board.Add(v1)
+        t1=P.PCB_TRACK(board);t1.SetNet(board.FindNet('P47_VGH'));t1.SetLayer(P.F_Cu);t1.SetWidth(mm(.15))
+        t1.SetStart(P.VECTOR2I(mm(8),mm(16)));t1.SetEnd(P.VECTOR2I(mm(9),mm(16)));board.Add(t1)
+        t2=P.PCB_TRACK(board);t2.SetNet(board.FindNet('P47_VGH'));t2.SetLayer(P.B_Cu);t2.SetWidth(mm(.15))
+        t2.SetStart(P.VECTOR2I(mm(7),mm(16)));t2.SetEnd(P.VECTOR2I(mm(9),mm(16)));board.Add(t2)
+        c['positive_storage']['maximum_vgh_track_length_mm']=15.0
+        c['positive_storage']['maximum_vgh_via_count']=5
+        with self.assertRaisesRegex(ValueError,'C809 charge-pump output capacitor requires direct F.Cu connection'):
+            inspect_pmic_charge_pump_storage(board,c)
+        board,c=self.fixture_with_output_caps()
+        board.FindFootprintByReference('C809').SetValue('100n/50V/0402')
+        with self.assertRaisesRegex(ValueError,'C809 charge-pump output capacitor value or assembly differs'):
+            inspect_pmic_charge_pump_storage(board,c)
+
 
 if __name__=='__main__':
     unittest.main()

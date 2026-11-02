@@ -394,12 +394,48 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
             'P47_VGL exceeds reviewed joint routing budget')
     pad_dist_mm = ((c1.GetPosition().x - p_ic.GetPosition().x) ** 2
                    + (c1.GetPosition().y - p_ic.GetPosition().y) ** 2) ** 0.5 / 1e6
+    def check_output_cap(spec, net_name, p_diode_out):
+        out_cap = board.FindFootprintByReference(spec['output_cap'])
+        require(out_cap is not None, f'Missing PMIC charge-pump output capacitor: {spec["output_cap"]}')
+        require(out_cap.GetValue() == spec['output_cap_value'] and not out_cap.IsDNP()
+                and out_cap.GetLayer() == P.F_Cu and out_cap.GetAttributes() & P.FP_SMD,
+                f'{spec["output_cap"]} charge-pump output capacitor value or assembly differs')
+        oc1, oc2 = pin(out_cap, '1'), pin(out_cap, '2')
+        require(oc1.GetNetname() == p_diode_out.GetNetname() == net_name
+                and oc2.GetNetname() == p_gnd.GetNetname() == 'GND',
+                f'{net_name} output capacitor pin net differs')
+        require(p_diode_out.m_Uuid.AsString() in group_for[oc1.m_Uuid.AsString()]
+                and p_gnd.m_Uuid.AsString() in group_for[oc2.m_Uuid.AsString()],
+                f'{spec["output_cap"]} output capacitor has no actual copper connection')
+        front_shapes = [p_diode_out.GetEffectiveShape(P.F_Cu), oc1.GetEffectiveShape(P.F_Cu)] + [
+            t.GetEffectiveShape() for t in board.GetTracks()
+            if t.GetClass() == 'PCB_TRACK' and t.GetNetname() == net_name and t.GetLayer() == P.F_Cu
+        ]
+        parent = list(range(len(front_shapes)))
+        def find(i):
+            while parent[i] != i:
+                parent[i] = parent[parent[i]]
+                i = parent[i]
+            return i
+        for i in range(len(front_shapes)):
+            for j in range(i + 1, len(front_shapes)):
+                if find(i) != find(j) and front_shapes[i].Collide(front_shapes[j], 0):
+                    parent[find(i)] = find(j)
+        require(find(0) == find(1),
+                f'{spec["output_cap"]} charge-pump output capacitor requires direct F.Cu connection to rectifier diode')
+        out_dist_mm = ((oc1.GetPosition().x - p_diode_out.GetPosition().x) ** 2
+                       + (oc1.GetPosition().y - p_diode_out.GetPosition().y) ** 2) ** 0.5 / 1e6
+        return dict(cap=spec['output_cap'], value=spec['output_cap_value'],
+                    diode_to_output_cap_pad_distance_mm=round(out_dist_mm, 6),
+                    rectifier_to_output_cap_front_only=True)
     result = dict(device=contract['device'], cap=contract['cap'], value=contract['value'],
                   power_net=contract['power_net'], pad_distance_mm=round(pad_dist_mm, 6),
                   vee_base=base_stats, vee_drv=drv_stats, vgl=vgl_stats,
                   all_scoped_vias_clear_smd_50um=True,
                   charge_pump_transient_and_ripple_qualified=False,
                   actual_noise_and_stability_qualified=False)
+    if 'output_cap' in contract:
+        result['output_cap'] = check_output_cap(contract, contract['joint_vgl_net'], p_vgl_diode)
     if pos:
         pos_cap = board.FindFootprintByReference(pos['cap'])
         pos_diode = board.FindFootprintByReference(pos['diode'])
@@ -448,6 +484,9 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
             cap=pos['cap'], value=pos['value'], power_net=pos['power_net'],
             pad_distance_mm=round(pos_pad_dist_mm, 6),
             vgh_base=vgh_base_stats, vgh_drv=vgh_drv_stats, vgh=vgh_stats)
+        if 'output_cap' in pos:
+            result['positive_storage']['output_cap'] = check_output_cap(
+                pos, pos['joint_vgh_net'], p_vgh_diode)
     return result
 
 
@@ -783,7 +822,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -798,7 +837,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -829,11 +868,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -842,7 +881,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -898,7 +937,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])
