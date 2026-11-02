@@ -1412,3 +1412,15 @@ CKV左23.948mm段三种有界F/In2重接均未通后停止；XCL_SRC局部及全
 当前工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r36/engineering-candidate`，PCB SHA`b7c149d1d8bf7ddb1d910e96ab67490a90bce4a5aac332bfa5abb5c53a7e6477`，deltaSHA`d7c0ac5a03cae4326a6f1ba5c71952c1a1cc08323c71a4a20a5627e2eeb2454e`。387包31current source306内部hash独立过，oldR35全377保持。226SMT/CPL226 C815Bottom0°，BT301后装/21pending/46CSV保持。见[R36工程记录](hardware/pico47/E02-R36-PMIC-REFERENCE-FILTER-20261102.md)。
 
 历史PMICRev0.9B镜像hash不同旧contract且非当前supplier接受，referenceguard审nominal.1uF，不当实际容差/DCbias/noise/stability资格。wholeVREF约77.746mm，R805支路16.454mm/R8042仍44.624mm；固定位置的switchF-only重接未通，原switchCu保持。实际电气/当前PMIC版本/完整packpanel/正公差≤7mm/背面高度净空/供料46孔CAM/EVT仍待证，manufacturing/supplierprocess/currentPMIC接受均false。阶段成果依用户指示验证后commitpush功能分支，不制造/充电/面板上电。
+
+## 2026-11-02 R37：VREF参考树缩短 / Codex
+
+只重接P47_VREF，全部265器件908焊盘／UUID／字段／值／针序／位姿、非VREF铜、原理图与库／规则／16区定义／轮廓叠层精确保持。全网77.746262→36.768716mm、608→27tracks、6→4vias；C815唯一100n及完整4项近端根保持，路径仍.846318mm／空间1.611318mm。R805平面16.453628→6.186981mm且全F，有访问根via同层接点但有效垂直0；R8042平面44.623597→29.642211mm／4visitedvia／有效垂直2.555mm／空间32.197211mm。
+
+两个explicit完整R26→R37、无source/revision参数default、historyR36五项原生全0／43/43；三fresh-review独立原生审计、全部旧padgroups、185GND52links、7power4CIN4COUT／full46工艺、43pose庭院、SD9104USB1224/FIn2clock1657参考及三clockGNDstitches过。默认新采B633farIn1零缺，nearIn2仍495几何缺口；7planar2spatialmetrics smoke通过，不作SI资格。443different本地源用例全覆盖（geometry396pass47native skip／KiCad424pass19geometry skip），旧439IDs完整保持、skip互补，四新native预算用例通过，无CI。
+
+0.5mm噪声投影只是搜索预算，包含完整LX铜和线圈原生庭院。原R804端点／线圈下参考铜仍未资格化：完全避让未通、R804单件迁位quiet15164但court兼容0，均未采用。最终原噪声投影内新原语被旧铜包络覆盖，逐层未覆盖面积0（2µm导出容差）。源守卫限全树40mm／4孔及精确已审coupled原语，未把旧风险豁免成噪声稳定性接受。原F逃线只缩掉真实死端、完整组保持，没有整条删活接点或删孔消告警。
+
+当前工程候选`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r37/engineering-candidate`；PCB SHA`df53238d1b91644d1c76f66369b0b603483c167a0864e79b14f4c5ba714fc2ea`，deltaSHA`972b1157ebeb0d7c2a706b240f82f18db1adc07806f900560201e28a5f32c421`。391包项／33current源／306纯默认内部hash独立全过，旧R36全387项保持；封存PCB只读重计265parts908pads11018tracks1004vias16zones、4层／In1非GND轨0。226SMT=CPL226、C815Bottom0°、BT301后装不入CPL、21pending／完整46CSV及签名保持。见[R37工程记录](hardware/pico47/E02-R37-VREF-TREE-20261102.md)。
+
+305份已关闭旧缓存透明压缩，allocated实际减少634007552B（604.637MiB），内容SHA／size／mtime／mode／uid／gid独立全过；不删CAD／检查点。ccache标准过期清理工具报3.6MB／41文件，UV prune因在用锁取消、不计回收；全局磁盘波动不当清理量。实际PMIC版本／参考噪声稳定性／DCbias／功率区与波形／SI／USB、真实pack全屏／背面高度净空／含正公差≤7mm、供料／全46孔CAM／EVT仍待证据。manufacturing／supplierprocess／currentPMIC接受均false，完整目标active；阶段源／测试／文档按用户要求验证后commit、普通push功能分支，不制造／充电／面板上电。

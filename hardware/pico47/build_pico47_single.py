@@ -120,6 +120,52 @@ def inspect_power_bypass(board, contract, groups=None):
     return result
 
 
+def reference_tree_metrics(board, contract):
+    """量测原生参考树及噪声投影内原语；铜几何不等同实际噪声或稳定性。"""
+    import pcbnew as P
+    budget = contract['routing_budget']
+    items = [t for t in board.GetTracks() if t.GetNetname()==contract['power_net']]
+    require(all(t.GetClass() in ('PCB_TRACK','PCB_VIA') for t in items),
+            'Unsupported reference-tree copper')
+    noise = []
+    for item in board.GetTracks():
+        if item.GetNetname() in budget['noise_nets']:
+            noise.append((item.GetEffectiveShape(P.F_Cu) if item.GetClass()=='PCB_VIA'
+                          else item.GetEffectiveShape(),0))
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetname() in budget['noise_nets']:
+                noise.append((pad.GetEffectiveShape(pad.GetLayer()),0))
+    for ref in budget['inductor_refs']:
+        fp = board.FindFootprintByReference(ref)
+        require(fp is not None, 'Missing reference-tree noise envelope: '+ref)
+        fp.BuildCourtyardCaches()
+        shape = fp.GetCourtyard(P.F_Cu)
+        require(not shape.IsEmpty(), 'Missing native inductor courtyard: '+ref)
+        half = max((g.GetWidth()//2 for g in fp.GraphicalItems() if g.GetLayer()==P.F_CrtYd),default=0)
+        noise.append((shape,half))
+    require(noise, 'Reference-tree noise projection is empty')
+    clearance = round(budget['noise_projection_budget_mm']*1e6)
+    coupled = []
+    tracks = [t for t in items if t.GetClass()=='PCB_TRACK']
+    vias = [t for t in items if t.GetClass()=='PCB_VIA']
+    for item in items:
+        is_via = item.GetClass()=='PCB_VIA'
+        shape = item.GetEffectiveShape(P.F_Cu) if is_via else item.GetEffectiveShape()
+        if any(shape.Collide(other,clearance+half) for other,half in noise):
+            if is_via:
+                at = item.GetPosition()
+                row = ['via',item.GetNetname(),at.x,at.y,item.GetWidth(P.F_Cu),item.GetDrill()]
+            else:
+                a,b = item.GetStart(),item.GetEnd()
+                row = ['track',item.GetNetname(),board.GetLayerName(item.GetLayer()),a.x,a.y,b.x,b.y,item.GetWidth()]
+            coupled.append(row)
+    return dict(total_track_length_mm=sum(t.GetLength() for t in tracks)/1e6,
+                via_count=len(vias),track_layers=sorted({board.GetLayerName(t.GetLayer()) for t in tracks}),
+                coupled_copper=sorted(coupled),noise_projection_budget_mm=budget['noise_projection_budget_mm'],
+                actual_noise_and_stability_qualified=False)
+
+
 def inspect_reference_filter(board, contract, groups=None):
     """SY7636A参考脚只保留已审单颗100n滤波，拒绝大容量或额外并联。"""
     require(contract['maximum_nominal_capacitance_uf'] == .1,
@@ -142,6 +188,17 @@ def inspect_reference_filter(board, contract, groups=None):
     result = inspect_power_bypass(board,contract,groups)
     result.update(nominal_capacitance_uf=nominal,fitted_reference_caps=fitted,
                   supplier_current_revision_accepted=False)
+    if 'routing_budget' in contract:
+        budget = contract['routing_budget']
+        metrics = reference_tree_metrics(board,contract)
+        require(metrics['total_track_length_mm']<=budget['maximum_total_track_length_mm']+1e-6,
+                'Reference tree exceeds the reviewed total-copper budget')
+        require(metrics['via_count']<=budget['maximum_via_count'],
+                'Reference tree exceeds the reviewed via budget')
+        permitted = {tuple(row) for row in budget['permitted_coupled_copper']}
+        require(all(tuple(row) in permitted for row in metrics['coupled_copper']),
+                'Unreviewed reference copper enters the noise projection')
+        result['reference_tree'] = metrics
     return result
 
 
@@ -344,7 +401,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -359,7 +416,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -390,11 +447,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -403,7 +460,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -459,7 +516,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])

@@ -1,4 +1,39 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R36 SINGLE / PMIC REFERENCE FILTER
+# CURRENT ROUTING CONTINUATION — 2026-11-02 R37 SINGLE / VREF TREE
+
+Read `hardware/pico47/E02-R37-VREF-TREE-20261102.md` first. Default R37 replays
+directly from immutable R26 with single_r37_layout_delta.json SHA-256
+972b1157ebeb0d7c2a706b240f82f18db1adc07806f900560201e28a5f32c421.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r37/engineering-candidate`.
+PCB SHA-256 df53238d1b91644d1c76f66369b0b603483c167a0864e79b14f4c5ba714fc2ea.
+
+Only P47_VREF copper changes: 77.746→36.769 mm, 608→27 tracks, 6→4 vias.
+All 265 parts/908 pads/IDs/fields/values/poses, all non-VREF copper, SCH/libraries,
+rules/16 zones/outline/stack remain exact. C815 stays unique100n at B12.8/94/0;
+preserve its complete four-item root and root-via surface contacts. R805 is now
+6.187mm F-only (visited root via is a same-layer contact); R804.2 is29.642mm
+planar/32.197mm spatial. Do not call geometric shortening noise qualification.
+
+Original R804 terminal/under-inductor reference copper remains in the0.5mm
+LX-pad/track/via + native L801/L802 courtyard search projection. New copper adds
+no physical exposed area outside old copper coverage (2um export tolerance).
+R804 move screen had zero courtyard-compatible quiet positions; none adopted.
+Keep original coupled copper risk explicit. Final source guard limits the whole
+reference tree to40mm/4vias and exact reviewed coupled primitives; actual noise,
+stability/current PMIC revision remain unqualified. Historical R36 is retained.
+
+Two full replays/default/historyR36/native audits pass:43/43, all native/ERC0,
+185GND/52critical,11018tracks/1004vias/16zones,443 distinct local tests. Keep
+4layers/noIn1signal/negativeEP/C804dogbone/GPIO2direct/3clockGND/7power4CIN4COUT/
+full46process/actualSDUSBclockrefs/43poses. SMT226/CPL226, BT301postSMT excluded,
+21pending. Actual electrical/noise/power geometry, actual pack/fullpanel maximum
+envelopes, backside heights/clearance/positive-tolerance<=7mm, supply/full46CAM/EVT
+remain open. No manufacture, charging or panel power. User requires verified
+stage commit & regular push to this feature branch; reviewed PR before main.
+Generated CAD/reports/renders stay ignored/external. Inspectors writing netlists
+run only on fresh review copies. Preserve packaging, four worktrees, unrelated
+changes and every historical sealed checkpoint; never select by newest mtime.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R36 SINGLE / PMIC REFERENCE FILTER
 
 Read `hardware/pico47/E02-R36-PMIC-REFERENCE-FILTER-20261102.md` first.
 DefaultR36 directR26 source single_r36_layout_delta.json SHA

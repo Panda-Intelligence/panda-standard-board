@@ -1,4 +1,10 @@
-# Current Continuation: E0.2 R36 — PMIC参考滤波电容近端摆位（2026-11-02）
+# Current Continuation: E0.2 R37 — 缩短VREF参考树（2026-11-02）
+
+执行者：Codex。先读 [R37 参考树路径、保留噪声风险与完整源回放](E02-R37-VREF-TREE-20261102.md)。只重接VREF铜，全部265器件908焊盘／位姿／身份及非VREF铜、原理图／库／规则保持；全网77.746→36.769mm、过孔6→4，C815唯一100n近端根路径保持。R805改为6.187mm F-only；R804路径缩至29.642mm。原端点和线圈下参考铜仍有未资格化耦合，新增铜没有扩大其物理暴露范围。
+
+默认R37；两独立完整R26回放、默认入口和历史R36、三份独立原生审计通过，43/43、原生／ERC全零，185地52关键链、443不同本地源用例全覆盖。43位姿、7power／4CIN／4COUT、完整46孔工艺和SD／USB／时钟参考保持。当前候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r37/engineering-candidate`。PMIC功率区／真实噪声稳定性／电气、真实电池全屏／背面高度／含正公差≤7mm、供料CAM／EVT仍待证据，`manufacturing_release=false`。验证通过的源及阶段工程记录按用户要求commit并push功能分支。
+
+# Historical Continuation: E0.2 R36 — PMIC参考滤波电容近端摆位（2026-11-02）
 
 执行者：Codex。先读 [R36 C815同值迁位、内层接点保留与完整源回放](E02-R36-PMIC-REFERENCE-FILTER-20261102.md)。原 C815 保持单颗100nF／原料号，移到B12.8/94/0，VREF脚到电容的平面铜路由14.601降至0.846mm，有效过孔2→1。保留265器件908焊盘全部身份／值／针序，其他264器件、原理图／库／规则及全部非审阅铜保持；旧内层过孔接点经显式铜桥与完整焊盘守卫保留，没有直接删掉活接点。
 

@@ -502,6 +502,58 @@ class ReferenceFilterTests(unittest.TestCase):
 
 
 @unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
+class ReferenceTreeBudgetTests(unittest.TestCase):
+    def fixture(self,near_noise=False):
+        import pcbnew as P
+        board,contract=ReferenceFilterTests.fixture(self)
+        board.Add(P.NETINFO_ITEM(board,'SWITCH',4))
+        self.track(board,'SWITCH',(-.4,.3,-.4,1.3) if near_noise else (5,5,6,5))
+        contract['routing_budget']=dict(maximum_total_track_length_mm=3,maximum_via_count=0,
+            noise_projection_budget_mm=.5,noise_nets=['SWITCH'],inductor_refs=[],permitted_coupled_copper=[])
+        return board,contract
+
+    def track(self,board,net,xy,layer=None):
+        import pcbnew as P
+        t=P.PCB_TRACK(board);t.SetNet(board.FindNet(net));t.SetLayer(P.F_Cu if layer is None else layer)
+        t.SetWidth(mm(.1));t.SetStart(P.VECTOR2I(mm(xy[0]),mm(xy[1])));t.SetEnd(P.VECTOR2I(mm(xy[2]),mm(xy[3])));board.Add(t)
+
+    def test_native_tree_metrics_keep_noise_qualification_false(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();m=inspect_reference_filter(board,contract)['reference_tree']
+        self.assertAlmostEqual(m['total_track_length_mm'],1)
+        self.assertEqual(m['via_count'],0);self.assertEqual(m['coupled_copper'],[])
+        self.assertFalse(m['actual_noise_and_stability_qualified'])
+
+    def test_a_near_cap_cannot_hide_a_long_connected_reference_loop(self):
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture()
+        for xy in [(0,0,-2,0),(-2,0,-2,2),(-2,2,0,2),(0,2,0,1)]:self.track(board,'OUT',xy)
+        with self.assertRaisesRegex(ValueError,'total-copper budget'):
+            inspect_reference_filter(board,contract)
+
+    def test_extra_layer_changes_are_counted_even_with_a_near_filter(self):
+        import pcbnew as P
+        from build_pico47_single import inspect_reference_filter
+        board,contract=self.fixture();contract['routing_budget']['maximum_total_track_length_mm']=10
+        for xy in [(-1,0),(-1,1)]:
+            via=P.PCB_VIA(board);via.SetNet(board.FindNet('OUT'));via.SetViaType(P.VIATYPE_THROUGH)
+            via.SetLayerPair(P.F_Cu,P.B_Cu);via.SetWidth(mm(.2));via.SetDrill(mm(.1));via.SetPosition(P.VECTOR2I(mm(xy[0]),mm(xy[1])));board.Add(via)
+        self.track(board,'OUT',(0,0,-1,0));self.track(board,'OUT',(-1,0,-1,1),P.B_Cu);self.track(board,'OUT',(-1,1,0,1))
+        with self.assertRaisesRegex(ValueError,'via budget'):
+            inspect_reference_filter(board,contract)
+
+    def test_preserved_coupling_does_not_allow_new_reference_copper_near_a_switch(self):
+        from build_pico47_single import inspect_reference_filter,reference_tree_metrics
+        board,contract=self.fixture(near_noise=True)
+        contract['routing_budget']['permitted_coupled_copper']=reference_tree_metrics(board,contract)['coupled_copper']
+        m=inspect_reference_filter(board,contract)['reference_tree'];self.assertTrue(m['coupled_copper'])
+        self.assertFalse(m['actual_noise_and_stability_qualified'])
+        for xy in [(0,.3,-.1,.3),(-.1,.3,-.1,.7),(-.1,.7,0,.7)]:self.track(board,'OUT',xy)
+        with self.assertRaisesRegex(ValueError,'Unreviewed reference copper'):
+            inspect_reference_filter(board,contract)
+
+
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'), 'KiCad Python required')
 class SolderJointViaTests(unittest.TestCase):
     def fixture(self,bare_only=False,also_bare=False,paste_only=False,annulus_only=False):
         import wx
