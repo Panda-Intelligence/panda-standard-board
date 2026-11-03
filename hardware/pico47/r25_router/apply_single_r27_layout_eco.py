@@ -432,6 +432,54 @@ def inspect_panel_clock_references(board, ground_fills=None):
                 electrical_timing_and_return_qualified=False,nets=rows)
 
 
+def _clock_corridor_area(selected, vias, ground):
+    """复用原生多边形检查固定铜边预算，先合并走线再扣除本网过孔圆区。"""
+    import pcbnew as P
+    corridor = P.SHAPE_POLY_SET()
+    for track in selected:
+        shape = P.SHAPE_POLY_SET()
+        track.GetEffectiveShape(track.GetLayer()).TransformToPolygon(shape,500,P.ERROR_OUTSIDE)
+        corridor.BooleanAdd(shape)
+    corridor.Inflate(mm(.25),P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+    for via in vias:
+        shape = P.SHAPE_POLY_SET()
+        P.SHAPE_CIRCLE(via.GetPosition(),mm(.6)).TransformToPolygon(shape,500,P.ERROR_INSIDE)
+        corridor.BooleanSubtract(shape)
+    area = corridor.Area()/1e12
+    corridor.BooleanSubtract(ground)
+    return area,corridor.Area()/1e12
+
+
+def inspect_inner_clock_bridge(board, contract, ground_fills=None):
+    """锁定XSTL两旧孔之间的指定In2桥，并要求完整铜边走廊由实际In1地覆盖。"""
+    import pcbnew as P
+    require(contract['net']=='P47_XSTL_SRC' and contract['signal_edge_margin_mm']==.25
+            and contract['own_via_exclusion_radius_mm']==.6 and contract['shape_error_um']==.5,
+            'Invalid inner clock bridge contract')
+    tracks = [t for t in board.GetTracks() if t.GetNetname()==contract['net']]
+    selected = [t for t in tracks if t.GetClass()=='PCB_TRACK' and t.GetLayer()==P.In2_Cu]
+    def signature(t):
+        a,b = t.GetStart(),t.GetEnd()
+        return [a.x,a.y,b.x,b.y,t.GetWidth()]
+    require(selected and sorted(signature(t) for t in selected)==sorted(contract['segments_nm']),
+            'Inner clock bridge copper differs')
+    vias = [t for t in tracks if t.GetClass()=='PCB_VIA']
+    require(len(vias)==2 and sorted([v.GetPosition().x,v.GetPosition().y] for v in vias)
+            ==sorted(contract['via_centers_nm']), 'Inner clock bridge via inventory differs')
+    fills = ground_fills if ground_fills is not None else reference_connected_ground_fills(board)
+    ground = P.SHAPE_POLY_SET()
+    for layer,fill in fills:
+        if layer==P.In1_Cu:
+            ground.BooleanAdd(fill)
+    require(not ground.IsEmpty(), 'Missing reference ground for inner clock bridge')
+    area,missing = _clock_corridor_area(selected,vias,ground)
+    require(area>.01 and missing<=.000001, 'Inner clock bridge ground corridor has a gap')
+    return dict(net=contract['net'],signal_layer='In2.Cu',reference_ground='U501.57 / native-connected In1.Cu fill',
+                track_count=len(selected),via_count=2,signal_edge_margin_mm=.25,own_via_exclusion_radius_mm=.6,
+                shape_error_um=.5,required_area_mm2=area,uncovered_area_mm2=missing,
+                bridge_ground_coverage_complete=True,electrical_timing_and_return_qualified=False)
+
+
 def inspect_rear_clock_corridors(board, contract, ground_fills=None):
     """对全部背面时钟铜边外扩0.25mm作连续差集；保留未覆盖面积和实际资格边界。"""
     import pcbnew as P
@@ -455,24 +503,11 @@ def inspect_rear_clock_corridors(board, contract, ground_fills=None):
     for net,limit in sorted(limits.items()):
         selected = [t for t in rear if t.GetNetname()==net]
         require(len(selected)==limit['track_count'], 'Rear clock track inventory differs: '+net)
-        corridor = P.SHAPE_POLY_SET()
-        for track in selected:
-            shape = P.SHAPE_POLY_SET()
-            track.GetEffectiveShape(P.B_Cu).TransformToPolygon(shape,500,P.ERROR_OUTSIDE)
-            corridor.BooleanAdd(shape)
-        # 先合并同网铜，拆分线段不能缩小必须覆盖的走廊。
-        corridor.Inflate(mm(.25),P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
-        for via in tracks:
-            if via.GetClass()=='PCB_VIA' and via.GetNetname()==net:
-                shape = P.SHAPE_POLY_SET()
-                P.SHAPE_CIRCLE(via.GetPosition(),mm(.6)).TransformToPolygon(shape,500,P.ERROR_INSIDE)
-                corridor.BooleanSubtract(shape)
-        area = corridor.Area()/1e12
+        area,missing = _clock_corridor_area(selected,[t for t in tracks if t.GetClass()=='PCB_VIA'
+                                                    and t.GetNetname()==net],ground)
         expected = limit['required_area_mm2']
         require(expected is None or abs(area-expected)<=.000005,
                 'Rear clock required area differs: '+net)
-        corridor.BooleanSubtract(ground)
-        missing = corridor.Area()/1e12
         require(0<=limit['maximum_uncovered_area_mm2']
                 and missing<=limit['maximum_uncovered_area_mm2'],
                 'Rear clock ground corridor exceeds reviewed uncovered area: '+net)

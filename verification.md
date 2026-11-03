@@ -1528,3 +1528,11 @@ R44源delta9c7f1cf13a8d101e7f582e5dfb81322aa3c491c905c8de517daab0a1fe4e5311，�
 491个不同本地测试互补通过（geometry402 pass／89 skip，KPY472 pass／19 skip，旧484 IDs全保），无CI。新增7例检查点间小孔、侧边缝、孤岛、删线／面积变化、缩小边距／扩大孔豁免及部分覆盖仍未资格化。显式与历史完整回放核后各删除304个文件，仅保小验收记录；唯一最终native同卷移至../panda-board-deliverables/panda47-e02-20261103-r45/engineering-candidate，不复制完整试验CAD到包。
 
 默认R45 PCB SHA-256 af913f37d3a0aa3ecc5c972621ec1faac771ca4fa94461c3007072115f20c328；源增量e62667f3d49bbb1ce1a26fe3edcdf894cb32d8d010e1bd90442df9e31a529c91。四物理资格false、温度RT／实际精度／来料false；46孔TypeVII书面CAM、21项与BT301核验、真实2050mAh电池／全屏／壳体含正公差≤7.0mm实测及EVT签核均未闭合。不制造、充电或面板上电，完整目标active。
+
+## 2026-11-03 R46 XSTL源端内层桥 / Codex
+
+仅四段XSTL_SRC B桥替换为四段In2线并把25µm支路尾段裁至原T点。全部265件／908盘身份字段针网位姿、所有F铜／其它网络／原1003孔、19区定义工艺、规则／图纸／库和全旧焊盘组保持。CPL226／完整46孔／21项与BT301逐行相同；185地／52链、7PMIC走廊／66位姿／B6／8泵网／三地缝合保持。显式R46／历史R45／默认R46完整R26回放各native错误／告警／open／parity／ERC 0/0/0/0/0和307项文件哈希通过；两R46独立精确铜差审计通过。498distinct本地tests互补（402 pass96skip、479 pass19skip），原491 IDs保持，无CI。
+
+首零DRC桥仍有.061686mm²实际In1参考缺口，定位3V3_AON .6/.3通孔避铜后绕至y91.25，未改变供电孔／净距／地规则。最终新桥铜边+.25mm连续走廊.544301403mm²全部由U501.57实际连通In1覆盖，.6mm原孔圆排除和.5µm形状误差固定。全网铜长+0.626041mm，主路径模型平面+0.401041mm／换层导体−0.2525mm，铜阻估算+7.14mΩ；局部参考改善伴随长度／电阻代价，不当实物SI资格。全B时钟仍438／629点和27.743522mm²缺口，R731后支路仍13／14点，CKV混层6新孔方案未采用。
+
+最终PCB57b044e060a2c8b9365c5f77bee1cc8d6d4605bf7efa23f2c5f4f6fec6b3c112，delta7dda52bbd92ee8ef36e249e91c30d14e519137d547ff898313067c10d93f8e87。trial279文件核后清，A/history完整各304文件核后清；唯一最终native同卷移至../panda-board-deliverables/panda47-e02-20261103-r46/engineering-candidate，不归档完整试验副本。四物理资格仍false；CAM／21+BT301来料／真实2050mAh全包与全屏壳体正公差≤7mm／EVT及温度全曲线签核仍未完成，完整目标active。

@@ -1,4 +1,39 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-03 R45 SINGLE / PARTIAL REAR CLOCK REFERENCE GROUND
+# CURRENT ROUTING CONTINUATION — 2026-11-03 R46 SINGLE / XSTL SOURCE INNER BRIDGE
+
+Read `hardware/pico47/E02-R46-XSTL-INNER-BRIDGE-20261103.md` first. R46 replaces
+four XSTL_SRC B bridge tracks with four In2 tracks, via the same old2vias, and
+trims25um from a dangling R731branch tail to its existing T. All265parts/908padIDs/
+fields/poses/Fcopper/othernetCu/1003vias/19zone definitions/rules/SCH/libraries/
+CPL226/full46/21pending/BT301 stay exact. Still10607tracks. New inner bridge
+uses source-reviewed via-center endpoints and .15mm width; it routes around
+3V3_AON64.37/90.375833/.6/.3via antipad without moving that supply via.
+
+DefaultR46 replays immutableR26 with single_r46_layout_delta.json SHA-256
+7dda52bbd92ee8ef36e249e91c30d14e519137d547ff898313067c10d93f8e87.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r46/engineering-candidate`.
+PCB SHA-256 57b044e060a2c8b9365c5f77bee1cc8d6d4605bf7efa23f2c5f4f6fec6b3c112.
+Explicit/defaultR46 and historicalR45 allnative/ERC0, two independent exact-Cu
+R46 audits passed. Native totals265parts/908pads/10607tracks/1003vias/19zones.
+ActualU50157-connected In1 covers the full new .544301mm2 track-edge+.25mm
+corridor, fixed .6mm ownvia exclusion/.5um shape error. First zeroDRC trial
+had .061686mm2 missing and was rejected; never weaken the corridor to pass.
+Main modeled planar path+ .401mm, vertical path- .2525mm, Cu resistance+7.14mohm;
+see tradeoffs in the handoff. Allold2vias retained, no new drilled holes.
+
+498distinct localtests pass, old491IDs retained. Overallrear reference remains
+incomplete:438/629center gaps and27.743522mm2 uncovered Bcorridor. R731rearbranch
+still has13/14 gaps. CKVlower proposed6newvias/26mm/15mmBroute was not adopted;
+allCKV and other copper remainR45. Next work needs reviewed local neighbour
+boundaries, not repeated unchanged fixed-via trials or a farther-plane substitute.
+
+Fourphysical flags remainfalse;46TypeVII writtenCAM,21SMT+BT301 receipts, actual
+2050mAh fullpack/fullscreen+case positive-tolerance<=7mm, NTC fullR-T/currentPMIC
+andEVT remainpending. No fabrication/charging/panelpower. Preserve185GND52links,
+7PMICcorridors/66poses/B6/8pumpnets/3stitches/noIn1signal/negativeEP49/C804dogbone/
+uniqueC815/GPIO2direct; onebaseline/currentnative, serialcleanup, packaging/
+4worktrees/history kept, authorized featurecommitpush. Wholegoal remainsactive.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-03 R45 SINGLE / PARTIAL REAR CLOCK REFERENCE GROUND
 
 Read `hardware/pico47/E02-R45-REAR-CLOCK-GROUND-20261103.md` first. R45 adds only
 three bounded In2 GND zones to R44. All265parts/908padIDs/fields/poses/10607tracks/

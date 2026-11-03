@@ -1,0 +1,71 @@
+"""2026-11-03 Codex：新In2桥须有连续相邻地覆盖，不能借铜环搭接或同名岛通过。"""
+import importlib.util
+import unittest
+
+
+@unittest.skipUnless(importlib.util.find_spec('pcbnew'),'KiCad Python required')
+class InnerClockBridgeTests(unittest.TestCase):
+    def fixture(self,hole=None,disconnected=False):
+        import wx
+        self.app=wx.GetApp() or wx.App(False)
+        import pcbnew as P
+        from r25_router.apply_single_r27_layout_eco import mm
+        board=P.BOARD();board.SetCopperLayerCount(4)
+        ground=P.NETINFO_ITEM(board,'GND',1);net=P.NETINFO_ITEM(board,'P47_XSTL_SRC',2)
+        board.Add(ground);board.Add(net)
+        fp=P.FOOTPRINT(board);fp.SetReference('U501');pad=P.PAD(fp);pad.SetNumber('57');pad.SetNet(ground)
+        pad.SetPosition(P.VECTOR2I(mm(10 if disconnected else 1.5),mm(1)))
+        pad.SetSize(P.VECTOR2I(mm(.2),mm(.2)));layers=P.LSET();layers.AddLayer(P.In1_Cu);pad.SetLayerSet(layers);fp.Add(pad);board.Add(fp)
+        shape=P.SHAPE_POLY_SET();shape.NewOutline()
+        for x,y in [(-1,-1),(4,-1),(4,2),(-1,2)]:shape.Append(mm(x),mm(y))
+        if hole:
+            h=shape.NewHole(0)
+            for x,y in hole:shape.Append(mm(x),mm(y),0,h)
+        zone=P.ZONE(board);zone.SetNet(ground);zone.SetLayer(P.In1_Cu);zone.SetFilledPolysList(P.In1_Cu,shape);board.Add(zone)
+        segments=[];tracks=[]
+        for i in range(6):
+            a,b=mm(i*.5),mm((i+1)*.5);t=P.PCB_TRACK(board);t.SetNet(net);t.SetLayer(P.In2_Cu);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(a,0));t.SetEnd(P.VECTOR2I(b,0));board.Add(t);tracks.append(t);segments.append([a,0,b,0,mm(.15)])
+        for x in [0,3]:
+            v=P.PCB_VIA(board);v.SetNet(net);v.SetViaType(P.VIATYPE_THROUGH);v.SetLayerPair(P.F_Cu,P.B_Cu)
+            v.SetPosition(P.VECTOR2I(mm(x),0));v.SetWidth(mm(.4));v.SetDrill(mm(.2));board.Add(v)
+        c=dict(net='P47_XSTL_SRC',signal_edge_margin_mm=.25,own_via_exclusion_radius_mm=.6,shape_error_um=.5,
+               via_centers_nm=[[0,0],[mm(3),0]],segments_nm=segments)
+        return board,c,tracks
+
+    def inspect(self,board,contract):
+        from r25_router.apply_single_r27_layout_eco import inspect_inner_clock_bridge
+        return inspect_inner_clock_bridge(board,contract)
+
+    def test_full_continuous_bridge_is_still_not_electrically_qualified(self):
+        b,c,_=self.fixture();r=self.inspect(b,c)
+        self.assertTrue(r['bridge_ground_coverage_complete'])
+        self.assertFalse(r['electrical_timing_and_return_qualified'])
+        self.assertGreater(r['required_area_mm2'],.5)
+
+    def test_small_hole_between_center_samples_fails(self):
+        b,c,_=self.fixture(hole=[(1.24,-.01),(1.26,-.01),(1.26,.01),(1.24,.01)])
+        with self.assertRaisesRegex(ValueError,'ground corridor has a gap'):self.inspect(b,c)
+
+    def test_lateral_plane_gap_fails(self):
+        b,c,_=self.fixture(hole=[(1.24,.2),(1.26,.2),(1.26,.25),(1.24,.25)])
+        with self.assertRaisesRegex(ValueError,'ground corridor has a gap'):self.inspect(b,c)
+
+    def test_same_name_disconnected_ground_fails(self):
+        b,c,_=self.fixture(disconnected=True)
+        with self.assertRaisesRegex(ValueError,'reference ground'):self.inspect(b,c)
+
+    def test_shifted_endpoint_cannot_pass_by_overlapping_copper_caps(self):
+        import pcbnew as P
+        b,c,t=self.fixture();t[0].SetEnd(P.VECTOR2I(500001,0))
+        with self.assertRaisesRegex(ValueError,'bridge copper differs'):self.inspect(b,c)
+
+    def test_extra_signal_via_cannot_expand_the_exclusion_mask(self):
+        import pcbnew as P
+        b,c,_=self.fixture();v=P.PCB_VIA(b);v.SetNet(b.FindNet('P47_XSTL_SRC'));v.SetPosition(P.VECTOR2I(1500000,0));b.Add(v)
+        with self.assertRaisesRegex(ValueError,'via inventory differs'):self.inspect(b,c)
+
+    def test_margin_and_via_exclusion_are_fixed(self):
+        for key,value in [('signal_edge_margin_mm',.1),('own_via_exclusion_radius_mm',.7)]:
+            b,c,_=self.fixture();c[key]=value
+            with self.subTest(key=key),self.assertRaisesRegex(ValueError,'bridge contract'):self.inspect(b,c)
