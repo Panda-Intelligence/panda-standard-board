@@ -33,6 +33,13 @@ andEVT remainpending. No fabrication/charging/panelpower. Preserve185GND52links,
 uniqueC815/GPIO2direct; onebaseline/currentnative, serialcleanup, packaging/
 4worktrees/history kept, authorized featurecommitpush. Wholegoal remainsactive.
 
+2026-11-03 continuation audit: read
+`hardware/pico47/E02-R731-RELOCATION-FEASIBILITY-20261103.md` before trying R731
+again. No new PCB revision was accepted. C527's F power land is also a3V3_AON
+physical junction feeding U501.20 and the two mux supplies; never delete its
+neighbour tracks as a passive leaf. Same-net names do not preserve that group.
+R731 near-B/front and two-part swap trials were rejected; currentR46 unchanged.
+
 # HISTORICAL ROUTING CONTINUATION — 2026-11-03 R45 SINGLE / PARTIAL REAR CLOCK REFERENCE GROUND
 
 Read `hardware/pico47/E02-R45-REAR-CLOCK-GROUND-20261103.md` first. R45 adds only
