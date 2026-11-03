@@ -1,3 +1,13 @@
+# PAUSED HANDOFF — 2026-11-03
+
+User paused the PCB Layout goal. Read
+`hardware/pico47/E02-PAUSED-STATUS-20261103.md` for current progress and next scope.
+Formal/default CAD remains R46; no later trial was accepted. Keep all four physical
+qualification flags false. Joint-clock trial CAD/DSN/compiled models were cleaned
+after hash capture; only the accepted packages, one R46 geometry baseline and
+small diagnostic records remain. No background routing or build job is running.
+Resume only when the user reactivates the work; keep the full objective intact.
+
 # CURRENT ROUTING CONTINUATION — 2026-11-03 R46 SINGLE / XSTL SOURCE INNER BRIDGE
 
 Read `hardware/pico47/E02-R46-XSTL-INNER-BRIDGE-20261103.md` first. R46 replaces
