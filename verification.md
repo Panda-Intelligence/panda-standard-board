@@ -1501,3 +1501,10 @@ R43从不可变R26直回放，相对R42保持**零器件迁位**（全部265件9
 两次显式完整R26→R43源重建（`r43-a`、`r43-b`）、最终默认入口及历史R42回归均为DRC错误/告警/open/parity/ERC 0/0/0/0/0；三份R43独立原生审计保持全部R42旧盘组、185GND/52关键链、7对PMIC连续铜参考地走廊、全8网电荷泵守卫、66件源位姿0冲突、背面6件SMT净空、全46孔POFV工艺签名、SD/USB/时钟参考及3处时钟地缝合。470个不同本地源用例互补全通过：geometry 396 pass/74 skip、KiCad 451 pass/19 skip，原468 IDs保持，新增2个全8网飞跨电容守卫与层集/线长/过孔/焊盘净空超限拒绝用例通过，无CI。
 
 源delta `14d01b10f96da7e7666af7c2d0f70fc533a4817c0c2e1f59a645b8578ef369e0`；默认PCB `92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc`。封存候选 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r43/engineering-candidate`；A/B与history全CAD副本验证后清理，仅留小JSON验收，唯一候选原位移动封存。详见 [R43工程记录](hardware/pico47/E02-R43-C808-C811-FLYING-CAP-LAYOUT-20261102.md)。电荷泵瞬态与纹波、实际PMIC版本/噪声稳定性、供应商最大包络、真实2050mAh电池/完整面板/底壳避让与含正公差≤7mm、46孔板厂CAM确认/21项供料建档/EVT仍待证据，`manufacturing_release=false`、`supplier_process_accepted=false`、`actual_noise_and_stability_qualified=false`、`charge_pump_transient_and_ripple_qualified=false`。
+# 2026-11-03 R43四项物理资格状态与实际清单绑定 / Codex
+
+保持manufacturing_release、supplier_process_accepted、actual_noise_and_stability_qualified、charge_pump_transient_and_ripple_qualified全为false。既有构建器新增QUALIFICATION-STATUS.json，把PCB/source/design/builder与46孔/21pending/BT301三CSV内容及SHA绑定；manifest、CLI和制造说明统一四项false。未接受CAM/收货/真实packpanel正公差7mm/EVT外证；数值限值null，不造波形或签核。R39旧CAM分组表已按真实46孔签名勘误，R39与R43实际46签名相同。
+
+最终默认R43完整源重建DRC错误/告警/open/parity/ERC0/0/0/0/0；独立原生审计及对封存R43全板对照确认265parts908pads身份/值/字段/针网/位姿、全部10607tracks1003vias16zones、全部旧padgroups/SCH/库/rules/stack/outline保持，185GND52links、7PMICcorridors/66pose/B6/full46/实际SDUSBclock3stitches过。307内部构建SHA全部同；三库存和CPL226与旧R43逐行相同。仅报告/清单验证源变化，没有新PCB版本或物理资格通过。
+
+475不同本地用例互补：geometry401pass74skip、KiCad456pass19skip，旧470IDs保留；新增5例覆盖绿CAD仍false、非法上调true/错误类型、CSV缺失错件、BT301/工艺库存丢失、孔数相同却坐标签名错误，全部拒绝。无CI。可交接状态报告只读绑定现存R43 PCB92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc与原三CSV，源回归的完整临时CAD核验后清理，原R43包386项保持。

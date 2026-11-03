@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -855,6 +856,95 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
+def build_qualification_report(candidate, spec, inspection, spec_path=SPEC):
+    """绑定本次真实清单与待签核项目；CAD及源开关不能代替物理资格证据。"""
+    flags = dict(manufacturing_release=False, supplier_process_accepted=False,
+                 actual_noise_and_stability_qualified=False,
+                 charge_pump_transient_and_ripple_qualified=False)
+    def check_flags(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                require(key not in flags or item is False,
+                        'Unreviewed physical qualification: '+key)
+                check_flags(item)
+        elif isinstance(value, list):
+            for item in value:
+                check_flags(item)
+    check_flags(spec)
+    check_flags(inspection)
+    spec = {**spec, **spec.get('layout_ecos',{}).get(spec['revision'],{}).get('inspection_overrides',{})}
+    rows = {name:inspection[key] for name,key in [
+        ('REQUIRED-VIA-IN-PAD.csv','via_in_pad'),
+        ('PENDING-SUPPLY.csv','pending_supply'),
+        ('REQUIRED-POST-SMT.csv','required_post_smt')]}
+    vias, pending, manual = rows.values()
+    require(vias and pending and len(manual)==1 and manual[0]['ref']=='BT301',
+            'Incomplete qualification inventory: vias, pending supply or BT301')
+    require(len({r['uuid'] for r in vias})==len(vias)
+            and len({r['ref'] for r in pending})==len(pending),
+            'Duplicate qualification inventory')
+    process = inspection.get('solder_joint_via_process')
+    if process is not None:
+        require(process['filled_cap_via_count']==len(vias)
+                and process['filled_and_capped_vias']==vias,
+                'Complete qualification inventory differs from solder-joint process')
+    if 'complete_via_in_pad_inventory' in spec:
+        signature = lambda r:[r['net'],*(round(r[k],6) for k in
+                              ['x_mm','y_mm','diameter_mm','drill_mm']),r['soldered_contacts']]
+        require(sorted(signature(r) for r in vias)==spec['complete_via_in_pad_inventory']['soldered_vias'],
+                'Source qualification inventory differs from solder-joint process')
+    candidate = Path(candidate)
+    files = {}
+    for name, expected in rows.items():
+        path = candidate/'orderpack'/name
+        require(path.is_file(), 'Missing qualification inventory: '+name)
+        with path.open(encoding='utf-8-sig',newline='') as stream:
+            actual = list(csv.DictReader(stream))
+        normalized = [{str(k):str(v) for k,v in row.items()} for row in expected]
+        sort_key = lambda row:json.dumps(row,sort_keys=True)
+        require(sorted(actual,key=sort_key)==sorted(normalized,key=sort_key),
+                'Qualification inventory CSV differs: '+name)
+        files['orderpack/'+name] = dict(sha256=sha(path),row_count=len(expected))
+    def evidence(identity, requirements):
+        return dict(id=identity,status='pending_external_evidence',
+                    accepted_evidence=[],required_record_fields=requirements)
+    required = [
+        evidence('cam_type_vii', ['PCB SHA-256与工程修订','板厂名称/工单/日期/书面工程确认人',
+            'REQUIRED-VIA-IN-PAD.csv SHA-256及逐孔签名',
+            '覆盖全部焊接接点孔的IPC-4761 Type VII树脂填孔+电镀盖帽工艺及CAM确认文件']),
+        evidence('pending_smt_receipts', ['PENDING-SUPPLY.csv SHA-256及全部位号',
+            '逐精确厂家/MPN/封装/容值阻值/公差/耐压核验','建档记录、批次/料盘标签与实际入库收货记录',
+            '供料偏差和替代料须独立工程审阅，空LCSC不是已收货']),
+        evidence('BT301_receipt', ['REQUIRED-POST-SMT.csv SHA-256','精确厂家/MPN及批次收货记录',
+            '工厂绝缘引脚/焊片组件图纸及极性/绝缘核验','后装工序确认，禁止回流或直接焊裸电池']),
+        evidence('actual_pack_panel_fit', ['实际2050mAh可更换电池厂家/MPN/版本/来料及最大外形',
+            '保护板/引线/连接器/NTC及完整E0470A01总成最大包络和公差图纸',
+            '真实PCB/壳体/背面元件/屏幕总成的正公差叠层与装配实测',
+            '测量工具、样机/批次、条件、日期/核验人；含正公差整机最大厚度<=7.0mm']),
+        evidence('evt_noise_and_stability', ['绑定PCB SHA-256/实装BOM批次/样机编号及现行PMIC版本',
+            '精确PMIC与完整面板规格导出的预先批准数值限值',
+            '输入电压/负载/温度/工作模式/探头接地及带宽/仪器与校准记录',
+            '基准及各电源轨噪声/启动/负载响应/稳定性原始波形和工程签核']),
+        evidence('evt_charge_pump_transient_and_ripple', ['绑定同一PCB/BOM/样机及完整面板与刷新模式',
+            '正负泵负载阶跃/屏幕刷新工况、温度、输入电压和测量带宽',
+            '各轨纹波/跌落/过冲/恢复时间原始波形与数值结果',
+            '按精确PMIC/面板规格预先批准的限值逐项比较及工程签核'])]
+    for item in required:
+        if item['id'].startswith('evt_'):
+            item.update(numerical_acceptance_limits=None,
+                        limits_status='requires_exact_PMIC_and_panel_specification')
+    return dict(schema='panda47-qualification-status-v1',revision=spec['revision'],date=date.today().isoformat(),
+                author='Codex',status_flags=flags,
+                binding=dict(pcb_sha256=sha(candidate/'Single.kicad_pcb'),
+                             source_spec_sha256=sha(spec_path),source_design_sha256=sha(CONTRACT),
+                             source_builder_sha256=sha(__file__),
+                             inventory_files=files),
+                inventories=dict(filled_and_capped_vias=vias,pending_smt=pending,post_smt=manual),
+                required_evidence=required,
+                evidence_policy='This build binds CAD and inventory only; it does not accept external physical signoffs.',
+                native_geometry_does_not_establish_physical_qualification=True)
+
+
 def build(source, output, spec_path=SPEC, revision=None):
     import wx
     app = wx.GetApp() or wx.App(False)
@@ -950,6 +1040,9 @@ def build(source, output, spec_path=SPEC, revision=None):
     write_csv(orderpack/'REQUIRED-VIA-IN-PAD.csv', inspection['via_in_pad'])
     write_csv(orderpack/'PENDING-SUPPLY.csv', inspection['pending_supply'])
     write_csv(orderpack/'REQUIRED-POST-SMT.csv', inspection['required_post_smt'])
+    qualification = build_qualification_report(output,{**spec,'revision':revision},inspection,spec_path)
+    (orderpack/'QUALIFICATION-STATUS.json').write_text(json.dumps(qualification,indent=2,ensure_ascii=False)+'\n')
+    qualification_notes = ''.join(f'{key} = false\n' for key in qualification['status_flags'])
     (orderpack/'MANUFACTURING-REQUIREMENTS.md').write_text(
         f'# Single 制造工艺要求\n\n{spec["date"]}，{revision}，Codex。\n\n'
         '四层、0.8 mm 标称、绿油、ENIG；详细层叠以 Single-job.gbrjob 为准。\n'
@@ -959,13 +1052,18 @@ def build(source, output, spec_path=SPEC, revision=None):
         f'{smt_count} 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 {len(inspection["pending_supply"])} 个需客供/建档的物料，不能空贴。\n'
         f'{bypass_notes}'
         'BT301 必须使用工厂绝缘引脚/焊片组件，SMT 后安装（见 REQUIRED-POST-SMT.csv）；不得回流或直接焊裸电池。\n'
+        f'\n本次PCB与{len(inspection["via_in_pad"])}孔/待供SMT/BT301清单绑定见 QUALIFICATION-STATUS.json。以下状态均未由CAD或零DRC证明：\n'
+        f'{qualification_notes}'
+        '板厂Type VII逐孔书面CAM确认、精确来料及BT301组件核验、真实电池/完整屏幕/背面器件/壳体含正公差<=7.0mm实测，以及EVT电源噪声/稳定性/正负泵瞬态和纹波签核均待证据。测量限值须源于精确PMIC/面板规格并在测试前确定，不能凭几何结果设为通过。\n'
         'J201 为 MUP U22401-17 沉板式 USB-C 母座；上述工艺、供料及实际电池包/完整屏幕模组规格确认前，manufacturing_release 保持为 false。\n')
     manifest = {'schema':'panda47-single-rebuild-v1', 'revision':revision,
                 'layout_eco':eco_binding,
                 'source_spec_sha256':sha(spec_path), 'source_design_sha256':sha(CONTRACT),
                 'input_sha256':spec['input_sha256'], 'counts':counts,
                 'all_original_pad_groups_preserved':True, 'geometry_sha256':fingerprint,
-                'inspection':inspection, 'manufacturing_release':False,
+                'inspection':inspection, **qualification['status_flags'],
+                'qualification_report':{'path':'orderpack/QUALIFICATION-STATUS.json',
+                                        'sha256':sha(orderpack/'QUALIFICATION-STATUS.json')},
                 'files_sha256':{str(f.relative_to(output)):sha(f) for f in sorted(output.rglob('*'))
                                 if f.is_file()}}
     (output/'SINGLE-CHECKPOINT.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
@@ -986,4 +1084,6 @@ if __name__ == '__main__':
     result = build(args.source or default, args.output, revision=args.revision)
     print(json.dumps({'counts':result['counts'], 'ground_pads':result['inspection']['ground']['ground_pad_count'],
                       'pending_supply':len(result['inspection']['pending_supply']),
-                      'manufacturing_release':False}, indent=2))
+                      **{key:result[key] for key in ('manufacturing_release','supplier_process_accepted',
+                          'actual_noise_and_stability_qualified',
+                          'charge_pump_transient_and_ripple_qualified')}}, indent=2))

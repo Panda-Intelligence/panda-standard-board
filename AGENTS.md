@@ -6,6 +6,16 @@ replays directly from immutable R26 using single_r43_layout_delta.json, SHA-256
 Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r43/engineering-candidate`.
 PCB SHA-256 92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc.
 
+2026-11-03 qualification continuation: read
+`hardware/pico47/E02-QUALIFICATION-STATUS-20261103.md`. Builders now export all four
+physical qualification flags as false in manifest/CLI/report. The standalone
+report binds the accepted R43 PCB SHA and exact46-via/21-SMT/BT301 inventories;
+CAD cannot accept CAM, receipts, real fit or EVT signoffs. Five new evidence-boundary
+cases bring coverage to475 distinct local tests. No accepted CAD, source part,
+copper or native rule changed. Use the exact per-via CSV; R39 prose CAM grouping
+was corrected against the actual native signatures. Preserve all four false flags
+until real supplier/fit/EVT evidence is independently reviewed.
+
 Zero component poses changed relative to R42: all 265 part/908 pad identities,
 fields, values, nets and poses remain 100% identical to R42 (CPL 226 rows exact).
 Only the 3 charge-pump flying-capacitor nets (`P47_VGH_DRV`, `P47_PUMP_POS`,

@@ -10,6 +10,8 @@
 
 工程候选为 `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261102-r43/engineering-candidate`，默认 PCB SHA-256 `92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc`，源增量 SHA-256 `14d01b10f96da7e7666af7c2d0f70fc533a4817c0c2e1f59a645b8578ef369e0`。电荷泵瞬态／纹波与 PMIC 真实噪声稳定性、供应商最大包络、实际电池全屏与正公差 ≤7mm、板厂 46 孔 CAM 确认／21 项供料建档／EVT 仍待实证，`manufacturing_release=false`。
 
+2026-11-03，Codex：[四项资格状态与待闭合证据](E02-QUALIFICATION-STATUS-20261103.md)统一导出制造、板厂工艺、真实噪声／稳定性及泵瞬态／纹波四项`false`。报告绑定实际R43 PCB与46孔／21项SMT／BT301精确清单，不能由零DRC或几何守卫上调为通过。本轮完整重建与独立全板对照保持R43全部铜、身份、位姿及原生检查全零，475个不同本地用例互补通过。历史预CAM位号分组已按真实46孔清单勘误；实际板厂书面CAM、来料、真实电池全屏含正公差≤7.0mm及EVT原始波形／签核仍待证据。
+
 # Historical Continuation: E0.2 R42 — C809 (`P47_VGH`) 正压栅极整流输出直连与储能滤波收敛（2026-11-02）
 
 执行者：Codex。先读 [R42 C809 (`P47_VGH`) 正压栅极整流输出直连与储能滤波收敛](E02-R42-C809-VGH-RECTIFIER-LAYOUT-20261102.md)。相对 R41 保持 **零器件迁位**（全部 265 件 908 盘位姿、身份、UUID、值、字段与针网 100% 不变，CPL 226 项逐字节恒等），且**仅改动 `P47_VGH` 单一网络**（其余全板铜轨、过孔与 16 个覆铜区完全保持）：
