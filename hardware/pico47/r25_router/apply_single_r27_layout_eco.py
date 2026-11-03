@@ -482,7 +482,7 @@ def inspect_inner_clock_bridge(board, contract, ground_fills=None):
         require(contract['additional_bridges'], 'Invalid inner clock bridge contract')
         extras = []
         for spec in contract['additional_bridges']:
-            require(spec.get('net') in ('P47_XLE_SRC','P47_XCL_SRC')
+            require(spec.get('net') in ('P47_XLE_SRC','P47_XCL_SRC','P47_XSTL','P47_CKV')
                     and spec.get('bridge_segments_nm') and spec.get('via_centers_nm'),
                     'Invalid inner clock bridge contract')
             net_items = [t for t in board.GetTracks() if t.GetNetname()==spec['net']]
@@ -582,6 +582,32 @@ def inspect_clock_ground_stitches(board, plan, ground_fills=None):
             pt = P.VECTOR2I(mm(target['xy_mm'][0]), mm(target['xy_mm'][1]))
             signals = [v for v in tracks if v.GetClass() == 'PCB_VIA'
                        and v.GetNetname() == target['net'] and v.GetPosition() == pt]
+            if target.get('eliminated_by_continuous_reference_routing'):
+                c_layer = target.get('continuous_layer')
+                c_seg = target.get('continuous_segment_mm')
+                require(not signals and c_layer in ('F.Cu', 'In2.Cu')
+                        and isinstance(c_seg, list) and len(c_seg) == 4,
+                        'Clock ground stitch target differs')
+                s_pt = P.VECTOR2I(mm(c_seg[0]), mm(c_seg[1]))
+                e_pt = P.VECTOR2I(mm(c_seg[2]), mm(c_seg[3]))
+                c_tracks = [t for t in tracks if t.GetClass() == 'PCB_TRACK'
+                            and t.GetNetname() == target['net']
+                            and board.GetLayerName(t.GetLayer()) == c_layer
+                            and ((t.GetStart() == s_pt and t.GetEnd() == e_pt)
+                                 or (t.GetStart() == e_pt and t.GetEnd() == s_pt))]
+                rear_near = [t for t in tracks if t.GetClass() == 'PCB_TRACK'
+                             and t.GetNetname() == target['net'] and t.GetLayer() == P.B_Cu
+                             and t.GetEffectiveShape().Collide(P.SHAPE_CIRCLE(pt, mm(.2)), 0)]
+                require(len(c_tracks) == 1 and not rear_near,
+                        'Clock ground stitch eliminated transition replacement differs')
+                distance = math.hypot(at.x-pt.x, at.y-pt.y)/1e6
+                require(distance < target['before_mm'], 'Clock ground stitch did not reduce geometric distance')
+                observations.append(dict(net=target['net'],xy_mm=target['xy_mm'],
+                                         eliminated_by_continuous_reference_routing=True,
+                                         continuous_layer=c_layer,continuous_segment_mm=c_seg,
+                                         previous_nearest_In1_B_ground_via_mm=target['before_mm'],
+                                         reviewed_ground_via_distance_mm=distance))
+                continue
             require(len(signals) == 1, 'Clock ground stitch target differs')
             signal = signals[0]
             incident = sorted({board.GetLayerName(t.GetLayer()) for t in tracks

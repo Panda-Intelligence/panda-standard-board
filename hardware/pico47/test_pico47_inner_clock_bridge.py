@@ -114,3 +114,46 @@ class InnerClockBridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'via inventory differs'):self.inspect(b,c)
         b,c,_=self.fixture_with_xle_bridge(xle_hole=[(1.18,.78),(1.22,.78),(1.22,.82),(1.18,.82)])
         with self.assertRaisesRegex(ValueError,'ground corridor has a gap'):self.inspect(b,c)
+
+    def test_additional_xstl_and_ckv_inner_bridges_lock_rear_and_in2_inventories(self):
+        import pcbnew as P
+        from r25_router.apply_single_r27_layout_eco import mm
+        b,c,_=self.fixture_with_xle_bridge()
+        xstl=P.NETINFO_ITEM(b,'P47_XSTL',4);ckv=P.NETINFO_ITEM(b,'P47_CKV',5)
+        b.Add(xstl);b.Add(ckv)
+        xstl_segs=[]
+        for i in range(2):
+            x1,x2=mm(i*.8),mm((i+1)*.8);y=mm(1.2)
+            t=P.PCB_TRACK(b);t.SetNet(xstl);t.SetLayer(P.In2_Cu);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(x1,y));t.SetEnd(P.VECTOR2I(x2,y));b.Add(t)
+            xstl_segs.append([x1,y,x2,y,mm(.15)])
+        for x in [0,1.6]:
+            v=P.PCB_VIA(b);v.SetNet(xstl);v.SetViaType(P.VIATYPE_THROUGH);v.SetLayerPair(P.F_Cu,P.B_Cu)
+            v.SetPosition(P.VECTOR2I(mm(x),mm(1.2)));v.SetWidth(mm(.4));v.SetDrill(mm(.2));b.Add(v)
+        ckv_segs=[]
+        for i in range(2):
+            x1,x2=mm(i*.8),mm((i+1)*.8);y=mm(-.4)
+            t=P.PCB_TRACK(b);t.SetNet(ckv);t.SetLayer(P.In2_Cu);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(x1,y));t.SetEnd(P.VECTOR2I(x2,y));b.Add(t)
+            ckv_segs.append([x1,y,x2,y,mm(.15)])
+        rear=P.PCB_TRACK(b);rear.SetNet(ckv);rear.SetLayer(P.B_Cu);rear.SetWidth(mm(.15))
+        rear.SetStart(P.VECTOR2I(mm(1.6),mm(-.4)));rear.SetEnd(P.VECTOR2I(mm(2.4),mm(-.4)));b.Add(rear)
+        for x in [0,1.6]:
+            v=P.PCB_VIA(b);v.SetNet(ckv);v.SetViaType(P.VIATYPE_THROUGH);v.SetLayerPair(P.F_Cu,P.B_Cu)
+            v.SetPosition(P.VECTOR2I(mm(x),mm(-.4)));v.SetWidth(mm(.4));v.SetDrill(mm(.2));b.Add(v)
+        c['additional_bridges'].extend([
+            dict(net='P47_XSTL',rear_track_count=0,total_in2_track_count=2,
+                 via_centers_nm=[[0,mm(1.2)],[mm(1.6),mm(1.2)]],bridge_segments_nm=xstl_segs),
+            dict(net='P47_CKV',rear_track_count=1,total_in2_track_count=2,
+                 via_centers_nm=[[0,mm(-.4)],[mm(1.6),mm(-.4)]],bridge_segments_nm=ckv_segs),
+        ])
+        r=self.inspect(b,c)
+        self.assertEqual([e['net'] for e in r['additional_bridges']],['P47_XLE_SRC','P47_XSTL','P47_CKV'])
+        self.assertEqual([e['rear_track_count'] for e in r['additional_bridges']],[0,0,1])
+        self.assertTrue(all(e['bridge_ground_coverage_complete'] for e in r['additional_bridges']))
+        self.assertTrue(all(not e['electrical_timing_and_return_qualified'] for e in r['additional_bridges']))
+
+    def test_additional_bridge_rejects_unknown_net_name(self):
+        b,c,_=self.fixture_with_xle_bridge()
+        c['additional_bridges'][0]['net']='P47_D0'
+        with self.assertRaisesRegex(ValueError,'bridge contract'):self.inspect(b,c)

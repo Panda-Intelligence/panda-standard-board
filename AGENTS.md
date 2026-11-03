@@ -1,4 +1,47 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-03 R47 SINGLE / XLE SOURCE INNER BRIDGE & 5-NET COORDINATION
+# CURRENT ROUTING CONTINUATION — 2026-11-03 R48 SINGLE / XSTL ZERO-REAR BRIDGE, CKV INNER/FRONT BRIDGES & 4-NET COORDINATION
+
+Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md` first. R48 coordinates
+four nets (`P47_XSTL`, `P47_CKV`, `UART0_RX`, `3V3_EPD_LOGIC`) on top of R47: removes
+`3V3_EPD_LOGIC`'s redundant 156-segment parallel staircase loop + 3 vias (`-19.480mm`
+copper, retaining the `0.35mm` In2 main trunk), replaces `P47_XSTL`'s last 3 B.Cu
+tracks with a 5-segment In2.Cu bridge (`51.425/84.650 -> 51.050/84.650 -> 49.700/86.000
+-> 49.700/86.950 -> 49.300/87.350 -> 49.050/87.350`, removing via `51.425/84.650`, 0
+B.Cu tracks remaining on `P47_XSTL`), moves `P47_CKV` west-mid `34.000/104.075 ->
+34.525/104.925` to In2.Cu, makes `P47_CKV` mid `34.525/104.925 -> 44.900/106.450`
+continuous on F.Cu (`-2` vias `41.150/104.925` and `43.425/104.975`, shifting `UART0_RX`
+via `40.725/103.875 -> 41.000/106.500`), refines `P47_CKV` east In2 turn at `x=47.700`
+to close the `EN_3V3_SD` antipad notch, and aligns `P47_CKV` east B.Cu (`x=49.150`)
+under `SD_REFERENCE_GND`. All265parts/908padIDs/fields/poses/otherCu/19zone
+definitions/rules/SCH/libraries/CPL226/full46/21pending/BT301 stay exact. Board totals:
+265parts/908pads/10475tracks(-151)/996vias(-6)/19zones.
+
+DefaultR48 replays immutableR26 with single_r48_layout_delta.json SHA-256
+4a5b4a27410d3d0b081b52f9f19c1333d78af165a003b8e5b8ea83a27fa739b3.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r48/engineering-candidate`.
+PCB SHA-256 a22758f7f47e723b601897d3aeba711c0afc690e00a687a0eccac5029bbc028c.
+Explicit/defaultR48 and historicalR47 allnative/ERC0, two independent exact-Cu
+R48 audits passed. ActualU50157-connected In1 covers 100% of `P47_XSTL_SRC`
+(`0.544301 mm2`), `P47_XLE_SRC` (`2.719541 mm2`, 0 B.Cu), `P47_XCL_SRC` (`3.196081 mm2`
+In2), `P47_XSTL` (`2.395350 mm2` 5-seg In2 bridge, 0 B.Cu), and `P47_CKV` (`0.553152 mm2`
+all 7 In2 tracks) track-edge+.25mm corridors (0.000000 mm2 missing, fixed .6mm ownvia
+exclusion/.5um shape error). `P47_XSTL` (`J820.31 -> R728.2`) planar +0.116mm, vertical
+-0.2525mm, total -0.136mm, vias 9->8, Cu resistance +12.86mohm; `P47_CKV` (`J820.7 ->
+R729.2`) planar +0.797mm, vertical -1.7825mm, total -0.985mm, vias 9->7, +6.12mohm.
+
+502distinct localtests pass (geometry 402 pass/100 skip, KiCad 483 pass/19 skip),
+old500IDs retained. Rear B.Cu reference improves from 420/608 to 385/574 center
+gaps (-35) and from 26.399309mm2 (5 nets) to 24.386846mm2 (4 nets, -2.012463mm2,
+with `P47_XSTL` -0.701462mm2 to 0 and `P47_CKV` -1.311001mm2 to 14.742439mm2), but
+remains incomplete (`P47_CKV` 14.742439mm2, `P47_XCL` 6.935430mm2, `P47_XCL_SRC`
+1.929253mm2, `P47_XSTL_SRC` 0.779724mm2). Fourphysical flags remainfalse; 46TypeVII
+writtenCAM, 21SMT+BT301 receipts, actual 2050mAh pack/fullscreen+case positive-
+tolerance<=7mm, NTC fullR-T/currentPMIC and EVT remainpending. No fabrication/
+charging/panelpower. Preserve185GND52links, 7PMICcorridors/66poses/B6/8pumpnets/
+3stitches/noIn1signal/negativeEP49/C804dogbone/uniqueC815/GPIO2direct; onebaseline/
+currentnative, serialcleanup, packaging/4worktrees/history kept, authorized
+featurecommitpush. Wholegoal remainsactive.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-03 R47 SINGLE / XLE SOURCE INNER BRIDGE & 5-NET COORDINATION
 
 Read `hardware/pico47/E02-R47-XLE-INNER-BRIDGE-20261103.md` first. R47 coordinates
 five local In2 nets (`P47_XLE_SRC`, `EN_VSYS_AUDIO`, `P47_XCL_SRC`, `P47_D2_SRC`,
