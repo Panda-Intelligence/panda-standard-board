@@ -432,6 +432,60 @@ def inspect_panel_clock_references(board, ground_fills=None):
                 electrical_timing_and_return_qualified=False,nets=rows)
 
 
+def inspect_rear_clock_corridors(board, contract, ground_fills=None):
+    """对全部背面时钟铜边外扩0.25mm作连续差集；保留未覆盖面积和实际资格边界。"""
+    import pcbnew as P
+    require(contract['signal_edge_margin_mm']==.25
+            and contract['own_via_exclusion_radius_mm']==.6
+            and contract['shape_error_um']==.5, 'Invalid clock corridor contract')
+    fills = ground_fills if ground_fills is not None else reference_connected_ground_fills(board)
+    ground = P.SHAPE_POLY_SET()
+    for layer,fill in fills:
+        if layer==P.In2_Cu:
+            ground.BooleanAdd(fill)
+    require(not ground.IsEmpty(), 'Missing reference ground for rear clock corridors')
+    clocks = {name+suffix for name in ['P47_CKV','P47_XLE','P47_XCL','P47_XSTL']
+              for suffix in ['','_SRC']}
+    tracks = list(board.GetTracks())
+    rear = [t for t in tracks if t.GetClass()=='PCB_TRACK'
+            and t.GetLayer()==P.B_Cu and t.GetNetname() in clocks]
+    limits = contract['net_limits']
+    require(limits and set(limits)=={t.GetNetname() for t in rear}, 'Rear clock track inventory differs')
+    rows = []
+    for net,limit in sorted(limits.items()):
+        selected = [t for t in rear if t.GetNetname()==net]
+        require(len(selected)==limit['track_count'], 'Rear clock track inventory differs: '+net)
+        corridor = P.SHAPE_POLY_SET()
+        for track in selected:
+            shape = P.SHAPE_POLY_SET()
+            track.GetEffectiveShape(P.B_Cu).TransformToPolygon(shape,500,P.ERROR_OUTSIDE)
+            corridor.BooleanAdd(shape)
+        # 先合并同网铜，拆分线段不能缩小必须覆盖的走廊。
+        corridor.Inflate(mm(.25),P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+        for via in tracks:
+            if via.GetClass()=='PCB_VIA' and via.GetNetname()==net:
+                shape = P.SHAPE_POLY_SET()
+                P.SHAPE_CIRCLE(via.GetPosition(),mm(.6)).TransformToPolygon(shape,500,P.ERROR_INSIDE)
+                corridor.BooleanSubtract(shape)
+        area = corridor.Area()/1e12
+        expected = limit['required_area_mm2']
+        require(expected is None or abs(area-expected)<=.000005,
+                'Rear clock required area differs: '+net)
+        corridor.BooleanSubtract(ground)
+        missing = corridor.Area()/1e12
+        require(0<=limit['maximum_uncovered_area_mm2']
+                and missing<=limit['maximum_uncovered_area_mm2'],
+                'Rear clock ground corridor exceeds reviewed uncovered area: '+net)
+        rows.append(dict(net=net,track_count=len(selected),required_area_mm2=area,
+                         uncovered_area_mm2=missing,covered_area_mm2=area-missing))
+    return dict(reference_ground='U501.57 / native-connected In2.Cu fill',
+                signal_edge_margin_mm=.25,own_via_exclusion_radius_mm=.6,shape_error_um=.5,
+                required_area_mm2=sum(r['required_area_mm2'] for r in rows),
+                uncovered_area_mm2=sum(r['uncovered_area_mm2'] for r in rows),
+                layout_ground_coverage_complete=all(r['uncovered_area_mm2']<=.000001 for r in rows),
+                electrical_timing_and_return_qualified=False,nets=rows)
+
+
 def inspect_clock_ground_stitches(board, plan, ground_fills=None):
     """核对指定盘外地孔的真实In1/B地接触与换层目标，只报告几何改善。"""
     import pcbnew as P

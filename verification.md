@@ -1518,3 +1518,13 @@ R43从不可变R26直回放，相对R42保持**零器件迁位**（全部265件9
 484different本地tests互补：geometry402pass82skip、KPY465pass19skip，old475 IDs保持。新增native温度/字段动作负例拒旧0603MPN、错误0402land/补偿值、同名地岛、篡改contract、错误前驱/UUID及后续失败不得部分应用；新资格温度外证pending/null。4physicalflags继续false，fullRT/temperatureaccuracy/receipt也false；未制造/充电/面板上电，无CI。
 
 R44源delta9c7f1cf13a8d101e7f582e5dfb81322aa3c491c905c8de517daab0a1fe4e5311，最终PCB590e5f8388b9e82c6f9303dde3c70931f26e620a295c269a70d314ae5f2c4939。闭环A/B/history完整native临时各304files核后删，只留小JSON；最终唯一候选原位移至../panda-board-deliverables/panda47-e02-20261103-r44/engineering-candidate，不复制回放CAD到包。真实RT/currentPMIC/packpanel正公差7mm/46CAM/21+BT301来料/EVT仍未闭合，完整目标active。
+
+## 2026-11-03 R45背面时钟局部参考地 / Codex
+
+仅增三块有界In2 GND区，保R44全部265件／908盘身份字段针网位姿、10607轨／1003孔、16旧区定义和工艺参数、原规则／图纸／库／全旧焊盘组。226行CPL、全46孔、21项供料及BT301三CSV逐行相同；185地／52关键链、7PMIC走廊、66位姿、B6、8泵网及三地缝合保持。总区数19。显式R45／历史R44／默认R45完整R26回放均为错误／告警／open／parity／ERC 0/0/0/0/0，307项内部哈希分别通过；两R45独立原生全板范围审计通过。
+
+真实U501.57连接的相邻In2地铜使B时钟缺口495→442／633点；原F／In2到In1覆盖保持。连续铜边外扩0.25mm、仅扣除0.6mm本网孔圆的原生差集显示缺地面积31.247640→27.996008mm²，实际增加覆盖3.251632mm²（10.406%）。六网必需面积／原走线数量／路径及宽度／孔数不变，未改善的缺口保留，不能标记完整参考、受控阻抗、时序或SI资格。原生布尔运算细小舍入按0.000005mm²既定容差检查，铜指纹仍严格一致。
+
+491个不同本地测试互补通过（geometry402 pass／89 skip，KPY472 pass／19 skip，旧484 IDs全保），无CI。新增7例检查点间小孔、侧边缝、孤岛、删线／面积变化、缩小边距／扩大孔豁免及部分覆盖仍未资格化。显式与历史完整回放核后各删除304个文件，仅保小验收记录；唯一最终native同卷移至../panda-board-deliverables/panda47-e02-20261103-r45/engineering-candidate，不复制完整试验CAD到包。
+
+默认R45 PCB SHA-256 af913f37d3a0aa3ecc5c972621ec1faac771ca4fa94461c3007072115f20c328；源增量e62667f3d49bbb1ce1a26fe3edcdf894cb32d8d010e1bd90442df9e31a529c91。四物理资格false、温度RT／实际精度／来料false；46孔TypeVII书面CAM、21项与BT301核验、真实2050mAh电池／全屏／壳体含正公差≤7.0mm实测及EVT签核均未闭合。不制造、充电或面板上电，完整目标active。

@@ -1,4 +1,36 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-03 R44 SINGLE / TH801 PACKAGE & NOMINAL CURVE IDENTITY
+# CURRENT ROUTING CONTINUATION — 2026-11-03 R45 SINGLE / PARTIAL REAR CLOCK REFERENCE GROUND
+
+Read `hardware/pico47/E02-R45-REAR-CLOCK-GROUND-20261103.md` first. R45 adds only
+three bounded In2 GND zones to R44. All265parts/908padIDs/fields/poses/10607tracks/
+1003vias/16oldzone definitions/rules/SCH/libraries/CPL226/full46/21pending/BT301 stay
+exact. New total19zones. All paths/widths/via counts/resistance models unchanged.
+Native reference-connected In2 coverage improves495->442missing/633center samples;
+continuous track-edge+.25mm corridors reduce uncovered area31.247640->27.996008mm2,
+an actual3.251632mm2 improvement. Both measures still explicitly incomplete;
+do not call this full reference closure, controlled impedance, timing or SI approval.
+
+DefaultR45 replays immutableR26 with single_r45_layout_delta.json SHA-256
+e62667f3d49bbb1ce1a26fe3edcdf894cb32d8d010e1bd90442df9e31a529c91.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r45/engineering-candidate`.
+PCB SHA-256 af913f37d3a0aa3ecc5c972621ec1faac771ca4fa94461c3007072115f20c328.
+Explicit/defaultR45 plus historicalR44 allnative/ERC0; independentR45 audits
+confirm original copper/poses/padgroups and three exact newzones only.
+The continuous guard uses actualU50157-connected In2fill, per-net oldtrack counts,
+required area and reviewed uncovered limits; .25mm edge margin/.6mm ownvia circle/
+.5um shape error are fixed. Same-net islands, short sampling holes, lateral gaps,
+deleted copper and weakened contracts are tested. 491 distinct localtests pass;
+old484IDs retained. HistoricalR44 remains immutable and reproducible.
+
+Fourphysical flags remainfalse;46TypeVII writtenCAM,21SMT+BT301 receipts, actual
+2050mAh pack/fullpanel+case positive-tolerance<=7mm, NTC fullR-T/currentPMIC and
+EVT remainpending. No fabrication/charging/panelpower. Preserve185GND52links,
+7PMICcorridors/66poses/B6/8pumpnets/3stitches/noIn1signal/negativeEP49/C804dogbone/
+uniqueC815/GPIO2direct. Next work must review exact local neighbour boundaries
+for the remaining In2copper-blocked clock gaps; do not repeat failed fixed-via
+F/In2 or projected-B trials unchanged. Onebaseline/onecurrentnative, serialcleanup,
+packaging/worktrees/sealedpackages preserved; authorizedfeaturecommitpush.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-03 R44 SINGLE / TH801 PACKAGE & NOMINAL CURVE IDENTITY
 
 Read `hardware/pico47/E02-R44-THERMISTOR-IDENTITY-20261103.md` first. Default R44
 replays immutable R26 with single_r44_layout_delta.json SHA-256
