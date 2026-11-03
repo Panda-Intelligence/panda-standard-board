@@ -1,8 +1,8 @@
-# PCB Layout暂停交接
+# PCB Layout恢复续作记录（E0.2 R47）
 
-2026-11-03，执行者：Codex。按用户要求暂停。**PCB Layout仍未完成，没有采用R47或更新的PCB。**本轮只保存联合重布的实际范围、工具校准和未通过结果；默认构建及正式工程候选仍为R46。
+2026-11-03，执行者：Codex。用户恢复目标后，从R46继续完成五网局部In2协调并落地正式候选**E0.2 R47**（详见[R47说明](E02-R47-XLE-INNER-BRIDGE-20261103.md)）。**完整背面时钟参考地及四项物理资格仍未闭合。**
 
-正式候选：/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r46/engineering-candidate。PCB SHA-256为57b044e060a2c8b9365c5f77bee1cc8d6d4605bf7efa23f2c5f4f6fec6b3c112，源增量为r25_router/single_r46_layout_delta.json。封存包全部360项哈希在暂停收尾时复核不变。
+正式候选：`/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r47/engineering-candidate`。PCB SHA-256为`40ee9f44a4f76bd61fffd6a1221780aa7cf92e42959400490bdaf748b36a7624`，源增量为`r25_router/single_r47_layout_delta.json`（SHA-256 `59ce7907bfa2117badb748daf8eed70a032de48fcbcce620d3cd6d386891938c`）。历史R46封存包保持不变。
 
 已完成并采用的阶段：
 
@@ -12,6 +12,7 @@
 | R45 | 增加三块局部In2地铜，背面时钟参考缺口495→442点 | 3b13fb5 |
 | R46 | XSTL源端四段B桥改为四段In2线，绕开实际避铜缺口，新桥连续参考覆盖通过，无新增过孔 | d3a3fc8 |
 | 后续审查 | 记录R731/C527迁位失败及C527供电连接点，未改变正式PCB | 0b200a6 |
+| R47 | 联合协调五网局部In2走线，XLE源端两段B桥改为三段In2线并移除1颗冗余过渡孔，XLE/XCL内层走廊In1参考零缺口，背面缺地减少1.344213mm² | 本次提交 |
 
 R46的显式重建、默认入口及历史回归均完成，原生DRC错误／告警／未连接／一致性／ERC均为0。两次独立全板审计和498个不同本地测试通过；这些是已封存R46的结果，本次暂停收尾没有修改程序或重跑整套测试。正式板为265件、908盘、10607轨、1003孔、19区，完整46孔工艺、21项供料和BT301清单保持。
 

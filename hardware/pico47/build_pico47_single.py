@@ -1012,7 +1012,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -1027,7 +1027,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -1058,11 +1058,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -1079,7 +1079,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             if inner_contract:
                 from r25_router.apply_single_r27_layout_eco import inspect_inner_clock_bridge
                 inspection['inner_clock_bridge'] = inspect_inner_clock_bridge(board,inner_contract,ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -1143,7 +1143,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])

@@ -1,14 +1,40 @@
-# PAUSED HANDOFF — 2026-11-03
+# CURRENT ROUTING CONTINUATION — 2026-11-03 R47 SINGLE / XLE SOURCE INNER BRIDGE & 5-NET COORDINATION
 
-User paused the PCB Layout goal. Read
-`hardware/pico47/E02-PAUSED-STATUS-20261103.md` for current progress and next scope.
-Formal/default CAD remains R46; no later trial was accepted. Keep all four physical
-qualification flags false. Joint-clock trial CAD/DSN/compiled models were cleaned
-after hash capture; only the accepted packages, one R46 geometry baseline and
-small diagnostic records remain. No background routing or build job is running.
-Resume only when the user reactivates the work; keep the full objective intact.
+Read `hardware/pico47/E02-R47-XLE-INNER-BRIDGE-20261103.md` first. R47 coordinates
+five local In2 nets (`P47_XLE_SRC`, `EN_VSYS_AUDIO`, `P47_XCL_SRC`, `P47_D2_SRC`,
+`HW_ARM_GPIO`) to replace `P47_XLE_SRC`'s 2 B.Cu bridge tracks with 3 In2.Cu tracks
+(`52.725/100.375 -> 52.150/100.950 -> 52.150/102.025 -> 50.300/103.875`) and removes
+its obsolete transition via at `(51.825, 101.275)` (-1 via). All265parts/908padIDs/
+fields/poses/Fcopper/otherCu/19zone definitions/rules/SCH/libraries/CPL226/full46/
+21pending/BT301 stay exact. Board totals: 265parts/908pads/10626tracks(+19)/1002vias(-1)/19zones.
 
-# CURRENT ROUTING CONTINUATION — 2026-11-03 R46 SINGLE / XSTL SOURCE INNER BRIDGE
+DefaultR47 replays immutableR26 with single_r47_layout_delta.json SHA-256
+59ce7907bfa2117badb748daf8eed70a032de48fcbcce620d3cd6d386891938c.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r47/engineering-candidate`.
+PCB SHA-256 40ee9f44a4f76bd61fffd6a1221780aa7cf92e42959400490bdaf748b36a7624.
+Explicit/defaultR47 and historicalR46 allnative/ERC0, two independent exact-Cu
+R47 audits passed. ActualU50157-connected In1 covers 100% of `P47_XSTL_SRC`
+(`0.544301 mm2`), `P47_XLE_SRC` (`2.719541 mm2`, 0 B.Cu tracks), and `P47_XCL_SRC`
+(`3.196081 mm2` In2) track-edge+.25mm corridors (0.000000 mm2 missing, fixed .6mm
+ownvia exclusion/.5um shape error). First x=52.100 trial had .005116mm2 missing
+against `EN_VSYS_AUDIO` via (51.400, 101.700) antipad and was shifted to x=52.150.
+`P47_XLE_SRC` (`R727.1 -> U501.18`) keeps 13.758mm planar, vertical -0.2525mm,
+vias 3->2, Cu resistance +10.61mohm; `P47_XCL_SRC` planar +3.373mm, +22.15mohm.
+
+500distinct localtests pass (geometry 402 pass/98 skip, KiCad 481 pass/19 skip),
+old498IDs retained. Rear B.Cu reference improves from 438/629 to 420/608 center
+gaps and from 27.743521 to 26.399309mm2 uncovered B corridor (-1.344213mm2,
+including `P47_XLE_SRC` -1.255348mm2 and `P47_CKV` -0.088865mm2), but remains
+incomplete (`P47_CKV` 16.053440mm2, `P47_XCL` 6.935430mm2, `P47_XCL_SRC`
+1.929253mm2, `P47_XSTL_SRC` 0.779724mm2, `P47_XSTL` 0.701462mm2). Fourphysical
+flags remainfalse; 46TypeVII writtenCAM, 21SMT+BT301 receipts, actual 2050mAh
+pack/fullscreen+case positive-tolerance<=7mm, NTC fullR-T/currentPMIC and EVT
+remainpending. No fabrication/charging/panelpower. Preserve185GND52links,
+7PMICcorridors/66poses/B6/8pumpnets/3stitches/noIn1signal/negativeEP49/C804dogbone/
+uniqueC815/GPIO2direct; onebaseline/currentnative, serialcleanup, packaging/
+4worktrees/history kept, authorized featurecommitpush. Wholegoal remainsactive.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-03 R46 SINGLE / XSTL SOURCE INNER BRIDGE
 
 Read `hardware/pico47/E02-R46-XSTL-INNER-BRIDGE-20261103.md` first. R46 replaces
 four XSTL_SRC B bridge tracks with four In2 tracks, via the same old2vias, and

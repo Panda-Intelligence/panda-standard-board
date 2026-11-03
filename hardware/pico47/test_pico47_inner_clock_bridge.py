@@ -69,3 +69,48 @@ class InnerClockBridgeTests(unittest.TestCase):
         for key,value in [('signal_edge_margin_mm',.1),('own_via_exclusion_radius_mm',.7)]:
             b,c,_=self.fixture();c[key]=value
             with self.subTest(key=key),self.assertRaisesRegex(ValueError,'bridge contract'):self.inspect(b,c)
+
+    def fixture_with_xle_bridge(self, xle_hole=None):
+        import pcbnew as P
+        from r25_router.apply_single_r27_layout_eco import mm
+        b,c,_=self.fixture(hole=xle_hole)
+        xle=P.NETINFO_ITEM(b,'P47_XLE_SRC',3);b.Add(xle)
+        xle_segs=[];xle_tracks=[]
+        for i in range(3):
+            x1,x2=mm(i*.8),mm((i+1)*.8);y=mm(.8)
+            t=P.PCB_TRACK(b);t.SetNet(xle);t.SetLayer(P.In2_Cu);t.SetWidth(mm(.15))
+            t.SetStart(P.VECTOR2I(x1,y));t.SetEnd(P.VECTOR2I(x2,y));b.Add(t)
+            xle_tracks.append(t);xle_segs.append([x1,y,x2,y,mm(.15)])
+        for x in [0,2.4]:
+            v=P.PCB_VIA(b);v.SetNet(xle);v.SetViaType(P.VIATYPE_THROUGH);v.SetLayerPair(P.F_Cu,P.B_Cu)
+            v.SetPosition(P.VECTOR2I(mm(x),mm(.8)));v.SetWidth(mm(.4));v.SetDrill(mm(.2));b.Add(v)
+        c['additional_bridges']=[dict(net='P47_XLE_SRC',rear_track_count=0,total_in2_track_count=3,
+                                      via_centers_nm=[[0,mm(.8)],[mm(2.4),mm(.8)]],
+                                      bridge_segments_nm=xle_segs)]
+        return b,c,xle_tracks
+
+    def test_additional_xle_inner_bridge_requires_complete_in1_corridor_and_zero_rear_copper(self):
+        b,c,_=self.fixture_with_xle_bridge();r=self.inspect(b,c)
+        self.assertEqual(len(r['additional_bridges']),1)
+        extra=r['additional_bridges'][0]
+        self.assertEqual(extra['net'],'P47_XLE_SRC')
+        self.assertEqual(extra['rear_track_count'],0)
+        self.assertEqual(extra['via_count'],2)
+        self.assertTrue(extra['bridge_ground_coverage_complete'])
+        self.assertFalse(extra['electrical_timing_and_return_qualified'])
+
+    def test_additional_bridge_rejects_leftover_rear_copper_or_corridor_gap_or_obsolete_via(self):
+        import pcbnew as P
+        from r25_router.apply_single_r27_layout_eco import mm
+        b,c,xle_tracks=self.fixture_with_xle_bridge()
+        rear=P.PCB_TRACK(b);rear.SetNet(b.FindNet('P47_XLE_SRC'));rear.SetLayer(P.B_Cu);rear.SetWidth(mm(.15))
+        rear.SetStart(P.VECTOR2I(0,mm(.8)));rear.SetEnd(P.VECTOR2I(mm(.5),mm(.8)));b.Add(rear)
+        with self.assertRaisesRegex(ValueError,'rear copper differs'):self.inspect(b,c)
+        b,c,xle_tracks=self.fixture_with_xle_bridge()
+        xle_tracks[0].SetEnd(P.VECTOR2I(mm(.8)+1,mm(.8)))
+        with self.assertRaisesRegex(ValueError,'bridge copper differs'):self.inspect(b,c)
+        b,c,_=self.fixture_with_xle_bridge()
+        extra_via=P.PCB_VIA(b);extra_via.SetNet(b.FindNet('P47_XLE_SRC'));extra_via.SetPosition(P.VECTOR2I(mm(1.2),mm(.8)));b.Add(extra_via)
+        with self.assertRaisesRegex(ValueError,'via inventory differs'):self.inspect(b,c)
+        b,c,_=self.fixture_with_xle_bridge(xle_hole=[(1.18,.78),(1.22,.78),(1.22,.82),(1.18,.82)])
+        with self.assertRaisesRegex(ValueError,'ground corridor has a gap'):self.inspect(b,c)

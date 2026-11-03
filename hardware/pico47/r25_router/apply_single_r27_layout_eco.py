@@ -474,10 +474,38 @@ def inspect_inner_clock_bridge(board, contract, ground_fills=None):
     require(not ground.IsEmpty(), 'Missing reference ground for inner clock bridge')
     area,missing = _clock_corridor_area(selected,vias,ground)
     require(area>.01 and missing<=.000001, 'Inner clock bridge ground corridor has a gap')
-    return dict(net=contract['net'],signal_layer='In2.Cu',reference_ground='U501.57 / native-connected In1.Cu fill',
-                track_count=len(selected),via_count=2,signal_edge_margin_mm=.25,own_via_exclusion_radius_mm=.6,
-                shape_error_um=.5,required_area_mm2=area,uncovered_area_mm2=missing,
-                bridge_ground_coverage_complete=True,electrical_timing_and_return_qualified=False)
+    result = dict(net=contract['net'],signal_layer='In2.Cu',reference_ground='U501.57 / native-connected In1.Cu fill',
+                  track_count=len(selected),via_count=2,signal_edge_margin_mm=.25,own_via_exclusion_radius_mm=.6,
+                  shape_error_um=.5,required_area_mm2=area,uncovered_area_mm2=missing,
+                  bridge_ground_coverage_complete=True,electrical_timing_and_return_qualified=False)
+    if 'additional_bridges' in contract:
+        require(contract['additional_bridges'], 'Invalid inner clock bridge contract')
+        extras = []
+        for spec in contract['additional_bridges']:
+            require(spec.get('net') in ('P47_XLE_SRC','P47_XCL_SRC')
+                    and spec.get('bridge_segments_nm') and spec.get('via_centers_nm'),
+                    'Invalid inner clock bridge contract')
+            net_items = [t for t in board.GetTracks() if t.GetNetname()==spec['net']]
+            rear = [t for t in net_items if t.GetClass()=='PCB_TRACK' and t.GetLayer()==P.B_Cu]
+            require(len(rear)==spec.get('rear_track_count',0), 'Inner clock bridge rear copper differs')
+            in2 = [t for t in net_items if t.GetClass()=='PCB_TRACK' and t.GetLayer()==P.In2_Cu]
+            require(len(in2)==spec.get('total_in2_track_count',len(in2)), 'Inner clock bridge copper differs')
+            expected_segs = sorted(spec['bridge_segments_nm'])
+            bridge = [t for t in in2 if signature(t) in spec['bridge_segments_nm']]
+            require(len(bridge)==len(expected_segs) and sorted(signature(t) for t in bridge)==expected_segs,
+                    'Inner clock bridge copper differs')
+            net_vias = [t for t in net_items if t.GetClass()=='PCB_VIA']
+            require(len(net_vias)==len(spec['via_centers_nm'])
+                    and sorted([v.GetPosition().x,v.GetPosition().y] for v in net_vias)==sorted(spec['via_centers_nm']),
+                    'Inner clock bridge via inventory differs')
+            b_area,b_missing = _clock_corridor_area(bridge,net_vias,ground)
+            require(b_area>.01 and b_missing<=.000001, 'Inner clock bridge ground corridor has a gap')
+            extras.append(dict(net=spec['net'],signal_layer='In2.Cu',rear_track_count=len(rear),
+                               bridge_track_count=len(bridge),total_in2_track_count=len(in2),
+                               via_count=len(net_vias),required_area_mm2=b_area,uncovered_area_mm2=b_missing,
+                               bridge_ground_coverage_complete=True,electrical_timing_and_return_qualified=False))
+        result['additional_bridges'] = extras
+    return result
 
 
 def inspect_rear_clock_corridors(board, contract, ground_fills=None):
