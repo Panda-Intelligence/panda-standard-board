@@ -1508,3 +1508,13 @@ R43从不可变R26直回放，相对R42保持**零器件迁位**（全部265件9
 最终默认R43完整源重建DRC错误/告警/open/parity/ERC0/0/0/0/0；独立原生审计及对封存R43全板对照确认265parts908pads身份/值/字段/针网/位姿、全部10607tracks1003vias16zones、全部旧padgroups/SCH/库/rules/stack/outline保持，185GND52links、7PMICcorridors/66pose/B6/full46/实际SDUSBclock3stitches过。307内部构建SHA全部同；三库存和CPL226与旧R43逐行相同。仅报告/清单验证源变化，没有新PCB版本或物理资格通过。
 
 475不同本地用例互补：geometry401pass74skip、KiCad456pass19skip，旧470IDs保留；新增5例覆盖绿CAD仍false、非法上调true/错误类型、CSV缺失错件、BT301/工艺库存丢失、孔数相同却坐标签名错误，全部拒绝。无CI。可交接状态报告只读绑定现存R43 PCB92f6fe61767f79146c79e0bcba254d54c464b0c1f8f2391cced6807feb173abc与原三CSV，源回归的完整临时CAD核验后清理，原R43包386项保持。
+
+## 2026-11-03 R44 TH801封装与名义曲线修正 / Codex
+
+原厂CMFA103F3950HANT承认书18.01证实其A=0603/B3950，而R43实际TH801 land0402。FH官方目录及CMK厂商族规格确认CMKD103F3380HANT为0402/10k1%/B25/50=3380±3%，作为工程料号替换；不填LCSC、不称完整R-T或供料已合格，B3%比Murata参考1%更宽，温度精度仍false。
+
+两explicitR26→R44、默认R44及historyR43四个完整入口native错误/告警/open/parity/ERC0/0/0/0/0；三R44独立审计完整265poses908padIDs/几何/针网/allCu10607tracks1003vias16zones/全oldgroups/rules/stack/outline保持，唯一TH801MPN在PCB/SCH/localFP/constructor/metadata注册与pending21中同步变更。CPL226/full46/BT301逐行同，185GND52links/7PMICcorridors/66pose/B6/全8pumpnets/actualSDUSBclock3stitches保持。SCH与TH801lib各只替一个MPN字符串，其它图纸库字节同；historicalR43旧MPN仍精确回放。
+
+484different本地tests互补：geometry402pass82skip、KPY465pass19skip，old475 IDs保持。新增native温度/字段动作负例拒旧0603MPN、错误0402land/补偿值、同名地岛、篡改contract、错误前驱/UUID及后续失败不得部分应用；新资格温度外证pending/null。4physicalflags继续false，fullRT/temperatureaccuracy/receipt也false；未制造/充电/面板上电，无CI。
+
+R44源delta9c7f1cf13a8d101e7f582e5dfb81322aa3c491c905c8de517daab0a1fe4e5311，最终PCB590e5f8388b9e82c6f9303dde3c70931f26e620a295c269a70d314ae5f2c4939。闭环A/B/history完整native临时各304files核后删，只留小JSON；最终唯一候选原位移至../panda-board-deliverables/panda47-e02-20261103-r44/engineering-candidate，不复制回放CAD到包。真实RT/currentPMIC/packpanel正公差7mm/46CAM/21+BT301来料/EVT仍未闭合，完整目标active。

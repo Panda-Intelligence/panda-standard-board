@@ -84,3 +84,6 @@ pytest hardware/pico47/test_verify_mainland_bom_compliance.py
 - **Engineering Qualification Disclaimers (preserved per `AGENTS.md`)**:
   - Chinese Mainland manufacturer identity does not by itself certify internal die provenance, firmware correctness, supplier stock reservation/receipt, USB compliance, or physical EVT acceptance.
   - Pending consignment SMT parts (`U402..U405`, `U810`, `U902`, `U905`, `J201`), manual post-SMT assembly (`BT301`), and display high-voltage/precision passives (`C807..C812`, `R801..R806`, `TH801`) retain empty `LCSC` catalog fields until actual supplier/consignment registration and datasheet curve/DC-bias qualification are completed.
+# 2026-11-03后续修正：TH801 / Codex
+
+当前R44已将TH801从`CMFA103F3950HANT`改为FH官方目录的`CMKD103F3380HANT`，以修正0603/3950与既有0402及名义3380参考不匹配；详见[E02-R44-THERMISTOR-IDENTITY-20261103.md](E02-R44-THERMISTOR-IDENTITY-20261103.md)。下文保留2026-10-29历史审计快照，其TH801旧MPN不用于当前采购。FH厂家身份保持，LCSC仍空、全R–T／来料／实测资格未通过。

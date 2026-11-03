@@ -1,4 +1,30 @@
-# CURRENT ROUTING CONTINUATION — 2026-11-02 R43 SINGLE / C808 & C811 CHARGE-PUMP FLYING CAPACITORS & FULL 8-NET GUARD
+# CURRENT ROUTING CONTINUATION — 2026-11-03 R44 SINGLE / TH801 PACKAGE & NOMINAL CURVE IDENTITY
+
+Read `hardware/pico47/E02-R44-THERMISTOR-IDENTITY-20261103.md` first. Default R44
+replays immutable R26 with single_r44_layout_delta.json SHA-256
+9c7f1cf13a8d101e7f582e5dfb81322aa3c491c905c8de517daab0a1fe4e5311.
+Named candidate: `/Users/isaac/workspace/AI/panda-board-deliverables/panda47-e02-20261103-r44/engineering-candidate`.
+PCB SHA-256 590e5f8388b9e82c6f9303dde3c70931f26e620a295c269a70d314ae5f2c4939.
+
+Only TH801 MPN changes CMFA103F3950HANT -> CMKD103F3380HANT across PCB/SCH/local
+library/constructor/metadata registry. The old exactMPN is0603/B3950; officialFH
+catalogue+CMK datasheet identify the new exactMPN as0402/10k1%/B25/50=3380K3%.
+Keep all265poses/908padIDs/shapes/nets/10607tracks/1003vias/16zones/oldgroups/rules
+exact againstR43; CPL226/full46/BT301 unchanged, onlyTH801 in21pending list changes.
+Temperature guard checks actual TS/REF/GND and7.5k/36k network plus0402 land;
+fullR-T, actualaccuracy and receipt remain false. B tolerance3% is wider than the
+referenceMurata1%; do not call it fully qualified equivalence or infer fullcurve.
+
+Twoexplicit/defaultR44+historyR43 allnative/ERC0, threeR44 independent audits,
+484distinct localtests pass (geometry402/82skip,KPY465/19skip,old475IDs preserved).
+Keep185GND52links/7PMICcorridors/66pose/B6/full46/all8pumpnets/actualSDUSBclock and
+3groundstitches. Fourphysicalqualification flags remainfalse; R44 report adds a
+seventh pending temperature-curve/accuracy evidence group with numericallimitsnull.
+No supplierCAM/receipt/realpackfullpanelpositive-tolerance7mm/EVT qualification.
+Preserve noIn1signal/negativeEP49/C804dogbone/uniqueC815100n/GPIO2direct, historical
+packages/worktrees/packaging, singlecandidate serialcleanup and authorizedcommitpush.
+
+# HISTORICAL ROUTING CONTINUATION — 2026-11-02 R43 SINGLE / C808 & C811 CHARGE-PUMP FLYING CAPACITORS & FULL 8-NET GUARD
 
 Read `hardware/pico47/E02-R43-C808-C811-FLYING-CAP-LAYOUT-20261102.md` first. Default R43
 replays directly from immutable R26 using single_r43_layout_delta.json, SHA-256

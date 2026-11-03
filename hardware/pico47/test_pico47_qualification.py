@@ -103,6 +103,17 @@ class QualificationEvidenceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Source qualification inventory differs'):
                 build_qualification_report(root,spec,changed,source)
 
+    def test_catalogue_thermistor_identity_adds_pending_physical_temperature_evidence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);spec,inspection,source=self.fixture(root)
+            inspection['temperature_sense']=dict(mpn='CMKD103F3380HANT',temperature_accuracy_qualified=False)
+            report=build_qualification_report(root,spec,inspection,source)
+            item=next(r for r in report['required_evidence'] if r['id']=='evt_temperature_sense')
+            self.assertEqual(item['accepted_evidence'],[])
+            self.assertEqual(item['status'],'pending_external_evidence')
+            self.assertIsNone(item['numerical_acceptance_limits'])
+            self.assertTrue(all(v is False for v in report['status_flags'].values()))
+
 
 if __name__=='__main__':
     unittest.main()

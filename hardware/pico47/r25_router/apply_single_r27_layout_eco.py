@@ -92,6 +92,19 @@ def apply_layout_eco(board, delta=None, candidate=None):
         require(fp is not None, 'Missing moved footprint: '+ref)
         require([mm(P.ToMM(fp.GetPosition().x)),mm(P.ToMM(fp.GetPosition().y))] == pose['before_xy_nm'],
                 'Unexpected original pose: '+ref)
+    field_edits = []
+    seen_fields = set()
+    for edit in delta.get('footprint_field_edits', []):
+        fp = board.FindFootprintByReference(edit['ref'])
+        require(fp is not None and fp.m_Uuid.AsString()==edit['native_uuid'],
+                'Footprint field predecessor identity differs: '+edit['ref'])
+        fields = [f for f in fp.GetFields() if f.GetName()==edit['field']]
+        identity = (edit['ref'],edit['field'])
+        require(identity not in seen_fields and len(fields)==1
+                and fields[0].GetText()==edit['before'] and bool(edit['after']),
+                'Footprint field predecessor differs: '+edit['ref'])
+        seen_fields.add(identity)
+        field_edits.append((fields[0],edit['after']))
     for spec in delta['updated_copper']+delta['added_tracks']+delta['added_vias']:
         net = board.FindNet(spec['net'])
         require(net is not None and net.GetNetCode() > 0, 'Missing original net: '+spec['net'])
@@ -110,6 +123,8 @@ def apply_layout_eco(board, delta=None, candidate=None):
             fp.Flip(fp.GetPosition(), False)
         fp.SetPosition(P.VECTOR2I(mm(pose['x']), mm(pose['y'])))
         fp.SetOrientationDegrees(pose['rot'])
+    for field, value in field_edits:
+        field.SetText(value)
     for edit in delta.get('silk_graphic_offsets', []):
         fp = board.FindFootprintByReference(edit['ref'])
         matches = [s for s in fp.GraphicalItems() if s.m_Uuid.AsString() == edit['uuid']]

@@ -248,7 +248,7 @@ def create(out,donor):
       ('R805','7.5k/1%','P47_VREF','P47_TS'),('R806','36k/1%','P47_TS','GND'),
       ('R807','10k','P47_PGOOD','3V3_AON'),('R808','100k','P47_HV_EN','GND'),('R809','100k','P47_VCOM_EN','GND'),
       ('R810','100k','P47_MODE','GND'),('R811','100k','P47_XOE','GND'),('R812','100k','P47_VGL','GND')]:resistor('Display',r,v,a,b)
-    new('Display','TH801','10k NTC / CURVE TO QUALIFY','Resistor_SMD:R_0402_1005Metric',{'1':'P47_TS','2':'GND'},FH,'CMFA103F3950HANT','',note='Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.')
+    new('Display','TH801','10k NTC / CURVE TO QUALIFY','Resistor_SMD:R_0402_1005Metric',{'1':'P47_TS','2':'GND'},FH,'CMKD103F3380HANT','',note='Required display thermistor. Exact domestic10k curve must match/qualify SY temperature conversion,not silently substitute the battery NTC.')
     for i,n in enumerate(['VGH','VGL','VPOS','VNEG','VCOM','BORDER_REVIEW'],801):
         new('Display','TP'+str(i),'P47_'+n,'TestPoint:TestPoint_Pad_D1.0mm',{'1':'P47_'+n},'PCB fabricated terminal','NOT_A_PURCHASED_PART','',in_bom=False,note='Probe landing. BORDER bias remains unresolved until exact panel instruction;NOT automatically grounded.')
     # Normalize footprints and regenerate truthful native local libraries.

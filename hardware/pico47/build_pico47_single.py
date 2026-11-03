@@ -531,6 +531,56 @@ def inspect_pmic_charge_pump_storage(board, contract, groups=None):
     return result
 
 
+def inspect_temperature_sense(board, contract, groups):
+    """精确核对0402名义3380器件及TS实际连接；目录身份不代表整条R-T曲线合格。"""
+    import pcbnew as P
+    require((contract['mpn'],contract['package'],contract['nominal_r25_ohm'],
+             contract['nominal_beta_25_50_k'],contract['r25_tolerance_percent'],
+             contract['beta_tolerance_percent'])==('CMKD103F3380HANT','0402',10000,3380,1,3),
+            'Unreviewed temperature part contract')
+    device=board.FindFootprintByReference(contract['device'])
+    ntc=board.FindFootprintByReference(contract['thermistor'])
+    require(device is not None and ntc is not None, 'Missing PMIC temperature circuit')
+    fields={x.GetName():x.GetText() for x in ntc.GetFields()}
+    require(fields.get('Manufacturer')==contract['manufacturer'] and fields.get('MPN')==contract['mpn']
+            and ntc.GetValue()==contract['value'] and not ntc.IsDNP(), 'PMIC thermistor identity differs')
+    require(contract['package']=='0402' and ntc.GetLayer()==P.F_Cu
+            and ntc.GetOrientationDegrees()==0 and ntc.GetAttributes() & P.FP_SMD,
+            'PMIC thermistor requires reviewed 0402 land')
+    geometry=sorted([[p.GetNumber(),p.GetPosition().x-ntc.GetPosition().x,
+                      p.GetPosition().y-ntc.GetPosition().y,p.GetSize().x,p.GetSize().y]
+                     for p in ntc.Pads()])
+    require(geometry==contract['pad_geometry_nm'], 'PMIC thermistor 0402 land differs')
+    def pin(fp,num):
+        pads=[p for p in fp.Pads() if p.GetNumber()==str(num)]
+        require(len(pads)==1, 'Missing PMIC temperature pin')
+        return pads[0]
+    passives=[]
+    for key in ['pullup','parallel']:
+        spec=contract[key];fp=board.FindFootprintByReference(spec['ref'])
+        require(fp is not None and not fp.IsDNP() and fp.GetValue()==spec['value']
+                and {x.GetName():x.GetText() for x in fp.GetFields()}.get('MPN')==spec['mpn'],
+                'PMIC temperature linearization identity differs')
+        passives.append(fp)
+    up,parallel=passives
+    ts=[pin(device,47),pin(ntc,1),pin(up,2),pin(parallel,1)]
+    ref=[pin(device,1),pin(up,1)]
+    ground=[pin(device,48),pin(ntc,2),pin(parallel,2)]
+    group_for={u:g for g in groups for u in g}
+    for pads,name in [(ts,'P47_TS'),(ref,'P47_VREF'),(ground,'GND')]:
+        require(all(p.GetNetname()==name for p in pads), 'PMIC temperature pin net differs: '+name)
+        first=pads[0].m_Uuid.AsString()
+        require(first in group_for and all(p.m_Uuid.AsString() in group_for[first] for p in pads),
+                'Open PMIC temperature connection: '+name)
+    return dict(thermistor=contract['thermistor'],manufacturer=fields['Manufacturer'],mpn=fields['MPN'],
+                catalogue_package=contract['package'],nominal_r25_ohm=contract['nominal_r25_ohm'],
+                nominal_beta_25_50_k=contract['nominal_beta_25_50_k'],
+                r25_tolerance_percent=contract['r25_tolerance_percent'],
+                beta_tolerance_percent=contract['beta_tolerance_percent'],
+                pullup=contract['pullup'],parallel=contract['parallel'],actual_connections_checked=True,
+                exact_rt_curve_qualified=False,temperature_accuracy_qualified=False,supplier_receipt_accepted=False)
+
+
 def inspect_source_pose_envelopes(board, contract):
     """核对全部源迁位/新增器件与全板同面器件的原生庭院及250um回退包络零重叠；不声称供应商极值公差资格。"""
     import pcbnew as P
@@ -704,6 +754,8 @@ def inspect_single(candidate, spec):
         expect('U810', pin, 'GND')
     expect('U811', 4, 'P47_HV_EN')
     groups = pad_components(board)
+    temperature_sense = (inspect_temperature_sense(board,spec['temperature_sense'],groups)
+                         if 'temperature_sense' in spec else None)
     bypasses = [inspect_output_bypass(board,c,groups) for c in spec.get('output_bypasses',[])]
     input_bypasses = [inspect_input_bypass(board,c,groups) for c in spec.get('input_bypasses',[])]
     power_bypasses = [inspect_power_bypass(board,c,groups) for c in spec.get('power_bypasses',[])]
@@ -845,7 +897,8 @@ def inspect_single(candidate, spec):
                            **({'pmic_analog_shield':analog_shield} if analog_shield else {}),
                            **({'pmic_charge_pump_storage':charge_pump_storage} if charge_pump_storage else {}),
                            **({'source_pose_envelopes':pose_envelopes} if pose_envelopes else {}),
-                           **({'backside_smt_clearance':backside_clearance} if backside_clearance else {})}
+                           **({'backside_smt_clearance':backside_clearance} if backside_clearance else {}),
+                           **({'temperature_sense':temperature_sense} if temperature_sense else {})}
 
 
 def write_csv(path, rows):
@@ -933,6 +986,13 @@ def build_qualification_report(candidate, spec, inspection, spec_path=SPEC):
         if item['id'].startswith('evt_'):
             item.update(numerical_acceptance_limits=None,
                         limits_status='requires_exact_PMIC_and_panel_specification')
+    if 'temperature_sense' in inspection:
+        item=evidence('evt_temperature_sense',[
+            'TH801精确料号/批次、全R-T表和R25/B25/50公差；标称3380不等于整条曲线已批准',
+            '实际PMIC版本、7.5k/36k补偿网络、VREF与不同温度点的原始温度/TS/读数',
+            '自热、板到屏幕温差和曲线/精度数值限值及校准实测签核'])
+        item.update(numerical_acceptance_limits=None,limits_status='requires_exact_NTC_and_PMIC_RT_specification')
+        required.append(item)
     return dict(schema='panda47-qualification-status-v1',revision=spec['revision'],date=date.today().isoformat(),
                 author='Codex',status_flags=flags,
                 binding=dict(pcb_sha256=sha(candidate/'Single.kicad_pcb'),
@@ -952,7 +1012,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
     revision = revision or spec['revision']
-    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'), 'Unknown Single layout revision')
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -967,7 +1027,7 @@ def build(source, output, spec_path=SPEC, revision=None):
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
     eco_binding = None
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'):
         from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
         eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
         delta_path = HERE / eco_binding['source']
@@ -998,11 +1058,11 @@ def build(source, output, spec_path=SPEC, revision=None):
     require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
     require(preserves_groups_with_additions(old_groups,groups,added_pads),
             'Original native pad inventory or groups differ')
-    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'):
         from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
         require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
                 revision + ' native roundtrip changed copper or reference zones')
-        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'):
             from r25_router.apply_single_r27_layout_eco import (
                 reference_connected_ground_fills, inspect_signal_references,
                 inspect_panel_clock_references,
@@ -1011,7 +1071,7 @@ def build(source, output, spec_path=SPEC, revision=None):
             inspection['signal_references'] = inspect_signal_references(
                 board, json.loads(CONTRACT.read_text()), ground_fills)
             inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
-            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'):
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'):
                 from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
                 inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
                     board, delta['clock_ground_stitches'], ground_fills)
@@ -1075,7 +1135,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43'), help='显式重建所选单板布局修订')
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])

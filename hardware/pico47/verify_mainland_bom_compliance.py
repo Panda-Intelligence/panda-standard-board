@@ -317,7 +317,7 @@ MAINLAND_METADATA_ECO: dict[str, dict[str, str]] = {
     },
     "TH801": {
         "Manufacturer": "FH (Fenghua Advanced)",
-        "MPN": "CMFA103F3950HANT",
+        "MPN": "CMKD103F3380HANT",
         "LCSC": "",
     },
     # Non-BOM bare PCB debug landing and test pads (matching TP712 / TP801..TP806)
