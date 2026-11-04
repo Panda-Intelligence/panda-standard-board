@@ -1,6 +1,6 @@
 # CURRENT ROUTING CONTINUATION — 2026-11-03 R48 SINGLE / XSTL ZERO-REAR BRIDGE, CKV INNER/FRONT BRIDGES & 4-NET COORDINATION
 
-Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md` first. R48 coordinates
+Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md` and `hardware/pico47/E02-SEVEN-QUALIFICATION-EVIDENCE-OVERVIEW-20261104.md` first. R48 coordinates
 four nets (`P47_XSTL`, `P47_CKV`, `UART0_RX`, `3V3_EPD_LOGIC`) on top of R47: removes
 `3V3_EPD_LOGIC`'s redundant 156-segment parallel staircase loop + 3 vias (`-19.480mm`
 copper, retaining the `0.35mm` In2 main trunk), replaces `P47_XSTL`'s last 3 B.Cu
