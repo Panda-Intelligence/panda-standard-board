@@ -1,6 +1,6 @@
 # CURRENT ROUTING CONTINUATION — 2026-11-03 R48 SINGLE / XSTL ZERO-REAR BRIDGE, CKV INNER/FRONT BRIDGES & 4-NET COORDINATION
 
-Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md` and `hardware/pico47/E02-SEVEN-QUALIFICATION-EVIDENCE-OVERVIEW-20261104.md` first. R48 coordinates
+Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md`, `hardware/pico47/E02-SEVEN-QUALIFICATION-EVIDENCE-OVERVIEW-20261104.md`, `hardware/pico47/E02-DFM-ASSEMBLY-AND-TIMING-SPECIFICATION-20261104.md`, `hardware/pico47/E02-EVT-ELECTRICAL-VERIFICATION-PROTOCOL-20261104.md` and `hardware/pico47/E02-POFV-46-VIA-CAM-MANUFACTURING-PACKAGE-20261104.md` first. R48 coordinates
 four nets (`P47_XSTL`, `P47_CKV`, `UART0_RX`, `3V3_EPD_LOGIC`) on top of R47: removes
 `3V3_EPD_LOGIC`'s redundant 156-segment parallel staircase loop + 3 vias (`-19.480mm`
 copper, retaining the `0.35mm` In2 main trunk), replaces `P47_XSTL`'s last 3 B.Cu
@@ -28,8 +28,8 @@ exclusion/.5um shape error). `P47_XSTL` (`J820.31 -> R728.2`) planar +0.116mm, v
 -0.2525mm, total -0.136mm, vias 9->8, Cu resistance +12.86mohm; `P47_CKV` (`J820.7 ->
 R729.2`) planar +0.797mm, vertical -1.7825mm, total -0.985mm, vias 9->7, +6.12mohm.
 
-502distinct localtests pass (geometry 402 pass/100 skip, KiCad 483 pass/19 skip),
-old500IDs retained. Rear B.Cu reference improves from 420/608 to 385/574 center
+510distinct localtests pass (geometry 406 pass/104 skip, KiCad 491 pass/19 skip),
+old502IDs retained. Rear B.Cu reference improves from 420/608 to 385/574 center
 gaps (-35) and from 26.399309mm2 (5 nets) to 24.386846mm2 (4 nets, -2.012463mm2,
 with `P47_XSTL` -0.701462mm2 to 0 and `P47_CKV` -1.311001mm2 to 14.742439mm2), but
 remains incomplete (`P47_CKV` 14.742439mm2, `P47_XCL` 6.935430mm2, `P47_XCL_SRC`
