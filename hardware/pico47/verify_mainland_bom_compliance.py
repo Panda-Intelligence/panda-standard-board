@@ -535,12 +535,22 @@ def parse_pcb_footprints(pcb_path: Path) -> list[dict[str, Any]]:
     return sorted(items, key=lambda x: x["ref"])
 
 
-def parse_sch_symbols(sch_path: Path) -> dict[str, dict[str, Any]]:
-    """Parse all placed symbol instances from a `.kicad_sch` file."""
-    text = Path(sch_path).read_text()
+def parse_sch_symbols(sch_path: Path, _seen: frozenset = frozenset()) -> dict[str, dict[str, Any]]:
+    """Parse all placed symbol instances from a `.kicad_sch` file and the sub-sheets it references."""
+    sch_path = Path(sch_path)
+    text = sch_path.read_text()
     lib_start = text.index("(lib_symbols")
     lib_end = _balanced_end(text, lib_start)
     symbols: dict[str, dict[str, Any]] = {}
+    # 2026-11-06 Claude: hierarchical designs keep their parts in sub-sheet files
+    for sub in re.findall(r'\(property\s+"Sheetfile"\s+"([^"]+)"', text):
+        child = (sch_path.parent / sub).resolve()
+        if child in _seen:
+            raise ValueError(f"Recursive sheet reference: {child}")
+        for ref, row in parse_sch_symbols(child, _seen | {sch_path.resolve()}).items():
+            if ref in symbols:
+                raise ValueError(f"Duplicate schematic reference across sheets: {ref}")
+            symbols[ref] = row
     pos = lib_end
     for m in re.finditer(r'\(symbol\s*\(lib_id\s+"([^"]+)"\)', text[lib_end:]):
         start = lib_end + m.start()
@@ -553,6 +563,8 @@ def parse_sch_symbols(sch_path: Path) -> dict[str, dict[str, Any]]:
         ref = props.get("Reference", "")
         if not ref or ref.startswith("#"):
             continue
+        if ref in symbols:
+            raise ValueError(f"Duplicate schematic reference across sheets: {ref}")
         symbols[ref] = {
             "ref": ref,
             "value": props.get("Value", ""),

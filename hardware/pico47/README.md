@@ -1,6 +1,6 @@
 # Current Continuation: E0.2 R49 — 前光升压供电修正（2026-11-06）
 
-`hardware/pico47/v0.1.2/` 是 R49 的完整 KiCad 工程（PCB＋带连线的可读原理图＋本地库），可直接打开或打包导入；原理图由 `readable_schematic.py` 生成，网表与 R49 完全相同。嘉立创EDA专业版的 KiCad 导入文档注明支持 10.0 以下版本，本工程为 KiCad 10 格式，导入前须实测。
+`hardware/pico47/v0.1.2/` 是 R49 的完整 KiCad 工程（PCB＋常规画法的多页层次原理图＋本地库），可直接打开或打包导入；原理图由 `readable_schematic.py` 生成（目录页＋11 张 A4/A3 分页，标准元件图形、电源/地符号、阻容画在所服务的引脚旁），网表与 R49 完全相同。嘉立创EDA专业版的 KiCad 导入文档注明支持 10.0 以下版本：原理图为 KiCad 9 格式，PCB 为 KiCad 10 格式，导入前须实测。
 
 2026-11-06，Claude。先读 [R49 前光升压供电修正](E02-R49-FRONTLIGHT-SUPPLY-20261106.md)。R48 及以前前光升压输入 `VSYS_FL_IN` 没有电源；R49 把它并入 `VSYS_RAW`，其余与 R48 相同。用 `build_pico47_single_r49.py --output <.work 下新目录>` 从 R26 经 R48 回放重建并导出下单包；`manufacturing_release` 仍为 false。
 
