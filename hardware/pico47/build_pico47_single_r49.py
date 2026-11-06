@@ -88,7 +88,7 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
     B.require(native_semantic_fingerprint(pcb) == delta['baseline_semantic_fingerprint'], 'R49 requires the R48 replay')
     apply_schematic(sch, delta)
     if readable:
-        # 网表式原理图（每个引脚一个全局标签）重排为带连线的可读原理图；元件、引脚与网络不变
+        # 网表式原理图（每个引脚一个全局标签）重画为常规的多页层次原理图；元件、引脚与网络不变
         import readable_schematic
         net = output / 'Single-pre-readable-netlist.xml'
         B.run_cli(['sch', 'export', 'netlist', '--format', 'kicadxml', '--output', net, sch],
@@ -107,6 +107,17 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
         B.require(nets(net) == nets(after), 'Readable schematic changed the netlist')
     board = P.LoadBoard(str(pcb))
     keepalive = apply_board(board, delta)
+    if readable:
+        # 原理图新增的显示字段 Spec 同步到封装（隐藏、放在装配层），与 KiCad“从原理图更新 PCB”一致；
+        # 不改铜、焊盘与位置，原生语义与铜指纹照常校验
+        for ref, text in readable_schematic.footprint_specs(output).items():
+            fp = board.FindFootprintByReference(ref)
+            B.require(fp is not None, 'Schematic part missing on the board: ' + ref)
+            fp.SetField('Spec', text)
+            field = fp.GetField('Spec')
+            field.SetVisible(False)
+            field.SetLayer(P.B_Fab if fp.IsFlipped() else P.F_Fab)
+            field.SetPosition(fp.GetPosition())
     P.SaveBoard(str(pcb), board)
     B.require(native_semantic_fingerprint(pcb) == delta['target_semantic_fingerprint'], 'R49 geometry differs from the checked candidate')
     B.require(copper_fingerprint(P.LoadBoard(str(pcb)), True) == delta['target_copper_fingerprint'], 'R49 copper differs from the checked candidate')
