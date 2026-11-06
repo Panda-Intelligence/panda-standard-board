@@ -1,0 +1,116 @@
+(footprint "C402_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "C402"
+		(at 0 -1.1 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2f2e66e4-0f08-441b-9401-f2f6fdf9b8b4")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "22u / VOUT"
+		(at 0 1.1 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "495859e0-680b-4ab1-b748-26bcee2f5484")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ca3ac0b6-56d1-45cb-9637-db5213e4d67b")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Unpolarized capacitor"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "550c1ada-920e-425f-aa1d-96a0b3fcb9a1")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ffea466d-d477-4775-baac-979538cd5f9a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0603X226M100NT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3f3e177b-72ed-49c3-8957-84e1cf31d101")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C60077"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "97bc6d97-eea7-4eee-a95f-b8312a188023")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "969e3313-3510-4e01-9609-4d1c8807e64b")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "37a6c91e-ff8a-4df0-ad46-fd1db0de66f8")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "d1f40790-b04f-490d-a484-c8beb282cb81")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,167 @@
+(footprint "U904_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "NS4168 ESOP8-EP 3.9x4.9 P1.27; geometry transcribed from public EasyEDA C910588")
+	(tags "ESOP-8 NS4168")
+	(property "Reference" "U904"
+		(at 0 -4.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "66c29bbf-fda3-4fa7-b63f-899df2eebd6f")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Value" "NS4168"
+		(at 0 4.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1b766974-f66e-4a3f-b5cf-7c9d1517b241")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C910588.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b7fe7b31-5654-4f34-8370-511754f95068")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Description" "Nsiway NS4168 mainland I2S mono Class-D audio power amplifier; ESOP8-EP; LCSC C910588"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e9a6a35d-005c-4849-9469-b81e49a965d5")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Manufacturer" "Shenzhen Nsiway Tech"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aa8f5795-62e1-4147-9447-478041b24a7b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "NS4168"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5e47f12a-3dea-4096-843a-9d368ea488fa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C910588"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9c3c802b-1710-4f0c-a18b-3d64a16a6db8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -3.35 -3.55)
+		(end 3.35 3.55)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5cdf4abf-6302-4dd9-885d-0e033b8a275d")
+	)
+	(fp_rect
+		(start -1.95 -2.45)
+		(end 1.95 2.45)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "51a9392f-7fb5-4c86-869d-4814422b4e3a")
+	)
+	(pad "1" smd rect
+		(at -1.905 2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "96a1474b-0924-4a87-a041-3d57ac814b75")
+	)
+	(pad "2" smd rect
+		(at -0.635 2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d1c7cc91-f463-41d6-ad8e-10802c83ed2f")
+	)
+	(pad "3" smd rect
+		(at 0.635 2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dd3d56c9-4fac-428b-b32b-02da0053bfba")
+	)
+	(pad "4" smd rect
+		(at 1.905 2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f6872771-afd6-488c-8029-2729c7f7d99c")
+	)
+	(pad "5" smd rect
+		(at 1.905 -2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "51076745-c45a-480a-91ef-4ac2e5eb2b60")
+	)
+	(pad "6" smd rect
+		(at 0.635 -2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d6b9af06-4b4d-4826-a3ee-14945be6b51d")
+	)
+	(pad "7" smd rect
+		(at -0.635 -2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1353c8be-9f8c-49a2-ac5c-3d384aab8046")
+	)
+	(pad "8" smd rect
+		(at -1.905 -2.9083)
+		(size 0.6 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "755e7a95-994d-4039-9dc2-a541b6874666")
+	)
+	(pad "9" smd rect
+		(at 0 0)
+		(size 3.3 2.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f99f4643-a6f8-4f1e-a299-6b0f58da22cf")
+	)
+	(embedded_fonts no)
+)

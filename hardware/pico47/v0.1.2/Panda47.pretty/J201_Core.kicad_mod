@@ -1,0 +1,290 @@
+(footprint "J201_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "MUP U22401-17 DWG-U22401-XX-01 Rev2; 0.8mm PCB; 9.24mm recess. Source geometry reviewed, physical acceptance pending.")
+	(property "Reference" "J201"
+		(at 0 -2.1 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "01fa111b-c1a4-4847-b1eb-6b7afc17d036")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "U22401-17 / MID-MOUNT"
+		(at 0 7.5 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2d2219a8-0c07-4eb0-b70d-84e6ea6ed187")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.mupconnector.com/product/usbc/3412.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "742448b2-e502-4b08-9243-1116421d92c4")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "DWG-U22401-XX-01 Rev2 source drawing;0.8mm PCB;external opening bottom center;requires9.24mm edge notch."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f95451f3-719c-49bb-aaa1-417566428f5f")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "MUP"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d832c565-2da0-4820-9a79-0ae1ab5393e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "U22401-17"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1da146f7-41fd-4044-ba4a-df617735b14c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e6acb3fb-9061-43e0-a14b-90bcb78ffc64")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyRoute" "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "89a8446d-5ef9-434c-8641-d8094963edae")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaAssemblyStage" "SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fe960ffd-5c84-4007-a571-9d7ee01a6a15")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyStatus" "JLC_REGISTRATION_AND_RECEIPT_PENDING"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "422838ac-a84a-4ca6-9f72-b0e23217b20e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSourceURL" "https://www.mupconnector.com/product/usbc/3412.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d3269826-bae3-4ead-847c-99519c69844a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -6.37 -1.35)
+		(end 6.37 6.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "c9df5e25-27a5-4238-961e-1b49faec7138")
+	)
+	(fp_rect
+		(start -6.12 -1.1)
+		(end 6.12 6.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9f0b160a-dbe3-4717-9fdd-015659ab6b26")
+	)
+	(pad "A1" smd rect
+		(at -3.35 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "7f4b8254-88b0-4066-986e-e0fcc80cd565")
+	)
+	(pad "A4" smd rect
+		(at -2.55 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a77b5354-e7ae-4401-86f0-2cfacc05e894")
+	)
+	(pad "A5" smd rect
+		(at -1.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c74fea25-8ab1-43d2-ba5f-efb10b418222")
+	)
+	(pad "A6" smd rect
+		(at -0.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bbf61aeb-d3b9-49fa-870d-387e2ea9d097")
+	)
+	(pad "A7" smd rect
+		(at 0.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ecb89c9c-0fed-4825-8889-c3a13b310a69")
+	)
+	(pad "A8" smd rect
+		(at 1.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9f222343-0222-42a7-a05e-9f77a3bfd394")
+	)
+	(pad "A9" smd rect
+		(at 2.55 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c0396521-4ec5-493a-901a-df8e31868771")
+	)
+	(pad "A12" smd rect
+		(at 3.35 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b2896148-1592-4b7d-9e08-b0506e79e721")
+	)
+	(pad "B1" smd rect
+		(at 3.05 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2be0ac0b-dcdd-462b-bc50-70bb608d46a5")
+	)
+	(pad "B4" smd rect
+		(at 2.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1f901627-5aea-47c7-a41f-2f4641a0f269")
+	)
+	(pad "B5" smd rect
+		(at 1.75 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e0b1709c-34b7-4575-9e04-63b083455360")
+	)
+	(pad "B6" smd rect
+		(at 0.75 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "7a001187-df7d-41db-bb6a-b8db5df8d60e")
+	)
+	(pad "B7" smd rect
+		(at -0.75 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ae4acbbb-df2b-4eb7-b61d-2ddfc9e765fe")
+	)
+	(pad "B8" smd rect
+		(at -1.75 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6aec6ac6-b852-4e28-8f36-1dbea1c646f6")
+	)
+	(pad "B9" smd rect
+		(at -2.25 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a82fa6c1-ce37-4c6f-a756-26dae8630956")
+	)
+	(pad "B12" smd rect
+		(at -3.05 -0.55)
+		(size 0.3 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "301b8282-1582-4765-a475-e8fb87792304")
+	)
+	(pad "SH" thru_hole oval
+		(at -5.62 0.6)
+		(size 1 1.8)
+		(drill oval 0.6 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0d0c46a4-8944-4bd7-8b84-fd8fd0b77a63")
+	)
+	(pad "SH" thru_hole oval
+		(at -5.62 4.6)
+		(size 1 2)
+		(drill oval 0.6 1.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "52e258ff-1d15-482d-9106-d52b26ae01a3")
+	)
+	(pad "SH" thru_hole oval
+		(at 5.62 0.6)
+		(size 1 1.8)
+		(drill oval 0.6 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "32ad860b-36c6-44d9-99c2-3432c123f3d0")
+	)
+	(pad "SH" thru_hole oval
+		(at 5.62 4.6)
+		(size 1 2)
+		(drill oval 0.6 1.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c8f76701-efff-46e2-bc35-32d8bb1264c3")
+	)
+	(embedded_fonts no)
+)

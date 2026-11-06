@@ -1,0 +1,156 @@
+(footprint "L801_Display"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Sunlord MWSA0618S manufacturer p3 lands I2.35,J3.7,H3.5mm. Maximum body7.3x6.8mm,height1.8mm. Current table p10 preserved; hot fault qualification remains open.")
+	(property "Reference" "L801"
+		(at 0 -4.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "08cb780d-e047-49e0-9706-50d44ae473c1")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "4.7uH / MWSA0618S-4R7MT"
+		(at 0 4.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a3bdc924-ac71-48a0-b5bf-f386a219cb50")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2905/MWSA-S_Series_DS.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aa99d3f6-8e89-4feb-9815-164336cf95f3")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Manufacturer DCR62mOhm max,height1.8mm max; Isat columns Max/Typ4/5A and Irms3.5/4A. Do NOT rename a Max column as a guaranteed minimum. Startup/hot/short-circuit margin remains unqualified."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ad0c986b-528b-4550-98f3-66242916ddc4")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "Sunlord"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7544ba38-9e7c-43fa-9ad5-adbdb564ce39")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "MPN" "MWSA0618S-4R7MT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a3a0b7fc-4803-472e-9e5f-ccd79a5611f8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "LCSC" "C408421"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e6c707d8-ff60-442a-a27c-fcb537572e24")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "PandaRevision" "E0"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "73e910e8-3d9b-4c54-adae-a0deb17b5532")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "PandaQualification" "UNQUALIFIED_ELECTRICAL_CANDIDATE"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "81f5b703-1764-481e-9087-118f92d89591")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "PandaSupplyStatus" "CATALOG_IDENTITY_ONLY"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fb799164-e40c-4164-bab8-6a256eb8e1f8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -4.45 -3.65)
+		(end 4.45 3.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "cfd9a9ed-1e85-49b9-9920-c5435a0ee89f")
+	)
+	(fp_rect
+		(start -3.65 -3.4)
+		(end 3.65 3.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "35e360ae-949f-4efe-b855-01949bc17532")
+	)
+	(pad "1" smd rect
+		(at -3.025 0)
+		(size 2.35 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9f7764a6-e13b-401b-8886-3e0817126421")
+	)
+	(pad "2" smd rect
+		(at 3.025 0)
+		(size 2.35 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "852502dc-13e0-44fb-b7e8-37801710f3b7")
+	)
+	(embedded_fonts no)
+)

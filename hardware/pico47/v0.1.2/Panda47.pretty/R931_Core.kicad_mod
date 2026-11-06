@@ -1,0 +1,116 @@
+(footprint "R931_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "R931"
+		(at 0 -1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c3f00bfa-2a8c-4bb7-8c37-3bfc5a8ab79d")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "1.2k / hardware permit"
+		(at 0 1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d313e96c-725f-4c52-a326-f3c35079ed28")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6c1fdbe3-2a16-43a5-98af-f7aad641907e")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Series GPIO2 resistor limits manual clamp current. Low permit inhibits frontlight and charging without I2C."
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a8802e70-ae26-44ff-8e8c-d08b7ad6112b")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c0dfd0a3-ff41-4195-ae40-3f5d4c1aa1aa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "RS-03K1201FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "89a48696-37d6-4b65-a4ff-03c6c50593b8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C118396"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc97c1a5-23a7-4753-9f59-109282260605")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "00aa0113-eba3-48b2-8f3c-e99230141e27")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "358ae326-e439-4f51-ba31-72ea56fe449a")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "915fd00b-fd37-4024-aad9-82adc583d358")
+	)
+	(embedded_fonts no)
+)
