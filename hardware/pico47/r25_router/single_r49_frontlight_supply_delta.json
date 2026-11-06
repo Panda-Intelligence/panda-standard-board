@@ -1,0 +1,266 @@
+{
+ "schema": "panda47-single-supply-eco-v1",
+ "revision": "R49",
+ "baseline_revision": "R48",
+ "date": "2026-11-06",
+ "author": "Claude",
+ "purpose": "Feed the front-light boost input: VSYS_FL_IN (L905.1/R920.1/C920.1) had no source after the board merge; it joins VSYS_RAW.",
+ "baseline_semantic_fingerprint": "70b6f7727f648e2f4b88ec31d05f377b2477f04e141a6f1305672f7f47941b26",
+ "baseline_copper_fingerprint": "d14e90763b14da42054bab1ecf15a45bd6faae157066ddbc02f30dca73433aab",
+ "schematic_global_label_renames": [
+  {
+   "uuid": "263288be-3480-52ad-bb6e-3d52f5f5a2f7",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  },
+  {
+   "uuid": "8a867273-67a4-58cf-bc26-9d97d4b0e9de",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  },
+  {
+   "uuid": "d5e8a1a3-35c1-53e1-85bf-9b92c40e82c5",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  }
+ ],
+ "pad_net_edits": [
+  {
+   "ref": "L905",
+   "pad": "1",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  },
+  {
+   "ref": "R920",
+   "pad": "1",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  },
+  {
+   "ref": "C920",
+   "pad": "1",
+   "from_net": "VSYS_FL_IN",
+   "to_net": "VSYS_RAW"
+  }
+ ],
+ "relabelled_copper_uuids": [
+  "1273fbec-1408-4b58-a22a-0481676f0b07",
+  "37d182ef-6684-4457-9633-34275e74dde3",
+  "5b35aa86-1368-4c09-ab6c-0832cc54f31f",
+  "644f2fa6-c19c-4c09-b297-9c5471df2cca",
+  "699e9f2f-f878-4c69-a3f4-82c88e578093",
+  "6b7fde22-75cb-47ba-afd8-dc98afcb1f9e",
+  "7145b062-3359-4c8b-8531-b5b22512288b",
+  "80a8a08e-22d3-4086-849a-fd803705da09",
+  "8bff4488-6bd5-4d5b-adaf-4b202cebcb1a",
+  "975ae1b0-b5e9-4ab0-8be8-f8e5c5620e87",
+  "9fdfa78d-5bc7-445f-b56a-677a0993fe01",
+  "af4fa614-8355-4b10-8be8-530032f7d423",
+  "b0117b29-49c3-48bd-98cd-5840d2e02e0a",
+  "c16e65ec-6ebb-42db-9516-ff431009db59",
+  "c675c2fa-7137-4e61-9844-8c3f24e281da",
+  "db5e2ed1-eace-460c-bafb-1bf09769c625",
+  "f4400497-357d-4aef-aac0-4a2d1c564b19",
+  "ff90bd9c-3cee-4333-aa1d-0f5e43af838c"
+ ],
+ "added_tracks": [
+  {
+   "layer": "F.Cu",
+   "start_nm": [
+    33550000,
+    110450000
+   ],
+   "end_nm": [
+    34400000,
+    110450000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    32650000,
+    116850000
+   ],
+   "end_nm": [
+    32650000,
+    112150000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "F.Cu",
+   "start_nm": [
+    14975000,
+    123750000
+   ],
+   "end_nm": [
+    15200000,
+    123525000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "B.Cu",
+   "start_nm": [
+    32400000,
+    118675000
+   ],
+   "end_nm": [
+    32750000,
+    118325000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    27650000,
+    118875000
+   ],
+   "end_nm": [
+    31650000,
+    118875000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "B.Cu",
+   "start_nm": [
+    32750000,
+    118325000
+   ],
+   "end_nm": [
+    32750000,
+    116950000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "F.Cu",
+   "start_nm": [
+    32875000,
+    111125000
+   ],
+   "end_nm": [
+    33550000,
+    110450000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "B.Cu",
+   "start_nm": [
+    32750000,
+    116950000
+   ],
+   "end_nm": [
+    32650000,
+    116850000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    32650000,
+    112150000
+   ],
+   "end_nm": [
+    32875000,
+    111925000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "F.Cu",
+   "start_nm": [
+    32875000,
+    111925000
+   ],
+   "end_nm": [
+    32875000,
+    111125000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    31650000,
+    118875000
+   ],
+   "end_nm": [
+    31850000,
+    118675000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    23000000,
+    123525000
+   ],
+   "end_nm": [
+    27650000,
+    118875000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "B.Cu",
+   "start_nm": [
+    31850000,
+    118675000
+   ],
+   "end_nm": [
+    32400000,
+    118675000
+   ],
+   "width_nm": 400000
+  },
+  {
+   "layer": "In2.Cu",
+   "start_nm": [
+    15200000,
+    123525000
+   ],
+   "end_nm": [
+    23000000,
+    123525000
+   ],
+   "width_nm": 400000
+  }
+ ],
+ "added_vias": [
+  {
+   "x_nm": 31850000,
+   "y_nm": 118675000,
+   "diameter_nm": 400000,
+   "drill_nm": 200000
+  },
+  {
+   "x_nm": 15200000,
+   "y_nm": 123525000,
+   "diameter_nm": 400000,
+   "drill_nm": 200000
+  },
+  {
+   "x_nm": 32650000,
+   "y_nm": 116850000,
+   "diameter_nm": 400000,
+   "drill_nm": 200000
+  },
+  {
+   "x_nm": 32875000,
+   "y_nm": 111925000,
+   "diameter_nm": 400000,
+   "drill_nm": 200000
+  }
+ ],
+ "target_semantic_fingerprint": "0fabc90c0535b5aa8acbb78170ae9468a6543eca1f2c57778c623f4346cd2834",
+ "target_copper_fingerprint": "15235acfd8b3ca4fff4747556b166da6751719e9384fcfe7aa3298bd88bb1e40",
+ "manufacturing_release": false
+}
