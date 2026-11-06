@@ -1,0 +1,116 @@
+(footprint "R204_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "R204"
+		(at 0 -1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ad6d274c-2b83-43e2-a1d0-03ca2d0bc134")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "1.2k / REGN to PSEL"
+		(at 0 1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1eb5089c-a2e1-4ee3-951a-645029bc58c3")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RS-03K1201FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f646c8fc-5c3b-4b1d-8a75-ca04f0345d23")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "FH RS-03K1201FT 1.2k 1% upper leg from SGM41513_REGN to SGM41513_PSEL. REGN powers before input-source detection; 500mA nominal reset selection, not a hard firmware-independent current ceiling."
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "630500f0-c591-4b43-a902-4f4ca4f72fc8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a579d438-e078-4d27-bb46-faab3a1494fa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "RS-03K1201FT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4e4eed65-c795-4592-a6ae-bef97613d104")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C118396"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "692111c6-c1f9-4cad-887e-992e99d68f4f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "c003b15b-0189-4e2f-9c59-b303408bb756")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "c34e9583-7d1e-4db2-9abb-3db8c69adc7c")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "c33547c2-e307-47d4-b3a6-9f7ca99b433a")
+	)
+	(embedded_fonts no)
+)

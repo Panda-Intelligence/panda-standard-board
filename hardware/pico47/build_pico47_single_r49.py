@@ -64,7 +64,7 @@ def apply_board(board, delta):
     return keep
 
 
-def build(output: Path, source: Path | None = None):
+def build(output: Path, source: Path | None = None, readable: bool = True):
     import pcbnew as P
     from seven_mm_routing import native_semantic_fingerprint
     from r25_router.apply_single_r27_layout_eco import copper_fingerprint
@@ -87,6 +87,24 @@ def build(output: Path, source: Path | None = None):
     pcb, sch = output / 'Single.kicad_pcb', output / 'Single.kicad_sch'
     B.require(native_semantic_fingerprint(pcb) == delta['baseline_semantic_fingerprint'], 'R49 requires the R48 replay')
     apply_schematic(sch, delta)
+    if readable:
+        # 网表式原理图（每个引脚一个全局标签）重排为带连线的可读原理图；元件、引脚与网络不变
+        import readable_schematic
+        net = output / 'Single-pre-readable-netlist.xml'
+        B.run_cli(['sch', 'export', 'netlist', '--format', 'kicadxml', '--output', net, sch],
+                  output / 'Single-pre-readable-netlist.log')
+        flat = output / 'Single.netlist-style.kicad_sch'
+        shutil.copy2(sch, flat)
+        readable_schematic.main(str(flat), str(net), str(sch))
+        flat.unlink()
+        after = output / 'Single-readable-netlist.xml'
+        B.run_cli(['sch', 'export', 'netlist', '--format', 'kicadxml', '--output', after, sch],
+                  output / 'Single-readable-netlist.log')
+        def nets(path):
+            root = B.ET.parse(path).getroot()
+            return {frozenset((x.get('ref'), x.get('pin')) for x in n.iter('node')): n.get('name')
+                    for n in root.iter('net')}
+        B.require(nets(net) == nets(after), 'Readable schematic changed the netlist')
     board = P.LoadBoard(str(pcb))
     keepalive = apply_board(board, delta)
     P.SaveBoard(str(pcb), board)
@@ -129,6 +147,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--netlist-style-schematic', action='store_true',
+                        help='保留原来每个引脚一个全局标签的原理图，不重排为可读原理图')
     args = parser.parse_args()
-    m = build(args.output, args.source)
+    m = build(args.output, args.source, readable=not args.netlist_style_schematic)
     print(json.dumps({k: m[k] for k in ('counts', 'via_in_pad', 'pending_supply', 'manufacturing_release')}, indent=2))

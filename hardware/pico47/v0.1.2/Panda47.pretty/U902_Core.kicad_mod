@@ -1,0 +1,260 @@
+(footprint "U902_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "U902"
+		(at 0 -2.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bf241c23-6be3-40a8-b9e3-2ecaf3876d1b")
+		(effects
+			(font
+				(size 0.65 0.65)
+			)
+		)
+	)
+	(property "Value" "SGM62125AXG/TR"
+		(at 0 2.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a0838e93-e13d-49ef-b327-8f65e26966ec")
+		(effects
+			(font
+				(size 0.55 0.55)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.sg-micro.com/product/SGM62125"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4fa6512a-bf5b-42ed-a0d7-73d2508213b2")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Description" "C4D-2 SGMICRO low-Iq I2C buck-boost; ADDR high startup 3.4V then firmware 3.3V; EVT only."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2f480a90-8ded-4990-a7fb-62f4798aa1bb")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Manufacturer" "SGMICRO"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2c402d55-60c9-4edb-b133-848b80a42300")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "SGM62125AXG/TR"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5e7aa2ae-45ff-47f9-ab3f-4dc819186606")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7b4322dd-8fde-4723-a3a6-7ffa6bdc483c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyRoute" "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5851d7db-13dd-4131-99fb-501f6cc0e3ad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaAssemblyStage" "SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f74a7f6b-15b1-4f66-af49-589466904489")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyStatus" "JLC_REGISTRATION_AND_RECEIPT_PENDING"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "34378234-2145-4ce5-84d7-e6327872ac9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSourceURL" "https://www.sg-micro.com/product/SGM62125"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d77fd5f6-b7ba-42af-90a5-ae4a631f0b4e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center -0.86 -1.28)
+		(end -0.76 -1.28)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "1234dc9b-e699-46e6-8ca8-255065a4f81a")
+	)
+	(fp_rect
+		(start -1 -1.4)
+		(end 1 1.4)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "2cad55c0-ba39-485a-896d-14fb6736b9f9")
+	)
+	(fp_rect
+		(start -0.7415 -1.1635)
+		(end 0.7415 1.1635)
+		(stroke
+			(width 0.08)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "32442ce5-93d9-415b-acd7-0cc8db3dc268")
+	)
+	(pad "A1" smd circle
+		(at -0.4 -0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2b2c2c27-dd02-4694-86c9-d6ca006a6bd5")
+	)
+	(pad "A2" smd circle
+		(at 0 -0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8f69bb12-058e-45ff-8106-eca75c1b4786")
+	)
+	(pad "A3" smd circle
+		(at 0.4 -0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4e9aa04a-f052-4375-951c-d479c9ad0473")
+	)
+	(pad "B1" smd circle
+		(at -0.4 -0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5e5a2d79-de37-49d2-92b0-8785ad15f83b")
+	)
+	(pad "B2" smd circle
+		(at 0 -0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e56e0b14-9061-4e04-9dfb-cc94bf35f470")
+	)
+	(pad "B3" smd circle
+		(at 0.4 -0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "69eb855b-5991-49c0-83e3-922fb7e029a2")
+	)
+	(pad "C1" smd circle
+		(at -0.4 0)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "50203e3d-a51e-407d-9021-d3b593bd0fbe")
+	)
+	(pad "C2" smd circle
+		(at 0 0)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0142246b-08f2-4b18-a46f-faff16386dc2")
+	)
+	(pad "C3" smd circle
+		(at 0.4 0)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "14c3e338-5d89-4646-8219-d0cfd0a21b5d")
+	)
+	(pad "D1" smd circle
+		(at -0.4 0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "60001b87-30bc-48c7-a4de-28708e2cf7cf")
+	)
+	(pad "D2" smd circle
+		(at 0 0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9b213b07-0237-455a-bd97-396bd2b660c0")
+	)
+	(pad "D3" smd circle
+		(at 0.4 0.4)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0f19e48d-36e5-40ba-95d2-3391ace38135")
+	)
+	(pad "E1" smd circle
+		(at -0.4 0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "75bfa45f-8d03-49de-94c4-98a918a5de96")
+	)
+	(pad "E2" smd circle
+		(at 0 0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f1f4faa4-d595-4677-b7ba-7b7f291be7ac")
+	)
+	(pad "E3" smd circle
+		(at 0.4 0.8)
+		(size 0.23 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5639b71a-af74-4279-adb4-bd580b1c0239")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,128 @@
+(footprint "C206_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "BQ25628E C206 provisional CBAT >=10 uF 0805 engineering envelope. Not a supplier-approved land pattern or released BOM item.")
+	(property "Reference" "C206"
+		(at 0 -1.15 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "534699c2-0fb8-423a-868c-35d678183d35")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "10u / BAT"
+		(at 0 1.15 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "92612684-5f1f-446d-8635-b861c737cbde")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25628e.pdf"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5fbc49a0-936e-41ab-8525-34d67ab84449")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "BQ25628E BAT bypass, >=10 uF per SLUSFA4C Table 7-3; provisional 0805 engineering envelope, MPN, voltage and DC-bias pending review"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "afc3eafa-58dc-4aec-87bd-2ff703fede5a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4d56822c-1547-4c54-a1eb-7bf509e6e5a3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0805B106K100NT"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ae880ab8-80eb-4799-bb05-dc70ee987a67")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C90544"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ad7da797-aa74-4122-9d09-03d332160166")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.25 -0.85)
+		(end 1.25 0.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "2761ecd4-36e2-4202-b1ae-57a487115740")
+	)
+	(fp_rect
+		(start -1 -0.625)
+		(end 1 0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "3fdc43f7-0a59-4d72-9eb0-eeb818cabd42")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.9 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "af10731f-4ad3-40ec-8c29-728330aad4e7")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.9 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "4fae910a-0010-4e40-b0f7-92dcb43f5dd6")
+	)
+	(embedded_fonts no)
+)
