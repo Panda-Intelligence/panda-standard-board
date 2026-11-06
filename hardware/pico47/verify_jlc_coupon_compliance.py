@@ -233,7 +233,65 @@ def get_candidate_boards(candidate_dir: Path) -> list[str]:
     return boards
 
 
-def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = KCLI_DEFAULT) -> dict:
+def inspect_solder_joint_vias(board, process):
+    """完整列出钻孔切入SMD焊接铜盘的过孔，合并裸测试点的重复覆盖。"""
+    import pcbnew as P
+    pads = []
+    paste = {}
+    for fp in board.GetFootprints():
+        bare = fp.GetReference().startswith('TP') and bool(fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM)
+        for face, paste_layer in [(P.F_Cu,P.F_Paste),(P.B_Cu,P.B_Paste)]:
+            features = []
+            for pad in fp.Pads():
+                if pad.IsOnLayer(paste_layer):
+                    margin = pad.GetSolderPasteMargin(face)
+                    if margin.x or margin.y:
+                        raise ValueError('Process audit requires explicit nonzero paste-margin geometry: '+fp.GetReference())
+                    features.append(pad.GetEffectiveShape(paste_layer))
+                if pad.GetAttribute() == P.PAD_ATTRIB_SMD and pad.IsOnLayer(face):
+                    shape = pad.GetEffectiveShape(face)
+                    pads.append((fp.GetReference(),pad.GetNumber(),face,pad.GetNetname(),shape,shape.BBox(),bare))
+            paste[(fp.GetReference(),face)] = features
+    by_via = {}
+    for via in board.GetTracks():
+        if via.GetClass() != 'PCB_VIA':
+            continue
+        at = via.GetPosition()
+        hole = P.SHAPE_CIRCLE(at,via.GetDrill()//2)
+        bounds = hole.BBox()
+        contacts = []
+        for ref,pin,face,net,shape,box,bare in pads:
+            if not box.Intersects(bounds) or not shape.Collide(hole,0):
+                continue
+            contacts.append({'ref':ref,'pin':pin,'face':board.GetLayerName(face),'net':net,
+                             'bare_test_landing':bare,
+                             'actual_paste_intersection':any(s.Collide(hole,0) for s in paste[(ref,face)])})
+        if contacts:
+            by_via[via.m_Uuid.AsString()] = {'uuid':via.m_Uuid.AsString(),'net':via.GetNetname(),
+                'x_mm':at.x/1e6,'y_mm':at.y/1e6,'diameter_mm':via.GetWidth(P.F_Cu)/1e6,
+                'drill_mm':via.GetDrill()/1e6,'contacts':contacts}
+    required, bare = [], []
+    for row in by_via.values():
+        solder = [c for c in row['contacts'] if not c['bare_test_landing']]
+        if solder:
+            required.append({'uuid':row['uuid'],'ref':';'.join(sorted({c['ref'] for c in solder})),
+                'pin':';'.join(sorted({c['pin'] for c in solder})),'net':row['net'],
+                'x_mm':row['x_mm'],'y_mm':row['y_mm'],'diameter_mm':row['diameter_mm'],
+                'drill_mm':row['drill_mm'],
+                'soldered_contacts':';'.join(sorted({c['ref']+'.'+c['pin']+':'+c['face'] for c in solder})),
+                'paste_intersection':any(c['actual_paste_intersection'] for c in solder),
+                'process':process})
+        else:
+            bare.append(row)
+    required.sort(key=lambda r:(r['net'],r['x_mm'],r['y_mm']))
+    return {'filled_and_capped_vias':required,'bare_test_only_vias':bare,
+            'all_drill_pad_contacts':list(by_via.values()),'distinct_overlap_vias':len(by_via),
+            'filled_cap_via_count':len(required),'supplier_process_accepted':False,
+            'scope':'Actual native drill/copper overlap; separate stencil-only pads included; no supplier acceptance'}
+
+
+def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = KCLI_DEFAULT,
+                         revision: str | None = None) -> dict:
     """Export single-board JLC Gerbers, Excellon drills, .gbrjob, ZIPs, BOM_JLCPCB.csv, and CPL_JLCPCB.csv."""
     import pcbnew
 
@@ -288,14 +346,15 @@ def export_jlc_orderpack(candidate_dir: Path, orderpack_dir: Path, kcli: str = K
             stderr=subprocess.DEVNULL,
         )
 
-        # Stamp unique ProjectId in .gbrjob so JLCPCB order hash is uniquely tied to this build
+        # 导出修订与本次原生PCB摘要绑定，避免新ECO继续标为历史R25。
         gbrjob_path = gbr_dir / f"{board_name}-job.gbrjob"
         if gbrjob_path.is_file():
             job = json.loads(gbrjob_path.read_text())
             job.setdefault("Header", {})["ProjectId"] = {
                 "Name": f"Panda47-{board_name}-SingleBoard-10x10cm",
-                "GUID": str(uuid.uuid5(uuid.NAMESPACE_DNS, f"panda47.{board_name.lower()}.20261029.7684f0cc")),
-                "Revision": f"E02-R25-JLC10X10-{board_name.upper()}-20261029",
+                "GUID": str(uuid.uuid5(uuid.NAMESPACE_DNS,
+                    f"panda47.{board_name.lower()}.{revision or 'R25'}.{hashlib.sha256(pcb_path.read_bytes()).hexdigest()}")),
+                "Revision": f"E02-{revision or 'R25'}-JLC10X10-{board_name.upper()}",
             }
             gbrjob_path.write_text(json.dumps(job, indent=2) + "\n")
 

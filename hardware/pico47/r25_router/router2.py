@@ -64,19 +64,19 @@ def search(blk, vblk, extra, vextra, starts, goal, goal_nodes, gx, gy, gr, outbu
 
 
 class Canvas:
-    """Boolean raster; cell (i, j) centre is world (X0 + i*PITCH, Y0 + j*PITCH).
-
-    A cell is set exactly when its centre lies inside the drawn shape (vectorised point-in-polygon),
-    so keepouts equal the rule distance instead of over-covering by up to half a cell.
-    """
+    """按格点中心判定禁布区；指定间距时直接计算到原图形的距离。"""
 
     def __init__(self):
         self.a = np.zeros((NY, NX), bool)
 
-    def geom(self, gm):
+    def geom(self, gm, distance_mm=0.0):
         if gm.is_empty:
             return
         minx, miny, maxx, maxy = gm.bounds
+        minx -= distance_mm
+        miny -= distance_mm
+        maxx += distance_mm
+        maxy += distance_mm
         i0 = max(int(np.ceil((minx - X0) / PITCH)), 0)
         i1 = min(int(np.floor((maxx - X0) / PITCH)), NX - 1)
         j0 = max(int(np.ceil((miny - Y0) / PITCH)), 0)
@@ -86,7 +86,12 @@ class Canvas:
         xs = X0 + np.arange(i0, i1 + 1) * PITCH
         ys = Y0 + np.arange(j0, j1 + 1) * PITCH
         X, Y = np.meshgrid(xs, ys)
-        self.a[j0:j1 + 1, i0:i1 + 1] |= shapely.contains_xy(gm, X, Y)
+        if distance_mm:
+            # 同网盘外孔按精确点距栅格化，避免圆角buffer的内接折线漏掉边界附近孔位。
+            blocked = shapely.distance(gm, shapely.points(X, Y)) < distance_mm
+        else:
+            blocked = shapely.contains_xy(gm, X, Y)
+        self.a[j0:j1 + 1, i0:i1 + 1] |= blocked
 
     def arr(self):
         return self.a
@@ -177,6 +182,9 @@ def terminal_nodes(comp):
                             res[li * NLAYER + j * NX + i] = (p['x'], p['y'])
         elif it.kind == 'track':
             t = it.src
+            # 保留的非布线层铜仍参与连接簇，但不能充当当前层的搜索起点。
+            if t['layer'] not in LAYERS:
+                continue
             li = LAYERS.index(t['layer'])
             core = seg_geom(t['x1'], t['y1'], t['x2'], t['y2'], max(t['w'] / 2 - 0.06, 0.01))
             minx, miny, maxx, maxy = core.bounds
@@ -204,7 +212,8 @@ def raster_items(items, rT, rV, T=None, V=None):
         for ly, s in it.shapes.items():
             if ly in LAYERS:
                 T[LAYERS.index(ly)].geom(s.buffer(rT + eps, 12))
-            if ly in LAYERS or (it.kind == 'pad' and ly == 'In1.Cu'):
+            # 通孔穿越全部铜层；禁用某个信号层不能忽略该层对孔的避让。
+            if ly in ('F.Cu', 'In1.Cu', 'In2.Cu', 'B.Cu'):
                 V.geom(s.buffer(rV + eps, 12))
         if it.kind in ('pad', 'via'):
             src = it.src
@@ -276,7 +285,7 @@ def build_static(g, routed, removed):
     rT, rV = CLR + W / 2 + M, CLR + VIA_D / 2 + M
     items = []
     for t in g['tracks']:
-        if t['net'] in routed or t['layer'] not in LAYERS:
+        if t['net'] in routed:
             continue
         sg = seg_geom(t['x1'], t['y1'], t['x2'], t['y2'], t['w'] / 2)
         if sg.intersects(REGION):
@@ -291,7 +300,7 @@ def build_static(g, routed, removed):
             continue
         sh = {}
         for ly, qs in p['polys'].items():
-            if ly in LAYERS or (ly == 'In1.Cu' and p['net'] != 'GND'):
+            if ly in ('F.Cu', 'In1.Cu', 'In2.Cu', 'B.Cu'):
                 sh[ly] = Polygon(qs[0]) if len(qs) == 1 else Polygon(qs[0]).union(Polygon(qs[1]))
         items.append(Item('pad', p, sh))
     # edge keepout first: its board-shaped hole is drawn with fill 0 and would erase earlier obstacles
@@ -307,7 +316,7 @@ def build_static(g, routed, removed):
     for z in g['zones']:
         if not z['rule']:
             continue
-        pg = Polygon(z['outline'][0])
+        pg = Polygon(z['outline'][0], z.get('holes', []))
         if z['no_vias']:
             V.geom(pg.buffer(VIA_D / 2 + M, 12))
         if z['no_tracks']:
@@ -374,6 +383,10 @@ class Ctx:
 def prepare(g, spec):
     """Remove windowed copper, build static/fixed rasters and per-net terminals."""
     c = Ctx()
+    c.allowed_layers = spec.get('allowed_layers_by_net', {})
+    for allowed in c.allowed_layers.values():
+        if not allowed or not set(allowed)<=set(LAYERS):
+            raise ValueError('allowed_layers_by_net contains an unavailable layer')
     t0 = time.time()
     windows = dict(spec.get('nets', {}))
     requested_targets = spec.get('target_nets')
@@ -417,7 +430,8 @@ def prepare(g, spec):
             if it.kind == 'pad':
                 for ly, sh in it.shapes.items():
                     if ly in LAYERS:
-                        ov.geom(sh.buffer(VIA_D / 2 + 0.05, 12))
+                        # 盘外孔间隙也需补回原生ERROR_INSIDE轮廓最多2um的内缩。
+                        ov.geom(sh, VIA_D / 2 + 0.05 + PAD_EPS)
         c.ownV[n] = np.flatnonzero(ov.arr())
         for k, tn in enumerate(c.terms[n]):
             if not tn:
@@ -443,6 +457,11 @@ def route_net(c, n, extra, vextra):
     c.fixT[oT] -= 1
     c.fixV[oV] -= 1
     np.logical_or(c.sTf, c.fixT > 0, out=c.blk.view(bool))
+    # 同层SD支路可保持在顶层，其他明确网络仍可使用其允许的信号层。
+    allowed = c.allowed_layers.get(n, LAYERS)
+    for li, layer in enumerate(LAYERS):
+        if layer not in allowed:
+            c.blk[li*NLAYER:(li+1)*NLAYER] = 1
     np.logical_or(c.sVf, c.fixV > 0, out=c.vblk.view(bool))
     c.vblk[c.ownV[n]] = 1
     c.fixT[oT] += 1
@@ -475,6 +494,16 @@ def route_net(c, n, extra, vextra):
         nodes_all += path
         for nd in path:
             tree.setdefault(nd, None)
+        if vi:
+            holes = Canvas()
+            for x, y in vi:
+                # 新通孔连通所有允许的信号层，后续支路可直接接入其铜环。
+                item = Item('via', dict(x=x, y=y, d=VIA_D, drill=VIA_DR, net=n), {})
+                for nd, anchor in terminal_nodes([item]).items():
+                    tree.setdefault(nd, anchor)
+                # 已有通孔复用不再钻孔；新增孔仍须满足同网孔到孔距离。
+                holes.geom(Point(x, y).buffer(VIA_DR + H2H + M, 24))
+            c.vblk[np.flatnonzero(holes.arr())] = 1
         tree.update(c.terms[n][k])
         pending.remove(k)
     return tr_all, vi_all, np.array(nodes_all, np.int64)

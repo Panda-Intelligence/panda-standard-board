@@ -1,5 +1,7 @@
 """Export Core copper geometry (pads, tracks, vias, holes, outline) to JSON. Run with KiCad python."""
 import json, sys
+import wx
+APP = wx.GetApp() or wx.App(False)
 import pcbnew
 
 src, out = sys.argv[1], sys.argv[2]
@@ -40,6 +42,8 @@ for t in b.GetTracks():
     if t.GetClass() == 'PCB_VIA':
         vias.append(dict(x=t.GetPosition().x * MM, y=t.GetPosition().y * MM,
                          d=t.GetWidth(pcbnew.F_Cu) * MM, drill=t.GetDrill() * MM,
+                         via_type='through' if t.GetViaType()==pcbnew.VIATYPE_THROUGH else 'other',
+                         copper_layer_span=[b.GetLayerName(t.TopLayer()),b.GetLayerName(t.BottomLayer())],
                          net=t.GetNetname(), uuid=t.m_Uuid.AsString()))
     elif t.GetClass() == 'PCB_TRACK':
         tracks.append(dict(x1=t.GetStart().x * MM, y1=t.GetStart().y * MM,
@@ -53,9 +57,18 @@ b.GetBoardPolygonOutlines(outline, False)
 zones = []
 all_zones = list(b.Zones()) + [z for fp in b.GetFootprints() for z in fp.Zones()]
 for z in all_zones:
-    zones.append(dict(net=z.GetNetname(), rule=bool(z.GetIsRuleArea()),
+    shape = z.Outline()
+    # 当前路由几何只支持一个外轮廓；不得把其他轮廓的孔误归到首个轮廓。
+    if shape.OutlineCount() != 1:
+        raise SystemExit('unsupported multi-outline zone ' + z.GetZoneName())
+    holes = []
+    for index in range(shape.HoleCount(0)):
+        ring = shape.Hole(0, index)
+        holes.append([[ring.CPoint(j).x * MM, ring.CPoint(j).y * MM]
+                      for j in range(ring.PointCount())])
+    zones.append(dict(name=z.GetZoneName(), net=z.GetNetname(), rule=bool(z.GetIsRuleArea()),
                       layers=[b.GetLayerName(l) for l in z.GetLayerSet().Seq()],
-                      outline=poly_of(z.Outline()),
+                      outline=poly_of(shape), holes=holes, priority=int(z.GetAssignedPriority()),
                       no_tracks=bool(z.GetIsRuleArea() and z.GetDoNotAllowTracks()),
                       no_vias=bool(z.GetIsRuleArea() and z.GetDoNotAllowVias())))
 json.dump(dict(pads=pads, tracks=tracks, vias=vias, outline=poly_of(outline), zones=zones),

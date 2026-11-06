@@ -10,10 +10,12 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -25,9 +27,9 @@ from seven_mm_routing import native_semantic_fingerprint
 from capture_pico47_checkpoint import counts_from_reports
 from pico47_contract import CONTRACT, validate, GPIO_PACKAGE, PANEL_PINS
 from pico47_ground_returns import inspect_ground_returns
-from prune_pico47_stubs import pad_components, preserves_groups
+from prune_pico47_stubs import pad_components, preserves_groups, preserves_groups_with_additions
 from verify_mainland_bom_compliance import verify_board_mainland_compliance
-from verify_jlc_coupon_compliance import export_jlc_orderpack, inspect_board_native
+from verify_jlc_coupon_compliance import export_jlc_orderpack, inspect_board_native, inspect_solder_joint_vias
 
 
 def sha(path):
@@ -61,9 +63,649 @@ def run_cli(arguments, log):
                        stdout=stream, stderr=subprocess.STDOUT, timeout=180)
 
 
+def _inspect_switch_bypass(board, contract, groups, terminal, check_via_pad_edge, side='F.Cu'):
+    """输入与输出共用真实接点检查；新增电容另查50µm盘外孔预算。"""
+    import pcbnew as P
+    require(side in ('F.Cu','B.Cu'), 'Power bypass requires an outer assembly face')
+    face = P.F_Cu if side=='F.Cu' else P.B_Cu
+    title = terminal.capitalize() + ' bypass'
+    switch = board.FindFootprintByReference(contract['switch'])
+    cap = board.FindFootprintByReference(contract['cap'])
+    require(switch is not None and cap is not None, 'Missing load-switch ' + terminal + ' bypass')
+    require(cap.GetValue() == contract['value'] and not cap.IsDNP()
+            and cap.GetLayer() == face and cap.GetAttributes() & P.FP_SMD,
+            title + ' value or assembly differs')
+    def pin(fp, number):
+        found = [p for p in fp.Pads() if p.GetNumber() == number]
+        require(len(found) == 1, title + ' pin inventory differs')
+        return found[0]
+    power,ground = pin(switch,contract[terminal+'_pin']),pin(switch,contract['ground_pin'])
+    a,b = pin(cap,'1'),pin(cap,'2')
+    require(a.GetNetname() == power.GetNetname() == contract[terminal+'_net']
+            and b.GetNetname() == ground.GetNetname() == 'GND', title + ' pin net differs')
+    if check_via_pad_edge:
+        for via in board.GetTracks():
+            if via.GetClass() == 'PCB_VIA':
+                require(not any(p.GetEffectiveShape(face).Collide(via.GetEffectiveShape(face),50000)
+                                for p in (a,b)), title + ' violates ordinary-via pad-edge separation')
+    group_for = {u:g for g in (groups if groups is not None else pad_components(board)) for u in g}
+    for x,y in [(a,power),(b,ground)]:
+        require(y.m_Uuid.AsString() in group_for[x.m_Uuid.AsString()],
+                title + ' has no actual copper connection')
+    distance = ((a.GetPosition().x-power.GetPosition().x)**2
+                +(a.GetPosition().y-power.GetPosition().y)**2)**.5/1e6
+    require(distance <= contract['maximum_pad_distance_mm'], title + ' is outside the reviewed local placement')
+    return {'switch':contract['switch'],'cap':contract['cap'],'value':contract['value'],
+            terminal+'_net':contract[terminal+'_net'],terminal+'_pad_distance_mm':distance,
+            'both_native_connections':True,'transient_and_DC_bias_qualified':False}
+
+
+def inspect_output_bypass(board, contract, groups=None):
+    """保持既有输出去耦的真实接点、摆位及盘外孔约束。"""
+    return _inspect_switch_bypass(board,contract,groups,'output',True)
+
+
+def inspect_input_bypass(board, contract, groups=None):
+    """已有CIN保持原生规则和工艺清单；明确新增CIN沿用50µm盘外孔预算。"""
+    require(isinstance(contract.get('new_component'),bool), 'Input bypass placement policy is missing')
+    return _inspect_switch_bypass(board,contract,groups,'input',contract['new_component'])
+
+
+def inspect_power_bypass(board, contract, groups=None):
+    """核对数字IC局部电源旁路及声明装配面；原输入/输出接口仍固定正面。"""
+    require(isinstance(contract.get('new_component'),bool), 'Power bypass placement policy is missing')
+    normalized = {**contract,'switch':contract['device']}
+    result = _inspect_switch_bypass(board,normalized,groups,'power',contract['new_component'],contract['side'])
+    result['device'] = result.pop('switch')
+    result.update(side=contract['side'],backside_height_and_assembly_qualified=False)
+    return result
+
+
+def reference_tree_metrics(board, contract):
+    """量测原生参考树及噪声投影内原语；铜几何不等同实际噪声或稳定性。"""
+    import pcbnew as P
+    budget = contract['routing_budget']
+    items = [t for t in board.GetTracks() if t.GetNetname()==contract['power_net']]
+    require(all(t.GetClass() in ('PCB_TRACK','PCB_VIA') for t in items),
+            'Unsupported reference-tree copper')
+    noise = []
+    for item in board.GetTracks():
+        if item.GetNetname() in budget['noise_nets']:
+            noise.append((item.GetEffectiveShape(P.F_Cu) if item.GetClass()=='PCB_VIA'
+                          else item.GetEffectiveShape(),0))
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetname() in budget['noise_nets']:
+                noise.append((pad.GetEffectiveShape(pad.GetLayer()),0))
+    for ref in budget['inductor_refs']:
+        fp = board.FindFootprintByReference(ref)
+        require(fp is not None, 'Missing reference-tree noise envelope: '+ref)
+        fp.BuildCourtyardCaches()
+        shape = fp.GetCourtyard(P.F_Cu)
+        require(not shape.IsEmpty(), 'Missing native inductor courtyard: '+ref)
+        half = max((g.GetWidth()//2 for g in fp.GraphicalItems() if g.GetLayer()==P.F_CrtYd),default=0)
+        noise.append((shape,half))
+    require(noise, 'Reference-tree noise projection is empty')
+    clearance = round(budget['noise_projection_budget_mm']*1e6)
+    coupled = []
+    tracks = [t for t in items if t.GetClass()=='PCB_TRACK']
+    vias = [t for t in items if t.GetClass()=='PCB_VIA']
+    for item in items:
+        is_via = item.GetClass()=='PCB_VIA'
+        shape = item.GetEffectiveShape(P.F_Cu) if is_via else item.GetEffectiveShape()
+        if any(shape.Collide(other,clearance+half) for other,half in noise):
+            if is_via:
+                at = item.GetPosition()
+                row = ['via',item.GetNetname(),at.x,at.y,item.GetWidth(P.F_Cu),item.GetDrill()]
+            else:
+                a,b = item.GetStart(),item.GetEnd()
+                row = ['track',item.GetNetname(),board.GetLayerName(item.GetLayer()),a.x,a.y,b.x,b.y,item.GetWidth()]
+            coupled.append(row)
+    return dict(total_track_length_mm=sum(t.GetLength() for t in tracks)/1e6,
+                via_count=len(vias),track_layers=sorted({board.GetLayerName(t.GetLayer()) for t in tracks}),
+                coupled_copper=sorted(coupled),noise_projection_budget_mm=budget['noise_projection_budget_mm'],
+                actual_noise_and_stability_qualified=False)
+
+
+def inspect_reference_filter(board, contract, groups=None):
+    """SY7636A参考脚只保留已审单颗100n滤波，拒绝大容量或额外并联。"""
+    require(contract['maximum_nominal_capacitance_uf'] == .1,
+            'PMIC reference capacitance limit differs')
+    cap = board.FindFootprintByReference(contract['cap'])
+    require(cap is not None, 'Missing PMIC reference filter')
+    value = re.match(r'^\s*([\d.]+)\s*([pnuµm])(?:f)?(?:[/\s]|$)',cap.GetValue(),re.I)
+    require(value is not None, 'Unknown PMIC reference capacitance')
+    nominal = float(value[1])*{'p':1e-6,'n':.001,'u':1,'µ':1,'m':1000}[value[2].lower()]
+    require(0 < nominal <= contract['maximum_nominal_capacitance_uf']+1e-12,
+            'PMIC reference filter exceeds 0.1uF')
+    fitted = []
+    for fp in board.GetFootprints():
+        if not fp.GetReference().startswith('C') or fp.IsDNP():
+            continue
+        nets = {p.GetNetname() for p in fp.Pads() if p.GetNumber()}
+        if nets == {contract['power_net'],'GND'}:
+            fitted.append(fp.GetReference())
+    require(fitted == [contract['cap']], 'Unexpected parallel PMIC reference filter')
+    result = inspect_power_bypass(board,contract,groups)
+    result.update(nominal_capacitance_uf=nominal,fitted_reference_caps=fitted,
+                  supplier_current_revision_accepted=False)
+    if 'routing_budget' in contract:
+        budget = contract['routing_budget']
+        metrics = reference_tree_metrics(board,contract)
+        require(metrics['total_track_length_mm']<=budget['maximum_total_track_length_mm']+1e-6,
+                'Reference tree exceeds the reviewed total-copper budget')
+        require(metrics['via_count']<=budget['maximum_via_count'],
+                'Reference tree exceeds the reviewed via budget')
+        permitted = {tuple(row) for row in budget['permitted_coupled_copper']}
+        require(all(tuple(row) in permitted for row in metrics['coupled_copper']),
+                'Unreviewed reference copper enters the noise projection')
+        result['reference_tree'] = metrics
+    return result
+
+
+def inspect_pmic_analog_shield(board, contract):
+    """只允许完整参考地夹在F噪声铜和内层VREF之间；孔、线圈与同层不豁免。"""
+    import pcbnew as P
+    from r25_router.apply_single_r27_layout_eco import reference_connected_ground_fills
+    require(contract['clearance_mm']==.5 and contract['ground_margin_mm']==.2
+            and contract['shape_tolerance_um']==2, 'PMIC analog geometry budgets differ')
+    require(board.GetCopperLayerCount()==4, 'PMIC shield requires the reviewed four layers')
+    noise, sensitive = [], []
+    def add(kind, net, layer, shape, identity):
+        row = (kind,net,layer,shape,identity)
+        if net in contract['noise_nets']:
+            noise.append(row)
+        if net in contract['sensitive_nets']:
+            sensitive.append(row)
+    for item in board.GetTracks():
+        via = item.GetClass()=='PCB_VIA'
+        if via:
+            at = item.GetPosition()
+            identity = [at.x,at.y,item.GetWidth(P.F_Cu),item.GetDrill()]
+        else:
+            a,b = item.GetStart(),item.GetEnd()
+            identity = [a.x,a.y,b.x,b.y,item.GetWidth()]
+        add('via' if via else 'track',item.GetNetname(),None if via else item.GetLayer(),
+            item.GetEffectiveShape(P.F_Cu) if via else item.GetEffectiveShape(),identity)
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            for layer in [P.F_Cu,P.In1_Cu,P.In2_Cu,P.B_Cu]:
+                if pad.IsOnLayer(layer) and pad.FlashLayer(layer):
+                    add('pad',pad.GetNetname(),layer,pad.GetEffectiveShape(layer),
+                        [fp.GetReference(),pad.GetNumber()])
+    for ref in contract['inductor_refs']:
+        fp = board.FindFootprintByReference(ref)
+        require(fp is not None, 'Missing PMIC inductor envelope: '+ref)
+        fp.BuildCourtyardCaches()
+        shape = P.SHAPE_POLY_SET(fp.GetCourtyard(P.F_Cu))
+        require(not shape.IsEmpty(), 'Missing native PMIC inductor courtyard: '+ref)
+        half = max((g.GetWidth()//2 for g in fp.GraphicalItems()
+                    if g.GetLayer()==P.F_CrtYd),default=0)
+        shape.Inflate(half,P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+        noise.append(('inductor','',None,shape,[ref]))
+    require(noise and sensitive, 'Missing PMIC noise or sensitive copper')
+    def polygon(shape):
+        result = P.SHAPE_POLY_SET()
+        shape.TransformToPolygon(result,500,P.ERROR_OUTSIDE)
+        return result
+    def inflate(shape, amount):
+        result = P.SHAPE_POLY_SET(shape)
+        result.Inflate(amount,P.CORNER_STRATEGY_ROUND_ALL_CORNERS,500)
+        return result
+    def hull(first, second):
+        # 整数坐标单调链；偏移、裁切及差集均复用KiCad原生多边形接口。
+        points = sorted({(s.Outline(i).CPoint(j).x,s.Outline(i).CPoint(j).y)
+                         for s in [first,second] for i in range(s.OutlineCount())
+                         for j in range(s.Outline(i).PointCount())})
+        def cross(a,b,c):
+            return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+        chains = []
+        for sequence in [points,list(reversed(points))]:
+            chain = []
+            for at in sequence:
+                while len(chain)>1 and cross(chain[-2],chain[-1],at)<=0:
+                    chain.pop()
+                chain.append(at)
+            chains.append(chain[:-1])
+        result = P.SHAPE_POLY_SET()
+        result.NewOutline()
+        for x,y in chains[0]+chains[1]:
+            result.Append(x,y)
+        return result
+    def continuous_tracks(items):
+        # 同网同层连续铜先合并，分割同一走线不能缩小必须覆盖的地铜走廊。
+        joined, result = {}, [row for row in items if row[0]!='track']
+        for kind,net,layer,shape,identity in items:
+            if kind=='track':
+                joined.setdefault((net,layer),P.SHAPE_POLY_SET()).BooleanAdd(polygon(shape))
+        for (net,layer),whole in sorted(joined.items()):
+            for index in range(whole.OutlineCount()):
+                patch=P.SHAPE_POLY_SET();patch.AddOutline(whole.Outline(index))
+                for hole in range(whole.HoleCount(index)):
+                    patch.AddHole(whole.Hole(index,hole))
+                result.append(('track',net,layer,patch,['continuous_track_patch',index]))
+        return result
+    noise, sensitive = continuous_tracks(noise), continuous_tracks(sensitive)
+    ground, rows = None, []
+    for kind,net,layer,shape,identity in sensitive:
+        for other,other_net,other_layer,other_shape,other_identity in noise:
+            if not shape.Collide(other_shape,500000):
+                continue
+            require(kind=='track' and net==contract['reference_net']
+                    and layer in [P.In2_Cu,P.B_Cu] and other in ['track','pad']
+                    and other_layer==P.F_Cu,
+                    'Unshielded PMIC sensitive copper enters the noise projection')
+            receiver, source = polygon(shape), polygon(other_shape)
+            rpart, spart = P.SHAPE_POLY_SET(receiver), P.SHAPE_POLY_SET(source)
+            rpart.BooleanIntersection(inflate(source,500000))
+            spart.BooleanIntersection(inflate(receiver,500000))
+            if rpart.Area()==0 or spart.Area()==0:
+                continue
+            if ground is None:
+                ground = P.SHAPE_POLY_SET()
+                for ly,fill in reference_connected_ground_fills(board):
+                    if ly==P.In1_Cu:
+                        ground.BooleanAdd(fill)
+                require(not ground.IsEmpty(), 'Missing reference-connected In1 PMIC shield')
+                ground = inflate(ground,2000)
+            corridor = inflate(hull(rpart,spart),200000)
+            area = corridor.Area()
+            corridor.BooleanSubtract(ground)
+            require(corridor.Area()<=100000,
+                    'PMIC source/receiver ground corridor crosses a plane gap')
+            rows.append(dict(receiver=[kind,net,board.GetLayerName(layer),identity],
+                             noise_source=[other,other_net,'F.Cu',other_identity],
+                             required_ground_area_mm2=area/1e12))
+    return dict(coupled_pairs=rows,shielded_pair_count=len(rows),
+                reference_ground='U501.57 / native-connected In1.Cu fill',
+                clearance_mm=.5,ground_margin_mm=.2,shape_tolerance_um=2,
+                interposed_ground_checked=ground is not None,
+                native_ground_geometry_passed=True,actual_noise_and_stability_qualified=False)
+
+
+def inspect_pmic_charge_pump_storage(board, contract, groups=None):
+    """核对 C810 (P47_VEE_BASE) 与 C807 (P47_VGH_BASE) 电荷泵储能及关联网络的真实接点、铜长、过孔与 50um 盘外孔预算。"""
+    import pcbnew as P
+    device = board.FindFootprintByReference(contract['device'])
+    cap = board.FindFootprintByReference(contract['cap'])
+    diode = board.FindFootprintByReference(contract['diode'])
+    drv_cap = board.FindFootprintByReference(contract['driver_cap'])
+    vgl_sense = board.FindFootprintByReference(contract['vgl_sense_ref'])
+    require(all(x is not None for x in (device, cap, diode, drv_cap, vgl_sense)),
+            'Missing PMIC charge-pump storage or joint-routed component')
+    require(cap.GetValue() == contract['value'] and not cap.IsDNP()
+            and cap.GetLayer() == P.F_Cu and cap.GetAttributes() & P.FP_SMD,
+            'C810 charge-pump storage capacitor value or assembly differs')
+    def pin(fp, number):
+        found = [p for p in fp.Pads() if p.GetNumber() == str(number)]
+        require(len(found) == 1, f'PMIC charge-pump pin inventory differs: {fp.GetReference()}.{number}')
+        return found[0]
+    p_ic = pin(device, contract['power_pin'])
+    p_gnd = pin(device, contract['ground_pin'])
+    c1, c2 = pin(cap, '1'), pin(cap, '2')
+    p_diode = pin(diode, contract['diode_pin'])
+    p_drv_ic = pin(device, contract['driver_pin'])
+    p_drv_cap = pin(drv_cap, contract['driver_cap_pin'])
+    p_vgl_sense = pin(vgl_sense, contract['vgl_sense_pin'])
+    p_vgl_diode = pin(diode, '1')
+    require(c1.GetNetname() == p_ic.GetNetname() == p_diode.GetNetname() == contract['power_net']
+            and c2.GetNetname() == p_gnd.GetNetname() == 'GND',
+            'P47_VEE_BASE pin net differs')
+    require(p_drv_ic.GetNetname() == p_drv_cap.GetNetname() == contract['joint_driver_net'],
+            'P47_VEE_DRV pin net differs')
+    require(p_vgl_sense.GetNetname() == p_vgl_diode.GetNetname() == contract['joint_vgl_net'],
+            'P47_VGL pin net differs')
+    group_for = {u: g for g in (groups if groups is not None else pad_components(board)) for u in g}
+    for x, y in [(c1, p_ic), (c1, p_diode), (c2, p_gnd), (p_drv_cap, p_drv_ic), (p_vgl_sense, p_vgl_diode)]:
+        require(y.m_Uuid.AsString() in group_for[x.m_Uuid.AsString()],
+                'PMIC charge-pump joint scope has no actual copper connection')
+    scoped_nets = {contract['power_net'], contract['joint_driver_net'], contract['joint_vgl_net']}
+    if 'pump_net' in contract:
+        scoped_nets.add(contract['pump_net'])
+    pos = contract.get('positive_storage')
+    if pos:
+        scoped_nets |= {pos['power_net'], pos['joint_driver_net'], pos['joint_vgh_net']}
+        if 'pump_net' in pos:
+            scoped_nets.add(pos['pump_net'])
+    scoped_vias = [v for v in board.GetTracks() if v.GetClass() == 'PCB_VIA' and v.GetNetname() in scoped_nets]
+    for via in scoped_vias:
+        for fp in board.GetFootprints():
+            for pad in fp.Pads():
+                if pad.GetAttribute() == P.PAD_ATTRIB_SMD:
+                    for face in (P.F_Cu, P.B_Cu):
+                        if pad.IsOnLayer(face):
+                            require(not pad.GetEffectiveShape(face).Collide(via.GetEffectiveShape(face), 50000),
+                                    f'PMIC joint via violates 50um SMD pad-edge clearance at {fp.GetReference()}.{pad.GetNumber()}')
+    def net_stats(net_name):
+        ts = [t for t in board.GetTracks() if t.GetClass() == 'PCB_TRACK' and t.GetNetname() == net_name]
+        vs = [v for v in board.GetTracks() if v.GetClass() == 'PCB_VIA' and v.GetNetname() == net_name]
+        return dict(track_count=len(ts), via_count=len(vs),
+                    total_track_length_mm=round(sum(t.GetLength() for t in ts) / 1e6, 6),
+                    track_layers=sorted({board.GetLayerName(t.GetLayer()) for t in ts}))
+    base_stats = net_stats(contract['power_net'])
+    drv_stats = net_stats(contract['joint_driver_net'])
+    vgl_stats = net_stats(contract['joint_vgl_net'])
+    require(base_stats['total_track_length_mm'] <= contract['maximum_total_track_length_mm'] + 1e-6,
+            'P47_VEE_BASE exceeds reviewed total track length budget')
+    require(base_stats['via_count'] <= contract['maximum_via_count'],
+            'P47_VEE_BASE exceeds reviewed via count budget')
+    require(base_stats['track_layers'] == sorted(contract['allowed_layers']),
+            'P47_VEE_BASE uses unreviewed copper layers')
+    require(drv_stats['total_track_length_mm'] <= contract['maximum_driver_track_length_mm'] + 1e-6
+            and drv_stats['via_count'] <= contract['maximum_driver_via_count'],
+            'P47_VEE_DRV exceeds reviewed joint routing budget')
+    if 'driver_allowed_layers' in contract:
+        require(drv_stats['track_layers'] == sorted(contract['driver_allowed_layers']),
+                'P47_VEE_DRV uses unreviewed copper layers')
+    require(vgl_stats['total_track_length_mm'] <= contract['maximum_vgl_track_length_mm'] + 1e-6
+            and vgl_stats['via_count'] <= contract['maximum_vgl_via_count'],
+            'P47_VGL exceeds reviewed joint routing budget')
+    pad_dist_mm = ((c1.GetPosition().x - p_ic.GetPosition().x) ** 2
+                   + (c1.GetPosition().y - p_ic.GetPosition().y) ** 2) ** 0.5 / 1e6
+    def check_flying_cap(spec, drv_cap_fp, diode_fp, drv_net_name):
+        require(drv_cap_fp.GetValue() == spec['flying_cap_value'] and not drv_cap_fp.IsDNP()
+                and drv_cap_fp.GetLayer() == P.F_Cu and drv_cap_fp.GetAttributes() & P.FP_SMD,
+                f'{spec["driver_cap"]} charge-pump flying capacitor value or assembly differs')
+        fc_pump = pin(drv_cap_fp, '1')
+        fc_drv = pin(drv_cap_fp, spec['driver_cap_pin'])
+        p_pump_diode = pin(diode_fp, spec['pump_diode_pin'])
+        require(fc_pump.GetNetname() == p_pump_diode.GetNetname() == spec['pump_net']
+                and fc_drv.GetNetname() == drv_net_name,
+                f'{spec["pump_net"]} flying capacitor pin net differs')
+        require(p_pump_diode.m_Uuid.AsString() in group_for[fc_pump.m_Uuid.AsString()],
+                f'{spec["driver_cap"]} flying capacitor has no actual copper connection to diode')
+        pump_stats = net_stats(spec['pump_net'])
+        require(pump_stats['total_track_length_mm'] <= spec['maximum_pump_track_length_mm'] + 1e-6,
+                f'{spec["pump_net"]} exceeds reviewed total track length budget')
+        require(pump_stats['via_count'] <= spec['maximum_pump_via_count'],
+                f'{spec["pump_net"]} exceeds reviewed via count budget')
+        require(pump_stats['track_layers'] == sorted(spec['pump_allowed_layers']),
+                f'{spec["pump_net"]} uses unreviewed copper layers')
+        pump_dist_mm = ((fc_pump.GetPosition().x - p_pump_diode.GetPosition().x) ** 2
+                        + (fc_pump.GetPosition().y - p_pump_diode.GetPosition().y) ** 2) ** 0.5 / 1e6
+        return dict(cap=spec['driver_cap'], value=spec['flying_cap_value'],
+                    driver_net=drv_net_name, pump_net=spec['pump_net'],
+                    cap_to_diode_pad_distance_mm=round(pump_dist_mm, 6),
+                    pump=pump_stats)
+    def check_output_cap(spec, net_name, p_diode_out):
+        out_cap = board.FindFootprintByReference(spec['output_cap'])
+        require(out_cap is not None, f'Missing PMIC charge-pump output capacitor: {spec["output_cap"]}')
+        require(out_cap.GetValue() == spec['output_cap_value'] and not out_cap.IsDNP()
+                and out_cap.GetLayer() == P.F_Cu and out_cap.GetAttributes() & P.FP_SMD,
+                f'{spec["output_cap"]} charge-pump output capacitor value or assembly differs')
+        oc1, oc2 = pin(out_cap, '1'), pin(out_cap, '2')
+        require(oc1.GetNetname() == p_diode_out.GetNetname() == net_name
+                and oc2.GetNetname() == p_gnd.GetNetname() == 'GND',
+                f'{net_name} output capacitor pin net differs')
+        require(p_diode_out.m_Uuid.AsString() in group_for[oc1.m_Uuid.AsString()]
+                and p_gnd.m_Uuid.AsString() in group_for[oc2.m_Uuid.AsString()],
+                f'{spec["output_cap"]} output capacitor has no actual copper connection')
+        front_shapes = [p_diode_out.GetEffectiveShape(P.F_Cu), oc1.GetEffectiveShape(P.F_Cu)] + [
+            t.GetEffectiveShape() for t in board.GetTracks()
+            if t.GetClass() == 'PCB_TRACK' and t.GetNetname() == net_name and t.GetLayer() == P.F_Cu
+        ]
+        parent = list(range(len(front_shapes)))
+        def find(i):
+            while parent[i] != i:
+                parent[i] = parent[parent[i]]
+                i = parent[i]
+            return i
+        for i in range(len(front_shapes)):
+            for j in range(i + 1, len(front_shapes)):
+                if find(i) != find(j) and front_shapes[i].Collide(front_shapes[j], 0):
+                    parent[find(i)] = find(j)
+        require(find(0) == find(1),
+                f'{spec["output_cap"]} charge-pump output capacitor requires direct F.Cu connection to rectifier diode')
+        out_dist_mm = ((oc1.GetPosition().x - p_diode_out.GetPosition().x) ** 2
+                       + (oc1.GetPosition().y - p_diode_out.GetPosition().y) ** 2) ** 0.5 / 1e6
+        return dict(cap=spec['output_cap'], value=spec['output_cap_value'],
+                    diode_to_output_cap_pad_distance_mm=round(out_dist_mm, 6),
+                    rectifier_to_output_cap_front_only=True)
+    result = dict(device=contract['device'], cap=contract['cap'], value=contract['value'],
+                  power_net=contract['power_net'], pad_distance_mm=round(pad_dist_mm, 6),
+                  vee_base=base_stats, vee_drv=drv_stats, vgl=vgl_stats,
+                  all_scoped_vias_clear_smd_50um=True,
+                  charge_pump_transient_and_ripple_qualified=False,
+                  actual_noise_and_stability_qualified=False)
+    if 'pump_net' in contract:
+        result['flying_cap'] = check_flying_cap(contract, drv_cap, diode, contract['joint_driver_net'])
+    if 'output_cap' in contract:
+        result['output_cap'] = check_output_cap(contract, contract['joint_vgl_net'], p_vgl_diode)
+    if pos:
+        pos_cap = board.FindFootprintByReference(pos['cap'])
+        pos_diode = board.FindFootprintByReference(pos['diode'])
+        pos_drv_cap = board.FindFootprintByReference(pos['driver_cap'])
+        pos_vgh_sense = board.FindFootprintByReference(pos['vgh_sense_ref'])
+        require(all(x is not None for x in (pos_cap, pos_diode, pos_drv_cap, pos_vgh_sense)),
+                'Missing PMIC positive charge-pump storage or joint-routed component')
+        require(pos_cap.GetValue() == pos['value'] and not pos_cap.IsDNP()
+                and pos_cap.GetLayer() == P.F_Cu and pos_cap.GetAttributes() & P.FP_SMD,
+                'C807 charge-pump storage capacitor value or assembly differs')
+        p_pos_ic = pin(device, pos['power_pin'])
+        pc1, pc2 = pin(pos_cap, '1'), pin(pos_cap, '2')
+        p_pos_diode = pin(pos_diode, pos['diode_pin'])
+        p_pos_drv_ic = pin(device, pos['driver_pin'])
+        p_pos_drv_cap = pin(pos_drv_cap, pos['driver_cap_pin'])
+        p_vgh_sense = pin(pos_vgh_sense, pos['vgh_sense_pin'])
+        p_vgh_diode = pin(pos_diode, '2')
+        require(pc1.GetNetname() == p_pos_ic.GetNetname() == p_pos_diode.GetNetname() == pos['power_net']
+                and pc2.GetNetname() == p_gnd.GetNetname() == 'GND',
+                'P47_VGH_BASE pin net differs')
+        require(p_pos_drv_ic.GetNetname() == p_pos_drv_cap.GetNetname() == pos['joint_driver_net'],
+                'P47_VGH_DRV pin net differs')
+        require(p_vgh_sense.GetNetname() == p_vgh_diode.GetNetname() == pos['joint_vgh_net'],
+                'P47_VGH pin net differs')
+        for x, y in [(pc1, p_pos_ic), (pc1, p_pos_diode), (pc2, p_gnd), (p_pos_drv_cap, p_pos_drv_ic), (p_vgh_sense, p_vgh_diode)]:
+            require(y.m_Uuid.AsString() in group_for[x.m_Uuid.AsString()],
+                    'PMIC positive charge-pump scope has no actual copper connection')
+        vgh_base_stats = net_stats(pos['power_net'])
+        vgh_drv_stats = net_stats(pos['joint_driver_net'])
+        vgh_stats = net_stats(pos['joint_vgh_net'])
+        require(vgh_base_stats['total_track_length_mm'] <= pos['maximum_total_track_length_mm'] + 1e-6,
+                'P47_VGH_BASE exceeds reviewed total track length budget')
+        require(vgh_base_stats['via_count'] <= pos['maximum_via_count'],
+                'P47_VGH_BASE exceeds reviewed via count budget')
+        require(vgh_base_stats['track_layers'] == sorted(pos['allowed_layers']),
+                'P47_VGH_BASE uses unreviewed copper layers')
+        require(vgh_drv_stats['total_track_length_mm'] <= pos['maximum_driver_track_length_mm'] + 1e-6
+                and vgh_drv_stats['via_count'] <= pos['maximum_driver_via_count'],
+                'P47_VGH_DRV exceeds reviewed joint routing budget')
+        if 'driver_allowed_layers' in pos:
+            require(vgh_drv_stats['track_layers'] == sorted(pos['driver_allowed_layers']),
+                    'P47_VGH_DRV uses unreviewed copper layers')
+        require(vgh_stats['total_track_length_mm'] <= pos['maximum_vgh_track_length_mm'] + 1e-6
+                and vgh_stats['via_count'] <= pos['maximum_vgh_via_count'],
+                'P47_VGH exceeds reviewed joint routing budget')
+        pos_pad_dist_mm = ((pc1.GetPosition().x - p_pos_ic.GetPosition().x) ** 2
+                           + (pc1.GetPosition().y - p_pos_ic.GetPosition().y) ** 2) ** 0.5 / 1e6
+        result['positive_storage'] = dict(
+            cap=pos['cap'], value=pos['value'], power_net=pos['power_net'],
+            pad_distance_mm=round(pos_pad_dist_mm, 6),
+            vgh_base=vgh_base_stats, vgh_drv=vgh_drv_stats, vgh=vgh_stats)
+        if 'pump_net' in pos:
+            result['positive_storage']['flying_cap'] = check_flying_cap(
+                pos, pos_drv_cap, pos_diode, pos['joint_driver_net'])
+        if 'output_cap' in pos:
+            result['positive_storage']['output_cap'] = check_output_cap(
+                pos, pos['joint_vgh_net'], p_vgh_diode)
+    return result
+
+
+def inspect_temperature_sense(board, contract, groups):
+    """精确核对0402名义3380器件及TS实际连接；目录身份不代表整条R-T曲线合格。"""
+    import pcbnew as P
+    require((contract['mpn'],contract['package'],contract['nominal_r25_ohm'],
+             contract['nominal_beta_25_50_k'],contract['r25_tolerance_percent'],
+             contract['beta_tolerance_percent'])==('CMKD103F3380HANT','0402',10000,3380,1,3),
+            'Unreviewed temperature part contract')
+    device=board.FindFootprintByReference(contract['device'])
+    ntc=board.FindFootprintByReference(contract['thermistor'])
+    require(device is not None and ntc is not None, 'Missing PMIC temperature circuit')
+    fields={x.GetName():x.GetText() for x in ntc.GetFields()}
+    require(fields.get('Manufacturer')==contract['manufacturer'] and fields.get('MPN')==contract['mpn']
+            and ntc.GetValue()==contract['value'] and not ntc.IsDNP(), 'PMIC thermistor identity differs')
+    require(contract['package']=='0402' and ntc.GetLayer()==P.F_Cu
+            and ntc.GetOrientationDegrees()==0 and ntc.GetAttributes() & P.FP_SMD,
+            'PMIC thermistor requires reviewed 0402 land')
+    geometry=sorted([[p.GetNumber(),p.GetPosition().x-ntc.GetPosition().x,
+                      p.GetPosition().y-ntc.GetPosition().y,p.GetSize().x,p.GetSize().y]
+                     for p in ntc.Pads()])
+    require(geometry==contract['pad_geometry_nm'], 'PMIC thermistor 0402 land differs')
+    def pin(fp,num):
+        pads=[p for p in fp.Pads() if p.GetNumber()==str(num)]
+        require(len(pads)==1, 'Missing PMIC temperature pin')
+        return pads[0]
+    passives=[]
+    for key in ['pullup','parallel']:
+        spec=contract[key];fp=board.FindFootprintByReference(spec['ref'])
+        require(fp is not None and not fp.IsDNP() and fp.GetValue()==spec['value']
+                and {x.GetName():x.GetText() for x in fp.GetFields()}.get('MPN')==spec['mpn'],
+                'PMIC temperature linearization identity differs')
+        passives.append(fp)
+    up,parallel=passives
+    ts=[pin(device,47),pin(ntc,1),pin(up,2),pin(parallel,1)]
+    ref=[pin(device,1),pin(up,1)]
+    ground=[pin(device,48),pin(ntc,2),pin(parallel,2)]
+    group_for={u:g for g in groups for u in g}
+    for pads,name in [(ts,'P47_TS'),(ref,'P47_VREF'),(ground,'GND')]:
+        require(all(p.GetNetname()==name for p in pads), 'PMIC temperature pin net differs: '+name)
+        first=pads[0].m_Uuid.AsString()
+        require(first in group_for and all(p.m_Uuid.AsString() in group_for[first] for p in pads),
+                'Open PMIC temperature connection: '+name)
+    return dict(thermistor=contract['thermistor'],manufacturer=fields['Manufacturer'],mpn=fields['MPN'],
+                catalogue_package=contract['package'],nominal_r25_ohm=contract['nominal_r25_ohm'],
+                nominal_beta_25_50_k=contract['nominal_beta_25_50_k'],
+                r25_tolerance_percent=contract['r25_tolerance_percent'],
+                beta_tolerance_percent=contract['beta_tolerance_percent'],
+                pullup=contract['pullup'],parallel=contract['parallel'],actual_connections_checked=True,
+                exact_rt_curve_qualified=False,temperature_accuracy_qualified=False,supplier_receipt_accepted=False)
+
+
+def inspect_source_pose_envelopes(board, contract):
+    """核对全部源迁位/新增器件与全板同面器件的原生庭院及250um回退包络零重叠；不声称供应商极值公差资格。"""
+    import pcbnew as P
+    require(contract['fallback_margin_mm'] == .25, 'Source pose fallback margin differs')
+    moved = list(contract['moved_refs'])
+    added = list(contract['added_refs'])
+    checked = sorted(set(moved) | set(added))
+    require(len(moved) == 54 and len(added) == 12 and len(checked) == 66,
+            'Reviewed source pose inventory differs')
+    fps = {f.GetReference(): f for f in board.GetFootprints()}
+    require(set(checked) <= set(fps), 'Missing reviewed source-pose footprint')
+    margin_nm = round(contract['fallback_margin_mm'] * 1e6)
+    fallback_refs = []
+    envs = {}
+    for ref, fp in sorted(fps.items()):
+        fp.BuildCourtyardCaches()
+        for side, ctyd_layer, fab_layer, name in [
+            (P.F_Cu, P.F_CrtYd, P.F_Fab, 'F.Cu'),
+            (P.B_Cu, P.B_CrtYd, P.B_Fab, 'B.Cu'),
+        ]:
+            pads = [p for p in fp.Pads() if p.IsOnLayer(side)]
+            if not pads:
+                continue
+            poly = P.SHAPE_POLY_SET(fp.GetCourtyard(side))
+            if not poly.IsEmpty():
+                half = max((g.GetWidth() // 2 for g in fp.GraphicalItems()
+                            if g.GetLayer() == ctyd_layer), default=0)
+                if half:
+                    poly.Inflate(half, P.CORNER_STRATEGY_ROUND_ALL_CORNERS, 500)
+                envs[(ref, name)] = (poly, poly.BBox())
+            else:
+                fallback_refs.append(f'{ref}:{name}')
+                boxes = [p.GetEffectiveShape(side).BBox() for p in pads]
+                boxes += [g.GetBoundingBox() for g in fp.GraphicalItems() if g.GetLayer() == fab_layer]
+                x1 = min(b.GetLeft() for b in boxes) - margin_nm
+                y1 = min(b.GetTop() for b in boxes) - margin_nm
+                x2 = max(b.GetRight() for b in boxes) + margin_nm
+                y2 = max(b.GetBottom() for b in boxes) + margin_nm
+                poly = P.SHAPE_POLY_SET()
+                poly.NewOutline()
+                for x, y in [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]:
+                    poly.Append(x, y)
+                envs[(ref, name)] = (poly, poly.BBox())
+    clashes = []
+    bbox_false_positives = []
+    checked_set = set(checked)
+    items = sorted(envs.items())
+    for idx, ((r1, s1), (p1, b1)) in enumerate(items):
+        for (r2, s2), (p2, b2) in items[idx + 1:]:
+            if s1 != s2 or (r1 not in checked_set and r2 not in checked_set):
+                continue
+            if b1.Intersects(b2):
+                if p1.Collide(p2, 0):
+                    clashes.append([r1, r2])
+                else:
+                    bbox_false_positives.append([r1, r2])
+    require(not clashes, f'Source-pose envelope clashes remain: {clashes}')
+    return dict(clashes=clashes, bounding_box_false_positives=bbox_false_positives,
+                fallback_refs=fallback_refs, fallback_margin_mm=contract['fallback_margin_mm'],
+                moved_count=len(moved), added_count=len(added), checked_pose_count=len(checked),
+                supplier_maximum_envelopes_and_tolerance_qualified=False)
+
+
+def inspect_backside_smt_clearances(board, contract):
+    """核对背面6颗贴片器件与25个裸测点/调试焊盘的禁布净空与高度上限；实物背壳避空及<=7mm正公差仍待资格化。"""
+    import pcbnew as P
+    expected = sorted(contract['expected_populated_refs'])
+    expected_tp = sorted(contract['expected_bare_testpoint_refs'])
+    thickness_map = contract['max_thickness_mm_by_ref']
+    require(sorted(thickness_map) == expected, 'Backside thickness inventory differs')
+    populated, testpoints = [], []
+    rows = []
+    for fp in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
+        ref = fp.GetReference()
+        pads_b = [p for p in fp.Pads() if p.IsOnLayer(P.B_Cu) and not p.IsOnLayer(P.F_Cu)]
+        if not pads_b:
+            continue
+        is_bare = bool(fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM)
+        if is_bare:
+            testpoints.append(ref)
+            continue
+        if fp.IsDNP() or not (fp.GetAttributes() & P.FP_SMD):
+            continue
+        populated.append(ref)
+        require(ref in thickness_map, f'Backside populated SMT inventory differs: {ref}')
+        boxes = [p.GetEffectiveShape(P.B_Cu).BBox() for p in pads_b]
+        boxes += [g.GetBoundingBox() for g in fp.GraphicalItems() if g.GetLayer() == P.B_Fab]
+        x1, y1 = min(b.GetLeft() for b in boxes) / 1e6, min(b.GetTop() for b in boxes) / 1e6
+        x2, y2 = max(b.GetRight() for b in boxes) / 1e6, max(b.GetBottom() for b in boxes) / 1e6
+        bat_dx = max(0.0, x1 - contract['battery_bay_max_x_mm'])
+        bat_dy = max(0.0, y1 - contract['battery_bay_max_y_mm'])
+        bat_dist = (bat_dx ** 2 + bat_dy ** 2) ** 0.5
+        ur_dy = max(0.0, y1 - contract['upper_right_bay_max_y_mm'])
+        max_z = float(thickness_map[ref])
+        require(bat_dist >= contract['min_battery_bay_clearance_mm'],
+                f'Backside SMT {ref} encroaches on battery bay clearance')
+        require(ur_dy >= contract['min_upper_right_bay_clearance_mm'],
+                f'Backside SMT {ref} encroaches on upper-right support bay clearance')
+        require(0 < max_z <= contract['maximum_component_thickness_mm'],
+                f'Backside SMT {ref} exceeds reviewed backside component thickness budget')
+        rows.append(dict(ref=ref, value=fp.GetValue(),
+                         x_mm=round(P.ToMM(fp.GetPosition().x), 4),
+                         y_mm=round(P.ToMM(fp.GetPosition().y), 4),
+                         rot_deg=round(fp.GetOrientationDegrees(), 2),
+                         bbox_mm=[round(x1, 4), round(y1, 4), round(x2, 4), round(y2, 4)],
+                         battery_bay_clearance_mm=round(bat_dist, 4),
+                         upper_right_bay_clearance_mm=round(ur_dy, 4),
+                         reviewed_height_budget_mm=max_z))
+    require(sorted(populated) == expected, f'Backside populated SMT inventory differs: {populated}')
+    require(sorted(testpoints) == expected_tp, f'Backside bare testpoint inventory differs: {testpoints}')
+    return dict(populated_count=len(rows), bare_testpoint_count=len(testpoints),
+                populated_parts=rows, bare_testpoint_refs=sorted(testpoints),
+                max_reviewed_height_budget_mm=max(r['reviewed_height_budget_mm'] for r in rows),
+                height_evidence_source='project_contract_only',
+                supplier_maximum_height_verified=False,
+                min_battery_bay_clearance_mm=min(r['battery_bay_clearance_mm'] for r in rows),
+                rear_shell_local_relief_required=True,
+                backside_height_and_assembly_qualified=False,
+                actual_battery_full_panel_positive_tolerance_7mm_qualified=False)
+
+
 def inspect_single(candidate, spec):
     """以源针序、独立原理图网表和原生物理连接组检查 Single。"""
     import pcbnew as P
+    spec = {**spec, **spec.get('layout_ecos',{}).get(spec['revision'],{}).get('inspection_overrides',{})}
     plan = json.loads(CONTRACT.read_text())
     validate(plan)
     board = P.LoadBoard(str(candidate / 'Single.kicad_pcb'))
@@ -112,9 +754,15 @@ def inspect_single(candidate, spec):
         expect('U810', pin, 'GND')
     expect('U811', 4, 'P47_HV_EN')
     groups = pad_components(board)
+    temperature_sense = (inspect_temperature_sense(board,spec['temperature_sense'],groups)
+                         if 'temperature_sense' in spec else None)
+    bypasses = [inspect_output_bypass(board,c,groups) for c in spec.get('output_bypasses',[])]
+    input_bypasses = [inspect_input_bypass(board,c,groups) for c in spec.get('input_bypasses',[])]
+    power_bypasses = [inspect_power_bypass(board,c,groups) for c in spec.get('power_bypasses',[])]
+    reference_filters = [inspect_reference_filter(board,c,groups) for c in spec.get('reference_filters',[])]
     group_for = {u:g for g in groups for u in g}
     links = []
-    for ref, pin, other_ref, other_pin in spec['critical_links']:
+    for ref, pin, other_ref, other_pin in spec['critical_links'] + spec.get('layout_critical_links', []):
         a, b = pads(ref, pin), pads(other_ref, other_pin)
         linked = all(str(y.m_Uuid.AsString()) in group_for[str(x.m_Uuid.AsString())]
                      for x in a for y in b)
@@ -206,6 +854,18 @@ def inspect_single(candidate, spec):
                     f'{part_name} exceeds Z support envelope')
         require(abs(ur_z['UPPER_RIGHT_PORON_PAD'][1] - ur_bay['coplanar_support_top_z_mm']) < 1e-3,
                 'UPPER_RIGHT_PORON_PAD top must be coplanar with 3.95mm battery top surface')
+    process_inventory = None
+    if 'complete_via_in_pad_inventory' in spec:
+        process_inventory = inspect_solder_joint_vias(board,spec['via_in_pad']['process'])
+        def signature(row):
+            return [row['net'],round(row['x_mm'],6),round(row['y_mm'],6),
+                    round(row['diameter_mm'],6),round(row['drill_mm'],6),row['soldered_contacts']]
+        actual_inventory = sorted([signature(row) for row in process_inventory['filled_and_capped_vias']])
+        require(actual_inventory == spec['complete_via_in_pad_inventory']['soldered_vias'],
+                'Complete solder-joint via inventory differs')
+        require(process_inventory['filled_cap_via_count'] == len(actual_inventory),
+                'Duplicate solder-joint via inventory')
+        vip = process_inventory['filled_and_capped_vias']
     supplies, manual = [], []
     for ref, fp in sorted(fps.items()):
         if fp.IsDNP() or fp.GetAttributes() & P.FP_EXCLUDE_FROM_BOM:
@@ -218,9 +878,27 @@ def inspect_single(candidate, spec):
             manual.append(row)
         elif not row['lcsc']:
             supplies.append(row)
+    analog_shield = (inspect_pmic_analog_shield(board,spec['pmic_analog_shield'])
+                     if 'pmic_analog_shield' in spec else None)
+    charge_pump_storage = (inspect_pmic_charge_pump_storage(board,spec['pmic_charge_pump_storage'],groups)
+                           if 'pmic_charge_pump_storage' in spec else None)
+    pose_envelopes = (inspect_source_pose_envelopes(board,spec['source_pose_envelope_screen'])
+                      if 'source_pose_envelope_screen' in spec else None)
+    backside_clearance = (inspect_backside_smt_clearances(board,spec['backside_smt_clearance'])
+                          if 'backside_smt_clearance' in spec else None)
     return board, groups, {'ground':ground, 'critical_links':links, 'bom':bom,
                            'geometry':geometry, 'via_in_pad':vip, 'pending_supply':supplies,
-                           'required_post_smt':manual}
+                           'required_post_smt':manual,
+                           **({'output_bypasses':bypasses} if bypasses else {}),
+                           **({'input_bypasses':input_bypasses} if input_bypasses else {}),
+                           **({'power_bypasses':power_bypasses} if power_bypasses else {}),
+                           **({'reference_filters':reference_filters} if reference_filters else {}),
+                           **({'solder_joint_via_process':process_inventory} if process_inventory else {}),
+                           **({'pmic_analog_shield':analog_shield} if analog_shield else {}),
+                           **({'pmic_charge_pump_storage':charge_pump_storage} if charge_pump_storage else {}),
+                           **({'source_pose_envelopes':pose_envelopes} if pose_envelopes else {}),
+                           **({'backside_smt_clearance':backside_clearance} if backside_clearance else {}),
+                           **({'temperature_sense':temperature_sense} if temperature_sense else {})}
 
 
 def write_csv(path, rows):
@@ -231,12 +909,110 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def build(source, output, spec_path=SPEC):
+def build_qualification_report(candidate, spec, inspection, spec_path=SPEC):
+    """绑定本次真实清单与待签核项目；CAD及源开关不能代替物理资格证据。"""
+    flags = dict(manufacturing_release=False, supplier_process_accepted=False,
+                 actual_noise_and_stability_qualified=False,
+                 charge_pump_transient_and_ripple_qualified=False)
+    def check_flags(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                require(key not in flags or item is False,
+                        'Unreviewed physical qualification: '+key)
+                check_flags(item)
+        elif isinstance(value, list):
+            for item in value:
+                check_flags(item)
+    check_flags(spec)
+    check_flags(inspection)
+    spec = {**spec, **spec.get('layout_ecos',{}).get(spec['revision'],{}).get('inspection_overrides',{})}
+    rows = {name:inspection[key] for name,key in [
+        ('REQUIRED-VIA-IN-PAD.csv','via_in_pad'),
+        ('PENDING-SUPPLY.csv','pending_supply'),
+        ('REQUIRED-POST-SMT.csv','required_post_smt')]}
+    vias, pending, manual = rows.values()
+    require(vias and pending and len(manual)==1 and manual[0]['ref']=='BT301',
+            'Incomplete qualification inventory: vias, pending supply or BT301')
+    require(len({r['uuid'] for r in vias})==len(vias)
+            and len({r['ref'] for r in pending})==len(pending),
+            'Duplicate qualification inventory')
+    process = inspection.get('solder_joint_via_process')
+    if process is not None:
+        require(process['filled_cap_via_count']==len(vias)
+                and process['filled_and_capped_vias']==vias,
+                'Complete qualification inventory differs from solder-joint process')
+    if 'complete_via_in_pad_inventory' in spec:
+        signature = lambda r:[r['net'],*(round(r[k],6) for k in
+                              ['x_mm','y_mm','diameter_mm','drill_mm']),r['soldered_contacts']]
+        require(sorted(signature(r) for r in vias)==spec['complete_via_in_pad_inventory']['soldered_vias'],
+                'Source qualification inventory differs from solder-joint process')
+    candidate = Path(candidate)
+    files = {}
+    for name, expected in rows.items():
+        path = candidate/'orderpack'/name
+        require(path.is_file(), 'Missing qualification inventory: '+name)
+        with path.open(encoding='utf-8-sig',newline='') as stream:
+            actual = list(csv.DictReader(stream))
+        normalized = [{str(k):str(v) for k,v in row.items()} for row in expected]
+        sort_key = lambda row:json.dumps(row,sort_keys=True)
+        require(sorted(actual,key=sort_key)==sorted(normalized,key=sort_key),
+                'Qualification inventory CSV differs: '+name)
+        files['orderpack/'+name] = dict(sha256=sha(path),row_count=len(expected))
+    def evidence(identity, requirements):
+        return dict(id=identity,status='pending_external_evidence',
+                    accepted_evidence=[],required_record_fields=requirements)
+    required = [
+        evidence('cam_type_vii', ['PCB SHA-256与工程修订','板厂名称/工单/日期/书面工程确认人',
+            'REQUIRED-VIA-IN-PAD.csv SHA-256及逐孔签名',
+            '覆盖全部焊接接点孔的IPC-4761 Type VII树脂填孔+电镀盖帽工艺及CAM确认文件']),
+        evidence('pending_smt_receipts', ['PENDING-SUPPLY.csv SHA-256及全部位号',
+            '逐精确厂家/MPN/封装/容值阻值/公差/耐压核验','建档记录、批次/料盘标签与实际入库收货记录',
+            '供料偏差和替代料须独立工程审阅，空LCSC不是已收货']),
+        evidence('BT301_receipt', ['REQUIRED-POST-SMT.csv SHA-256','精确厂家/MPN及批次收货记录',
+            '工厂绝缘引脚/焊片组件图纸及极性/绝缘核验','后装工序确认，禁止回流或直接焊裸电池']),
+        evidence('actual_pack_panel_fit', ['实际2050mAh可更换电池厂家/MPN/版本/来料及最大外形',
+            '保护板/引线/连接器/NTC及完整E0470A01总成最大包络和公差图纸',
+            '真实PCB/壳体/背面元件/屏幕总成的正公差叠层与装配实测',
+            '测量工具、样机/批次、条件、日期/核验人；含正公差整机最大厚度<=7.0mm']),
+        evidence('evt_noise_and_stability', ['绑定PCB SHA-256/实装BOM批次/样机编号及现行PMIC版本',
+            '精确PMIC与完整面板规格导出的预先批准数值限值',
+            '输入电压/负载/温度/工作模式/探头接地及带宽/仪器与校准记录',
+            '基准及各电源轨噪声/启动/负载响应/稳定性原始波形和工程签核']),
+        evidence('evt_charge_pump_transient_and_ripple', ['绑定同一PCB/BOM/样机及完整面板与刷新模式',
+            '正负泵负载阶跃/屏幕刷新工况、温度、输入电压和测量带宽',
+            '各轨纹波/跌落/过冲/恢复时间原始波形与数值结果',
+            '按精确PMIC/面板规格预先批准的限值逐项比较及工程签核'])]
+    for item in required:
+        if item['id'].startswith('evt_'):
+            item.update(numerical_acceptance_limits=None,
+                        limits_status='requires_exact_PMIC_and_panel_specification')
+    if 'temperature_sense' in inspection:
+        item=evidence('evt_temperature_sense',[
+            'TH801精确料号/批次、全R-T表和R25/B25/50公差；标称3380不等于整条曲线已批准',
+            '实际PMIC版本、7.5k/36k补偿网络、VREF与不同温度点的原始温度/TS/读数',
+            '自热、板到屏幕温差和曲线/精度数值限值及校准实测签核'])
+        item.update(numerical_acceptance_limits=None,limits_status='requires_exact_NTC_and_PMIC_RT_specification')
+        required.append(item)
+    return dict(schema='panda47-qualification-status-v1',revision=spec['revision'],date=date.today().isoformat(),
+                author='Codex',status_flags=flags,
+                binding=dict(pcb_sha256=sha(candidate/'Single.kicad_pcb'),
+                             source_spec_sha256=sha(spec_path),source_design_sha256=sha(CONTRACT),
+                             source_builder_sha256=sha(__file__),
+                             inventory_files=files),
+                inventories=dict(filled_and_capped_vias=vias,pending_smt=pending,post_smt=manual),
+                required_evidence=required,
+                evidence_policy='This build binds CAD and inventory only; it does not accept external physical signoffs.',
+                native_geometry_does_not_establish_physical_qualification=True)
+
+
+def build(source, output, spec_path=SPEC, revision=None):
     import wx
     app = wx.GetApp() or wx.App(False)
     import pcbnew as P
     source, output = Path(source).resolve(), Path(output).resolve()
     spec = json.loads(Path(spec_path).read_text())
+    revision = revision or spec['revision']
+    require(revision in ('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'), 'Unknown Single layout revision')
     verify_inputs(source, spec)
     require(not output.exists() and not output.is_relative_to(source)
             and not source.is_relative_to(output), 'Choose a new independent output directory')
@@ -250,6 +1026,21 @@ def build(source, output, spec_path=SPEC):
     pcb = output / 'Single.kicad_pcb'
     before = P.LoadBoard(str(pcb))
     old_groups = pad_components(before)
+    eco_binding = None
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'):
+        from r25_router.apply_single_r27_layout_eco import apply_layout_eco, apply_library_edits, verify_input, copper_fingerprint
+        eco_binding = spec.get('layout_ecos', {}).get(revision, spec['layout_eco'])
+        delta_path = HERE / eco_binding['source']
+        require(sha(delta_path) == eco_binding['sha256'], revision + ' layout source differs')
+        delta = json.loads(delta_path.read_text())
+        verify_input(pcb, delta)
+        apply_library_edits(output, delta)
+        eco_keepalive = apply_layout_eco(before, delta, output)
+        P.SaveBoard(str(pcb), before)
+        require(native_semantic_fingerprint(pcb) == delta['target_semantic_fingerprint'],
+                revision + ' replay geometry differs from the accepted native checkpoint')
+        require(copper_fingerprint(before, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
+                revision + ' replay copper or reference zones differ')
     fingerprint = native_semantic_fingerprint(pcb)
     run_cli(['pcb','drc','--refill-zones','--save-board','--severity-all','--all-track-errors',
              '--schematic-parity','--exit-code-violations','--format','json','--output',
@@ -260,26 +1051,87 @@ def build(source, output, spec_path=SPEC):
                                  json.loads((output/'Single-erc.json').read_text()))
     require(not any(counts.values()), 'Single native checks are not all zero')
     require(native_semantic_fingerprint(pcb) == fingerprint, 'Native roundtrip changed intent')
-    board, groups, inspection = inspect_single(output, spec)
-    require(preserves_groups(old_groups, groups), 'Native pad groups were split')
+    board, groups, inspection = inspect_single(output, {**spec,'revision':revision})
+    additions = delta.get('added_footprints',[]) if eco_binding else []
+    added_pads = [p.m_Uuid.AsString() for s in additions
+                  for p in board.FindFootprintByReference(s['ref']).Pads() if p.GetNumber()]
+    require(len(set(added_pads)) == len(added_pads), 'Duplicate added pad identity')
+    require(preserves_groups_with_additions(old_groups,groups,added_pads),
+            'Original native pad inventory or groups differ')
+    if revision in ('R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'):
+        from r25_router.apply_single_r27_layout_eco import inspect_usb_reference
+        require(copper_fingerprint(board, delta.get('complete_zone_fingerprint', False)) == delta['target_copper_fingerprint'],
+                revision + ' native roundtrip changed copper or reference zones')
+        if revision in ('R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'):
+            from r25_router.apply_single_r27_layout_eco import (
+                reference_connected_ground_fills, inspect_signal_references,
+                inspect_panel_clock_references,
+            )
+            ground_fills = reference_connected_ground_fills(board)
+            inspection['signal_references'] = inspect_signal_references(
+                board, json.loads(CONTRACT.read_text()), ground_fills)
+            inspection['panel_clock_references'] = inspect_panel_clock_references(board, ground_fills)
+            corridor_contract = eco_binding.get('inspection_overrides',{}).get('rear_clock_ground_corridors')
+            if corridor_contract:
+                from r25_router.apply_single_r27_layout_eco import inspect_rear_clock_corridors
+                inspection['rear_clock_ground_corridors'] = inspect_rear_clock_corridors(board,corridor_contract,ground_fills)
+            inner_contract = eco_binding.get('inspection_overrides',{}).get('inner_clock_bridge')
+            if inner_contract:
+                from r25_router.apply_single_r27_layout_eco import inspect_inner_clock_bridge
+                inspection['inner_clock_bridge'] = inspect_inner_clock_bridge(board,inner_contract,ground_fills)
+            if revision in ('R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'):
+                from r25_router.apply_single_r27_layout_eco import inspect_clock_ground_stitches
+                inspection['clock_ground_stitches'] = inspect_clock_ground_stitches(
+                    board, delta['clock_ground_stitches'], ground_fills)
+        elif revision in ('R28','R29'):
+            from r25_router.apply_single_r27_layout_eco import inspect_signal_references
+            inspection['signal_references'] = inspect_signal_references(board, json.loads(CONTRACT.read_text()))
+        else:
+            inspection['usb_reference'] = inspect_usb_reference(board)
     orderpack = output / 'orderpack'
-    export_jlc_orderpack(output, orderpack)
+    export_jlc_orderpack(output, orderpack, revision=revision)
+    smt_count = sum(bool(f.GetAttributes() & P.FP_SMD) and not f.IsDNP()
+                    and not f.GetAttributes() & (P.FP_EXCLUDE_FROM_BOM | P.FP_EXCLUDE_FROM_POS_FILES)
+                    and f.GetReference() not in spec['manual_assembly_refs'] for f in board.GetFootprints())
+    bypass_notes = ''.join(f'{b["cap"]} 是 {b["switch"]} 的局部输出去耦，位置与两端真实连接已核对；'
+                          '其直流偏压、供料及实物瞬态仍待资格化。\n'
+                          for b in inspection.get('output_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 是 {b["switch"]} 的局部输入去耦，位置与两端真实连接已核对；'
+                           '其直流偏压、供料及实物瞬态仍待资格化。\n'
+                           for b in inspection.get('input_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 是 {b["device"]} 的局部电源旁路（{b["side"]}），'
+                           '位置与真实接点已核对；有效电容、瞬态及背面装配/高度仍待资格化。\n'
+                           for b in inspection.get('power_bypasses',[]))
+    bypass_notes += ''.join(f'{b["cap"]} 保持单颗100nF参考滤波并移至{b["side"]}；'
+                           '不得另并联或增大容量，当前厂商版本与实物稳定性仍待资格化。\n'
+                           for b in inspection.get('reference_filters',[]))
     write_csv(orderpack/'REQUIRED-VIA-IN-PAD.csv', inspection['via_in_pad'])
     write_csv(orderpack/'PENDING-SUPPLY.csv', inspection['pending_supply'])
     write_csv(orderpack/'REQUIRED-POST-SMT.csv', inspection['required_post_smt'])
+    qualification = build_qualification_report(output,{**spec,'revision':revision},inspection,spec_path)
+    (orderpack/'QUALIFICATION-STATUS.json').write_text(json.dumps(qualification,indent=2,ensure_ascii=False)+'\n')
+    qualification_notes = ''.join(f'{key} = false\n' for key in qualification['status_flags'])
     (orderpack/'MANUFACTURING-REQUIREMENTS.md').write_text(
-        '# Single 制造工艺要求\n\n2026-10-30，R26。\n\n'
+        f'# Single 制造工艺要求\n\n{spec["date"]}，{revision}，Codex。\n\n'
         '四层、0.8 mm 标称、绿油、ENIG；详细层叠以 Single-job.gbrjob 为准。\n'
-        '左上板阶已收窄至 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)，与 323576 (35x76x3.2 mm) 电池全组件（电芯、封边、极耳、保护板及引线）实现 0.0 mm² 重叠。\n'
-        'C804.2 接地回流过孔已移至焊盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)，无盘中孔；U501.57 的 9 个 0.50/0.25 mm 散热过孔位于阻焊开窗及钢网开口内（见 REQUIRED-VIA-IN-PAD.csv），需树脂塞孔+电镀盖帽 (FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT) 或板厂 CAM 确认的等效工艺，确认前 supplier_process_accepted = false。\n'
-        '214 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 21 个需客供/建档的物料，不能空贴。\n'
+        '左上板阶为 X = 38.0..73.0 mm (Y = 32.0..83.5 mm)。323576 (35x76x3.2 mm) 仅为历史研究包络；其二维不重叠不代表实际可更换2050mAh电池的厂商、MPN、最大包络、引线/保护板/连接器或整机含正公差≤7mm资格。实际电池与完整屏幕规格仍待确认。\n'
+        'C804.2 接地回流过孔保持盘外狗骨位置 (17.40, 104.80) (0.45/0.20 mm)。U501.57 原9颗0.50/0.25mm散热孔保持。\n'
+        f'REQUIRED-VIA-IN-PAD.csv 本修订列出 {len(inspection["via_in_pad"])} 颗须处理的焊接盘过孔，需树脂塞孔+电镀盖帽 (FILLED_AND_COPPER_CAPPED_OR_SUPPLIER_APPROVED_EQUIVALENT) 或板厂CAM确认的等效工艺。填孔盖帽在四层板上需明确选择并核价，不能以普通塞油/盖油替代；确认前 supplier_process_accepted = false。\n'
+        f'{smt_count} 个 SMT 器件见 BOM/CPL；PENDING-SUPPLY.csv 保留 {len(inspection["pending_supply"])} 个需客供/建档的物料，不能空贴。\n'
+        f'{bypass_notes}'
         'BT301 必须使用工厂绝缘引脚/焊片组件，SMT 后安装（见 REQUIRED-POST-SMT.csv）；不得回流或直接焊裸电池。\n'
+        f'\n本次PCB与{len(inspection["via_in_pad"])}孔/待供SMT/BT301清单绑定见 QUALIFICATION-STATUS.json。以下状态均未由CAD或零DRC证明：\n'
+        f'{qualification_notes}'
+        '板厂Type VII逐孔书面CAM确认、精确来料及BT301组件核验、真实电池/完整屏幕/背面器件/壳体含正公差<=7.0mm实测，以及EVT电源噪声/稳定性/正负泵瞬态和纹波签核均待证据。测量限值须源于精确PMIC/面板规格并在测试前确定，不能凭几何结果设为通过。\n'
         'J201 为 MUP U22401-17 沉板式 USB-C 母座；上述工艺、供料及实际电池包/完整屏幕模组规格确认前，manufacturing_release 保持为 false。\n')
-    manifest = {'schema':'panda47-single-rebuild-v1', 'revision':spec['revision'],
+    manifest = {'schema':'panda47-single-rebuild-v1', 'revision':revision,
+                'layout_eco':eco_binding,
                 'source_spec_sha256':sha(spec_path), 'source_design_sha256':sha(CONTRACT),
                 'input_sha256':spec['input_sha256'], 'counts':counts,
                 'all_original_pad_groups_preserved':True, 'geometry_sha256':fingerprint,
-                'inspection':inspection, 'manufacturing_release':False,
+                'inspection':inspection, **qualification['status_flags'],
+                'qualification_report':{'path':'orderpack/QUALIFICATION-STATUS.json',
+                                        'sha256':sha(orderpack/'QUALIFICATION-STATUS.json')},
                 'files_sha256':{str(f.relative_to(output)):sha(f) for f in sorted(output.rglob('*'))
                                 if f.is_file()}}
     (output/'SINGLE-CHECKPOINT.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
@@ -291,12 +1143,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--revision', choices=('R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40','R41','R42','R43','R44','R45','R46','R47','R48'), help='显式重建所选单板布局修订')
     args = parser.parse_args()
     spec_data = json.loads(SPEC.read_text())
     default = Path(spec_data['input_checkpoint'])
     if not default.exists() and 'version_directory' in spec_data:
         default = REPO / spec_data['version_directory']
-    result = build(args.source or default, args.output)
+    result = build(args.source or default, args.output, revision=args.revision)
     print(json.dumps({'counts':result['counts'], 'ground_pads':result['inspection']['ground']['ground_pad_count'],
                       'pending_supply':len(result['inspection']['pending_supply']),
-                      'manufacturing_release':False}, indent=2))
+                      **{key:result[key] for key in ('manufacturing_release','supplier_process_accepted',
+                          'actual_noise_and_stability_qualified',
+                          'charge_pump_transient_and_ripple_qualified')}}, indent=2))
