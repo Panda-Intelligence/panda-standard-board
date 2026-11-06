@@ -1,4 +1,8 @@
-# Current Continuation: E0.2 R48 — XSTL背面清零、CKV局部内层与顶层桥接及四网协调（2026-11-03）
+# Current Continuation: E0.2 R49 — 前光升压供电修正（2026-11-06）
+
+2026-11-06，Claude。先读 [R49 前光升压供电修正](E02-R49-FRONTLIGHT-SUPPLY-20261106.md)。R48 及以前前光升压输入 `VSYS_FL_IN` 没有电源；R49 把它并入 `VSYS_RAW`，其余与 R48 相同。用 `build_pico47_single_r49.py --output <.work 下新目录>` 从 R26 经 R48 回放重建并导出下单包；`manufacturing_release` 仍为 false。
+
+# Historical Continuation: E0.2 R48 — XSTL背面清零、CKV局部内层与顶层桥接及四网协调（2026-11-03）
 
 2026-11-03，Codex。先读 [R48 XSTL背面清零、CKV局部内层与顶层桥接及四网协调](E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md) 及 2026-11-04 发布的权威总览与三份专项工程规范：
 - [七组待闭合硬件实证项状态总览](E02-SEVEN-QUALIFICATION-EVIDENCE-OVERVIEW-20261104.md)
