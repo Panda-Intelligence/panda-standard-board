@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""2026-11-06 Claude：R49 前光升压供电修正，从不可变 R26 经 R48 回放后套用。
+"""2026-11-06 / 2026-11-08：R49 前光升压供电修正及保守首件采购元数据 ECO。
 
 R26 合板后 `VSYS_FL_IN`（L905.1／R920.1／C920.1）没有任何电源，前光升压无输入。
 R49 把它并入 `VSYS_RAW`：原理图三处全局标签改名，三颗焊盘改网，原 18 段
 `VSYS_FL_IN` 铜改名，并按 `r25_router/single_r49_frontlight_supply_delta.json`
-新增 0.40 mm 连接铜。其余器件、铜、区、规则与 R48 逐项相同；起止均校验原生语义
-与铜指纹。生成物只写入 .work 或外部目录，制造放行状态保持 false。
+新增 0.40 mm 连接铜。同时按 `single_r49_jlc_supply_delta.json` 仅为精确国产
+MPN 绑定当前 LCSC 编号，不做跨 MPN、封装、位置、网络或铜修改。其余器件、位姿、
+铜、区、规则与 R48 逐项相同；起止均校验原生语义与铜指纹。生成物只写入 .work
+或外部目录，制造放行状态保持 false。
 """
 from __future__ import annotations
 
@@ -20,6 +22,7 @@ sys.path.insert(0, str(HERE))
 import build_pico47_single as B
 
 DELTA = HERE / 'r25_router' / 'single_r49_frontlight_supply_delta.json'
+SUPPLY_DELTA = HERE / 'r25_router' / 'single_r49_jlc_supply_delta.json'
 
 
 def apply_schematic(sch: Path, delta):
@@ -64,6 +67,53 @@ def apply_board(board, delta):
     return keep
 
 
+def _supply_edits(delta):
+    edits = {}
+    for group in delta['edits']:
+        for ref in group['refs']:
+            B.require(ref not in edits, 'Duplicate R49 supply edit ' + ref)
+            edits[ref] = group
+    return edits
+
+
+def apply_supply_schematic(sch: Path, delta):
+    from verify_mainland_bom_compliance import patch_schematic_text
+    edits = _supply_edits(delta)
+    eco = {ref: {'LCSC': group['to_lcsc']} for ref, group in edits.items()}
+    text, updated = patch_schematic_text(sch.read_text(), eco)
+    B.require(sorted(updated) == sorted(edits), 'R49 supply schematic refs differ')
+    sch.write_text(text)
+
+
+def apply_supply_board(board, delta):
+    edits = _supply_edits(delta)
+    for ref, group in edits.items():
+        fp = board.FindFootprintByReference(ref)
+        B.require(fp is not None, 'Missing R49 supply footprint ' + ref)
+        fields = {field.GetName(): field.GetText() for field in fp.GetFields()}
+        B.require(fields.get('LCSC', '') == group['from_lcsc'],
+                  f'{ref} has unexpected LCSC field')
+        B.require(fields.get('Manufacturer', '') == group['manufacturer']
+                  and fields.get('MPN', '') == group['mpn'],
+                  f'{ref} exact manufacturer/MPN differs')
+        fp.GetField('LCSC').SetText(group['to_lcsc'])
+
+
+def apply_supply_libraries(output: Path, delta):
+    from verify_mainland_bom_compliance import patch_pcb_or_mod_text
+    edits = _supply_edits(delta)
+    eco = {ref: {'LCSC': group['to_lcsc']} for ref, group in edits.items()}
+    updated = []
+    pretty = output / 'Panda47.pretty'
+    for path in sorted(pretty.glob('*.kicad_mod')):
+        text, refs = patch_pcb_or_mod_text(path.read_text(), eco)
+        if refs:
+            B.require(set(refs) <= set(edits), 'Unexpected R49 supply library ref')
+            path.write_text(text)
+            updated.extend(refs)
+    B.require(sorted(set(updated)) == sorted(edits), 'R49 supply library refs differ')
+
+
 def build(output: Path, source: Path | None = None, readable: bool = True):
     import pcbnew as P
     from seven_mm_routing import native_semantic_fingerprint
@@ -81,12 +131,15 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
     B.require(not r48.exists(), 'Remove the stale R48 replay directory ' + str(r48))
     B.build(source or default, r48, revision='R48')
     delta = json.loads(DELTA.read_text())
+    supply_delta = json.loads(SUPPLY_DELTA.read_text())
     # 整个 R48 工程（含 R35+ 回放新建的封装库文件），不带其报告与下单包
     shutil.copytree(r48, output, ignore=shutil.ignore_patterns('orderpack', 'Single-*.json', 'Single-*.log',
                                                                'Single-independent-netlist.*', 'SINGLE-CHECKPOINT.json'))
+    apply_supply_libraries(output, supply_delta)
     pcb, sch = output / 'Single.kicad_pcb', output / 'Single.kicad_sch'
     B.require(native_semantic_fingerprint(pcb) == delta['baseline_semantic_fingerprint'], 'R49 requires the R48 replay')
     apply_schematic(sch, delta)
+    apply_supply_schematic(sch, supply_delta)
     if readable:
         # 网表式原理图（每个引脚一个全局标签）重画为常规的多页层次原理图；元件、引脚与网络不变
         import readable_schematic
@@ -107,6 +160,7 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
         B.require(nets(net) == nets(after), 'Readable schematic changed the netlist')
     board = P.LoadBoard(str(pcb))
     keepalive = apply_board(board, delta)
+    apply_supply_board(board, supply_delta)
     if readable:
         # 原理图新增的显示字段 Spec 同步到封装（隐藏、放在装配层），与 KiCad“从原理图更新 PCB”一致；
         # 不改铜、焊盘与位置，原生语义与铜指纹照常校验
@@ -131,7 +185,8 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
     B.require(not any(counts.values()), 'R49 native checks are not all zero')
     rspec = {**spec, 'revision': 'R49',
              'layout_ecos': {**spec.get('layout_ecos', {}),
-                             'R49': {**spec['layout_ecos']['R48'], 'source': str(DELTA.relative_to(HERE)), 'sha256': B.sha(DELTA)}}}
+                             'R49': {**spec['layout_ecos']['R48'], 'source': str(DELTA.relative_to(HERE)), 'sha256': B.sha(DELTA)}},
+             'supply_eco': {'source': str(SUPPLY_DELTA.relative_to(HERE)), 'sha256': B.sha(SUPPLY_DELTA)}}
     board, groups, inspection = B.inspect_single(output, rspec)
     orderpack = output / 'orderpack'
     export_jlc_orderpack(output, orderpack, revision='R49')
@@ -143,9 +198,12 @@ def build(output: Path, source: Path | None = None, readable: bool = True):
     shutil.copy2(r48 / 'orderpack' / 'MANUFACTURING-REQUIREMENTS.md', orderpack / 'MANUFACTURING-REQUIREMENTS.md')
     with (orderpack / 'MANUFACTURING-REQUIREMENTS.md').open('a') as f:
         f.write('\nR49（2026-11-06）：前光升压输入 VSYS_FL_IN 并入 VSYS_RAW，新增 0.40 mm 连接铜；'
-                f'焊接盘过孔清单 {len(inspection["via_in_pad"])} 颗、待供 {len(inspection["pending_supply"])} 项，以本目录 CSV 为准。\n')
+                f'焊接盘过孔清单 {len(inspection["via_in_pad"])} 颗、待供 {len(inspection["pending_supply"])} 项，以本目录 CSV 为准。\n'
+                f'R49-SMT-20261108：仅更新 {len(_supply_edits(supply_delta))} 个精确国产 MPN 的 LCSC 编号；无电气、封装、位置或铜修改。采购元数据增量 {B.sha(SUPPLY_DELTA)}。\n')
     manifest = dict(schema='panda47-single-rebuild-v1', revision='R49', baseline_revision='R48',
-                    delta={'path': str(DELTA.relative_to(HERE)), 'sha256': B.sha(DELTA)}, counts=counts,
+                    delta={'path': str(DELTA.relative_to(HERE)), 'sha256': B.sha(DELTA)},
+                    supply_delta={'path': str(SUPPLY_DELTA.relative_to(HERE)), 'sha256': B.sha(SUPPLY_DELTA)},
+                    counts=counts,
                     via_in_pad=len(inspection['via_in_pad']), pending_supply=len(inspection['pending_supply']),
                     **qualification['status_flags'],
                     files_sha256={str(f.relative_to(output)): B.sha(f) for f in sorted(output.rglob('*')) if f.is_file()})

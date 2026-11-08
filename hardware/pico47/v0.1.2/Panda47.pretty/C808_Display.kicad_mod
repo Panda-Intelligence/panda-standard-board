@@ -85,7 +85,7 @@
 			)
 		)
 	)
-	(property "LCSC" ""
+	(property "LCSC" "C1745"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

@@ -4,7 +4,7 @@
 - **Schematic**: `Single.kicad_sch` (index page) + 11 A4/A3 sheets `Single-*.kicad_sch`, drawn in the usual style (see below). Same 265 parts, pins and 255 nets as the R49 netlist-style source.
 - **Native checks** (KiCad 10.0.7, this directory alone): DRC 0 errors / 0 warnings / 0 unconnected / 0 schematic parity, ERC 0.
 - **Rebuild**: `python3 build_pico47_single_r49.py --output <new dir under .work>` (KiCad Python) replays R26 → R48 → R49, writes this schematic and the JLC order pack; `--netlist-style-schematic` keeps the one-label-per-pin form.
-- **Status**: `manufacturing_release = false`. Ordering prerequisites are listed in [R49 note](../E02-R49-FRONTLIGHT-SUPPLY-20261106.md) (46 Type VII via-in-pad CAM confirmation, 21 pending SMT parts, BT301 post-SMT).
+- **Status**: `manufacturing_release = false`. Ordering prerequisites are listed in [R49 note](../E02-R49-FRONTLIGHT-SUPPLY-20261106.md) (46 Type VII via-in-pad CAM confirmation, current 13 pending SMT parts, BT301 post-SMT). The 2026-11-08 exact-MPN catalog metadata ECO is recorded in [R49 SMT catalog cleanup](../E02-R49-SMT-CATALOG-CLEANUP-20261108.md); the original R49 pending list was 21 parts and no electrical substitution was made.
 
 ## Changes vs. `v0.1.1`
 

@@ -486,7 +486,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C1745"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3589,7 +3589,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C215803"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9531,7 +9531,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -21638,7 +21638,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23427,7 +23427,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C215803"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -24140,7 +24140,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C1745"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -29128,7 +29128,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C215803"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -30013,7 +30013,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -35750,7 +35750,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C324808"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -36201,7 +36201,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -39399,7 +39399,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -45582,7 +45582,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C37818"
+		(property "LCSC" "C2885646"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -46117,7 +46117,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C215803"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -47016,7 +47016,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C140131"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)

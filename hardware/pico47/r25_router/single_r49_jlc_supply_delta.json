@@ -1,0 +1,76 @@
+{
+  "schema": "panda47-r49-jlc-supply-metadata-v1",
+  "revision": "R49-SMT-20261108",
+  "baseline_revision": "R49",
+  "date": "2026-11-08",
+  "purpose": "Bind only exact domestic MPNs to currently listed LCSC catalog numbers; no electrical, footprint, placement, net, or copper substitution.",
+  "edits": [
+    {
+      "refs": ["C807", "C809", "C810", "C812"],
+      "from_lcsc": "",
+      "to_lcsc": "C215803",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B105K500NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C215803.html",
+      "reason": "Exact MPN; current FH catalog listing."
+    },
+    {
+      "refs": ["C808", "C811"],
+      "from_lcsc": "",
+      "to_lcsc": "C1745",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B473K500NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C1745.html",
+      "reason": "Exact MPN; current FH catalog listing."
+    },
+    {
+      "refs": ["R805"],
+      "from_lcsc": "",
+      "to_lcsc": "C140131",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K7501FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C140131.html",
+      "reason": "Exact MPN; current FH catalog listing."
+    },
+    {
+      "refs": ["R806"],
+      "from_lcsc": "",
+      "to_lcsc": "C324808",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "RC-02K3602FT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C324808.html",
+      "reason": "Exact MPN; current FH catalog listing."
+    },
+    {
+      "refs": ["C802", "C804", "C805", "C806", "C813", "C814"],
+      "from_lcsc": "C37818",
+      "to_lcsc": "C2885646",
+      "manufacturer": "FH (Fenghua Advanced)",
+      "mpn": "0805B475K250NT",
+      "catalog_url": "https://www.lcsc.com/product-detail/C2885646.html",
+      "reason": "Exact MPN; new current catalog number with stock, replacing the old out-of-stock catalog number."
+    }
+  ],
+  "expected_counts": {
+    "pending_supply_before": 21,
+    "pending_supply_after": 13,
+    "exact_catalog_edits": 8,
+    "electrical_substitutions": 0,
+    "placement_or_copper_edits": 0
+  },
+  "held_for_separate_review": [
+    "C1526 / 0402B105K100NT",
+    "C140215 / RC-02K1002FT",
+    "C90544 / 0805B106K100NT",
+    "C22399626 / CGA0603X7R106K100JT",
+    "C370234 / SDCL1608C2N0STDF",
+    "C37428 / SWPA252012S100MT",
+    "C408332 / MWSA0402S-1R0MT",
+    "C408421 / MWSA0618S-4R7MT",
+    "C43365 / SDCL1005C2N0STDF",
+    "C74301 / SDCL1005C24NJTDF",
+    "C5203993 / CW2217BAAD",
+    "C55274065 / SGM05HU1ALXUGY2G/TR",
+    "C916255 / SD3078"
+  ]
+}
