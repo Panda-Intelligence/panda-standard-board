@@ -16,4 +16,5 @@
 | U905 | SGM37601 → AWINIC AW99703CSR WLCSP-12 (LM3697-compatible), C922 DNP |
 | U902 | SGM62125 (not stocked) → Richtek RT6160AWSC, same land |
 | Stock swaps | 10 k ×16, 1 µF 0402 ×4, 10 µF 0805 ×4, D202, U402–U405, U906, U907, J201, TH801 |
+| Cost-down | U503 QMI8658B; 22 µF/1 µF/10 µF caps to FOJAN/CCTC ([cost estimate](../E02-R50-COST-ESTIMATE-20261108.md)) |
 | Height | L401/L402 2.0 → 1.2 mm, L802 1.8 → 1.5 mm |

@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0603B105K250NT"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C380328.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "CCTC"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -76,7 +76,7 @@
 			(justify mirror)
 		)
 	)
-	(property "MPN" "0603B105K250NT"
+	(property "MPN" "TCC0603X7R105K250CT"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -89,7 +89,7 @@
 			(justify mirror)
 		)
 	)
-	(property "LCSC" "C59302"
+	(property "LCSC" "C380328"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -128,6 +128,28 @@
 			(justify mirror)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

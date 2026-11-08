@@ -240,6 +240,123 @@
       "description": "Richtek RT6160AWSC 3 A I2C buck-boost, WL-CSP-15B 1.4x2.3 mm, 0.4 mm pitch, 0.6 mm max. Ball map identical to the U902 land (A1 EN, A2/A3 VIN, B1 VSEL, B2/B3 LX1, C1 AGND, C2/C3 PGND, D1 SCL, D2/D3 LX2, E1 SDA, E2/E3 VOUT). VSEL high: 3.45 V at power-up (VOUT2 reset 0x39); firmware writes 0x05 = 0x33 for 3.3 V (V = 2.025 V + code x 25 mV). I2C 0x75, IQ 2 uA typ, ILIM_P 4.5-5.5 A.",
       "reason": "User decision 2026-11-08 (replaces the SGM62125 consignment): SGM62125 is not stocked; RT6160AWSC drops onto the same land with 0.47 uH. Non-mainland (Richtek, Taiwan); exact per-reference exception in verify_mainland_bom_compliance.py.",
       "jlc_stock_20261108": 10655
+    },
+    {
+      "refs": [
+        "U503"
+      ],
+      "from": {
+        "manufacturer": "QST (Shanghai QST)",
+        "mpn": "QMI8658A",
+        "lcsc": "C3021082"
+      },
+      "to": {
+        "manufacturer": "QST (Shanghai QST)",
+        "mpn": "QMI8658B",
+        "lcsc": "C5380158",
+        "value": "QMI8658B"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C5380158.html",
+      "reason": "Cost-down 2026-11-08: same QST 6-axis IMU family; QMI8658B datasheet pin table (1 SDO/SA0 ... 14 SDA) and 2.5 x 3.0 mm LGA-14 are identical to QMI8658A, 0.83 mm vs 0.86 mm high; $0.95 vs $1.39 @100."
+    },
+    {
+      "refs": [
+        "C207",
+        "C208",
+        "C525"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0805X226M250NT",
+        "lcsc": "C129303"
+      },
+      "to": {
+        "manufacturer": "FOJAN",
+        "mpn": "FCC0805X226M250FT",
+        "lcsc": "C7419435"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C7419435.html",
+      "reason": "Cost-down: same 22 uF 25 V X5R 20% 0805; $0.059 vs $0.139 @1000."
+    },
+    {
+      "refs": [
+        "C202",
+        "C209",
+        "C507",
+        "C508",
+        "C509",
+        "C510",
+        "C511",
+        "C516",
+        "C903"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0603B105K250NT",
+        "lcsc": "C59302"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC0603X7R105K250CT",
+        "lcsc": "C380328"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C380328.html",
+      "reason": "Cost-down: same 1 uF 25 V X7R 10% 0603; $0.006 vs $0.046 @1000."
+    },
+    {
+      "refs": [
+        "C401",
+        "C402",
+        "C403",
+        "C501"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0603X226M100NT",
+        "lcsc": "C60077"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC0603X5R226M100CT",
+        "lcsc": "C20416425"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C20416425.html",
+      "reason": "Cost-down: same 22 uF 10 V X5R 20% 0603; $0.012 vs $0.034 @1000."
+    },
+    {
+      "refs": [
+        "C203"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "1206B106K250NT",
+        "lcsc": "C90538"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC1206X7R106K250HT",
+        "lcsc": "C380364"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C380364.html",
+      "reason": "Cost-down: same 10 uF 25 V X7R 10% 1206; $0.055 vs $0.152 @1000."
+    },
+    {
+      "refs": [
+        "C809",
+        "C812"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0805B105K500NT",
+        "lcsc": "C215803"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC0805X7R105K500DTS",
+        "lcsc": "C344178"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C344178.html",
+      "reason": "Cost-down: same 1 uF 50 V X7R 10% 0805 (PMIC VGH/VGL outputs); $0.014 vs $0.034 @1000."
     }
   ],
   "unchanged_low_stock": [

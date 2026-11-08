@@ -104,3 +104,5 @@ All new copper was generated with the repository router (`r25_router/router2.py`
 Backside parts are unchanged (≤0.55 mm; C815 is now 4.7 µF 0402 within the same budget). The next height reductions need footprint changes and are not in R50: U506 → GD25Q128EWIGR WSON-8 (0.8 mm, C2982923, 1931 in stock), and a 2.2 µH boost inductor with a smaller land for L801.
 
 `manufacturing_release`, `supplier_process_accepted` and the EVT qualification flags stay false. The new PMIC and front-light driver need firmware (TPS65185-family register map at 0x68, AW99703 at 0x36) and bench bring-up before the panel or front light are powered.
+
+Cost-down swaps (U503 QMI8658B and five capacitor lines) and the unit cost estimate are in [R50 cost estimate](E02-R50-COST-ESTIMATE-20261108.md).

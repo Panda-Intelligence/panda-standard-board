@@ -28,7 +28,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25628e.pdf"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C380364.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -50,7 +50,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "CCTC"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -62,7 +62,7 @@
 			)
 		)
 	)
-	(property "MPN" "1206B106K250NT"
+	(property "MPN" "TCC1206X7R106K250HT"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -74,7 +74,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C90538"
+	(property "LCSC" "C380364"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -86,6 +86,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
