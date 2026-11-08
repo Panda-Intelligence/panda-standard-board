@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.lcsc.com/product-detail/C2906861.html"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C25744.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FOJAN"
+	(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "FRC0402F1002TS"
+	(property "MPN" "0402WGF1002TCE"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C2906861"
+	(property "LCSC" "C25744"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)

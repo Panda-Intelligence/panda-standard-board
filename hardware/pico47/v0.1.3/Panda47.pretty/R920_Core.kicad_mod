@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://jlcpcb.com/partdetail/147912-RS03K10R0FT/C136596"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C22859.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "RS-03K10R0FT"
+	(property "MPN" "0603WAF100JT5E"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C136596"
+	(property "LCSC" "C22859"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -159,6 +159,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

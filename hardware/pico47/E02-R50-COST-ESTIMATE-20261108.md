@@ -29,21 +29,29 @@ Passives were also screened against the mainland-registered brands (FH, FOJAN, C
 
 Result: placed-parts cost per board falls from $17.44 to **$16.09** (100 boards) and from $15.01 to **$14.11** (1000 boards). Gerbers, drill and CPL are unchanged; native checks stay 0.
 
-Not adopted: moving passives to JLC "basic" parts would remove up to ~45 of the 77 $3 extended-part fees (~$135 per order), but the basic library is Samsung / Yageo capacitors and UNI-ROYAL resistors, which conflicts with the mainland BOM rule. The fee is per order, so it matters for small runs only (≈$27/board at 5 boards, ≈$0.14 at 1000).
+### JLC basic library and merged lines (user decision 2026-11-08)
+
+28 passive lines (152 placements) moved to JLC basic-library parts (Samsung Electro-Mechanics capacitors, UNI-ROYAL resistors), which carry no per-type change fee. Duplicates merged on the way: both 1 µF 0402 lines (FOJAN X7R and FH X5R) → Samsung CL05A105KA5NQNC 25 V; 4.7 µF 0805 16 V → CL21A475KAQNNNE 25 V; R910/R911 10 k 0.1 % → the shared 1 % 10 k. Where no basic part with equal spec exists the extended part is kept (PMIC 25 V X7R caps on ±16 V rails, 22 µF 0603, 2.2 µF 0402, precision dividers, RF, NTC, shunt). X7R → X5R was accepted only at a higher voltage rating (1 µF 0603/0402, 10 µF 0603/0805/1206). These exact (manufacturer, MPN) pairs are listed in `USER_APPROVED_JLC_BASIC_PASSIVES` in `verify_mainland_bom_compliance.py`.
+
+Result: extended part types 77 → 49 (basic 3 → 29), i.e. 28 fewer change fees per order (~$84 at JLC's $3; the domestic fee schedule differs). Placed-parts cost: $16.29 / board @100 and $14.24 @1000 (+$0.2 / +$0.13 against the FOJAN/CCTC choice).
+
+### Bottom-side parts (not changed)
+
+Moving the 6 bottom parts to the top was attempted. C815 and C543 fit on top (3.7 mm / 5.9 mm from their pins), but there is no top-side spot for C537/C538 that can reach VDD_SPI, and none for R710 (series resistor on display data D0) or R731 (pull-down on GPIO45, a strapping pin) next to their nets within 12 mm. Because R710 and R731 must stay on the bottom, two-sided assembly remains, so all six stay where they are. Single-sided assembly needs a re-layout of the U501 / display-bus area.
 
 ## 2. Unit cost estimate
 
-Assumptions: JLC Standard PCBA, two-sided (6 bottom parts), 218 + 6 SMT parts, 813 SMT joints; setup $25 per side, stencil $7.86 per side, $3 per extended line (77 lines), $0.0017 per joint; BT301 CR1216 tabbed cell fitted after SMT. Parts include 2 % attrition. Enclosure, FPC cables, speaker, antenna, freight, duties and test labour are not included.
+Assumptions: JLC Standard PCBA, two-sided (6 bottom parts), 218 + 6 SMT parts, 813 SMT joints; setup $25 per side, stencil $7.86 per side, $3 per extended line (49 lines), $0.0017 per joint; BT301 CR1216 tabbed cell fitted after SMT. Parts include 2 % attrition. Enclosure, FPC cables, speaker, antenna, freight, duties and test labour are not included.
 
 | Item | 100 units | 1000 units | Basis |
 |---|---|---|---|
 | PCB, 4-layer 71 × 99 mm, 0.8 mm, ENIG, resin-filled capped via-in-pad, 0.15 mm drill | $2.2 (1.5–3.0) | $1.2 (0.8–1.5) | JLC 4-layer reference pricing plus ENIG / via-in-pad surcharges; needs a live quote |
-| SMT parts | $16.41 | $14.39 | JLC tier prices + 2 % |
-| Assembly fees (setup, stencils, extended lines, joints, BT301) | $4.8 | $2.1 | JLC fee schedule above |
-| **Main board subtotal** | **$23.4** | **$17.7** | |
+| SMT parts | $16.62 | $14.52 | JLC tier prices + 2 % |
+| Assembly fees (setup, stencils, extended lines, joints, BT301) | $3.9 | $2.0 | JLC fee schedule above |
+| **Main board subtotal** | **$22.7** | **$17.7** | |
 | 4.7" 1216 × 684 panel with front light and touch | $35 (28–45) | $26 (20–32) | No public E0470A01 price; 4.7" bare panels retail at ~$37 single, volume assumed 50–70 % of that plus FL/touch |
 | 2050 mAh LCO pack (3.2 mm, PCM, NTC, connector) | $4.5 | $3.0 | Generic 2000 mAh LiPo retail $7–10; custom thin pack quote needed |
 | Simple printed box, insert and leaflet | $1.2 | $0.6 | Typical Shenzhen print quote range |
-| **Total (excl. enclosure)** | **≈ $64** | **≈ $47** | |
+| **Total (excl. enclosure)** | **≈ $63** | **≈ $47** | |
 
 The panel module is about 55 % of the total, the main board about 35 %. Further levers, in order of effect: a panel/front-light/touch quote from the panel maker; moving the 6 bottom-side parts to the top (single-sided assembly, one setup and stencil); the U302 RTC and U506 flash cost-downs above for volume; and, if the mainland rule allows, JLC basic passives for small runs. A 5-board prototype costs roughly $100+ per board because the one-time fees (~$300 assembly + PCB minimums) dominate.

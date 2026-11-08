@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FH--Guangdong-Fenghua-Advanced-Tech-RC-02000FT_C140225.pdf"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C17168.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "RC-02000FT"
+	(property "MPN" "0402WGF0000TCE"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C140225"
+	(property "LCSC" "C17168"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -99,7 +99,7 @@
 			)
 		)
 	)
-	(property "PandaSupplyRoute" "JLC_CATALOG"
+	(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -123,7 +123,7 @@
 			)
 		)
 	)
-	(property "PandaSupplyStatus" "CATALOG_IDENTITY_ONLY_NOT_RESERVED"
+	(property "PandaSupplyStatus" "JLC_STOCK_20261108"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

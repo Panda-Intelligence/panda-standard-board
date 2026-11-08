@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.lcsc.com/product-detail/C54938484.html"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -51,7 +51,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FOJAN"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "MPN" "FCC0402B105K100AT"
+	(property "MPN" "CL05A105KA5NQNC"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C54938484"
+	(property "LCSC" "C52923"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)

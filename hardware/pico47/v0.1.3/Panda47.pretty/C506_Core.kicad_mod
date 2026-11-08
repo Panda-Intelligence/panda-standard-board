@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://jlcpcb.com/partdetail/HRE-CGA0603X7R106K100JT/C22399626"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C96446.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -51,7 +51,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C22399626"
+	(property "LCSC" "C96446"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "HRE"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "CGA0603X7R106K100JT"
+	(property "MPN" "CL10A106MA8NRNC"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -99,6 +99,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(sheetname "/")
 	(sheetfile "PANDA-STD-CORE-EVT.kicad_sch")
 	(attr smd)

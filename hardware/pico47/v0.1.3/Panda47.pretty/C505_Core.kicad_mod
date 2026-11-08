@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX98357A-MAX98357B.pdf"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "0402B104K250NT"
+	(property "MPN" "CL05B104KB54PNC"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C56392"
+	(property "LCSC" "C307331"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -123,6 +123,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(sheetname "/")
 	(sheetfile "PANDA-STD-CORE-EVT.kicad_sch")
 	(attr smd)

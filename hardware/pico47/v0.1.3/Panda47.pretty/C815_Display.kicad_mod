@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" ""
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C23733.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "0402X475M6R3NT"
+	(property "MPN" "CL05A475MP5NRNC"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C168172"
+	(property "LCSC" "C23733"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

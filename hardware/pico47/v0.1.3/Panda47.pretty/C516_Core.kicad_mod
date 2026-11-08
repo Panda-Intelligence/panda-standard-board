@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.lcsc.com/product-detail/C380328.html"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "CCTC"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "MPN" "TCC0603X7R105K250CT"
+	(property "MPN" "CL10A105KB8NNNC"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
@@ -87,7 +87,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C380328"
+	(property "LCSC" "C15849"
 		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)

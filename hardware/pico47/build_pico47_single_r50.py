@@ -40,8 +40,10 @@ def uid(*parts):
 # ---------------------------------------------------------------- 物料字段
 
 def part_fields(stock, eco):
-    """ref -> {field: value}，换料与 PMIC/前光器件身份合并；同一位号不得重复。"""
-    out = {}
+    """ref -> {field: value}。先取 PMIC/前光器件身份，再叠加现货/基础库换料（后者覆盖厂家、MPN、LCSC，
+    保留前者的值与说明）；同一换料清单内位号不得重复。"""
+    out = {ref: dict(fields) for ref, fields in eco['part_fields'].items()}
+    seen = set()
     for group in stock['substitutions']:
         to = group['to']
         fields = {'Manufacturer': to['manufacturer'], 'MPN': to['mpn'], 'LCSC': to['lcsc'],
@@ -51,12 +53,11 @@ def part_fields(stock, eco):
             fields['Value'] = to['value']
         if 'description' in group:
             fields['Description'] = group['description']
+        fields.update(group.get('extra_fields', {}))
         for ref in group['refs']:
-            B.require(ref not in out, 'Duplicate R50 part edit ' + ref)
-            out[ref] = dict(fields)
-    for ref, fields in eco['part_fields'].items():
-        B.require(ref not in out, 'Duplicate R50 part edit ' + ref)
-        out[ref] = dict(fields)
+            B.require(ref not in seen, 'Duplicate R50 stock edit ' + ref)
+            seen.add(ref)
+            out[ref] = {**out.get(ref, {}), **fields}
     return out
 
 

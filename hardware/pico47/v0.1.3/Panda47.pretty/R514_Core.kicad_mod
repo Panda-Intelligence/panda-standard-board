@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=RS-05000FT"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C17477.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -51,7 +51,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "MPN" "RS-05000FT"
+	(property "MPN" "0805W8F0000T5E"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -75,7 +75,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C132364"
+	(property "LCSC" "C17477"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -99,6 +99,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

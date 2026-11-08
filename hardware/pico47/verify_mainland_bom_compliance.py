@@ -184,6 +184,37 @@ USER_APPROVED_NON_MAINLAND: dict[tuple[str, str], dict[str, str]] = {
     },
 }
 
+# User decision 2026-11-08: JLC basic-library resistors/capacitors (no per-type change fee) are accepted
+# for the exact (manufacturer, MPN) pairs below, although Samsung / UNI-ROYAL are not mainland registrants.
+USER_APPROVED_JLC_BASIC_PASSIVES: set[tuple[str, str]] = {
+    ('Samsung Electro-Mechanics', 'CL05A105KA5NQNC'),
+    ('Samsung Electro-Mechanics', 'CL05A475MP5NRNC'),
+    ('Samsung Electro-Mechanics', 'CL05B104KB54PNC'),
+    ('Samsung Electro-Mechanics', 'CL10A105KB8NNNC'),
+    ('Samsung Electro-Mechanics', 'CL10A106MA8NRNC'),
+    ('Samsung Electro-Mechanics', 'CL10B473KB8NNNC'),
+    ('Samsung Electro-Mechanics', 'CL21A106KAYNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21A226MAQNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21A475KAQNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21B103KBANNNC'),
+    ('Samsung Electro-Mechanics', 'CL21B104KCFNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21B105KBFNNNE'),
+    ('Samsung Electro-Mechanics', 'CL31A106KBHNNNE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF0000TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1001TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1002TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1003TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF2201TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF220JTCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF5101TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF0000T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF1000T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF100JT5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF1201T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF5601T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0805W8F0000T5E'),
+}
+
 NON_PURCHASED_PCB_FEATURE_MANUFACTURER = "PCB fabricated terminal"
 NON_PURCHASED_PCB_FEATURE_MPN = "NOT_A_PURCHASED_PART"
 
@@ -640,6 +671,10 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
         exception = USER_APPROVED_NON_MAINLAND.get((board, ref))
         approved = bool(exception and exception["manufacturer"] == mfg and exception["mpn"] == mpn
                         and fp["in_bom"] and not fp["dnp"])
+        if not approved and (mfg, mpn) in USER_APPROVED_JLC_BASIC_PASSIVES:
+            approved = True
+            exception = {"manufacturer": mfg, "mpn": mpn, "approved": "2026-11-08",
+                         "reason": "JLC basic-library passive approved by the user"}
         if approved:
             approved_non_mainland.append({"ref": ref, **exception})
 

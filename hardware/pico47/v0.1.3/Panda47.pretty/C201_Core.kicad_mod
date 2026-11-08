@@ -27,7 +27,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.sg-micro.com/rect/assets/58a4fe4d-da1d-49a3-b312-5664211d9016/SGM41513_SGM41513A_SGM41513D.pdf"
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C1622.html"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -49,7 +49,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -61,7 +61,7 @@
 			)
 		)
 	)
-	(property "MPN" "0603B473K500NT"
+	(property "MPN" "CL10B473KB8NNNC"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -73,7 +73,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C285123"
+	(property "LCSC" "C1622"
 		(at 0 0 270)
 		(layer "F.Fab")
 		(hide yes)
@@ -85,6 +85,28 @@
 			)
 		)
 	)
+		(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "JLC_STOCK_20261108"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect

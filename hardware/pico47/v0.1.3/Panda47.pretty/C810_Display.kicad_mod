@@ -29,7 +29,7 @@
 			)
 		)
 	)
-	(property "Datasheet" ""
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C28233.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -63,7 +63,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "FH (Fenghua Advanced)"
+	(property "Manufacturer" "Samsung Electro-Mechanics"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -74,7 +74,7 @@
 			)
 		)
 	)
-	(property "MPN" "0805B104K500NT"
+	(property "MPN" "CL21B104KCFNNNE"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -85,7 +85,7 @@
 			)
 		)
 	)
-	(property "LCSC" "C38141"
+	(property "LCSC" "C28233"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
