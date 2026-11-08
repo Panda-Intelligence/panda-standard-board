@@ -504,7 +504,10 @@ def build(output: Path, source: Path | None = None, readable: bool = True, reuse
     orderpack = output / 'orderpack'
     export_jlc_orderpack(output, orderpack, revision='R50')
     B.write_csv(orderpack / 'REQUIRED-VIA-IN-PAD.csv', inspection['via_in_pad'])
-    B.write_csv(orderpack / 'PENDING-SUPPLY.csv', inspection['pending_supply'])
+    if inspection['pending_supply']:
+        B.write_csv(orderpack / 'PENDING-SUPPLY.csv', inspection['pending_supply'])
+    else:                                    # R50：所有 SMT 均有嘉立创现货编号，只写表头
+        (orderpack / 'PENDING-SUPPLY.csv').write_text('\ufeffref,manufacturer,mpn,value,footprint,lcsc,supply_status\n')
     B.write_csv(orderpack / 'REQUIRED-POST-SMT.csv', inspection['required_post_smt'])
     qualification = B.build_qualification_report(output, rspec, inspection, B.SPEC)
     (orderpack / 'QUALIFICATION-STATUS.json').write_text(json.dumps(qualification, indent=2, ensure_ascii=False) + '\n')

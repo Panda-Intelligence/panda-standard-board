@@ -4,7 +4,7 @@ User request 2026-11-08: every SMT/BOM line must be orderable from current JLC a
 
 - U810 (SY7636ARMC, 0 stock at JLC and LCSC): redesign with an in-stock EPD PMIC, choosing the best value after looking at comparable e-readers.
 - U905 (SGM37601, 0 stock): switch to an in-stock driver.
-- U902 (SGM62125AXG/TR): keep the mainland part and consign it.
+- U902 (SGM62125AXG/TR, not stocked): first kept for consignment, then (same day, after a survey of every JLC-stocked buck-boost) replaced by Richtek RT6160AWSC on the same land.
 - R801 / R803: 0.1 % thin-film 0402 parts are not stocked; 1 % is accepted.
 
 Stock figures below were read from the JLC parts API on 2026-11-08 and will change.
@@ -63,7 +63,13 @@ See `r25_router/single_r50_jlc_stock_delta.json` (same land, nets and placement)
 | R801–R804 | FH THC02H 0.1 % (not at JLC) | FH RC-02K 1 % | VGH / VEE ≈ ±2 % worst case |
 | TH801 | FH CMKD103F3380HANT (not at JLC) | Sunlord SDNT1005X103F3380FTF C279776 | 10 k 1 %, B3380 1 % |
 
-Unchanged: U902 SGM62125AXG/TR is consigned (the only pending line). D201 LRC8804FDT1G had 11 pcs in stock — re-check before ordering.
+| U902 | SGMICRO SGM62125AXG/TR (not stocked) | Richtek RT6160AWSC C7065276 | same 15-ball land, 0.6 mm; see below |
+
+D201 LRC8804FDT1G had 11 pcs in stock — re-check before ordering.
+
+### U902 survey
+
+All 488 JLC parts tagged buck-boost were screened (163 in stock), plus a brand-by-brand search of mainland makers. No mainland part is usable: every SGMICRO buck-boost is out of stock, XDS TX4401 draws 1 mA quiescent (unsuitable for the always-on rail), JoulWatt JW3651 is a 3–21 V wide-input part, and BCT3140 is a camera-flash charge pump mis-filed as buck-boost. RT6160AWSC (Richtek, 10 655 pcs, $0.47 @10) has the same ball map as the U902 land (A1 EN, A2/A3 VIN, B1 VSEL, B2/B3 LX1, C1 AGND, C2/C3 PGND, D1 SCL, D2/D3 LX2, E1 SDA, E2/E3 VOUT), 0.4 mm pitch, 0.6 mm max height, 2 µA quiescent, 3 A, I2C 0x75 and 0.47 µH. TI TPS63810YFFR (241 pcs, $1.77) is the second drop-in. With VSEL tied high the rail starts at 3.45 V; firmware writes register 0x05 = 0x33 (V = 2.025 V + code × 25 mV) for 3.3 V after reading DEVID (0x03), because TPS63810 uses a different code. ILIM_P is 4.5–5.5 A, close to the 5.2 A rating of the thin L401 (MWSA0412S-R47MT): normal peaks stay below 2.5 A, but a hard short may saturate it; MWSA0402S-R47MT (2.0 mm) is the higher-margin fallback. U902 is the second exact user-approved non-mainland exception.
 
 ## 4. Copper
 
@@ -78,7 +84,7 @@ All new copper was generated with the repository router (`r25_router/router2.py`
 - A second R50 run from the same R49 replay gives byte-identical BOM / CPL / drill files and geometrically identical Gerbers (only aperture order differs).
 - `v0.1.3/` checked on its own: all native checks 0. BOM audit: 225 populated (224 SMT + BT301), 7 DNP, U810 the only approved non-mainland part.
 - Via-in-pad inventory: 45 (U905's two old QFN via-in-pads are gone, U905.B2 added).
-- Every BOM line was re-read from the JLC API: all in stock for ≥5 boards except U902 (consigned). Lowest stock: D201 11, AW99703CSR 40, MWSA0618S-2R2MT 137, U22401-23 144, TPS651851RSLR 188.
+- Every BOM line was re-read from the JLC API: all in stock for ≥5 boards; pending supply is empty. Lowest stock: D201 11, AW99703CSR 40, MWSA0618S-2R2MT 137, U22401-23 144, TPS651851RSLR 188.
 
 ## 6. Height (front side, after R50)
 

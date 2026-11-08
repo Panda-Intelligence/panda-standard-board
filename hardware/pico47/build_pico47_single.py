@@ -932,8 +932,9 @@ def build_qualification_report(candidate, spec, inspection, spec_path=SPEC):
         ('PENDING-SUPPLY.csv','pending_supply'),
         ('REQUIRED-POST-SMT.csv','required_post_smt')]}
     vias, pending, manual = rows.values()
-    require(vias and pending and len(manual)==1 and manual[0]['ref']=='BT301',
-            'Incomplete qualification inventory: vias, pending supply or BT301')
+    # R50 起全部 SMT 有嘉立创现货编号，待供清单可以为空（CSV 只含表头）
+    require(vias and len(manual)==1 and manual[0]['ref']=='BT301',
+            'Incomplete qualification inventory: vias or BT301')
     require(len({r['uuid'] for r in vias})==len(vias)
             and len({r['ref'] for r in pending})==len(pending),
             'Duplicate qualification inventory')

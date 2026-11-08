@@ -14,7 +14,7 @@
 			)
 		)
 	)
-	(property "Value" "SGM62125AXG/TR"
+	(property "Value" "RT6160AWSC"
 		(at 0 2.4 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -25,7 +25,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.sg-micro.com/product/SGM62125"
+	(property "Datasheet" "https://www.richtek.com/assets/product_file/RT6160A/DS6160A-02.pdf"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -36,7 +36,7 @@
 			)
 		)
 	)
-	(property "Description" "C4D-2 SGMICRO low-Iq I2C buck-boost; ADDR high startup 3.4V then firmware 3.3V; EVT only."
+	(property "Description" "Richtek RT6160AWSC 3 A I2C buck-boost, WL-CSP-15B 1.4x2.3 mm, 0.4 mm pitch, 0.6 mm max. Ball map identical to the U902 land (A1 EN, A2/A3 VIN, B1 VSEL, B2/B3 LX1, C1 AGND, C2/C3 PGND, D1 SCL, D2/D3 LX2, E1 SDA, E2/E3 VOUT). VSEL high: 3.45 V at power-up (VOUT2 reset 0x39); firmware writes 0x05 = 0x33 for 3.3 V (V = 2.025 V + code x 25 mV). I2C 0x75, IQ 2 uA typ, ILIM_P 4.5-5.5 A."
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -47,7 +47,7 @@
 			)
 		)
 	)
-	(property "Manufacturer" "SGMICRO"
+	(property "Manufacturer" "Richtek"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -59,7 +59,7 @@
 			)
 		)
 	)
-	(property "MPN" "SGM62125AXG/TR"
+	(property "MPN" "RT6160AWSC"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -71,7 +71,7 @@
 			)
 		)
 	)
-	(property "LCSC" ""
+	(property "LCSC" "C7065276"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -83,7 +83,7 @@
 			)
 		)
 	)
-	(property "PandaSupplyRoute" "EXACT_MANUFACTURER_TO_JLC_CONSIGNMENT"
+	(property "PandaSupplyRoute" "JLC_ASSEMBLY_STOCK"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -107,7 +107,7 @@
 			)
 		)
 	)
-	(property "PandaSupplyStatus" "JLC_REGISTRATION_AND_RECEIPT_PENDING"
+	(property "PandaSupplyStatus" "JLC_STOCK_20261108"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

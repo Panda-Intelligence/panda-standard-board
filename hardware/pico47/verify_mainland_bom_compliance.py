@@ -175,6 +175,13 @@ USER_APPROVED_NON_MAINLAND: dict[tuple[str, str], dict[str, str]] = {
         "reason": "SY7636ARMC (Silergy) has no JLC/LCSC stock; the user chose a JLC-stocked EPD PMIC redesign. "
                   "No mainland EPD PMIC was in stock on 2026-11-08.",
     },
+    ("Single", "U902"): {
+        "manufacturer": "Richtek",
+        "mpn": "RT6160AWSC",
+        "approved": "2026-11-08",
+        "reason": "SGM62125AXG/TR is not stocked at JLC/LCSC; RT6160AWSC fits the same WLCSP-15 land. "
+                  "No mainland low-IQ buck-boost was in JLC stock on 2026-11-08.",
+    },
 }
 
 NON_PURCHASED_PCB_FEATURE_MANUFACTURER = "PCB fabricated terminal"

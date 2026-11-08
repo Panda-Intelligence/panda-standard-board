@@ -220,6 +220,26 @@
       "description": "Sunlord MWSA0412S-1R0MT 1uH +/-20%, 4.2 x 4.4 x 1.0+/-0.2 mm (1.2 mm max), DCR 47 mOhm, Isat 3.8/4.4 A. Same MWSA04xxS land pattern.",
       "reason": "Height: 2.0 mm max -> 1.2 mm max on the same land. Isat 3.8 A covers prototype charging up to about 2 A; full 3 A charging needs bench confirmation.",
       "jlc_stock_20261108": 442
+    },
+    {
+      "refs": [
+        "U902"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM62125AXG/TR",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "Richtek",
+        "mpn": "RT6160AWSC",
+        "lcsc": "C7065276",
+        "value": "RT6160AWSC"
+      },
+      "datasheet": "https://www.richtek.com/assets/product_file/RT6160A/DS6160A-02.pdf",
+      "description": "Richtek RT6160AWSC 3 A I2C buck-boost, WL-CSP-15B 1.4x2.3 mm, 0.4 mm pitch, 0.6 mm max. Ball map identical to the U902 land (A1 EN, A2/A3 VIN, B1 VSEL, B2/B3 LX1, C1 AGND, C2/C3 PGND, D1 SCL, D2/D3 LX2, E1 SDA, E2/E3 VOUT). VSEL high: 3.45 V at power-up (VOUT2 reset 0x39); firmware writes 0x05 = 0x33 for 3.3 V (V = 2.025 V + code x 25 mV). I2C 0x75, IQ 2 uA typ, ILIM_P 4.5-5.5 A.",
+      "reason": "User decision 2026-11-08 (replaces the SGM62125 consignment): SGM62125 is not stocked; RT6160AWSC drops onto the same land with 0.47 uH. Non-mainland (Richtek, Taiwan); exact per-reference exception in verify_mainland_bom_compliance.py.",
+      "jlc_stock_20261108": 10655
     }
   ],
   "unchanged_low_stock": [
@@ -228,14 +248,6 @@
       "lcsc": "C2856698",
       "jlc_stock_20261108": 11,
       "note": "Enough for up to 11 boards; re-check before ordering."
-    }
-  ],
-  "consigned": [
-    {
-      "ref": "U902",
-      "manufacturer": "SGMICRO",
-      "mpn": "SGM62125AXG/TR",
-      "note": "User decision 2026-11-08: keep the mainland part and consign it."
     }
   ]
 }
