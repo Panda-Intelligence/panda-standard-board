@@ -1,0 +1,193 @@
+(footprint "R904_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "R904"
+		(at 0 -2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9c019783-fc90-4777-b114-43e6d32bd8f8")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Value" "100R / CW2217 VCELL"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c615f477-b6f8-4801-a6f0-00a47246df8a")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "96fb69d2-aa87-4ab0-a3b1-d6a00a6d5d22")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "C4D-5 CW2217 support component"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "741181b4-1838-44ca-bd9b-8f367a561b94")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Manufacturer" "FOJAN"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "47b0bc74-33c7-4324-85db-acfdd2b7d05c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "FRC0603F1000TS"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1be5dcdf-ec8a-4389-948b-82f7dcb62ba3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C2906981"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eda5552a-ea21-4e93-9fdd-81cbea6f08b2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "JLCPCB" "C2906981"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d07e73f7-ceb8-4c7d-ad55-50d673a2b9f6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Tolerance" "1%"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a119c9d9-5a82-4447-b0f5-09ec41a1ba9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Power_Rating" "100mW"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5228af1d-8554-4adb-b96a-165d271a49d2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-C4D5-CW2217"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d672ae28-0fd7-4442-8e94-32329153cd3b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.237258 -0.5225)
+		(end 0.237258 -0.5225)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "72d5c5b8-d5a1-4242-a50d-720eb1f55af8")
+	)
+	(fp_line
+		(start -0.237258 0.5225)
+		(end 0.237258 0.5225)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "09811166-eedf-4b48-8daa-c55af5c492b6")
+	)
+	(fp_rect
+		(start -1.48 -0.73)
+		(end 1.48 0.73)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0fdfb6fe-f059-410b-a23f-13db80a59aa1")
+	)
+	(fp_rect
+		(start -0.8 -0.4125)
+		(end 0.8 0.4125)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "323df42b-76d4-45f4-a399-d112cf91e33d")
+	)
+	(pad "1" smd roundrect
+		(at -0.825 0)
+		(size 0.8 0.95)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "56da7185-8a10-41b3-b083-9c10f93ca71c")
+	)
+	(pad "2" smd roundrect
+		(at 0.825 0)
+		(size 0.8 0.95)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "fb7e9691-7459-4c04-ae86-8502848613e6")
+	)
+	(embedded_fonts no)
+)

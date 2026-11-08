@@ -1,0 +1,1651 @@
+{
+ "schema": "panda47-r50-pmic-frontlight-eco-v1",
+ "revision": "R50",
+ "baseline_revision": "R49",
+ "date": "2026-11-08",
+ "purpose": "User request 2026-11-08: every SMT line from JLC stock. SY7636ARMC (0 stock) -> TI TPS651851RSLR on the same 6x6 QFN-48 land; SGM37601 (0 stock) -> AWINIC AW99703CSR WLCSP-12 at the same centre.",
+ "part_fields": {
+  "U810": {
+   "Manufacturer": "Texas Instruments",
+   "MPN": "TPS651851RSLR",
+   "LCSC": "C702311",
+   "Value": "TPS651851RSLR",
+   "Datasheet": "https://www.ti.com/lit/ds/symlink/tps65185.pdf",
+   "Description": "TI TPS651851RSLR E-paper PMIC (VQFN-48 6x6, 0.4 mm). Thermal pad tied to VN (not GND). WAKEUP from U811 P04, PWRUP=P47_HV_EN, VCOM_CTRL=P47_VCOM_EN; VDDH 22 V (442k/21k), VEE -20 V (750k/39.2k to GND); VPOS/VNEG/VCOM set over I2C 0x68.",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "U905": {
+   "Manufacturer": "AWINIC",
+   "MPN": "AW99703CSR",
+   "LCSC": "C5162547",
+   "Value": "AW99703CSR",
+   "Datasheet": "https://www.lcsc.com/product-detail/C5162547.html",
+   "Description": "AWINIC AW99703CSR I2C boost LED driver, WLCSP-12 1.64x1.24 mm 0.4 mm pitch, 0.638 mm max (TI LM3697YFQ pin-compatible). HVLED1=cool, HVLED2=warm, HVLED3 unused; I2C 0x36; B2 SCL via-in-pad 0.25/0.15 filled and capped.",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "C807": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "0805B104K500NT",
+   "LCSC": "C38141",
+   "Value": "100n/50V/0805",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "C810": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "0805B104K500NT",
+   "LCSC": "C38141",
+   "Value": "100n/50V/0805",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "C808": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "0805B103K500NT",
+   "LCSC": "C52278",
+   "Value": "10n/50V/0805",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "C811": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "0805B103K500NT",
+   "LCSC": "C52278",
+   "Value": "10n/50V/0805",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "C815": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "0402X475M6R3NT",
+   "LCSC": "C168172",
+   "Value": "4.7u/6.3V/0402",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "R801": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "RC-02K4423FT",
+   "LCSC": "C48971911",
+   "Value": "442k/1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "R802": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "RC-02K2102FT",
+   "LCSC": "C324952",
+   "Value": "21k/1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "R803": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "RC-02K7503FT",
+   "LCSC": "C324820",
+   "Value": "750k/1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "R804": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "RC-02K3922FT",
+   "LCSC": "C324824",
+   "Value": "39.2k/1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "R806": {
+   "Manufacturer": "FH (Fenghua Advanced)",
+   "MPN": "RC-02K4302FT",
+   "LCSC": "C47345022",
+   "Value": "43k/1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "TH801": {
+   "Manufacturer": "Sunlord",
+   "MPN": "SDNT1005X103F3380FTF",
+   "LCSC": "C279776",
+   "Value": "10k NTC B3380 1%",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "L801": {
+   "Manufacturer": "Sunlord",
+   "MPN": "MWSA0618S-2R2MT",
+   "LCSC": "C408419",
+   "Value": "2.2uH / MWSA0618S-2R2MT",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  },
+  "L802": {
+   "Manufacturer": "Sunlord",
+   "MPN": "MWSA0615S-4R7MT",
+   "LCSC": "C19267541",
+   "Value": "4.7uH / MWSA0615S-4R7MT",
+   "PandaSupplyStatus": "JLC_STOCK_20261108",
+   "PandaSupplyRoute": "JLC_ASSEMBLY_STOCK"
+  }
+ },
+ "dnp_refs": {
+  "R805": "TPS651851 TS needs only NTC || 43k to AGND; the SY7636 VREF pull-up is not fitted.",
+  "C922": "AW99703 has no VDC regulator pin."
+ },
+ "schematic_pin_nets": {
+  "U810.5": "P47_WAKEUP",
+  "U811.8": "P47_WAKEUP",
+  "U810.6": "GND",
+  "U810.16": "P47_VN",
+  "U810.22": "P47_VN",
+  "U810.27": "P47_VN",
+  "U810.49": "P47_VN",
+  "U810.37": "P47_VP",
+  "U810.43": "P47_VP",
+  "R804.2": "GND",
+  "C922.1": ""
+ },
+ "u810_pin_names": {
+  "1": "VREF",
+  "2": "NINT",
+  "3": "VNEG",
+  "4": "VNEG_IN",
+  "5": "WAKEUP",
+  "6": "DGND",
+  "7": "INT_LDO",
+  "8": "AGND1",
+  "9": "VNEG_DIS",
+  "10": "VIN",
+  "11": "NC",
+  "12": "VCOM_CTRL",
+  "13": "NC",
+  "14": "VCOM_DIS",
+  "15": "VCOM",
+  "16": "VCOM_PWR",
+  "17": "SCL",
+  "18": "SDA",
+  "19": "VPOS_DIS",
+  "20": "NC",
+  "21": "PWRUP",
+  "22": "PBKG",
+  "23": "PWR_GOOD",
+  "24": "VIN_P",
+  "25": "VN_SW",
+  "26": "VN",
+  "27": "VEE_IN",
+  "28": "VEE_DRV",
+  "29": "VEE_DIS",
+  "30": "VEE_D",
+  "31": "VEE_FB",
+  "32": "PGND2",
+  "33": "VDDH_FB",
+  "34": "VDDH_D",
+  "35": "VDDH_DIS",
+  "36": "VDDH_DRV",
+  "37": "VDDH_IN",
+  "38": "NC",
+  "39": "NC",
+  "40": "VB_SW",
+  "41": "PGND1",
+  "42": "VB",
+  "43": "VPOS_IN",
+  "44": "VPOS",
+  "45": "VIN3P3",
+  "46": "V3P3",
+  "47": "TS",
+  "48": "AGND2",
+  "49": "EP_VN"
+ },
+ "u905": {
+  "center_mm": [
+   7.5,
+   124.7
+  ],
+  "rotation_deg": 90.0,
+  "old_gnd_copper_box": [
+   5.2,
+   122.4,
+   9.9,
+   127.0
+  ],
+  "pins": {
+   "A1": [
+    "PWM",
+    "FL_PWM"
+   ],
+   "A2": [
+    "SDA",
+    "I2C_SDA"
+   ],
+   "A3": [
+    "HWEN",
+    "FL_HWEN"
+   ],
+   "B1": [
+    "HVLED1",
+    "FL_C_N"
+   ],
+   "B2": [
+    "SCL",
+    "I2C_SCL"
+   ],
+   "B3": [
+    "VIN",
+    "FL_VIN"
+   ],
+   "C1": [
+    "HVLED2",
+    "FL_W_N"
+   ],
+   "C2": [
+    "AGND",
+    "GND"
+   ],
+   "C3": [
+    "PGND",
+    "GND"
+   ],
+   "D1": [
+    "HVLED3",
+    ""
+   ],
+   "D2": [
+    "OUT",
+    "FL_VOUT"
+   ],
+   "D3": [
+    "SW",
+    "FL_SW"
+   ]
+  }
+ },
+ "pmic_copper": {
+  "schema": "panda47-r50-pmic-eco-v1",
+  "pad_nets": {
+   "U810.5": "P47_WAKEUP",
+   "U811.8": "P47_WAKEUP",
+   "U810.6": "GND",
+   "U810.16": "P47_VN",
+   "U810.22": "P47_VN",
+   "U810.27": "P47_VN",
+   "U810.49": "P47_VN",
+   "U810.37": "P47_VP",
+   "U810.43": "P47_VP",
+   "R804.2": "GND"
+  },
+  "remove_all_copper_of_nets": [
+   "P47_VREF"
+  ],
+  "remove_tracks": [
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "bbox": [
+     11.0,
+     94.9,
+     12.2,
+     95.3
+    ]
+   },
+   {
+    "net": "P47_VN",
+    "layer": "B.Cu",
+    "y": 95.125,
+    "x_max": 18.1
+   }
+  ],
+  "remove_vias": [
+   {
+    "net": "P47_VN",
+    "x": 11.625,
+    "y": 95.225
+   }
+  ],
+  "remove_in_windows": {
+   "P47_VP_LX": [
+    [
+     16.3,
+     91.7,
+     18.7,
+     93.5
+    ]
+   ],
+   "P47_VGH_DRV": [
+    [
+     18.3,
+     92.6,
+     19.4,
+     94.0
+    ]
+   ]
+  },
+  "add_tracks": [
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.25,
+    "x1": 21.599999999999998,
+    "y1": 95.28999999999999,
+    "x2": 21.425,
+    "y2": 95.15
+   },
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.25,
+    "x1": 21.425,
+    "y1": 95.15,
+    "x2": 21.275000000000002,
+    "y2": 95.15
+   },
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.25,
+    "x1": 21.275000000000002,
+    "y1": 95.15,
+    "x2": 21.0,
+    "y2": 94.875
+   },
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.549999999999999,
+    "y1": 95.8,
+    "x2": 11.925,
+    "y2": 95.80000000000001
+   },
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.925,
+    "y1": 95.80000000000001,
+    "x2": 11.875,
+    "y2": 95.75
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.55,
+    "y1": 95.4,
+    "x2": 12.125,
+    "y2": 95.4
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.125,
+    "y1": 95.4,
+    "x2": 11.925,
+    "y2": 95.2
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.925,
+    "y1": 95.2,
+    "x2": 11.8,
+    "y2": 95.2
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 11.8,
+    "y1": 95.2,
+    "x2": 11.925,
+    "y2": 95.325
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 11.925,
+    "y1": 95.325,
+    "x2": 12.075,
+    "y2": 95.325
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 12.075,
+    "y1": 95.325,
+    "x2": 12.3,
+    "y2": 95.55
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 12.3,
+    "y1": 95.55,
+    "x2": 12.3,
+    "y2": 100.825
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 12.3,
+    "y1": 100.825,
+    "x2": 10.575,
+    "y2": 102.55
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 10.575,
+    "y1": 102.55,
+    "x2": 10.575,
+    "y2": 105.55
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 10.575,
+    "y1": 105.55,
+    "x2": 11.6,
+    "y2": 106.575
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.6,
+    "y1": 106.575,
+    "x2": 13.875,
+    "y2": 108.85
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 13.875,
+    "y1": 108.85,
+    "x2": 13.875,
+    "y2": 109.325
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 13.875,
+    "y1": 109.325,
+    "x2": 13.325,
+    "y2": 109.875
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 13.325,
+    "y1": 109.875,
+    "x2": 9.375,
+    "y2": 109.875
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 9.375,
+    "y1": 109.875,
+    "x2": 9.05,
+    "y2": 110.2
+   },
+   {
+    "net": "P47_WAKEUP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 9.05,
+    "y1": 110.2,
+    "x2": 8.975,
+    "y2": 110.8625
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.55,
+    "y1": 93.8,
+    "x2": 12.25,
+    "y2": 93.8
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.25,
+    "y1": 93.8,
+    "x2": 11.95,
+    "y2": 93.5
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 11.95,
+    "y1": 93.5,
+    "x2": 11.95,
+    "y2": 93.55
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 11.95,
+    "y1": 93.55,
+    "x2": 12.175,
+    "y2": 93.775
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 12.175,
+    "y1": 93.775,
+    "x2": 12.32,
+    "y2": 94.0
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.9,
+    "y1": 93.425,
+    "x2": 11.475,
+    "y2": 93.0
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.475,
+    "y1": 93.0,
+    "x2": 11.475,
+    "y2": 92.775
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.475,
+    "y1": 92.775,
+    "x2": 11.15,
+    "y2": 92.45
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.15,
+    "y1": 92.45,
+    "x2": 9.55,
+    "y2": 92.45
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 9.55,
+    "y1": 92.45,
+    "x2": 8.625,
+    "y2": 91.525
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.625,
+    "y1": 91.525,
+    "x2": 8.025,
+    "y2": 91.525
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.025,
+    "y1": 91.525,
+    "x2": 7.625,
+    "y2": 91.125
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 7.625,
+    "y1": 91.125,
+    "x2": 7.625,
+    "y2": 90.575
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.625,
+    "y1": 90.575,
+    "x2": 7.625,
+    "y2": 90.225
+   },
+   {
+    "net": "P47_VREF",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.625,
+    "y1": 90.225,
+    "x2": 7.49,
+    "y2": 90.0
+   },
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 12.55,
+    "y1": 95.0,
+    "x2": 13.45,
+    "y2": 95.0
+   },
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 14.5,
+    "y1": 98.95,
+    "x2": 14.5,
+    "y2": 98.05
+   },
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 16.9,
+    "y1": 98.95,
+    "x2": 16.9,
+    "y2": 98.05
+   },
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 18.45,
+    "y1": 97.4,
+    "x2": 17.55,
+    "y2": 97.4
+   },
+   {
+    "net": "P47_VN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 18.45,
+    "y1": 97.8,
+    "x2": 17.55,
+    "y2": 97.8
+   },
+   {
+    "net": "P47_VP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 15.7,
+    "y1": 93.05,
+    "x2": 15.7,
+    "y2": 93.025
+   },
+   {
+    "net": "P47_VP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 15.7,
+    "y1": 93.025,
+    "x2": 15.3,
+    "y2": 93.025
+   },
+   {
+    "net": "P47_VP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 15.3,
+    "y1": 93.025,
+    "x2": 15.3,
+    "y2": 93.05
+   },
+   {
+    "net": "P47_VP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 17.75,
+    "y1": 91.4,
+    "x2": 17.7,
+    "y2": 91.775
+   },
+   {
+    "net": "P47_VP",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 17.7,
+    "y1": 91.775,
+    "x2": 17.7,
+    "y2": 93.05
+   },
+   {
+    "net": "P47_VP_LX",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 17.35,
+    "y1": 91.575,
+    "x2": 16.575,
+    "y2": 92.35
+   },
+   {
+    "net": "P47_VP_LX",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 16.575,
+    "y1": 92.35,
+    "x2": 16.575,
+    "y2": 92.375
+   },
+   {
+    "net": "P47_VP_LX",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 16.575,
+    "y1": 92.375,
+    "x2": 16.575,
+    "y2": 92.6
+   },
+   {
+    "net": "P47_VP_LX",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 16.575,
+    "y1": 92.6,
+    "x2": 16.5,
+    "y2": 92.675
+   },
+   {
+    "net": "P47_VP_LX",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 16.5,
+    "y1": 92.675,
+    "x2": 16.5,
+    "y2": 93.05
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 17.4,
+    "y1": 89.95,
+    "x2": 18.125,
+    "y2": 90.675
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 18.125,
+    "y1": 90.675,
+    "x2": 18.125,
+    "y2": 93.375
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 18.125,
+    "y1": 93.375,
+    "x2": 18.175,
+    "y2": 93.425
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 18.175,
+    "y1": 93.425,
+    "x2": 18.175,
+    "y2": 93.8
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 18.175,
+    "y1": 93.8,
+    "x2": 18.45,
+    "y2": 93.8
+   }
+  ],
+  "add_vias": [
+   {
+    "net": "GND",
+    "x": 21.0,
+    "y": 94.875,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "GND",
+    "x": 11.875,
+    "y": 95.75,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_WAKEUP",
+    "x": 11.8,
+    "y": 95.2,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_WAKEUP",
+    "x": 11.6,
+    "y": 106.575,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_VREF",
+    "x": 11.95,
+    "y": 93.5,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_VREF",
+    "x": 9.55,
+    "y": 92.45,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_VREF",
+    "x": 7.625,
+    "y": 90.575,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_VP_LX",
+    "x": 16.575,
+    "y": 92.375,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "P47_VGH_DRV",
+    "x": 18.175,
+    "y": 93.425,
+    "d": 0.4,
+    "drill": 0.2
+   }
+  ]
+ },
+ "frontlight_copper": {
+  "schema": "panda47-r50-fl-eco-v1",
+  "remove_all_copper_of_nets": [
+   "FL_VDC"
+  ],
+  "remove_in_windows": {
+   "FL_SW": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_VOUT": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_C_N": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_W_N": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_VIN": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_PWM": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "FL_HWEN": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "I2C_SDA": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ],
+   "I2C_SCL": [
+    [
+     4.4,
+     121.6,
+     10.4,
+     127.4
+    ]
+   ]
+  },
+  "add_tracks": [
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.7,
+    "y1": 124.7,
+    "x2": 7.7,
+    "y2": 124.3
+   },
+   {
+    "net": "GND",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.7,
+    "y1": 124.3,
+    "x2": 7.7,
+    "y2": 123.925
+   },
+   {
+    "net": "FL_SW",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.1,
+    "y1": 124.3,
+    "x2": 8.125,
+    "y2": 124.325
+   },
+   {
+    "net": "FL_SW",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.125,
+    "y1": 124.325,
+    "x2": 10.875,
+    "y2": 124.325
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.1,
+    "y1": 124.7,
+    "x2": 8.125,
+    "y2": 124.725
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.125,
+    "y1": 124.725,
+    "x2": 8.225,
+    "y2": 124.725
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.225,
+    "y1": 124.725,
+    "x2": 10.35,
+    "y2": 126.85
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 10.35,
+    "y1": 126.85,
+    "x2": 10.35,
+    "y2": 127.65
+   },
+   {
+    "net": "FL_C_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.3,
+    "y1": 125.1,
+    "x2": 7.35,
+    "y2": 125.15
+   },
+   {
+    "net": "FL_C_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.35,
+    "y1": 125.15,
+    "x2": 7.35,
+    "y2": 125.475
+   },
+   {
+    "net": "FL_C_N",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 7.35,
+    "y1": 125.475,
+    "x2": 8.375,
+    "y2": 126.5
+   },
+   {
+    "net": "FL_C_N",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 8.375,
+    "y1": 126.5,
+    "x2": 9.975,
+    "y2": 126.5
+   },
+   {
+    "net": "FL_C_N",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 9.975,
+    "y1": 126.5,
+    "x2": 11.925,
+    "y2": 128.45
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.7,
+    "y1": 125.1,
+    "x2": 7.675,
+    "y2": 125.125
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.675,
+    "y1": 125.125,
+    "x2": 7.675,
+    "y2": 125.2
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.675,
+    "y1": 125.2,
+    "x2": 7.775,
+    "y2": 125.3
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.775,
+    "y1": 125.3,
+    "x2": 7.775,
+    "y2": 125.4
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.775,
+    "y1": 125.4,
+    "x2": 8.1,
+    "y2": 125.725
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 8.1,
+    "y1": 125.725,
+    "x2": 8.55,
+    "y2": 125.725
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 8.55,
+    "y1": 125.725,
+    "x2": 9.875,
+    "y2": 125.725
+   },
+   {
+    "net": "FL_W_N",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 9.875,
+    "y1": 125.725,
+    "x2": 11.7,
+    "y2": 127.55
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.675,
+    "y1": 121.2,
+    "x2": 7.675,
+    "y2": 123.325
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.675,
+    "y1": 123.325,
+    "x2": 7.275,
+    "y2": 123.725
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.275,
+    "y1": 123.725,
+    "x2": 7.275,
+    "y2": 124.275
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.275,
+    "y1": 124.275,
+    "x2": 7.3,
+    "y2": 124.3
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 7.275,
+    "y1": 123.875,
+    "x2": 7.15,
+    "y2": 123.875
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 7.15,
+    "y1": 123.875,
+    "x2": 7.15,
+    "y2": 124.0
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 7.15,
+    "y1": 124.0,
+    "x2": 7.5,
+    "y2": 124.35
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 7.5,
+    "y1": 124.35,
+    "x2": 7.525,
+    "y2": 124.35
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 7.525,
+    "y1": 124.35,
+    "x2": 8.15,
+    "y2": 124.975
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.15,
+    "y1": 124.975,
+    "x2": 8.15,
+    "y2": 125.55
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.15,
+    "y1": 125.55,
+    "x2": 8.05,
+    "y2": 125.65
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.05,
+    "y1": 125.65,
+    "x2": 8.05,
+    "y2": 126.1
+   },
+   {
+    "net": "FL_VIN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.05,
+    "y1": 126.1,
+    "x2": 9.675,
+    "y2": 127.725
+   },
+   {
+    "net": "FL_PWM",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 4.75,
+    "y1": 128.74,
+    "x2": 4.925,
+    "y2": 128.55
+   },
+   {
+    "net": "FL_PWM",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 4.925,
+    "y1": 128.55,
+    "x2": 4.925,
+    "y2": 127.075
+   },
+   {
+    "net": "FL_PWM",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 4.925,
+    "y1": 127.075,
+    "x2": 6.9,
+    "y2": 125.1
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.25,
+    "y1": 125.75,
+    "x2": 10.925,
+    "y2": 125.425
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 10.925,
+    "y1": 125.425,
+    "x2": 10.575,
+    "y2": 125.425
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 10.575,
+    "y1": 125.425,
+    "x2": 8.6,
+    "y2": 123.45
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 8.6,
+    "y1": 123.45,
+    "x2": 6.95,
+    "y2": 123.45
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.95,
+    "y1": 123.45,
+    "x2": 6.6,
+    "y2": 123.8
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.6,
+    "y1": 123.8,
+    "x2": 6.6,
+    "y2": 124.0
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.6,
+    "y1": 124.0,
+    "x2": 6.9,
+    "y2": 124.3
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.525,
+    "y1": 123.95,
+    "x2": 5.725,
+    "y2": 123.95
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 5.725,
+    "y1": 123.95,
+    "x2": 4.7,
+    "y2": 122.925
+   },
+   {
+    "net": "FL_HWEN",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 4.7,
+    "y1": 122.925,
+    "x2": 4.51,
+    "y2": 122.75
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 7.05,
+    "y1": 120.825,
+    "x2": 7.05,
+    "y2": 122.925
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 7.05,
+    "y1": 122.925,
+    "x2": 6.175,
+    "y2": 123.8
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 6.175,
+    "y1": 123.8,
+    "x2": 6.175,
+    "y2": 124.25
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 6.175,
+    "y1": 124.25,
+    "x2": 6.525,
+    "y2": 124.6
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.525,
+    "y1": 124.6,
+    "x2": 6.7,
+    "y2": 124.6
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.7,
+    "y1": 124.6,
+    "x2": 6.775,
+    "y2": 124.675
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.775,
+    "y1": 124.675,
+    "x2": 6.875,
+    "y2": 124.675
+   },
+   {
+    "net": "I2C_SDA",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 6.875,
+    "y1": 124.675,
+    "x2": 6.9,
+    "y2": 124.7
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.975,
+    "y1": 121.5,
+    "x2": 6.975,
+    "y2": 123.0
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.975,
+    "y1": 123.0,
+    "x2": 6.1,
+    "y2": 123.875
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.1,
+    "y1": 123.875,
+    "x2": 6.1,
+    "y2": 124.8
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.1,
+    "y1": 124.8,
+    "x2": 6.325,
+    "y2": 125.025
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.325,
+    "y1": 125.025,
+    "x2": 6.975,
+    "y2": 125.025
+   },
+   {
+    "net": "I2C_SCL",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "x1": 6.975,
+    "y1": 125.025,
+    "x2": 7.275,
+    "y2": 124.725
+   },
+   {
+    "net": "FL_SW",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 11.225,
+    "y1": 123.65,
+    "x2": 10.95,
+    "y2": 122.75
+   },
+   {
+    "net": "FL_SW",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 10.95,
+    "y1": 122.75,
+    "x2": 10.95,
+    "y2": 122.325
+   },
+   {
+    "net": "FL_SW",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 10.95,
+    "y1": 122.325,
+    "x2": 10.125,
+    "y2": 121.5
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "x1": 12.1,
+    "y1": 122.2,
+    "x2": 9.0,
+    "y2": 125.3
+   },
+   {
+    "net": "FL_VOUT",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "x1": 9.0,
+    "y1": 125.3,
+    "x2": 8.9,
+    "y2": 125.4
+   }
+  ],
+  "add_vias": [
+   {
+    "net": "I2C_SCL",
+    "x": 7.3,
+    "y": 124.7,
+    "d": 0.25,
+    "drill": 0.15
+   },
+   {
+    "net": "GND",
+    "x": 7.7,
+    "y": 123.925,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_C_N",
+    "x": 7.35,
+    "y": 125.475,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_W_N",
+    "x": 8.55,
+    "y": 125.725,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_VIN",
+    "x": 7.15,
+    "y": 123.875,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_HWEN",
+    "x": 10.575,
+    "y": 125.425,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_HWEN",
+    "x": 6.6,
+    "y": 124.0,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "I2C_SDA",
+    "x": 6.525,
+    "y": 124.6,
+    "d": 0.4,
+    "drill": 0.2
+   },
+   {
+    "net": "FL_VOUT",
+    "x": 9.0,
+    "y": 125.3,
+    "d": 0.4,
+    "drill": 0.2
+   }
+  ],
+  "remove_tracks": [
+   {
+    "net": "FL_C_N",
+    "layer": "B.Cu",
+    "bbox": [
+     11.92,
+     128.37,
+     11.93,
+     128.455
+    ],
+    "note": "0.075 mm remnant left dangling by the window cut"
+   }
+  ]
+ },
+ "dru_rules": "\n(rule \"U905 AW99703 B2 (SCL) 0.25/0.15 mm filled-and-capped via-in-pad\"\n\t(constraint via_diameter (min 0.25mm))\n\t(constraint annular_width (min 0.05mm))\n\t(constraint hole_size (min 0.15mm))\n\t(constraint hole_clearance (min 0.2mm))\n\t(condition \"A.Type == 'Via' && A.NetName == 'I2C_SCL' && A.insideCourtyard('U905')\")\n)\n\n(rule \"U905 AW99703 WLCSP 0.4 mm internal ball-land clearance\"\n\t(constraint clearance (min 0.15mm))\n\t(condition \"A.memberOfFootprint('U905') && B.memberOfFootprint('U905')\")\n)\n"
+}

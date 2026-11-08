@@ -1,0 +1,128 @@
+(footprint "C203_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "BQ25628E C203 provisional CPMID >=10 uF, >=16 V 1206 engineering envelope. Not a supplier-approved land pattern or released BOM item.")
+	(property "Reference" "C203"
+		(at 0 -1.35 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2b7ef65b-3995-45d0-afb2-fda085dbfccb")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "10u / PMID"
+		(at 0 1.35 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4e00f6a0-e4d1-4324-ac09-e0c99e8686bc")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25628e.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc626b1a-9902-4d01-85d4-f0b01ec8c5ae")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "BQ25628E local PMID bypass, >=10 uF and recommended >=16 V; provisional 1206 engineering footprint"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "69331fc7-8eaa-4e75-9fc2-c61451a5d8fc")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "826a2063-ae2a-49e0-807a-4c976a9868f8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "1206B106K250NT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "671a34bb-7797-4b30-b2f3-8a9cee557de7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C90538"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "57cbc460-6eb3-434e-83d2-a7f28a42d267")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.8 -1)
+		(end 1.8 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "f2f03bb7-c5b3-4f88-96c8-cfa8badfa978")
+	)
+	(fp_rect
+		(start -1.6 -0.8)
+		(end 1.6 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "6ef1be70-e0ac-48e8-822f-b1875f838a59")
+	)
+	(pad "1" smd roundrect
+		(at -1.25 0)
+		(size 1.2 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "481fe922-fa8f-41e5-8ba2-e7f816eb772d")
+	)
+	(pad "2" smd roundrect
+		(at 1.25 0)
+		(size 1.2 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "01ebde31-e57b-44e2-9ae4-1661307cb833")
+	)
+	(embedded_fonts no)
+)

@@ -149,8 +149,29 @@ class MainlandBomComplianceTests(unittest.TestCase):
             self.assertEqual(len(res["sch_parity_mismatches"]), 1)
             self.assertEqual(res["sch_parity_mismatches"][0]["ref"], "C501")
 
-    def test_registry_has_26_verified_mainland_manufacturers(self) -> None:
-        self.assertEqual(len(MAINLAND_MANUFACTURERS), 26)
+    def test_user_approved_exception_is_exact_per_reference(self) -> None:
+        import verify_mainland_bom_compliance as V
+        saved = dict(V.USER_APPROVED_NON_MAINLAND)
+        try:
+            V.USER_APPROVED_NON_MAINLAND[("Single", "U501")] = {
+                "manufacturer": "Texas Instruments", "mpn": "ESP32-S3R8", "approved": "test", "reason": "test"}
+            with tempfile.TemporaryDirectory() as tmp:
+                cand = Path(tmp)
+                _sample_pcb_and_sch(cand, "Single", u501_mfg="Texas Instruments")
+                res = verify_board_mainland_compliance(cand, "Single")
+                self.assertTrue(res["all_passed"])
+                self.assertEqual([x["ref"] for x in res["user_approved_non_mainland_refs"]], ["U501"])
+            V.USER_APPROVED_NON_MAINLAND[("Single", "U501")]["mpn"] = "OTHER"
+            with tempfile.TemporaryDirectory() as tmp:
+                cand = Path(tmp)
+                _sample_pcb_and_sch(cand, "Single", u501_mfg="Texas Instruments")
+                self.assertFalse(verify_board_mainland_compliance(cand, "Single")["all_passed"])
+        finally:
+            V.USER_APPROVED_NON_MAINLAND.clear()
+            V.USER_APPROVED_NON_MAINLAND.update(saved)
+
+    def test_registry_has_27_verified_mainland_manufacturers(self) -> None:
+        self.assertEqual(len(MAINLAND_MANUFACTURERS), 27)
         for mfg, info in MAINLAND_MANUFACTURERS.items():
             self.assertIn("China", info["hq_location"], f"{mfg} must be located in China")
             self.assertTrue(info["chinese_name"], f"{mfg} must have full Chinese corporate name")

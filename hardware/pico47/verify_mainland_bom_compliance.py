@@ -49,6 +49,11 @@ MAINLAND_MANUFACTURERS: dict[str, dict[str, str]] = {
         "hq_location": "Hangzhou, Zhejiang, China (中国浙江杭州)",
         "category": "E-Paper Display PMIC",
     },
+    "AWINIC": {
+        "chinese_name": "上海艾为电子技术股份有限公司",
+        "hq_location": "Shanghai, China (中国上海)",
+        "category": "I2C Boost White-LED Driver",
+    },
     "Cellwise": {
         "chinese_name": "广东赛微微电子股份有限公司",
         "hq_location": "Dongguan, Guangdong, China (中国广东东莞)",
@@ -158,6 +163,17 @@ MAINLAND_MANUFACTURERS: dict[str, dict[str, str]] = {
         "chinese_name": "宜昌力佳科技有限公司",
         "hq_location": "Yichang, Hubei, China (中国湖北宜昌)",
         "category": "Primary Lithium Coin Cells (CR1216)",
+    },
+}
+
+# Exact, per-reference exceptions the user approved; any other foreign part still fails the audit.
+USER_APPROVED_NON_MAINLAND: dict[tuple[str, str], dict[str, str]] = {
+    ("Single", "U810"): {
+        "manufacturer": "Texas Instruments",
+        "mpn": "TPS651851RSLR",
+        "approved": "2026-11-08",
+        "reason": "SY7636ARMC (Silergy) has no JLC/LCSC stock; the user chose a JLC-stocked EPD PMIC redesign. "
+                  "No mainland EPD PMIC was in stock on 2026-11-08.",
     },
 }
 
@@ -601,6 +617,8 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
     sch_parity_mismatches: list[dict[str, Any]] = []
     manufacturer_breakdown: dict[str, dict[str, Any]] = {}
 
+    approved_non_mainland: list[dict[str, str]] = []
+
     for fp in footprints:
         ref = fp["ref"]
         mfg = fp["manufacturer"]
@@ -612,7 +630,13 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
         if not mpn:
             missing_mpn_refs.append(ref)
 
-        if mfg.lower() in FORBIDDEN_FOREIGN_MANUFACTURERS:
+        exception = USER_APPROVED_NON_MAINLAND.get((board, ref))
+        approved = bool(exception and exception["manufacturer"] == mfg and exception["mpn"] == mpn
+                        and fp["in_bom"] and not fp["dnp"])
+        if approved:
+            approved_non_mainland.append({"ref": ref, **exception})
+
+        if mfg.lower() in FORBIDDEN_FOREIGN_MANUFACTURERS and not approved:
             foreign_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "mpn": mpn})
 
         # Check schematic parity for Manufacturer, MPN, LCSC
@@ -639,7 +663,9 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
                 unrecognized_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "role": "dnp"})
         else:
             populated_bom.append(fp)
-            if mfg not in MAINLAND_MANUFACTURERS:
+            if approved:
+                pass
+            elif mfg not in MAINLAND_MANUFACTURERS:
                 unrecognized_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "role": "populated_bom"})
             else:
                 info = MAINLAND_MANUFACTURERS[mfg]
@@ -681,9 +707,11 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
         "non_bom_pcb_feature_count": len(non_bom_features),
         "distinct_mainland_manufacturers": len(breakdown_list),
         "mainland_populated_rate_pct": round(
-            100.0 * (len(populated_bom) - sum(1 for x in unrecognized_manufacturer_refs if x["role"] == "populated_bom")) / max(len(populated_bom), 1),
+            100.0 * (len(populated_bom) - len(approved_non_mainland)
+                     - sum(1 for x in unrecognized_manufacturer_refs if x["role"] == "populated_bom")) / max(len(populated_bom), 1),
             2,
         ),
+        "user_approved_non_mainland_refs": approved_non_mainland,
         "missing_manufacturer_refs": missing_manufacturer_refs,
         "missing_mpn_refs": missing_mpn_refs,
         "unrecognized_manufacturer_refs": unrecognized_manufacturer_refs,

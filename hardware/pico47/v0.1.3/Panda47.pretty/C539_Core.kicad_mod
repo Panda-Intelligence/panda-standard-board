@@ -1,0 +1,223 @@
+(footprint "C539_Core"
+		(layer "F.Cu")
+		(uuid "604d2adb-70aa-454c-b540-ef7ccad889ff")
+		(at 0 0)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
+		(tags "capacitor")
+		(property "Reference" "C539"
+			(at 0 -1.16 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ec4ebaaf-e1b1-4fcd-a6d7-29e809cfd6da")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "100nF 25V X7R / U503 VDD_IO"
+			(at 0 1.16 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0c9c67b-c997-4ab8-ae1b-2058e03190f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157353.html"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2909c549-4546-4fbb-b09c-c0cef83dceca")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "U503.5局部旁路，保留原有电容；有效电容、瞬态与整机装配仍待资格化。"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "299e7f87-29e0-4b7e-89bb-d0ecf15cb0ca")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f866a635-137f-4306-9cde-c4700328a241")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "FH (Fenghua Advanced)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33d1410d-cc26-43d6-963f-4b5ee427bdd7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0402B104K250NT"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "820d064b-c8d8-4e64-935a-96b46af283e5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C56392"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b825d3c9-69dd-4690-b257-2ef910c2fc66")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaRevision" "E0.2-R35"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8aa04caf-673b-41ac-a2da-b12579017fa0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaQualification" "UNQUALIFIED_ELECTRICAL_CANDIDATE"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f81f1878-37eb-455d-b9d9-cfdb6878cfce")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PandaSupplyStatus" "CATALOG_IDENTITY_ONLY"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "81203641-4967-4c5a-b16b-e4d30ec5db69")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -0.107836 -0.36)
+			(end 0.107836 -0.36)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a03c0df5-515d-4ab8-a8be-9c99c5804ac9")
+		)
+		(fp_line
+			(start -0.107836 0.36)
+			(end 0.107836 0.36)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "5198e3a6-92aa-4ec4-a613-3a9a1db96144")
+		)
+		(fp_poly
+			(pts
+				(xy -0.91 -0.46) (xy 0.91 -0.46) (xy 0.91 0.46) (xy -0.91 0.46)
+			)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "237d6abd-195d-498e-9692-3682f02023ab")
+		)
+		(fp_poly
+			(pts
+				(xy -0.5 -0.25) (xy 0.5 -0.25) (xy 0.5 0.25) (xy -0.5 0.25)
+			)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "1d5a8afd-c520-4c81-89c5-49a8bffe6589")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "0ac529e7-0fe6-4ca0-86b5-a5a7b7389070")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.48 0)
+			(size 0.56 0.62)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(roundrect_rratio 0.25)
+			
+			(uuid "feb1ffd7-d379-4941-b171-39f196e0335b")
+		)
+		(pad "2" smd roundrect
+			(at 0.48 0)
+			(size 0.56 0.62)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(roundrect_rratio 0.25)
+			
+			(zone_connect 2)
+			(uuid "0a5c8319-5e27-4cf1-937a-7b4f967db987")
+		)
+		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)

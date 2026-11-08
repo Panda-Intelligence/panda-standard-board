@@ -1,0 +1,241 @@
+{
+  "schema": "panda47-r50-jlc-stock-substitution-v1",
+  "revision": "R50-STOCK-20261108",
+  "baseline_revision": "R49",
+  "date": "2026-11-08",
+  "purpose": "User request 2026-11-08: every SMT line must be orderable from current JLC assembly stock, with the lowest height that fits the existing land pattern. Same footprint, pads, nets and placement; only the purchased identity changes. Stock was read from the JLC parts API on 2026-11-08.",
+  "substitutions": [
+    {
+      "refs": [
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R523",
+        "R524",
+        "R525",
+        "R526",
+        "R527",
+        "R528",
+        "R600",
+        "R731",
+        "R732",
+        "R807",
+        "R932",
+        "R933"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "RC-02K1002FT",
+        "lcsc": "C140215"
+      },
+      "to": {
+        "manufacturer": "FOJAN",
+        "mpn": "FRC0402F1002TS",
+        "lcsc": "C2906861"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2906861.html",
+      "reason": "C140215 has 0 JLC stock. Same 10 kOhm 1% 100 ppm 0402 thick-film rating; 0.35 mm nominal body, inside the 0.40 mm R731 backside budget.",
+      "jlc_stock_20261108": 14861270
+    },
+    {
+      "refs": [
+        "C303",
+        "C521",
+        "C527",
+        "C921"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0402B105K100NT",
+        "lcsc": "C1526"
+      },
+      "to": {
+        "manufacturer": "FOJAN",
+        "mpn": "FCC0402B105K100AT",
+        "lcsc": "C54938484"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C54938484.html",
+      "reason": "C1526 is marked discontinued at JLC. Same 1 uF 10 V X7R 10% 0402 rating.",
+      "jlc_stock_20261108": 29014
+    },
+    {
+      "refs": [
+        "C206",
+        "C801",
+        "C803",
+        "C816"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0805B106K100NT",
+        "lcsc": "C90544"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC0805X7R106K100FT",
+        "lcsc": "C380346"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C380346.html",
+      "reason": "C90544 has 0 JLC stock. Same 10 uF 10 V X7R 10% 0805 rating.",
+      "jlc_stock_20261108": 3013
+    },
+    {
+      "refs": [
+        "D202"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM05HU1ALXUGY2G/TR",
+        "lcsc": "C55274065"
+      },
+      "to": {
+        "manufacturer": "LRC",
+        "mpn": "LESD8D5.0T5G",
+        "lcsc": "C172414",
+        "value": "LESD8D5.0T5G"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C172414.html",
+      "description": "LRC LESD8D5.0T5G SOD-882 (1.0 x 0.6 x 0.5 mm) unidirectional VBUS ESD; VRWM 5.0 V, VBR 6.2 V min, IPP 8.7 A, 107 W (8/20 us). Pin 1 = cathode/VBUS, pin 2 = anode/GND on the existing 0.25 x 0.50 mm lands at 0.65 mm pitch. 5 V USB sink only.",
+      "reason": "C55274065 has 0 JLC stock. VRWM drops from 5.5 V to 5.0 V; still above the 5 V no-PD sink with VBR 6.2 V minimum.",
+      "jlc_stock_20261108": 9910
+    },
+    {
+      "refs": [
+        "U906"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM809B-TXN3LG/TR",
+        "lcsc": "C699619"
+      },
+      "to": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM809B-SXN3LG/TR",
+        "lcsc": "C699617",
+        "value": "SGM809B-SXN3LG/TR"
+      },
+      "datasheet": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "description": "SGMICRO 2.93V AON status monitor (same family, same SOT-23 pin map); push-pull active-low nRESET drives PG_3V3_MAIN. Pin1GND/2nRESET/3VCC. Not a hard MCU reset or guaranteed brownout protector.",
+      "reason": "The 3.08 V T-suffix has 0 JLC stock; the 2.93 V S-suffix is the same die family and footprint. The output is a status signal only.",
+      "jlc_stock_20261108": 3321
+    },
+    {
+      "refs": [
+        "U907"
+      ],
+      "from": {
+        "manufacturer": "XySemi (Suzhou Saixin)",
+        "mpn": "XB7608A",
+        "lcsc": "C669688"
+      },
+      "to": {
+        "manufacturer": "XySemi (Suzhou Saixin)",
+        "mpn": "XB7608AJ",
+        "lcsc": "C2681921",
+        "value": "XB7608AJ / CELL PROTECTION"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2681921.html",
+      "description": "Single-cell protector with integrated MOSFET; 4.30V overcharge/4.10V release, 2.40V overdischarge/3.0V release, 9A typ overcurrent; CPC5 (same thresholds and pin map as XB7608A). Raw cell negative on pins2/3, protected system negative on4/5.",
+      "reason": "C669688 has 0 JLC stock. The datasheet threshold table is identical (4.30/4.10/2.40/3.0 V, 9 A).",
+      "jlc_stock_20261108": 15728
+    },
+    {
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM2578SDYG/TR",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM2578YG/TR",
+        "lcsc": "C403706",
+        "value": "SGM2578YG/TR"
+      },
+      "datasheet": "https://www.lcsc.com/datasheet/lcsc_datasheet_2005142136_SGMICRO-SGM2578YG-TR_C403706.pdf",
+      "description": "SGMICRO SGM2578YG/TR WLCSP-0.9x0.9-4B, 0.5 mm pitch: A1 VOUT, A2 VIN, B1 GND, B2 EN (active high, ~560 kOhm internal pull-down). 1 V-5 V input, 1 A continuous, 1.6 A typ current limit, 54 mOhm, reverse-voltage comparator and quick output discharge.",
+      "reason": "SGM2578SD (2 A) is not stocked by JLC. SGM2578YG has the same ball map and land; continuous rating drops from 2 A to 1 A, which covers SD, touch, EPD logic and the NS4168 audio rail. The EN pull-down keeps the switch off while the XL9535 pins are still inputs.",
+      "jlc_stock_20261108": 2440
+    },
+    {
+      "refs": [
+        "J201"
+      ],
+      "from": {
+        "manufacturer": "MUP",
+        "mpn": "U22401-17",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "MUP",
+        "mpn": "U22401-23",
+        "lcsc": "C49325733",
+        "value": "U22401-23 / MID-MOUNT"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C49325733.html",
+      "description": "MUP U22401-23 16P mid-mount USB-C, drawing DWG-U22401-XX-01 Rev2 (same drawing as the -XX family: 11.24 x 4.00 mm slot pitch, 0.8 mm PCB, 1.60 mm above board). Variants differ only in contact plating/housing material.",
+      "reason": "U22401-17 is not stocked by JLC; U22401-23 is listed on the same family drawing.",
+      "jlc_stock_20261108": 144
+    },
+    {
+      "refs": [
+        "L401"
+      ],
+      "from": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0402S-R47MT",
+        "lcsc": "C6331050"
+      },
+      "to": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0412S-R47MT",
+        "lcsc": "C5451683"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C5451683.html",
+      "description": "Sunlord MWSA0412S-R47MT 0.47uH +/-20%, 4.2 x 4.4 x 1.0+/-0.2 mm (1.2 mm max), DCR 21 mOhm, Isat 5.2/5.4 A. Same Sunlord MWSA04xxS land pattern (I 1.5 / J 2.2 / H 2.5 mm).",
+      "reason": "Height: 2.0 mm max -> 1.2 mm max on the same land. Isat 5.2 A covers the expected <2.5 A peak; a short-circuit at the converter current limit may saturate it.",
+      "jlc_stock_20261108": 3318
+    },
+    {
+      "refs": [
+        "L402"
+      ],
+      "from": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0402S-1R0MT",
+        "lcsc": "C408332"
+      },
+      "to": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0412S-1R0MT",
+        "lcsc": "C2991787"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2991787.html",
+      "description": "Sunlord MWSA0412S-1R0MT 1uH +/-20%, 4.2 x 4.4 x 1.0+/-0.2 mm (1.2 mm max), DCR 47 mOhm, Isat 3.8/4.4 A. Same MWSA04xxS land pattern.",
+      "reason": "Height: 2.0 mm max -> 1.2 mm max on the same land. Isat 3.8 A covers prototype charging up to about 2 A; full 3 A charging needs bench confirmation.",
+      "jlc_stock_20261108": 442
+    }
+  ],
+  "unchanged_low_stock": [
+    {
+      "ref": "D201",
+      "lcsc": "C2856698",
+      "jlc_stock_20261108": 11,
+      "note": "Enough for up to 11 boards; re-check before ordering."
+    }
+  ],
+  "consigned": [
+    {
+      "ref": "U902",
+      "manufacturer": "SGMICRO",
+      "mpn": "SGM62125AXG/TR",
+      "note": "User decision 2026-11-08: keep the mainland part and consign it."
+    }
+  ]
+}

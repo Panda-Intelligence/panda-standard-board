@@ -1,4 +1,8 @@
-# Current Continuation: E0.2 R49 — 前光升压供电修正（2026-11-06）
+# Current Continuation: E0.2 R50 — 嘉立创现货 BOM、TPS651851 墨水屏电源、AW99703 前光（2026-11-08）
+
+`hardware/pico47/v0.1.3/` 是 R50 的完整 KiCad 工程。R50 = R49 + 全部 SMT 改为嘉立创现货（U902 客供除外）：U810 由无货的 SY7636ARMC 改为 TI TPS651851RSLR（同一 6×6 QFN-48 焊盘，裸焊盘接 VN），U905 由无货的 SGM37601 改为 AWINIC AW99703CSR（WLCSP-12，与 TI LM3697 引脚兼容），另有同封装现货换料与更薄的电感。先读 [R50 说明](E02-R50-JLC-STOCK-PMIC-FRONTLIGHT-20261108.md)；用 `build_pico47_single_r50.py --output <.work 下新目录>` 从 R26 回放重建并导出下单包。原生检查全零，`manufacturing_release` 仍为 false。
+
+# Previous: E0.2 R49 — 前光升压供电修正（2026-11-06）
 
 `hardware/pico47/v0.1.2/` 是 R49 的完整 KiCad 工程（PCB＋常规画法的多页层次原理图＋本地库），可直接打开或打包导入；原理图由 `readable_schematic.py` 生成（目录页＋11 张 A4/A3 分页，标准元件图形、电源/地符号、阻容画在所服务的引脚旁），网表与 R49 完全相同。嘉立创EDA专业版的 KiCad 导入文档注明支持 10.0 以下版本：原理图为 KiCad 9 格式，PCB 为 KiCad 10 格式，导入前须实测。
 
