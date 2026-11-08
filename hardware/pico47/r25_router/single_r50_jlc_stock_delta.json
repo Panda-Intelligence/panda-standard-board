@@ -806,14 +806,26 @@
       "datasheet": "https://www.lcsc.com/product-detail/C1779.html",
       "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 25V 4.7uF X5R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
       "jlc_basic": true
-    }
-  ],
-  "unchanged_low_stock": [
+    },
     {
-      "ref": "D201",
-      "lcsc": "C2856698",
-      "jlc_stock_20261108": 11,
-      "note": "Enough for up to 11 boards; re-check before ordering."
+      "refs": [
+        "D201"
+      ],
+      "from": {
+        "manufacturer": "LRC",
+        "mpn": "LRC8804FDT1G",
+        "lcsc": "C2856698"
+      },
+      "to": {
+        "manufacturer": "LRC",
+        "mpn": "LRC8804DT1G",
+        "lcsc": "C2912064",
+        "value": "LRC8804DT1G"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2912064.html",
+      "description": "LRC LRC8804DT1G 4-channel rail-clamp ESD array, DFN2510-10 (same land as LRC8804FDT1G). Datasheet Rev.C pin diagram: 1/2/4/5 I/O (USB_DP, USB_DM, CC1, CC2), 3 and 8 GND (both tied to the anode rail), 6/7/9/10 no connection. VRWM 5.5 V, VBR 6 V min, Cio 0.6 pF max, 4 A 8/20 us. USB full speed and CC only.",
+      "reason": "LRC8804FDT1G had 11 pcs at JLC on 2026-11-08 (not enough for a 5-board run with attrition). Same family, package and pin map; I/O capacitance 0.6 pF max vs 0.3 pF, fine for 12 Mbps USB and CC.",
+      "jlc_stock_20261108": 2383
     }
   ]
 }

@@ -65,7 +65,7 @@ See `r25_router/single_r50_jlc_stock_delta.json` (same land, nets and placement)
 
 | U902 | SGMICRO SGM62125AXG/TR (not stocked) | Richtek RT6160AWSC C7065276 | same 15-ball land, 0.6 mm; see below |
 
-D201 LRC8804FDT1G had 11 pcs in stock — re-check before ordering.
+| D201 | LRC8804FDT1G C2856698 (11 pcs) | LRC8804DT1G C2912064 | same DFN2510-10 and pin map (1/2/4/5 I/O, 3/8 GND, 6/7/9/10 NC); Cio 0.6 pF max |
 
 ### U902 survey
 
@@ -84,7 +84,7 @@ All new copper was generated with the repository router (`r25_router/router2.py`
 - A second R50 run from the same R49 replay gives byte-identical BOM / CPL / drill files and geometrically identical Gerbers (only aperture order differs).
 - `v0.1.3/` checked on its own: all native checks 0. BOM audit: 225 populated (224 SMT + BT301), 7 DNP, U810 the only approved non-mainland part.
 - Via-in-pad inventory: 45 (U905's two old QFN via-in-pads are gone, U905.B2 added).
-- Every BOM line was re-read from the JLC API: all in stock for ≥5 boards; pending supply is empty. Lowest stock: D201 11, AW99703CSR 40, MWSA0618S-2R2MT 137, U22401-23 144, TPS651851RSLR 188.
+- Every BOM line was re-read from the JLC API: all in stock for ≥5 boards; pending supply is empty. Lowest stock: AW99703CSR 40, MWSA0618S-2R2MT 137, U22401-23 144, TPS651851RSLR 188.
 
 ## 6. Height (front side, after R50)
 
