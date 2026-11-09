@@ -49,6 +49,11 @@ MAINLAND_MANUFACTURERS: dict[str, dict[str, str]] = {
         "hq_location": "Hangzhou, Zhejiang, China (中国浙江杭州)",
         "category": "E-Paper Display PMIC",
     },
+    "AWINIC": {
+        "chinese_name": "上海艾为电子技术股份有限公司",
+        "hq_location": "Shanghai, China (中国上海)",
+        "category": "I2C Boost White-LED Driver",
+    },
     "Cellwise": {
         "chinese_name": "广东赛微微电子股份有限公司",
         "hq_location": "Dongguan, Guangdong, China (中国广东东莞)",
@@ -159,6 +164,55 @@ MAINLAND_MANUFACTURERS: dict[str, dict[str, str]] = {
         "hq_location": "Yichang, Hubei, China (中国湖北宜昌)",
         "category": "Primary Lithium Coin Cells (CR1216)",
     },
+}
+
+# Exact, per-reference exceptions the user approved; any other foreign part still fails the audit.
+USER_APPROVED_NON_MAINLAND: dict[tuple[str, str], dict[str, str]] = {
+    ("Single", "U810"): {
+        "manufacturer": "Texas Instruments",
+        "mpn": "TPS651851RSLR",
+        "approved": "2026-11-08",
+        "reason": "SY7636ARMC (Silergy) has no JLC/LCSC stock; the user chose a JLC-stocked EPD PMIC redesign. "
+                  "No mainland EPD PMIC was in stock on 2026-11-08.",
+    },
+    ("Single", "U902"): {
+        "manufacturer": "Richtek",
+        "mpn": "RT6160AWSC",
+        "approved": "2026-11-08",
+        "reason": "SGM62125AXG/TR is not stocked at JLC/LCSC; RT6160AWSC fits the same WLCSP-15 land. "
+                  "No mainland low-IQ buck-boost was in JLC stock on 2026-11-08.",
+    },
+}
+
+# User decision 2026-11-08: JLC basic-library resistors/capacitors (no per-type change fee) are accepted
+# for the exact (manufacturer, MPN) pairs below, although Samsung / UNI-ROYAL are not mainland registrants.
+USER_APPROVED_JLC_BASIC_PASSIVES: set[tuple[str, str]] = {
+    ('Samsung Electro-Mechanics', 'CL05A105KA5NQNC'),
+    ('Samsung Electro-Mechanics', 'CL05A475MP5NRNC'),
+    ('Samsung Electro-Mechanics', 'CL05B104KB54PNC'),
+    ('Samsung Electro-Mechanics', 'CL10A105KB8NNNC'),
+    ('Samsung Electro-Mechanics', 'CL10A106MA8NRNC'),
+    ('Samsung Electro-Mechanics', 'CL10B473KB8NNNC'),
+    ('Samsung Electro-Mechanics', 'CL21A106KAYNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21A226MAQNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21A475KAQNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21B103KBANNNC'),
+    ('Samsung Electro-Mechanics', 'CL21B104KCFNNNE'),
+    ('Samsung Electro-Mechanics', 'CL21B105KBFNNNE'),
+    ('Samsung Electro-Mechanics', 'CL31A106KBHNNNE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF0000TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1001TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1002TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF1003TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF2201TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF220JTCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0402WGF5101TCE'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF0000T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF1000T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF100JT5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF1201T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0603WAF5601T5E'),
+    ('UNI-ROYAL(Uniroyal Elec)', '0805W8F0000T5E'),
 }
 
 NON_PURCHASED_PCB_FEATURE_MANUFACTURER = "PCB fabricated terminal"
@@ -601,6 +655,8 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
     sch_parity_mismatches: list[dict[str, Any]] = []
     manufacturer_breakdown: dict[str, dict[str, Any]] = {}
 
+    approved_non_mainland: list[dict[str, str]] = []
+
     for fp in footprints:
         ref = fp["ref"]
         mfg = fp["manufacturer"]
@@ -612,7 +668,17 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
         if not mpn:
             missing_mpn_refs.append(ref)
 
-        if mfg.lower() in FORBIDDEN_FOREIGN_MANUFACTURERS:
+        exception = USER_APPROVED_NON_MAINLAND.get((board, ref))
+        approved = bool(exception and exception["manufacturer"] == mfg and exception["mpn"] == mpn
+                        and fp["in_bom"] and not fp["dnp"])
+        if not approved and (mfg, mpn) in USER_APPROVED_JLC_BASIC_PASSIVES:
+            approved = True
+            exception = {"manufacturer": mfg, "mpn": mpn, "approved": "2026-11-08",
+                         "reason": "JLC basic-library passive approved by the user"}
+        if approved:
+            approved_non_mainland.append({"ref": ref, **exception})
+
+        if mfg.lower() in FORBIDDEN_FOREIGN_MANUFACTURERS and not approved:
             foreign_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "mpn": mpn})
 
         # Check schematic parity for Manufacturer, MPN, LCSC
@@ -639,7 +705,9 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
                 unrecognized_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "role": "dnp"})
         else:
             populated_bom.append(fp)
-            if mfg not in MAINLAND_MANUFACTURERS:
+            if approved:
+                pass
+            elif mfg not in MAINLAND_MANUFACTURERS:
                 unrecognized_manufacturer_refs.append({"ref": ref, "manufacturer": mfg, "role": "populated_bom"})
             else:
                 info = MAINLAND_MANUFACTURERS[mfg]
@@ -681,9 +749,11 @@ def verify_board_mainland_compliance(candidate_dir: Path, board: str) -> dict[st
         "non_bom_pcb_feature_count": len(non_bom_features),
         "distinct_mainland_manufacturers": len(breakdown_list),
         "mainland_populated_rate_pct": round(
-            100.0 * (len(populated_bom) - sum(1 for x in unrecognized_manufacturer_refs if x["role"] == "populated_bom")) / max(len(populated_bom), 1),
+            100.0 * (len(populated_bom) - len(approved_non_mainland)
+                     - sum(1 for x in unrecognized_manufacturer_refs if x["role"] == "populated_bom")) / max(len(populated_bom), 1),
             2,
         ),
+        "user_approved_non_mainland_refs": approved_non_mainland,
         "missing_manufacturer_refs": missing_manufacturer_refs,
         "missing_mpn_refs": missing_mpn_refs,
         "unrecognized_manufacturer_refs": unrecognized_manufacturer_refs,

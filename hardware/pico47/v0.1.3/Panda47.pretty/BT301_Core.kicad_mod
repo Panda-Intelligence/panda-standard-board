@@ -1,0 +1,174 @@
+(footprint "BT301_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Power Glory CR1216 primary-cell manual lead assembly; cell max 12.5x1.6mm. Hardware Schottky isolates SD3078 charge path; NEVER reflow the cell.")
+	(property "Reference" "BT301"
+		(at 0 -7.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8a6d80c9-fecb-42c1-a80e-b11badaaf2a5")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "CR1216 / RTC PRIMARY"
+		(at 0 7.4 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a2e0b740-3988-4e05-9807-a9c00554e7cb")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.omnergybattery.com/product/cr1216-coin-button-cell-battery-for-remote-controls"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e50ae559-506e-4d67-8729-4278203d6f6c")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Mainland primary CR1216,25mAh,12.5x1.6mm;manual pre-welded insulated lead/tab assembly. Never recharge/reflow."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4140badb-4dbd-4d77-b51e-375650be3bcd")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "Yichang Power Glory Technology Co., Ltd."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f4b8e6e6-14d0-4063-bea0-e84d20a9d8dd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "CR1216"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6bf929cd-56dd-4c84-9c11-517c9a561687")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "38829d35-c10c-4f5a-8d82-11c88ba75a69")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyRoute" "FACTORY_TABBED_POST_SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f1b18fa8-6dfb-4b78-b76d-6a68d1e13dcf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaAssemblyStage" "POST_SMT_MANUAL"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dbc7300d-e48a-4053-9f1b-40906a9a0843")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSupplyStatus" "FACTORY_ASSEMBLY_DRAWING_AND_RECEIPT_PENDING"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ae60760f-62f7-48a2-aa82-8c2af3b4bc6a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PandaSourceURL" "https://www.omnergybattery.com/product/cr1216-coin-button-cell-battery-for-remote-controls"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9b423590-67aa-4d64-8385-3e0385ee2a6f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -6.65 -6.65)
+		(end 6.65 6.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "74a65286-54c5-48f9-99fd-5bd8e53b771e")
+	)
+	(fp_rect
+		(start -6.4 -6.4)
+		(end 6.4 6.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4f3c59c9-b7be-4df6-8c1c-fac90d72f08e")
+	)
+	(pad "1" smd rect
+		(at -5 0)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f262e82d-a02c-47d7-a850-b69005396948")
+	)
+	(pad "2" smd rect
+		(at 5 0)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9397d553-6f68-48c6-9115-6e281aead6c1")
+	)
+	(embedded_fonts no)
+)

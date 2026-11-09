@@ -1,0 +1,186 @@
+(footprint "U302_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "WAVE SD3078 Rev4.4:1SCL,2F32K,3VDD,4NC,5VBAT,6GND,7INT,8SDA;integrated crystal;VDD2.7..5.5,VBAT2.3..3.6;0x32,100kHz at3.3V;MSL3,maxheight1.9. Derived engineering lands2.0x0.7 at1.27 pitch/7.3 row pitch;not manufacturer recommended. Retention/firmware/temperature qualification remains NOT_RUN.")
+	(tags "WAVE SD3078 SOP8 208mil integrated crystal RTC")
+	(property "Reference" "U302"
+		(at 0 3 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f9afc424-9e83-4263-91c7-239bfb816446")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SD3078"
+		(at 0 2.63 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c901c53d-0bed-40f0-815f-767c661bb0e2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.whwave.com.cn/filedownload/3045413"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9cce72c2-6344-439d-8d52-621119024195")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "WAVE SD3078 Rev4.4:1SCL,2F32K,3VDD,4NC,5VBAT,6GND,7INT,8SDA;integrated crystal;VDD2.7..5.5,VBAT2.3..3.6;0x32,100kHz at3.3V;MSL3,maxheight1.9. Derived engineering lands2.0x0.7 at1.27 pitch/7.3 row pitch;not manufacturer recommended. Retention/firmware/temperature qualification remains NOT_RUN."
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5e2b6877-d827-427d-8a42-34baf9402dff")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "WAVE"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1f8a5650-b426-4040-80ca-66c228aafdfe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "SD3078"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "989e527c-77f6-40c1-a408-613794d3c641")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C916255"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e0dc0d1f-85b3-42a7-a034-b34a743e813a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "KiLib_Generator" "package/no_lead"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "50713ea6-a87f-4000-8887-3ae9dc403865")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -4.9 -2.915)
+		(end 4.9 2.915)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "321afe42-ffad-4dea-a96f-f9eb07be3534")
+	)
+	(fp_rect
+		(start -2.69 -2.665)
+		(end 2.69 2.665)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9c8a3279-6d59-4a91-bbd1-4d54f09fd146")
+	)
+	(fp_circle
+		(center -2.2 -2.1)
+		(end -2 -2.1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "60b7b0cb-d0b4-4810-b485-9ee246dd5cf0")
+	)
+	(pad "1" smd rect
+		(at -3.65 -1.905)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e001cac5-8e25-4ce7-a7a8-ff4f0e0762e9")
+	)
+	(pad "2" smd rect
+		(at -3.65 -0.635)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ffa41c3e-caaa-4f5f-8450-cf281e7bd048")
+	)
+	(pad "3" smd rect
+		(at -3.65 0.635)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2e62784b-f3d1-40e9-9f72-b27e29dc095d")
+	)
+	(pad "4" smd rect
+		(at -3.65 1.905)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8b0467e9-4863-4a04-983a-2916bbad41d2")
+	)
+	(pad "5" smd rect
+		(at 3.65 1.905)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "354221ca-43dd-47e2-80a1-bbfec538273d")
+	)
+	(pad "6" smd rect
+		(at 3.65 0.635)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4644bc47-51a9-4a60-a2a6-118c059f04e6")
+	)
+	(pad "7" smd rect
+		(at 3.65 -0.635)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f45313b8-8fa6-4745-b9aa-4c847ea22e53")
+	)
+	(pad "8" smd rect
+		(at 3.65 -1.905)
+		(size 2 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bc8e3728-055a-4d2e-8b09-dd9ac75415e5")
+	)
+	(embedded_fonts no)
+)

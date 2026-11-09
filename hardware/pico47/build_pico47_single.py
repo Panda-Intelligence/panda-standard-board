@@ -748,10 +748,11 @@ def inspect_single(candidate, spec):
             expect(ref, pin, net)
     require(fps['U501'].GetValue() == 'ESP32-S3R8', 'Wrong MCU memory variant')
     require(fps['U506'].GetValue() == 'GD25Q128ESIG', 'Wrong 16MB flash')
-    expect('U810', 49, '')
-    expect('U810', 21, 'P47_HV_EN')
-    for pin in (8, 32, 41, 48):
-        expect('U810', pin, 'GND')
+    # SY7636A：裸焊盘悬空（负压隔离）；R50 TPS651851：裸焊盘接 VN，DGND 接地。由 spec 覆盖。
+    pmic_pins = spec.get('pmic_pin_expectations',
+                         {'49': '', '21': 'P47_HV_EN', '8': 'GND', '32': 'GND', '41': 'GND', '48': 'GND'})
+    for pin, net in pmic_pins.items():
+        expect('U810', pin, net)
     expect('U811', 4, 'P47_HV_EN')
     groups = pad_components(board)
     temperature_sense = (inspect_temperature_sense(board,spec['temperature_sense'],groups)
@@ -931,8 +932,9 @@ def build_qualification_report(candidate, spec, inspection, spec_path=SPEC):
         ('PENDING-SUPPLY.csv','pending_supply'),
         ('REQUIRED-POST-SMT.csv','required_post_smt')]}
     vias, pending, manual = rows.values()
-    require(vias and pending and len(manual)==1 and manual[0]['ref']=='BT301',
-            'Incomplete qualification inventory: vias, pending supply or BT301')
+    # R50 起全部 SMT 有嘉立创现货编号，待供清单可以为空（CSV 只含表头）
+    require(vias and len(manual)==1 and manual[0]['ref']=='BT301',
+            'Incomplete qualification inventory: vias or BT301')
     require(len({r['uuid'] for r in vias})==len(vias)
             and len({r['ref'] for r in pending})==len(pending),
             'Duplicate qualification inventory')

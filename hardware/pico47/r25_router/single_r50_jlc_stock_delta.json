@@ -1,0 +1,831 @@
+{
+  "schema": "panda47-r50-jlc-stock-substitution-v1",
+  "revision": "R50-STOCK-20261108",
+  "baseline_revision": "R49",
+  "date": "2026-11-08",
+  "purpose": "User request 2026-11-08: every SMT line must be orderable from current JLC assembly stock, with the lowest height that fits the existing land pattern. Same footprint, pads, nets and placement; only the purchased identity changes. Stock was read from the JLC parts API on 2026-11-08.",
+  "substitutions": [
+    {
+      "refs": [
+        "D202"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM05HU1ALXUGY2G/TR",
+        "lcsc": "C55274065"
+      },
+      "to": {
+        "manufacturer": "LRC",
+        "mpn": "LESD8D5.0T5G",
+        "lcsc": "C172414",
+        "value": "LESD8D5.0T5G"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C172414.html",
+      "description": "LRC LESD8D5.0T5G SOD-882 (1.0 x 0.6 x 0.5 mm) unidirectional VBUS ESD; VRWM 5.0 V, VBR 6.2 V min, IPP 8.7 A, 107 W (8/20 us). Pin 1 = cathode/VBUS, pin 2 = anode/GND on the existing 0.25 x 0.50 mm lands at 0.65 mm pitch. 5 V USB sink only.",
+      "reason": "C55274065 has 0 JLC stock. VRWM drops from 5.5 V to 5.0 V; still above the 5 V no-PD sink with VBR 6.2 V minimum.",
+      "jlc_stock_20261108": 9910
+    },
+    {
+      "refs": [
+        "U906"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM809B-TXN3LG/TR",
+        "lcsc": "C699619"
+      },
+      "to": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM809B-SXN3LG/TR",
+        "lcsc": "C699617",
+        "value": "SGM809B-SXN3LG/TR"
+      },
+      "datasheet": "https://www.sg-micro.com/rect/assets/50d03578-1421-4ff6-a32f-020bee34d824/SGM803B_SGM809B_SGM810B.pdf",
+      "description": "SGMICRO 2.93V AON status monitor (same family, same SOT-23 pin map); push-pull active-low nRESET drives PG_3V3_MAIN. Pin1GND/2nRESET/3VCC. Not a hard MCU reset or guaranteed brownout protector.",
+      "reason": "The 3.08 V T-suffix has 0 JLC stock; the 2.93 V S-suffix is the same die family and footprint. The output is a status signal only.",
+      "jlc_stock_20261108": 3321
+    },
+    {
+      "refs": [
+        "U907"
+      ],
+      "from": {
+        "manufacturer": "XySemi (Suzhou Saixin)",
+        "mpn": "XB7608A",
+        "lcsc": "C669688"
+      },
+      "to": {
+        "manufacturer": "XySemi (Suzhou Saixin)",
+        "mpn": "XB7608AJ",
+        "lcsc": "C2681921",
+        "value": "XB7608AJ / CELL PROTECTION"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2681921.html",
+      "description": "Single-cell protector with integrated MOSFET; 4.30V overcharge/4.10V release, 2.40V overdischarge/3.0V release, 9A typ overcurrent; CPC5 (same thresholds and pin map as XB7608A). Raw cell negative on pins2/3, protected system negative on4/5.",
+      "reason": "C669688 has 0 JLC stock. The datasheet threshold table is identical (4.30/4.10/2.40/3.0 V, 9 A).",
+      "jlc_stock_20261108": 15728
+    },
+    {
+      "refs": [
+        "U402",
+        "U403",
+        "U404",
+        "U405"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM2578SDYG/TR",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM2578YG/TR",
+        "lcsc": "C403706",
+        "value": "SGM2578YG/TR"
+      },
+      "datasheet": "https://www.lcsc.com/datasheet/lcsc_datasheet_2005142136_SGMICRO-SGM2578YG-TR_C403706.pdf",
+      "description": "SGMICRO SGM2578YG/TR WLCSP-0.9x0.9-4B, 0.5 mm pitch: A1 VOUT, A2 VIN, B1 GND, B2 EN (active high, ~560 kOhm internal pull-down). 1 V-5 V input, 1 A continuous, 1.6 A typ current limit, 54 mOhm, reverse-voltage comparator and quick output discharge.",
+      "reason": "SGM2578SD (2 A) is not stocked by JLC. SGM2578YG has the same ball map and land; continuous rating drops from 2 A to 1 A, which covers SD, touch, EPD logic and the NS4168 audio rail. The EN pull-down keeps the switch off while the XL9535 pins are still inputs.",
+      "jlc_stock_20261108": 2440
+    },
+    {
+      "refs": [
+        "J201"
+      ],
+      "from": {
+        "manufacturer": "MUP",
+        "mpn": "U22401-17",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "MUP",
+        "mpn": "U22401-23",
+        "lcsc": "C49325733",
+        "value": "U22401-23 / MID-MOUNT"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C49325733.html",
+      "description": "MUP U22401-23 16P mid-mount USB-C, drawing DWG-U22401-XX-01 Rev2 (same drawing as the -XX family: 11.24 x 4.00 mm slot pitch, 0.8 mm PCB, 1.60 mm above board). Variants differ only in contact plating/housing material.",
+      "reason": "U22401-17 is not stocked by JLC; U22401-23 is listed on the same family drawing.",
+      "jlc_stock_20261108": 144
+    },
+    {
+      "refs": [
+        "L401"
+      ],
+      "from": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0402S-R47MT",
+        "lcsc": "C6331050"
+      },
+      "to": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0412S-R47MT",
+        "lcsc": "C5451683"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C5451683.html",
+      "description": "Sunlord MWSA0412S-R47MT 0.47uH +/-20%, 4.2 x 4.4 x 1.0+/-0.2 mm (1.2 mm max), DCR 21 mOhm, Isat 5.2/5.4 A. Same Sunlord MWSA04xxS land pattern (I 1.5 / J 2.2 / H 2.5 mm).",
+      "reason": "Height: 2.0 mm max -> 1.2 mm max on the same land. Isat 5.2 A covers the expected <2.5 A peak; a short-circuit at the converter current limit may saturate it.",
+      "jlc_stock_20261108": 3318
+    },
+    {
+      "refs": [
+        "L402"
+      ],
+      "from": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0402S-1R0MT",
+        "lcsc": "C408332"
+      },
+      "to": {
+        "manufacturer": "Sunlord",
+        "mpn": "MWSA0412S-1R0MT",
+        "lcsc": "C2991787"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2991787.html",
+      "description": "Sunlord MWSA0412S-1R0MT 1uH +/-20%, 4.2 x 4.4 x 1.0+/-0.2 mm (1.2 mm max), DCR 47 mOhm, Isat 3.8/4.4 A. Same MWSA04xxS land pattern.",
+      "reason": "Height: 2.0 mm max -> 1.2 mm max on the same land. Isat 3.8 A covers prototype charging up to about 2 A; full 3 A charging needs bench confirmation.",
+      "jlc_stock_20261108": 442
+    },
+    {
+      "refs": [
+        "U902"
+      ],
+      "from": {
+        "manufacturer": "SGMICRO",
+        "mpn": "SGM62125AXG/TR",
+        "lcsc": ""
+      },
+      "to": {
+        "manufacturer": "Richtek",
+        "mpn": "RT6160AWSC",
+        "lcsc": "C7065276",
+        "value": "RT6160AWSC"
+      },
+      "datasheet": "https://www.richtek.com/assets/product_file/RT6160A/DS6160A-02.pdf",
+      "description": "Richtek RT6160AWSC 3 A I2C buck-boost, WL-CSP-15B 1.4x2.3 mm, 0.4 mm pitch, 0.6 mm max. Ball map identical to the U902 land (A1 EN, A2/A3 VIN, B1 VSEL, B2/B3 LX1, C1 AGND, C2/C3 PGND, D1 SCL, D2/D3 LX2, E1 SDA, E2/E3 VOUT). VSEL high: 3.45 V at power-up (VOUT2 reset 0x39); firmware writes 0x05 = 0x33 for 3.3 V (V = 2.025 V + code x 25 mV). I2C 0x75, IQ 2 uA typ, ILIM_P 4.5-5.5 A.",
+      "reason": "User decision 2026-11-08 (replaces the SGM62125 consignment): SGM62125 is not stocked; RT6160AWSC drops onto the same land with 0.47 uH. Non-mainland (Richtek, Taiwan); exact per-reference exception in verify_mainland_bom_compliance.py.",
+      "jlc_stock_20261108": 10655
+    },
+    {
+      "refs": [
+        "U503"
+      ],
+      "from": {
+        "manufacturer": "QST (Shanghai QST)",
+        "mpn": "QMI8658A",
+        "lcsc": "C3021082"
+      },
+      "to": {
+        "manufacturer": "QST (Shanghai QST)",
+        "mpn": "QMI8658B",
+        "lcsc": "C5380158",
+        "value": "QMI8658B"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C5380158.html",
+      "reason": "Cost-down 2026-11-08: same QST 6-axis IMU family; QMI8658B datasheet pin table (1 SDO/SA0 ... 14 SDA) and 2.5 x 3.0 mm LGA-14 are identical to QMI8658A, 0.83 mm vs 0.86 mm high; $0.95 vs $1.39 @100."
+    },
+    {
+      "refs": [
+        "C401",
+        "C402",
+        "C403",
+        "C501"
+      ],
+      "from": {
+        "manufacturer": "FH (Fenghua Advanced)",
+        "mpn": "0603X226M100NT",
+        "lcsc": "C60077"
+      },
+      "to": {
+        "manufacturer": "CCTC",
+        "mpn": "TCC0603X5R226M100CT",
+        "lcsc": "C20416425"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C20416425.html",
+      "reason": "Cost-down: same 22 uF 10 V X5R 20% 0603; $0.012 vs $0.034 @1000."
+    },
+    {
+      "refs": [
+        "R540",
+        "R541",
+        "R542",
+        "R543",
+        "R544",
+        "R545"
+      ],
+      "from": {
+        "lcsc": "C140225",
+        "mpn": "RC-02000FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF0000TCE",
+        "lcsc": "C17168"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C17168.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 0Ω 50V 62.5mW Thick Film Resistor ±1% ±800ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R508",
+        "R509",
+        "R514",
+        "R515",
+        "R516"
+      ],
+      "from": {
+        "lcsc": "C132364",
+        "mpn": "RS-05000FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0805W8F0000T5E",
+        "lcsc": "C17477"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C17477.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 0Ω 125mW 150V Thick Film Resistor ±1% ±800ppm/℃ 0805 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R517",
+        "R518",
+        "R519",
+        "R520",
+        "R521",
+        "R522"
+      ],
+      "from": {
+        "lcsc": "C136582",
+        "mpn": "RS-03000FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0603WAF0000T5E",
+        "lcsc": "C21189"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C21189.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 0Ω 100mW 75V Thick Film Resistor ±1% 0603 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R204",
+        "R931"
+      ],
+      "from": {
+        "lcsc": "C118396",
+        "mpn": "RS-03K1201FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0603WAF1201T5E",
+        "lcsc": "C22765"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C22765.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 1.2kΩ 100mW 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R903",
+        "R904"
+      ],
+      "from": {
+        "lcsc": "C2906981",
+        "mpn": "FRC0603F1000TS"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0603WAF1000T5E",
+        "lcsc": "C22775"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C22775.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 100mW 100Ω 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R501",
+        "R502",
+        "R507",
+        "R601",
+        "R604",
+        "R605",
+        "R606",
+        "R607",
+        "R608",
+        "R609",
+        "R610",
+        "R611",
+        "R612",
+        "R808",
+        "R809",
+        "R810",
+        "R811",
+        "R812",
+        "R922",
+        "R930"
+      ],
+      "from": {
+        "lcsc": "C140219",
+        "mpn": "RC-02K1003FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF1003TCE",
+        "lcsc": "C25741"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25741.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 100kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C302",
+        "C502",
+        "C503",
+        "C504",
+        "C505",
+        "C512",
+        "C520",
+        "C522",
+        "C523",
+        "C524",
+        "C526",
+        "C537",
+        "C539",
+        "C540",
+        "C541",
+        "C542",
+        "C543",
+        "C601",
+        "C710",
+        "C711",
+        "C817",
+        "C940"
+      ],
+      "from": {
+        "lcsc": "C56392",
+        "mpn": "0402B104K250NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL05B104KB54PNC",
+        "lcsc": "C307331"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C307331.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 100nF 50V X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C807",
+        "C810"
+      ],
+      "from": {
+        "lcsc": "C38141",
+        "mpn": "0805B104K500NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21B104KCFNNNE",
+        "lcsc": "C28233"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C28233.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R523",
+        "R524",
+        "R525",
+        "R526",
+        "R527",
+        "R528",
+        "R600",
+        "R731",
+        "R732",
+        "R807",
+        "R932",
+        "R933"
+      ],
+      "from": {
+        "lcsc": "C2906861",
+        "mpn": "FRC0402F1002TS"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF1002TCE",
+        "lcsc": "C25744"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25744.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 10kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C808",
+        "C811"
+      ],
+      "from": {
+        "lcsc": "C52278",
+        "mpn": "0805B103K500NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21B103KBANNNC",
+        "lcsc": "C1710"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C1710.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 10nF 50V X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R533",
+        "R813",
+        "R940"
+      ],
+      "from": {
+        "lcsc": "C140197",
+        "mpn": "RC-02K1001FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF1001TCE",
+        "lcsc": "C11702"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C11702.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 1kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C809",
+        "C812"
+      ],
+      "from": {
+        "lcsc": "C344178",
+        "mpn": "TCC0805X7R105K500DTS"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21B105KBFNNNE",
+        "lcsc": "C28323"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C28323.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 1uF 50V X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C532",
+        "C533",
+        "C534",
+        "C535",
+        "C536",
+        "C538"
+      ],
+      "from": {
+        "lcsc": "C157353",
+        "mpn": "0402X105K100NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL05A105KA5NQNC",
+        "lcsc": "C52923"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C52923.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 1uF 25V X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R613",
+        "R614"
+      ],
+      "from": {
+        "lcsc": "C140192",
+        "mpn": "RC-02K2201FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF2201TCE",
+        "lcsc": "C25879"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25879.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 2.2kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R529",
+        "R530",
+        "R710",
+        "R711",
+        "R712",
+        "R713",
+        "R714",
+        "R715",
+        "R716",
+        "R717",
+        "R718",
+        "R719",
+        "R720",
+        "R721",
+        "R722",
+        "R723",
+        "R724",
+        "R725",
+        "R726",
+        "R727",
+        "R728",
+        "R729",
+        "R730"
+      ],
+      "from": {
+        "lcsc": "C324769",
+        "mpn": "RC-02K22R0FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF220JTCE",
+        "lcsc": "C25092"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25092.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 22Ω 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C207",
+        "C208",
+        "C525"
+      ],
+      "from": {
+        "lcsc": "C7419435",
+        "mpn": "FCC0805X226M250FT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21A226MAQNNNE",
+        "lcsc": "C45783"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C45783.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 22uF 25V X5R ±20% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C815"
+      ],
+      "from": {
+        "lcsc": "C168172",
+        "mpn": "0402X475M6R3NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL05A475MP5NRNC",
+        "lcsc": "C23733"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C23733.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 10V 4.7uF X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C201"
+      ],
+      "from": {
+        "lcsc": "C285123",
+        "mpn": "0603B473K500NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL10B473KB8NNNC",
+        "lcsc": "C1622"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C1622.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 47nF 50V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R206",
+        "R207"
+      ],
+      "from": {
+        "lcsc": "C453708",
+        "mpn": "RC-02K512JT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF5101TCE",
+        "lcsc": "C25905"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25905.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 5.1kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R201"
+      ],
+      "from": {
+        "lcsc": "C99891",
+        "mpn": "RS-03K5601FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0603WAF5601T5E",
+        "lcsc": "C23189"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C23189.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 100mW 5.6kΩ 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R920"
+      ],
+      "from": {
+        "lcsc": "C136596",
+        "mpn": "RS-03K10R0FT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0603WAF100JT5E",
+        "lcsc": "C22859"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C22859.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 100mW 10Ω 75V Thick Film Resistor ±1% ±400ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "R910",
+        "R911"
+      ],
+      "from": {
+        "lcsc": "C2991528",
+        "mpn": "THC02H1002BT"
+      },
+      "to": {
+        "manufacturer": "UNI-ROYAL(Uniroyal Elec)",
+        "mpn": "0402WGF1002TCE",
+        "lcsc": "C25744"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C25744.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). -55℃~+155℃ 10kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+      "jlc_basic": true,
+      "extra_fields": {
+        "Tolerance": "1%"
+      }
+    },
+    {
+      "refs": [
+        "C506",
+        "C513"
+      ],
+      "from": {
+        "lcsc": "C22399626",
+        "mpn": "CGA0603X7R106K100JT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL10A106MA8NRNC",
+        "lcsc": "C96446"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C96446.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 10uF 25V X5R ±20% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C206",
+        "C801",
+        "C803",
+        "C816"
+      ],
+      "from": {
+        "lcsc": "C380346",
+        "mpn": "TCC0805X7R106K100FT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21A106KAYNNNE",
+        "lcsc": "C15850"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C15850.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 10uF 25V X5R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C203"
+      ],
+      "from": {
+        "lcsc": "C380364",
+        "mpn": "TCC1206X7R106K250HT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL31A106KBHNNNE",
+        "lcsc": "C13585"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C13585.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 10uF 50V X5R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C202",
+        "C209",
+        "C507",
+        "C508",
+        "C509",
+        "C510",
+        "C511",
+        "C516",
+        "C903"
+      ],
+      "from": {
+        "lcsc": "C380328",
+        "mpn": "TCC0603X7R105K250CT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL10A105KB8NNNC",
+        "lcsc": "C15849"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C15849.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 1uF 50V X5R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C303",
+        "C521",
+        "C527",
+        "C921"
+      ],
+      "from": {
+        "lcsc": "C54938484",
+        "mpn": "FCC0402B105K100AT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL05A105KA5NQNC",
+        "lcsc": "C52923"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C52923.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 1uF 25V X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "C205",
+        "C920"
+      ],
+      "from": {
+        "lcsc": "C880382",
+        "mpn": "0805B475K160NT"
+      },
+      "to": {
+        "manufacturer": "Samsung Electro-Mechanics",
+        "mpn": "CL21A475KAQNNNE",
+        "lcsc": "C1779"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C1779.html",
+      "reason": "User decision 2026-11-08: use JLC basic-library passives (no per-type change fee). 25V 4.7uF X5R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+      "jlc_basic": true
+    },
+    {
+      "refs": [
+        "D201"
+      ],
+      "from": {
+        "manufacturer": "LRC",
+        "mpn": "LRC8804FDT1G",
+        "lcsc": "C2856698"
+      },
+      "to": {
+        "manufacturer": "LRC",
+        "mpn": "LRC8804DT1G",
+        "lcsc": "C2912064",
+        "value": "LRC8804DT1G"
+      },
+      "datasheet": "https://www.lcsc.com/product-detail/C2912064.html",
+      "description": "LRC LRC8804DT1G 4-channel rail-clamp ESD array, DFN2510-10 (same land as LRC8804FDT1G). Datasheet Rev.C pin diagram: 1/2/4/5 I/O (USB_DP, USB_DM, CC1, CC2), 3 and 8 GND (both tied to the anode rail), 6/7/9/10 no connection. VRWM 5.5 V, VBR 6 V min, Cio 0.6 pF max, 4 A 8/20 us. USB full speed and CC only.",
+      "reason": "LRC8804FDT1G had 11 pcs at JLC on 2026-11-08 (not enough for a 5-board run with attrition). Same family, package and pin map; I/O capacitance 0.6 pF max vs 0.3 pF, fine for 12 Mbps USB and CC.",
+      "jlc_stock_20261108": 2383
+    }
+  ]
+}

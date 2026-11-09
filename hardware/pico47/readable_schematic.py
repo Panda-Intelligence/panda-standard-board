@@ -62,7 +62,7 @@ SHEETS = {
     '5': ('mcu', 'MCU', 'ESP32-S3、IMU、Flash、microSD 与调试'),
     '6': ('io', 'IO_Expander', 'IO 扩展 XL9535'),
     '7': ('mux', 'Panel_SD_Mux', '屏幕数据 / microSD 多路开关'),
-    '8': ('epd', 'EPD_PMIC', '墨水屏电源 SY7636A 与面板、触摸、前光接口'),
+    '8': ('epd', 'EPD_PMIC', '墨水屏电源与面板、触摸、前光接口'),
     '9': ('power', 'Charger_Power', '充电、3V3 升降压、电量计、音频与前光驱动'),
 }
 PAPERS = [('A4', 297.0, 210.0), ('A3', 420.0, 297.0), ('A2', 594.0, 420.0)]
@@ -218,6 +218,9 @@ class Draw:
 
     def label(self, net, p, ang):
         p = (snap(p[0]), snap(p[1]))
+        if net.startswith('unconnected-'):               # KiCad 只给单引脚网络起此名：画不连接标记而非孤立标签
+            self.nc(p)
+            return
         self.items.append(('label', net, p, ang))
         w = textw(net) + 2.54
         dx, dy = {0: (w, 0), 180: (-w, 0), 90: (0, -w), 270: (0, w)}[ang]
@@ -1161,10 +1164,15 @@ def power_instance(net, p, ref, path, key):
             f'(instances (project {q(PROJECT)} (path {q(path)} (reference {q(ref)}) (unit 1)))))')
 
 
+# 版本信息由构建器设置（R49 构建器沿用默认值）
+REVISION = {'version': 'v0.1.2', 'revision': 'R49', 'date': '2026-11-06'}
+
+
 def title_block(sub, rev):
-    return (f'(title_block (title {q(sub)}) (date "2026-11-06") (rev {q(rev)}) '
-            f'(company "Panda Intelligence") (comment 1 "Panda Standard 4.7 Single v0.1.2 / R49, 71 x 99 mm 4-layer") '
-            f'(comment 2 "Netlist identical to the R49 board; drawn by hardware/pico47/readable_schematic.py"))')
+    v = REVISION
+    return (f'(title_block (title {q(sub)}) (date {q(v["date"])}) (rev {q(rev)}) '
+            f'(company "Panda Intelligence") (comment 1 "Panda Standard 4.7 Single {v["version"]} / {v["revision"]}, 71 x 99 mm 4-layer") '
+            f'(comment 2 "Netlist identical to the {v["revision"]} board; drawn by hardware/pico47/readable_schematic.py"))')
 
 
 def emit_sheet(D, reg, draw, paper, sub, path, file_uuid, pwr_seq, rev):
@@ -1254,7 +1262,7 @@ def main(inp, netp, outp, pcbp=None):
         c = build_cluster(D, ref, shunts[ref], banks[ref], reg)
         sheet_clusters[block[ref]].append(c)
     reg['POWER_SOURCE'] = flag_lib()
-    rev = 'v0.1.2 / R49'
+    rev = f'{REVISION["version"]} / {REVISION["revision"]}'
     pages = []                                     # (key, file, sheetname, title, paper, draw)
     for key in sorted(sheet_clusters):
         suffix, sname, title = SHEETS[key]
@@ -1289,9 +1297,9 @@ def main(inp, netp, outp, pcbp=None):
                           f'(effects (font (size 1.6 1.6)) (justify left)) (uuid {q(uid("st", nm))}))')
     head = ['(version 20250114)', '(generator "eeschema")', '(generator_version "9.0")', f'(uuid {q(root_uuid)})',
             '(paper "A4")', title_block('目录 / Index', rev), '(lib_symbols)',
-            f'(text "Panda Standard 4.7 Single 主板原理图（v0.1.2 / R49）" (exclude_from_sim no) (at 25.4 30.48 0) '
+            f'(text "Panda Standard 4.7 Single 主板原理图（{REVISION["version"]} / {REVISION["revision"]}）" (exclude_from_sim no) (at 25.4 30.48 0) '
             f'(effects (font (size 3.5 3.5) (thickness 0.6) bold) (justify left)) (uuid {q(uid("root-title"))}))',
-            f'(text "各页之间以同名全局标签与电源符号相连；网表与 R49 PCB 完全一致。" (exclude_from_sim no) (at 25.4 38.1 0) '
+            f'(text "各页之间以同名全局标签与电源符号相连；网表与 {REVISION["revision"]} PCB 完全一致。" (exclude_from_sim no) (at 25.4 38.1 0) '
             f'(effects (font (size 1.8 1.8)) (justify left)) (uuid {q(uid("root-note"))}))']
     outp.write_text('(kicad_sch\n' + '\n'.join(head + sheets_txt +
                                                 ['(sheet_instances (path "/" (page "1")))', '(embedded_fonts no)']) + '\n)\n')

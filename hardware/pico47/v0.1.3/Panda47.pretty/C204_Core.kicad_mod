@@ -1,0 +1,116 @@
+(footprint "C204_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "C204"
+		(at 0 -1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "978c06bc-9250-4451-b596-8e8cc219dadc")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "330n / U906 bypass"
+		(at 0 1.1 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8ade6436-e905-4920-a6d3-ef32ba77a758")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.fhcomp.com/en/product_info/?prod_code=0603B334K500NT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "87bc2686-e587-4626-b84c-2650b2e01ffb")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "FH 0603B334K500NT 330nF 50V X7R local 3V3_AON/GND bypass for U906; exact prior part reused, no PSEL timing capacitor."
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0b1f3dfe-ef50-47ac-acb8-add817773bc1")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "FH (Fenghua Advanced)"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d02fbf3a-7a45-4ba7-9c28-a726010bd6ee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "0603B334K500NT"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0740b2a6-d357-4653-8b81-754ad965193c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C188679"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2e6f87f1-ba7d-42b8-8b94-5da0ad1dbf4f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.08)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "71c8fece-2ba6-4505-afcb-06e0f84dd58c")
+	)
+	(pad "1" smd roundrect
+		(at -0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "40176252-4b0e-4332-9456-8550ce34743b")
+	)
+	(pad "2" smd roundrect
+		(at 0.75 0)
+		(size 0.85 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "0c744dde-71a7-4864-8b25-d69721baf672")
+	)
+	(embedded_fonts no)
+)
