@@ -1166,12 +1166,14 @@ def power_instance(net, p, ref, path, key):
 
 # 版本信息由构建器设置（R49 构建器沿用默认值）
 REVISION = {'version': 'v0.1.2', 'revision': 'R49', 'date': '2026-11-06'}
+PRODUCT = 'Single'                 # product name in title blocks / index page
+BOARD_DESC = '71 x 99 mm 4-layer'
 
 
 def title_block(sub, rev):
     v = REVISION
     return (f'(title_block (title {q(sub)}) (date {q(v["date"])}) (rev {q(rev)}) '
-            f'(company "Panda Intelligence") (comment 1 "Panda Standard 4.7 Single {v["version"]} / {v["revision"]}, 71 x 99 mm 4-layer") '
+            f'(company "Panda Intelligence") (comment 1 "Panda Standard 4.7 {PRODUCT} {v["version"]} / {v["revision"]}, {BOARD_DESC}") '
             f'(comment 2 "Netlist identical to the {v["revision"]} board; drawn by hardware/pico47/readable_schematic.py"))')
 
 
@@ -1297,7 +1299,7 @@ def main(inp, netp, outp, pcbp=None):
                           f'(effects (font (size 1.6 1.6)) (justify left)) (uuid {q(uid("st", nm))}))')
     head = ['(version 20250114)', '(generator "eeschema")', '(generator_version "9.0")', f'(uuid {q(root_uuid)})',
             '(paper "A4")', title_block('目录 / Index', rev), '(lib_symbols)',
-            f'(text "Panda Standard 4.7 Single 主板原理图（{REVISION["version"]} / {REVISION["revision"]}）" (exclude_from_sim no) (at 25.4 30.48 0) '
+            f'(text "Panda Standard 4.7 {PRODUCT} 主板原理图（{REVISION["version"]} / {REVISION["revision"]}）" (exclude_from_sim no) (at 25.4 30.48 0) '
             f'(effects (font (size 3.5 3.5) (thickness 0.6) bold) (justify left)) (uuid {q(uid("root-title"))}))',
             f'(text "各页之间以同名全局标签与电源符号相连；网表与 {REVISION["revision"]} PCB 完全一致。" (exclude_from_sim no) (at 25.4 38.1 0) '
             f'(effects (font (size 1.8 1.8)) (justify left)) (uuid {q(uid("root-note"))}))']

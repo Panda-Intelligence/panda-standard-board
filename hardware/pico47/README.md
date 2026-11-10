@@ -1,3 +1,7 @@
+# Current Continuation: E0.3 v0.2.0 — Pico 级重新设计：全国产 IC、单面贴装、更小的板子（2026-11-10）
+
+`hardware/pico47/v0.2.0/` 是 v0.2.0 的完整 KiCad 工程（PCB＋10 页常规画法原理图＋工程内封装库），先读 [E03 说明](E03-V020-PICO-CLASS-REDESIGN-20261110.md)。按 Read Pico（小纸 Pico）架构重做：屏幕 16 位数据线直连 GPIO、1 线 microSD、单颗 XL9535QF24、SY7636ARMC（寄料）、SY8089 3V3 降压、SGM3732 前光（暖／冷／混合三档）、SC7A20H、BM8563，保留 NS4168 喇叭。整机对标 117.5 × 66.2 × 7.3 mm；板子 63 × 111 mm 外框 L 形、约 2960 mm²（R50 约 5100 mm²），4 层 0.8 mm，元件全在顶面，153 个贴片位，元件费约 $10.01／片（100 片）。KiCad 10.0.7 原生检查：ERC 0、DRC 0、未连接 0、原理图一致性 0。过孔全部 0.3 mm 钻孔，17 个裸焊盘盘中孔需树脂塞孔＋电镀盖帽。`manufacturing_release = false`：面板／触摸／前光 FPC 座位置须对照供应商图纸。脚本在 `v020/`，下单包由 `v020/export_orderpack_v020.py` 生成到 Git 外。
+
 # Current Continuation: E0.2 R50 — 嘉立创现货 BOM、TPS651851 墨水屏电源、AW99703 前光（2026-11-08）
 
 `hardware/pico47/v0.1.3/` 是 R50 的完整 KiCad 工程。R50 = R49 + 全部 SMT 改为嘉立创现货（U902 改 Richtek RT6160AWSC）：U810 由无货的 SY7636ARMC 改为 TI TPS651851RSLR（同一 6×6 QFN-48 焊盘，裸焊盘接 VN），U905 由无货的 SGM37601 改为 AWINIC AW99703CSR（WLCSP-12，与 TI LM3697 引脚兼容），另有同封装现货换料与更薄的电感。先读 [R50 说明](E02-R50-JLC-STOCK-PMIC-FRONTLIGHT-20261108.md)；用 `build_pico47_single_r50.py --output <.work 下新目录>` 从 R26 回放重建并导出下单包。原生检查全零，`manufacturing_release` 仍为 false。

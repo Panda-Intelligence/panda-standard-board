@@ -1,0 +1,101 @@
+# E0.3 v0.2.0 — Read Pico class redesign: mainland BOM, smaller board (2026-11-10)
+
+Status: routed engineering candidate, KiCad project in [`v0.2.0/`](v0.2.0/README.md). ERC 0, DRC 0 / 0 unconnected / 0 schematic parity (KiCad 10.0.7). `manufacturing_release = false` (see §9).
+
+## 1. Benchmarks
+
+| | Read Pico (小纸 Pico, MindReset) | XTEINK X4 Pro | Metalio E-Ink 4 Plus | Panda47 v0.1.3 (R50) | **Panda47 v0.2.0 target** |
+|---|---|---|---|---|---|
+| Panel | 4.7" 1216×684 parallel, no front light | 4.3" 800×480 SPI, touch + front light | 4.7" 1216×684, front light | 4.7" 1216×684, touch + front light | same as R50 |
+| Device | 117.5 × 66.2 × 7.3 mm, 91 g | 111 × 69 × 5.95 mm, 72 g | 7.8 mm, 100 g | case study 132 × 75 mm | **117.5 × 66.2 × 7.3 mm** |
+| Battery | 2050 mAh LCO, replaceable | 1100 mAh | 2000 mAh | 2050 mAh (pack not fixed) | 3.2 × 50 × 80 mm cell (~2000 mAh), to be checked against the real pack |
+| Main chips | ESP32-S3 (16 MB + 8 MB), SY7636A, CW32L010, FCA9555, CST836U, SC7A20H, buzzer | ESP32-C3, SSD1677 | ESP32-S3, 16 MB | ESP32-S3R8, TPS651851, RT6160, 2× XL9535, 2× SGM330A, 4× SGM2578, QMI8658, SD3078 | see §3 |
+| PCB | not published | not published | not published | 71 × 99 mm L, ≈ 5100 mm², 4 layers, two-sided SMT | **63 × 32.8 mm strip + 11.5 × 78 mm side tab, ≈ 2960 mm², 4 layers, single-sided SMT** |
+
+Sources: dot.mindreset.tech/docs/read_0, github.com/MindReset/read_pico_firmware, xteink.com X4 Pro spec page, litnxt.com / mechdiy.com Metalio pages (read 2026-11-10).
+
+## 2. User decisions (2026-11-10)
+
+1. Architecture follows Read Pico (EPD data straight to GPIO, 1-bit SDMMC, one expander, SC7A20H, BM8563), keeping the NS4168 speaker.
+2. EPD PMIC: SY7636ARMC (Silergy, Read Pico part). JLC stock is 0: consigned.
+3. Device size matches Read Pico, 117.5 × 66.2 × 7.3 mm; the board sits inside the 62 × 113.45 mm panel footprint beside the cell.
+4. Battery: designed for a standard 3.2 × 50 × 80 mm LCO cell.
+
+## 3. Circuit changes against R50
+
+| Block | R50 | v0.2.0 | Why |
+|---|---|---|---|
+| EPD data bus | 8 lines through 2× SGM330A shared with 4-bit SD, 21× 22 R series | D0–D15 direct to GPIO4–18, 45 (Read Pico map); 22 R only on XCL | removes 2 ICs + 20 resistors, firmware-compatible with Read Pico drivers |
+| microSD | 4-bit through mux, 0 R links | 1-bit SDMMC CLK/CMD/D0 on GPIO38/42/44, D1–D3 pulled up | as Read Pico |
+| IO expander | 2× XL9535 TSSOP-24 | 1× XL9535QF24 QFN-24 4×4 (C5444301) | 16 pins cover all slow I/O |
+| EPD PMIC | TI TPS651851 | Silergy SY7636ARMC on the same 6×6 QFN-48 land, R49 circuit (VREF divider, TS network) | mainland; consigned |
+| PMIC inductors | MWSA0618/0615 (7×6.6 mm) | Sunlord WPN4012H4R7MT 4×4×1.2 mm | area and height |
+| PMIC passives | 0805 caps, MBR0530 SOD-123 | 0603 caps at the same voltage ratings (50 V on VGH/VGL pumps, 25 V on ±15 V rails; CCTC TCC0603X5R475M250CT for 4.7 µF), Hottech 1N5819WS SOD-323 40 V 1 A | area; DC-bias derating of the 0603 4.7 µF is an EVT item |
+| 3V3 regulator | Richtek RT6160 buck-boost (I2C) | Silergy SY8089A1AAC buck, 100% dropout, 1 µH Sunlord, 100k/22.1k + 22 pF | mainland, $0.07 |
+| Load switches | 4× SGM2578 | 1× SGM2578 (SD card only); touch, EPD logic and audio on the always-on rails | NS4168 CTRL low = shutdown; touch and panel logic idle in µA |
+| Front light | AWINIC AW99703 WLCSP-12 (needs 0.15 mm via-in-pad; 35 pcs stock) | SGMICRO SGM3732 TSOT-23-6 boost + 2× NX3008 string selectors, R921 sets 20 mA | no small via, stocked; warm / cool / mixed via expander, brightness PWM on GPIO0 |
+| IMU | QMI8658B 6-axis | Silan SC7A20HTR 3-axis, 0x19 | orientation and tap only |
+| RTC | SD3078 + CR1216 + BAT54 | GATEMODE BM8563EMA + YXC 32.768 kHz 12.5 pF, on 3V3_AON (no coin cell) | $0.35 against $1.16 + manual cell |
+| Supervisor | SGM809 | removed (RC on CHIP_PU) | |
+| Charging permit | Q907/Q908 + GPIO2 inhibit chain | CE tied low, charging on by default, firmware control over I2C | a product must charge a flat cell without firmware |
+| Debug | TC2030 pads | USB Serial/JTAG only; TP19 on GPIO0 for ROM download | |
+| Flash | GD25Q128ESIG SOP-8 | unchanged (WSON-8 version is $2.57 against $0.96) | |
+| Charger inductor | Cyntec MWSA0412 | Sunlord WPN4012H1R0MT | mainland |
+
+## 4. GPIO map (ESP32-S3R8, QFN-56)
+
+| GPIO | Net | | GPIO | Net |
+|---|---|---|---|---|
+| 0 | FL_PWM (boot strap, R511 pull-up, TP19) | | 21 | P47_XCL (via R726 22 R) |
+| 1 | EXP_INT (RTC GPIO, deep-sleep wake) | | 38 | SD_CLK |
+| 2 | I2S_BCLK | | 39 / 40 | I2C_SDA / I2C_SCL |
+| 3 | P47_XLE (JTAG strap, R512 pull-down) | | 41 | I2S_LRCLK |
+| 4–14 | P47_D0–D10 | | 42 | SD_CMD |
+| 15–18 | P47_D11–D14 | | 43 | I2S_DIN |
+| 19 / 20 | USB D− / D+ | | 44 | SD_D0 |
+| 45 | P47_D15 (VDD_SPI strap, R731 pull-down) | | 46 | P47_XSTL (boot strap, R513 pull-down) |
+| 47 / 48 | P47_SPV / P47_CKV | | 33–37 | octal PSRAM (reserved) |
+
+## 5. XL9535QF24 map (address 0x20, INT → EXP_INT)
+
+Outputs (all with 100 k pull-down unless noted): P00 EN_3V3_SD, P01 P47_HV_EN, P02 P47_VCOM_EN, P03 P47_MODE, P04 P47_XOE, P05 FL_W_EN, P06 AUDIO_EN (NS4168 CTRL), P07 TOUCH_RST (10 k pull-up), P16 FL_C_EN.
+Inputs: P10 TOUCH_INT, P11 P47_PGOOD, P12 BQ_INT, P13 FUEL_GPOUT, P14 IMU_INT1, P15 SD_CD, P17 KEY_POWER.
+
+I2C devices: XL9535 0x20, SC7A20H 0x19, BM8563 0x51, SGM41513 0x6B, CW2217 0x64, SY7636A 0x62, touch controller on J803.
+
+## 6. BOM and cost (JLC API 2026-11-10, 100-board tier)
+
+| | R50 | v0.2.0 |
+|---|---|---|
+| SMT placements | 224 (two sides) | **153 (top side only)** |
+| BOM lines (by LCSC part) | 78 | 72 |
+| Placed parts $/board @100 | 16.29 | **10.01** (+ consigned SY7636ARMC) |
+| Placed parts $/board @1000 | 14.24 | **8.73** |
+| Non-mainland ICs | TI TPS651851, Richtek RT6160 | none |
+
+Every IC and connector is from a mainland maker (Espressif, GigaDevice, Silergy, SGMICRO, XINLUDA, Silan, GATEMODE, Cellwise, Nsiway, XySemi, LRC, JSMSEMI, CJ, XKB, XUNPU, MUP, YXC, Sunlord, Hottech). The 45 Samsung capacitors are JLC basic-library parts kept by the earlier user decision (no per-type fee); FH / CCTC equivalents are possible at about $3 per extra extended line per order. Not stocked at JLC: SY7636ARMC (consign). Small stock to watch: J201 USB-C (139), ESP32-S3R8 (1788), SGM41513 (1819).
+
+## 7. Board
+
+- Outline (device-cavity mm): bottom strip x 0.5–63.5, y 82.0–114.8; side tab x 52.0–63.5, y 4.0–82.0; mid-mount USB-C notch x 27.38–36.62 at the bottom edge. Bounding box 63 × 110.8 mm, area ≈ 2960 mm² (R50 ≈ 5100 mm²). The cell bay is x 1–51, y 1–81.
+- All SMT parts on the top side; test points are bare pads on the bottom; silkscreen designators hidden (kept on F.Fab).
+- Rules: 0.127 / 0.127 mm default and power-class clearance, 0.3 mm power-class tracks, 0.09 mm minimum width (JLC multilayer capability; 199 necks of 0.0952 mm at fine-pitch pins), through vias 0.55 / 0.3 mm signal and 0.6 / 0.3 mm power (no small-hole option), hole clearance 0.25 mm, In1 solid GND, F/B GND pour.
+- Result: 2774 tracks, 410 vias (all 0.3 mm drill), 17 via-in-pad in exposed pads (U501 ×9, U901 ×4, U904 ×2, U601, U903) — order with resin plug + plated cap.
+
+## 8. How it was routed
+
+1. Placement: hand anchors for connectors, ICs and the ESP32 / SY7636A periphery; every switching-loop and decoupling part is placed first at a target pin (`v020/layout/anchors_v020f.json`). Before that, auto placement had put the charger bootstrap cap 8.9 mm and the front-light output cap 85 mm from their pins; now 3.1 mm and 7.9 mm.
+2. GND stitching: each top GND pad gets a short stub and a 0.55 / 0.3 via to In1 before autorouting (fine-pitch pins use 0.15 mm stubs along the pad axis).
+3. Freerouting 2.5.0, 40 passes, neckdown limited by the 0.09 mm rule; KiCad reported 0 unconnected after import.
+4. Local fixes: one REGN detour next to L402, one D1 stub removed, U302.4 solid pad (`v020/layout/b14_*.json`).
+
+Lessons from the earlier tries (b4–b13): Freerouting does not credit pre-stitched GND pads, so its "unrouted" count overstates; windowed rip-up must release neighbouring signal nets (never RF, crystal or power-class nets, which the local grid router lays at 0.127 mm only); persistent conflicts were always placement problems, not router settings.
+
+## 9. Open items
+
+- Panel, touch and front-light FPC exit positions are not taken from a supplier drawing; J820 / J803 / J804 poses must be checked against the real E0470A01 module before release.
+- Front-light string voltage and current: R921 sets 20 mA total; confirm against the panel FL spec. The SGM3732 output cap is 7.9 mm from D905 (11.5 mm side tab); tighten in the next revision.
+- Real battery pack dimensions, NTC and connector (J301 / J302 solder landings).
+- SY7636ARMC procurement (consigned).
+- Firmware: Read Pico EPD / SD / I2C pin map; expander map in §5; GPIO0 is FL PWM and the ROM-download strap (TP19).
+- EVT: EPD data bus without series resistors (ringing), SY8089 dropout at low cell voltage, SD back-powering with 3V3_SD off, 0603 4.7 µF DC-bias on the ±15 V rails, charging on by default.

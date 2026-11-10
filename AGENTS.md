@@ -1,3 +1,14 @@
+# CURRENT CONTINUATION — 2026-11-10 v0.2.0 / E03 PICO-CLASS REDESIGN
+
+Read `hardware/pico47/E03-V020-PICO-CLASS-REDESIGN-20261110.md` and `hardware/pico47/v0.2.0/README.md` first.
+v0.2.0 is a new board (not an R-series delta): Read Pico architecture, all-mainland ICs, SY7636ARMC consigned,
+single-sided SMT, 63 x 111 mm L outline for a 117.5 x 66.2 x 7.3 mm device. The KiCad project in
+`hardware/pico47/v0.2.0/` is the source of truth (ERC 0, DRC 0 / 0 unconnected / 0 parity). Scripts live in
+`hardware/pico47/v020/`; generated boards, Freerouting runs and order packs stay in `.work/` or outside Git.
+Rules: 0.127 mm default, 0.09 mm JLC minimum, vias 0.3 mm drill only, hole clearance 0.25 mm. Keep RF, crystal
+and power-class nets out of local grid-router rip-up. FPC connector poses and the real battery pack remain open;
+no fabrication, charging or panel power claims. The R26-R50 sections below are history.
+
 # CURRENT ROUTING CONTINUATION — 2026-11-03 R48 SINGLE / XSTL ZERO-REAR BRIDGE, CKV INNER/FRONT BRIDGES & 4-NET COORDINATION
 
 Read `hardware/pico47/E02-R48-XSTL-AND-CKV-BRIDGES-20261103.md`, `hardware/pico47/E02-SEVEN-QUALIFICATION-EVIDENCE-OVERVIEW-20261104.md`, `hardware/pico47/E02-DFM-ASSEMBLY-AND-TIMING-SPECIFICATION-20261104.md`, `hardware/pico47/E02-EVT-ELECTRICAL-VERIFICATION-PROTOCOL-20261104.md` and `hardware/pico47/E02-POFV-46-VIA-CAM-MANUFACTURING-PACKAGE-20261104.md` first. R48 coordinates
