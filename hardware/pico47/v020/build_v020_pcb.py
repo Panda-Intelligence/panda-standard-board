@@ -22,7 +22,12 @@ KICAD_FP = Path('/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints
 MM = P.FromMM
 
 
+FP_DIR = os.environ.get('PANDA47_FP_DIR')   # e.g. hardware/pico47/v0.2.0/Panda47v2.pretty (DFM-fixed footprints)
+
+
 def lib_path(lib):
+    if FP_DIR:
+        return Path(FP_DIR)
     return PANDA_LIB if lib == 'Panda47' else KICAD_FP / f'{lib}.pretty'
 
 

@@ -14,8 +14,11 @@ from pathlib import Path
 
 import pcbnew as P
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import variant_v02x as VAR  # noqa: E402
+
 CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-STEM = 'Panda47-v020'
+STEM = VAR.STEM
 TO = P.ToMM
 CONSIGN = {'U810': 'SY7636ARMC (Silergy, LCSC C22451321, JLC stock 0)'}
 
@@ -88,7 +91,7 @@ npth = [(fp.GetReference(), p) for fp in board.GetFootprints() for p in fp.Pads(
 npth_txt = ', '.join(f'{n} x {d} mm ({", ".join(sorted({r for r, p in npth if round(TO(p.GetDrillSize().x), 2) == d}))})'
                      for d, n in sorted(collections.Counter(round(TO(p.GetDrillSize().x), 2) for _, p in npth).items()))
 bb = board.GetBoardEdgesBoundingBox()
-(out / 'README-ORDER.md').write_text(f"""# Panda47 v0.2.0 order pack
+(out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack
 
 Not a manufacturing release: the panel / touch / front-light FPC connector poses still need checking against the
 supplier drawing, and U810 is consigned.
@@ -96,7 +99,7 @@ supplier drawing, and U810 is consigned.
 | PCB option | Value |
 |---|---|
 | Layers | 4 (F / In1 GND / In2 / B) |
-| Size (bounding box) | {TO(bb.GetWidth()):.1f} x {TO(bb.GetHeight()):.1f} mm, L-shaped outline with a USB-C notch |
+| Size (bounding box) | {TO(bb.GetWidth()):.1f} x {TO(bb.GetHeight()):.1f} mm, {'L-shaped' if VAR.STEM.endswith('v020') else 'rectangular'} outline with a USB-C notch |
 | Thickness | 0.8 mm |
 | Surface finish | ENIG |
 | Min track / space | 0.09 / 0.127 mm (0.0952 mm necks at fine-pitch pins) |
