@@ -1960,21 +1960,21 @@
     <comp ref="J301">
       <value>SOLDER LANDING / J301</value>
       <footprint>Panda47:J301_Core</footprint>
-      <description>Historical two-pad bench landing ONLY. Not the Pico pack connector. Keep charge inhibited until exact protected2050mAh Pico pack,NTC/polarity/CV/current and protection interaction are confirmed.</description>
+      <description>Historical two-pad bench landing ONLY. Not the reference pack connector. Keep charge inhibited until exact protected2050mAh reference pack,NTC/polarity/CV/current and protection interaction are confirmed.</description>
       <fields>
         <field name="Manufacturer">PCB fabricated terminal</field>
         <field name="MPN">NOT_A_PURCHASED_PART</field>
         <field name="LCSC"/>
-        <field name="PandaRequiredReplacement">EXACT_PICO_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED</field>
+        <field name="PandaRequiredReplacement">EXACT_REFERENCE_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED</field>
         <field name="Footprint">Panda47:J301_Core</field>
         <field name="Datasheet"/>
-        <field name="Description">Historical two-pad bench landing ONLY. Not the Pico pack connector. Keep charge inhibited until exact protected2050mAh Pico pack,NTC/polarity/CV/current and protection interaction are confirmed.</field>
+        <field name="Description">Historical two-pad bench landing ONLY. Not the reference pack connector. Keep charge inhibited until exact protected2050mAh reference pack,NTC/polarity/CV/current and protection interaction are confirmed.</field>
       </fields>
       <libsource lib="Panda7" part="J301" description=""/>
       <property name="Manufacturer" value="PCB fabricated terminal"/>
       <property name="MPN" value="NOT_A_PURCHASED_PART"/>
       <property name="LCSC" value=""/>
-      <property name="PandaRequiredReplacement" value="EXACT_PICO_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"/>
+      <property name="PandaRequiredReplacement" value="EXACT_REFERENCE_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"/>
       <property name="Sheetname" value="Core"/>
       <property name="Sheetfile" value="Core.kicad_sch"/>
       <property name="exclude_from_bom"/>

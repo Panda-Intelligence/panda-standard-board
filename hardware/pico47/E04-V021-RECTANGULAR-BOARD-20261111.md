@@ -1,6 +1,6 @@
 # E04 v0.2.1 — rectangular 63 × 42 mm board (2026-11-11)
 
-v0.2.1 is v0.2.0 (E03, `E03-V020-PICO-CLASS-REDESIGN-20261110.md`) with the L-shaped board replaced by a rectangle. Unchanged from v0.2.0:
+v0.2.1 is v0.2.0 (E03, `E03-V020-REDESIGN-20261110.md`) with the L-shaped board replaced by a rectangle. Unchanged from v0.2.0:
 
 - netlist, BOM and rules;
 - footprints, including the JLC DFM fixes of 2026-11-11;
@@ -12,7 +12,7 @@ v0.2.0 stays in `hardware/pico47/v0.2.0/` as the reference.
 
 - **Board shape:** rectangle, 63 × 42 mm, below the cell. The cell is shortened to 3.2 × 50 × 70 mm (about 1700–1800 mAh, against about 2000 mAh for 3.2 × 50 × 80).
 - **USB-C:** the mid-mount notch stays (9.24 × 5.55 mm at the bottom edge), because mid-mount saves about 1 mm of height.
-- **Panel:** same class as Read Pico (4.7" 1216 × 684, 16-bit parallel, SY7636A, 40-pin 0.5 mm FPC), plus front light and touch. Still to be checked against a supplier drawing: the exact panel suffix, the contact face and the FPC exit positions.
+- **Panel:** same class as the reference device (4.7" 1216 × 684, 16-bit parallel, SY7636A, 40-pin 0.5 mm FPC), plus front light and touch. Still to be checked against a supplier drawing: the exact panel suffix, the contact face and the FPC exit positions.
 
 ## 2. Outline and cavity (device-cavity coordinates, mm, y down)
 

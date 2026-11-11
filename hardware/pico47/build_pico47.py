@@ -2,7 +2,7 @@
 """Build real E0 Core/Display native CAD from a verified Product-D donor.
 
 This is an unrouted electrical redesign, not a manufacturing release. The exact
-Pico battery pack and full touch/frontlight stack have no verified drawing yet.
+Reference battery pack and full touch/frontlight stack have no verified drawing yet.
 Never overwrites donor CAD, source PCB, supplier records or an existing output.
 """
 from pathlib import Path
@@ -158,8 +158,8 @@ def create(out,donor):
         core[ref]['nets']={**plan['interconnect'][count],'MP':'GND'}
         core[ref]['pins']={n:{'name':n,'type':'passive'} for n in core[ref]['nets']}
         core[ref]['fields']['Description']='E0 parallel display interconnect. NOT PIN-COMPATIBLE WITH PRODUCT D.'
-    core['J301']['fields']['Description']='Historical two-pad bench landing ONLY. Not the Pico pack connector. Keep charge inhibited until exact protected2050mAh Pico pack,NTC/polarity/CV/current and protection interaction are confirmed.'
-    core['J301']['fields']['PandaRequiredReplacement']='EXACT_PICO_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED'
+    core['J301']['fields']['Description']='Historical two-pad bench landing ONLY. Not the reference pack connector. Keep charge inhibited until exact protected2050mAh reference pack,NTC/polarity/CV/current and protection interaction are confirmed.'
+    core['J301']['fields']['PandaRequiredReplacement']='EXACT_REFERENCE_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED'
     # Preserve the old frontlight/touch electrical domains, not the old module fit claim.
     for ref in ['J803','J804']:
         core[ref]['fields']['PandaModuleCompatibility']='E0 TOUCH/FRONTLIGHT ASSEMBLY PINOUT AND CONTACT SIDE UNCONFIRMED;NOT VERIFIED BY OLD FT01C DRAWING'
@@ -183,7 +183,7 @@ def create(out,donor):
         oldp=old['Core'][0][donor_ref]
         new('Display',ref,oldp['value'],('Core',donor_ref),ns,'XKB Connection',oldp['fields']['MPN'],oldp['fields']['LCSC'],oldp['datasheet'],note='E0 opposite-contact mapping; actual cable fold/length not yet qualified.')
     oldp=old['Core'][0]['J601']
-    new('Display','J820','X05A10L40G / E0470A01',('Core','J601'),{**plan['panel']['source_family_pinmap'],'MP':'GND'},'XKB Connection','X05A10L40G','C21261162',oldp['datasheet'],note='40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.')
+    new('Display','J820','X05A10L40G / E0470A01',('Core','J601'),{**plan['panel']['source_family_pinmap'],'MP':'GND'},'XKB Connection','X05A10L40G','C21261162',oldp['datasheet'],note='40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.')
     # SY7636A perimeter follows manufacturer p24,NOT a generic grounded exposed pad.
     sy_pads=[]
     for i in range(12):
@@ -287,8 +287,8 @@ def create(out,donor):
     (out/'sym-lib-table').write_text('(sym_lib_table (version 7) (lib (name "Panda7")(type "KiCad")(uri "${KIPRJMOD}/Panda7.kicad_sym")(options "")(descr "E0 exact net intent;not fabrication release")))\n')
     (out/'fp-lib-table').write_text('(fp_lib_table (version 7) (lib (name "Panda47")(type "KiCad")(uri "${KIPRJMOD}/Panda47.pretty")(options "")(descr "E0 native local lands")))\n')
     report={'revision':'E0.2','source_ordered_layout_sha256':sha(LAYOUT),'source_contract_sha256':sha(CONTRACT),'donor':proof,'boards':{},'manufacturing_release':False,
-      'exact_pico_battery_verified':False,'panel_full_stack_verified':False,'routing_complete':False,'charge_enable_allowed':False,
-      'open_engineering_gates':['Exact Pico battery MPN/pack envelope/connector/NTC/CV and protection','Exact panel full suffix,touch and frontlight stack/contact face','BORDER bias and per-panel VCOM','PMIC current-revision EP/NC clarification','Power inductors/diodes/startup saturation and complete passives sourcing','3.3V mux timing and safe SD/UART/display handover','Physical placement/routing/SI/EMI/thermal','Whole-device<=7mm maximum and cell swelling fit','CAM/SMT and supplier acceptance']}
+      'exact_reference_battery_verified':False,'panel_full_stack_verified':False,'routing_complete':False,'charge_enable_allowed':False,
+      'open_engineering_gates':['Exact reference battery MPN/pack envelope/connector/NTC/CV and protection','Exact panel full suffix,touch and frontlight stack/contact face','BORDER bias and per-panel VCOM','PMIC current-revision EP/NC clarification','Power inductors/diodes/startup saturation and complete passives sourcing','3.3V mux timing and safe SD/UART/display handover','Physical placement/routing/SI/EMI/thermal','Whole-device<=7mm maximum and cell swelling fit','CAM/SMT and supplier acceptance']}
     for name in ['Core','Display']:
         run(['sch','export','netlist','--format','kicadxml','--output',out/(name+'-netlist.xml'),out/(name+'.kicad_sch')],out/(name+'-netlist.log'))
         tree=ET.parse(out/(name+'-netlist.xml'));actual={(v.get('ref'),v.get('pin')):net.get('name') for net in tree.findall('nets/net') for v in net.findall('node')}
@@ -406,7 +406,7 @@ def create(out,donor):
     (out/'NEW-PART-REVIEW.json').write_text(json.dumps(specs,indent=2)+'\n')
     (out/'PARTS-INTENT.json').write_text(json.dumps(parts,indent=2)+'\n')
     (out/'E0-STATUS.json').write_text(json.dumps(report,indent=2)+'\n')
-    (out/'DO-NOT-ORDER-OR-POWER.txt').write_text('E0 is an incomplete redesign. All opens are real and reported. The former D all-zero checks do not qualify this version. Exact Pico battery and complete screen assembly are NOT verified. Do not manufacture, enable charging or power the panel. See E0-STATUS.json.\n')
+    (out/'DO-NOT-ORDER-OR-POWER.txt').write_text('E0 is an incomplete redesign. All opens are real and reported. The former D all-zero checks do not qualify this version. Exact reference battery and complete screen assembly are NOT verified. Do not manufacture, enable charging or power the panel. See E0-STATUS.json.\n')
     print('REAL_NATIVE_CANDIDATE',out,'NOT_FOR_FABRICATION',flush=True)
     return report
 

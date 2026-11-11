@@ -8,10 +8,15 @@ reference. Scripts in `hardware/pico47/v020/` take `PANDA47_VARIANT=v021` (file 
 `PANDA47_FP_DIR` (footprint dir). The lower strip keeps the v0.2.0 part poses. Never let the grid router rip up
 Power-class, RF or crystal nets (`corridor_spec_v020.py` KEEP). Real cell pack, key positions and FPC poses open.
 
-# PREVIOUS CONTINUATION — 2026-11-10 v0.2.0 / E03 PICO-CLASS REDESIGN
+User rule (2026-11-11): competitor products are reference only. Never write a competitor product or brand name
+into the project, including files, schematics, title blocks, order packs, renders, commit messages and PR text.
+Use neutral wording such as "the reference device" or "4.7-inch reference class". The internal codename `pico47`
+(directory and script names) stays.
 
-Read `hardware/pico47/E03-V020-PICO-CLASS-REDESIGN-20261110.md` and `hardware/pico47/v0.2.0/README.md` first.
-v0.2.0 is a new board (not an R-series delta): Read Pico architecture, all-mainland ICs, SY7636ARMC consigned,
+# PREVIOUS CONTINUATION — 2026-11-10 v0.2.0 / E03 REDESIGN
+
+Read `hardware/pico47/E03-V020-REDESIGN-20261110.md` and `hardware/pico47/v0.2.0/README.md` first.
+v0.2.0 is a new board (not an R-series delta): reference architecture, all-mainland ICs, SY7636ARMC consigned,
 single-sided SMT, 63 x 111 mm L outline for a 117.5 x 66.2 x 7.3 mm device. The KiCad project in
 `hardware/pico47/v0.2.0/` is the source of truth (ERC 0, DRC 0 / 0 unconnected / 0 parity). Scripts live in
 `hardware/pico47/v020/`; generated boards, Freerouting runs and order packs stay in `.work/` or outside Git.
@@ -840,15 +845,15 @@ The old battery/complete panel stack/<=7mm physical and CAM/SMT gates remain ope
 Generated native boards, checkpoint manifests/reports and renders stay outsideGit.
 Keep user packaging/ and unrelated worktrees untouched.
 
-# CURRENT USER OVERRIDE: Read-Pico-class display and battery — 2026-10-12
+# CURRENT USER OVERRIDE: reference-class display and battery — 2026-10-12
 
 Continue `hardware/pico47/README.md` and `hardware/pico47/design.json` on develop.
-The user confirmed the same Pico 4.7-inch 1216x684 ~297PPI E0470A01 family AND
+The user confirmed the same reference 4.7-inch 1216x684 ~297PPI E0470A01 family AND
 same actual replaceable2050mAh LCO pack. The old4.26-inch SPI/1100mAh ProductD is
 now only a reversible donor/regression; do not resume it as the requested product.
 Keep two PCBs, <=7mm finished maximum, touch/frontlight/audio/IMU/SD/RTC,
 mainland manufacturer identities and GPIO2 direct inhibit. The132mm trial envelope
-is NOT an approved enclosure. Exact Pico pack dimensions/MPN/connector/NTC/CV and
+is NOT an approved enclosure. Exact reference pack dimensions/MPN/connector/NTC/CV and
 full screen stack remain unknown, not inferred from capacity or bare glass.
 E0 is still unrouted/partly routed and NOT FOR FABRICATION OR PANEL/BATTERY POWER.
 Never reuse ProductD zero-DRC evidence as E0 acceptance. Preserve live pad groups

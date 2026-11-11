@@ -39,7 +39,7 @@
 			)
 		)
 	)
-	(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
+	(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

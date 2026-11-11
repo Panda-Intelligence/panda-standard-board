@@ -1,11 +1,11 @@
-"""Panda47 v0.2.0 netlist: the v0.1.3 (R50) netlist rewritten to the Read Pico style architecture.
+"""Panda47 v0.2.0 netlist: the v0.1.3 (R50) netlist rewritten to the reference-style architecture.
 
 usage: make_netlist_v020.py r50.json r49.json out.json
   r50.json / r49.json come from dump_pcb.py (KiCad Python) run on v0.1.3 and v0.1.2 Single.kicad_pcb.
 
 Decisions (user, 2026-11-10): EPD data straight to GPIO, 1-bit SDMMC, no SGM330A muxes, one XL9535,
 SC7A20HTR accelerometer, BM8563 RTC, keep NS4168 speaker, SY7636ARMC (consigned) on the R49 circuit,
-mainland buck SY8089A1AAC for 3V3. GPIO map follows Read Pico so its EPD/SD/I2C drivers fit unchanged.
+mainland buck SY8089A1AAC for 3V3. GPIO map follows the reference design so its EPD/SD/I2C drivers fit unchanged.
 """
 import json
 import sys
@@ -52,7 +52,7 @@ for ref, c in r49['comps'].items():
 parts['U810']['pins'] = pins_of(r49, 'U810')
 parts['R805']['dnp'] = False
 
-# ------------------------------------------------------------- MCU pin map (Read Pico GPIO plan)
+# ------------------------------------------------------------- MCU pin map (reference GPIO plan)
 MCU = {
     '5': 'KEY_POWER_MCU',   # GPIO0 boot strap + power key (R511 pull-up, SW201)
     '6': 'EXP_INT',         # GPIO1 RTC GPIO: deep-sleep wake from XL9535 / BM8563 INT

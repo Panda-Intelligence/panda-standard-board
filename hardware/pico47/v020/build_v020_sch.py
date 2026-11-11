@@ -20,7 +20,7 @@ CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
 STEM = VAR.STEM
 
 RS.PROJECT = STEM
-RS.PRODUCT = 'Pico-class'
+RS.PRODUCT = 'E-reader'
 RS.BOARD_DESC = VAR.BOARD
 RS.REVISION = {'version': VAR.VERSION, 'revision': VAR.REVISION, 'date': VAR.DATE}
 RS.POWER_NETS = ['GND', 'VBUS_USB', 'VSYS_RAW', '3V3_AON', '3V3_RF', 'VDD_SPI', '3V3_SD']
