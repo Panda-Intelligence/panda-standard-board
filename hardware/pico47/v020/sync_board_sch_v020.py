@@ -13,8 +13,10 @@ import pcbnew as P
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 import readable_schematic as RS  # noqa: E402
+sys.path.insert(0, str(HERE))
+import variant_v02x as VAR  # noqa: E402
 
-STEM = 'Panda47-v020'
+STEM = VAR.STEM
 proj = Path(sys.argv[1])
 pcb = proj / f'{STEM}.kicad_pcb'
 board = P.LoadBoard(str(pcb))

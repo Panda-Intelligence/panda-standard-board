@@ -13,15 +13,16 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 import make_flat_sch_v020 as FLAT  # noqa: E402
+import variant_v02x as VAR  # noqa: E402
 import readable_schematic as RS  # noqa: E402
 
 CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-STEM = 'Panda47-v020'
+STEM = VAR.STEM
 
 RS.PROJECT = STEM
 RS.PRODUCT = 'Pico-class'
-RS.BOARD_DESC = '63 x 111 mm L, 4-layer 0.8 mm'
-RS.REVISION = {'version': 'v0.2.0', 'revision': 'E03', 'date': '2026-11-10'}
+RS.BOARD_DESC = VAR.BOARD
+RS.REVISION = {'version': VAR.VERSION, 'revision': VAR.REVISION, 'date': VAR.DATE}
 RS.POWER_NETS = ['GND', 'VBUS_USB', 'VSYS_RAW', '3V3_AON', '3V3_RF', 'VDD_SPI', '3V3_SD']
 RS.SUPPLY = set(RS.POWER_NETS) - {'GND'}
 RS.SHEETS = {

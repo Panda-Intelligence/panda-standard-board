@@ -15,7 +15,7 @@ out = sys.argv[3]
 hw = float(sys.argv[4]) if len(sys.argv) > 4 else 1.5
 extra = json.load(open(sys.argv[5])) if len(sys.argv) > 5 else {}
 KEEP = ('GND', '3V3_AON', '3V3_RF', '3V3_SD', 'VSYS_RAW', 'VBUS_USB', 'BAT_', 'SGM41513_SW', 'SGM41513_PMID',
-        'BUCK_LX', 'P47_VP_LX', 'P47_VN_LX', 'P47_VN', 'FL_SW', 'VDD_SPI', 'SPK_', 'XTAL', 'RF_ANT', 'LNA_IN')
+        'BUCK_LX', 'P47_VP', 'P47_VN', 'FL_SW', 'FL_VOUT', 'VDD_SPI', 'SPK_', 'XTAL', 'RF_ANT', 'LNA_IN')   # all Power-class nets (rules_v020.POWER) + RF + crystal
 
 wins = []
 for n in fails:
