@@ -417,6 +417,18 @@
 			)
 		)
 	)
+	(fp_circle
+		(center -4.161 -2.791)
+		(end -4.011 -2.791)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "1a8572a0-5145-4719-bef7-f3b147481bfd")
+	)
+
 	(pad "" smd roundrect
 		(at -1.33 -1.33)
 		(size 1.07 1.07)

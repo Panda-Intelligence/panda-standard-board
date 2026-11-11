@@ -99,3 +99,16 @@ Lessons from the earlier tries (b4–b13): Freerouting does not credit pre-stitc
 - SY7636ARMC procurement (consigned).
 - Firmware: Read Pico EPD / SD / I2C pin map; expander map in §5; GPIO0 is FL PWM and the ROM-download strap (TP19).
 - EVT: EPD data bus without series resistors (ringing), SY8089 dropout at low cell voltage, SD back-powering with 3V3_SD off, 0603 4.7 µF DC-bias on the ±15 V rails, charging on by default.
+
+## 10. JLC assembly DFM fixes (2026-11-11)
+
+JLC's engineers reported four problems while assembling the previous board (order Y4, SMT2611090608, v0.1.3). The footprints involved are shared with v0.2.0, so the first three problems applied here too. `v020/dfm_fix_v020.py` fixes them on the board and in `Panda47v2.pretty`. Afterwards DRC was 0 / 0 unconnected / 0 parity and ERC was 0.
+
+| Part | Problem | Fix |
+|---|---|---|
+| U907 XB7608AJ (CPC5) | The narrow-lead pads were at a uniform 0.53 mm pitch, mirrored. The datasheet has e1 0.53 / e 1.06 (pin 1 VDD at −0.795, pin 2 at −0.265, pin 3 at +0.795 in the top view) | Land redrawn from the XySemi REV0.1 drawing as the top view rotated 180°: pin 1 at +0.795, 2 at +0.265, 3 at −0.795, 4 at −0.53, 5 at +0.53. The VDD and cell-negative stubs were re-routed. |
+| SW201 / SW202 TS-1186E-B-B | The supplied parts have two Ø0.6 mm locating posts, but there were no holes. The drawing says the "B" variant has no posts, which does not match the parts JLC received. | Two Ø0.75 mm NPTH at (0, ±0.9) per the XKB PCB layout. 3V3_AON (F.Cu, at SW201) and FL_C_N (B.Cu, at SW202) now pass between the holes. |
+| J820 X05A10L40G | The hold-down legs overhung their pads by about 1 mm | Hold-down pads moved to 1.91 mm behind the housing edge (XKB recommended layout) and drawn 0.3 × 1.3 mm at y = +0.565. |
+| U501, U810, U904 and others | No pin-1 mark on the silkscreen | 0.3 mm silk dots next to pin 1 on U501, U810, U904, U907, Q901/Q902, J803, J804 and J820. The other ICs keep the pin-1 mark of their standard footprint. |
+
+Order pack: NPTH holes are now exported in a separate drill file, and README-ORDER lists the assembly notes. A datasheet check of every footprint that is new in v0.2.0 (U302, Y301, U503, U601, U810, U902, U905, Q901/Q902, L401, L402/L801/L802, D801/D802, D905) found no further land-pattern or pin-map problems. There was no vendor package drawing for D905 B5819W SL, so it uses the standard SOD-123 land.
