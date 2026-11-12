@@ -15,6 +15,8 @@ from pathlib import Path
 
 import pcbnew as P
 
+from outline_v02x import edges, expand
+
 REPO = Path(__file__).resolve().parents[3]
 TEMPLATE = REPO / 'hardware/pico47/v0.1.3/Single.kicad_pcb'
 PANDA_LIB = REPO / 'hardware/pico47/v0.1.3/Panda47.pretty'
@@ -82,13 +84,18 @@ def build(netlist, placement, out_dir):
         return nets[name]
 
     # outline
-    pts = placement['outline']
-    for a, b in zip(pts, pts[1:] + pts[:1]):
-        seg = P.PCB_SHAPE(board, P.SHAPE_T_SEGMENT)
+    pts = expand(placement['outline'])
+    for kind, *xy in edges(placement['outline']):
+        V = lambda p: P.VECTOR2I(MM(p[0]), MM(p[1]))
+        if kind == 'arc':
+            seg = P.PCB_SHAPE(board, P.SHAPE_T_ARC)
+            seg.SetArcGeometry(V(xy[0]), V(xy[1]), V(xy[2]))
+        else:
+            seg = P.PCB_SHAPE(board, P.SHAPE_T_SEGMENT)
+            seg.SetStart(V(xy[0]))
+            seg.SetEnd(V(xy[1]))
         seg.SetLayer(P.Edge_Cuts)
         seg.SetWidth(MM(0.1))
-        seg.SetStart(P.VECTOR2I(MM(a[0]), MM(a[1])))
-        seg.SetEnd(P.VECTOR2I(MM(b[0]), MM(b[1])))
         board.Add(seg)
 
     missing = []

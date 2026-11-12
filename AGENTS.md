@@ -1,4 +1,19 @@
-# CURRENT CONTINUATION — 2026-11-11 v0.2.1 / E04 RECTANGULAR BOARD
+# CURRENT CONTINUATION — 2026-11-12 v0.2.2 / E05 PORTS, ROUNDED CORNERS, STATUS LED
+
+Read `hardware/pico47/E05-V022-PORTS-ROUNDED-20261112.md` and `hardware/pico47/v0.2.2/README.md` first.
+v0.2.2 = v0.2.1 circuit plus a WSON-8 flash (GD25Q128EWIGR) and a STAT LED (D203/R208), on a 63 x 43 mm board with
+R4 bottom corners in a 118.3 x 67.0 x 7.3 mm R6 device. SD on the left edge, keys on the right at y 95.2 / 105.2,
+USB-C centred, J820 right of USB-C under the MCU (assumed FPC exit), J803/J804 bottom left. SW202 = nQON (hold 10 s
+on battery = full power reset); no pinhole by user decision. The KiCad project in `hardware/pico47/v0.2.2/` is the
+source of truth (ERC 0, DRC 0 / 0 unconnected / 0 parity). Scripts take `PANDA47_VARIANT=v022`; the outline may hold
+arcs (`outline_v02x.py`). Enclosure study CAD, concept renders and the Kickstarter brief are outside Git.
+
+User rule (2026-11-11): competitor products are reference only. Never write a competitor product or brand name
+into the project, including files, schematics, title blocks, order packs, renders, commit messages and PR text.
+Use neutral wording such as "the reference device" or "4.7-inch reference class". The internal codename `pico47`
+(directory and script names) stays.
+
+# PREVIOUS CONTINUATION — 2026-11-11 v0.2.1 / E04 RECTANGULAR BOARD
 
 Read `hardware/pico47/E04-V021-RECTANGULAR-BOARD-20261111.md` and `hardware/pico47/v0.2.1/README.md` first.
 v0.2.1 = v0.2.0 (same netlist, BOM, DFM-fixed footprints, rules) on a 63 x 42 mm rectangle below a 3.2 x 50 x 70
@@ -7,11 +22,6 @@ mm cell; mid-mount USB-C notch kept; buttons on the right edge at y 76.4 / 84.6.
 reference. Scripts in `hardware/pico47/v020/` take `PANDA47_VARIANT=v021` (file stem, title block) and
 `PANDA47_FP_DIR` (footprint dir). The lower strip keeps the v0.2.0 part poses. Never let the grid router rip up
 Power-class, RF or crystal nets (`corridor_spec_v020.py` KEEP). Real cell pack, key positions and FPC poses open.
-
-User rule (2026-11-11): competitor products are reference only. Never write a competitor product or brand name
-into the project, including files, schematics, title blocks, order packs, renders, commit messages and PR text.
-Use neutral wording such as "the reference device" or "4.7-inch reference class". The internal codename `pico47`
-(directory and script names) stays.
 
 # PREVIOUS CONTINUATION — 2026-11-10 v0.2.0 / E03 REDESIGN
 
