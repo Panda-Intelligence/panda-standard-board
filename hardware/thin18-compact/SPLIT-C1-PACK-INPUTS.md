@@ -28,4 +28,4 @@ Z预算：Core B=0；电池顶面=-1.8mm，5.5mm整包及0.7mm膨胀预算使底
 
 EEMB [LP503450-PCM-NTC-LD/ 原厂编制规格](https://macrogroup.ru/upload/iblock/80a/i2bksi77p3ephpa70n95kv0izxtrs2jg/LP503450.pdf)（2017-11-13）给出整包最大 52×34.5×5.3 mm，可用于尺寸筛选；但其 PCM 仅 1 A 连续 / 2 A 三秒，使用进口 JST-ADHR-03V-H 和 45±5 mm 导线，NTC 曲线及 PCM 器件身份不明，未选用。需更新供应商完整图纸及精确国产包身份，不能直接采购这个旧版本。
 
-[OpenSCAD 空间模型](SPLIT-C1-ENCLOSURE-STUDY.scad)显示两 PCB、侧置电池、膨胀区、屏厚预算和外壳空间框；没有真实壳体开孔或已验证实体模型。参考 XTEINK X4 Pro 的 5.95 mm 厚度不适用于当前堆叠，未声称达到。当前 EVT 仍为 NOT_RUN。
+[OpenSCAD 空间模型](SPLIT-C1-ENCLOSURE-STUDY.scad)显示两 PCB、侧置电池、膨胀区、屏厚预算和外壳空间框；没有真实壳体开孔或已验证实体模型。参考设备 B 的 5.95 mm 厚度不适用于当前堆叠，未声称达到。当前 EVT 仍为 NOT_RUN。

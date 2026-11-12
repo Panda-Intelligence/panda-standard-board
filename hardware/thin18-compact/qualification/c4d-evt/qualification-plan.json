@@ -121,8 +121,8 @@
       "required_sample_states": ["WiFi_tx", "WiFi_rx", "BLE", "EPD_full_refresh", "frontlight_max", "audio_max", "charging", "worst_concurrent_load", "cold_start", "hot_soak", "long_run", "reading_frontlight_off_radios_off", "reading_frontlight_cool_radios_off", "reading_frontlight_warm_radios_off", "reading_frontlight_mixed_radios_off", "reading_sync_then_sleep"],
       "required_instrument_roles": ["rf_test_set_or_spectrum_analyzer", "vna_or_antenna_fixture", "thermal_camera_or_thermocouples", "temperature_chamber", "current_limited_supply", "data_logger", "precision_current_meter", "lux_or_luminance_meter"],
       "required_metrics": ["wifi_tx_power_result", "wifi_rx_sensitivity_or_throughput_result", "ble_result", "antenna_match_result", "maximum_component_temperature_c", "maximum_surface_temperature_c", "brownout_reset_count", "functional_error_count", "soak_duration_h", "post_soak_regression_result", "battery_current_reading_ma", "battery_current_sync_ma", "battery_current_sleep_ua", "usable_capacity_mah", "reading_discharge_runtime_h", "energy_per_page_mj", "white_page_luminance_cd_m2", "x4_pro_reference_identity_result", "runtime_conditions_match_result", "runtime_reference_comparison_result"],
-      "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption. Reading runtime and measured battery-terminal energy meet the approved product budget. X4 Pro comparison requires a real identified reference device, matched page workload, measured frontlight output, wireless schedule, temperature and shutdown endpoint; capacity or UI brightness percent alone is not runtime evidence.",
-      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities", "selected complete battery pack and approved runtime/current limits", "identified physical X4 Pro reference and matched approved comparison protocol"],
+      "pass_rule": "RF performance and emissions, all component/enclosure temperatures, concurrent-load stability and the approved soak/regression suite meet the product and applicable regulatory pre-compliance limits with zero unexplained resets or data corruption. Reading runtime and measured battery-terminal energy meet the approved product budget. Reference device B comparison requires a real identified reference device, matched page workload, measured frontlight output, wireless schedule, temperature and shutdown endpoint; capacity or UI brightness percent alone is not runtime evidence.",
+      "blocked_until": ["complete enclosed sample", "approved RF/thermal/soak limits", "RF and thermal facilities", "selected complete battery pack and approved runtime/current limits", "identified physical reference device B and matched approved comparison protocol"],
       "board_scope": ["Core-C1", "Display-C1"],
       "stage": "PLANNED_AFTER_ASSEMBLY"
     },
@@ -223,8 +223,8 @@
   ],
   "runtime_benchmark_protocol": {
     "status": "PLANNED_NO_SAMPLES_NOT_EXECUTED",
-    "reference_model": "XTEINK X4 Pro",
-    "reference_source_url": "https://www.xteink.com/blogs/product/x4-pro-faq-specs-support",
+    "reference_model": "Reference device B",
+    "reference_source_url": "public product FAQ, link kept outside the project",
     "official_capacity_mah": 1100,
     "official_runtime_hours": null,
     "official_runtime_days": null,
