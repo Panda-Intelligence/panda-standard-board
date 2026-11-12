@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "XKB TS-1186E-B-B A1 2025-06-06, without locating posts. Two0.6x1.6mm lands,4.3mm inner gap/5.5mm outer span; centers+/-2.45mm. Drawing height1.50+/-0.10mm; H3.55 is the top-view actuator depth, not board height. Fab is conservative envelope, not a3D body.")
+	(descr "XKB TS-1186E-B-B A1 2025-06-06, two 0.75 mm NPTH for the locating posts at (0,+/-0.9) (JLC DFM Y4: parts are supplied with posts). Two0.6x1.6mm lands,4.3mm inner gap/5.5mm outer span; centers+/-2.45mm. Drawing height1.50+/-0.10mm; H3.55 is the top-view actuator depth, not board height. Fab is conservative envelope, not a3D body.")
 	(tags "XKB TS-1186E-B-B side-actuated no-post 160gf")
 	(property "Reference" "SW202"
 		(at 0 -3.2 0)
@@ -134,5 +134,20 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "1e70e7f3-e173-48da-8b3e-f77ba2026c09")
 	)
+	(pad "" np_thru_hole circle
+		(at 0 -0.9)
+		(size 0.75 0.75)
+		(drill 0.75)
+		(layers "*.Cu" "*.Mask")
+		(uuid "ea383a4e-f77a-40f8-b295-eba4273580a1")
+	)
+	(pad "" np_thru_hole circle
+		(at 0 0.9)
+		(size 0.75 0.75)
+		(drill 0.75)
+		(layers "*.Cu" "*.Mask")
+		(uuid "63b9ac2a-9869-406c-bfc2-e1e0ff0488b8")
+	)
+
 	(embedded_fonts no)
 )

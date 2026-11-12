@@ -899,7 +899,7 @@
       <value>X05A10L40G / E0470A01</value>
       <footprint>Panda47:J820_Display</footprint>
       <datasheet>https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</datasheet>
-      <description>40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</description>
+      <description>40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</description>
       <fields>
         <field name="Manufacturer">XKB Connection</field>
         <field name="MPN">X05A10L40G</field>
@@ -909,7 +909,7 @@
         <field name="PandaSupplyStatus">CATALOG_IDENTITY_ONLY</field>
         <field name="Footprint">Panda47:J820_Display</field>
         <field name="Datasheet">https://atta.szlcsc.com/upload/public/pdf/source/20260728/26BC46881D4A63071423AF10299E60A3.pdf</field>
-        <field name="Description">40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</field>
+        <field name="Description">40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel.</field>
       </fields>
       <libsource lib="Panda7" part="J820" description=""/>
       <property name="Manufacturer" value="XKB Connection"/>

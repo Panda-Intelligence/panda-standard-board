@@ -1,14 +1,17 @@
-"""Panda47 v0.2.0 netlist: the v0.1.3 (R50) netlist rewritten to the Read Pico style architecture.
+"""Panda47 v0.2.0 netlist: the v0.1.3 (R50) netlist rewritten to the reference-style architecture.
 
 usage: make_netlist_v020.py r50.json r49.json out.json
   r50.json / r49.json come from dump_pcb.py (KiCad Python) run on v0.1.3 and v0.1.2 Single.kicad_pcb.
 
 Decisions (user, 2026-11-10): EPD data straight to GPIO, 1-bit SDMMC, no SGM330A muxes, one XL9535,
 SC7A20HTR accelerometer, BM8563 RTC, keep NS4168 speaker, SY7636ARMC (consigned) on the R49 circuit,
-mainland buck SY8089A1AAC for 3V3. GPIO map follows Read Pico so its EPD/SD/I2C drivers fit unchanged.
+mainland buck SY8089A1AAC for 3V3. GPIO map follows the reference design so its EPD/SD/I2C drivers fit unchanged.
 """
 import json
+import os
 import sys
+
+VARIANT = os.environ.get('PANDA47_VARIANT', 'v020')
 
 r50 = json.load(open(sys.argv[1]))
 r49 = json.load(open(sys.argv[2]))
@@ -52,7 +55,7 @@ for ref, c in r49['comps'].items():
 parts['U810']['pins'] = pins_of(r49, 'U810')
 parts['R805']['dnp'] = False
 
-# ------------------------------------------------------------- MCU pin map (Read Pico GPIO plan)
+# ------------------------------------------------------------- MCU pin map (reference GPIO plan)
 MCU = {
     '5': 'KEY_POWER_MCU',   # GPIO0 boot strap + power key (R511 pull-up, SW201)
     '6': 'EXP_INT',         # GPIO1 RTC GPIO: deep-sleep wake from XL9535 / BM8563 INT
@@ -171,6 +174,25 @@ parts['U601'] = dict(value='XL9535QF24', lib='Package_DFN_QFN', footprint='QFN-2
                      'Datasheet': 'https://www.lcsc.com/product-detail/C5444301.html'})
 
 # Flash stays GD25Q128ESIG SOP-8: the WSON-8 GD25Q128EWIGR is $2.57 against $0.96.
+# v0.2.2 (user, 2026-11-12: lowest component height): WSON-8 6x5 x 0.8 mm max (GD datasheet 10.4) instead of the
+# ~2 mm SOP-8. JLC 2026-11-12: C2982923 $3.31 / 1902 in stock against C2758105 $1.77. The exposed pad is floating
+# (GD note 2), so the footprint EP is an unnumbered pad without a net.
+if VARIANT == 'v022':
+    parts['U506'].update(value='GD25Q128EWIGR', lib='Panda47v2', footprint='WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm')
+    parts['U506']['fields'].update({'Manufacturer': 'GigaDevice', 'MPN': 'GD25Q128EWIGR', 'LCSC': 'C2982923',
+                                    'Description': 'GigaDevice GD25Q128E 128 Mbit QSPI NOR flash, WSON-8 6x5 mm, 0.8 mm max',
+                                    'Datasheet': 'https://www.lcsc.com/product-detail/C2982923.html'})
+
+# v0.2.2 (user, 2026-11-12): one status LED on the SGM41513 STAT pin (open drain, pin 4). Hardware: on while charging,
+# off when done, 1 Hz blink on a fault; firmware can also set on / blink via STAT_SET when EN_ICHG_MON = 01.
+# Fed from VSYS_RAW (3.4..4.4 V) through 1k: about 0.7..1.7 mA with Vf ~2.7 V. Shines through a 1 mm hole in the shell.
+if VARIANT == 'v022':
+    parts['U901']['pins']['4'] = 'CHG_STAT'
+    new('D203', 'Green side-view LED', 'Panda47v2', 'LED_SideView_TJ-S1706', 'TOGIALED', 'TJ-S1706SW6TGLC2G-A5', 'C273616',
+        'TOGIALED 0603 side-view green LED, 1.7 x 0.6 x 1.1 mm; status LED on SGM41513 STAT (pin 1 cathode)',
+        {'1': 'CHG_STAT', '2': 'CHG_LED_A'})
+    new('R208', '1k', 'Resistor_SMD', 'R_0402_1005Metric', 'UNI-ROYAL(Uniroyal Elec)', '0402WGF1001TCE', 'C11702',
+        'Status LED series resistor 1k 1% 0402', {'1': 'VSYS_RAW', '2': 'CHG_LED_A'})
 
 # SY7636A boost inductors: 7 x 9 mm MWSA0618 -> 4 x 4 x 1.2 mm Sunlord WPN4012H4R7MT (1.9 A, 138 mOhm).
 for r in ('L801', 'L802'):

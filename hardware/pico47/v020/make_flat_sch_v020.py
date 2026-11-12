@@ -6,6 +6,7 @@ no-connect flag on the others. Pin names and electrical types come from the v0.1
 libraries where the part is kept, and from the datasheets for the new parts.
 """
 import json
+import os
 import re
 import sys
 import uuid
@@ -78,6 +79,9 @@ KICAD_FP = Path('/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints
 
 def fp_excluded(part):
     lib = HERE.parent / 'v0.1.3/Panda47.pretty' if part['lib'] == 'Panda47' else KICAD_FP / f"{part['lib']}.pretty"
+    fp_dir = os.environ.get('PANDA47_FP_DIR')            # v0.2.2 parts that exist only in the project library
+    if part['lib'] == 'Panda47v2' and fp_dir:
+        lib = Path(fp_dir)
     text = (lib / f"{part['footprint']}.kicad_mod").read_text()
     m = re.search(r'\(attr ([^)]*)\)', text)
     return bool(m and 'exclude_from_bom' in m.group(1))

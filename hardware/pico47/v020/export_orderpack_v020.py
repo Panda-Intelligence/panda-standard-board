@@ -1,9 +1,10 @@
-"""JLC order pack for Panda47 v0.2.0 (KiCad Python; calls kicad-cli).
+"""JLC order pack for Panda47 v0.2.x (KiCad Python; calls kicad-cli). PANDA47_VARIANT selects the board.
 
 usage: export_orderpack_v020.py project_dir out_dir
 Writes gerber/ + drill, JLCPCB_Panda47-v020_Gerber_4L_ENIG.zip, BOM_JLCPCB.csv, CPL_JLCPCB.csv,
 REQUIRED-VIA-IN-PAD.csv, CONSIGNED-PARTS.csv and README-ORDER.md.
 """
+import collections
 import csv
 import shutil
 import subprocess
@@ -13,8 +14,11 @@ from pathlib import Path
 
 import pcbnew as P
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import variant_v02x as VAR  # noqa: E402
+
 CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-STEM = 'Panda47-v020'
+STEM = VAR.STEM
 TO = P.ToMM
 CONSIGN = {'U810': 'SY7636ARMC (Silergy, LCSC C22451321, JLC stock 0)'}
 
@@ -27,7 +31,7 @@ gdir.mkdir(parents=True)
 subprocess.run([CLI, 'pcb', 'export', 'gerbers', '--layers',
                 'F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.SilkS,B.SilkS,F.Mask,B.Mask,Edge.Cuts',
                 '--no-protel-ext', '--output', str(gdir) + '/', str(pcb)], check=True, capture_output=True)
-subprocess.run([CLI, 'pcb', 'export', 'drill', '--format', 'excellon', '--excellon-units', 'mm', '--generate-map',
+subprocess.run([CLI, 'pcb', 'export', 'drill', '--format', 'excellon', '--excellon-units', 'mm', '--excellon-separate-th', '--generate-map',
                 '--map-format', 'gerberx2', '--output', str(gdir) + '/', str(pcb)], check=True, capture_output=True)
 zpath = out / f'JLCPCB_{STEM}_Gerber_4L_0.8mm_ENIG.zip'
 with zipfile.ZipFile(zpath, 'w', zipfile.ZIP_DEFLATED) as z:
@@ -83,8 +87,25 @@ with open(out / 'CONSIGNED-PARTS.csv', 'w', newline='', encoding='utf-8') as f:
 
 vias = [t for t in board.GetTracks() if t.GetClass() == 'PCB_VIA']
 drills = sorted({round(TO(v.GetDrill()), 2) for v in vias})
+npth = [(fp.GetReference(), p) for fp in board.GetFootprints() for p in fp.Pads() if p.GetAttribute() == P.PAD_ATTRIB_NPTH]
+npth_txt = ', '.join(f'{n} x {d} mm ({", ".join(sorted({r for r, p in npth if round(TO(p.GetDrillSize().x), 2) == d}))})'
+                     for d, n in sorted(collections.Counter(round(TO(p.GetDrillSize().x), 2) for _, p in npth).items()))
 bb = board.GetBoardEdgesBoundingBox()
-(out / 'README-ORDER.md').write_text(f"""# Panda47 v0.2.0 order pack
+OUTLINE = {'v020': 'L-shaped outline with a USB-C notch', 'v021': 'rectangular outline with a USB-C notch',
+           'v022': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch'}[VAR.STEM[-4:]]
+SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if VAR.STEM[-4:] != 'v022' else
+        'top: pin-1 marks only; bottom: product / revision / date text, test-point names and the JLCJLCJLCJLC '
+        'order-number marker (please print the order number there)')
+EXTRA = '' if VAR.STEM[-4:] != 'v022' else '''
+v0.2.2 parts to check in the placement preview:
+- D203 TJ-S1706SW6TGLC2G-A5 (C273616) is a SIDE-VIEW LED. Its lens must face the bottom board edge (towards the
+  USB-C edge, +y in the board view, -Y in CPL coordinates); pin 1 = cathode on the left. Please confirm the
+  lens direction in the preview, since the JLC library body may be drawn in another orientation.
+- U506 GD25Q128EWIGR is WSON-8 6x5 with an exposed pad that is electrically floating (GigaDevice note); the EP
+  land is soldered but has no net.
+- J501 microSD (TF-122-CCP9) is rotated so the card mouth faces the left board edge.
+'''
+(out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack
 
 Not a manufacturing release: the panel / touch / front-light FPC connector poses still need checking against the
 supplier drawing, and U810 is consigned.
@@ -92,16 +113,27 @@ supplier drawing, and U810 is consigned.
 | PCB option | Value |
 |---|---|
 | Layers | 4 (F / In1 GND / In2 / B) |
-| Size (bounding box) | {TO(bb.GetWidth()):.1f} x {TO(bb.GetHeight()):.1f} mm, L-shaped outline with a USB-C notch |
+| Size (bounding box) | {TO(bb.GetWidth()):.1f} x {TO(bb.GetHeight()):.1f} mm, {OUTLINE} |
 | Thickness | 0.8 mm |
 | Surface finish | ENIG |
 | Min track / space | 0.09 / 0.127 mm (0.0952 mm necks at fine-pitch pins) |
 | Vias | {len(vias)}, drill {', '.join(f'{d} mm' for d in drills)} (no small-hole option needed) |
+| Non-plated holes | {npth_txt or 'none'} |
+| Silkscreen | {SILK} |
 | Via-in-pad | {len(vip)} vias in exposed pads (see REQUIRED-VIA-IN-PAD.csv): choose resin plug + plated cap |
 | Assembly | top side only, {len(cpl)} placements, {len(groups)} BOM lines |
 | Consigned | {', '.join(f'{r} {p}' for r, p in consigned)} |
 
 Files: `{zpath.name}`, `BOM_JLCPCB.csv`, `CPL_JLCPCB.csv`.
-""")
+
+Assembly notes (from JLC DFM on the earlier board, order Y4, all fixed here):
+- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the datasheet top view rotated 180 deg: the three
+  narrow leads face the top of the board view, pin 1 VDD at the right end of that row (silk dot). Please check
+  the part orientation in the placement preview.
+- SW201 / SW202 TS-1186E: locating-post holes provided (0.75 mm NPTH), place the switch with its posts.
+- J820 X05A10L40G: hold-down pads per the XKB recommended layout.
+- Pin 1 of U501, U810, U904, U907, Q901, Q902, J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
+  ICs carry the pin-1 mark of their standard footprint.
+{EXTRA}""")
 print(f'gerber zip {zpath.name}; {len(cpl)} placements; {len(groups)} BOM lines; {len(vias)} vias; via-in-pad {len(vip)}; '
       f'consigned {len(consigned)}')

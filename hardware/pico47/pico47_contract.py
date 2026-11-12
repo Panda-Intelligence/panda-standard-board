@@ -116,7 +116,7 @@ def validate(p):
             {str(i + 1): n for i, n in enumerate(PANEL_PINS)}, 'Wrong panel pin map')
     require(math.isclose(panel['nominal_ppi_by_marketed_diagonal'],
                          math.hypot(684, 1216) / 4.7, abs_tol=1e-7), 'Wrong PPI')
-    for k in ['pico_full_suffix_verified', 'border_drive_accepted',
+    for k in ['panel_full_suffix_verified', 'border_drive_accepted',
               'waveform_qualification']:
         require(panel[k] is False, 'Unverified panel acceptance: ' + k)
     require(panel['selected_full_module_mpn'] is None
@@ -124,8 +124,8 @@ def validate(p):
     battery = p['battery']
     require(battery['capacity_mah'] == 2050 and battery['chemistry'] == 'LCO'
             and battery['replaceable_pack_required'] is True
-            and battery['exact_pico_pack_required'] is True, 'Wrong pack requirement')
-    for k in ['pico_battery_vendor', 'pico_battery_mpn', 'pico_pack_xyz_mm',
+            and battery['exact_reference_pack_required'] is True, 'Wrong pack requirement')
+    for k in ['reference_battery_vendor', 'reference_battery_mpn', 'reference_pack_xyz_mm',
               'nominal_voltage_v', 'charge_termination_v', 'protection_topology',
               'ntc_connector_pinout']:
         require(battery[k] is None, 'Unverified pack property: ' + k)

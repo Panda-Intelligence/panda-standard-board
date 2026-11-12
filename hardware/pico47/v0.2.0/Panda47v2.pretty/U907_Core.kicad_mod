@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "XySemi XB7608A CPC5 primary package outline REV0.1; pins1VDD,2/3 cell negative GND,4/5 protected pack negative VM; derived engineering lands, JLC C669688 acceptance required.")
+	(descr "XySemi XB7608AJ CPC5, datasheet REV0.1 p.2/p.11. Top view rotated 180 deg: narrow row pin1 VDD x+0.795, pin2 GND x+0.265, pin3 GND x-0.795 (e1 0.53 / e 1.06); wide row pin4 VM x-0.53, pin5 VM x+0.53. Corrected after JLC DFM (Y4).")
 	(property "Reference" "U907"
 		(at 0 -2.35 0)
 		(layer "F.Fab")
@@ -132,32 +132,44 @@
 		(layer "F.Fab")
 		(uuid "4f02c390-3e8b-44d3-a881-b64e94306432")
 	)
+	(fp_circle
+		(center 0.795 -2.500)
+		(end 0.945 -2.500)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "2b28ac5b-eff8-4c5a-b625-99cefde78ab1")
+	)
+
 	(pad "1" smd rect
-		(at -0.53 -1.65)
+		(at 0.795 -1.65)
 		(size 0.3 1)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "5e1c3ff9-8202-405b-a2fd-592821beb1a8")
 	)
 	(pad "2" smd rect
-		(at 0 -1.65)
+		(at 0.265 -1.65)
 		(size 0.3 1)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "957edede-bf8f-47f0-aef3-f7b3eb5e8416")
 	)
 	(pad "3" smd rect
-		(at 0.53 -1.65)
+		(at -0.795 -1.65)
 		(size 0.3 1)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "b4d1d3a7-abdb-4755-94b1-b893ace5dcb6")
 	)
 	(pad "4" smd rect
-		(at 0.53 1.65)
+		(at -0.53 1.65)
 		(size 0.8 1)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "50839761-5f22-48d4-8005-03a2a6bd017d")
 	)
 	(pad "5" smd rect
-		(at -0.53 1.65)
+		(at 0.53 1.65)
 		(size 0.8 1)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "2b76061f-382d-48d4-8685-c73b4f3d35cb")

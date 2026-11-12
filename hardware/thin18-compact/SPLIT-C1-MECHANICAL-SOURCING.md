@@ -56,5 +56,5 @@ Current plans and primary source links:
 - SPLIT-C1-PROCUREMENT-QUESTIONS.md / split-c1-sourcing-evidence.json
 - JLC-PROTOTYPE-HANDOFF.md / split-c1-mechanical-audit.json
 
-XTEINK X4 Pro1100mAh/5.95mm is a reference. No matched measured runtime or
+Reference device B (1100mAh/5.95mm) is a reference. No matched measured runtime or
 5.95mm Panda fit is claimed. Q04–Q14 remainNOT_RUN;no physical EVT is invented.

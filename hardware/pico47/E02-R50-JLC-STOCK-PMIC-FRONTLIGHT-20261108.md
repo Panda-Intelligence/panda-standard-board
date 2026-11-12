@@ -13,8 +13,8 @@ Stock figures below were read from the JLC parts API on 2026-11-08 and will chan
 
 | Product (same 4.7" class or panel family) | PMIC |
 |---|---|
-| Read Pico (E0470A01) | SY7636A |
-| Metalio E-INK 4 Plus (4.7", 297 ppi) | TPS65185 (EPDiy) |
+| Reference device (E0470A01) | SY7636A |
+| Reference device C (4.7", 297 ppi) | TPS65185 (EPDiy) |
 | EPDiy v7 | TPS651851RSLR |
 | LilyGo T5 E-Paper S3 Pro | TPS65185 |
 | Inkplate 6 / 6PLUS | TPS65186 |

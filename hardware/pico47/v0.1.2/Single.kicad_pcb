@@ -20237,7 +20237,7 @@
 				)
 			)
 		)
-		(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
+		(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -50383,7 +50383,7 @@
 				)
 			)
 		)
-		(property "Description" "Historical two-pad bench landing ONLY. Not the Pico pack connector. Keep charge inhibited until exact protected2050mAh Pico pack,NTC/polarity/CV/current and protection interaction are confirmed."
+		(property "Description" "Historical two-pad bench landing ONLY. Not the reference pack connector. Keep charge inhibited until exact protected2050mAh reference pack,NTC/polarity/CV/current and protection interaction are confirmed."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -50430,7 +50430,7 @@
 				)
 			)
 		)
-		(property "PandaRequiredReplacement" "EXACT_PICO_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"
+		(property "PandaRequiredReplacement" "EXACT_REFERENCE_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)

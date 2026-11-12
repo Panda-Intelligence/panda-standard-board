@@ -43,7 +43,7 @@ The historical two-board side-pack study was112x75x21mm (20.5mm budget)
 and is rejected for the Thin7 product. Thin7 targets112x75x7.0mm with a
 62x51x3.1mm complete-pack maximum requirement. Exact pack/supplier dimensions
 and the new PCB layout are not qualified; no physical fit is claimed.
-X4 Pro1100mAh/5.95mm remains a reference. Manufacturing release remains false.
+Reference device B (1100mAh/5.95mm) remains a reference. Manufacturing release remains false.
 Older C0/C2/C4D notes below are historical and do not override Split-C1.
 
 

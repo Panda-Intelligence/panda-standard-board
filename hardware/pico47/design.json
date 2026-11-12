@@ -6,8 +6,8 @@
   "donor_product_source_sha256": "bd8c8f37383eb927574dbf09f8fe17ed1f996da5029a6881ae877095ed12a10f",
   "donor_sourcing_sha256": "a159898a46fbe4227ee96f0b3f247e6328042ed1206b7a2249dc4c8a4637977e",
   "user_requirement": {
-    "display": "Same as Read Pico, not the old4.26inch SPI panel",
-    "battery": "Same actual Read Pico replaceable2050mAh LCO battery pack; equal capacity alone is not exact identity",
+    "display": "Same 4.7-inch reference class, not the old4.26inch SPI panel",
+    "battery": "Same actual reference-device replaceable2050mAh LCO battery pack; equal capacity alone is not exact identity",
     "whole_device_maximum_mm": 7.0,
     "two_boards": false,
     "mainland_components": true,
@@ -73,7 +73,7 @@
       "40": "P47_BORDER_REVIEW"
     },
     "selected_full_module_mpn": null,
-    "pico_full_suffix_verified": false,
+    "panel_full_suffix_verified": false,
     "reference_mirror_mpn": "E0470A01-AF-S",
     "reference_drawing_outline_mm": [
       62.0,
@@ -90,10 +90,10 @@
     "capacity_mah": 2050,
     "chemistry": "LCO",
     "replaceable_pack_required": true,
-    "exact_pico_pack_required": true,
-    "pico_battery_vendor": null,
-    "pico_battery_mpn": null,
-    "pico_pack_xyz_mm": null,
+    "exact_reference_pack_required": true,
+    "reference_battery_vendor": null,
+    "reference_battery_mpn": null,
+    "reference_pack_xyz_mm": null,
     "nominal_voltage_v": null,
     "charge_termination_v": null,
     "protection_topology": null,
@@ -654,7 +654,7 @@
         120.5
       ]
     ],
-    "battery_area_not_frozen": "No capacity claim based on the empty layout area;replace with actual Pico pack envelope before placement freeze",
+    "battery_area_not_frozen": "No capacity claim based on the empty layout area;replace with actual reference pack envelope before placement freeze",
     "usb_pose": [
       37.5,
       125.2,
@@ -668,8 +668,6 @@
     "native_routing_complete": false
   },
   "evidence": {
-    "pico_specs": "https://dot.mindreset.tech/docs/read_0",
-    "pico_code": "https://github.com/MindReset/read_pico_firmware/blob/6a247cc94420b85c650b32a6b2c063a360070eee/components/epdiy/src/displays.c",
     "panel_pin_table_url": "https://raw.githubusercontent.com/exomind-team/openepd-47/main/materials/vendor/display/E0470A01-AF-S-specification.pdf",
     "panel_pdf_sha256": "70e457f990c3f04f20e6bad19b65bd8dbd096676258b3a974a642172f756f27f",
     "pmic_product": "https://www.silergy.com/zh/productsview/sy7636armc",

@@ -9,11 +9,15 @@ import json
 import math
 import sys
 
+from outline_v02x import expand
+
 netlist, sizes, r50, anchors = (json.load(open(p)) for p in sys.argv[1:5])
 parts = netlist['parts']
 r50c = r50['comps']
 
-OUTLINE = anchors['outline']
+OUTLINE_SRC = anchors['outline']
+OUTLINE = expand(OUTLINE_SRC)
+OUTLINE_CORNERS = [e for e in OUTLINE_SRC if not isinstance(e, dict)]
 MARGIN = anchors.get('margin', 0.15)
 HALO = anchors.get('halo', 0.0)          # extra clearance kept around hand-placed ICs for fan-out
 EDGE = anchors.get('edge', 0.3)
@@ -45,7 +49,7 @@ def rect_ok(r, poly, edge):
             if seg_dist(c, a, b) < edge:
                 return False
     # polygon vertices inside the rectangle (notch corners)
-    for vx, vy in poly:
+    for vx, vy in (OUTLINE_CORNERS if poly is OUTLINE else poly):
         if x0 - edge < vx < x1 + edge and y0 - edge < vy < y1 + edge:
             return False
     return True
@@ -172,5 +176,5 @@ for ref in order:
     placed[ref] = [best[0], best[1], best[2], side]
     rects.append((ref, placed_rect(ref, *best), side))
 
-json.dump(dict(outline=OUTLINE, parts=placed), open(sys.argv[5], 'w'), indent=0)
+json.dump(dict(outline=OUTLINE_SRC, parts=placed), open(sys.argv[5], 'w'), indent=0)
 print('placed', len(placed), 'of', len(parts), 'failed', fails)

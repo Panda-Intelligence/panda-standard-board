@@ -86,7 +86,7 @@ partition templates, with no invented routed copper or populated BOM.
 
 Primary references checked 2026-10-02:
 
-- X4 Pro official FAQ: https://www.xteink.com/blogs/product/x4-pro-faq-specs-support
+- Reference device B official FAQ (link kept outside the project)
   (111 × 69 × 5.95 mm and 1100 mAh reference; user target is about 7 mm).
 - Espressif ESP32-S3 datasheet: https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf
   (bare QFN56 architecture; package/RF implementation remains to qualify).
