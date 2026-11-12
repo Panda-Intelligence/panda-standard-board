@@ -26,14 +26,14 @@ RS.REVISION = {'version': VAR.VERSION, 'revision': VAR.REVISION, 'date': VAR.DAT
 RS.POWER_NETS = ['GND', 'VBUS_USB', 'VSYS_RAW', '3V3_AON', '3V3_RF', 'VDD_SPI', '3V3_SD']
 RS.SUPPLY = set(RS.POWER_NETS) - {'GND'}
 RS.SHEETS = {
-    '2': ('usb', 'USB_Input', 'USB-C 接口与 ESD 防护'),
-    '3': ('rtc', 'RTC', 'RTC（BM8563）与 32.768 kHz 晶振'),
-    '4': ('power3v3', 'Power_3V3', '3V3 降压（SY8089）与 microSD 电源开关'),
-    '5': ('mcu', 'MCU', 'ESP32-S3、Flash、加速度计与 microSD'),
-    '6': ('io', 'IO_Expander', 'IO 扩展 XL9535'),
-    '7': ('epdbus', 'EPD_Bus', '墨水屏总线上下拉与 XCL 串联电阻'),
-    '8': ('epd', 'EPD_PMIC', '墨水屏电源 SY7636A 与面板、触摸接口'),
-    '9': ('power', 'Charger_Power', '充电、电量计、电池保护、音频与前光'),
+    '2': ('usb', 'USB_Input', 'USB-C input and ESD protection'),
+    '3': ('rtc', 'RTC', 'RTC (BM8563) and 32.768 kHz crystal'),
+    '4': ('power3v3', 'Power_3V3', '3V3 buck (SY8089) and microSD power switch'),
+    '5': ('mcu', 'MCU', 'ESP32-S3, flash, accelerometer and microSD'),
+    '6': ('io', 'IO_Expander', 'I/O expander XL9535'),
+    '7': ('epdbus', 'EPD_Bus', 'EPD bus pull-ups / pull-downs and XCL series resistor'),
+    '8': ('epd', 'EPD_PMIC', 'EPD power SY7636A, panel and touch connectors'),
+    '9': ('power', 'Charger_Power', 'Charger, fuel gauge, cell protection, audio and front light'),
 }
 
 

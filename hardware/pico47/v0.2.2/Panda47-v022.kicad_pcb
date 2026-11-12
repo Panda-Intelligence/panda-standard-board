@@ -8905,7 +8905,7 @@
 				)
 			)
 		)
-		(property "Description" "共享RTC/TCA EXP_INT唯一已装核心上拉100k；R305为DNP，线电容/泄漏与上升时间仍待实测。"
+		(property "Description" "Single fitted 100k pull-up on the shared RTC / expander EXP_INT; R305 is DNP. Line capacitance, leakage and rise time still to be measured."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -10802,7 +10802,7 @@
 				)
 			)
 		)
-		(property "Description" "U503.5局部旁路，保留原有电容；有效电容、瞬态与整机装配仍待资格化。"
+		(property "Description" "Local bypass at U503.5; the original capacitor is kept. Effective capacitance, transients and assembly still to be qualified."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -27233,7 +27233,7 @@
 				)
 			)
 		)
-		(property "Description" "U506.8局部旁路，保留原有电容；有效电容、瞬态与整机装配仍待资格化。"
+		(property "Description" "Local bypass at U506.8; the original capacitor is kept. Effective capacitance, transients and assembly still to be qualified."
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -35049,7 +35049,7 @@
 				)
 			)
 		)
-		(property "Description" "Historical two-pad bench landing ONLY. Not the Pico pack connector. Keep charge inhibited until exact protected2050mAh Pico pack,NTC/polarity/CV/current and protection interaction are confirmed."
+		(property "Description" "Historical two-pad bench landing ONLY. Not the reference pack connector. Keep charge inhibited until exact protected2050mAh reference pack,NTC/polarity/CV/current and protection interaction are confirmed."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -35096,7 +35096,7 @@
 				)
 			)
 		)
-		(property "PandaRequiredReplacement" "EXACT_PICO_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"
+		(property "PandaRequiredReplacement" "EXACT_REFERENCE_2050MAH_PACK_SOCKET_NOT_YET_IDENTIFIED"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36784,7 +36784,7 @@
 				)
 			)
 		)
-		(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact Pico full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
+		(property "Description" "40pin0.5mm electrical mapping from E0470A01-AF-S family. Exact panel full suffix,contact face and fold remain unverified. Never plug old24pinSPI panel."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -38315,7 +38315,7 @@
 				)
 			)
 		)
-		(property "Description" "U404输出局部1uF去耦，依据SGM2578SD2026RevA2第8页；实物直流偏压、瞬态与供料仍待资格化。"
+		(property "Description" "Local 1 uF decoupling at the U404 output, per SGM2578 datasheet Rev A2 p.8. DC bias, transients and supply still to be qualified."
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -39809,7 +39809,7 @@
 				)
 			)
 		)
-		(property "Description" "U402输出局部1uF去耦，保留原负载电容；实物有效电容与瞬态仍待资格化。"
+		(property "Description" "Local 1 uF decoupling at the U402 output; the original load capacitor is kept. Effective capacitance and transients still to be qualified."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
