@@ -13,6 +13,12 @@ into the project, including files, schematics, title blocks, order packs, render
 Use neutral wording such as "the reference device" or "4.7-inch reference class". The internal codename `pico47`
 (directory and script names) stays.
 
+User rule (2026-11-12): commit messages, PR titles and PR descriptions must never contain "pico" (any case, including
+the `pico47` codename and `hardware/pico47` paths) or any other brand word. Use the `panda47` scope, e.g.
+`feat(panda47): ...`, and describe files without the directory name. Branch names follow the same rule (e.g.
+`hw/panda47-...`), because a regular merge copies the branch name into main's history. Do not rewrite
+already-pushed history unless asked; squash-merge PRs with a clean title.
+
 # PREVIOUS CONTINUATION — 2026-11-11 v0.2.1 / E04 RECTANGULAR BOARD
 
 Read `hardware/pico47/E04-V021-RECTANGULAR-BOARD-20261111.md` and `hardware/pico47/v0.2.1/README.md` first.
