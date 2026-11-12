@@ -53,6 +53,8 @@ the 16-bit panel bus crossed the PMIC block, and the SD, PGOOD and I²C lines al
    It converged at iteration 5 with no conflicts. No power, RF or crystal net was ripped.
 4. **Clean-up**: `finish_v020.py`, prune and trim of dangling ends, `finish_v020.py` again (one dangling via
    removed). Then `silk_v020.py` and `info_silk_v02x.py`.
+5. **Order-pack review**: a GND stitch via inside C505 pad 2 (0402) was removed. The pad stays tied to GND by its
+   F.Cu tracks and the pour, which brings the via-in-pad count back to 17, as in v0.2.1.
 
 ## 4. Part changes (JLC data read from jlcpcb.com part pages, 2026-11-12)
 
@@ -80,8 +82,9 @@ stay under the 2.7 mm gap between the board top (z 1.6) and the steel plate (z 4
 |---|---|---|
 | Board | 63 × 42 mm rectangle | 63 × 43 mm, R4 bottom corners |
 | Parts | 172 | 174 (+D203, +R208) |
-| Tracks / vias | 2802 / 415 | 2686 / 411 (358 × 0.55/0.3, 53 × 0.6/0.3) |
+| Tracks / vias | 2802 / 415 | 2686 / 410 (357 × 0.55/0.3, 53 × 0.6/0.3) |
 | Via-in-pad | 17 | 17 |
+| Order pack | — | R2 `grace/panda47-pcb-v0.2.2-E05/`: 155 placements, 73 BOM lines, all in JLC stock except the consigned U810; parts about $11.65 per board at 100 |
 | Back silkscreen | none | product, revision, date, size, maker, JLC order-number marker, 15 test-point names |
 | KiCad 10.0.7 checks | ERC 0, DRC 0 / 0 unconnected / 0 parity | ERC 0, DRC 0 / 0 unconnected / 0 parity |
 

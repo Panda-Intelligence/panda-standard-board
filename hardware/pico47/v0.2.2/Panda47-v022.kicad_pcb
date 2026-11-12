@@ -44067,15 +44067,6 @@
 		(uuid "1b804b9c-ad0b-4a12-ad28-e8c0f7a09989")
 	)
 	(via
-		(at 55.633 97.68)
-		(size 0.55)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(locked yes)
-		(net "GND")
-		(uuid "1ce7500a-bc34-44d1-9408-7006b4ca3384")
-	)
-	(via
 		(at 30.88 80.2)
 		(size 0.55)
 		(drill 0.3)
