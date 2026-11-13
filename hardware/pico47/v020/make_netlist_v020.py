@@ -177,7 +177,7 @@ parts['U601'] = dict(value='XL9535QF24', lib='Package_DFN_QFN', footprint='QFN-2
 # v0.2.2 (user, 2026-11-12: lowest component height): WSON-8 6x5 x 0.8 mm max (GD datasheet 10.4) instead of the
 # ~2 mm SOP-8. JLC 2026-11-12: C2982923 $3.31 / 1902 in stock against C2758105 $1.77. The exposed pad is floating
 # (GD note 2), so the footprint EP is an unnumbered pad without a net.
-if VARIANT == 'v022':
+if VARIANT in ('v022', 'v023', 'v024'):
     parts['U506'].update(value='GD25Q128EWIGR', lib='Panda47v2', footprint='WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm')
     parts['U506']['fields'].update({'Manufacturer': 'GigaDevice', 'MPN': 'GD25Q128EWIGR', 'LCSC': 'C2982923',
                                     'Description': 'GigaDevice GD25Q128E 128 Mbit QSPI NOR flash, WSON-8 6x5 mm, 0.8 mm max',
@@ -186,13 +186,21 @@ if VARIANT == 'v022':
 # v0.2.2 (user, 2026-11-12): one status LED on the SGM41513 STAT pin (open drain, pin 4). Hardware: on while charging,
 # off when done, 1 Hz blink on a fault; firmware can also set on / blink via STAT_SET when EN_ICHG_MON = 01.
 # Fed from VSYS_RAW (3.4..4.4 V) through 1k: about 0.7..1.7 mA with Vf ~2.7 V. Shines through a 1 mm hole in the shell.
-if VARIANT == 'v022':
+if VARIANT in ('v022', 'v023', 'v024'):
     parts['U901']['pins']['4'] = 'CHG_STAT'
     new('D203', 'Green side-view LED', 'Panda47v2', 'LED_SideView_TJ-S1706', 'TOGIALED', 'TJ-S1706SW6TGLC2G-A5', 'C273616',
         'TOGIALED 0603 side-view green LED, 1.7 x 0.6 x 1.1 mm; status LED on SGM41513 STAT (pin 1 cathode)',
         {'1': 'CHG_STAT', '2': 'CHG_LED_A'})
     new('R208', '1k', 'Resistor_SMD', 'R_0402_1005Metric', 'UNI-ROYAL(Uniroyal Elec)', '0402WGF1001TCE', 'C11702',
         'Status LED series resistor 1k 1% 0402', {'1': 'VSYS_RAW', '2': 'CHG_LED_A'})
+
+# v0.2.4 (user, 2026-11-13): the cell pack carries its own protection board (3.0 x 57 x 79 mm class, PCM + NTC), so the
+# on-board protection (U907, R940, C940) goes. One 3-pad landing takes the pack: J302 = NTC, cell -, cell +.
+if VARIANT == 'v024':
+    for r in ('U907', 'R940', 'C940', 'J301'):
+        del parts[r]
+    parts['J302']['pins'] = {'1': 'BQ_TS', '2': 'GND', '3': 'BAT_CONN_P'}
+    parts['J302']['value'] = 'PACK LANDING: NTC / B- / B+'
 
 # SY7636A boost inductors: 7 x 9 mm MWSA0618 -> 4 x 4 x 1.2 mm Sunlord WPN4012H4R7MT (1.9 A, 138 mOhm).
 for r in ('L801', 'L802'):
@@ -242,6 +250,13 @@ for r in ('D801', 'D802'):    # pin 1 cathode, pin 2 anode (same pin nets as the
     parts[r]['fields'] = {'Manufacturer': 'Guangdong Hottech', 'MPN': '1N5819WS', 'LCSC': 'C191023',
                           'Description': '40 V 1 A Schottky SOD-323, SY7636A VP boost / VN inverter rectifier',
                           'Datasheet': 'https://www.lcsc.com/product-detail/C191023.html'}
+
+# v0.2.4: the VN reservoir C804 sits at U810 pin 4, 9 mm and two vias from the rectifier D802. C817 (same part) goes
+# right at the D802 anode so the pulsed diode current closes next to the switch.
+if VARIANT == 'v024':
+    parts['C817'] = json.loads(json.dumps(parts['C804']))
+    parts['C817']['fields']['Reference'] = 'C817'
+    parts['C817']['fields']['Description'] = '4.7u/25V/0603 SY7636A VN capacitor at the rectifier D802'
 
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):

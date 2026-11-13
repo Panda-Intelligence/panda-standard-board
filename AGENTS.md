@@ -1,4 +1,18 @@
-# CURRENT CONTINUATION — 2026-11-12 v0.2.2 / E05 PORTS, ROUNDED CORNERS, STATUS LED
+# CURRENT CONTINUATION — 2026-11-13 v0.2.4 / E07 HAND-LAID POWER, SPEAKER NOTCH, PACK WITH PCM
+
+Read `hardware/pico47/E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md` and `hardware/pico47/v0.2.4/README.md` first.
+v0.2.4 = v0.2.2 circuit minus the on-board cell protection (U907, R940, C940, J301; J302 is a 3-pad NTC / B- / B+
+landing) plus C817 (VN reservoir at D802), on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 7.3 mm device
+and a 3.0 x 57 x 79 mm pack with PCM + NTC. Charger, 3V3 buck, front-light boost, RF, crystal and VBUS / battery
+trunks are hand-laid code (`v023/handlib.py`, `v024/design_v024.py`) written as locked copper before Freerouting;
+net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/v0.2.4/` is the source of truth
+(ERC 0, DRC 0 / 0 unconnected / 0 parity); v0.2.3 (E06, 63 x 43) is the first hand-layout pass. Scripts take
+`PANDA47_VARIANT=v024`. v0.2.2 must not be ordered (outside review: thin current paths). Still open: an input
+capacitor at SY7636A pin 24, real cell datasheet, speaker model; the order pack exists outside Git (20 via-in-pad).
+ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
+remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
+
+# PREVIOUS CONTINUATION — 2026-11-12 v0.2.2 / E05 PORTS, ROUNDED CORNERS, STATUS LED
 
 Read `hardware/pico47/E05-V022-PORTS-ROUNDED-20261112.md` and `hardware/pico47/v0.2.2/README.md` first.
 v0.2.2 = v0.2.1 circuit plus a WSON-8 flash (GD25Q128EWIGR) and a STAT LED (D203/R208), on a 63 x 43 mm board with
