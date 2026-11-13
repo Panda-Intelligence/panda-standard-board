@@ -14,12 +14,13 @@ first pass of the hand layout and stays in `v0.2.3/` as the reference. v0.2.2 mu
 | Parts | Fewer parts are welcome as long as every function stays. |
 | Cell | Thinnest pack with about 2000 mAh and its own protection board: LP305779 class, 3.0 × 57 × 79 mm, catalogue 2000 mAh, PCM + 10 k NTC, 3 wires. |
 | Speaker | Kept, with a sound port in the enclosure. |
+| Lanyard | A lanyard hole at the bottom-right corner. |
 
 ## 2. What changed from v0.2.2
 
 | Item | v0.2.2 | v0.2.4 |
 |---|---|---|
-| Board | 63 × 43 mm | 63 × 48 mm (y 67.4–115.4), R4 bottom corners, speaker notch x 0.5–16.6, y 67.4–79.0 |
+| Board | 63 × 43 mm | 63 × 48 mm (y 67.4–115.4), R4 bottom-left corner, speaker notch x 0.5–16.6, y 67.4–79.0, lanyard step at the bottom right (x > 61.4, y > 108.6, R1) |
 | Device (study) | 67.0 × 118.3 × 7.3 mm | 67.0 × 133.7 × 7.3 mm |
 | Cell | 3.2 × 50 × 70 mm, protection IC on the board | 3.0 × 57 × 79 mm with PCM and NTC in the pack |
 | Removed parts | — | U907 (cell protection), R940, C940, J301. J302 is now a 3-pad landing: NTC / B− / B+ |
@@ -93,6 +94,9 @@ After routing, `widen_v023.py` widens every Power / HV track as far as DRC allow
 12. `layout/eco_tp.py` and `eco_tp_silk.py`: three more back-side test pads, each on an existing via of its net
     (`layout/tp_find.py` ranks the vias by free area): TP5 FL_VOUT, TP6 3V3_SD, TPG2 GND.
 
+13. `layout/eco_lanyard.py`: the bottom-right board corner becomes a 2.1 × 6.8 mm step for the enclosure's lanyard
+    channel. No part or track moved: J820's courtyard ends at x 61.38 and SW202's at y 108.30.
+
 No power, RF or crystal net was ripped by the grid router. A trial with the VBUS trunk along the bottom edge
 (candidate f1) left 8 connections open and was dropped.
 
@@ -113,15 +117,25 @@ plus the index, generated from the netlist (174 nets, identical to the board).
 - **Long shared nets**: I2C has 9–10 vias per line; VSYS has 12 vias.
 - **Test points**: 18. There is no UART pad: both UART0 pins are used for other signals, and the board is flashed and
   logged over the MCU's USB port.
-- **Cell**: no supplier datasheet was found for the 3.0 × 57 × 79 mm size (searched as LP305779 / 305779 /
-  3057079 on 2026-11-13). The closest catalogue packs found are larger (3.0 × 69 × 92 mm and 3.0 × 60 × 100 mm,
-  2000 mAh). So this size needs a custom-pack quote, and its capacity, charge voltage, real outline with PCM, NTC
-  curve and wire order are all unconfirmed. The charger settings and the J302 pad order stay open until then.
+- **Cell**: not chosen. Findings of 2026-11-13:
+  - No supplier datasheet exists for the 3.0 × 57 × 79 mm size the bay was drawn for.
+  - One documented pack fits the envelope: PC326072, 3.2 × 60 × 75.5 mm max (about 81.5 mm with the tab, 3.5 mm
+    at the tab), 2000 mAh typical / 1950 min, 3.8 V, charge 4.35 V, PCM and 10 k NTC (B 3435), FPC connector
+    ([sheet](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/326072_2D00_2000mAh-SPC_2D00_B0.pdf)).
+    It is a customer-specific part, so availability is unknown. It needs the bay ribs moved (60 mm wide), a relief
+    at the tab, a 4.35 V charge setting and a connector instead of the J302 pads.
+  - The pack of the 4.7-inch reference device has no public data beyond "2050 mAh, LCO, replaceable": no model,
+    size, connector or spare-part listing was found, so it cannot be designed in without a sample to measure.
+  - The user accepts 1800 mAh or more.
+- **Volume**: U904 (NS4168) has a fixed gain and no volume pin. Volume is set in firmware by scaling the I2S
+  samples, from the touch screen; the two side keys can act as volume up / down while audio plays. No hardware
+  change is needed for this.
 - **Speaker**: not sampled. Candidate: Soberton SP-1511L, 15 × 11 × 3.0 mm, 8 Ω, 0.7 W rated / 1 W max, wire leads
   to the J502 landing ([datasheet](https://www.soberton.com/wp-content/uploads/2018/07/SP-1511L-29-June-2018.pdf)).
 - **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
   and a cell block against the shell and frame shows no overlap (one rib was moved after the first run). Openings
-  are unchecked against real parts, and the panel flex length to J820 needs the panel drawing.
+  are unchecked against real parts, and the panel flex length to J820 needs the panel drawing. The lanyard bar
+  (1.4–2.1 mm of shell material) needs a pull test.
 - **Order pack**: generated outside Git (R2 `grace/panda47-pcb-v0.2.4-E07/`): 153 placements, 72 BOM lines, 22
   via-in-pad, U810 consigned. It is for quoting and review; the items above come first.
 - All E05 §6 items (FPC exits, LED lens direction, consigned U810) still apply. `manufacturing_release = false`; no

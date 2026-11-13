@@ -1,7 +1,7 @@
 # Panda Standard 4.7 — main board v0.2.4 / E07
 
-- **Board**: `Panda47-v024.kicad_pcb`. 4 layers, 0.8 mm. 63 × 48 mm with R4 bottom corners, the mid-mount USB-C notch
-  and a speaker notch in the top-left corner, for a 67.0 × 133.7 × 7.3 mm device. See the
+- **Board**: `Panda47-v024.kicad_pcb`. 4 layers, 0.8 mm. 63 × 48 mm with the mid-mount USB-C notch, a speaker notch
+  in the top-left corner and a lanyard step at the bottom-right corner, for a 67.0 × 133.7 × 7.3 mm device. See the
   [E07 note](../E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md).
 - **Changes from v0.2.2**:
   - Charger, 3.3 V buck, front-light boost, RF, crystal and the VBUS / battery trunks are laid by hand
@@ -39,5 +39,6 @@ not a replay, is the source of truth.
    `v024/layout/eco_final.py`.
 6. `v024/layout/eco_vp.py`, `eco_pmic.py` (adds C817), the grid router with `spec_pmic.json`, prune / trim, widen
    and `silk_v020.py` again (E07 note §4 steps 9–10). The ECO scripts use `layout/ecolib.py`.
-   Then `eco_cin.py` (C818, L802, C506) with `spec_cin.json`, `eco_tp.py` and `eco_tp_silk.py` (steps 11–12).
+   Then `eco_cin.py` (C818, L802, C506) with `spec_cin.json`, `eco_tp.py`, `eco_tp_silk.py` and `eco_lanyard.py`
+   (steps 11–13).
 7. `build_v020_sch.py`, `sync_board_sch_v020.py`, `set_fields_v020.py`; `export_orderpack_v020.py` for the order pack.

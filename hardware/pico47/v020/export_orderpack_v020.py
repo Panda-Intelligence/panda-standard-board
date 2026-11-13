@@ -94,8 +94,8 @@ bb = board.GetBoardEdgesBoundingBox()
 OUTLINE = {'v020': 'L-shaped outline with a USB-C notch', 'v021': 'rectangular outline with a USB-C notch',
            'v022': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
            'v023': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
-           'v024': 'R4 bottom corners (Edge.Cuts arcs), a USB-C notch and a 16.1 x 11.6 mm speaker notch in the '
-                   'top-left corner'}[VAR.STEM[-4:]]
+           'v024': 'R4 bottom-left corner (Edge.Cuts arc), a USB-C notch, a 16.1 x 11.6 mm speaker notch in the '
+                   'top-left corner and a 2.1 x 6.8 mm step at the bottom-right corner'}[VAR.STEM[-4:]]
 V = VAR.STEM[-4:]
 SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if V < 'v022' else
         'top: pin-1 marks only; bottom: product / revision / date text, test-point names and the JLCJLCJLCJLC '

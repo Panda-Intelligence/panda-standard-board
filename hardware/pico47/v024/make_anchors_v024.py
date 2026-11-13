@@ -33,7 +33,8 @@ for r in list(parts):
 for r, p in hand['pose'].items():
     parts[r] = [p[0], p[1], p[2], 'B' if r.startswith('TP') else 'F']
 W, T, B, R4 = 0.5, 67.4, 115.4, 4.0       # 63 x 48 mm: 5 mm added at the top (user, 2026-11-13)
-outline = [[NX, T], [63.5, T], [63.5, B - R4], {'arc': [63.5 - R4, B - R4, R4, 0, 90]},
+# bottom-right: a 2.1 x 6.8 mm step for the enclosure's lanyard channel (user, 2026-11-13), R1 at its lower corner
+outline = [[NX, T], [63.5, T], [63.5, 108.6], [61.4, 108.6], [61.4, B - 1.0], {'arc': [60.4, B - 1.0, 1.0, 0, 90]},
            [36.62, B], [36.62, 109.85], [27.38, 109.85], [27.38, B],
            {'arc': [W + R4, B - R4, R4, 90, 180]}, [W, NY], [NX, NY]]
 out = dict(an, parts=parts, keepout=hand['keepout'], outline=outline)
