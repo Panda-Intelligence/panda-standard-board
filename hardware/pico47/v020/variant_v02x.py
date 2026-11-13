@@ -16,7 +16,7 @@ VARIANTS = {
     'v023': dict(stem='Panda47-v023', version='v0.2.3', revision='E06', date='2026-11-13',
                  board='63 x 43 mm, R4 bottom corners, 4-layer 0.8 mm'),
     'v024': dict(stem='Panda47-v024', version='v0.2.4', revision='E07', date='2026-11-13',
-                 board='63 x 48 mm, speaker notch, lanyard corner step, 4-layer 0.8 mm'),
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
 }
 V = VARIANTS[os.environ.get('PANDA47_VARIANT', 'v020')]
 STEM, VERSION, REVISION, DATE, BOARD = V['stem'], V['version'], V['revision'], V['date'], V['board']

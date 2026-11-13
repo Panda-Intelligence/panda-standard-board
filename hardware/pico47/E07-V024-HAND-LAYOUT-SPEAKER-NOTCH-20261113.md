@@ -14,13 +14,13 @@ first pass of the hand layout and stays in `v0.2.3/` as the reference. v0.2.2 mu
 | Parts | Fewer parts are welcome as long as every function stays. |
 | Cell | Thinnest pack with about 2000 mAh and its own protection board: LP305779 class, 3.0 × 57 × 79 mm, catalogue 2000 mAh, PCM + 10 k NTC, 3 wires. |
 | Speaker | Kept, with a sound port in the enclosure. |
-| Lanyard | A lanyard hole at the bottom-right corner. |
+| Lanyard | A lanyard hole, first asked for at the bottom-right corner; another corner is acceptable if that one does not suit. It is at the top-right corner (§6). |
 
 ## 2. What changed from v0.2.2
 
 | Item | v0.2.2 | v0.2.4 |
 |---|---|---|
-| Board | 63 × 43 mm | 63 × 48 mm (y 67.4–115.4), R4 bottom-left corner, speaker notch x 0.5–16.6, y 67.4–79.0, lanyard step at the bottom right (x > 61.4, y > 108.6, R1) |
+| Board | 63 × 43 mm | 63 × 48 mm (y 67.4–115.4), R4 bottom corners, speaker notch x 0.5–16.6, y 67.4–79.0 |
 | Device (study) | 67.0 × 118.3 × 7.3 mm | 67.0 × 133.7 × 7.3 mm |
 | Cell | 3.2 × 50 × 70 mm, protection IC on the board | 3.0 × 57 × 79 mm with PCM and NTC in the pack |
 | Removed parts | — | U907 (cell protection), R940, C940, J301. J302 is now a 3-pad landing: NTC / B− / B+ |
@@ -94,9 +94,6 @@ After routing, `widen_v023.py` widens every Power / HV track as far as DRC allow
 12. `layout/eco_tp.py` and `eco_tp_silk.py`: three more back-side test pads, each on an existing via of its net
     (`layout/tp_find.py` ranks the vias by free area): TP5 FL_VOUT, TP6 3V3_SD, TPG2 GND.
 
-13. `layout/eco_lanyard.py`: the bottom-right board corner becomes a 2.1 × 6.8 mm step for the enclosure's lanyard
-    channel. No part or track moved: J820's courtyard ends at x 61.38 and SW202's at y 108.30.
-
 No power, RF or crystal net was ripped by the grid router. A trial with the VBUS trunk along the bottom edge
 (candidate f1) left 8 connections open and was dropped.
 
@@ -134,8 +131,15 @@ plus the index, generated from the netlist (174 nets, identical to the board).
   to the J502 landing ([datasheet](https://www.soberton.com/wp-content/uploads/2018/07/SP-1511L-29-June-2018.pdf)).
 - **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
   and a cell block against the shell and frame shows no overlap (one rib was moved after the first run). Openings
-  are unchecked against real parts, and the panel flex length to J820 needs the panel drawing. The lanyard bar
-  (1.4–2.1 mm of shell material) needs a pull test.
+  are unchecked against real parts, and the panel flex length to J820 needs the panel drawing. 
+- **Lanyard**: in the enclosure only, at the top-right corner beside the cell; the board is not involved.
+  - A bottom-right version was tried first (a 2.1 × 6.8 mm board step, commit 58589b7). Between J820 and the wall
+    there are only 2.5 mm, which gave a 1.2 mm channel and a bar of 1.4–2.1 mm. It was dropped and the board corner
+    restored.
+  - Top right has 3.5 mm beside the cell: a 1.6 × 2.0 mm channel and a bar of 2.9 mm on the straight wall, about
+    2.4 mm at mid-corner, thinner only at the exit. The cell sits against the left rib (x 3.1–60.4).
+  - A cell wider than 57 mm (PC326072 is 60 mm) takes that space; then the lanyard has to be reviewed again.
+  - The bar needs a pull test on first samples.
 - **Order pack**: generated outside Git (R2 `grace/panda47-pcb-v0.2.4-E07/`): 153 placements, 72 BOM lines, 22
   via-in-pad, U810 consigned. It is for quoting and review; the items above come first.
 - All E05 §6 items (FPC exits, LED lens direction, consigned U810) still apply. `manufacturing_release = false`; no

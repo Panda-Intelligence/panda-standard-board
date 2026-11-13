@@ -2,8 +2,7 @@
 
 Read `hardware/pico47/E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md` and `hardware/pico47/v0.2.4/README.md` first.
 v0.2.4 = v0.2.2 circuit minus the on-board cell protection (U907, R940, C940, J301; J302 is a 3-pad NTC / B- / B+
-landing) plus C817 (VN reservoir at D802) and C818 (input cap at U810 pin 24), minus C816, with 18 test pads, on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) and a lanyard step at the bottom right (x > 61.4,
-y > 108.6) for a 67.0 x 133.7 x 7.3 mm device
+landing) plus C817 (VN reservoir at D802) and C818 (input cap at U810 pin 24), minus C816, with 18 test pads, on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 7.3 mm device
 and a 3.0 x 57 x 79 mm pack with PCM + NTC. Charger, 3V3 buck, front-light boost, RF, crystal and VBUS / battery
 trunks are hand-laid code (`v023/handlib.py`, `v024/design_v024.py`) written as locked copper before Freerouting;
 net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/v0.2.4/` is the source of truth
@@ -12,7 +11,8 @@ net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/
 cell is not chosen (no datasheet for 3.0 x 57 x 79; PC326072 3.2 x 60 x 75.5 4.35 V is the one documented fit; user
 accepts >= 1800 mAh; the reference device's pack has no public data), speaker not sampled (candidate
 SP-1511L); USB D+/D- is deliberately left unmatched (full speed only). Order pack outside Git (22 via-in-pad).
-ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
+The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
+reverted. ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
 remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
 
 # PREVIOUS CONTINUATION — 2026-11-12 v0.2.2 / E05 PORTS, ROUNDED CORNERS, STATUS LED
