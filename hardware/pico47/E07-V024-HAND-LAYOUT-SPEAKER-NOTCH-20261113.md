@@ -132,6 +132,9 @@ plus the index, generated from the netlist (174 nets, identical to the board).
 - **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
   and a cell block against the shell and frame shows no overlap (one rib was moved after the first run). Openings
   are unchecked against real parts, and the panel flex length to J820 needs the panel drawing. 
+- **Screen position** (user, 2026-11-13: the chin was too large): the window sits 7 mm lower than in the first
+  v0.2.4 study. Bezel 10.5 mm at the top, 17.9 mm at the chin. Enclosure only; the panel is above the board and
+  the cell, so nothing on the board moves. The panel flex length to J820 still needs the panel drawing.
 - **Lanyard**: in the enclosure only, at the top-right corner beside the cell; the board is not involved.
   - A bottom-right version was tried first (a 2.1 × 6.8 mm board step, commit 58589b7). Between J820 and the wall
     there are only 2.5 mm, which gave a 1.2 mm channel and a bar of 1.4–2.1 mm. It was dropped and the board corner
