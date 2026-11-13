@@ -120,7 +120,7 @@ FID = f'\n| Fiducials | {nfid} on the top side, 1 mm copper in a 2 mm mask openi
 EXTRA24 = '' if V != 'v024' else '''
 v0.2.4 notes:
 - Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
-  one GND via. All vias in pads need the resin plug + plated cap.
+  one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
 - The cell pack is hand-soldered to the J302 landing after SMT (NTC / B- / B+); it is not part of the assembly.
 '''
 (out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack

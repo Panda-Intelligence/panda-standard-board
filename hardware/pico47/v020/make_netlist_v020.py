@@ -257,6 +257,24 @@ if VARIANT == 'v024':
     parts['C817'] = json.loads(json.dumps(parts['C804']))
     parts['C817']['fields']['Reference'] = 'C817'
     parts['C817']['fields']['Description'] = '4.7u/25V/0603 SY7636A VN capacitor at the rectifier D802'
+    # C818: input capacitor right at the inverting-converter supply pin (U810 pin 24); the 10 uF caps are 4-6 mm away.
+    # Same part as C304 (2.2 uF / 10 V 0402); VSYS is at most 4.4 V.
+    parts['C818'] = json.loads(json.dumps(parts['C304']))
+    parts['C818'].update(value='2.2u/10V/0402', lib=parts['C404']['lib'], footprint=parts['C404']['footprint'],
+                         pins={'1': 'VSYS_RAW', '2': 'GND'})
+    parts['C818']['fields']['Reference'] = 'C818'
+    parts['C818']['fields']['Description'] = '2.2u/10V/0402 SY7636A inverter input capacitor at U810 pin 24'
+    # C816 (10 uF) sat right of L802 and was fed by a track under the inductor; with C818 at the pin and C801 / C803
+    # on the same rail it is dropped.
+    del parts['C816']
+    # Three more fixture pads on the back: front-light boost output, switched SD rail, a second ground.
+    for ref, net, src, desc in (('TP5', 'FL_VOUT', 'TP11', 'Front-light boost output test pad'),
+                                ('TP6', '3V3_SD', 'TP801', 'Switched microSD 3.3 V rail test pad'),
+                                ('TPG2', 'GND', 'TP11', 'Second ground fixture pad')):
+        parts[ref] = json.loads(json.dumps(parts[src]))
+        parts[ref].update(value=net, pins={'1': net})
+        parts[ref]['fields'] = {'Datasheet': '', 'Description': desc, 'LCSC': '', 'MPN': 'NOT_A_PURCHASED_PART',
+                                'Manufacturer': 'PCB fabricated terminal', 'Reference': ref, 'Value': net}
 
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):

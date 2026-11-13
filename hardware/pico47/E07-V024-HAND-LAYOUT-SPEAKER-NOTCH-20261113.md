@@ -23,12 +23,14 @@ first pass of the hand layout and stays in `v0.2.3/` as the reference. v0.2.2 mu
 | Device (study) | 67.0 × 118.3 × 7.3 mm | 67.0 × 133.7 × 7.3 mm |
 | Cell | 3.2 × 50 × 70 mm, protection IC on the board | 3.0 × 57 × 79 mm with PCM and NTC in the pack |
 | Removed parts | — | U907 (cell protection), R940, C940, J301. J302 is now a 3-pad landing: NTC / B− / B+ |
-| Added part | — | C817, 4.7 µF / 25 V 0603 (same part as C804): VN reservoir at the rectifier D802 (§4 step 10) |
-| Parts | 174 | 171, plus 3 fiducials (1 mm copper, 2 mm mask opening) |
+| Added parts | — | C817, 4.7 µF / 25 V 0603 (same part as C804): VN reservoir at the rectifier D802 (§4 step 10). C818, 2.2 µF / 10 V 0402 (same part as C304): input capacitor at U810 pin 24 (§4 step 11). Test pads TP5, TP6, TPG2 |
+| Dropped part | — | C816 (10 µF), made redundant by C818 (§4 step 11) |
+| Parts | 174 | 174 (171 + 3 test pads), plus 3 fiducials (1 mm copper, 2 mm mask opening) |
 | Net classes | Default, Power | Default, Power 0.3 mm, HV 0.2 mm (panel rails, REGN, BTST), RF 0.17 mm (50 Ω over 0.1 mm prepreg) |
-| Tracks / vias | 2686 / 410 | 2810 / 429 (407 × 0.55/0.3, 22 × 0.6/0.3) |
-| Via-in-pad | 17 | 20 (the three new ones: C504 pad 2, U904 pin 7 and C817 pad 2, see §4) |
+| Tracks / vias | 2686 / 410 | 2831 / 431 |
+| Via-in-pad | 17 | 22 (new: C504 pad 2, U904 pin 7, C817 pad 2 and two in the L802 ground pad, see §4) |
 | Placements / BOM lines | 155 / 73 | 153 / 72 |
+| Test points | 15 | 18 |
 
 Placement moves in v0.2.4: U601 (expander) to (11.3, 86.6), U904 (audio amplifier) to (4.2, 83.2) next to the
 speaker landing J502 at (11.3, 81.2), battery landing J302 at (52.0, 78.8), shunt R306 at (56.8, 75.0). USB-C, the
@@ -80,6 +82,16 @@ After routing, `widen_v023.py` widens every Power / HV track as far as DRC allow
     - R801 turned to lie under R802 to make room.
     - VEE_FB, VEE_BASE, VGH_FB, VGH and XOE were re-laid around C817 by the router.
     - Then prune, one trim pass (3 tails), the widening pass (79 more segments) and the silkscreen pass.
+11. `layout/eco_cin.py`, then the grid router (`layout/spec_cin.json`, converged at iteration 2):
+    - C818 (0402, 2.2 µF) sits 1.4 mm from U810 pin 24, the supply pin of the inverting converter.
+    - L802 turned 180° and moved 0.3 mm down. Its switch pad is now straight under D802 (1.9 mm of 0.6 mm track
+      instead of a 4 mm diagonal), and its ground pad is next to C818's ground, with two ground vias in the pad.
+    - The VSYS track that ran under L802 is gone, and C816 with it.
+    - C506, the audio amplifier's 10 µF, was found 32 mm from the amplifier (a leftover of the earlier placement,
+      fed through C816). It now sits on the VSYS track below U904, next to C505.
+    - MODE and VEE_BASE were re-laid by the router; then prune / trim, widening (62 more segments) and silkscreen.
+12. `layout/eco_tp.py` and `eco_tp_silk.py`: three more back-side test pads, each on an existing via of its net
+    (`layout/tp_find.py` ranks the vias by free area): TP5 FL_VOUT, TP6 3V3_SD, TPG2 GND.
 
 No power, RF or crystal net was ripped by the grid router. A trial with the VBUS trunk along the bottom edge
 (candidate f1) left 8 connections open and was dropped.
@@ -91,22 +103,26 @@ plus the index, generated from the netlist (174 nets, identical to the board).
 
 ## 6. Not done yet
 
-- **Panel PMIC (SY7636A) area**: reviewed and patched in place (§4 steps 9–10), not re-laid as a block. Left as is:
-  - The inverting converter has no input capacitor right at pin 24. VSYS reaches that pin through one via and
-    about 3 mm of In2; the nearest 10 µF capacitors (C801, C803, C816) are 4–6 mm away. A capacitor at the pin
-    needs L802 and the pin 17–23 escapes moved.
-  - Both switch nodes are 6.5 / 7.4 mm long (0.2–0.6 mm wide, no via).
-  - P47_VGL has 8 vias and P47_VGH has 5; their tracks are 0.127–0.3 mm.
-- **USB D+ / D−**: not a matched differential pair (USB_DM 21.7 mm with 2 vias, USB_DP 18.3 mm with 4 vias, tracks
-  0.095–0.127 mm). At full speed (12 Mbit/s) the 3.4 mm mismatch is about 20 ps, far inside the budget, so it was
-  left. It has not been measured.
+- **Panel PMIC (SY7636A) area**: patched in place (§4 steps 9–11), not re-laid as one block. What remains:
+  - The VP switch node is 6.5 mm long (0.2–0.6 mm wide, no via); the VN switch node is now about 5 mm.
+  - P47_VGL has 8 vias and P47_VGH has 5; their tracks are 0.127–0.3 mm. They carry the gate rails, a few mA.
+- **USB D+ / D−**: left as routed, on purpose. From the series resistors to the MCU the two lines run side by side
+  on B.Cu at 0.48 mm pitch. End to end D− is 35.4 mm and D+ is 28.8 mm; the difference comes from the USB-C
+  crossover (A6/B6 and A7/B7 are joined at the connector). The MCU port is full speed only (12 Mbit/s): 6.6 mm is
+  about 45 ps against an 83 ns bit, so matching or a 90 Ω pair would not change anything measurable. Not measured.
 - **Long shared nets**: I2C has 9–10 vias per line; VSYS has 12 vias.
-- **Test points**: 15, the same set as v0.2.2.
-- **Cell**: LP305779 is a catalogue size. The supplier datasheet (charge voltage, real capacity, pack outline with
-  PCM, NTC curve, wire order) is still needed before the charger settings and J302 pad order are final.
-- **Speaker**: no model chosen. The pocket takes a 15 × 11 mm class part up to 3.2 mm high.
-- **Enclosure study** for the 133.7 mm body exists outside Git; openings are unchecked against real parts.
-- **Order pack**: generated outside Git (R2 `grace/panda47-pcb-v0.2.4-E07/`): 153 placements, 72 BOM lines, 20
+- **Test points**: 18. There is no UART pad: both UART0 pins are used for other signals, and the board is flashed and
+  logged over the MCU's USB port.
+- **Cell**: no supplier datasheet was found for the 3.0 × 57 × 79 mm size (searched as LP305779 / 305779 /
+  3057079 on 2026-11-13). The closest catalogue packs found are larger (3.0 × 69 × 92 mm and 3.0 × 60 × 100 mm,
+  2000 mAh). So this size needs a custom-pack quote, and its capacity, charge voltage, real outline with PCM, NTC
+  curve and wire order are all unconfirmed. The charger settings and the J302 pad order stay open until then.
+- **Speaker**: not sampled. Candidate: Soberton SP-1511L, 15 × 11 × 3.0 mm, 8 Ω, 0.7 W rated / 1 W max, wire leads
+  to the J502 landing ([datasheet](https://www.soberton.com/wp-content/uploads/2018/07/SP-1511L-29-June-2018.pdf)).
+- **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
+  and a cell block against the shell and frame shows no overlap (one rib was moved after the first run). Openings
+  are unchecked against real parts, and the panel flex length to J820 needs the panel drawing.
+- **Order pack**: generated outside Git (R2 `grace/panda47-pcb-v0.2.4-E07/`): 153 placements, 72 BOM lines, 22
   via-in-pad, U810 consigned. It is for quoting and review; the items above come first.
 - All E05 §6 items (FPC exits, LED lens direction, consigned U810) still apply. `manufacturing_release = false`; no
   fabrication, charging or panel-power claim.

@@ -2,13 +2,14 @@
 
 Read `hardware/pico47/E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md` and `hardware/pico47/v0.2.4/README.md` first.
 v0.2.4 = v0.2.2 circuit minus the on-board cell protection (U907, R940, C940, J301; J302 is a 3-pad NTC / B- / B+
-landing) plus C817 (VN reservoir at D802), on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 7.3 mm device
+landing) plus C817 (VN reservoir at D802) and C818 (input cap at U810 pin 24), minus C816, with 18 test pads, on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 7.3 mm device
 and a 3.0 x 57 x 79 mm pack with PCM + NTC. Charger, 3V3 buck, front-light boost, RF, crystal and VBUS / battery
 trunks are hand-laid code (`v023/handlib.py`, `v024/design_v024.py`) written as locked copper before Freerouting;
 net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/v0.2.4/` is the source of truth
 (ERC 0, DRC 0 / 0 unconnected / 0 parity); v0.2.3 (E06, 63 x 43) is the first hand-layout pass. Scripts take
-`PANDA47_VARIANT=v024`. v0.2.2 must not be ordered (outside review: thin current paths). Still open: an input
-capacitor at SY7636A pin 24, real cell datasheet, speaker model; the order pack exists outside Git (20 via-in-pad).
+`PANDA47_VARIANT=v024`. v0.2.2 must not be ordered (outside review: thin current paths). Still open: no
+supplier datasheet exists for the 3.0 x 57 x 79 cell (custom-pack quote needed), speaker not sampled (candidate
+SP-1511L); USB D+/D- is deliberately left unmatched (full speed only). Order pack outside Git (22 via-in-pad).
 ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
 remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
 
