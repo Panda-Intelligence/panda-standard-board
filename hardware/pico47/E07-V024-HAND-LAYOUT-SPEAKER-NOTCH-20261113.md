@@ -225,3 +225,15 @@ Not added, with reasons:
 Known and deliberately left open by the user: EU Battery Regulation (EU) 2023/1542 Article 11 asks for
 user-replaceable portable batteries from 18 Feb 2027; radio and safety certification; the antenna and pack part
 numbers. The antenna must have an MHF4 plug; the narrow FPC antennas found in stock all had the larger MHF1 plug.
+
+## 10. Two screws and two lips (user, 2026-11-14)
+
+The user asked whether three screws were needed and chose two screws plus two lips.
+
+- **Board**: nut H1 left of USB-C is removed (`layout/eco_two_screws.py`). H2 (28.0, 70.0) and H3 (57.1, 69.9) stay.
+  D203, R208, the 3V3 trunk and FID3 keep the positions they got for H1. This supersedes the H1 rows in §7.
+- **Shell**: a second hold-down lip on the bottom wall at x 21.9–25.4, left of USB-C, same section as the lip at
+  x 53.0–58.5. The H1 screw hole is gone. The two lips take the USB-C plug forces on both sides of the connector; the
+  two screws at the top edge lock the board after it is tilted in.
+- Board position is still set by the pins in MH1 and MH2. Boolean check with the board STEP: no overlap.
+- Checks (KiCad 10.0.7, `--severity-all`): ERC 0; DRC 0 violations, 0 unconnected, 0 parity.

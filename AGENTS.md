@@ -14,8 +14,9 @@ SP-1511L); USB D+/D- is deliberately left unmatched (full speed only). Order pac
 User direction 2026-11-14: finish workmanship first, ignore cost for now, battery stays non-removable, MCU stays the
 bare ESP32-S3, certification later, firmware exists. J302 is a JST ACH header and J507 an MHF4 receptacle (E07
 section 9). FL_PWM is on GPIO2 with pull-down R515 and I2S_BCLK on GPIO0 (boot strap with pull-up R511): never put an enable
-input on GPIO0 again (E07 section 8). Board fixing (user, 2026-11-14): three soldered M1.6 nuts H1-H3 (screws from the back of the shell) and two NPTH
-locating holes MH1 / MH2 for shell pins; see E07 section 7. The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
+input on GPIO0 again (E07 section 8). Board fixing (user, 2026-11-14): two soldered M1.6 nuts H2 / H3 at the top edge (screws from the back of the shell),
+two shell lips over the bottom edge beside USB-C, and two NPTH locating holes MH1 / MH2 for shell pins; see E07
+sections 7 and 10. The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
 reverted. ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
 remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
 

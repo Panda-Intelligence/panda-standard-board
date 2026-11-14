@@ -14,8 +14,8 @@
   - Test pads TP5 (FL_VOUT), TP6 (3V3_SD) and TPG2 (GND) added: 18 in total.
   - Connectors: the pack plugs into J302 (JST ACH 3-pin) and the antenna into J507 (MHF4); FL_PWM moved off the
     boot-strap pin (E07 note §8–9).
-  - Board fixing: three soldered M1.6 nuts H1–H3 for screws from the back of the shell, and two non-plated
-    locating holes MH1 / MH2 for shell pins (E07 note §7).
+  - Board fixing: two soldered M1.6 nuts H2 / H3 at the top edge for screws from the back of the shell, two shell
+    lips over the bottom edge, and two non-plated locating holes MH1 / MH2 for shell pins (E07 note §7 and §10).
   - Three fiducials. Net classes Power 0.3 mm, HV 0.2 mm, RF 0.17 mm.
 - **Schematic**: `Panda47-v024.kicad_sch` (index) + 8 sheets, generated from the netlist. The netlist is identical to
   the board.
