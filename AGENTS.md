@@ -11,7 +11,9 @@ net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/
 cell is not chosen (no datasheet for 3.0 x 57 x 79; PC326072 3.2 x 60 x 75.5 4.35 V is the one documented fit; user
 accepts >= 1800 mAh; the reference device's pack has no public data), speaker not sampled (candidate
 SP-1511L); USB D+/D- is deliberately left unmatched (full speed only). Order pack outside Git (22 via-in-pad).
-FL_PWM is on GPIO2 with pull-down R515 and I2S_BCLK on GPIO0 (boot strap with pull-up R511): never put an enable
+User direction 2026-11-14: finish workmanship first, ignore cost for now, battery stays non-removable, MCU stays the
+bare ESP32-S3, certification later, firmware exists. J302 is a JST ACH header and J507 an MHF4 receptacle (E07
+section 9). FL_PWM is on GPIO2 with pull-down R515 and I2S_BCLK on GPIO0 (boot strap with pull-up R511): never put an enable
 input on GPIO0 again (E07 section 8). Board fixing (user, 2026-11-14): three soldered M1.6 nuts H1-H3 (screws from the back of the shell) and two NPTH
 locating holes MH1 / MH2 for shell pins; see E07 section 7. The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
 reverted. ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim

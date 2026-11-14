@@ -195,3 +195,29 @@ Change (`layout/eco_gpio0.py`, router spec `layout/spec_gpio0.json`):
 - FL_PWM moves to GPIO2 (U501 pin 7) with a new 100 k pull-down R515, so the boost is off unless firmware drives it.
 - I2S_BCLK takes GPIO0. R511 and TP19 (BOOT) stay on GPIO0. An idle-high clock input does no harm at the amplifier.
 - Both nets were laid again by the grid router. Firmware pin map changes: FL_PWM = GPIO2, I2S_BCLK = GPIO0.
+
+## 9. Connectors instead of hand-soldered wires (user, 2026-11-14)
+
+User direction: complete the workmanship; cost is not a concern for now; the battery stays non-removable; the MCU
+stays the bare ESP32-S3; certification is handled separately later.
+
+| Ref | Was | Now | Notes |
+|---|---|---|---|
+| J302 | 3 solder pads at (52.0, 78.8) | JST BM03B-ACHSS-GAN-ETF (LCSC C5118705) at (33.6, 70.05), top edge next to the cell | 1 = B+, 2 = B−, 3 = NTC. Keyed, 1.4 mm high, 2 A per contact with AWG28. Pack lead: ACHR-03V-S housing (C274397). Footprint from the KiCad library; courtyard cut to 0.25 mm in y to fit between the board edge and D905; no silk outline. |
+| J507 | coax solder landing | MHF4 receptacle, Kinghelm KH-IPEX4-2020 (LCSC C530666) at (34.3, 90.95) | 1.2 mm mated with a 0.81 mm cable plug. Land pattern drawn from the maker drawing 113-0000-007: check it on the first article. |
+| J502 | 2 solder pads | unchanged | No stocked 2-pin header of the same family was found, and soldered speaker leads are normal practice. |
+
+- B+ leaves J302 through two vias onto a 0.8 mm B.Cu track that joins the existing BAT_CONN_P trunk. Keep the
+  charge current at or below 2 A (contact rating).
+- The old landing pad had joined two BQ_TS tracks; they are now linked directly.
+- The pack is fitted at the factory. It is not user-replaceable (see the open point on the EU battery rule below).
+- `layout/eco_conn.py`, router spec `layout/spec_conn.json`.
+
+Not added, with reasons:
+- **ESD array at the microSD socket**: there is no room for a 2.5 × 1.0 mm array next to the socket pins without
+  moving the panel-power capacitors. Test ESD on the first build and add it in a re-spin if needed.
+- **Fourth fixing screw**: see §7.
+
+Known and deliberately left open by the user: EU Battery Regulation (EU) 2023/1542 Article 11 asks for
+user-replaceable portable batteries from 18 Feb 2027; radio and safety certification; the antenna and pack part
+numbers. The antenna must have an MHF4 plug; the narrow FPC antennas found in stock all had the larger MHF1 plug.

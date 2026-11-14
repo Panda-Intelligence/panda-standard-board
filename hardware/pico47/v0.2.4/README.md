@@ -6,12 +6,14 @@
 - **Changes from v0.2.2**:
   - Charger, 3.3 V buck, front-light boost, RF, crystal and the VBUS / battery trunks are laid by hand
     (`../v024/design_v024.py`) and locked before autorouting. Power and HV tracks are widened after routing.
-  - Cell protection moved into the pack: U907, R940, C940 and J301 are removed. J302 is a 3-pad landing
-    (NTC / B− / B+) for a 3.0 × 57 × 79 mm pack with PCM and NTC.
+  - Cell protection moved into the pack: U907, R940, C940 and J301 are removed. J302 is a 3-pin header
+    (B+ / B− / NTC) for a 3.0 × 57 × 79 mm pack with PCM and NTC.
   - Speaker notch; the audio amplifier and the speaker landing sit next to it.
   - New C817 (4.7 µF, same part as C804): VN reservoir right at the rectifier D802. New C818 (2.2 µF 0402, same
     part as C304): input capacitor at U810 pin 24. C816 dropped. C506 moved to the audio amplifier.
   - Test pads TP5 (FL_VOUT), TP6 (3V3_SD) and TPG2 (GND) added: 18 in total.
+  - Connectors: the pack plugs into J302 (JST ACH 3-pin) and the antenna into J507 (MHF4); FL_PWM moved off the
+    boot-strap pin (E07 note §8–9).
   - Board fixing: three soldered M1.6 nuts H1–H3 for screws from the back of the shell, and two non-plated
     locating holes MH1 / MH2 for shell pins (E07 note §7).
   - Three fiducials. Net classes Power 0.3 mm, HV 0.2 mm, RF 0.17 mm.

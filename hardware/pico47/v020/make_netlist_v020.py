@@ -285,6 +285,20 @@ if VARIANT == 'v024':
     parts['R515'].update(value='100k / FL_PWM_PD', lib='Resistor_SMD', footprint='R_0402_1005Metric', pins={'1': 'FL_PWM', '2': 'GND'})
     parts['R515']['fields'].update(Reference='R515', Value='100k / FL_PWM_PD',
                                    Description='Front-light boost CTRL pull-down: boost off while the MCU pin is not driven')
+    # Assembly (user, 2026-11-14: no hand-soldered wires where a connector fits). The pack plugs into a keyed JST ACH
+    # header (1.4 mm high, 2 A per contact at AWG28); the antenna pigtail plugs into an MHF4 receptacle (1.2 mm mated).
+    # The pack is still fitted at the factory, not by the user. Speaker leads stay soldered to J502.
+    parts['J302'].update(lib='Panda47v2', footprint='JST_ACH_BM03B-ACHSS-GAN-ETF_1x03-1MP_P1.20mm_Vertical',
+                         value='BM03B-ACHSS / pack', pins={'1': 'BAT_CONN_P', '2': 'GND', '3': 'BQ_TS', 'MP': 'GND'})
+    parts['J302']['fields'] = {'Datasheet': 'https://www.lcsc.com/product-detail/C5118705.html', 'LCSC': 'C5118705',
+                               'Description': 'Pack connector: 1 = B+, 2 = B-, 3 = NTC. Mates with ACHR-03V-S (C274397) on the pack lead',
+                               'MPN': 'BM03B-ACHSS-GAN-ETF(LF)(SN)', 'Manufacturer': 'JST', 'Reference': 'J302',
+                               'Value': 'BM03B-ACHSS / pack'}
+    parts['J507'].update(lib='Panda47v2', footprint='MHF4_KH-IPEX4-2020', value='MHF4 receptacle',
+                         pins={'1': 'RF_ANT', '2': 'GND'})
+    parts['J507']['fields'] = {'Datasheet': 'https://www.lcsc.com/product-detail/C530666.html', 'LCSC': 'C530666',
+                               'Description': 'MHF4 RF receptacle for the 2.4 GHz FPC antenna pigtail (0.81 mm cable plug: 1.2 mm mated)',
+                               'MPN': 'KH-IPEX4-2020', 'Manufacturer': 'Kinghelm', 'Reference': 'J507', 'Value': 'MHF4 receptacle'}
     # Board fixing (user, 2026-11-14): three reflow-soldered M1.6 nuts; screws come in from the back of the rear shell.
     # Sinhoo SMTSO1610MTJ: 3.18 mm hex, 1.0 mm above the board, 2.5 mm board hole, 4.19 mm minimum pad (maker table).
     for ref in ('H1', 'H2', 'H3'):
