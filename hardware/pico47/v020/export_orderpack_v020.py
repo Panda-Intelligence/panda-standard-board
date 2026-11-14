@@ -123,7 +123,7 @@ v0.2.4 notes:
   one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
 - J302 (JST BM03B-ACHSS) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
   assembly. Only the two speaker leads are soldered by hand, to J502.
-- H2 and H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1610MTJ, C2928167) in plated 2.5 mm holes with a 4.2 mm pad.
+- H2 and H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1620MTJ, C2916317, 2.0 mm high) in plated 2.5 mm holes with a 4.2 mm pad.
   The nut body sits on the top side; its pilot goes into the hole. Please confirm these can be placed on a 0.8 mm
   board, and that paste is printed on the ring pad.
 - MH1 (1.2 mm round) and MH2 (1.2 x 1.6 mm slot) are non-plated locating holes for the enclosure pins: keep them
