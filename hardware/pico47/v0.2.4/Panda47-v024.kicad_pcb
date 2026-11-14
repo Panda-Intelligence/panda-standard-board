@@ -2835,7 +2835,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/partdetail/Sinhoo-SMTSO1610MTJ/C2928167"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C2916317.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2846,7 +2846,7 @@
 				)
 			)
 		)
-		(property "Description" "Reflow-soldered M1.6 x 1.0 mm nut (SMTSO), board fixing screw from the rear shell"
+		(property "Description" "Reflow-soldered M1.6 x 2.0 mm nut (SMTSO), board fixing screw from the rear shell"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2869,7 +2869,7 @@
 				)
 			)
 		)
-		(property "MPN" "SMTSO1610MTJ"
+		(property "MPN" "SMTSO1620MTJ"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -2881,7 +2881,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2928167"
+		(property "LCSC" "C2916317"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8642,7 +8642,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/partdetail/Sinhoo-SMTSO1610MTJ/C2928167"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C2916317.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8653,7 +8653,7 @@
 				)
 			)
 		)
-		(property "Description" "Reflow-soldered M1.6 x 1.0 mm nut (SMTSO), board fixing screw from the rear shell"
+		(property "Description" "Reflow-soldered M1.6 x 2.0 mm nut (SMTSO), board fixing screw from the rear shell"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8676,7 +8676,7 @@
 				)
 			)
 		)
-		(property "MPN" "SMTSO1610MTJ"
+		(property "MPN" "SMTSO1620MTJ"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8688,7 +8688,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2928167"
+		(property "LCSC" "C2916317"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)

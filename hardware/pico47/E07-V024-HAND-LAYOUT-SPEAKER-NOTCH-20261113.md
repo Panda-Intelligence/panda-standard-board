@@ -237,3 +237,23 @@ The user asked whether three screws were needed and chose two screws plus two li
   two screws at the top edge lock the board after it is tilted in.
 - Board position is still set by the pins in MH1 and MH2. Boolean check with the board STEP: no overlap.
 - Checks (KiCad 10.0.7, `--severity-all`): ERC 0; DRC 0 violations, 0 unconnected, 0 parity.
+
+## 11. BOM cost and stock check (JLC, read 2026-11-14)
+
+Parts per board from the JLC assembly library (`v024/jlcsearch.py` and the BOM price check): $12.10 at 100, $9.95 at
+500, $9.63 at 1000, without the consigned SY7636ARMC. 75 BOM lines, 51 of them "extended" ($3 feeder fee per line
+and order, about $0.31 per board at 500).
+
+| Line | $ at 500 | Note |
+|---|---|---|
+| U506 GD25Q128EWIGR (WSON) | 1.38 | Largest line after the MCU. SOP-8 options in stock: ZD25Q128CSIGT (Zetta, C19626875) 0.58; BY25Q128ESSIG(R) (Boya, C49023667) 0.64; GD25Q128ESIG (C2758105) 0.89. SOP-8 is about 2.2 mm high (fits under 2.7 mm) but needs a new footprint next to the MCU; not changed. |
+| U501 ESP32-S3R8 | about 2.28 at 100 | Kept (user decision). |
+| J302 JST BM03B-ACHSS | 0.37 | XFCN M1201RS-03-BK (C2840018) is 0.09, but its interchangeability with the JST housing is not confirmed; not changed. |
+
+Changed: H2 / H3 are now SMTSO1620MTJ (C2916317, 2.0 mm high, 1983 in stock). The 1.0 mm version had 5 in stock.
+
+Stock too low for 500 boards on that date: J201 U22401-23 USB-C (139 pieces) and U810 SY7636ARMC (0, consigned).
+Both must be bought ahead and supplied to the assembler.
+
+Makers outside mainland China still in the BOM: Samsung capacitors (JLC "basic" parts, the cheapest option there)
+and the JST header.
