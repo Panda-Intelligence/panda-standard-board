@@ -55,7 +55,7 @@ f3 = b.FindFootprintByReference('FID3'); old = f3.GetPosition(); new = P.VECTOR2
 for z in b.Zones():
     if z.GetZoneName().startswith('FID3'): z.Move(P.VECTOR2I(new.x - old.x, new.y - old.y))
 # 3. nuts and locating holes
-for ref, x, y in (('H1', 23.6, 112.9), ('H2', 28.0, 70.0), ('H3', 57.1, 69.9)): nut(ref, x, y)
+for ref, x, y in (('H1', 23.6, 112.9), ('H2', 28.0, 70.0), ('H3', 57.1, 69.9)): nut(ref, x, y)   # H1 is removed again by eco_two_screws.py
 hole('MH1', 'LocHole_NPTH_1.2', 26.6, 107.3, (1.2, 1.2))
 ang = math.degrees(math.atan2(111.0 - 107.3, 62.3 - 26.6))
 hole('MH2', 'LocSlot_NPTH_1.2x1.6', 62.3, 111.0, (1.6, 1.2), -ang)

@@ -299,9 +299,10 @@ if VARIANT == 'v024':
     parts['J507']['fields'] = {'Datasheet': 'https://www.lcsc.com/product-detail/C530666.html', 'LCSC': 'C530666',
                                'Description': 'MHF4 RF receptacle for the 2.4 GHz FPC antenna pigtail (0.81 mm cable plug: 1.2 mm mated)',
                                'MPN': 'KH-IPEX4-2020', 'Manufacturer': 'Kinghelm', 'Reference': 'J507', 'Value': 'MHF4 receptacle'}
-    # Board fixing (user, 2026-11-14): three reflow-soldered M1.6 nuts; screws come in from the back of the rear shell.
+    # Board fixing (user, 2026-11-14): two reflow-soldered M1.6 nuts at the top edge; screws come in from the back of the rear shell.
     # Sinhoo SMTSO1610MTJ: 3.18 mm hex, 1.0 mm above the board, 2.5 mm board hole, 4.19 mm minimum pad (maker table).
-    for ref in ('H1', 'H2', 'H3'):
+    # (H1, left of USB-C, was dropped the same day: a second shell lip holds that side instead.)
+    for ref in ('H2', 'H3'):
         parts[ref] = {'dnp': False, 'lib': 'Panda47v2', 'footprint': 'SMTSO_M1.6_L1', 'value': 'M1.6 SMT nut', 'pins': {'1': 'GND'},
                       'fields': {'Datasheet': 'https://jlcpcb.com/partdetail/Sinhoo-SMTSO1610MTJ/C2928167',
                                  'Description': 'Reflow-soldered M1.6 x 1.0 mm nut (SMTSO), board fixing screw from the rear shell',
