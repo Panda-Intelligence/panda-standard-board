@@ -180,7 +180,11 @@ Open points:
   head) and the toolmaker's view on strength; a metal washer plate or a local thicker floor is the fallback.
 - No pull-out or torque-out figure was found for this nut size; the maker gives 1.5 kgf·cm tightening torque.
 - JLC must confirm it can place this nut on a 0.8 mm board.
-- The bottom-right corner should be held down by a rib from the support plate or frame; not designed yet.
+- Bottom-right corner (user, 2026-11-14: design it sensibly without a panel drawing): a 5.5 mm hold-down lip on the
+  bottom wall of the rear shell at x 53.0–58.5 reaches 0.65 mm over the board edge, 0.1 mm above the board top. The
+  board is tilted in under it, lowered onto the pins (tapered tips) and screwed from the back. It needs no part of
+  the screen stack. A boolean check shows no overlap with the board; 0.66 mm is left to the panel connector body.
+  The lip is an undercut and needs a side action in the tool.
 
 ## 8. Front-light control pin (2026-11-14)
 
