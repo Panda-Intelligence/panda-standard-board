@@ -275,6 +275,16 @@ if VARIANT == 'v024':
         parts[ref].update(value=net, pins={'1': net})
         parts[ref]['fields'] = {'Datasheet': '', 'Description': desc, 'LCSC': '', 'MPN': 'NOT_A_PURCHASED_PART',
                                 'Manufacturer': 'PCB fabricated terminal', 'Reference': ref, 'Value': net}
+    # GPIO0 (U501 pin 5) has the 10 k boot pull-up R511, so the front-light boost was enabled during reset, boot and
+    # download mode with both LED switches off (open load, output at the over-voltage limit). FL_PWM moves to GPIO2
+    # (pin 7) with a pull-down R515; I2S_BCLK takes GPIO0, where an idle-high input does no harm.
+    assert parts['U501']['pins']['5'] == 'FL_PWM' and parts['U501']['pins']['7'] == 'I2S_BCLK'
+    parts['U501']['pins']['5'], parts['U501']['pins']['7'] = 'I2S_BCLK', 'FL_PWM'
+    parts['R511']['pins']['2'] = 'I2S_BCLK'; parts['TP19']['pins']['1'] = 'I2S_BCLK'
+    parts['R515'] = json.loads(json.dumps(parts['R528']))
+    parts['R515'].update(value='100k / FL_PWM_PD', lib='Resistor_SMD', footprint='R_0402_1005Metric', pins={'1': 'FL_PWM', '2': 'GND'})
+    parts['R515']['fields'].update(Reference='R515', Value='100k / FL_PWM_PD',
+                                   Description='Front-light boost CTRL pull-down: boost off while the MCU pin is not driven')
     # Board fixing (user, 2026-11-14): three reflow-soldered M1.6 nuts; screws come in from the back of the rear shell.
     # Sinhoo SMTSO1610MTJ: 3.18 mm hex, 1.0 mm above the board, 2.5 mm board hole, 4.19 mm minimum pad (maker table).
     for ref in ('H1', 'H2', 'H3'):

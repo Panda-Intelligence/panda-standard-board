@@ -181,3 +181,17 @@ Open points:
 - No pull-out or torque-out figure was found for this nut size; the maker gives 1.5 kgf·cm tightening torque.
 - JLC must confirm it can place this nut on a 0.8 mm board.
 - The bottom-right corner should be held down by a rib from the support plate or frame; not designed yet.
+
+## 8. Front-light control pin (2026-11-14)
+
+Found in a netlist review: FL_PWM, the enable / dimming input of the front-light boost U905, was on GPIO0 (U501
+pin 5). GPIO0 is the boot strap and has the 10 k pull-up R511, so the boost was enabled whenever the MCU did not
+drive the pin: during reset, boot, download mode and any crash. Both LED switches Q901 / Q902 are off in that state
+(100 k gate pull-downs), so the boost ran with no load and its output rose to the over-voltage limit. That wastes
+battery, and the output then sits close to the ratings of D905 (40 V) and Q901 / Q902 (30 V). The over-voltage limit
+of U905 was not checked against its datasheet.
+
+Change (`layout/eco_gpio0.py`, router spec `layout/spec_gpio0.json`):
+- FL_PWM moves to GPIO2 (U501 pin 7) with a new 100 k pull-down R515, so the boost is off unless firmware drives it.
+- I2S_BCLK takes GPIO0. R511 and TP19 (BOOT) stay on GPIO0. An idle-high clock input does no harm at the amplifier.
+- Both nets were laid again by the grid router. Firmware pin map changes: FL_PWM = GPIO2, I2S_BCLK = GPIO0.
