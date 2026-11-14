@@ -275,6 +275,14 @@ if VARIANT == 'v024':
         parts[ref].update(value=net, pins={'1': net})
         parts[ref]['fields'] = {'Datasheet': '', 'Description': desc, 'LCSC': '', 'MPN': 'NOT_A_PURCHASED_PART',
                                 'Manufacturer': 'PCB fabricated terminal', 'Reference': ref, 'Value': net}
+    # Board fixing (user, 2026-11-14): three reflow-soldered M1.6 nuts; screws come in from the back of the rear shell.
+    # Sinhoo SMTSO1610MTJ: 3.18 mm hex, 1.0 mm above the board, 2.5 mm board hole, 4.19 mm minimum pad (maker table).
+    for ref in ('H1', 'H2', 'H3'):
+        parts[ref] = {'dnp': False, 'lib': 'Panda47v2', 'footprint': 'SMTSO_M1.6_L1', 'value': 'M1.6 SMT nut', 'pins': {'1': 'GND'},
+                      'fields': {'Datasheet': 'https://jlcpcb.com/partdetail/Sinhoo-SMTSO1610MTJ/C2928167',
+                                 'Description': 'Reflow-soldered M1.6 x 1.0 mm nut (SMTSO), board fixing screw from the rear shell',
+                                 'LCSC': 'C2928167', 'MPN': 'SMTSO1610MTJ', 'Manufacturer': 'Sinhoo', 'Reference': ref,
+                                 'Value': 'M1.6 SMT nut'}}
 
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):

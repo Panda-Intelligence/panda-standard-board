@@ -122,6 +122,11 @@ v0.2.4 notes:
 - Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
   one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
 - The cell pack is hand-soldered to the J302 landing after SMT (NTC / B- / B+); it is not part of the assembly.
+- H1, H2, H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1610MTJ, C2928167) in plated 2.5 mm holes with a 4.2 mm pad.
+  The nut body sits on the top side; its pilot goes into the hole. Please confirm these can be placed on a 0.8 mm
+  board, and that paste is printed on the ring pad.
+- MH1 (1.2 mm round) and MH2 (1.2 x 1.6 mm slot) are non-plated locating holes for the enclosure pins: keep them
+  non-plated and to drill tolerance.
 '''
 (out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack
 

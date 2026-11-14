@@ -94,6 +94,8 @@ After routing, `widen_v023.py` widens every Power / HV track as far as DRC allow
 12. `layout/eco_tp.py` and `eco_tp_silk.py`: three more back-side test pads, each on an existing via of its net
     (`layout/tp_find.py` ranks the vias by free area): TP5 FL_VOUT, TP6 3V3_SD, TPG2 GND.
 
+13. `layout/eco_mount.py`, then the grid router (`layout/spec_mount.json`): board fixing and locating (§7).
+
 No power, RF or crystal net was ripped by the grid router. A trial with the VBUS trunk along the bottom edge
 (candidate f1) left 8 connections open and was dropped.
 
@@ -147,3 +149,35 @@ plus the index, generated from the netlist (174 nets, identical to the board).
   via-in-pad, U810 consigned. It is for quoting and review; the items above come first.
 - All E05 §6 items (FPC exits, LED lens direction, consigned U810) still apply. `manufacturing_release = false`; no
   fabrication, charging or panel-power claim.
+
+## 7. Board fixing and locating (user, 2026-11-14)
+
+The board lies on the 0.8 mm floor of the rear shell, so a screw from the inside has no thread depth. The user chose
+screws from the back into nuts soldered on the board.
+
+| Feature | Position (mm) | Detail |
+|---|---|---|
+| MH1 datum hole | (26.6, 107.3) | 1.2 mm non-plated, 5.4 mm left of the USB-C centre line; 1.1 mm shell pin |
+| MH2 slot | (62.3, 111.0) | 1.2 × 1.6 mm non-plated, long axis towards MH1, 35.9 mm away; 1.1 mm shell pin |
+| H1 nut | (23.6, 112.9) | left of USB-C |
+| H2, H3 nuts | (28.0, 70.0), (57.1, 69.9) | top edge |
+
+- **Nut**: Sinhoo SMTSO1610MTJ (LCSC C2928167), M1.6, 3.18 mm hex, 1.0 mm above the board, 2.5 mm hole, 4.19 mm
+  minimum pad (maker table). The footprint uses a plated 2.5 mm hole and a 4.2 mm GND pad. Whether the maker wants
+  the hole plated was not confirmed.
+- **Position error at the connectors**: pin-to-hole clearance is 0.1 mm on diameter, so the board can shift about
+  ±0.05 mm at MH1 plus the hole and pin tolerances. USB-C is 5.4 mm from the datum and the SD slot about 25 mm, so
+  rotation about MH1 adds little (0.05 mm over 35.9 mm is 0.08°, about 0.03 mm at the SD slot).
+- **Board changes**: D203 and R208 moved 1.0 mm left (R208 turned 180°), so the LED light hole in the shell is at
+  x 20.0. The 3V3 trunk goes round H1. FID3 moved to (54.3, 101.6). CHG_STAT was re-laid by the router.
+- **Shell**: two 1.1 mm pins, 0.5 mm above the board top; three 1.8 mm screw holes with a 3.4 × 0.4 mm head recess
+  on the back. A boolean check with the board STEP shows no overlap, so the pins line up with the holes.
+- **Three screws, not four**: the lower half of the board has no room for a second 4.2 mm pad without moving
+  connectors. The bottom-right corner is located by MH2 but not clamped by a screw.
+
+Open points:
+- Only 0.4 mm of floor is left under the screw head. It needs thin-head M1.6 screws (about 2.5 mm long under the
+  head) and the toolmaker's view on strength; a metal washer plate or a local thicker floor is the fallback.
+- No pull-out or torque-out figure was found for this nut size; the maker gives 1.5 kgf·cm tightening torque.
+- JLC must confirm it can place this nut on a 0.8 mm board.
+- The bottom-right corner should be held down by a rib from the support plate or frame; not designed yet.

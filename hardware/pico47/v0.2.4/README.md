@@ -12,6 +12,8 @@
   - New C817 (4.7 µF, same part as C804): VN reservoir right at the rectifier D802. New C818 (2.2 µF 0402, same
     part as C304): input capacitor at U810 pin 24. C816 dropped. C506 moved to the audio amplifier.
   - Test pads TP5 (FL_VOUT), TP6 (3V3_SD) and TPG2 (GND) added: 18 in total.
+  - Board fixing: three soldered M1.6 nuts H1–H3 for screws from the back of the shell, and two non-plated
+    locating holes MH1 / MH2 for shell pins (E07 note §7).
   - Three fiducials. Net classes Power 0.3 mm, HV 0.2 mm, RF 0.17 mm.
 - **Schematic**: `Panda47-v024.kicad_sch` (index) + 8 sheets, generated from the netlist. The netlist is identical to
   the board.
