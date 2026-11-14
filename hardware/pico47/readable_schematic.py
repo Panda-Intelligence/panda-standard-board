@@ -392,7 +392,7 @@ def stock_name(D, ref):
     if pre == 'D':
         return 'D_Zener' if ('SGM05' in val or 'TVS' in val or 'ESD' in val) else 'D_Schottky'
     return {'R': 'R', 'C': 'C', 'L': 'L', 'TH': 'Thermistor_NTC', 'SW': 'SW_Push', 'BT': 'Battery_Cell',
-            'TP': 'TestPoint', 'TPG': 'TestPoint'}[pre]
+            'TP': 'TestPoint', 'TPG': 'TestPoint', 'H': 'TestPoint'}[pre]   # H = soldered nut, one GND pin
 
 
 def lib_props(D, ref):

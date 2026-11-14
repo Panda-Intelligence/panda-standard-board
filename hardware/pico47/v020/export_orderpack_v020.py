@@ -92,18 +92,42 @@ npth_txt = ', '.join(f'{n} x {d} mm ({", ".join(sorted({r for r, p in npth if ro
                      for d, n in sorted(collections.Counter(round(TO(p.GetDrillSize().x), 2) for _, p in npth).items()))
 bb = board.GetBoardEdgesBoundingBox()
 OUTLINE = {'v020': 'L-shaped outline with a USB-C notch', 'v021': 'rectangular outline with a USB-C notch',
-           'v022': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch'}[VAR.STEM[-4:]]
-SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if VAR.STEM[-4:] != 'v022' else
+           'v022': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
+           'v023': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
+           'v024': 'R4 bottom corners (Edge.Cuts arcs), a USB-C notch and a 16.1 x 11.6 mm speaker notch in the '
+                   'top-left corner'}[VAR.STEM[-4:]]
+V = VAR.STEM[-4:]
+SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if V < 'v022' else
         'top: pin-1 marks only; bottom: product / revision / date text, test-point names and the JLCJLCJLCJLC '
         'order-number marker (please print the order number there)')
-EXTRA = '' if VAR.STEM[-4:] != 'v022' else '''
-v0.2.2 parts to check in the placement preview:
+EXTRA = '' if V < 'v022' else '''
+Parts to check in the placement preview (since v0.2.2):
 - D203 TJ-S1706SW6TGLC2G-A5 (C273616) is a SIDE-VIEW LED. Its lens must face the bottom board edge (towards the
   USB-C edge, +y in the board view, -Y in CPL coordinates); pin 1 = cathode on the left. Please confirm the
   lens direction in the preview, since the JLC library body may be drawn in another orientation.
 - U506 GD25Q128EWIGR is WSON-8 6x5 with an exposed pad that is electrically floating (GigaDevice note); the EP
   land is soldered but has no net.
 - J501 microSD (TF-122-CCP9) is rotated so the card mouth faces the left board edge.
+'''
+HAS_U907 = board.FindFootprintByReference('U907') is not None
+U907 = '''- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the datasheet top view rotated 180 deg: the three
+  narrow leads face the top of the board view, pin 1 VDD at the right end of that row (silk dot). Please check
+  the part orientation in the placement preview.
+''' if HAS_U907 else ''
+PIN1_U907 = 'U907, ' if HAS_U907 else ''
+nfid = sum(1 for fp in board.GetFootprints() if fp.GetReference().startswith('FID'))
+FID = f'\n| Fiducials | {nfid} on the top side, 1 mm copper in a 2 mm mask opening |' if nfid else ''
+EXTRA24 = '' if V != 'v024' else '''
+v0.2.4 notes:
+- Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
+  one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
+- J302 (JST BM03B-ACHSS) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
+  assembly. Only the two speaker leads are soldered by hand, to J502.
+- H1, H2, H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1610MTJ, C2928167) in plated 2.5 mm holes with a 4.2 mm pad.
+  The nut body sits on the top side; its pilot goes into the hole. Please confirm these can be placed on a 0.8 mm
+  board, and that paste is printed on the ring pad.
+- MH1 (1.2 mm round) and MH2 (1.2 x 1.6 mm slot) are non-plated locating holes for the enclosure pins: keep them
+  non-plated and to drill tolerance.
 '''
 (out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack
 
@@ -120,20 +144,17 @@ supplier drawing, and U810 is consigned.
 | Vias | {len(vias)}, drill {', '.join(f'{d} mm' for d in drills)} (no small-hole option needed) |
 | Non-plated holes | {npth_txt or 'none'} |
 | Silkscreen | {SILK} |
-| Via-in-pad | {len(vip)} vias in exposed pads (see REQUIRED-VIA-IN-PAD.csv): choose resin plug + plated cap |
+| Via-in-pad | {len(vip)} vias in pads (see REQUIRED-VIA-IN-PAD.csv): choose resin plug + plated cap |{FID}
 | Assembly | top side only, {len(cpl)} placements, {len(groups)} BOM lines |
 | Consigned | {', '.join(f'{r} {p}' for r, p in consigned)} |
 
 Files: `{zpath.name}`, `BOM_JLCPCB.csv`, `CPL_JLCPCB.csv`.
 
 Assembly notes (from JLC DFM on the earlier board, order Y4, all fixed here):
-- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the datasheet top view rotated 180 deg: the three
-  narrow leads face the top of the board view, pin 1 VDD at the right end of that row (silk dot). Please check
-  the part orientation in the placement preview.
-- SW201 / SW202 TS-1186E: locating-post holes provided (0.75 mm NPTH), place the switch with its posts.
+{U907}- SW201 / SW202 TS-1186E: locating-post holes provided (0.75 mm NPTH), place the switch with its posts.
 - J820 X05A10L40G: hold-down pads per the XKB recommended layout.
-- Pin 1 of U501, U810, U904, U907, Q901, Q902, J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
+- Pin 1 of U501, U810, U904, {PIN1_U907}Q901, Q902, J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
   ICs carry the pin-1 mark of their standard footprint.
-{EXTRA}""")
+{EXTRA}{EXTRA24}""")
 print(f'gerber zip {zpath.name}; {len(cpl)} placements; {len(groups)} BOM lines; {len(vias)} vias; via-in-pad {len(vip)}; '
       f'consigned {len(consigned)}')

@@ -1,0 +1,22 @@
+{"texts": [
+ {"text": "Panda Standard 4.7", "layer": "B", "x": 23.0, "y": 74.9, "h": 1.6, "w": 0.22},
+ {"text": "Main board v0.2.3 / E06", "layer": "B", "area": [8.0, 76.4, 50.0, 90.0], "h": 1.1, "w": 0.16},
+ {"text": "2026-11-13  4L 0.8 mm  63 x 43 mm", "layer": "B", "area": [8.0, 78.2, 50.0, 92.0], "h": 1.0, "w": 0.15},
+ {"text": "Panda Intelligence", "layer": "B", "x": 23.0, "y": 80.4, "h": 1.0, "w": 0.15},
+ {"text": "JLCJLCJLCJLC", "layer": "B", "area": [5.0, 81.0, 58.0, 108.0], "h": 1.0, "w": 0.15},
+ {"text": "VBUS", "layer": "B", "near": "TP1"},
+ {"text": "VSYS", "layer": "B", "near": "TP2"},
+ {"text": "3V3", "layer": "B", "near": "TP3"},
+ {"text": "BAT+", "layer": "B", "near": "TP4"},
+ {"text": "SCL", "layer": "B", "near": "TP11"},
+ {"text": "SDA", "layer": "B", "near": "TP12"},
+ {"text": "EN", "layer": "B", "near": "TP18"},
+ {"text": "BOOT", "layer": "B", "near": "TP19"},
+ {"text": "VGH", "layer": "B", "near": "TP801"},
+ {"text": "VGL", "layer": "B", "near": "TP802"},
+ {"text": "VPOS", "layer": "B", "near": "TP803"},
+ {"text": "VNEG", "layer": "B", "near": "TP804"},
+ {"text": "VCOM", "layer": "B", "near": "TP805"},
+ {"text": "BDR", "layer": "B", "near": "TP806"},
+ {"text": "GND", "layer": "B", "near": "TPG1"}
+]}

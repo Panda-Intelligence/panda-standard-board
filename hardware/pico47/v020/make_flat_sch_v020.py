@@ -150,7 +150,8 @@ def main(netlist_path, out):
                 '(symbol "POWER_SOURCE_0_1" (polyline (pts (xy 0 0) (xy 0 2)) (stroke (width 0.254) (type default)) (fill (type none)))) '
                 '(symbol "POWER_SOURCE_1_1" (pin power_out line (at 0 0 90) (length 0) (name "pwr" (effects (font (size 0.85 0.85)))) '
                 '(number "1" (effects (font (size 0.85 0.85)))))))')
-    for k, net in enumerate(('GND', 'VBUS_USB', 'BAT_PROT_VDD', 'BAT_CELL_N', 'FUEL_VDD'), 1):
+    used = {n for p in parts.values() for n in p['pins'].values()}       # v0.2.4 has no cell-protection nets
+    for k, net in enumerate([n for n in ('GND', 'VBUS_USB', 'BAT_PROT_VDD', 'BAT_CELL_N', 'FUEL_VDD') if n in used], 1):
         fx, fy = x0 + 12.7 * k, 15.24
         insts.append(f'(symbol (lib_id "Panda7:POWER_SOURCE") (at {fx:.2f} {fy:.2f} 0) (unit 1) (in_bom no) (on_board no) (dnp no) '
                      f'(uuid {q(uid("flg", net))}) (property "Reference" "#FLG{k}" (at {fx:.2f} {fy:.2f} 0) (effects (font (size 0.85 0.85)) (hide yes))) '

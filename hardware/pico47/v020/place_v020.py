@@ -94,6 +94,9 @@ for ref, pose in anchors['parts'].items():
     hx = HALO if ref[0] in 'UJ' else 0.0
     rects.append((ref, (r[0] - hx, r[1] - hx, r[2] + hx, r[3] + hx), pose[3]))
 
+for i, k in enumerate(anchors.get('keepout', [])):      # hand-drawn copper and reserved areas on the front side
+    rects.append((f'_keep{i}', tuple(k), 'F'))
+
 BIG = {'GND', '3V3_AON', 'VSYS_RAW'}
 ICS = [r for r in placed if r[0] in 'UJQ' or r.startswith('L') or r.startswith('D') or r.startswith('Y') or r.startswith('SW')]
 
