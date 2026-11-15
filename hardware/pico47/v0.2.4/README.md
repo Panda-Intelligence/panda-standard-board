@@ -44,4 +44,6 @@ not a replay, is the source of truth.
 6. `v024/layout/eco_vp.py`, `eco_pmic.py` (adds C817), the grid router with `spec_pmic.json`, prune / trim, widen
    and `silk_v020.py` again (E07 note §4 steps 9–10). The ECO scripts use `layout/ecolib.py`.
    Then `eco_cin.py` (C818, L802, C506) with `spec_cin.json`, `eco_tp.py` and `eco_tp_silk.py` (steps 11–12).
+   Later ECOs: `eco_mount.py`, `eco_two_screws.py`, `eco_conn.py`, `eco_gpio0.py` (E07 sections 7–10) and
+   `eco_keys.py` (OK key up to (61.6, 71.3), FID2 moved; E07 section 13).
 7. `build_v020_sch.py`, `sync_board_sch_v020.py`, `set_fields_v020.py`; `export_orderpack_v020.py` for the order pack.

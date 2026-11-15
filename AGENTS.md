@@ -16,7 +16,7 @@ bare ESP32-S3, certification later, firmware exists. J302 is a JST ACH header an
 section 9). FL_PWM is on GPIO2 with pull-down R515 and I2S_BCLK on GPIO0 (boot strap with pull-up R511): never put an enable
 input on GPIO0 again (E07 section 8). Board fixing (user, 2026-11-14): two soldered M1.6 nuts H2 / H3 at the top edge (screws from the back of the shell),
 two shell lips over the bottom edge beside USB-C, and two NPTH locating holes MH1 / MH2 for shell pins; see E07
-sections 7 and 10. The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
+sections 7 and 10. Side keys (user, 2026-11-15): OK key SW201 at the top of the board right edge (61.6, 71.3) for the thumb, reset SW202 stays at (61.6, 105.2) as a small recessed key (E07 section 13). The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
 reverted. ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
 remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
 

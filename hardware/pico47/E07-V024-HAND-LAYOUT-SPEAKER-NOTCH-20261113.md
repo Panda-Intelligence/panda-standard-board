@@ -127,8 +127,8 @@ plus the index, generated from the netlist (174 nets, identical to the board).
     size, connector or spare-part listing was found, so it cannot be designed in without a sample to measure.
   - The user accepts 1800 mAh or more.
 - **Volume**: U904 (NS4168) has a fixed gain and no volume pin. Volume is set in firmware by scaling the I2S
-  samples, from the touch screen; the two side keys can act as volume up / down while audio plays. No hardware
-  change is needed for this.
+  samples, from the touch screen. Only the OK key (SW201) is read by the MCU; the reset key (SW202) goes to the
+  charger's QON pin, so the side keys cannot act as a volume pair. No hardware change is needed for this.
 - **Speaker**: not sampled. Candidate: Soberton SP-1511L, 15 × 11 × 3.0 mm, 8 Ω, 0.7 W rated / 1 W max, wire leads
   to the J502 landing ([datasheet](https://www.soberton.com/wp-content/uploads/2018/07/SP-1511L-29-June-2018.pdf)).
 - **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
@@ -260,7 +260,7 @@ and the JST header.
 
 ## 12. Product direction and 6.5 mm body (user, 2026-11-14 / 15)
 
-- Kickstarter direction chosen: **open and hackable** ("Kindle-sharp 297 ppi in your pocket, fully open"); MagSafe
+- Kickstarter direction chosen: **open and hackable** ("Print-sharp 297 ppi in your pocket, fully open"); MagSafe
   is an optional accessory, not built in.
 - Thickness target **6.5 mm** (was 7.3), with a smaller cell accepted. Enclosure only, the board does not change:
   0.6 mm cover lens with a printed mask, parting line at z 4.0, cell bay for a 2.5 mm cell. Details in the enclosure CAD README.
@@ -271,3 +271,19 @@ and the JST header.
   frame, 1.5 mm corner and end walls) was tried the same day and rejected for looks; users who want drop protection
   buy a case with raised edges. Corner walls stay 0.6 mm, end walls 1.15 mm, and 0.5 mm is left over the tallest
   board parts. Glass grade, anti-splinter film, foam and drop tests are listed in the enclosure CAD README.
+
+## 13. Side keys (user, 2026-11-15)
+
+- The OK / power key SW201 (KEY_POWER) moves up for the thumb when the device is held: board (61.6, 95.2) →
+  (61.6, 71.3), the top of the board's right edge, 87.9 mm from the top of the 133.7 mm body (was 111.8 mm).
+  A key higher up, beside the cell, would need a side-key flex and a connector; not chosen.
+- The reset key SW202 (BQ_QON, hold 10 s on battery = full power reset) stays at (61.6, 105.2). In the shell it
+  becomes small and recessed: 2.2 × 1.4 mm opening, cap 0.2 mm below the wall, pressed with a nail or a pen tip.
+  The OK key keeps the 4.2 × 1.8 mm opening and a cap 0.45 mm proud.
+- `v024/layout/eco_keys.py`: moves SW201, removes its old F.Cu stub (the KEY_POWER trunk via at (60.604, 96.972)
+  stays, it joins the In2 trunk and the R528 branch), runs KEY_POWER on F.Cu (0.2 mm) from the new pad to the
+  pull-up R528, and moves fiducial FID2 with its keep-out from (60.95, 70.1) to (52.5, 69.1).
+- Result: DRC 0 including silkscreen, 0 unconnected, schematic parity 0. Netlist and BOM unchanged; in the CPL only
+  the SW201 line changes. Enclosure: fit check passes; the switch has no 3D model, so the key-to-plunger fit is the
+  same construction as before at the new y.
+- The concept renders and videos still show the old key positions and the raised rim; not re-rendered (user).
