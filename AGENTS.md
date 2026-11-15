@@ -2,8 +2,8 @@
 
 Read `hardware/pico47/E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md` and `hardware/pico47/v0.2.4/README.md` first.
 v0.2.4 = v0.2.2 circuit minus the on-board cell protection (U907, R940, C940, J301; J302 is a 3-pad NTC / B- / B+
-landing) plus C817 (VN reservoir at D802) and C818 (input cap at U810 pin 24), minus C816, with 18 test pads, on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 7.3 mm device
-and a 3.0 x 57 x 79 mm pack with PCM + NTC. Charger, 3V3 buck, front-light boost, RF, crystal and VBUS / battery
+landing) plus C817 (VN reservoir at D802) and C818 (input cap at U810 pin 24), minus C816, with 18 test pads, on a 63 x 48 mm board with a speaker notch (x 0.5-16.6, y 67.4-79.0) for a 67.0 x 133.7 x 6.5 mm device (flush cover lens, 2.5 mm cell; E07 section 12)
+and a custom 2.5 mm pack (about 1500-1650 mAh) with PCM + NTC. Charger, 3V3 buck, front-light boost, RF, crystal and VBUS / battery
 trunks are hand-laid code (`v023/handlib.py`, `v024/design_v024.py`) written as locked copper before Freerouting;
 net classes Power 0.3 / HV 0.2 / RF 0.17. The KiCad project in `hardware/pico47/v0.2.4/` is the source of truth
 (ERC 0, DRC 0 / 0 unconnected / 0 parity); v0.2.3 (E06, 63 x 43) is the first hand-layout pass. Scripts take
