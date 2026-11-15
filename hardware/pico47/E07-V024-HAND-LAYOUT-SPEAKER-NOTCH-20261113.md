@@ -263,8 +263,10 @@ and the JST header.
 - Kickstarter direction chosen: **open and hackable** ("Kindle-sharp 297 ppi in your pocket, fully open"); MagSafe
   is an optional accessory, not built in.
 - Thickness target **6.5 mm** (was 7.3), with a smaller cell accepted. Enclosure only, the board does not change:
-  flush 0.6 mm cover lens with a printed mask, parting line at z 4.0, cell bay for a 2.5 mm cell, about 0.5 mm reserve
-  under the support plate for the unknown panel stack. Details in the enclosure CAD README.
+  0.6 mm cover lens with a printed mask, parting line at z 4.0, cell bay for a 2.5 mm cell. Details in the enclosure CAD README.
 - Cell: no catalogue pack fits 2.6 × 57 × 79 mm with a datasheet (search 2026-11-15). Plan a custom pack of about
   1500–1650 mAh; the nearest listing is 2.6 × 58 × 76 mm, 1750 mAh (LiPol LP267658), unverified.
 - Tallest board parts set the plate height: the SMT nuts H2 / H3 (2.0 mm) and the microSD socket (about 2.0 mm).
+- Drop protection (user, 2026-11-15): the lens sits 0.3 mm below a raised frame rim; corner and end walls are 1.5 mm
+  (were 0.6 / 1.15); the screen stack is lowered 0.3 mm, leaving 0.2 mm over the tallest board parts. Glass grade,
+  anti-splinter film, foam and drop tests are listed in the enclosure CAD README.
