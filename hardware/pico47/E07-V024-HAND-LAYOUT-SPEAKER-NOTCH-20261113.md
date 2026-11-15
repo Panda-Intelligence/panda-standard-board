@@ -267,6 +267,7 @@ and the JST header.
 - Cell: no catalogue pack fits 2.6 × 57 × 79 mm with a datasheet (search 2026-11-15). Plan a custom pack of about
   1500–1650 mAh; the nearest listing is 2.6 × 58 × 76 mm, 1750 mAh (LiPol LP267658), unverified.
 - Tallest board parts set the plate height: the SMT nuts H2 / H3 (2.0 mm) and the microSD socket (about 2.0 mm).
-- Drop protection (user, 2026-11-15): the lens sits 0.3 mm below a raised frame rim; corner and end walls are 1.5 mm
-  (were 0.6 / 1.15); the screen stack is lowered 0.3 mm, leaving 0.2 mm over the tallest board parts. Glass grade,
-  anti-splinter film, foam and drop tests are listed in the enclosure CAD README.
+- Flat front (user, 2026-11-15): the cover lens is flush with the frame top. A raised rim (lens 0.3 mm below the
+  frame, 1.5 mm corner and end walls) was tried the same day and rejected for looks; users who want drop protection
+  buy a case with raised edges. Corner walls stay 0.6 mm, end walls 1.15 mm, and 0.5 mm is left over the tallest
+  board parts. Glass grade, anti-splinter film, foam and drop tests are listed in the enclosure CAD README.
