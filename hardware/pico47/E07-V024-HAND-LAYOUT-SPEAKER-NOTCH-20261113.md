@@ -127,8 +127,8 @@ plus the index, generated from the netlist (174 nets, identical to the board).
     size, connector or spare-part listing was found, so it cannot be designed in without a sample to measure.
   - The user accepts 1800 mAh or more.
 - **Volume**: U904 (NS4168) has a fixed gain and no volume pin. Volume is set in firmware by scaling the I2S
-  samples, from the touch screen; the two side keys can act as volume up / down while audio plays. No hardware
-  change is needed for this.
+  samples, from the touch screen. Only the OK key (SW201) is read by the MCU; the reset key (SW202) goes to the
+  charger's QON pin, so the side keys cannot act as a volume pair. No hardware change is needed for this.
 - **Speaker**: not sampled. Candidate: Soberton SP-1511L, 15 × 11 × 3.0 mm, 8 Ω, 0.7 W rated / 1 W max, wire leads
   to the J502 landing ([datasheet](https://www.soberton.com/wp-content/uploads/2018/07/SP-1511L-29-June-2018.pdf)).
 - **Enclosure study** for the 133.7 mm body exists outside Git. A boolean check of the board STEP, a speaker block
@@ -180,7 +180,11 @@ Open points:
   head) and the toolmaker's view on strength; a metal washer plate or a local thicker floor is the fallback.
 - No pull-out or torque-out figure was found for this nut size; the maker gives 1.5 kgf·cm tightening torque.
 - JLC must confirm it can place this nut on a 0.8 mm board.
-- The bottom-right corner should be held down by a rib from the support plate or frame; not designed yet.
+- Bottom-right corner (user, 2026-11-14: design it sensibly without a panel drawing): a 5.5 mm hold-down lip on the
+  bottom wall of the rear shell at x 53.0–58.5 reaches 0.65 mm over the board edge, 0.1 mm above the board top. The
+  board is tilted in under it, lowered onto the pins (tapered tips) and screwed from the back. It needs no part of
+  the screen stack. A boolean check shows no overlap with the board; 0.66 mm is left to the panel connector body.
+  The lip is an undercut and needs a side action in the tool.
 
 ## 8. Front-light control pin (2026-11-14)
 
@@ -221,3 +225,65 @@ Not added, with reasons:
 Known and deliberately left open by the user: EU Battery Regulation (EU) 2023/1542 Article 11 asks for
 user-replaceable portable batteries from 18 Feb 2027; radio and safety certification; the antenna and pack part
 numbers. The antenna must have an MHF4 plug; the narrow FPC antennas found in stock all had the larger MHF1 plug.
+
+## 10. Two screws and two lips (user, 2026-11-14)
+
+The user asked whether three screws were needed and chose two screws plus two lips.
+
+- **Board**: nut H1 left of USB-C is removed (`layout/eco_two_screws.py`). H2 (28.0, 70.0) and H3 (57.1, 69.9) stay.
+  D203, R208, the 3V3 trunk and FID3 keep the positions they got for H1. This supersedes the H1 rows in §7.
+- **Shell**: a second hold-down lip on the bottom wall at x 21.9–25.4, left of USB-C, same section as the lip at
+  x 53.0–58.5. The H1 screw hole is gone. The two lips take the USB-C plug forces on both sides of the connector; the
+  two screws at the top edge lock the board after it is tilted in.
+- Board position is still set by the pins in MH1 and MH2. Boolean check with the board STEP: no overlap.
+- Checks (KiCad 10.0.7, `--severity-all`): ERC 0; DRC 0 violations, 0 unconnected, 0 parity.
+
+## 11. BOM cost and stock check (JLC, read 2026-11-14)
+
+Parts per board from the JLC assembly library (`v024/jlcsearch.py` and the BOM price check): $12.10 at 100, $9.95 at
+500, $9.63 at 1000, without the consigned SY7636ARMC. 75 BOM lines, 51 of them "extended" ($3 feeder fee per line
+and order, about $0.31 per board at 500).
+
+| Line | $ at 500 | Note |
+|---|---|---|
+| U506 GD25Q128EWIGR (WSON) | 1.38 | Largest line after the MCU. SOP-8 options in stock: ZD25Q128CSIGT (Zetta, C19626875) 0.58; BY25Q128ESSIG(R) (Boya, C49023667) 0.64; GD25Q128ESIG (C2758105) 0.89. SOP-8 is about 2.2 mm high (fits under 2.7 mm) but needs a new footprint next to the MCU; not changed. |
+| U501 ESP32-S3R8 | about 2.28 at 100 | Kept (user decision). |
+| J302 JST BM03B-ACHSS | 0.37 | XFCN M1201RS-03-BK (C2840018) is 0.09, but its interchangeability with the JST housing is not confirmed; not changed. |
+
+Changed: H2 / H3 are now SMTSO1620MTJ (C2916317, 2.0 mm high, 1983 in stock). The 1.0 mm version had 5 in stock.
+
+Stock too low for 500 boards on that date: J201 U22401-23 USB-C (139 pieces) and U810 SY7636ARMC (0, consigned).
+Both must be bought ahead and supplied to the assembler.
+
+Makers outside mainland China still in the BOM: Samsung capacitors (JLC "basic" parts, the cheapest option there)
+and the JST header.
+
+## 12. Product direction and 6.5 mm body (user, 2026-11-14 / 15)
+
+- Kickstarter direction chosen: **open and hackable** ("Print-sharp 297 ppi in your pocket, fully open"); MagSafe
+  is an optional accessory, not built in.
+- Thickness target **6.5 mm** (was 7.3), with a smaller cell accepted. Enclosure only, the board does not change:
+  0.6 mm cover lens with a printed mask, parting line at z 4.0, cell bay for a 2.5 mm cell. Details in the enclosure CAD README.
+- Cell: no catalogue pack fits 2.6 × 57 × 79 mm with a datasheet (search 2026-11-15). Plan a custom pack of about
+  1500–1650 mAh; the nearest listing is 2.6 × 58 × 76 mm, 1750 mAh (LiPol LP267658), unverified.
+- Tallest board parts set the plate height: the SMT nuts H2 / H3 (2.0 mm) and the microSD socket (about 2.0 mm).
+- Flat front (user, 2026-11-15): the cover lens is flush with the frame top. A raised rim (lens 0.3 mm below the
+  frame, 1.5 mm corner and end walls) was tried the same day and rejected for looks; users who want drop protection
+  buy a case with raised edges. Corner walls stay 0.6 mm, end walls 1.15 mm, and 0.5 mm is left over the tallest
+  board parts. Glass grade, anti-splinter film, foam and drop tests are listed in the enclosure CAD README.
+
+## 13. Side keys (user, 2026-11-15)
+
+- The OK / power key SW201 (KEY_POWER) moves up for the thumb when the device is held: board (61.6, 95.2) →
+  (61.6, 71.3), the top of the board's right edge, 87.9 mm from the top of the 133.7 mm body (was 111.8 mm).
+  A key higher up, beside the cell, would need a side-key flex and a connector; not chosen.
+- The reset key SW202 (BQ_QON, hold 10 s on battery = full power reset) stays at (61.6, 105.2). In the shell it
+  becomes small and recessed: 2.2 × 1.4 mm opening, cap 0.2 mm below the wall, pressed with a nail or a pen tip.
+  The OK key keeps the 4.2 × 1.8 mm opening and a cap 0.45 mm proud.
+- `v024/layout/eco_keys.py`: moves SW201, removes its old F.Cu stub (the KEY_POWER trunk via at (60.604, 96.972)
+  stays, it joins the In2 trunk and the R528 branch), runs KEY_POWER on F.Cu (0.2 mm) from the new pad to the
+  pull-up R528, and moves fiducial FID2 with its keep-out from (60.95, 70.1) to (52.5, 69.1).
+- Result: DRC 0 including silkscreen, 0 unconnected, schematic parity 0. Netlist and BOM unchanged; in the CPL only
+  the SW201 line changes. Enclosure: fit check passes; the switch has no 3D model, so the key-to-plunger fit is the
+  same construction as before at the new y.
+- The concept renders and videos still show the old key positions and the raised rim; not re-rendered (user).

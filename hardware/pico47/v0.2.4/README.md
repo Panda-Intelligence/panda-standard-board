@@ -14,8 +14,8 @@
   - Test pads TP5 (FL_VOUT), TP6 (3V3_SD) and TPG2 (GND) added: 18 in total.
   - Connectors: the pack plugs into J302 (JST ACH 3-pin) and the antenna into J507 (MHF4); FL_PWM moved off the
     boot-strap pin (E07 note §8–9).
-  - Board fixing: three soldered M1.6 nuts H1–H3 for screws from the back of the shell, and two non-plated
-    locating holes MH1 / MH2 for shell pins (E07 note §7).
+  - Board fixing: two soldered M1.6 nuts H2 / H3 at the top edge for screws from the back of the shell, two shell
+    lips over the bottom edge, and two non-plated locating holes MH1 / MH2 for shell pins (E07 note §7 and §10).
   - Three fiducials. Net classes Power 0.3 mm, HV 0.2 mm, RF 0.17 mm.
 - **Schematic**: `Panda47-v024.kicad_sch` (index) + 8 sheets, generated from the netlist. The netlist is identical to
   the board.
@@ -44,4 +44,6 @@ not a replay, is the source of truth.
 6. `v024/layout/eco_vp.py`, `eco_pmic.py` (adds C817), the grid router with `spec_pmic.json`, prune / trim, widen
    and `silk_v020.py` again (E07 note §4 steps 9–10). The ECO scripts use `layout/ecolib.py`.
    Then `eco_cin.py` (C818, L802, C506) with `spec_cin.json`, `eco_tp.py` and `eco_tp_silk.py` (steps 11–12).
+   Later ECOs: `eco_mount.py`, `eco_two_screws.py`, `eco_conn.py`, `eco_gpio0.py` (E07 sections 7–10) and
+   `eco_keys.py` (OK key up to (61.6, 71.3), FID2 moved; E07 section 13).
 7. `build_v020_sch.py`, `sync_board_sch_v020.py`, `set_fields_v020.py`; `export_orderpack_v020.py` for the order pack.
