@@ -257,3 +257,14 @@ Both must be bought ahead and supplied to the assembler.
 
 Makers outside mainland China still in the BOM: Samsung capacitors (JLC "basic" parts, the cheapest option there)
 and the JST header.
+
+## 12. Product direction and 6.5 mm body (user, 2026-11-14 / 15)
+
+- Kickstarter direction chosen: **open and hackable** ("Kindle-sharp 297 ppi in your pocket, fully open"); MagSafe
+  is an optional accessory, not built in.
+- Thickness target **6.5 mm** (was 7.3), with a smaller cell accepted. Enclosure only, the board does not change:
+  flush 0.6 mm cover lens with a printed mask, parting line at z 4.0, cell bay for a 2.5 mm cell, about 0.5 mm reserve
+  under the support plate for the unknown panel stack. Details in the enclosure CAD README.
+- Cell: no catalogue pack fits 2.6 × 57 × 79 mm with a datasheet (search 2026-11-15). Plan a custom pack of about
+  1500–1650 mAh; the nearest listing is 2.6 × 58 × 76 mm, 1750 mAh (LiPol LP267658), unverified.
+- Tallest board parts set the plate height: the SMT nuts H2 / H3 (2.0 mm) and the microSD socket (about 2.0 mm).
