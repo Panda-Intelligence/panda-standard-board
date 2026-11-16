@@ -286,4 +286,27 @@ and the JST header.
 - Result: DRC 0 including silkscreen, 0 unconnected, schematic parity 0. Netlist and BOM unchanged; in the CPL only
   the SW201 line changes. Enclosure: fit check passes; the switch has no 3D model, so the key-to-plunger fit is the
   same construction as before at the new y.
-- The concept renders and videos still show the old key positions and the raised rim; not re-rendered (user).
+- The concept stills were re-rendered on 2026-11-16 with the flat front and the new key positions; the video
+  was not re-rendered (user).
+
+## 14. Screen bonding, microSD slot and box contents (user, 2026-11-16)
+
+- **Screen bonding: no liquid adhesive.** Liquid optical glue (LOCA) can creep to the screen edges and show as a
+  dark or yellow edge under the front light. Chosen: the panel-module maker laminates the cover lens to the
+  front-light guide with a 50 µm die-cut OCA film (the 0.05 mm layer between z 5.85 and 5.9 in the stack). The film
+  ends 0.3–0.5 mm inside the glass edge, under the black mask, and covers the mask window with at least 0.5 mm to
+  spare. The lens edge sits on the frame ledge with die-cut tape, not glue. The module's own front-light / touch /
+  panel layers must also be OCA laminated. Incoming inspection: no bubbles, no adhesive at the window edge, and no
+  dark or yellow edge at the lowest and highest light level; aging samples (85 °C / 85 % RH, UV) checked at the
+  edges. Broken glass therefore means a new screen module.
+- **Box contents**: the reader, a microSD card (32 GB assumed), a USB-C cable and an eject pin; no charger. About
+  US$4 per unit, added to the unit cost estimate.
+- **microSD slot: open problem found.** The XUNPU TF-122-CCP9 drawing gives a card lock position 2.30 ± 0.30 mm
+  in front of the socket face, and the footprint puts the socket face at x ≈ −1.3, at the outer wall
+  (x −1.5). So a latched card stands about 2.1 mm out of the side, and the socket face runs into the shell wall
+  (the shell slot is 12.4 × 1.5 mm, the socket 14.75 × 1.8 mm). The fit check did not see this because the socket
+  has no 3D model. The user asked for a flush cover with a pin hole (or a SIM-style tray). A flush cover needs the
+  latched card end about 0.7 mm inside the outer wall, which means moving a push-push socket about 2.9 mm inward;
+  every push-push part checked locks the card 1.6–2.3 mm in front of its face (the Hirose DM3AT gives 1.6 mm).
+  That runs into the panel-power parts at x 15–19. Options are in the open-items list: a tray socket mounted at the
+  wall, a push-pull socket set back about 0.6 mm, or moving the socket and the parts beside it. Not changed yet.
