@@ -12,7 +12,7 @@
   - New C817 (4.7 µF, same part as C804): VN reservoir right at the rectifier D802. New C818 (2.2 µF 0402, same
     part as C304): input capacitor at U810 pin 24. C816 dropped. C506 moved to the audio amplifier.
   - Test pads TP5 (FL_VOUT), TP6 (3V3_SD) and TPG2 (GND) added: 18 in total.
-  - Connectors: the pack plugs into J302 (JST ACH 3-pin) and the antenna into J507 (MHF4); FL_PWM moved off the
+  - Connectors: the pack plugs into J302 (XUNPU 1.2 mm 3-pin, ACH-type) and the antenna into J507 (MHF4); FL_PWM moved off the
     boot-strap pin (E07 note §8–9).
   - Board fixing: two soldered M1.6 nuts H2 / H3 at the top edge for screws from the back of the shell, two shell
     lips over the bottom edge, and two non-plated locating holes MH1 / MH2 for shell pins (E07 note §7 and §10).
