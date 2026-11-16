@@ -12,11 +12,11 @@ cell is not chosen (no datasheet for 3.0 x 57 x 79; PC326072 3.2 x 60 x 75.5 4.3
 accepts >= 1800 mAh; the reference device's pack has no public data), speaker not sampled (candidate
 SP-1511L); USB D+/D- is deliberately left unmatched (full speed only). Order pack outside Git (22 via-in-pad).
 User direction 2026-11-14: finish workmanship first, ignore cost for now, battery stays non-removable, MCU stays the
-bare ESP32-S3, certification later, firmware exists. J302 is a JST ACH header and J507 an MHF4 receptacle (E07
+bare ESP32-S3, certification later, firmware exists. J302 is a XUNPU 1.2 mm 3-pin header (ACH-type) and J507 an MHF4 receptacle (E07
 section 9). FL_PWM is on GPIO2 with pull-down R515 and I2S_BCLK on GPIO0 (boot strap with pull-up R511): never put an enable
 input on GPIO0 again (E07 section 8). Board fixing (user, 2026-11-14): two soldered M1.6 nuts H2 / H3 at the top edge (screws from the back of the shell),
 two shell lips over the bottom edge beside USB-C, and two NPTH locating holes MH1 / MH2 for shell pins; see E07
-sections 7 and 10. Side keys (user, 2026-11-15): OK key SW201 at the top of the board right edge (61.6, 71.3) for the thumb, reset SW202 stays at (61.6, 105.2) as a small recessed key (E07 section 13). The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
+sections 7 and 10. Side keys (user, 2026-11-15): OK key SW201 at the top of the board right edge (61.6, 71.3) for the thumb, reset SW202 stays at (61.6, 105.2) as a small recessed key (E07 section 13). Screen (user, 2026-11-16): cover lens OCA-laminated to the front light, no liquid glue; box holds a microSD card, a USB-C cable and an eject pin. Open: a latched microSD card sticks out about 2.1 mm from the side and the socket runs into the wall; the SD cover waits on that (E07 section 14). Parts from mainland makers only (user, 2026-11-16): Samsung MLCCs became Fenghua, J302 became XUNPU, the speaker candidate is Huarom HDK-151108ZA-5C7 (E07 section 15). The lanyard is in the enclosure only (top-right corner, beside the cell); a bottom-right board step was tried and
 reverted. ECO scripts must keep removed pcbnew items referenced (`v024/layout/ecolib.py`), or KiCad Python crashes. Never let prune / trim
 remove a track that meets another mid-segment (it broke I2C_SDA once; see E07 section 4).
 

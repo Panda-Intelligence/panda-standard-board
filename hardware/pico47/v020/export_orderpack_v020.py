@@ -121,7 +121,7 @@ EXTRA24 = '' if V != 'v024' else '''
 v0.2.4 notes:
 - Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
   one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
-- J302 (JST BM03B-ACHSS) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
+- J302 (XUNPU WAFER-ACH1.2-3PWB, 1.2 mm 3-pin) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
   assembly. Only the two speaker leads are soldered by hand, to J502.
 - H2 and H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1620MTJ, C2916317, 2.0 mm high) in plated 2.5 mm holes with a 4.2 mm pad.
   The nut body sits on the top side; its pilot goes into the hole. Please confirm these can be placed on a 0.8 mm

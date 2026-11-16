@@ -192,7 +192,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -226,7 +226,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -238,7 +238,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -250,7 +250,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -436,7 +436,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -470,7 +470,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -482,7 +482,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -494,7 +494,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -997,7 +997,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1019,7 +1019,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1031,7 +1031,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1043,7 +1043,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1698,7 +1698,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C45783.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C129303.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1720,7 +1720,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1732,7 +1732,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A226MAQNNNE"
+		(property "MPN" "0805X226M250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1744,7 +1744,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C45783"
+		(property "LCSC" "C129303"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1864,7 +1864,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1898,7 +1898,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1910,7 +1910,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1922,7 +1922,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8495,7 +8495,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05C220JB5NNNC"
+		(property "MPN" "0402CG220J500NT"
 			(at 0 0 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8507,7 +8507,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -9058,7 +9058,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C96446.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C479655.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9080,7 +9080,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C96446"
+		(property "LCSC" "C479655"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9092,7 +9092,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9104,7 +9104,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A106MA8NRNC"
+		(property "MPN" "0603X106M250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9281,7 +9281,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9315,7 +9315,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9327,7 +9327,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9339,7 +9339,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9501,7 +9501,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9535,7 +9535,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9547,7 +9547,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9559,7 +9559,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -11852,7 +11852,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11886,7 +11886,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -11898,7 +11898,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -11910,7 +11910,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -12048,7 +12048,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C96446.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C479655.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12070,7 +12070,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C96446"
+		(property "LCSC" "C479655"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12082,7 +12082,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12094,7 +12094,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A106MA8NRNC"
+		(property "MPN" "0603X106M250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12268,7 +12268,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -12302,7 +12302,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -12314,7 +12314,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -12326,7 +12326,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -13037,7 +13037,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C967571.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13071,7 +13071,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13083,7 +13083,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05A105KA5NQNC"
+		(property "MPN" "0402X105K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13095,7 +13095,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C52923"
+		(property "LCSC" "C967571"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13800,7 +13800,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C45783.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C129303.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -13822,7 +13822,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -13834,7 +13834,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A226MAQNNNE"
+		(property "MPN" "0805X226M250NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -13846,7 +13846,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C45783"
+		(property "LCSC" "C129303"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -15283,7 +15283,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -15317,7 +15317,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -15329,7 +15329,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -15341,7 +15341,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -19146,7 +19146,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19180,7 +19180,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -19192,7 +19192,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -19204,7 +19204,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -19633,7 +19633,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C13585.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C116702.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19655,7 +19655,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19667,7 +19667,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL31A106KBHNNNE"
+		(property "MPN" "1206X106K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19679,7 +19679,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C13585"
+		(property "LCSC" "C116702"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -20091,7 +20091,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -20125,7 +20125,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -20137,7 +20137,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -20149,7 +20149,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -23044,7 +23044,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23078,7 +23078,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23090,7 +23090,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23102,7 +23102,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23417,7 +23417,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C1622.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C285123.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23451,7 +23451,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1622"
+		(property "LCSC" "C285123"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -23463,7 +23463,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10B473KB8NNNC"
+		(property "MPN" "0603B473K500NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -23475,7 +23475,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -23612,7 +23612,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15850.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C40894.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23634,7 +23634,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23646,7 +23646,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A106KAYNNNE"
+		(property "MPN" "0805X106K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23658,7 +23658,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15850"
+		(property "LCSC" "C40894"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24070,7 +24070,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24104,7 +24104,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24116,7 +24116,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24128,7 +24128,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24514,7 +24514,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C1779.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C274413.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -24536,7 +24536,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -24548,7 +24548,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A475KAQNNNE"
+		(property "MPN" "0805X475K250NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -24560,7 +24560,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1779"
+		(property "LCSC" "C274413"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -24972,7 +24972,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C967571.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -24994,7 +24994,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -25006,7 +25006,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05A105KA5NQNC"
+		(property "MPN" "0402X105K250NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -25018,7 +25018,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C52923"
+		(property "LCSC" "C967571"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -26302,7 +26302,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C1622.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C285123.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -26336,7 +26336,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1622"
+		(property "LCSC" "C285123"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -26348,7 +26348,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10B473KB8NNNC"
+		(property "MPN" "0603B473K500NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -26360,7 +26360,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -26641,7 +26641,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -26675,7 +26675,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -26687,7 +26687,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -26699,7 +26699,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -28436,7 +28436,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -28470,7 +28470,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -28482,7 +28482,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -28494,7 +28494,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -28972,7 +28972,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C967571.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -29006,7 +29006,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -29018,7 +29018,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05A105KA5NQNC"
+		(property "MPN" "0402X105K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -29030,7 +29030,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C52923"
+		(property "LCSC" "C967571"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -29191,7 +29191,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C45783.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C129303.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -29213,7 +29213,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -29225,7 +29225,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A226MAQNNNE"
+		(property "MPN" "0805X226M250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -29237,7 +29237,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C45783"
+		(property "LCSC" "C129303"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -30197,7 +30197,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -30231,7 +30231,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -30243,7 +30243,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -30255,7 +30255,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -31319,7 +31319,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -31353,7 +31353,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -31365,7 +31365,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -31377,7 +31377,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -31838,7 +31838,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C1779.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C274413.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -31872,7 +31872,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -31884,7 +31884,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A475KAQNNNE"
+		(property "MPN" "0805X475K250NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -31896,7 +31896,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1779"
+		(property "LCSC" "C274413"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -32118,7 +32118,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -32152,7 +32152,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -32164,7 +32164,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -32176,7 +32176,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -32614,7 +32614,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -32648,7 +32648,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -32660,7 +32660,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -32672,7 +32672,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -33670,7 +33670,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -33704,7 +33704,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -33716,7 +33716,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -33728,7 +33728,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -35152,7 +35152,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C96446.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C479655.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -35186,7 +35186,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C96446"
+		(property "LCSC" "C479655"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -35198,7 +35198,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A106MA8NRNC"
+		(property "MPN" "0603X106M250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -35210,7 +35210,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -35348,7 +35348,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -35382,7 +35382,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -35394,7 +35394,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -35406,7 +35406,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -36080,7 +36080,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C15849.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C157684.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -36102,7 +36102,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -36114,7 +36114,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A105KB8NNNC"
+		(property "MPN" "0603X105K500NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -36126,7 +36126,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C15849"
+		(property "LCSC" "C157684"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -36290,7 +36290,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C967571.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36324,7 +36324,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36336,7 +36336,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05A105KA5NQNC"
+		(property "MPN" "0402X105K250NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36348,7 +36348,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C52923"
+		(property "LCSC" "C967571"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36536,7 +36536,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C96446.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C479655.html"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -36570,7 +36570,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C96446"
+		(property "LCSC" "C479655"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -36582,7 +36582,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10A106MA8NRNC"
+		(property "MPN" "0603X106M250NT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -36594,7 +36594,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -36730,7 +36730,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C1622.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C285123.html"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -36752,7 +36752,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -36764,7 +36764,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL10B473KB8NNNC"
+		(property "MPN" "0603B473K500NT"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -36776,7 +36776,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1622"
+		(property "LCSC" "C285123"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -37538,7 +37538,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C52923.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C967571.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -37572,7 +37572,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -37584,7 +37584,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05A105KA5NQNC"
+		(property "MPN" "0402X105K250NT"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -37596,7 +37596,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C52923"
+		(property "LCSC" "C967571"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -39802,7 +39802,7 @@
 				)
 			)
 		)
-		(property "Value" "BM03B-ACHSS / pack"
+		(property "Value" "WAFER-ACH1.2-3PWB / pack"
 			(at 0 3.5 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -39814,7 +39814,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C5118705.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C46772639.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -39825,7 +39825,7 @@
 				)
 			)
 		)
-		(property "Description" "Pack connector: 1 = B+, 2 = B-, 3 = NTC. Mates with ACHR-03V-S (C274397) on the pack lead"
+		(property "Description" "Pack connector, 1.2 mm 3-pin: 1 = B+, 2 = B-, 3 = NTC. Mates with an ACH-type 1.2 mm housing on the pack lead"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -39848,7 +39848,7 @@
 				)
 			)
 		)
-		(property "Spec" "BM03B-ACHSS"
+		(property "Spec" "WAFER-ACH1.2-3PWB"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -39860,7 +39860,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "JST"
+		(property "Manufacturer" "XUNPU"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -39872,7 +39872,7 @@
 				)
 			)
 		)
-		(property "MPN" "BM03B-ACHSS-GAN-ETF(LF)(SN)"
+		(property "MPN" "WAFER-ACH1.2-3PWB"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -39884,7 +39884,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5118705"
+		(property "LCSC" "C46772639"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -40348,7 +40348,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C307331.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C110251.html"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -40382,7 +40382,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" "FH (Fenghua Advanced)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -40394,7 +40394,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL05B104KB54PNC"
+		(property "MPN" "0402B104K500NT"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -40406,7 +40406,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C307331"
+		(property "LCSC" "C110251"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
