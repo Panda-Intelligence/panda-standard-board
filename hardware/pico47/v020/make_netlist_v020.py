@@ -310,6 +310,38 @@ if VARIANT == 'v024':
                                  'LCSC': 'C2916317', 'MPN': 'SMTSO1620MTJ', 'Manufacturer': 'Sinhoo', 'Reference': ref,
                                  'Value': 'M1.6 SMT nut'}}
 
+if VARIANT == 'v024':
+    # Mainland makers only (user, 2026-11-16). Samsung MLCCs -> Fenghua (FH) with the same size, dielectric and an equal
+    # or higher voltage; JLC stock read 2026-11-16. These are JLC "extended" parts (one loading fee per line).
+    # C1555 was already the FH 0402CG220J500NT in JLC's library; only the maker / MPN text was wrong.
+    FH = 'FH (Fenghua Advanced)'                    # same maker name as the FH parts already in the BOM
+    MAINLAND_CAPS = {   # Samsung MPN: (FH MPN, LCSC)
+        'CL05B104KB54PNC': ('0402B104K500NT', 'C110251'),     # 0402 100n 50 V X7R
+        'CL05C220JB5NNNC': ('0402CG220J500NT', 'C1555'),      # 0402 22p 50 V C0G
+        'CL05A105KA5NQNC': ('0402X105K250NT', 'C967571'),     # 0402 1u 25 V X5R
+        'CL10A105KB8NNNC': ('0603X105K500NT', 'C157684'),     # 0603 1u 50 V X5R
+        'CL10B473KB8NNNC': ('0603B473K500NT', 'C285123'),     # 0603 47n 50 V X7R
+        'CL10A106MA8NRNC': ('0603X106M250NT', 'C479655'),     # 0603 10u 25 V X5R
+        'CL21A106KAYNNNE': ('0805X106K250NT', 'C40894'),      # 0805 10u 25 V X5R
+        'CL21A226MAQNNNE': ('0805X226M250NT', 'C129303'),     # 0805 22u 25 V X5R
+        'CL21A475KAQNNNE': ('0805X475K250NT', 'C274413'),     # 0805 4.7u 25 V X5R
+        'CL31A106KBHNNNE': ('1206X106K500NT', 'C116702'),     # 1206 10u 50 V X5R
+    }
+    for ref, p in parts.items():
+        f = p.get('fields', {})
+        if f.get('MPN') in MAINLAND_CAPS:
+            mpn, lcsc = MAINLAND_CAPS[f['MPN']]
+            f.update(Manufacturer=FH, MPN=mpn, LCSC=lcsc, Datasheet=f'https://www.lcsc.com/product-detail/{lcsc}.html')
+    # J302: XUNPU 1.2 mm 3-pin header on the same land pattern (pad sizes and pitch per the XUNPU drawing), mates with an
+    # ACH-type 1.2 mm housing on the pack lead. 400 in JLC stock on 2026-11-16: buy ahead for 500 boards.
+    parts['J302']['value'] = 'WAFER-ACH1.2-3PWB / pack'
+    parts['J302']['fields'].update(
+        Datasheet='https://www.lcsc.com/product-detail/C46772639.html', LCSC='C46772639', MPN='WAFER-ACH1.2-3PWB',
+        Manufacturer='XUNPU', Value='WAFER-ACH1.2-3PWB / pack',
+        Description='Pack connector, 1.2 mm 3-pin: 1 = B+, 2 = B-, 3 = NTC. Mates with an ACH-type 1.2 mm housing on the pack lead')
+    leftover = sorted(r for r, p in parts.items() if p.get('fields', {}).get('Manufacturer') in ('Samsung Electro-Mechanics', 'JST'))
+    assert not leftover, leftover
+
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):
     parts[r]['pins'] = {'1': '3V3_AON', '2': 'GND'}

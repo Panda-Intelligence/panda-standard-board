@@ -248,15 +248,15 @@ and order, about $0.31 per board at 500).
 |---|---|---|
 | U506 GD25Q128EWIGR (WSON) | 1.38 | Largest line after the MCU. SOP-8 options in stock: ZD25Q128CSIGT (Zetta, C19626875) 0.58; BY25Q128ESSIG(R) (Boya, C49023667) 0.64; GD25Q128ESIG (C2758105) 0.89. SOP-8 is about 2.2 mm high (fits under 2.7 mm) but needs a new footprint next to the MCU; not changed. |
 | U501 ESP32-S3R8 | about 2.28 at 100 | Kept (user decision). |
-| J302 JST BM03B-ACHSS | 0.37 | XFCN M1201RS-03-BK (C2840018) is 0.09, but its interchangeability with the JST housing is not confirmed; not changed. |
+| J302 (was JST BM03B-ACHSS) | 0.37 | Replaced by XUNPU WAFER-ACH1.2-3PWB (0.12) on 2026-11-16, see §15. |
 
 Changed: H2 / H3 are now SMTSO1620MTJ (C2916317, 2.0 mm high, 1983 in stock). The 1.0 mm version had 5 in stock.
 
 Stock too low for 500 boards on that date: J201 U22401-23 USB-C (139 pieces) and U810 SY7636ARMC (0, consigned).
 Both must be bought ahead and supplied to the assembler.
 
-Makers outside mainland China still in the BOM: Samsung capacitors (JLC "basic" parts, the cheapest option there)
-and the JST header.
+Makers outside mainland China in the BOM on that date: Samsung capacitors and the JST header. Both were replaced
+on 2026-11-16 (§15).
 
 ## 12. Product direction and 6.5 mm body (user, 2026-11-14 / 15)
 
@@ -310,3 +310,35 @@ and the JST header.
   every push-push part checked locks the card 1.6–2.3 mm in front of its face (the Hirose DM3AT gives 1.6 mm).
   That runs into the panel-power parts at x 15–19. Options are in the open-items list: a tray socket mounted at the
   wall, a push-pull socket set back about 0.6 mm, or moving the socket and the parts beside it. Not changed yet.
+
+## 15. Mainland makers only (user, 2026-11-16)
+
+Parts and accessories come from mainland makers; US, European and Australian vendors are not considered.
+Changes (`v020/make_netlist_v020.py`, v0.2.4 block; schematic, board fields and order pack regenerated):
+
+| Was (Samsung) | Now (Fenghua, LCSC) | Size, rating | Parts |
+|---|---|---|---|
+| CL05B104KB54PNC | 0402B104K500NT (C110251) | 0402 100 nF 50 V X7R | 14 |
+| CL05A105KA5NQNC | 0402X105K250NT (C967571) | 0402 1 µF 25 V X5R | 5 |
+| CL10A105KB8NNNC | 0603X105K500NT (C157684) | 0603 1 µF 50 V X5R | 9 |
+| CL10B473KB8NNNC | 0603B473K500NT (C285123) | 0603 47 nF 50 V X7R | 3 |
+| CL10A106MA8NRNC | 0603X106M250NT (C479655) | 0603 10 µF 25 V X5R | 4 |
+| CL21A106KAYNNNE | 0805X106K250NT (C40894) | 0805 10 µF 25 V X5R | 1 |
+| CL21A226MAQNNNE | 0805X226M250NT (C129303) | 0805 22 µF 25 V X5R | 3 |
+| CL21A475KAQNNNE | 0805X475K250NT (C274413) | 0805 4.7 µF 25 V X5R | 2 |
+| CL31A106KBHNNNE | 1206X106K500NT (C116702) | 1206 10 µF 50 V X5R | 1 |
+| CL05C220JB5NNNC (C404) | 0402CG220J500NT (C1555) | 0402 22 pF 50 V C0G | 1 (the LCSC code was already this FH part; only the text was wrong) |
+
+- Same size, dielectric and voltage, so footprints and heights do not change. Effective capacitance under DC bias
+  can differ from the Samsung parts; check the charger, buck and panel-power rails (C203, C205–C208, C801/C803,
+  C920) on the first boards.
+- J302: JST BM03B-ACHSS-GAN-ETF → **XUNPU WAFER-ACH1.2-3PWB** (C46772639): 1.2 mm 3-pin, 5.4 × 4.3 × 1.4 mm, 2 A,
+  same pad sizes and pitch as the existing land pattern (XUNPU drawing), so the footprint stays. The pack lead
+  carries an ACH-type 1.2 mm housing from a mainland maker (the battery maker supplies the lead); confirm the
+  mating with samples. JLC stock was 400 on 2026-11-16: buy ahead for 500 boards.
+- Speaker candidate: **Huarom (Changzhou Dragon State) HDK-151108ZA-5C7** (C30587346): 15 × 11 × 3.0 mm with a foam
+  ring (3.3 mm working height), 8 Ω, 0.7 W rated / 1.0 W max, 87 dB at 0.5 W / 10 cm, 20 mm leads. Its lead ends in
+  a small connector; order it with bare leads to solder to J502. The 0.5 W variant HDK-151108ZA-5W13 (C36499321)
+  has 140 mm bare leads. The earlier non-mainland candidates are dropped.
+- Cost at 500 boards: parts +$0.24 per board, nine more "extended" lines +$0.05 per board.
+- Checks after the change: ERC 0, DRC 0, 0 unconnected, schematic parity 0. Netlist, footprints and copper unchanged.
