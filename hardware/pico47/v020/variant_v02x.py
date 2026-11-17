@@ -2,6 +2,7 @@
 
 v020 is the L-shaped v0.2.0 / E03 board; v021 is the 63 x 42 mm rectangular v0.2.1 / E04 board;
 v022 is the 63 x 43 mm v0.2.2 / E05 board (R4 bottom corners, SD on the left edge, WSON-8 flash);
+v030 is the v0.2.4 board with the 4.26-inch SPI panel circuit (v0.3.0 / E08);
 v023 is the v0.2.3 / E06 re-layout of v0.2.2 with hand-laid power stages, crystal, RF and charge-current trunks.
 """
 import os
@@ -17,6 +18,10 @@ VARIANTS = {
                  board='63 x 43 mm, R4 bottom corners, 4-layer 0.8 mm'),
     'v024': dict(stem='Panda47-v024', version='v0.2.4', revision='E07', date='2026-11-13',
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
+    'v025': dict(stem='Panda47-v025', version='v0.2.5', revision='E09', date='2026-11-17',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
+    'v030': dict(stem='Panda426-v030', version='v0.3.0', revision='E08', date='2026-11-17',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm; 4.26-inch SPI panel'),
 }
 V = VARIANTS[os.environ.get('PANDA47_VARIANT', 'v020')]
 STEM, VERSION, REVISION, DATE, BOARD = V['stem'], V['version'], V['revision'], V['date'], V['board']

@@ -10,7 +10,8 @@ CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
 TARGET = [('VBUS_USB', 0.8), ('BAT_*', 0.8), ('VSYS_RAW', 0.6), ('3V3_AON', 0.6), ('SGM41513_SW', 0.7), ('SGM41513_PMID', 0.5),
           ('BUCK_LX', 0.5), ('FL_SW', 0.5), ('FL_VOUT', 0.5), ('P47_VP_LX', 0.6), ('P47_VN_LX', 0.6), ('P47_VP', 0.5), ('P47_VN', 0.5),
           ('3V3_RF', 0.4), ('3V3_SD', 0.4), ('VDD_SPI', 0.4), ('SPK_*', 0.4), ('P47_VPOS', 0.3), ('P47_VNEG', 0.3), ('P47_VGH', 0.3),
-          ('P47_VGL', 0.3), ('P47_VCOM', 0.3), ('SGM41513_REGN', 0.3), ('P47_VEE_*', 0.3), ('P47_VGH_*', 0.3), ('P47_PUMP_*', 0.3), ('GND', 0.4)]
+          ('P47_VGL', 0.3), ('P47_VCOM', 0.3), ('SGM41513_REGN', 0.3),
+          ('EPD_LX', 0.5), ('EPD_PUMP', 0.4), ('EPD_PREVG*', 0.3), ('EPD_VSH*', 0.25), ('EPD_VSL', 0.25), ('EPD_VCOM', 0.25), ('EPD_VDD', 0.2), ('P47_VEE_*', 0.3), ('P47_VGH_*', 0.3), ('P47_PUMP_*', 0.3), ('GND', 0.4)]
 LADDER = [0.8, 0.7, 0.6, 0.5, 0.4, 0.35, 0.3, 0.25, 0.2, 0.17, 0.15, 0.127]
 BAD = {'clearance', 'shorting_items', 'hole_clearance', 'copper_edge_clearance', 'tracks_crossing', 'solder_mask_bridge', 'track_width'}
 

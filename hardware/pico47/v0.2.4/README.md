@@ -22,6 +22,7 @@
 - **Libraries**: `Panda47v2.pretty` (the v0.2.2 set; the U901 pin-1 dot is moved). Symbols: `Panda7.kicad_sym`.
 - **Native checks** (KiCad 10.0.7, in this directory): ERC 0. DRC 0 violations, 0 unconnected, 0 schematic parity
   (`--severity-all`).
+- **Superseded for ordering by [v0.2.5](../v0.2.5/README.md)** (three circuit fixes from the E09 review, 2026-11-17).
 - **Status**: `manufacturing_release = false`. Open items are listed in §6 of the E07 note; the main ones are a
   custom-pack quote for the cell (no datasheet exists for this size) and a speaker sample. 22 via-in-pad holes need
   resin fill and a plated cap. The order pack (153 placements, 72 BOM lines) is outside Git.

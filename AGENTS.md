@@ -1,4 +1,33 @@
-# CURRENT CONTINUATION — 2026-11-13 v0.2.4 / E07 HAND-LAID POWER, SPEAKER NOTCH, PACK WITH PCM
+# CURRENT CONTINUATION — 2026-11-17 v0.2.5 / E09 PRE-ORDER REVIEW FIXES (4.7-INCH BOARD TO ORDER)
+
+Read `hardware/pico47/E09-V024-PRE-ORDER-REVIEW-20261117.md` and `hardware/pico47/v0.2.5/README.md` first.
+The user paused v0.3.0 (4.26-inch, section below) and asked for an electrical and production review of the 4.7-inch
+board before ordering at JLC. The review found three circuit faults in v0.2.4; v0.2.5 fixes them (user go-ahead
+2026-11-17): fuel gauge U903 TS disconnected from the pack NTC (gauge uses host-reported temperature), C305 22 pF on
+RTC_OSCI, R516 100 k pull-down on AUDIO_EN. Nothing else moved. `hardware/pico47/v0.2.5/Panda47-v025.*` is the board
+to order (ERC 0, DRC 0 / 0 unconnected / 0 parity); `hardware/pico47/v025/build_v025.sh` rebuilds it from v0.2.4 with
+`PANDA47_VARIANT=v025`; the order pack is outside Git in `.work/panda47-v0.2.5-deliverable/`. v0.2.4 must not be
+ordered. Still open before any volume claim: panel / touch / front-light connector pin maps and poses against the
+panel-module drawing, SY7636A (consigned, JLC stock 0) not checked against a datasheet, CPL angles are CAD angles
+(confirm placement in the JLC preview), E07 section 6. v0.3.0 was derived from v0.2.4 and still has the three faults:
+rebase it on v0.2.5 when it resumes. `info_silk_v02x.py` must not remove texts itself (pcbnew loses its proxies):
+clear old texts in a separate step first.
+
+# PAUSED — 2026-11-17 v0.3.0 / E08 SECOND PRODUCT, 4.26-INCH SPI PANEL
+
+Read `hardware/pico47/E08-V030-426-SPI-VARIANT-20261117.md` and `hardware/pico47/v0.3.0/README.md` first.
+User decision 2026-11-17: two products on one board outline. Panda Standard 4.7 stays v0.2.4 / E07 (section below,
+unchanged). Panda Standard 4.26 is v0.3.0: the v0.2.4 board file with the SY7636A block, 16-bit bus and J820 removed
+and a 24-pin connector J830 (centred on the USB-C axis) plus the panel boost stage (L831, Q831, D831-D833) added;
+panel signals on GPIO4-9. Project `hardware/pico47/v0.3.0/Panda426-v030.*` is the source of truth (ERC 0, DRC 0 /
+0 unconnected / 0 parity); `hardware/pico47/v030/build_v030.sh` rebuilds it from v0.2.4 with `PANDA47_VARIANT=v030`.
+The MCU stays ESP32-S3 on both (user, 2026-11-17: no ESP32-S31 for this generation). Open: the panel module with front
+light and touch is not confirmed against a supplier drawing (pinout and tail position come from the bare-panel
+datasheet), the tail path over the USB-C area has no 3D check, four rail capacitors are 17-19 mm from their pins,
+enclosure not started (E08 section 6). Never prune a track that carries a T-junction: `v030/prune_stubs.py` cut a live
+I2C trunk once before its rule was fixed. No fabrication claim for either board.
+
+# PREVIOUS CONTINUATION — 2026-11-13 v0.2.4 / E07 HAND-LAID POWER, SPEAKER NOTCH, PACK WITH PCM
 
 Read `hardware/pico47/E07-V024-HAND-LAYOUT-SPEAKER-NOTCH-20261113.md` and `hardware/pico47/v0.2.4/README.md` first.
 v0.2.4 = v0.2.2 circuit minus the on-board cell protection (U907, R940, C940, J301; J302 is a 3-pad NTC / B- / B+

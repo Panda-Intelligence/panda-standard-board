@@ -1,0 +1,6 @@
+{"nets": {"EPD_BUSY": "all", "EPD_RST": "all", "EPD_DC": "all", "EPD_CS": "all", "EPD_SCK": "all", "EPD_MOSI": "all",
+ "EPD_VSH1": "all", "EPD_VSL": "all", "EPD_VCOM": "all", "EPD_VDD": "all",
+ "GPIO3_STRAP": "all", "GPIO45_STRAP": "all", "GPIO46_STRAP": "all",
+ "EPD_PREVGH": [[0.2, 4.0, 0.3, 4.1]], "EPD_PREVGL": [[0.2, 4.0, 0.3, 4.1]], "FL_FB": [[0.2, 4.0, 0.3, 4.1]],
+ "CHIP_PU_MCU": [[35.0, 96.0, 40.2, 102.0]], "VSYS_RAW": [[17.0, 96.0, 24.5, 112.0]]},
+ "target_nets": [], "iterations": 120}

@@ -95,7 +95,9 @@ OUTLINE = {'v020': 'L-shaped outline with a USB-C notch', 'v021': 'rectangular o
            'v022': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
            'v023': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
            'v024': 'R4 bottom corners (Edge.Cuts arcs), a USB-C notch and a 16.1 x 11.6 mm speaker notch in the '
-                   'top-left corner'}[VAR.STEM[-4:]]
+                   'top-left corner'}
+OUTLINE['v025'] = OUTLINE['v024']
+OUTLINE = OUTLINE[VAR.STEM[-4:]]
 V = VAR.STEM[-4:]
 SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if V < 'v022' else
         'top: pin-1 marks only; bottom: product / revision / date text, test-point names and the JLCJLCJLCJLC '
@@ -117,8 +119,8 @@ U907 = '''- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the data
 PIN1_U907 = 'U907, ' if HAS_U907 else ''
 nfid = sum(1 for fp in board.GetFootprints() if fp.GetReference().startswith('FID'))
 FID = f'\n| Fiducials | {nfid} on the top side, 1 mm copper in a 2 mm mask opening |' if nfid else ''
-EXTRA24 = '' if V != 'v024' else '''
-v0.2.4 notes:
+EXTRA24 = '' if V not in ('v024', 'v025') else '''
+v0.2.4 / v0.2.5 notes:
 - Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
   one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
 - J302 (XUNPU WAFER-ACH1.2-3PWB, 1.2 mm 3-pin) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
@@ -128,6 +130,15 @@ v0.2.4 notes:
   board, and that paste is printed on the ring pad.
 - MH1 (1.2 mm round) and MH2 (1.2 x 1.6 mm slot) are non-plated locating holes for the enclosure pins: keep them
   non-plated and to drill tolerance.
+'''
+EXTRA25 = '' if V != 'v025' else '''
+v0.2.5 (changes from v0.2.4, review E09):
+- New: C305 (22 pF 0402, RTC crystal load) and R516 (100 k 0402, amplifier enable pull-down). Both are parts already
+  in the BOM.
+- U903 pin 9 is intentionally not connected.
+
+Please confirm the placement of every polarised or multi-pin part in the preview: the CPL carries the CAD angles
+without a per-package correction for the assembly library.
 '''
 (out / 'README-ORDER.md').write_text(f"""# Panda47 {VAR.VERSION} order pack
 
@@ -155,6 +166,6 @@ Assembly notes (from JLC DFM on the earlier board, order Y4, all fixed here):
 - J820 X05A10L40G: hold-down pads per the XKB recommended layout.
 - Pin 1 of U501, U810, U904, {PIN1_U907}Q901, Q902, J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
   ICs carry the pin-1 mark of their standard footprint.
-{EXTRA}{EXTRA24}""")
+{EXTRA}{EXTRA24}{EXTRA25}""")
 print(f'gerber zip {zpath.name}; {len(cpl)} placements; {len(groups)} BOM lines; {len(vias)} vias; via-in-pad {len(vip)}; '
       f'consigned {len(consigned)}')
