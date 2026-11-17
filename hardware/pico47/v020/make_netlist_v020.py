@@ -177,7 +177,7 @@ parts['U601'] = dict(value='XL9535QF24', lib='Package_DFN_QFN', footprint='QFN-2
 # v0.2.2 (user, 2026-11-12: lowest component height): WSON-8 6x5 x 0.8 mm max (GD datasheet 10.4) instead of the
 # ~2 mm SOP-8. JLC 2026-11-12: C2982923 $3.31 / 1902 in stock against C2758105 $1.77. The exposed pad is floating
 # (GD note 2), so the footprint EP is an unnumbered pad without a net.
-if VARIANT in ('v022', 'v023', 'v024'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
     parts['U506'].update(value='GD25Q128EWIGR', lib='Panda47v2', footprint='WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm')
     parts['U506']['fields'].update({'Manufacturer': 'GigaDevice', 'MPN': 'GD25Q128EWIGR', 'LCSC': 'C2982923',
                                     'Description': 'GigaDevice GD25Q128E 128 Mbit QSPI NOR flash, WSON-8 6x5 mm, 0.8 mm max',
@@ -186,7 +186,7 @@ if VARIANT in ('v022', 'v023', 'v024'):
 # v0.2.2 (user, 2026-11-12): one status LED on the SGM41513 STAT pin (open drain, pin 4). Hardware: on while charging,
 # off when done, 1 Hz blink on a fault; firmware can also set on / blink via STAT_SET when EN_ICHG_MON = 01.
 # Fed from VSYS_RAW (3.4..4.4 V) through 1k: about 0.7..1.7 mA with Vf ~2.7 V. Shines through a 1 mm hole in the shell.
-if VARIANT in ('v022', 'v023', 'v024'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
     parts['U901']['pins']['4'] = 'CHG_STAT'
     new('D203', 'Green side-view LED', 'Panda47v2', 'LED_SideView_TJ-S1706', 'TOGIALED', 'TJ-S1706SW6TGLC2G-A5', 'C273616',
         'TOGIALED 0603 side-view green LED, 1.7 x 0.6 x 1.1 mm; status LED on SGM41513 STAT (pin 1 cathode)',
@@ -196,7 +196,7 @@ if VARIANT in ('v022', 'v023', 'v024'):
 
 # v0.2.4 (user, 2026-11-13): the cell pack carries its own protection board (3.0 x 57 x 79 mm class, PCM + NTC), so the
 # on-board protection (U907, R940, C940) goes. One 3-pad landing takes the pack: J302 = NTC, cell -, cell +.
-if VARIANT == 'v024':
+if VARIANT in ('v024', 'v025', 'v030'):
     for r in ('U907', 'R940', 'C940', 'J301'):
         del parts[r]
     parts['J302']['pins'] = {'1': 'BQ_TS', '2': 'GND', '3': 'BAT_CONN_P'}
@@ -253,7 +253,7 @@ for r in ('D801', 'D802'):    # pin 1 cathode, pin 2 anode (same pin nets as the
 
 # v0.2.4: the VN reservoir C804 sits at U810 pin 4, 9 mm and two vias from the rectifier D802. C817 (same part) goes
 # right at the D802 anode so the pulsed diode current closes next to the switch.
-if VARIANT == 'v024':
+if VARIANT in ('v024', 'v025', 'v030'):
     parts['C817'] = json.loads(json.dumps(parts['C804']))
     parts['C817']['fields']['Reference'] = 'C817'
     parts['C817']['fields']['Description'] = '4.7u/25V/0603 SY7636A VN capacitor at the rectifier D802'
@@ -310,7 +310,7 @@ if VARIANT == 'v024':
                                  'LCSC': 'C2916317', 'MPN': 'SMTSO1620MTJ', 'Manufacturer': 'Sinhoo', 'Reference': ref,
                                  'Value': 'M1.6 SMT nut'}}
 
-if VARIANT == 'v024':
+if VARIANT in ('v024', 'v025', 'v030'):
     # Mainland makers only (user, 2026-11-16). Samsung MLCCs -> Fenghua (FH) with the same size, dielectric and an equal
     # or higher voltage; JLC stock read 2026-11-16. These are JLC "extended" parts (one loading fee per line).
     # C1555 was already the FH 0402CG220J500NT in JLC's library; only the maker / MPN text was wrong.
@@ -342,6 +342,96 @@ if VARIANT == 'v024':
     leftover = sorted(r for r, p in parts.items() if p.get('fields', {}).get('Manufacturer') in ('Samsung Electro-Mechanics', 'JST'))
     assert not leftover, leftover
 
+# v0.2.5 (pre-order review E09, 2026-11-17): three fixes on the v0.2.4 circuit.
+if VARIANT == 'v025':
+    # 1. The fuel gauge TS pin has its own pull-up driver; it must not share the pack NTC with the charger's divider.
+    #    U903 TS is left open and the gauge profile uses host-reported temperature. The charger keeps the NTC.
+    assert parts['U903']['pins']['9'] == 'BQ_TS'
+    parts['U903']['pins']['9'] = ''
+    # 2. BM8563 has one integrated oscillator capacitor (OSCO); OSCI needs an external 5-25 pF (datasheet). 22 pF with
+    #    the 25 pF inside gives about 12 pF for the 12.5 pF crystal Y301. Same part as C404.
+    assert 'C305' not in parts and 'R516' not in parts
+    parts['C305'] = json.loads(json.dumps(parts['C404']))
+    parts['C305'].update(value='22pF / RTC OSCI', pins={'1': 'RTC_OSCI', '2': 'GND'})
+    parts['C305']['fields'].update(Reference='C305', Value='22pF / RTC OSCI',
+                                   Description='BM8563 OSCI load capacitor 22 pF C0G 0402 (Ctrim, in series with the internal 25 pF)')
+    # 3. AUDIO_EN floated until firmware set up the expander (XL9535 pins are high-impedance after power-on).
+    parts['R516'] = json.loads(json.dumps(parts['R528']))
+    parts['R516'].update(value='100k / AUDIO_EN_PD', lib='Resistor_SMD', footprint='R_0402_1005Metric', pins={'1': 'AUDIO_EN', '2': 'GND'})
+    parts['R516']['fields'].update(Reference='R516', Value='100k / AUDIO_EN_PD',
+                                   Description='Audio amplifier enable pull-down: amplifier off while the expander pin is not driven')
+
+# v0.3.0 (user, 2026-11-17): second product on the same board outline with a 4.26" 800 x 480 SPI panel (SSD1677 on
+# the glass, 24-pin 0.5 mm tail). The panel driver makes its own rails with one external boost stage, so the SY7636A
+# block, the 16-bit bus and the 40-pin connector go. Everything else is the v0.2.4 circuit.
+# Circuit and values: panel datasheet section 8.2 (47 uH, 30 V N-MOSFET, three Schottky diodes, 2.2 R sense, 1 M gate
+# pull-down, 4.7 uF / 25 V on VSH1 / VSH2 / VSL / PREVGH / PREVGL, 1 uF on VDD and VCOM). BS1 low = 4-wire SPI.
+if VARIANT == 'v030':
+    gone = [r for r, p in parts.items() if r not in ('U501', 'U601', 'R512', 'R513', 'R731')
+            and any(v.startswith('P47_') for v in p['pins'].values())]
+    gone += ['C801', 'C803', 'C818']            # SY7636A input capacitors on VSYS_RAW
+    for r in gone:
+        del parts[r]
+    assert 'U810' in gone and 'J820' in gone and len(gone) == 45, len(gone)
+    # MCU: GPIO4..9 (pins 9..14, the side facing the connector) carry the panel; the other bus pins are free.
+    EPD = {'9': 'EPD_BUSY', '10': 'EPD_RST', '11': 'EPD_DC', '12': 'EPD_CS', '13': 'EPD_SCK', '14': 'EPD_MOSI',
+           '8': 'GPIO3_STRAP', '51': 'GPIO45_STRAP', '52': 'GPIO46_STRAP'}
+    for pin, net in parts['U501']['pins'].items():
+        if net.startswith('P47_'):
+            parts['U501']['pins'][pin] = EPD.get(pin, '')
+    parts['R512']['pins']['1'] = 'GPIO3_STRAP'; parts['R513']['pins']['1'] = 'GPIO46_STRAP'; parts['R731']['pins']['1'] = 'GPIO45_STRAP'
+    # Expander: the five SY7636A control lines are free (firmware drives them low as outputs).
+    for pin, net in parts['U601']['pins'].items():
+        if net.startswith('P47_'):
+            parts['U601']['pins'][pin] = ''
+    new('J830', 'X05A10L24G / 4.26-inch SPI panel', 'Panda47v2', 'FPC_XKB_X05A10L24G', 'XKB Connection', 'X05A10L24G', 'C2880917',
+        'XKB 0.5 mm 24-pin flip-lock FPC connector, bottom contact, for the 0.3 mm panel tail (pin 1 = left, seen from the front)',
+        {'1': '', '2': 'EPD_GDR', '3': 'EPD_RESE', '4': '', '5': 'EPD_VSH2', '6': '', '7': '', '8': 'GND',
+         '9': 'EPD_BUSY', '10': 'EPD_RST', '11': 'EPD_DC', '12': 'EPD_CS', '13': 'EPD_SCK', '14': 'EPD_MOSI',
+         '15': '3V3_AON', '16': '3V3_AON', '17': 'GND', '18': 'EPD_VDD', '19': '', '20': 'EPD_VSH1',
+         '21': 'EPD_PREVGH', '22': 'EPD_VSL', '23': 'EPD_PREVGL', '24': 'EPD_VCOM', 'MP': 'GND'})
+    new('L831', '47uH', 'Inductor_SMD', 'L_Changjiang_FNR4012S', 'Sunlord', 'SWPA4018S470MT', 'C83445',
+        'Sunlord 47 uH 4 x 4 x 1.8 mm power inductor, panel boost stage (datasheet: 47 uH 500 mA)',
+        {'1': '3V3_AON', '2': 'EPD_LX'})
+    new('Q831', 'WST3052', 'Package_TO_SOT_SMD', 'SOT-323_SC-70', 'Winsok Semicon', 'WST3052', 'C719079',
+        'Winsok 30 V 2.5 A N-MOSFET SOT-323 (1 G, 2 S, 3 D), 50 mOhm at 4.5 V, Qg 4 nC: panel boost switch',
+        {'1': 'EPD_GDR', '2': 'EPD_RESE', '3': 'EPD_LX'})
+    for ref, pins, what in (('D831', {'1': 'EPD_PREVGH', '2': 'EPD_LX'}, 'boost rectifier to PREVGH'),
+                            ('D832', {'1': 'EPD_PUMP', '2': 'EPD_PREVGL'}, 'charge-pump rectifier to PREVGL'),
+                            ('D833', {'1': 'GND', '2': 'EPD_PUMP'}, 'charge-pump clamp to ground')):
+        new(ref, '1N5819WS', 'Diode_SMD', 'D_SOD-323', 'Guangdong Hottech', '1N5819WS', 'C191023',
+            '40 V 1 A Schottky SOD-323 (pin 1 cathode), panel ' + what, pins)
+    new('R831', '2.2R 1%', 'Resistor_SMD', 'R_0603_1608Metric', 'UNI-ROYAL(Uniroyal Elec)', '0603WAF220KT5E', 'C22939',
+        'Boost current-sense resistor 2.2 R 1% 0603 (RESE)', {'1': 'EPD_RESE', '2': 'GND'})
+    new('R832', '1M', 'Resistor_SMD', 'R_0402_1005Metric', 'UNI-ROYAL(Uniroyal Elec)', '0402WGF1004TCE', 'C26083',
+        'Boost MOSFET gate pull-down 1 M 0402 (GDR)', {'1': 'EPD_GDR', '2': 'GND'})
+    def cap47(ref, net1, net2, what):
+        new(ref, '4.7u/25V/0603', 'Capacitor_SMD', 'C_0603_1608Metric', 'CCTC', 'TCC0603X5R475M250CT', 'C20539423',
+            '4.7u/25V/0603 ' + what, {'1': net1, '2': net2})
+    cap47('C831', '3V3_AON', 'GND', 'boost input capacitor at L831')
+    cap47('C832', 'EPD_LX', 'EPD_PUMP', 'charge-pump flying capacitor')
+    cap47('C833', 'EPD_PREVGH', 'GND', 'PREVGH reservoir (panel pin 21)')
+    cap47('C834', 'EPD_PREVGL', 'GND', 'PREVGL reservoir (panel pin 23)')
+    cap47('C835', 'EPD_VSH1', 'GND', 'VSH1 capacitor (panel pin 20)')
+    cap47('C836', 'EPD_VSH2', 'GND', 'VSH2 capacitor (panel pin 5)')
+    cap47('C837', 'EPD_VSL', 'GND', 'VSL capacitor (panel pin 22)')
+    new('C838', '1u/50V/0603', 'Capacitor_SMD', 'C_0603_1608Metric', 'FH (Fenghua Advanced)', '0603X105K500NT', 'C157684',
+        '1u/50V/0603 VCOM capacitor (panel pin 24)', {'1': 'EPD_VCOM', '2': 'GND'})
+    for ref, net, what in (('C839', 'EPD_VDD', 'panel core supply VDD (pin 18)'), ('C840', '3V3_AON', 'panel VCI / VDDIO (pins 15, 16)')):
+        new(ref, '1u/25V/0402', 'Capacitor_SMD', 'C_0402_1005Metric', 'FH (Fenghua Advanced)', '0402X105K250NT', 'C967571',
+            '1u/25V/0402 ' + what, {'1': net, '2': 'GND'})
+    # The connector sits where C510 (CHIP_PU) and C209 (VBUS at the TVS) were: both become the 0402 1 uF / 25 V part and move.
+    for ref, what in (('C510', '1u / CHIP_PU'), ('C209', '1u / VBUS')):
+        parts[ref].update(value=what, lib='Capacitor_SMD', footprint='C_0402_1005Metric')
+        parts[ref]['fields'].update({'Manufacturer': 'FH (Fenghua Advanced)', 'MPN': '0402X105K250NT', 'LCSC': 'C967571', 'Value': what,
+                                     'Datasheet': 'https://www.lcsc.com/product-detail/C967571.html'})
+    for ref, net, what in (('TP801', 'EPD_PREVGH', 'Panel gate-high supply test pad'), ('TP802', 'EPD_PREVGL', 'Panel gate-low supply test pad'),
+                           ('TP803', 'EPD_BUSY', 'Panel BUSY test pad')):
+        parts[ref] = dict(value=net, lib='Panda47', footprint=ref + '_Display', dnp=False, pins={'1': net},
+                          fields={'Datasheet': '', 'Description': what, 'LCSC': '', 'MPN': 'NOT_A_PURCHASED_PART',
+                                  'Manufacturer': 'PCB fabricated terminal', 'Reference': ref, 'Value': net})
+    assert not [n for p in parts.values() for n in p['pins'].values() if n.startswith('P47_')]
+
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):
     parts[r]['pins'] = {'1': '3V3_AON', '2': 'GND'}
@@ -358,6 +448,6 @@ for ref, p in parts.items():
         if net:
             nets.setdefault(net, []).append((ref, pin))
 single = sorted(n for n, ns in nets.items() if len(ns) == 1 and not n.startswith('TP'))
-json.dump(dict(revision='v0.2.0', parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
+json.dump(dict(revision={'v030': 'v0.3.0', 'v025': 'v0.2.5'}.get(VARIANT, 'v0.2.0'), parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
 print(len(parts), 'parts', len(nets), 'nets')
 print('single-pin nets:', single)

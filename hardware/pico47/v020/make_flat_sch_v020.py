@@ -52,6 +52,14 @@ NEW = {
              '5': ('VOUT', 'passive'), '6': ('VIN', 'power_in')},
     'Y301': {'1': ('1', 'passive'), '2': ('2', 'passive')},
 }
+# v0.3.0: 4.26" SPI panel connector (panel datasheet pin names) and its boost stage
+_J830 = ['NC', 'GDR', 'RESE', 'NC', 'VSH2', 'NC', 'NC', 'BS1', 'BUSY', 'RES#', 'D/C#', 'CS#', 'SCL', 'SDA', 'VDDIO', 'VCI', 'VSS', 'VDD',
+         'VPP', 'VSH1', 'VGH', 'VSL', 'VGL', 'VCOM']
+NEW['J830'] = {str(i + 1): (n, 'passive') for i, n in enumerate(_J830)}
+NEW['J830']['MP'] = ('MP', 'passive')
+NEW['Q831'] = {'1': ('G', 'input'), '2': ('S', 'passive'), '3': ('D', 'passive')}
+for _d in ('D831', 'D832', 'D833'):
+    NEW[_d] = {'1': ('K', 'passive'), '2': ('A', 'passive')}
 
 
 def pins_for(ref, part):
