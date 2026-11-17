@@ -1,0 +1,285 @@
+(footprint "JST_ACH_BM03B-ACHSS-GAN-ETF_1x03-1MP_P1.20mm_Vertical"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "JST ACH series connector, BM03B-ACHSS-GAN-ETF (http://www.jst-mfg.com/product/pdf/eng/eACH.pdf)")
+	(tags "connector JST ACH vertical")
+	(property "Reference" "REF**"
+		(at 0 -3.5 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "a56bd8ec-9d01-4493-8666-b563db893b4e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "BM03B-ACHSS / pack"
+		(at 0 3.5 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c43f3c60-7c8d-4159-b4be-542edbfea1d2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C5118705.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5944c198-0ebb-4437-9967-b3643d81bf03")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Pack connector: 1 = B+, 2 = B-, 3 = NTC. Mates with ACHR-03V-S (C274397) on the pack lead"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "78ad659d-f42d-4c1b-bbc1-0705a0093288")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "connector/SMD_single_row_plus_mounting_pad"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "94cdf0d9-d96f-45b1-ba1f-0ad9415941f3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Spec" "BM03B-ACHSS"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "c6c8cd21-92a7-48c7-b0fc-c5605ceb5201")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "JST"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "1f13bcf0-ce1a-40ac-9009-8e538e9df562")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "BM03B-ACHSS-GAN-ETF(LF)(SN)"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "4ba94a7d-5a21-489b-856d-28aa117d1326")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C5118705"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "604f4ede-0da4-4028-b876-cfe57b554e96")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -3.25 -2.55)
+		(end 3.25 2.55)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "8907919d-acff-4643-ada5-27304d9196aa")
+	)
+	(fp_line
+		(start -2.7 -2)
+		(end -2.7 2.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5dff5185-9c74-46b3-90e2-764f68fc93c2")
+	)
+	(fp_line
+		(start -2.7 -2)
+		(end 2.7 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "642a7125-6301-4f9c-b65d-f1110caa76b4")
+	)
+	(fp_line
+		(start -2.7 2.3)
+		(end -0.9 2.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e2b4b11c-8c00-4d70-a6b0-1e9e53de995c")
+	)
+	(fp_line
+		(start -1.7 -2)
+		(end -1.2 -1.292893)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6cbbfe35-e440-411c-9d3c-6deb3007eb6d")
+	)
+	(fp_line
+		(start -1.2 -1.292893)
+		(end -0.7 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6730e520-3678-44f6-b87d-c2f060542c32")
+	)
+	(fp_line
+		(start -0.9 2.3)
+		(end -0.5 1.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a6070360-26f5-49be-953e-611cc94d9b37")
+	)
+	(fp_line
+		(start -0.5 1.8)
+		(end 0.5 1.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9347aa03-a953-4e9d-93e0-b255c7368386")
+	)
+	(fp_line
+		(start 0.5 1.8)
+		(end 0.9 2.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c433cb9a-c3cf-49c4-a141-2789f9a22686")
+	)
+	(fp_line
+		(start 0.9 2.3)
+		(end 2.7 2.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "609a210d-81ea-4ed6-a55e-2da92969f4c0")
+	)
+	(fp_line
+		(start 2.7 -2)
+		(end 2.7 2.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "769dda8e-f3be-4266-935c-b7b1df05557c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "bcd9c427-fb58-4679-8de9-3d6f1fbd4d1e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -1.2 -1.875)
+		(size 0.6 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "f63a5e6f-97fe-458e-8005-5a4bd438533e")
+	)
+	(pad "2" smd roundrect
+		(at 0 -1.875)
+		(size 0.6 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "377499bd-d389-4e28-9278-e0cbc898dce6")
+	)
+	(pad "3" smd roundrect
+		(at 1.2 -1.875)
+		(size 0.6 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "9bb060c5-7ab3-4289-9f8a-c2d2c52c17e9")
+	)
+	(pad "MP" smd roundrect
+		(at -2.35 1.9)
+		(size 0.7 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "f5b73d83-9c6e-4962-86bc-b91f097c0f7a")
+	)
+	(pad "MP" smd roundrect
+		(at 2.35 1.9)
+		(size 0.7 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "b4032716-0dc8-40cd-a080-ecef1e004fda")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_ACH_BM03B-ACHSS-GAN-ETF_1x03-1MP_P1.20mm_Vertical.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

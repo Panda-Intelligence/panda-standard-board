@@ -1,4 +1,42 @@
-# CURRENT CONTINUATION — 2026-11-17 v0.2.5 / E09 PRE-ORDER REVIEW FIXES (4.7-INCH BOARD TO ORDER)
+# CURRENT CONTINUATION — 2026-11-17 v0.2.8 / E12 RECESSED MICROSD SOCKET (4.7-INCH BOARD TO ORDER)
+
+Read `hardware/pico47/E12-V028-RECESSED-SD-SOCKET-20261117.md` and `hardware/pico47/v0.2.8/README.md` first.
+User decision 2026-11-17: a latched microSD card must not stand out of the body. v0.2.8 is built from v0.2.6 and
+supersedes v0.2.7: Hanbo TF-019 with the body front at x 1.30 (latched card end 0.4 mm inside the 67 mm outline),
+R524 / TH801 / C806 / R809 shifted, C513 below the socket, Q901 + Q902 replaced by one dual MOSFET Q901
+(LBSS138DW1T1G, SOT-363), C923 as 0805. `hardware/pico47/v0.2.8/Panda47-v028.*` is the board to order (ERC 0, DRC 0 /
+0 unconnected / 0 parity); `hardware/pico47/v028/build_v028.sh` rebuilds it from v0.2.6 with `PANDA47_VARIANT=v028`;
+order pack outside Git in `.work/panda47-v0.2.8-deliverable/`. Open: first-article checks of E12 section 3 (socket
+pattern and pin order with a card first), shell slot and finger recess for the new card position, dual-MOSFET
+on-resistance at 3.3 V not read from its datasheet. Build scripts must stop on the first failed step (pipefail) and
+start from an empty work directory. The sections below still apply for the circuit and the other open items.
+
+# SUPERSEDED — 2026-11-17 v0.2.7 / E11 1.45 MM MICROSD SOCKET, CARD STILL 1.3 MM PROUD
+
+Read `hardware/pico47/E11-V027-LOW-SD-SOCKET-20261117.md` and `hardware/pico47/v0.2.7/README.md` first.
+User decision 2026-11-17: keep push-push, take a lower socket. v0.2.7 = v0.2.6 with J501 Hanbo TF-019 (1.45 mm,
+terminals at the card mouth, land pattern from the maker drawing) and C923 as 0805; part ceiling about 1.5 mm.
+SD nets re-laid, no other net or part changed. `hardware/pico47/v0.2.7/Panda47-v027.*` is the board to order (ERC 0,
+DRC 0 / 0 unconnected / 0 parity); `hardware/pico47/v027/build_v027.sh` rebuilds it from v0.2.6 with
+`PANDA47_VARIANT=v027`; order pack outside Git in `.work/panda47-v0.2.7-deliverable/`. Open: first-article check of
+the TF-019 pattern and pin order with a card; a latched card still stands about 1.3 mm out of the body (a flush card
+needs the socket about 2 mm deeper, which means re-laying the left side of the panel-power block: not done).
+Never remove a via that is the only junction of two tracks, also when both are on one layer (`v027/prune_stubs.py`
+links them first). The v0.2.6 and v0.2.5 sections below still apply for the circuit and the other open items.
+
+# PREVIOUS CONTINUATION — 2026-11-17 v0.2.6 / E10 LOWER-COST, LOWER-PROFILE PARTS
+
+Read `hardware/pico47/E10-V026-COST-HEIGHT-20261117.md` and `hardware/pico47/v0.2.6/README.md` first.
+User direction 2026-11-17: lower cost, part count and thickness without losing quality or performance; approved
+changes A, B, C only. v0.2.6 = v0.2.5 circuit with C207 / C208 / C525 as 0603 22 uF (the C401 part), C203 as 0805
+10 uF (the C206 part) and 1.0 mm nuts H2 / H3 (SMTSO1610MTJ). No copper changed; -$0.49 per board, 73 BOM lines.
+`hardware/pico47/v0.2.6/Panda47-v026.*` is the board to order (ERC 0, DRC 0 / 0 unconnected / 0 parity);
+`hardware/pico47/v026/build_v026.sh` rebuilds it from v0.2.5 with `PANDA47_VARIANT=v026`; order pack outside Git in
+`.work/panda47-v0.2.6-deliverable/`. Not approved, only proposed: D (fuel gauge without a shunt) and E (lower microSD
+socket, which now alone sets the 2.0 mm part ceiling). The v0.2.5 section below still describes the circuit fixes
+and the open items.
+
+# PREVIOUS CONTINUATION — 2026-11-17 v0.2.5 / E09 PRE-ORDER REVIEW FIXES
 
 Read `hardware/pico47/E09-V024-PRE-ORDER-REVIEW-20261117.md` and `hardware/pico47/v0.2.5/README.md` first.
 The user paused v0.3.0 (4.26-inch, section below) and asked for an electrical and production review of the 4.7-inch

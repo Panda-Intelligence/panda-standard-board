@@ -177,7 +177,7 @@ parts['U601'] = dict(value='XL9535QF24', lib='Package_DFN_QFN', footprint='QFN-2
 # v0.2.2 (user, 2026-11-12: lowest component height): WSON-8 6x5 x 0.8 mm max (GD datasheet 10.4) instead of the
 # ~2 mm SOP-8. JLC 2026-11-12: C2982923 $3.31 / 1902 in stock against C2758105 $1.77. The exposed pad is floating
 # (GD note 2), so the footprint EP is an unnumbered pad without a net.
-if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     parts['U506'].update(value='GD25Q128EWIGR', lib='Panda47v2', footprint='WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm')
     parts['U506']['fields'].update({'Manufacturer': 'GigaDevice', 'MPN': 'GD25Q128EWIGR', 'LCSC': 'C2982923',
                                     'Description': 'GigaDevice GD25Q128E 128 Mbit QSPI NOR flash, WSON-8 6x5 mm, 0.8 mm max',
@@ -186,7 +186,7 @@ if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
 # v0.2.2 (user, 2026-11-12): one status LED on the SGM41513 STAT pin (open drain, pin 4). Hardware: on while charging,
 # off when done, 1 Hz blink on a fault; firmware can also set on / blink via STAT_SET when EN_ICHG_MON = 01.
 # Fed from VSYS_RAW (3.4..4.4 V) through 1k: about 0.7..1.7 mA with Vf ~2.7 V. Shines through a 1 mm hole in the shell.
-if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     parts['U901']['pins']['4'] = 'CHG_STAT'
     new('D203', 'Green side-view LED', 'Panda47v2', 'LED_SideView_TJ-S1706', 'TOGIALED', 'TJ-S1706SW6TGLC2G-A5', 'C273616',
         'TOGIALED 0603 side-view green LED, 1.7 x 0.6 x 1.1 mm; status LED on SGM41513 STAT (pin 1 cathode)',
@@ -196,7 +196,7 @@ if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v030'):
 
 # v0.2.4 (user, 2026-11-13): the cell pack carries its own protection board (3.0 x 57 x 79 mm class, PCM + NTC), so the
 # on-board protection (U907, R940, C940) goes. One 3-pad landing takes the pack: J302 = NTC, cell -, cell +.
-if VARIANT in ('v024', 'v025', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     for r in ('U907', 'R940', 'C940', 'J301'):
         del parts[r]
     parts['J302']['pins'] = {'1': 'BQ_TS', '2': 'GND', '3': 'BAT_CONN_P'}
@@ -253,7 +253,7 @@ for r in ('D801', 'D802'):    # pin 1 cathode, pin 2 anode (same pin nets as the
 
 # v0.2.4: the VN reservoir C804 sits at U810 pin 4, 9 mm and two vias from the rectifier D802. C817 (same part) goes
 # right at the D802 anode so the pulsed diode current closes next to the switch.
-if VARIANT in ('v024', 'v025', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     parts['C817'] = json.loads(json.dumps(parts['C804']))
     parts['C817']['fields']['Reference'] = 'C817'
     parts['C817']['fields']['Description'] = '4.7u/25V/0603 SY7636A VN capacitor at the rectifier D802'
@@ -310,7 +310,7 @@ if VARIANT in ('v024', 'v025', 'v030'):
                                  'LCSC': 'C2916317', 'MPN': 'SMTSO1620MTJ', 'Manufacturer': 'Sinhoo', 'Reference': ref,
                                  'Value': 'M1.6 SMT nut'}}
 
-if VARIANT in ('v024', 'v025', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     # Mainland makers only (user, 2026-11-16). Samsung MLCCs -> Fenghua (FH) with the same size, dielectric and an equal
     # or higher voltage; JLC stock read 2026-11-16. These are JLC "extended" parts (one loading fee per line).
     # C1555 was already the FH 0402CG220J500NT in JLC's library; only the maker / MPN text was wrong.
@@ -343,7 +343,7 @@ if VARIANT in ('v024', 'v025', 'v030'):
     assert not leftover, leftover
 
 # v0.2.5 (pre-order review E09, 2026-11-17): three fixes on the v0.2.4 circuit.
-if VARIANT == 'v025':
+if VARIANT in ('v025', 'v026', 'v027', 'v028'):
     # 1. The fuel gauge TS pin has its own pull-up driver; it must not share the pack NTC with the charger's divider.
     #    U903 TS is left open and the gauge profile uses host-reported temperature. The charger keeps the NTC.
     assert parts['U903']['pins']['9'] == 'BQ_TS'
@@ -360,6 +360,51 @@ if VARIANT == 'v025':
     parts['R516'].update(value='100k / AUDIO_EN_PD', lib='Resistor_SMD', footprint='R_0402_1005Metric', pins={'1': 'AUDIO_EN', '2': 'GND'})
     parts['R516']['fields'].update(Reference='R516', Value='100k / AUDIO_EN_PD',
                                    Description='Audio amplifier enable pull-down: amplifier off while the expander pin is not driven')
+
+# v0.2.6 (user, 2026-11-17: lower cost and height without touching function). Same circuit as v0.2.5.
+if VARIANT in ('v026', 'v027', 'v028'):
+    # A. The three 0805 22 uF / 25 V capacitors (two on VSYS at the charger, one on 3V3_RF) become the 0603 22 uF / 10 V part
+    #    already used at C401 / C402 / C403 / C501: about 0.9 mm instead of 1.45 mm high, one BOM line fewer.
+    for r in ('C207', 'C208', 'C525'):
+        assert parts[r]['fields']['MPN'] == '0805X226M250NT'
+        parts[r].update(lib='Capacitor_SMD', footprint='C_0603_1608Metric')
+        parts[r]['fields'].update({k: parts['C401']['fields'][k] for k in ('Manufacturer', 'MPN', 'LCSC', 'Datasheet')})
+    # B. The charger PMID capacitor, 1206 10 uF / 50 V, becomes the 0805 10 uF / 25 V part of C206 (PMID follows VBUS).
+    assert parts['C203']['fields']['MPN'] == '1206X106K500NT'
+    parts['C203'].update(lib='Capacitor_SMD', footprint='C_0805_2012Metric')
+    parts['C203']['fields'].update({k: parts['C206']['fields'][k] for k in ('Manufacturer', 'MPN', 'LCSC', 'Datasheet')})
+    # C. Board-fixing nuts: the 1.0 mm high version of the same series (same hole and pad).
+    for r in ('H2', 'H3'):
+        parts[r]['fields'].update(MPN='SMTSO1610MTJ', LCSC='C2928167', Datasheet='https://www.lcsc.com/product-detail/C2928167.html',
+                                  Description='Reflow-soldered M1.6 x 1.0 mm nut (SMTSO), board fixing screw from the rear shell')
+    assert not [r for r, p in parts.items() if p.get('fields', {}).get('MPN') in ('0805X226M250NT', '1206X106K500NT', 'SMTSO1620MTJ')]
+
+# v0.2.7 (user, 2026-11-17: lower microSD socket, still push-push). Same circuit as v0.2.6.
+if VARIANT in ('v027', 'v028'):
+    # Hanbo TF-019: 1.45 mm push-push socket (TF-122 is about 2.0 mm). Terminals 1..8 are the card pins; the detect
+    # switch closes to the shell (ground) with a card in, so pin 9 keeps SD_CD and the separate DET_A pin goes.
+    old = parts['J501']['pins']
+    parts['J501'] = dict(value='TF-019 / microSD', lib='Panda47v2', footprint='TF_Hanbo_TF-019', dnp=False,
+                         pins={**{str(i): old[str(i)] for i in range(1, 10)}, 'SH': 'GND'},
+                         fields={'Manufacturer': 'Hanbo Electronic', 'MPN': 'TF-019', 'LCSC': 'C961680', 'Reference': 'J501',
+                                 'Value': 'TF-019 / microSD', 'Datasheet': 'https://www.lcsc.com/product-detail/C961680.html',
+                                 'Description': 'Hanbo TF-019 microSD socket, push-push, 1.45 mm high, card detect to shell'})
+    assert parts['J501']['pins']['1'] == 'SD_D2' and parts['J501']['pins']['8'] == 'SD_D1' and parts['J501']['pins']['9'] == 'SD_CD'
+    # Front-light output capacitor: 1206 -> 0805, 4.7 uF / 50 V (FH 0805X475K500NT), about 1.8 -> 1.45 mm high.
+    assert parts['C923']['fields']['MPN'] == '1206B475K500NT'
+    parts['C923'].update(value='4.7uF 50V X5R / FL_COUT', lib='Capacitor_SMD', footprint='C_0805_2012Metric')
+    parts['C923']['fields'].update(Manufacturer='FH (Fenghua Advanced)', MPN='0805X475K500NT', LCSC='C3029134', Value='4.7uF 50V X5R / FL_COUT',
+                                   Datasheet='https://www.lcsc.com/product-detail/C3029134.html')
+
+# v0.2.8 (user, 2026-11-17: a latched microSD card must not stand out of the body). The socket moves 1.66 mm in and the
+# parts behind it make room. The two SOT-23 front-light string switches sat where the socket's rear hold-down pad
+# goes: they become one dual N-MOSFET in SOT-363 (50 V, 1.5 V max threshold) at the old Q902 place.
+if VARIANT == 'v028':
+    assert parts['Q901']['pins'] == {'1': 'FL_W_EN', '2': 'FL_W_N', '3': 'FL_FB'} and parts['Q902']['pins'] == {'1': 'FL_C_EN', '2': 'FL_C_N', '3': 'FL_FB'}
+    del parts['Q902']
+    new('Q901', 'LBSS138DW1T1G', 'Package_TO_SOT_SMD', 'SOT-363_SC-70-6', 'LRC', 'LBSS138DW1T1G', 'C525406',
+        'LRC dual N-MOSFET 50 V 200 mA SOT-363 (1 S1, 2 G1, 3 D2, 4 S2, 5 G2, 6 D1): front-light warm / cool string switches',
+        {'1': 'FL_FB', '2': 'FL_W_EN', '6': 'FL_W_N', '4': 'FL_FB', '5': 'FL_C_EN', '3': 'FL_C_N'})
 
 # v0.3.0 (user, 2026-11-17): second product on the same board outline with a 4.26" 800 x 480 SPI panel (SSD1677 on
 # the glass, 24-pin 0.5 mm tail). The panel driver makes its own rails with one external boost stage, so the SY7636A
@@ -448,6 +493,6 @@ for ref, p in parts.items():
         if net:
             nets.setdefault(net, []).append((ref, pin))
 single = sorted(n for n, ns in nets.items() if len(ns) == 1 and not n.startswith('TP'))
-json.dump(dict(revision={'v030': 'v0.3.0', 'v025': 'v0.2.5'}.get(VARIANT, 'v0.2.0'), parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
+json.dump(dict(revision={'v030': 'v0.3.0', 'v025': 'v0.2.5', 'v026': 'v0.2.6', 'v027': 'v0.2.7', 'v028': 'v0.2.8'}.get(VARIANT, 'v0.2.0'), parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
 print(len(parts), 'parts', len(nets), 'nets')
 print('single-pin nets:', single)

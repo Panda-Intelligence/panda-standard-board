@@ -466,7 +466,7 @@ def stock_anchor(D, ref):
     """Q, dual-diode and crystal anchors keep their stock drawing at rotation 0."""
     pins = D.pins(ref)
     pre = re.match(r'[A-Z]+', ref).group(0)
-    if pre == 'Q':
+    if pre == 'Q' and len(pins) == 3:        # a dual MOSFET (6 pins) is drawn as a generic box
         name = 'Q_NMOS'
         by_name = {p['name']: n for n, p in pins.items()}
         mapping = {by_name[s]: s for s in ('G', 'D', 'S')}

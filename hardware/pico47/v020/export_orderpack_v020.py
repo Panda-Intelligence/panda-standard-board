@@ -96,7 +96,7 @@ OUTLINE = {'v020': 'L-shaped outline with a USB-C notch', 'v021': 'rectangular o
            'v023': 'rectangle with R4 bottom corners (Edge.Cuts arcs) and a USB-C notch',
            'v024': 'R4 bottom corners (Edge.Cuts arcs), a USB-C notch and a 16.1 x 11.6 mm speaker notch in the '
                    'top-left corner'}
-OUTLINE['v025'] = OUTLINE['v024']
+OUTLINE['v025'] = OUTLINE['v026'] = OUTLINE['v027'] = OUTLINE['v028'] = OUTLINE['v024']
 OUTLINE = OUTLINE[VAR.STEM[-4:]]
 V = VAR.STEM[-4:]
 SILK = ('pin-1 marks only (designators are on the assembly drawing, not printed)' if V < 'v022' else
@@ -109,7 +109,7 @@ Parts to check in the placement preview (since v0.2.2):
   lens direction in the preview, since the JLC library body may be drawn in another orientation.
 - U506 GD25Q128EWIGR is WSON-8 6x5 with an exposed pad that is electrically floating (GigaDevice note); the EP
   land is soldered but has no net.
-- J501 microSD (TF-122-CCP9) is rotated so the card mouth faces the left board edge.
+- J501 microSD (TF-122-CCP9 up to v0.2.6, Hanbo TF-019 from v0.2.7) has its card mouth at the left board edge.
 '''
 HAS_U907 = board.FindFootprintByReference('U907') is not None
 U907 = '''- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the datasheet top view rotated 180 deg: the three
@@ -117,21 +117,22 @@ U907 = '''- U907 XB7608AJ: CPC5 land per the XySemi datasheet, drawn as the data
   the part orientation in the placement preview.
 ''' if HAS_U907 else ''
 PIN1_U907 = 'U907, ' if HAS_U907 else ''
+PIN1_Q = 'Q901, Q902, ' if board.FindFootprintByReference('Q902') is not None else ''   # v0.2.8: one SOT-363 with its standard mark
 nfid = sum(1 for fp in board.GetFootprints() if fp.GetReference().startswith('FID'))
 FID = f'\n| Fiducials | {nfid} on the top side, 1 mm copper in a 2 mm mask opening |' if nfid else ''
-EXTRA24 = '' if V not in ('v024', 'v025') else '''
-v0.2.4 / v0.2.5 notes:
+EXTRA24 = '' if V not in ('v024', 'v025', 'v026', 'v027', 'v028') else '''
+v0.2.4 to v0.2.6 notes:
 - Via-in-pad is not only under QFN exposed pads: C504 pad 2 (0402), C817 pad 2 (0603) and U904 pin 7 each carry
   one GND via, and the L802 ground pad carries two. All vias in pads need the resin plug + plated cap.
 - J302 (XUNPU WAFER-ACH1.2-3PWB, 1.2 mm 3-pin) takes the cell pack lead and J507 (MHF4) the antenna pigtail; both are plugged in at final
   assembly. Only the two speaker leads are soldered by hand, to J502.
-- H2 and H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO1620MTJ, C2916317, 2.0 mm high) in plated 2.5 mm holes with a 4.2 mm pad.
+- H2 and H3 are reflow-soldered M1.6 nuts (Sinhoo SMTSO16x0MTJ: 2.0 mm high up to v0.2.5, 1.0 mm high from v0.2.6) in plated 2.5 mm holes with a 4.2 mm pad.
   The nut body sits on the top side; its pilot goes into the hole. Please confirm these can be placed on a 0.8 mm
   board, and that paste is printed on the ring pad.
 - MH1 (1.2 mm round) and MH2 (1.2 x 1.6 mm slot) are non-plated locating holes for the enclosure pins: keep them
   non-plated and to drill tolerance.
 '''
-EXTRA25 = '' if V != 'v025' else '''
+EXTRA25 = '' if V not in ('v025', 'v026', 'v027', 'v028') else '''
 v0.2.5 (changes from v0.2.4, review E09):
 - New: C305 (22 pF 0402, RTC crystal load) and R516 (100 k 0402, amplifier enable pull-down). Both are parts already
   in the BOM.
@@ -163,8 +164,10 @@ Files: `{zpath.name}`, `BOM_JLCPCB.csv`, `CPL_JLCPCB.csv`.
 
 Assembly notes (from JLC DFM on the earlier board, order Y4, all fixed here):
 {U907}- SW201 / SW202 TS-1186E: locating-post holes provided (0.75 mm NPTH), place the switch with its posts.
+- From v0.2.7, J501 (TF-019) overhangs the left board edge by about 0.9 mm: its terminals are at the card mouth,
+  1.25 mm behind the body front. The land pattern is drawn from the maker drawing; please check it on the first article.
 - J820 X05A10L40G: hold-down pads per the XKB recommended layout.
-- Pin 1 of U501, U810, U904, {PIN1_U907}Q901, Q902, J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
+- Pin 1 of U501, U810, U904, {PIN1_U907}{PIN1_Q}J803, J804 and J820 is marked by a 0.3 mm silk dot; the other
   ICs carry the pin-1 mark of their standard footprint.
 {EXTRA}{EXTRA24}{EXTRA25}""")
 print(f'gerber zip {zpath.name}; {len(cpl)} placements; {len(groups)} BOM lines; {len(vias)} vias; via-in-pad {len(vip)}; '
