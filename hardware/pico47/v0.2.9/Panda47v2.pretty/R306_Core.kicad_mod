@@ -1,0 +1,217 @@
+(footprint "R306_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "R306"
+		(at 0 -2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0f722781-ce74-4a14-b0ad-7de5e1c5ae87")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Value" "10m / CW2217 SHUNT"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c63c19ea-873e-4b9a-a5fc-1510b6146ac4")
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+		)
+	)
+	(property "Datasheet" "https://jlcpcb.com/partdetail/FOJAN-FRM121WFR010TM/C7467248"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2908044c-adf4-41e8-ab4e-82749e04fd31")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "Description" "FOJAN 10mΩ 1W ±1% ±50ppm 1206 current sense shunt for CW2217"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e348e179-c333-4634-b558-92003db8f905")
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+	)
+	(property "LCSC" "C7467248"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1be8fae7-2be8-4edc-ad51-cdc29fc3d305")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "FOJAN"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0fc044ab-8e6d-4ea3-91e4-8a9c46dc1607")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "FRM121WFR010TM"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "83af83a2-5621-4d51-922f-d66256c0b121")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "JLCPCB" "C7467248"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fe61a78e-4828-4202-ba14-412da2c9ccc9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Tolerance" "1%"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7707a7f7-f4b1-4d55-bfbe-c3887041e872")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Power_Rating" "1W"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "318ee065-d4f8-4963-9fc4-42d34e304462")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Tempco" "50ppm/C"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cd4b221e-17cd-477f-8b3d-424532ba1c80")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "ECO_ID" "THIN18-C4D5-CW2217-SHUNT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "30c607bd-9af3-402f-a353-0ee01cc84c70")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Qualification" "10m 1% 1W 50ppm; shunt thermal/accuracy EVT open"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "be074554-bc6d-4264-b960-3262de339630")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.727064 -0.91)
+		(end 0.727064 -0.91)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d68f706d-b0b7-415d-bcad-ef50923c7780")
+	)
+	(fp_line
+		(start -0.727064 0.91)
+		(end 0.727064 0.91)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "43d8e4b2-2f82-40ff-a995-ff1bcc86c8a4")
+	)
+	(fp_rect
+		(start -2.28 -1.13)
+		(end 2.28 1.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "489a5049-15ed-4e13-9d83-507839d78881")
+	)
+	(fp_rect
+		(start -1.6 -0.8)
+		(end 1.6 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "37e96d5f-a667-434a-9eb6-6becfe06f743")
+	)
+	(pad "1" smd roundrect
+		(at -1.4625 0)
+		(size 1.125 1.75)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.222222)
+		(uuid "836d8195-d5cc-42df-aa2e-e4f12eeb8d07")
+	)
+	(pad "2" smd roundrect
+		(at 1.4625 0)
+		(size 1.125 1.75)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.222222)
+		(uuid "588397e5-915c-4107-8586-eb6e39371790")
+	)
+	(embedded_fonts no)
+)

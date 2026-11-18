@@ -1,4 +1,33 @@
-# CURRENT CONTINUATION — 2026-11-17 v0.2.8 / E12 RECESSED MICROSD SOCKET (4.7-INCH BOARD TO ORDER)
+# CURRENT CONTINUATION (4.26-INCH) — 2026-11-18 v0.3.1 / E13 MODULE WITH FRONT LIGHT AND TOUCH
+
+Read `hardware/pico47/E13-V031-426-FRONTLIGHT-TOUCH-20261118.md` and `hardware/pico47/v0.3.1/README.md` first.
+User decision 2026-11-18: the 4.26-inch product uses the panel module with front light and touch; v0.3.0 resumed and
+corrected. v0.3.1 = the v0.2.8 board with the v0.3.0 display block (J830, boost stage, GPIO4-9), J804 turned 180 deg
+at (12.57, 110.95) for a Z-folded front-light tail with the corrected pin map, R921 15 R (13.3 mA), J803 (touch,
+FT6336U) at (51.44, 93.45). `hardware/pico47/v0.3.1/Panda426-v031.*` is the source of truth (ERC 0, DRC 0 /
+0 unconnected / 0 parity); `hardware/pico47/v031/build_v031.sh` rebuilds it from v0.2.8 with `PANDA47_VARIANT=v031`.
+v0.3.0 must not be ordered. Open before any order: the touch-tail pin order is not confirmed (J803 follows the maker's
+label order only), the front-light table comes from the version without touch, the Z-fold lies on the microSD socket
+(needs about 0.25 mm), main 24-pin pinout from the earlier bare-panel datasheet, enclosure not started; no order
+pack. Do not run `prune_stubs.py` on all nets after routing (it cut a live 3V3_AON T-junction): use
+`v031/trim_dangling.py`, which removes only what KiCad reports as dangling and checks the unconnected count.
+
+# CURRENT CONTINUATION (4.7-INCH) — 2026-11-18 v0.2.9 / E14 E0470A03 PANEL, CENTRED 34-PIN CONNECTOR, TWO FRONT-LIGHT DRIVERS
+
+Read `hardware/pico47/E14-V029-A03-PANEL-TWO-FL-DRIVERS-20261118.md` and `hardware/pico47/v0.2.9/README.md` first.
+User decision 2026-11-18: panel E0470A03 (8-bit, 34-pin), panel supply stays SY7636A, one AW9967 per front-light
+string. v0.2.8 must not be ordered: its panel connector is 18 mm off the tail (the tail is on the glass centre line,
+38 mm long, both for E0470A01 and E0470A03). v0.2.9 = v0.2.8 with J820 X05A10H34G at (32.0, 76.6) mouth down, D8-D15
+removed, the 3.3 V buck re-laid 0.85 mm left, fuel gauge U903 beside the battery connector, U905 / U906 AW9967DNR at
+the bottom right (warm on FL_PWM GPIO2, cool on FL_C_PWM GPIO12), Q901 / R601 removed.
+`hardware/pico47/v0.2.9/Panda47-v029.*` is the source of truth (ERC 0, DRC 0 / 0 unconnected / 0 parity);
+`hardware/pico47/v029/build_v029.sh` rebuilds it from v0.2.8 with `PANDA47_VARIANT=v029`; no order pack yet.
+Open before any order: no drawing of the 4.7-inch module with front light and touch (tail positions, pin orders, LED
+data; J803 / J804 unchanged), glass-edge position is an estimate, the folded tail lies over board parts without a
+height check, buck and front-light stages not measured. A via placed by a script takes the net of copper it touches
+on another layer: check every hand via against the back and inner layers (one landed on the battery trunk).
+
+# SUPERSEDED BY v0.2.9 — 2026-11-17 v0.2.8 / E12 RECESSED MICROSD SOCKET (4.7-INCH BOARD TO ORDER)
 
 Read `hardware/pico47/E12-V028-RECESSED-SD-SOCKET-20261117.md` and `hardware/pico47/v0.2.8/README.md` first.
 User decision 2026-11-17: a latched microSD card must not stand out of the body. v0.2.8 is built from v0.2.6 and
@@ -51,7 +80,7 @@ panel-module drawing, SY7636A (consigned, JLC stock 0) not checked against a dat
 rebase it on v0.2.5 when it resumes. `info_silk_v02x.py` must not remove texts itself (pcbnew loses its proxies):
 clear old texts in a separate step first.
 
-# PAUSED — 2026-11-17 v0.3.0 / E08 SECOND PRODUCT, 4.26-INCH SPI PANEL
+# SUPERSEDED BY v0.3.1 — 2026-11-17 v0.3.0 / E08 SECOND PRODUCT, 4.26-INCH SPI PANEL
 
 Read `hardware/pico47/E08-V030-426-SPI-VARIANT-20261117.md` and `hardware/pico47/v0.3.0/README.md` first.
 User decision 2026-11-17: two products on one board outline. Panda Standard 4.7 stays v0.2.4 / E07 (section below,
