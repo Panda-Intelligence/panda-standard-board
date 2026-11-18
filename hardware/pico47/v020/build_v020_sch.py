@@ -36,7 +36,7 @@ RS.SHEETS = {
     '9': ('power', 'Charger_Power', 'Charger, fuel gauge, cell protection, audio and front light'),
 }
 
-if VAR.VERSION == 'v0.3.0':
+if VAR.VERSION in ('v0.3.0', 'v0.3.1'):
     RS.SHEETS['7'] = ('strap', 'Straps', 'Boot-strap pull-down (GPIO45)')
     RS.SHEETS['8'] = ('epd', 'EPD_SPI', '4.26-inch SPI panel: boost stage, panel and touch connectors')
 

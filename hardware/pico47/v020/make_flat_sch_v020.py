@@ -60,9 +60,19 @@ NEW['J830']['MP'] = ('MP', 'passive')
 NEW['Q831'] = {'1': ('G', 'input'), '2': ('S', 'passive'), '3': ('D', 'passive')}
 for _d in ('D831', 'D832', 'D833'):
     NEW[_d] = {'1': ('K', 'passive'), '2': ('A', 'passive')}
-if os.environ.get('PANDA47_VARIANT') in ('v027', 'v028'):   # TF-019: card pins 1..8, detect switch to the shell
+if os.environ.get('PANDA47_VARIANT') in ('v027', 'v028', 'v029', 'v031'):   # TF-019: card pins 1..8, detect switch to the shell
     NEW['J501'] = {**{str(i + 1): (n, 'passive') for i, n in enumerate(('DAT2', 'DAT3/CD', 'CMD', 'VDD', 'CLK', 'VSS', 'DAT0', 'DAT1', 'DET'))},
                    'SH': ('SHIELD', 'passive')}
+
+if os.environ.get('PANDA47_VARIANT') == 'v029':   # E0470A03 panel connector and the two AW9967 front-light drivers
+    _A03 = ['VNEG', 'VGL', 'VSS', 'NC', 'NC', 'VDD', 'VSS', 'XCL', 'VSS', 'XLE', 'XOE', 'XSTL', 'D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7',
+            'VCOM', 'NC', 'NC', 'NC', 'NC', 'VSS', 'MODE', 'CKV', 'SPV', 'NC', 'BORDER', 'VSS', 'VPOS', 'VGH']
+    NEW['J820'] = {**{str(i + 1): (n, 'passive') for i, n in enumerate(_A03)}, 'S1': ('S1', 'passive'), 'S2': ('S2', 'passive')}
+    for _u in ('U905', 'U906'):
+        NEW[_u] = {'1': ('FB', 'input'), '2': ('NC', 'passive'), '3': ('GND', 'power_in'), '4': ('SW', 'passive'), '5': ('CTRL', 'input'),
+                   '6': ('VIN', 'power_in'), '7': ('EP', 'power_in')}
+    for _d in ('D905', 'D906'):
+        NEW[_d] = {'1': ('K', 'passive'), '2': ('A', 'passive')}
 
 
 def pins_for(ref, part):

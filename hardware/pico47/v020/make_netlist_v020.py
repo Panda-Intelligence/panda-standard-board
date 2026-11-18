@@ -177,7 +177,7 @@ parts['U601'] = dict(value='XL9535QF24', lib='Package_DFN_QFN', footprint='QFN-2
 # v0.2.2 (user, 2026-11-12: lowest component height): WSON-8 6x5 x 0.8 mm max (GD datasheet 10.4) instead of the
 # ~2 mm SOP-8. JLC 2026-11-12: C2982923 $3.31 / 1902 in stock against C2758105 $1.77. The exposed pad is floating
 # (GD note 2), so the footprint EP is an unnumbered pad without a net.
-if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v029', 'v030', 'v031'):
     parts['U506'].update(value='GD25Q128EWIGR', lib='Panda47v2', footprint='WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm')
     parts['U506']['fields'].update({'Manufacturer': 'GigaDevice', 'MPN': 'GD25Q128EWIGR', 'LCSC': 'C2982923',
                                     'Description': 'GigaDevice GD25Q128E 128 Mbit QSPI NOR flash, WSON-8 6x5 mm, 0.8 mm max',
@@ -186,7 +186,7 @@ if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
 # v0.2.2 (user, 2026-11-12): one status LED on the SGM41513 STAT pin (open drain, pin 4). Hardware: on while charging,
 # off when done, 1 Hz blink on a fault; firmware can also set on / blink via STAT_SET when EN_ICHG_MON = 01.
 # Fed from VSYS_RAW (3.4..4.4 V) through 1k: about 0.7..1.7 mA with Vf ~2.7 V. Shines through a 1 mm hole in the shell.
-if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
+if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v029', 'v030', 'v031'):
     parts['U901']['pins']['4'] = 'CHG_STAT'
     new('D203', 'Green side-view LED', 'Panda47v2', 'LED_SideView_TJ-S1706', 'TOGIALED', 'TJ-S1706SW6TGLC2G-A5', 'C273616',
         'TOGIALED 0603 side-view green LED, 1.7 x 0.6 x 1.1 mm; status LED on SGM41513 STAT (pin 1 cathode)',
@@ -196,7 +196,7 @@ if VARIANT in ('v022', 'v023', 'v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
 
 # v0.2.4 (user, 2026-11-13): the cell pack carries its own protection board (3.0 x 57 x 79 mm class, PCM + NTC), so the
 # on-board protection (U907, R940, C940) goes. One 3-pad landing takes the pack: J302 = NTC, cell -, cell +.
-if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v029', 'v030', 'v031'):
     for r in ('U907', 'R940', 'C940', 'J301'):
         del parts[r]
     parts['J302']['pins'] = {'1': 'BQ_TS', '2': 'GND', '3': 'BAT_CONN_P'}
@@ -253,7 +253,7 @@ for r in ('D801', 'D802'):    # pin 1 cathode, pin 2 anode (same pin nets as the
 
 # v0.2.4: the VN reservoir C804 sits at U810 pin 4, 9 mm and two vias from the rectifier D802. C817 (same part) goes
 # right at the D802 anode so the pulsed diode current closes next to the switch.
-if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v029', 'v030', 'v031'):
     parts['C817'] = json.loads(json.dumps(parts['C804']))
     parts['C817']['fields']['Reference'] = 'C817'
     parts['C817']['fields']['Description'] = '4.7u/25V/0603 SY7636A VN capacitor at the rectifier D802'
@@ -310,7 +310,7 @@ if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
                                  'LCSC': 'C2916317', 'MPN': 'SMTSO1620MTJ', 'Manufacturer': 'Sinhoo', 'Reference': ref,
                                  'Value': 'M1.6 SMT nut'}}
 
-if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
+if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v029', 'v030', 'v031'):
     # Mainland makers only (user, 2026-11-16). Samsung MLCCs -> Fenghua (FH) with the same size, dielectric and an equal
     # or higher voltage; JLC stock read 2026-11-16. These are JLC "extended" parts (one loading fee per line).
     # C1555 was already the FH 0402CG220J500NT in JLC's library; only the maker / MPN text was wrong.
@@ -343,7 +343,7 @@ if VARIANT in ('v024', 'v025', 'v026', 'v027', 'v028', 'v030'):
     assert not leftover, leftover
 
 # v0.2.5 (pre-order review E09, 2026-11-17): three fixes on the v0.2.4 circuit.
-if VARIANT in ('v025', 'v026', 'v027', 'v028'):
+if VARIANT in ('v025', 'v026', 'v027', 'v028', 'v029', 'v031'):
     # 1. The fuel gauge TS pin has its own pull-up driver; it must not share the pack NTC with the charger's divider.
     #    U903 TS is left open and the gauge profile uses host-reported temperature. The charger keeps the NTC.
     assert parts['U903']['pins']['9'] == 'BQ_TS'
@@ -362,7 +362,7 @@ if VARIANT in ('v025', 'v026', 'v027', 'v028'):
                                    Description='Audio amplifier enable pull-down: amplifier off while the expander pin is not driven')
 
 # v0.2.6 (user, 2026-11-17: lower cost and height without touching function). Same circuit as v0.2.5.
-if VARIANT in ('v026', 'v027', 'v028'):
+if VARIANT in ('v026', 'v027', 'v028', 'v029', 'v031'):
     # A. The three 0805 22 uF / 25 V capacitors (two on VSYS at the charger, one on 3V3_RF) become the 0603 22 uF / 10 V part
     #    already used at C401 / C402 / C403 / C501: about 0.9 mm instead of 1.45 mm high, one BOM line fewer.
     for r in ('C207', 'C208', 'C525'):
@@ -380,7 +380,7 @@ if VARIANT in ('v026', 'v027', 'v028'):
     assert not [r for r, p in parts.items() if p.get('fields', {}).get('MPN') in ('0805X226M250NT', '1206X106K500NT', 'SMTSO1620MTJ')]
 
 # v0.2.7 (user, 2026-11-17: lower microSD socket, still push-push). Same circuit as v0.2.6.
-if VARIANT in ('v027', 'v028'):
+if VARIANT in ('v027', 'v028', 'v029', 'v031'):
     # Hanbo TF-019: 1.45 mm push-push socket (TF-122 is about 2.0 mm). Terminals 1..8 are the card pins; the detect
     # switch closes to the shell (ground) with a card in, so pin 9 keeps SD_CD and the separate DET_A pin goes.
     old = parts['J501']['pins']
@@ -399,19 +399,63 @@ if VARIANT in ('v027', 'v028'):
 # v0.2.8 (user, 2026-11-17: a latched microSD card must not stand out of the body). The socket moves 1.66 mm in and the
 # parts behind it make room. The two SOT-23 front-light string switches sat where the socket's rear hold-down pad
 # goes: they become one dual N-MOSFET in SOT-363 (50 V, 1.5 V max threshold) at the old Q902 place.
-if VARIANT == 'v028':
+if VARIANT in ('v028', 'v029', 'v031'):
     assert parts['Q901']['pins'] == {'1': 'FL_W_EN', '2': 'FL_W_N', '3': 'FL_FB'} and parts['Q902']['pins'] == {'1': 'FL_C_EN', '2': 'FL_C_N', '3': 'FL_FB'}
     del parts['Q902']
     new('Q901', 'LBSS138DW1T1G', 'Package_TO_SOT_SMD', 'SOT-363_SC-70-6', 'LRC', 'LBSS138DW1T1G', 'C525406',
         'LRC dual N-MOSFET 50 V 200 mA SOT-363 (1 S1, 2 G1, 3 D2, 4 S2, 5 G2, 6 D1): front-light warm / cool string switches',
         {'1': 'FL_FB', '2': 'FL_W_EN', '6': 'FL_W_N', '4': 'FL_FB', '5': 'FL_C_EN', '3': 'FL_C_N'})
 
+# v0.2.9 (user, 2026-11-18): the 4.7" panel is E0470A03 (34-pin tail, 8-bit data), and each front-light string gets
+# its own boost driver so that warm and cool are dimmed independently.
+# - J820: XKB X05A10H34G (double-face contacts, 1.0 mm high), pin map from the E0470A03-AF-S specification section 4.
+# - D8..D15 are gone. GPIO12 (U501 pin 17) becomes FL_C_PWM; GPIO45 keeps its strap pull-down R731 only.
+# - U905 / U906: Awinic AW9967DNR (DFN-6 2x2: 1 FB, 2 NC, 3 GND, 4 SW, 5 CTRL, 6 VIN, 7 EP), 200 mV FB, 38 V OVP,
+#   10 uH, PWM on CTRL 20-100 kHz. Q901 and the two expander enables FL_W_EN / FL_C_EN are gone.
+if VARIANT == 'v029':
+    import copy
+    a03 = ['P47_VNEG', 'P47_VGL', 'GND', '', '', '3V3_AON', 'GND', 'P47_XCL', 'GND', 'P47_XLE', 'P47_XOE', 'P47_XSTL',
+           'P47_D0', 'P47_D1', 'P47_D2', 'P47_D3', 'P47_D4', 'P47_D5', 'P47_D6', 'P47_D7', 'P47_VCOM', '', '', '', '', 'GND',
+           'P47_MODE', 'P47_CKV', 'P47_SPV', '', 'P47_BORDER_REVIEW', 'GND', 'P47_VPOS', 'P47_VGH']
+    assert len(a03) == 34 and parts['J820']['pins']['14'] == 'P47_D0'
+    new('J820', 'X05A10H34G / E0470A03', 'Panda47v2', 'FPC_XKB_X05A10H34G', 'XKB Connection', 'X05A10H34G', 'C2880755',
+        '34-pin 0.5 mm FPC connector, double-face contacts, back flip, 1.0 mm high; pin map = E0470A03-AF-S specification section 4',
+        {**{str(i + 1): n for i, n in enumerate(a03)}, 'S1': 'GND', 'S2': 'GND'})
+    m = parts['U501']['pins']
+    assert [m[k] for k in ('17', '18', '19', '21', '22', '23', '24', '51')] == ['P47_D%d' % i for i in range(8, 16)]
+    for k in ('18', '19', '21', '22', '23', '24'):
+        m[k] = ''
+    m['17'] = 'FL_C_PWM'; m['51'] = 'GPIO45_STRAP'
+    assert parts['R731']['pins']['1'] == 'P47_D15'; parts['R731']['pins']['1'] = 'GPIO45_STRAP'
+    e = parts['U601']['pins']
+    assert e['6'] == 'FL_W_EN' and e['16'] == 'FL_C_EN'; e['6'] = ''; e['16'] = ''
+    del parts['Q901'], parts['R601']
+    parts['R602']['pins'] = {'1': 'FL_C_PWM', '2': 'GND'}; parts['R602']['value'] = '100k / FL_C_PWM_PD'
+    for u, c, k in (('U905', 'W', 'FL_PWM'), ('U906', 'C', 'FL_C_PWM')):
+        new(u, 'AW9967DNR', 'Package_DFN_QFN', 'DFN-6-1EP_2x2mm_P0.65mm_EP1x1.6mm', 'AWINIC', 'AW9967DNR', 'C3098145',
+            'Awinic AW9967 1.1 MHz WLED boost, 200 mV FB, 38 V OVP, PWM dimming on CTRL (20-100 kHz, down to 0.3 %%); %s string'
+            % ('warm' if c == 'W' else 'cool'),
+            {'1': f'FL_{c}_FB', '2': '', '3': 'GND', '4': f'FL_{c}_SW', '5': k, '6': 'VSYS_RAW', '7': 'GND'})
+    for src, dst in (('L905', 'L906'), ('D905', 'D906'), ('C923', 'C924'), ('C920', 'C921'), ('R921', 'R922')):
+        parts[dst] = copy.deepcopy(parts[src])
+    for d in ('D905', 'D906'):                 # SOD-323 Schottky already in the BOM (D801), 40 V 1 A
+        parts[d] = copy.deepcopy(parts['D801']); parts[d]['value'] = '1N5819WS / FL_RECT'
+    for c, l, d, co, ci, r in (('W', 'L905', 'D905', 'C923', 'C920', 'R921'), ('C', 'L906', 'D906', 'C924', 'C921', 'R922')):
+        parts[l]['pins'] = {'1': 'VSYS_RAW', '2': f'FL_{c}_SW'}
+        parts[d]['pins'] = {'1': f'FL_{c}_P', '2': f'FL_{c}_SW'}
+        parts[co]['pins'] = {'1': f'FL_{c}_P', '2': 'GND'}
+        parts[ci]['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
+        parts[r]['pins'] = {'1': f'FL_{c}_FB', '2': 'GND'}
+    parts['TP5']['pins'] = {'1': 'FL_W_P'}; parts['TP5']['value'] = 'FL_W_P'
+    # J804 (pin order of the front-light tail is still unconfirmed): 1 / 2 warm cathode / anode, 5 / 6 cool cathode / anode
+    parts['J804']['pins'].update({'1': 'FL_W_FB', '2': 'FL_W_P', '5': 'FL_C_FB', '6': 'FL_C_P'})
+
 # v0.3.0 (user, 2026-11-17): second product on the same board outline with a 4.26" 800 x 480 SPI panel (SSD1677 on
 # the glass, 24-pin 0.5 mm tail). The panel driver makes its own rails with one external boost stage, so the SY7636A
 # block, the 16-bit bus and the 40-pin connector go. Everything else is the v0.2.4 circuit.
 # Circuit and values: panel datasheet section 8.2 (47 uH, 30 V N-MOSFET, three Schottky diodes, 2.2 R sense, 1 M gate
 # pull-down, 4.7 uF / 25 V on VSH1 / VSH2 / VSL / PREVGH / PREVGL, 1 uF on VDD and VCOM). BS1 low = 4-wire SPI.
-if VARIANT == 'v030':
+if VARIANT in ('v030', 'v031'):
     gone = [r for r, p in parts.items() if r not in ('U501', 'U601', 'R512', 'R513', 'R731')
             and any(v.startswith('P47_') for v in p['pins'].values())]
     gone += ['C801', 'C803', 'C818']            # SY7636A input capacitors on VSYS_RAW
@@ -477,6 +521,20 @@ if VARIANT == 'v030':
                                   'Manufacturer': 'PCB fabricated terminal', 'Reference': ref, 'Value': net})
     assert not [n for p in parts.values() for n in p['pins'].values() if n.startswith('P47_')]
 
+# v0.3.1 (user, 2026-11-18): the 4.26" product uses the maker's module with front light and touch (FT01C class).
+# v0.3.1 is the v0.3.0 display circuit on the v0.2.8 board, with the front-light and touch connectors matched to the
+# module drawing.
+if VARIANT == 'v031':
+    # Front light: two strings of 5 LEDs, each <= 15 V / 15 mA; tail pins 1 C+, 2 C-, 3 NC, 4 NC, 5 W+, 6 W-.
+    # J804 is mounted turned round (the tail is Z-folded into it), so connector pin n meets tail pin 7 - n.
+    parts['J804']['pins'] = {'6': 'FL_VOUT', '5': 'FL_C_N', '4': '', '3': '', '2': 'FL_VOUT', '1': 'FL_W_N', 'S1': '', 'S2': ''}
+    # 0.2 V / 15 R = 13.3 mA in total (was 20 mA).
+    parts['R921']['value'] = '15R 1%'
+    parts['R921']['fields'].update(MPN='0402WGF150JTCE', LCSC='C25083', Datasheet='https://www.lcsc.com/product-detail/C25083.html',
+                                   Description='SGM3732 RSET: 0.2 V / 15 R = 13.3 mA total front-light current (module limit 15 mA per string)')
+    # Touch (FT6336U on the tail): J803 keeps 1 GND, 2 3V3, 3 RST, 4 INT, 5 SDA, 6 SCL, the order of the maker's interface labels.
+    assert parts['J803']['pins']['1'] == 'GND' and parts['J803']['pins']['6'] == 'I2C_SCL'
+
 parts['C401']['pins'] = {'1': 'VSYS_RAW', '2': 'GND'}
 for r in ('C402', 'C403'):
     parts[r]['pins'] = {'1': '3V3_AON', '2': 'GND'}
@@ -493,6 +551,6 @@ for ref, p in parts.items():
         if net:
             nets.setdefault(net, []).append((ref, pin))
 single = sorted(n for n, ns in nets.items() if len(ns) == 1 and not n.startswith('TP'))
-json.dump(dict(revision={'v030': 'v0.3.0', 'v025': 'v0.2.5', 'v026': 'v0.2.6', 'v027': 'v0.2.7', 'v028': 'v0.2.8'}.get(VARIANT, 'v0.2.0'), parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
+json.dump(dict(revision={'v030': 'v0.3.0', 'v025': 'v0.2.5', 'v026': 'v0.2.6', 'v027': 'v0.2.7', 'v028': 'v0.2.8', 'v029': 'v0.2.9', 'v031': 'v0.3.1'}.get(VARIANT, 'v0.2.0'), parts=parts, nets=nets), open(sys.argv[3], 'w'), indent=1, sort_keys=True)
 print(len(parts), 'parts', len(nets), 'nets')
 print('single-pin nets:', single)

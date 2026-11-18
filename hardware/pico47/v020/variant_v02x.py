@@ -28,6 +28,10 @@ VARIANTS = {
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
     'v030': dict(stem='Panda426-v030', version='v0.3.0', revision='E08', date='2026-11-17',
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm; 4.26-inch SPI panel'),
+    'v029': dict(stem='Panda47-v029', version='v0.2.9', revision='E14', date='2026-11-18',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm; E0470A03 34-pin panel, two front-light drivers'),
+    'v031': dict(stem='Panda426-v031', version='v0.3.1', revision='E13', date='2026-11-18',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm; 4.26-inch SPI panel with front light and touch'),
 }
 V = VARIANTS[os.environ.get('PANDA47_VARIANT', 'v020')]
 STEM, VERSION, REVISION, DATE, BOARD = V['stem'], V['version'], V['revision'], V['date'], V['board']
