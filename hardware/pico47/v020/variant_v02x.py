@@ -20,6 +20,12 @@ VARIANTS = {
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
     'v025': dict(stem='Panda47-v025', version='v0.2.5', revision='E09', date='2026-11-17',
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
+    'v026': dict(stem='Panda47-v026', version='v0.2.6', revision='E10', date='2026-11-17',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
+    'v027': dict(stem='Panda47-v027', version='v0.2.7', revision='E11', date='2026-11-17',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
+    'v028': dict(stem='Panda47-v028', version='v0.2.8', revision='E12', date='2026-11-17',
+                 board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm'),
     'v030': dict(stem='Panda426-v030', version='v0.3.0', revision='E08', date='2026-11-17',
                  board='63 x 48 mm, speaker notch, R4 bottom corners, 4-layer 0.8 mm; 4.26-inch SPI panel'),
 }

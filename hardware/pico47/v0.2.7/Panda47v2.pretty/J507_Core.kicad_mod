@@ -1,0 +1,132 @@
+(footprint "J507_Core"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Controlled-impedance RF coax solder termination; exact low-profile antenna/harness assembly and strain relief pending.")
+	(property "Reference" "J507"
+		(at 0 -2.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3fd1d94a-da8a-4767-b171-502e03300b8c")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "RF COAX LANDING"
+		(at 0 2.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7d6eb603-3aec-4cec-a849-11819d956fe0")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" "https://documentation.espressif.com/esp-hardware-design-guidelines/en/latest/esp32s3/schematic-checklist.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4fdf27d8-f135-4181-988e-651dcf57afc5")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "New RF landing replacing module-integrated antenna connection; exact mainland antenna/coax assembly,impedance and radio test pending."
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "20daf6db-b7de-4d76-842b-8d38a70c569a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Manufacturer" "PCB fabricated terminal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9989637b-0819-4528-bd2c-8491688a303f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "NOT_A_PURCHASED_PART"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "35225476-2dff-4a6c-9392-bdd80c8b3324")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "45f1e856-05c1-4957-aca4-63d490b948dd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -2.25 -1.45)
+		(end 2.25 1.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "1b3dff4b-8b93-4bf5-9890-a79afd1fc80f")
+	)
+	(fp_rect
+		(start -2 -1.2)
+		(end 2 1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "f5407936-054e-4ed1-8d31-554bc89a466d")
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 1 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d0eda7d2-8530-4d84-94ad-6e8c1646f99e")
+	)
+	(pad "2" smd rect
+		(at -1.4 0)
+		(size 1 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f9c2847a-16dd-4e19-a5a4-f09c78717335")
+	)
+	(pad "2" smd rect
+		(at 1.4 0)
+		(size 1 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a0e57c84-9a26-4dd6-be0b-eabdec35d4d9")
+	)
+	(embedded_fonts no)
+)

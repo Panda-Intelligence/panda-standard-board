@@ -13,6 +13,7 @@
   (`--severity-all`).
 - **Order pack** (outside Git, `.work/panda47-v0.2.5-deliverable/`): 160 placements, 75 BOM lines, 444 vias, 22
   via-in-pad, U810 consigned. Against the v0.2.4 pack only the C305 and R516 lines are new.
+- **Superseded for ordering by [v0.2.6](../v0.2.6/README.md)** (same circuit, cheaper and lower parts, E10).
 - **Status**: `manufacturing_release = false`. Still open: panel / touch / front-light connector pin maps and poses
   against the panel-module drawing, SY7636A not checked against a datasheet, and the E07 §6 items.
 

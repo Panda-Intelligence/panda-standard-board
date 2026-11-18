@@ -60,6 +60,9 @@ NEW['J830']['MP'] = ('MP', 'passive')
 NEW['Q831'] = {'1': ('G', 'input'), '2': ('S', 'passive'), '3': ('D', 'passive')}
 for _d in ('D831', 'D832', 'D833'):
     NEW[_d] = {'1': ('K', 'passive'), '2': ('A', 'passive')}
+if os.environ.get('PANDA47_VARIANT') in ('v027', 'v028'):   # TF-019: card pins 1..8, detect switch to the shell
+    NEW['J501'] = {**{str(i + 1): (n, 'passive') for i, n in enumerate(('DAT2', 'DAT3/CD', 'CMD', 'VDD', 'CLK', 'VSS', 'DAT0', 'DAT1', 'DET'))},
+                   'SH': ('SHIELD', 'passive')}
 
 
 def pins_for(ref, part):
@@ -72,6 +75,8 @@ def pins_for(ref, part):
         q = {('22', '23', '24')[int(n) - 1] if int(n) <= 3 else str(int(n) - 3): v for n, v in tssop.items()}
         q['25'] = ('EP', 'power_in')
         return q
+    if ref == 'Q901' and len(part['pins']) == 6:      # v0.2.8 dual MOSFET
+        return {'1': ('S1', 'passive'), '2': ('G1', 'input'), '3': ('D2', 'passive'), '4': ('S2', 'passive'), '5': ('G2', 'input'), '6': ('D1', 'passive')}
     if ref in ('Q901', 'Q902'):
         return KNOWN['v0.1.3']['Q907']
     if ref == 'TP19':

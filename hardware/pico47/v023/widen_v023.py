@@ -3,7 +3,7 @@
 usage: widen_v023.py in.kicad_pcb out.kicad_pcb
 Every track of a listed net is set to its target width. KiCad DRC is then run; each track named in a clearance,
 short, hole or edge violation steps one rung down the ladder (never below its routed width). Repeat until clean."""
-import collections, fnmatch, json, subprocess, sys
+import collections, fnmatch, json, os, subprocess, sys
 import pcbnew as P
 MM, T = P.FromMM, P.ToMM
 CLI = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
@@ -12,8 +12,11 @@ TARGET = [('VBUS_USB', 0.8), ('BAT_*', 0.8), ('VSYS_RAW', 0.6), ('3V3_AON', 0.6)
           ('3V3_RF', 0.4), ('3V3_SD', 0.4), ('VDD_SPI', 0.4), ('SPK_*', 0.4), ('P47_VPOS', 0.3), ('P47_VNEG', 0.3), ('P47_VGH', 0.3),
           ('P47_VGL', 0.3), ('P47_VCOM', 0.3), ('SGM41513_REGN', 0.3),
           ('EPD_LX', 0.5), ('EPD_PUMP', 0.4), ('EPD_PREVG*', 0.3), ('EPD_VSH*', 0.25), ('EPD_VSL', 0.25), ('EPD_VCOM', 0.25), ('EPD_VDD', 0.2), ('P47_VEE_*', 0.3), ('P47_VGH_*', 0.3), ('P47_PUMP_*', 0.3), ('GND', 0.4)]
+ONLY = os.environ.get('PANDA47_WIDEN_ONLY')            # comma-separated net patterns: widen nothing else (small ECOs)
+if ONLY:
+    TARGET = [(p, w) for p, w in TARGET if p in ONLY.split(',')]
 LADDER = [0.8, 0.7, 0.6, 0.5, 0.4, 0.35, 0.3, 0.25, 0.2, 0.17, 0.15, 0.127]
-BAD = {'clearance', 'shorting_items', 'hole_clearance', 'copper_edge_clearance', 'tracks_crossing', 'solder_mask_bridge', 'track_width'}
+BAD = {'clearance', 'shorting_items', 'hole_clearance', 'copper_edge_clearance', 'tracks_crossing', 'solder_mask_bridge', 'track_width', 'items_not_allowed'}
 
 
 def target(net):
